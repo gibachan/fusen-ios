@@ -6,12 +6,24 @@
 //
 
 import SwiftUI
+import UIKit
 
 @main
 struct FusenApp: App {
     var body: some Scene {
         WindowGroup {
             MainTabView()
+                .onAppear { setupAppearance() }
         }
+    }
+}
+
+extension FusenApp {
+    private func setupAppearance() {
+        let textAttributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.foregroundColor: UIColor.textPrimary
+        ]
+        UINavigationBar.appearance().titleTextAttributes = textAttributes
+        UINavigationBar.appearance().largeTitleTextAttributes = textAttributes
     }
 }

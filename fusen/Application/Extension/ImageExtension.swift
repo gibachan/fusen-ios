@@ -8,5 +8,6 @@
 import SwiftUI
 
 extension Image {
-    static var bookShelf: Image { Image(systemName: "books.vertical") }
+    static let bookShelf = Image(systemName: "books.vertical")
+    static let add = Image(systemName: "plus")
 }

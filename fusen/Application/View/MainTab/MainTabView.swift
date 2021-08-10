@@ -11,7 +11,7 @@ struct MainTabView: View {
     @StateObject var viewModel = MainTabViewModel()
     var body: some View {
         TabView {
-            Text("Hello, world!")
+            BookShelfTabView()
                 .tabItem {
                     Image.bookShelf
                 }

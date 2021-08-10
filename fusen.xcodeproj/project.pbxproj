@@ -94,6 +94,46 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7AD160FF26C29CA800334A63 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				A082000726C1F5CF00100357 /* fusenApp.swift */,
+				7AD1610326C29CE000334A63 /* Resource */,
+				7AD1610226C29CCF00334A63 /* View */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		7AD1610026C29CB100334A63 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		7AD1610126C29CB700334A63 /* Infra */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Infra;
+			sourceTree = "<group>";
+		};
+		7AD1610226C29CCF00334A63 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A082000926C1F5CF00100357 /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7AD1610326C29CE000334A63 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				A082000B26C1F5D100100357 /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		A082000526C1F5CF00100357 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,9 +147,9 @@
 		A082000626C1F5CF00100357 /* fusen */ = {
 			isa = PBXGroup;
 			children = (
-				A082000726C1F5CF00100357 /* fusenApp.swift */,
-				A082000926C1F5CF00100357 /* ContentView.swift */,
-				A082000B26C1F5D100100357 /* Assets.xcassets */,
+				7AD160FF26C29CA800334A63 /* Application */,
+				7AD1610026C29CB100334A63 /* Domain */,
+				7AD1610126C29CB700334A63 /* Infra */,
 				A082000D26C1F5D100100357 /* Preview Content */,
 			);
 			path = fusen;

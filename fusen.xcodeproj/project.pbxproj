@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		6BD46DC1001EA7C1A9342435 /* Pods_fusen_fusenUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DED65B63C22476AE8B5011AE /* Pods_fusen_fusenUITests.framework */; };
+		7AD1610526C29EB500334A63 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1610426C29EB500334A63 /* MainTabView.swift */; };
+		7AD1610826C29ED300334A63 /* MainTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1610726C29ED300334A63 /* MainTabViewModel.swift */; };
+		7AD1610B26C29FE400334A63 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1610A26C29FE400334A63 /* ImageExtension.swift */; };
 		A082000826C1F5CF00100357 /* fusenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A082000726C1F5CF00100357 /* fusenApp.swift */; };
-		A082000A26C1F5CF00100357 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A082000926C1F5CF00100357 /* ContentView.swift */; };
 		A082000C26C1F5D100100357 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000B26C1F5D100100357 /* Assets.xcassets */; };
 		A082000F26C1F5D100100357 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000E26C1F5D100100357 /* Preview Assets.xcassets */; };
 		A082001926C1F5D100100357 /* fusenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A082001826C1F5D100100357 /* fusenTests.swift */; };
@@ -39,12 +41,14 @@
 		0A120C1BA338A419E1C4AC1E /* Pods_fusen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fusen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C3DED94C319492FE223FE79 /* Pods-fusen-fusenUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen-fusenUITests.release.xcconfig"; path = "Target Support Files/Pods-fusen-fusenUITests/Pods-fusen-fusenUITests.release.xcconfig"; sourceTree = "<group>"; };
 		6F5CBB77B19B6F9B80D8238A /* Pods-fusen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen.debug.xcconfig"; path = "Target Support Files/Pods-fusen/Pods-fusen.debug.xcconfig"; sourceTree = "<group>"; };
+		7AD1610426C29EB500334A63 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		7AD1610726C29ED300334A63 /* MainTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewModel.swift; sourceTree = "<group>"; };
+		7AD1610A26C29FE400334A63 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		7B88CB3E534BCE0F944FD992 /* Pods-fusenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusenTests.release.xcconfig"; path = "Target Support Files/Pods-fusenTests/Pods-fusenTests.release.xcconfig"; sourceTree = "<group>"; };
 		92BAA3A355C64643052F4562 /* Pods_fusenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fusenTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		983232E518C4EADBE80E78A4 /* Pods-fusen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen.release.xcconfig"; path = "Target Support Files/Pods-fusen/Pods-fusen.release.xcconfig"; sourceTree = "<group>"; };
 		A082000426C1F5CF00100357 /* fusen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fusen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A082000726C1F5CF00100357 /* fusenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fusenApp.swift; sourceTree = "<group>"; };
-		A082000926C1F5CF00100357 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A082000B26C1F5D100100357 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A082000E26C1F5D100100357 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A082001426C1F5D100100357 /* fusenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fusenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +104,7 @@
 				A082000726C1F5CF00100357 /* fusenApp.swift */,
 				7AD1610326C29CE000334A63 /* Resource */,
 				7AD1610226C29CCF00334A63 /* View */,
+				7AD1610926C29FCA00334A63 /* Extension */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -121,7 +126,7 @@
 		7AD1610226C29CCF00334A63 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A082000926C1F5CF00100357 /* ContentView.swift */,
+				7AD1610626C29EC600334A63 /* MainTab */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -132,6 +137,23 @@
 				A082000B26C1F5D100100357 /* Assets.xcassets */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		7AD1610626C29EC600334A63 /* MainTab */ = {
+			isa = PBXGroup;
+			children = (
+				7AD1610426C29EB500334A63 /* MainTabView.swift */,
+				7AD1610726C29ED300334A63 /* MainTabViewModel.swift */,
+			);
+			path = MainTab;
+			sourceTree = "<group>";
+		};
+		7AD1610926C29FCA00334A63 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				7AD1610A26C29FE400334A63 /* ImageExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		A082000526C1F5CF00100357 /* Products */ = {
@@ -425,8 +447,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A082000A26C1F5CF00100357 /* ContentView.swift in Sources */,
+				7AD1610826C29ED300334A63 /* MainTabViewModel.swift in Sources */,
 				A082000826C1F5CF00100357 /* fusenApp.swift in Sources */,
+				7AD1610526C29EB500334A63 /* MainTabView.swift in Sources */,
+				7AD1610B26C29FE400334A63 /* ImageExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

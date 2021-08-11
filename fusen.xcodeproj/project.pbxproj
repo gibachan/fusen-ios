@@ -73,7 +73,7 @@
 		A052EAC126C3D74C0033CE47 /* AddBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewModel.swift; sourceTree = "<group>"; };
 		A052EAC326C3E4140033CE47 /* CancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
 		A052EAC526C3E4650033CE47 /* AddBookItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookItem.swift; sourceTree = "<group>"; };
-		A052EAC926C3F4E90033CE47 /* Publication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Publication.swift; path = fusen/Application/View/AddBook/Publication.swift; sourceTree = SOURCE_ROOT; };
+		A052EAC926C3F4E90033CE47 /* Publication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Publication.swift; path = fusen/Domain/Entity/Publication.swift; sourceTree = SOURCE_ROOT; };
 		A052EACB26C3F79B0033CE47 /* PublicationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationRepository.swift; sourceTree = "<group>"; };
 		A052EACF26C3F7F50033CE47 /* PublicationRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationRepositoryImpl.swift; sourceTree = "<group>"; };
 		A052EAD226C3F89E0033CE47 /* PublicationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationResponse.swift; sourceTree = "<group>"; };
@@ -229,8 +229,7 @@
 			children = (
 				A052EAC926C3F4E90033CE47 /* Publication.swift */,
 			);
-			name = Entity;
-			path = fusen/Domain/Entity;
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		A052EAC826C3F4C90033CE47 /* Repository */ = {

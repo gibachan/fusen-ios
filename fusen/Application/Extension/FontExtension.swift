@@ -8,5 +8,6 @@
 import SwiftUI
 
 extension Font {
-    static let small = Font.system(size: 14)
+    static let medium = Font.headline
+    static let small = Font.subheadline
 }

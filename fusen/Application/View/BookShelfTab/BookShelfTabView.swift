@@ -9,6 +9,7 @@ import SwiftUI
 
 struct BookShelfTabView: View {
     @StateObject var viewModel = BookShelfTabViewModel()
+    @State var isAddPresented = false
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 0) {
@@ -24,7 +25,7 @@ struct BookShelfTabView: View {
                         .foregroundColor(.textSecondary)
                     Spacer()
                     AddButton {
-                        print("Add")
+                        isAddPresented = true
                     }
                     .frame(width: 24, height: 24)
                     Spacer().frame(width: 16)
@@ -34,6 +35,12 @@ struct BookShelfTabView: View {
             }
             .listStyle(GroupedListStyle())
             .navigationBarTitle("本棚")
+            .sheet(isPresented: $isAddPresented) {
+                print("dismissed")
+            } content: {
+                AddBookView()
+            }
+
         }
         .onAppear { viewModel.onAppear() }
     }

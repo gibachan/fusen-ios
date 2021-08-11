@@ -22,6 +22,10 @@
 		A052EAC226C3D74C0033CE47 /* AddBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EAC126C3D74C0033CE47 /* AddBookViewModel.swift */; };
 		A052EAC426C3E4140033CE47 /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EAC326C3E4140033CE47 /* CancelButton.swift */; };
 		A052EAC626C3E4650033CE47 /* AddBookItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EAC526C3E4650033CE47 /* AddBookItem.swift */; };
+		A052EACA26C3F4E90033CE47 /* Publication.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EAC926C3F4E90033CE47 /* Publication.swift */; };
+		A052EACC26C3F79B0033CE47 /* PublicationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EACB26C3F79B0033CE47 /* PublicationRepository.swift */; };
+		A052EAD026C3F7F50033CE47 /* PublicationRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EACF26C3F7F50033CE47 /* PublicationRepositoryImpl.swift */; };
+		A052EAD326C3F89E0033CE47 /* PublicationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EAD226C3F89E0033CE47 /* PublicationResponse.swift */; };
 		A082000826C1F5CF00100357 /* fusenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A082000726C1F5CF00100357 /* fusenApp.swift */; };
 		A082000C26C1F5D100100357 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000B26C1F5D100100357 /* Assets.xcassets */; };
 		A082000F26C1F5D100100357 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000E26C1F5D100100357 /* Preview Assets.xcassets */; };
@@ -69,6 +73,10 @@
 		A052EAC126C3D74C0033CE47 /* AddBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewModel.swift; sourceTree = "<group>"; };
 		A052EAC326C3E4140033CE47 /* CancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
 		A052EAC526C3E4650033CE47 /* AddBookItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookItem.swift; sourceTree = "<group>"; };
+		A052EAC926C3F4E90033CE47 /* Publication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Publication.swift; path = fusen/Application/View/AddBook/Publication.swift; sourceTree = SOURCE_ROOT; };
+		A052EACB26C3F79B0033CE47 /* PublicationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationRepository.swift; sourceTree = "<group>"; };
+		A052EACF26C3F7F50033CE47 /* PublicationRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationRepositoryImpl.swift; sourceTree = "<group>"; };
+		A052EAD226C3F89E0033CE47 /* PublicationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationResponse.swift; sourceTree = "<group>"; };
 		A082000426C1F5CF00100357 /* fusen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fusen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A082000726C1F5CF00100357 /* fusenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fusenApp.swift; sourceTree = "<group>"; };
 		A082000B26C1F5D100100357 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -134,6 +142,8 @@
 		7AD1610026C29CB100334A63 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				A052EAC726C3F4C00033CE47 /* Entity */,
+				A052EAC826C3F4C90033CE47 /* Repository */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -141,6 +151,7 @@
 		7AD1610126C29CB700334A63 /* Infra */ = {
 			isa = PBXGroup;
 			children = (
+				A052EACD26C3F7C60033CE47 /* Repository */,
 			);
 			path = Infra;
 			sourceTree = "<group>";
@@ -211,6 +222,40 @@
 				A052EAC526C3E4650033CE47 /* AddBookItem.swift */,
 			);
 			path = AddBook;
+			sourceTree = "<group>";
+		};
+		A052EAC726C3F4C00033CE47 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				A052EAC926C3F4E90033CE47 /* Publication.swift */,
+			);
+			name = Entity;
+			path = fusen/Domain/Entity;
+			sourceTree = "<group>";
+		};
+		A052EAC826C3F4C90033CE47 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				A052EACB26C3F79B0033CE47 /* PublicationRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		A052EACD26C3F7C60033CE47 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				A052EACF26C3F7F50033CE47 /* PublicationRepositoryImpl.swift */,
+				A052EAD126C3F8830033CE47 /* Response */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		A052EAD126C3F8830033CE47 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				A052EAD226C3F89E0033CE47 /* PublicationResponse.swift */,
+			);
+			path = Response;
 			sourceTree = "<group>";
 		};
 		A082000526C1F5CF00100357 /* Products */ = {
@@ -505,16 +550,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A052EACC26C3F79B0033CE47 /* PublicationRepository.swift in Sources */,
 				7AD1610826C29ED300334A63 /* MainTabViewModel.swift in Sources */,
 				A052EAC226C3D74C0033CE47 /* AddBookViewModel.swift in Sources */,
 				A082000826C1F5CF00100357 /* fusenApp.swift in Sources */,
 				7AD1611626C2A6CE00334A63 /* FontExtension.swift in Sources */,
 				A052EAC426C3E4140033CE47 /* CancelButton.swift in Sources */,
 				7AD1611B26C2A95300334A63 /* AddButton.swift in Sources */,
+				A052EACA26C3F4E90033CE47 /* Publication.swift in Sources */,
 				7AD1611026C2A26300334A63 /* BookShelfTabViewModel.swift in Sources */,
 				7AD1610526C29EB500334A63 /* MainTabView.swift in Sources */,
 				7AD1611826C2A8BC00334A63 /* UIColorExtension.swift in Sources */,
+				A052EAD326C3F89E0033CE47 /* PublicationResponse.swift in Sources */,
 				A052EAC626C3E4650033CE47 /* AddBookItem.swift in Sources */,
+				A052EAD026C3F7F50033CE47 /* PublicationRepositoryImpl.swift in Sources */,
 				A052EAC026C3D7430033CE47 /* AddBookView.swift in Sources */,
 				7AD1610E26C2A25A00334A63 /* BookShelfTabView.swift in Sources */,
 				7AD1611226C2A40000334A63 /* ColorExtension.swift in Sources */,

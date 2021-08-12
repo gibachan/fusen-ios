@@ -11,5 +11,7 @@ extension Image {
     static let bookShelf = Image(systemName: "books.vertical")
     static let add = Image(systemName: "plus")
     static let camera = Image(systemName: "plus")
+    static let cameraTorchOn = Image(systemName: "bolt.fill")
+    static let cameraTorchOff = Image(systemName: "bolt.slash.fill")
     static let manual = Image(systemName: "hand.point.up.left")
 }

@@ -17,4 +17,12 @@ enum ISBN {
         case .iSBN13(value: let value): return value
         }
     }
+    
+    static func from(code: String) -> ISBN? {
+        switch code.count {
+        case 10: return .iSBN10(value: code)
+        case 13: return .iSBN13(value: code)
+        default: return nil
+        }
+    }
 }

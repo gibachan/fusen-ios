@@ -32,6 +32,11 @@
 		A082001926C1F5D100100357 /* fusenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A082001826C1F5D100100357 /* fusenTests.swift */; };
 		A082002326C1F5D100100357 /* fusenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A082002226C1F5D100100357 /* fusenUITests.swift */; };
 		A0BA4CAF26C49BE100D99D8C /* ISBN.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BA4CAE26C49BE100D99D8C /* ISBN.swift */; };
+		A0BA4CB226C4DDF100D99D8C /* ScanBarcodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BA4CB126C4DDF100D99D8C /* ScanBarcodeView.swift */; };
+		A0BA4CB426C4DDFA00D99D8C /* ScanBarcodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BA4CB326C4DDFA00D99D8C /* ScanBarcodeViewModel.swift */; };
+		A0BA4CB626C4E07400D99D8C /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BA4CB526C4E07400D99D8C /* LazyView.swift */; };
+		A0BA4CB826C4E34200D99D8C /* BarcodeCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BA4CB726C4E34200D99D8C /* BarcodeCameraView.swift */; };
+		A0BA4CBA26C4E37E00D99D8C /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BA4CB926C4E37E00D99D8C /* CameraPreview.swift */; };
 		F7BDF62C75CD8279F9805768 /* Pods_fusenTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92BAA3A355C64643052F4562 /* Pods_fusenTests.framework */; };
 		FAFA9C3195C337A6656292D4 /* Pods_fusen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A120C1BA338A419E1C4AC1E /* Pods_fusen.framework */; };
 /* End PBXBuildFile section */
@@ -87,6 +92,11 @@
 		A082001E26C1F5D100100357 /* fusenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fusenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A082002226C1F5D100100357 /* fusenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fusenUITests.swift; sourceTree = "<group>"; };
 		A0BA4CAE26C49BE100D99D8C /* ISBN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISBN.swift; sourceTree = "<group>"; };
+		A0BA4CB126C4DDF100D99D8C /* ScanBarcodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanBarcodeView.swift; sourceTree = "<group>"; };
+		A0BA4CB326C4DDFA00D99D8C /* ScanBarcodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanBarcodeViewModel.swift; sourceTree = "<group>"; };
+		A0BA4CB526C4E07400D99D8C /* LazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyView.swift; sourceTree = "<group>"; };
+		A0BA4CB726C4E34200D99D8C /* BarcodeCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeCameraView.swift; sourceTree = "<group>"; };
+		A0BA4CB926C4E37E00D99D8C /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
 		B9CE5958189153717B673230 /* Pods-fusen-fusenUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen-fusenUITests.debug.xcconfig"; path = "Target Support Files/Pods-fusen-fusenUITests/Pods-fusen-fusenUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BA1243C082F110680D93D45F /* Pods-fusenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusenTests.debug.xcconfig"; path = "Target Support Files/Pods-fusenTests/Pods-fusenTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DED65B63C22476AE8B5011AE /* Pods_fusen_fusenUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fusen_fusenUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,6 +174,7 @@
 				7AD1610626C29EC600334A63 /* MainTab */,
 				7AD1610C26C2A1E900334A63 /* BookShelfTab */,
 				A052EABE26C3D71C0033CE47 /* AddBook */,
+				A0BA4CB026C4DC2000D99D8C /* ScanBarcode */,
 				7AD1611926C2A93F00334A63 /* Component */,
 			);
 			path = View;
@@ -212,6 +223,7 @@
 			children = (
 				7AD1611A26C2A95300334A63 /* AddButton.swift */,
 				A052EAC326C3E4140033CE47 /* CancelButton.swift */,
+				A0BA4CB526C4E07400D99D8C /* LazyView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -315,6 +327,17 @@
 				E9F15947474F72C9A1C5E49C /* Pods */,
 				1DC5271D3387DA61FAF6D795 /* Frameworks */,
 			);
+			sourceTree = "<group>";
+		};
+		A0BA4CB026C4DC2000D99D8C /* ScanBarcode */ = {
+			isa = PBXGroup;
+			children = (
+				A0BA4CB126C4DDF100D99D8C /* ScanBarcodeView.swift */,
+				A0BA4CB326C4DDFA00D99D8C /* ScanBarcodeViewModel.swift */,
+				A0BA4CB726C4E34200D99D8C /* BarcodeCameraView.swift */,
+				A0BA4CB926C4E37E00D99D8C /* CameraPreview.swift */,
+			);
+			path = ScanBarcode;
 			sourceTree = "<group>";
 		};
 		E9F15947474F72C9A1C5E49C /* Pods */ = {
@@ -560,14 +583,19 @@
 				A052EAC426C3E4140033CE47 /* CancelButton.swift in Sources */,
 				7AD1611B26C2A95300334A63 /* AddButton.swift in Sources */,
 				A052EACA26C3F4E90033CE47 /* Publication.swift in Sources */,
+				A0BA4CB226C4DDF100D99D8C /* ScanBarcodeView.swift in Sources */,
+				A0BA4CBA26C4E37E00D99D8C /* CameraPreview.swift in Sources */,
 				7AD1611026C2A26300334A63 /* BookShelfTabViewModel.swift in Sources */,
 				7AD1610526C29EB500334A63 /* MainTabView.swift in Sources */,
 				7AD1611826C2A8BC00334A63 /* UIColorExtension.swift in Sources */,
+				A0BA4CB426C4DDFA00D99D8C /* ScanBarcodeViewModel.swift in Sources */,
 				A052EAD326C3F89E0033CE47 /* PublicationResponse.swift in Sources */,
+				A0BA4CB826C4E34200D99D8C /* BarcodeCameraView.swift in Sources */,
 				A052EAC626C3E4650033CE47 /* AddBookItem.swift in Sources */,
 				A0BA4CAF26C49BE100D99D8C /* ISBN.swift in Sources */,
 				A052EAD026C3F7F50033CE47 /* PublicationRepositoryImpl.swift in Sources */,
 				A052EAC026C3D7430033CE47 /* AddBookView.swift in Sources */,
+				A0BA4CB626C4E07400D99D8C /* LazyView.swift in Sources */,
 				7AD1610E26C2A25A00334A63 /* BookShelfTabView.swift in Sources */,
 				7AD1611226C2A40000334A63 /* ColorExtension.swift in Sources */,
 				7AD1610B26C29FE400334A63 /* ImageExtension.swift in Sources */,

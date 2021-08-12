@@ -17,6 +17,7 @@ struct PublicationRepositoryImpl: PublicationRepository {
 
     func findBy(isbn: ISBN) async throws -> Publication {
         let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=isbn:\(isbn.value)")!
+        print("request: \(url.absoluteURL)")
         let request = URLRequest(url: url)
         let (data, response) = try await session.data(for: request)
         guard (response as? HTTPURLResponse)?.statusCode == 200 else {

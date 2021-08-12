@@ -8,18 +8,36 @@
 import SwiftUI
 
 struct AddBookView: View {
-    @StateObject var viewModel = AddBookViewModel()
     @Environment(\.dismiss) private var dismiss
-
+    @StateObject var viewModel = AddBookViewModel()
+    @State var isScanBarcodePresented = false
+    @State var isManualInputPresented = false
     var body: some View {
         NavigationView {
-            List {
-                Spacer(minLength: 40)
-                ForEach(AddBookType.allCases) {
-                    AddBookItem(type: $0)
+            VStack(alignment: .leading, spacing: 32) {
+                Spacer().frame(height: 32)
+                Button {
+                    isScanBarcodePresented = true
+                } label: {
+                    AddBookItem(type: AddBookType.camera)
                 }
+                Button {
+                    isManualInputPresented = true
+                } label: {
+                    AddBookItem(type: AddBookType.manual)
+                }
+                Spacer()
             }
-            .listStyle(PlainListStyle())
+            .sheet(isPresented: $isScanBarcodePresented, onDismiss: {
+                print("dimiss")
+            }, content: {
+                ScanBarcodeView()
+            })
+            .sheet(isPresented: $isManualInputPresented, onDismiss: {
+                print("dimiss")
+            }, content: {
+                Text("Not yet implemented")
+            })
             .navigationBarTitle("書籍を追加", displayMode: .inline)
             .navigationBarItems(leading: CancelButton { dismiss() })
         }

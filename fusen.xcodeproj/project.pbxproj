@@ -26,6 +26,8 @@
 		A052EACC26C3F79B0033CE47 /* PublicationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EACB26C3F79B0033CE47 /* PublicationRepository.swift */; };
 		A052EAD026C3F7F50033CE47 /* PublicationRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EACF26C3F7F50033CE47 /* PublicationRepositoryImpl.swift */; };
 		A052EAD326C3F89E0033CE47 /* PublicationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EAD226C3F89E0033CE47 /* PublicationResponse.swift */; };
+		A07507C926C546260087AE5C /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07507C826C546260087AE5C /* HomeTabView.swift */; };
+		A07507CB26C546330087AE5C /* HomeTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07507CA26C546330087AE5C /* HomeTabViewModel.swift */; };
 		A082000826C1F5CF00100357 /* fusenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A082000726C1F5CF00100357 /* fusenApp.swift */; };
 		A082000C26C1F5D100100357 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000B26C1F5D100100357 /* Assets.xcassets */; };
 		A082000F26C1F5D100100357 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000E26C1F5D100100357 /* Preview Assets.xcassets */; };
@@ -83,6 +85,8 @@
 		A052EACB26C3F79B0033CE47 /* PublicationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationRepository.swift; sourceTree = "<group>"; };
 		A052EACF26C3F7F50033CE47 /* PublicationRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationRepositoryImpl.swift; sourceTree = "<group>"; };
 		A052EAD226C3F89E0033CE47 /* PublicationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationResponse.swift; sourceTree = "<group>"; };
+		A07507C826C546260087AE5C /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
+		A07507CA26C546330087AE5C /* HomeTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewModel.swift; sourceTree = "<group>"; };
 		A082000426C1F5CF00100357 /* fusen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fusen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A082000726C1F5CF00100357 /* fusenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fusenApp.swift; sourceTree = "<group>"; };
 		A082000B26C1F5D100100357 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -172,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				7AD1610626C29EC600334A63 /* MainTab */,
+				A07507C726C546120087AE5C /* HomeTab */,
 				7AD1610C26C2A1E900334A63 /* BookShelfTab */,
 				A052EABE26C3D71C0033CE47 /* AddBook */,
 				A0BA4CB026C4DC2000D99D8C /* ScanBarcode */,
@@ -270,6 +275,15 @@
 				A052EAD226C3F89E0033CE47 /* PublicationResponse.swift */,
 			);
 			path = Response;
+			sourceTree = "<group>";
+		};
+		A07507C726C546120087AE5C /* HomeTab */ = {
+			isa = PBXGroup;
+			children = (
+				A07507C826C546260087AE5C /* HomeTabView.swift */,
+				A07507CA26C546330087AE5C /* HomeTabViewModel.swift */,
+			);
+			path = HomeTab;
 			sourceTree = "<group>";
 		};
 		A082000526C1F5CF00100357 /* Products */ = {
@@ -577,6 +591,7 @@
 			files = (
 				A052EACC26C3F79B0033CE47 /* PublicationRepository.swift in Sources */,
 				7AD1610826C29ED300334A63 /* MainTabViewModel.swift in Sources */,
+				A07507C926C546260087AE5C /* HomeTabView.swift in Sources */,
 				A052EAC226C3D74C0033CE47 /* AddBookViewModel.swift in Sources */,
 				A082000826C1F5CF00100357 /* fusenApp.swift in Sources */,
 				7AD1611626C2A6CE00334A63 /* FontExtension.swift in Sources */,
@@ -597,6 +612,7 @@
 				A052EAC026C3D7430033CE47 /* AddBookView.swift in Sources */,
 				A0BA4CB626C4E07400D99D8C /* LazyView.swift in Sources */,
 				7AD1610E26C2A25A00334A63 /* BookShelfTabView.swift in Sources */,
+				A07507CB26C546330087AE5C /* HomeTabViewModel.swift in Sources */,
 				7AD1611226C2A40000334A63 /* ColorExtension.swift in Sources */,
 				7AD1610B26C29FE400334A63 /* ImageExtension.swift in Sources */,
 			);

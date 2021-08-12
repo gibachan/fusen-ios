@@ -8,6 +8,7 @@
 import SwiftUI
 
 extension Image {
+    static let home = Image(systemName: "book")
     static let bookShelf = Image(systemName: "books.vertical")
     static let add = Image(systemName: "plus")
     static let camera = Image(systemName: "plus")

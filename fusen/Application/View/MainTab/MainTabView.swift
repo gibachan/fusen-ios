@@ -11,6 +11,10 @@ struct MainTabView: View {
     @StateObject var viewModel = MainTabViewModel()
     var body: some View {
         TabView {
+            HomeTabView()
+                .tabItem {
+                    Image.home
+                }
             BookShelfTabView()
                 .tabItem {
                     Image.bookShelf

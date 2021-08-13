@@ -32,7 +32,7 @@
 		A07507CE26C5E2F40087AE5C /* GoogleService-Info-staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = A07507CC26C5E2F40087AE5C /* GoogleService-Info-staging.plist */; };
 		A07507CF26C5E2F40087AE5C /* GoogleService-Info-development.plist in Resources */ = {isa = PBXBuildFile; fileRef = A07507CD26C5E2F40087AE5C /* GoogleService-Info-development.plist */; };
 		A07507DE26C5E53C0087AE5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07507DD26C5E53C0087AE5C /* AppDelegate.swift */; };
-		A082000826C1F5CF00100357 /* fusenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A082000726C1F5CF00100357 /* fusenApp.swift */; };
+		A082000826C1F5CF00100357 /* FusenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A082000726C1F5CF00100357 /* FusenApp.swift */; };
 		A082000C26C1F5D100100357 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000B26C1F5D100100357 /* Assets.xcassets */; };
 		A082000F26C1F5D100100357 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000E26C1F5D100100357 /* Preview Assets.xcassets */; };
 		A082001926C1F5D100100357 /* fusenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A082001826C1F5D100100357 /* fusenTests.swift */; };
@@ -99,7 +99,7 @@
 		A07507CD26C5E2F40087AE5C /* GoogleService-Info-development.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-development.plist"; sourceTree = "<group>"; };
 		A07507DD26C5E53C0087AE5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A082000426C1F5CF00100357 /* fusen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fusen.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A082000726C1F5CF00100357 /* fusenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fusenApp.swift; sourceTree = "<group>"; };
+		A082000726C1F5CF00100357 /* FusenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FusenApp.swift; sourceTree = "<group>"; };
 		A082000B26C1F5D100100357 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A082000E26C1F5D100100357 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A082001426C1F5D100100357 /* fusenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fusenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,7 +158,7 @@
 		7AD160FF26C29CA800334A63 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				A082000726C1F5CF00100357 /* fusenApp.swift */,
+				A082000726C1F5CF00100357 /* FusenApp.swift */,
 				A07507DD26C5E53C0087AE5C /* AppDelegate.swift */,
 				A062C18826C5F33500C56E2A /* AppEnv.swift */,
 				7AD1610326C29CE000334A63 /* Resource */,
@@ -649,7 +649,7 @@
 				7AD1610826C29ED300334A63 /* MainTabViewModel.swift in Sources */,
 				A07507C926C546260087AE5C /* HomeTabView.swift in Sources */,
 				A052EAC226C3D74C0033CE47 /* AddBookViewModel.swift in Sources */,
-				A082000826C1F5CF00100357 /* fusenApp.swift in Sources */,
+				A082000826C1F5CF00100357 /* FusenApp.swift in Sources */,
 				7AD1611626C2A6CE00334A63 /* FontExtension.swift in Sources */,
 				A052EAC426C3E4140033CE47 /* CancelButton.swift in Sources */,
 				7AD1611B26C2A95300334A63 /* AddButton.swift in Sources */,

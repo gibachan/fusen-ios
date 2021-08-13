@@ -1,6 +1,6 @@
 //
-//  fusenApp.swift
-//  fusen
+//  FusenApp.swift
+//  Fusen
 //
 //  Created by Tatsuyuki Kobayashi on 2021/08/10.
 //

@@ -6,6 +6,12 @@ target 'fusen' do
   use_frameworks!
 
   # Pods for fusen
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Crashlytics'
+  pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
+  pod 'Firebase/Storage'
   pod 'SwiftLint'
 
   target 'fusenTests' do

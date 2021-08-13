@@ -26,8 +26,12 @@
 		A052EACC26C3F79B0033CE47 /* PublicationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EACB26C3F79B0033CE47 /* PublicationRepository.swift */; };
 		A052EAD026C3F7F50033CE47 /* PublicationRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EACF26C3F7F50033CE47 /* PublicationRepositoryImpl.swift */; };
 		A052EAD326C3F89E0033CE47 /* PublicationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EAD226C3F89E0033CE47 /* PublicationResponse.swift */; };
+		A062C18926C5F33500C56E2A /* AppEnv.swift in Sources */ = {isa = PBXBuildFile; fileRef = A062C18826C5F33500C56E2A /* AppEnv.swift */; };
 		A07507C926C546260087AE5C /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07507C826C546260087AE5C /* HomeTabView.swift */; };
 		A07507CB26C546330087AE5C /* HomeTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07507CA26C546330087AE5C /* HomeTabViewModel.swift */; };
+		A07507CE26C5E2F40087AE5C /* GoogleService-Info-staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = A07507CC26C5E2F40087AE5C /* GoogleService-Info-staging.plist */; };
+		A07507CF26C5E2F40087AE5C /* GoogleService-Info-development.plist in Resources */ = {isa = PBXBuildFile; fileRef = A07507CD26C5E2F40087AE5C /* GoogleService-Info-development.plist */; };
+		A07507DE26C5E53C0087AE5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07507DD26C5E53C0087AE5C /* AppDelegate.swift */; };
 		A082000826C1F5CF00100357 /* fusenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A082000726C1F5CF00100357 /* fusenApp.swift */; };
 		A082000C26C1F5D100100357 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000B26C1F5D100100357 /* Assets.xcassets */; };
 		A082000F26C1F5D100100357 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000E26C1F5D100100357 /* Preview Assets.xcassets */; };
@@ -63,6 +67,9 @@
 /* Begin PBXFileReference section */
 		0A120C1BA338A419E1C4AC1E /* Pods_fusen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fusen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C3DED94C319492FE223FE79 /* Pods-fusen-fusenUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen-fusenUITests.release.xcconfig"; path = "Target Support Files/Pods-fusen-fusenUITests/Pods-fusen-fusenUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1DE0D1B8A96CA3FFE09EAAEA /* Pods-fusen.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen.staging.xcconfig"; path = "Target Support Files/Pods-fusen/Pods-fusen.staging.xcconfig"; sourceTree = "<group>"; };
+		5B37FD8BE420D6FBA3462CCB /* Pods-fusenTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusenTests.staging.xcconfig"; path = "Target Support Files/Pods-fusenTests/Pods-fusenTests.staging.xcconfig"; sourceTree = "<group>"; };
+		68C9A2BDADA81FF3A49EEF8A /* Pods-fusen-fusenUITests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen-fusenUITests.staging.xcconfig"; path = "Target Support Files/Pods-fusen-fusenUITests/Pods-fusen-fusenUITests.staging.xcconfig"; sourceTree = "<group>"; };
 		6F5CBB77B19B6F9B80D8238A /* Pods-fusen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen.debug.xcconfig"; path = "Target Support Files/Pods-fusen/Pods-fusen.debug.xcconfig"; sourceTree = "<group>"; };
 		7AD1610426C29EB500334A63 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		7AD1610726C29ED300334A63 /* MainTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewModel.swift; sourceTree = "<group>"; };
@@ -85,8 +92,12 @@
 		A052EACB26C3F79B0033CE47 /* PublicationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationRepository.swift; sourceTree = "<group>"; };
 		A052EACF26C3F7F50033CE47 /* PublicationRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationRepositoryImpl.swift; sourceTree = "<group>"; };
 		A052EAD226C3F89E0033CE47 /* PublicationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationResponse.swift; sourceTree = "<group>"; };
+		A062C18826C5F33500C56E2A /* AppEnv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnv.swift; sourceTree = "<group>"; };
 		A07507C826C546260087AE5C /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
 		A07507CA26C546330087AE5C /* HomeTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewModel.swift; sourceTree = "<group>"; };
+		A07507CC26C5E2F40087AE5C /* GoogleService-Info-staging.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-staging.plist"; sourceTree = "<group>"; };
+		A07507CD26C5E2F40087AE5C /* GoogleService-Info-development.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-development.plist"; sourceTree = "<group>"; };
+		A07507DD26C5E53C0087AE5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A082000426C1F5CF00100357 /* fusen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fusen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A082000726C1F5CF00100357 /* fusenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fusenApp.swift; sourceTree = "<group>"; };
 		A082000B26C1F5D100100357 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -148,6 +159,8 @@
 			isa = PBXGroup;
 			children = (
 				A082000726C1F5CF00100357 /* fusenApp.swift */,
+				A07507DD26C5E53C0087AE5C /* AppDelegate.swift */,
+				A062C18826C5F33500C56E2A /* AppEnv.swift */,
 				7AD1610326C29CE000334A63 /* Resource */,
 				7AD1610226C29CCF00334A63 /* View */,
 				7AD1610926C29FCA00334A63 /* Extension */,
@@ -188,6 +201,8 @@
 		7AD1610326C29CE000334A63 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				A07507CD26C5E2F40087AE5C /* GoogleService-Info-development.plist */,
+				A07507CC26C5E2F40087AE5C /* GoogleService-Info-staging.plist */,
 				A082000B26C1F5D100100357 /* Assets.xcassets */,
 				7AD1611326C2A45500334A63 /* Colors.xcassets */,
 			);
@@ -363,6 +378,9 @@
 				0C3DED94C319492FE223FE79 /* Pods-fusen-fusenUITests.release.xcconfig */,
 				BA1243C082F110680D93D45F /* Pods-fusenTests.debug.xcconfig */,
 				7B88CB3E534BCE0F944FD992 /* Pods-fusenTests.release.xcconfig */,
+				1DE0D1B8A96CA3FFE09EAAEA /* Pods-fusen.staging.xcconfig */,
+				68C9A2BDADA81FF3A49EEF8A /* Pods-fusen-fusenUITests.staging.xcconfig */,
+				5B37FD8BE420D6FBA3462CCB /* Pods-fusenTests.staging.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -379,6 +397,7 @@
 				A082000126C1F5CF00100357 /* Frameworks */,
 				A082000226C1F5CF00100357 /* Resources */,
 				A082002F26C1F74300100357 /* SwiftLint */,
+				0D502F6FD4CEAE7DA729E03E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -416,6 +435,7 @@
 				A082001A26C1F5D100100357 /* Sources */,
 				A082001B26C1F5D100100357 /* Frameworks */,
 				A082001C26C1F5D100100357 /* Resources */,
+				5F8A750192022CB9C53CA88F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -477,6 +497,8 @@
 			files = (
 				7AD1611426C2A45600334A63 /* Colors.xcassets in Resources */,
 				A082000F26C1F5D100100357 /* Preview Assets.xcassets in Resources */,
+				A07507CF26C5E2F40087AE5C /* GoogleService-Info-development.plist in Resources */,
+				A07507CE26C5E2F40087AE5C /* GoogleService-Info-staging.plist in Resources */,
 				A082000C26C1F5D100100357 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -498,6 +520,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0D502F6FD4CEAE7DA729E03E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-fusen/Pods-fusen-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-fusen/Pods-fusen-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-fusen/Pods-fusen-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		25623AECADE0692A2D911115 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -540,6 +579,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5F8A750192022CB9C53CA88F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-fusen-fusenUITests/Pods-fusen-fusenUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-fusen-fusenUITests/Pods-fusen-fusenUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-fusen-fusenUITests/Pods-fusen-fusenUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		884C6163C5C3AF802E659C8A /* [CP] Check Pods Manifest.lock */ = {
@@ -606,10 +662,12 @@
 				A0BA4CB426C4DDFA00D99D8C /* ScanBarcodeViewModel.swift in Sources */,
 				A052EAD326C3F89E0033CE47 /* PublicationResponse.swift in Sources */,
 				A0BA4CB826C4E34200D99D8C /* BarcodeCameraView.swift in Sources */,
+				A062C18926C5F33500C56E2A /* AppEnv.swift in Sources */,
 				A052EAC626C3E4650033CE47 /* AddBookItem.swift in Sources */,
 				A0BA4CAF26C49BE100D99D8C /* ISBN.swift in Sources */,
 				A052EAD026C3F7F50033CE47 /* PublicationRepositoryImpl.swift in Sources */,
 				A052EAC026C3D7430033CE47 /* AddBookView.swift in Sources */,
+				A07507DE26C5E53C0087AE5C /* AppDelegate.swift in Sources */,
 				A0BA4CB626C4E07400D99D8C /* LazyView.swift in Sources */,
 				7AD1610E26C2A25A00334A63 /* BookShelfTabView.swift in Sources */,
 				A07507CB26C546330087AE5C /* HomeTabViewModel.swift in Sources */,
@@ -650,6 +708,150 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		A07507DF26C5E79F0087AE5C /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Staging;
+		};
+		A07507E026C5E79F0087AE5C /* Staging */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1DE0D1B8A96CA3FFE09EAAEA /* Pods-fusen.staging.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"fusen/Preview Content\"";
+				DEVELOPMENT_TEAM = MYDHT92MBT;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D STAGING";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.fusen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Staging;
+		};
+		A07507E126C5E79F0087AE5C /* Staging */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B37FD8BE420D6FBA3462CCB /* Pods-fusenTests.staging.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MYDHT92MBT;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.fusenTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/fusen.app/fusen";
+			};
+			name = Staging;
+		};
+		A07507E226C5E79F0087AE5C /* Staging */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68C9A2BDADA81FF3A49EEF8A /* Pods-fusen-fusenUITests.staging.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MYDHT92MBT;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.fusenUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = fusen;
+			};
+			name = Staging;
+		};
 		A082002426C1F5D100100357 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -789,6 +991,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.fusen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -935,6 +1138,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A082002726C1F5D100100357 /* Debug */,
+				A07507E026C5E79F0087AE5C /* Staging */,
 				A082002826C1F5D100100357 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -944,6 +1148,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A082002A26C1F5D100100357 /* Debug */,
+				A07507E126C5E79F0087AE5C /* Staging */,
 				A082002B26C1F5D100100357 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -953,6 +1158,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A082002D26C1F5D100100357 /* Debug */,
+				A07507E226C5E79F0087AE5C /* Staging */,
 				A082002E26C1F5D100100357 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -962,6 +1168,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A082002426C1F5D100100357 /* Debug */,
+				A07507DF26C5E79F0087AE5C /* Staging */,
 				A082002526C1F5D100100357 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

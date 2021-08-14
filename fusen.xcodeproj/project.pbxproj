@@ -18,6 +18,13 @@
 		7AD1611626C2A6CE00334A63 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1611526C2A6CE00334A63 /* FontExtension.swift */; };
 		7AD1611826C2A8BC00334A63 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1611726C2A8BC00334A63 /* UIColorExtension.swift */; };
 		7AD1611B26C2A95300334A63 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1611A26C2A95300334A63 /* AddButton.swift */; };
+		A007C07726C7796600270671 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C07626C7796600270671 /* TutorialView.swift */; };
+		A007C07926C7797000270671 /* TutorialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C07826C7797000270671 /* TutorialViewModel.swift */; };
+		A007C07C26C7805B00270671 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C07B26C7805B00270671 /* AccountService.swift */; };
+		A007C07E26C78E5700270671 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C07D26C78E5700270671 /* User.swift */; };
+		A007C08026C78E8500270671 /* ID.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C07F26C78E8500270671 /* ID.swift */; };
+		A007C08326C78FB400270671 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C08226C78FB400270671 /* Logger.swift */; };
+		A007C08526C7AD9200270671 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C08426C7AD9200270671 /* ToastView.swift */; };
 		A052EAC026C3D7430033CE47 /* AddBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EABF26C3D7430033CE47 /* AddBookView.swift */; };
 		A052EAC226C3D74C0033CE47 /* AddBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EAC126C3D74C0033CE47 /* AddBookViewModel.swift */; };
 		A052EAC426C3E4140033CE47 /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EAC326C3E4140033CE47 /* CancelButton.swift */; };
@@ -84,6 +91,13 @@
 		7B88CB3E534BCE0F944FD992 /* Pods-fusenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusenTests.release.xcconfig"; path = "Target Support Files/Pods-fusenTests/Pods-fusenTests.release.xcconfig"; sourceTree = "<group>"; };
 		92BAA3A355C64643052F4562 /* Pods_fusenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fusenTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		983232E518C4EADBE80E78A4 /* Pods-fusen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen.release.xcconfig"; path = "Target Support Files/Pods-fusen/Pods-fusen.release.xcconfig"; sourceTree = "<group>"; };
+		A007C07626C7796600270671 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
+		A007C07826C7797000270671 /* TutorialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewModel.swift; sourceTree = "<group>"; };
+		A007C07B26C7805B00270671 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
+		A007C07D26C78E5700270671 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A007C07F26C78E8500270671 /* ID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ID.swift; sourceTree = "<group>"; };
+		A007C08226C78FB400270671 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		A007C08426C7AD9200270671 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		A052EABF26C3D7430033CE47 /* AddBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookView.swift; sourceTree = "<group>"; };
 		A052EAC126C3D74C0033CE47 /* AddBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewModel.swift; sourceTree = "<group>"; };
 		A052EAC326C3E4140033CE47 /* CancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
@@ -163,6 +177,8 @@
 				A062C18826C5F33500C56E2A /* AppEnv.swift */,
 				7AD1610326C29CE000334A63 /* Resource */,
 				7AD1610226C29CCF00334A63 /* View */,
+				A007C07A26C7804D00270671 /* Service */,
+				A007C08126C78FA500270671 /* Utility */,
 				7AD1610926C29FCA00334A63 /* Extension */,
 			);
 			path = Application;
@@ -189,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				7AD1610626C29EC600334A63 /* Main */,
+				A007C07526C7795800270671 /* Tutorial */,
 				A07507C726C546120087AE5C /* HomeTab */,
 				7AD1610C26C2A1E900334A63 /* BookShelfTab */,
 				A052EABE26C3D71C0033CE47 /* AddBook */,
@@ -244,8 +261,34 @@
 				7AD1611A26C2A95300334A63 /* AddButton.swift */,
 				A052EAC326C3E4140033CE47 /* CancelButton.swift */,
 				A0BA4CB526C4E07400D99D8C /* LazyView.swift */,
+				A007C08426C7AD9200270671 /* ToastView.swift */,
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		A007C07526C7795800270671 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				A007C07626C7796600270671 /* TutorialView.swift */,
+				A007C07826C7797000270671 /* TutorialViewModel.swift */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
+		A007C07A26C7804D00270671 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				A007C07B26C7805B00270671 /* AccountService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		A007C08126C78FA500270671 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				A007C08226C78FB400270671 /* Logger.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		A052EABE26C3D71C0033CE47 /* AddBook */ = {
@@ -261,6 +304,8 @@
 		A052EAC726C3F4C00033CE47 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				A007C07F26C78E8500270671 /* ID.swift */,
+				A007C07D26C78E5700270671 /* User.swift */,
 				A052EAC926C3F4E90033CE47 /* Publication.swift */,
 				A0BA4CAE26C49BE100D99D8C /* ISBN.swift */,
 			);
@@ -649,6 +694,8 @@
 				7AD1610826C29ED300334A63 /* MainViewModel.swift in Sources */,
 				A07507C926C546260087AE5C /* HomeTabView.swift in Sources */,
 				A052EAC226C3D74C0033CE47 /* AddBookViewModel.swift in Sources */,
+				A007C07E26C78E5700270671 /* User.swift in Sources */,
+				A007C07726C7796600270671 /* TutorialView.swift in Sources */,
 				A082000826C1F5CF00100357 /* FusenApp.swift in Sources */,
 				7AD1611626C2A6CE00334A63 /* FontExtension.swift in Sources */,
 				A052EAC426C3E4140033CE47 /* CancelButton.swift in Sources */,
@@ -657,17 +704,22 @@
 				A0BA4CB226C4DDF100D99D8C /* ScanBarcodeView.swift in Sources */,
 				A0BA4CBA26C4E37E00D99D8C /* CameraPreview.swift in Sources */,
 				7AD1611026C2A26300334A63 /* BookShelfTabViewModel.swift in Sources */,
+				A007C07C26C7805B00270671 /* AccountService.swift in Sources */,
 				7AD1610526C29EB500334A63 /* MainView.swift in Sources */,
 				7AD1611826C2A8BC00334A63 /* UIColorExtension.swift in Sources */,
 				A0BA4CB426C4DDFA00D99D8C /* ScanBarcodeViewModel.swift in Sources */,
+				A007C07926C7797000270671 /* TutorialViewModel.swift in Sources */,
 				A052EAD326C3F89E0033CE47 /* PublicationResponse.swift in Sources */,
 				A0BA4CB826C4E34200D99D8C /* BarcodeCameraView.swift in Sources */,
 				A062C18926C5F33500C56E2A /* AppEnv.swift in Sources */,
 				A052EAC626C3E4650033CE47 /* AddBookItem.swift in Sources */,
+				A007C08026C78E8500270671 /* ID.swift in Sources */,
 				A0BA4CAF26C49BE100D99D8C /* ISBN.swift in Sources */,
+				A007C08326C78FB400270671 /* Logger.swift in Sources */,
 				A052EAD026C3F7F50033CE47 /* PublicationRepositoryImpl.swift in Sources */,
 				A052EAC026C3D7430033CE47 /* AddBookView.swift in Sources */,
 				A07507DE26C5E53C0087AE5C /* AppDelegate.swift in Sources */,
+				A007C08526C7AD9200270671 /* ToastView.swift in Sources */,
 				A0BA4CB626C4E07400D99D8C /* LazyView.swift in Sources */,
 				7AD1610E26C2A25A00334A63 /* BookShelfTabView.swift in Sources */,
 				A07507CB26C546330087AE5C /* HomeTabViewModel.swift in Sources */,

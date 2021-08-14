@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     @StateObject var viewModel = MainViewModel()
+    @State var isTutorialPresented = false
     var body: some View {
         TabView {
             HomeTabView()
@@ -19,6 +20,16 @@ struct MainView: View {
                 .tabItem {
                     Image.bookShelf
                 }
+        }
+        .fullScreenCover(isPresented: $isTutorialPresented) {
+        } content: {
+            TutorialView()
+        }
+        .onAppear {
+            viewModel.onAppear()
+        }
+        .onReceive(viewModel.$showTutorial) {
+            isTutorialPresented = $0
         }
     }
 }

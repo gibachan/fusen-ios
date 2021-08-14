@@ -15,4 +15,8 @@ extension Image {
     static let cameraTorchOn = Image(systemName: "bolt.fill")
     static let cameraTorchOff = Image(systemName: "bolt.slash.fill")
     static let manual = Image(systemName: "hand.point.up.left")
+    
+    static let info = Image(systemName: "info.circle")
+    static let warning = Image(systemName: "exclamationmark.triangle")
+    static let error = Image(systemName: "xmark.octagon.fill")
 }

@@ -20,4 +20,9 @@ extension Color {
 
     // Background
     static let backgroundGray = Color("backgroundGray")
+    
+    // Misc
+    static let info = Color.gray
+    static let warning = Color.yellow
+    static let error = Color.red
 }

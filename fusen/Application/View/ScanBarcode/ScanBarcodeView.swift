@@ -37,7 +37,9 @@ struct ScanBarcodeView: View {
                                 trailing: torchButton)
         }
     }
-    
+}
+
+extension ScanBarcodeView {
     private var torchButton: some View {
         Button(action: {
             viewModel.onTorchToggled()

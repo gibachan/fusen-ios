@@ -7,9 +7,12 @@
 
 import Foundation
 import FirebaseFirestore
+//import FirebaseFirestoreSwift
 
 final class FirestoreDataSource {
     private let db = Firestore.firestore()
+//    private let encoder = Firestore.Encoder()
+//    private let decoder = Firestore.Decoder()
     
     func usersCollection() -> CollectionReference {
         return db.collection("users")

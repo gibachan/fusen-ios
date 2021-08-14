@@ -8,9 +8,12 @@
 import Foundation
 
 enum BookRepositoryError: Error {
-    case failedToAddBook
+    case unknwon
 }
 
 protocol BookRepository {
+    func getBooks(for user: User, forceRefresh: Bool) async throws -> Pager<Book>
+    func getNextBooks(for user: User) async throws -> Pager<Book>
+    
     func addBook(of publication: Publication, for user: User) async throws -> ID<Book>
 }

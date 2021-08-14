@@ -13,13 +13,19 @@ final class ScanBarcodeViewModel: ObservableObject {
     private var isScanning = false
     private var scannedCode = Set<String>()
     private var lastScannedTime = Date(timeIntervalSince1970: 0)
+    private let accountService: AccountServiceProtocol
     private let publicationRepository: PublicationRepository
+    private let bookRepository: BookRepository
 
     @Published var isTorchOn: Bool = false
     
-    init(publicationRepository: PublicationRepository = PublicationRepositoryImpl()) {
+    init(accountService: AccountServiceProtocol = AccountService.shared,
+         publicationRepository: PublicationRepository = PublicationRepositoryImpl(),
+         bookRepository: BookRepository = BookRepositoryImpl()) {
+        self.accountService = accountService
         self.publicationRepository = publicationRepository
-        isTorchOn = currentTorch()
+        self.bookRepository = bookRepository
+        self.isTorchOn = currentTorch()
     }
     
     func onTorchToggled() {
@@ -33,8 +39,12 @@ final class ScanBarcodeViewModel: ObservableObject {
     }
 
     func onBarcodeScanned(code: String) async {
+        guard let user = accountService.currentUser else { return }
         guard !isScanning else { return }
-        guard !scannedCode.contains(code) else { print("#passed"); return }
+        guard !scannedCode.contains(code) else {
+            log.d("code=\(code) has benn already scanned")
+            return
+        }
         guard let isbn = ISBN.from(code: code) else { return }
         
         let now = Date()
@@ -44,8 +54,11 @@ final class ScanBarcodeViewModel: ObservableObject {
             scannedCode.insert(code)
             do {
                 let publication = try await publicationRepository.findBy(isbn: isbn)
-                print("Publication found: \(publication)")
+                log.d("Found publication: \(publication)")
+                let id = try await bookRepository.addBook(of: publication, for: user)
+                log.d("Book is added for id: \(id.value)")
             } catch {
+                // FIXME: error handling
                 print(error.localizedDescription)
             }
             isScanning = false

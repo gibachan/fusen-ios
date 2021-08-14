@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6BD46DC1001EA7C1A9342435 /* Pods_fusen_fusenUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DED65B63C22476AE8B5011AE /* Pods_fusen_fusenUITests.framework */; };
-		7AD1610526C29EB500334A63 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1610426C29EB500334A63 /* MainTabView.swift */; };
-		7AD1610826C29ED300334A63 /* MainTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1610726C29ED300334A63 /* MainTabViewModel.swift */; };
+		7AD1610526C29EB500334A63 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1610426C29EB500334A63 /* MainView.swift */; };
+		7AD1610826C29ED300334A63 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1610726C29ED300334A63 /* MainViewModel.swift */; };
 		7AD1610B26C29FE400334A63 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1610A26C29FE400334A63 /* ImageExtension.swift */; };
 		7AD1610E26C2A25A00334A63 /* BookShelfTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1610D26C2A25A00334A63 /* BookShelfTabView.swift */; };
 		7AD1611026C2A26300334A63 /* BookShelfTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1610F26C2A26300334A63 /* BookShelfTabViewModel.swift */; };
@@ -71,8 +71,8 @@
 		5B37FD8BE420D6FBA3462CCB /* Pods-fusenTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusenTests.staging.xcconfig"; path = "Target Support Files/Pods-fusenTests/Pods-fusenTests.staging.xcconfig"; sourceTree = "<group>"; };
 		68C9A2BDADA81FF3A49EEF8A /* Pods-fusen-fusenUITests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen-fusenUITests.staging.xcconfig"; path = "Target Support Files/Pods-fusen-fusenUITests/Pods-fusen-fusenUITests.staging.xcconfig"; sourceTree = "<group>"; };
 		6F5CBB77B19B6F9B80D8238A /* Pods-fusen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen.debug.xcconfig"; path = "Target Support Files/Pods-fusen/Pods-fusen.debug.xcconfig"; sourceTree = "<group>"; };
-		7AD1610426C29EB500334A63 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
-		7AD1610726C29ED300334A63 /* MainTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewModel.swift; sourceTree = "<group>"; };
+		7AD1610426C29EB500334A63 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		7AD1610726C29ED300334A63 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		7AD1610A26C29FE400334A63 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		7AD1610D26C2A25A00334A63 /* BookShelfTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfTabView.swift; sourceTree = "<group>"; };
 		7AD1610F26C2A26300334A63 /* BookShelfTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfTabViewModel.swift; sourceTree = "<group>"; };
@@ -188,7 +188,7 @@
 		7AD1610226C29CCF00334A63 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7AD1610626C29EC600334A63 /* MainTab */,
+				7AD1610626C29EC600334A63 /* Main */,
 				A07507C726C546120087AE5C /* HomeTab */,
 				7AD1610C26C2A1E900334A63 /* BookShelfTab */,
 				A052EABE26C3D71C0033CE47 /* AddBook */,
@@ -209,13 +209,13 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
-		7AD1610626C29EC600334A63 /* MainTab */ = {
+		7AD1610626C29EC600334A63 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				7AD1610426C29EB500334A63 /* MainTabView.swift */,
-				7AD1610726C29ED300334A63 /* MainTabViewModel.swift */,
+				7AD1610426C29EB500334A63 /* MainView.swift */,
+				7AD1610726C29ED300334A63 /* MainViewModel.swift */,
 			);
-			path = MainTab;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		7AD1610926C29FCA00334A63 /* Extension */ = {
@@ -646,7 +646,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A052EACC26C3F79B0033CE47 /* PublicationRepository.swift in Sources */,
-				7AD1610826C29ED300334A63 /* MainTabViewModel.swift in Sources */,
+				7AD1610826C29ED300334A63 /* MainViewModel.swift in Sources */,
 				A07507C926C546260087AE5C /* HomeTabView.swift in Sources */,
 				A052EAC226C3D74C0033CE47 /* AddBookViewModel.swift in Sources */,
 				A082000826C1F5CF00100357 /* FusenApp.swift in Sources */,
@@ -657,7 +657,7 @@
 				A0BA4CB226C4DDF100D99D8C /* ScanBarcodeView.swift in Sources */,
 				A0BA4CBA26C4E37E00D99D8C /* CameraPreview.swift in Sources */,
 				7AD1611026C2A26300334A63 /* BookShelfTabViewModel.swift in Sources */,
-				7AD1610526C29EB500334A63 /* MainTabView.swift in Sources */,
+				7AD1610526C29EB500334A63 /* MainView.swift in Sources */,
 				7AD1611826C2A8BC00334A63 /* UIColorExtension.swift in Sources */,
 				A0BA4CB426C4DDFA00D99D8C /* ScanBarcodeViewModel.swift in Sources */,
 				A052EAD326C3F89E0033CE47 /* PublicationResponse.swift in Sources */,

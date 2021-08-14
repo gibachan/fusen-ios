@@ -17,6 +17,7 @@ final class MainViewModel: ObservableObject {
     }
     
     func onAppear() {
+        log.d("accountService.isLoggedIn=\(accountService.isLoggedIn)")
         showTutorial = !accountService.isLoggedIn
     }
 }

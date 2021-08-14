@@ -9,6 +9,10 @@ import UIKit
 import Firebase
 
 class AppDelegate: NSObject, UIApplicationDelegate {
+    // Instanciate window for SVProgressHUD
+    // ref: https://zenn.dev/yimajo/articles/475f2e1963fc6e
+    var window: UIWindow? = UIWindow(frame: UIScreen.main.bounds)
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         setupFirebase()
         return true

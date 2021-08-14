@@ -24,10 +24,12 @@ struct TutorialView: View {
             case .initial:
                 break
             case .loading:
-                break
+                LoadingHUD.show()
             case .succeeded:
+                LoadingHUD.dismiss()
                 dismiss()
             case .failed:
+                LoadingHUD.dismiss()
                 isErrorActive = true
             }
         }

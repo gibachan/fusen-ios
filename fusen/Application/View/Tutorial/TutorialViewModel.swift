@@ -19,10 +19,14 @@ final class TutorialViewModel: ObservableObject {
     func onClose() async {
         state = .loading
         do {
-            await try accountService.logInAnonymously()
-            state = .succeeded
+            try await accountService.logInAnonymously()
+            DispatchQueue.main.async { [weak self] in
+                self?.state = .succeeded
+            }
         } catch {
-            state = .failed
+            DispatchQueue.main.async { [weak self] in
+                self?.state = .failed
+            }
         }
     }
     

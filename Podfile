@@ -12,6 +12,7 @@ target 'fusen' do
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
   pod 'Firebase/Storage'
+  pod 'SVProgressHUD'
   pod 'SwiftLint'
 
   target 'fusenTests' do

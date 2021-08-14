@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:fusen/Application/Utility/LoadingHUD.swift">
+   </FileRef>
+   <FileRef
       location = "group:fusen.xcodeproj">
    </FileRef>
    <FileRef

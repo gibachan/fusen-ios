@@ -29,7 +29,7 @@ final class BookRepositoryImpl: BookRepository {
         do {
             let snapshot = try await query.getDocuments()
             let books = snapshot.documents
-                .compactMap { try? $0.data(as: FirestoreBook.self) }
+                .compactMap { try? $0.data(as: FirestoreGetBook.self) }
                 .compactMap { $0.toDomain() }
             let finished = books.count < perPage
             let newPager = Pager<Book>(currentPage: currentPager.currentPage + 1,
@@ -61,7 +61,7 @@ final class BookRepositoryImpl: BookRepository {
         do {
             let snapshot = try await query.getDocuments()
             let books = snapshot.documents
-                .compactMap { try? $0.data(as: FirestoreBook.self) }
+                .compactMap { try? $0.data(as: FirestoreGetBook.self) }
                 .compactMap { $0.toDomain() }
             let finished = books.count < perPage
             let newPager = Pager<Book>(currentPage: currentPager.currentPage + 1,
@@ -79,11 +79,10 @@ final class BookRepositoryImpl: BookRepository {
     func addBook(of publication: Publication, for user: User) async throws -> ID<Book> {
         typealias AddBookContinuation = CheckedContinuation<ID<Book>, Error>
         return try await withCheckedThrowingContinuation { (continuation: AddBookContinuation) in
+            let book = FirestoreCreateBook.fromDomain(publication)
             var ref: DocumentReference?
             ref = dataSource.booksCollection(for: user)
-                .addDocument(data: [
-                    "title": publication.title
-                ]) { error in
+                .addDocument(data: book.data()) { error in
                     if let error = error {
                         log.e(error.localizedDescription)
                         continuation.resume(throwing: BookRepositoryError.unknwon)

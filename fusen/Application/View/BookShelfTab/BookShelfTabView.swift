@@ -15,7 +15,7 @@ struct BookShelfTabView: View {
             VStack(alignment: .leading, spacing: 0) {
                 List {
                     ForEach(viewModel.pager.data) { book in
-                        Text("Row \(book.title)")
+                        BookShelfItem(book: book)
                             .task {
                                 await viewModel.onItemApper(of: book)
                             }

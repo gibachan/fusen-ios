@@ -2,5 +2,6 @@ disabled_rules: # rule identifiers turned on by default to exclude from running
   - line_length
   - identifier_name
   - trailing_whitespace
+  - trailing_comma
 excluded:
   - Pods

@@ -41,7 +41,9 @@ extension PublicationResponse {
     func toDomain() -> Publication? {
         guard let item = items.first else { return nil }
         if let thumbnail = item.volumeInfo.imageLinks?.thumbnail {
-            return Publication(title: item.volumeInfo.title, thumbnailURL: URL(string: thumbnail))
+            // http -> https 変換
+            let thumbnailString = thumbnail.replacingOccurrences(of: "http://", with: "https://")
+            return Publication(title: item.volumeInfo.title, thumbnailURL: URL(string: thumbnailString))
         } else {
             return Publication(title: item.volumeInfo.title, thumbnailURL: nil)
         }

@@ -17,3 +17,9 @@ protocol BookRepository {
     
     func addBook(of publication: Publication, for user: User) async throws -> ID<Book>
 }
+
+extension BookRepository {
+    func getBooks(for user: User, forceRefresh: Bool = false) async throws -> Pager<Book> {
+        return try await getBooks(for: user, forceRefresh: forceRefresh)
+    }
+}

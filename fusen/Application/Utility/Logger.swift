@@ -16,7 +16,7 @@ final class Logger {
     
     func e(_ message: String) {
         #if DEBUG
-        print("❌ \(message)")
+        print("# ❌ \(message)")
         #endif
     }
 }

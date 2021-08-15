@@ -7,18 +7,13 @@
 
 import Foundation
 import FirebaseFirestore
-
-extension DocumentSnapshot {
-    func toBook() -> Book? {
-        Book(id: ID<Book>(value: "hoge"), title: "piyo")
-    }
-}
+import FirebaseFirestoreSwift
 
 final class BookRepositoryImpl: BookRepository {
     private let dataSource = FirestoreDataSource()
     
     private let perPage = 20
-    private var currentPager = Pager<Book>.empty
+    private var currentPager: Pager<Book> = .empty
     private var lastDocument: DocumentSnapshot?
     
     func getBooks(for user: User, forceRefresh: Bool = false) async throws -> Pager<Book> {
@@ -27,13 +22,15 @@ final class BookRepositoryImpl: BookRepository {
             return currentPager
         }
         
+        currentPager = .empty
         let query = dataSource.booksCollection(for: user)
-        //                .order(by: "createdAt", descending: true)
-        //                .order(by: "title")
+            .orderByCreatedAtDesc()
             .limit(to: perPage)
         do {
             let snapshot = try await query.getDocuments()
-            let books = snapshot.documents.compactMap { $0.toBook() }
+            let books = snapshot.documents
+                .compactMap { try? $0.data(as: FirestoreBook.self) }
+                .compactMap { $0.toDomain() }
             let finished = books.count < perPage
             let newPager = Pager<Book>(currentPage: currentPager.currentPage + 1,
                                        finished: finished,
@@ -51,16 +48,21 @@ final class BookRepositoryImpl: BookRepository {
         guard let afterDocument = lastDocument else {
             fatalError("lastDocumentは必ず存在する")
         }
+        guard !currentPager.finished else {
+            log.d("All books have been already fetched")
+            return currentPager
+        }
         
         let query = dataSource.booksCollection(for: user)
-        //                .order(by: "createdAt", descending: true)
-        //                .order(by: "title")
+            .orderByCreatedAtDesc()
             .start(afterDocument: afterDocument)
             .limit(to: perPage)
         
         do {
             let snapshot = try await query.getDocuments()
-            let books = snapshot.documents.compactMap { $0.toBook() }
+            let books = snapshot.documents
+                .compactMap { try? $0.data(as: FirestoreBook.self) }
+                .compactMap { $0.toDomain() }
             let finished = books.count < perPage
             let newPager = Pager<Book>(currentPage: currentPager.currentPage + 1,
                                        finished: finished,
@@ -91,5 +93,11 @@ final class BookRepositoryImpl: BookRepository {
                     }
                 }
         }
+    }
+}
+
+private extension Query {
+    func orderByCreatedAtDesc() -> Query {
+        order(by: "createdAt", descending: true)
     }
 }

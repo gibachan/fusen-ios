@@ -14,9 +14,19 @@ struct BookShelfTabView: View {
         NavigationView {
             VStack(alignment: .leading, spacing: 0) {
                 List {
-                    ForEach(0..<100, id: \.self) {
-                        Text("Row \($0)")
+                    ForEach(viewModel.pager.data) { book in
+                        Text("Row \(book.title)")
+                            .task {
+                                await viewModel.onItemApper(of: book)
+                            }
                     }
+                    if viewModel.pager.data.isEmpty {
+                        // FIXME: show empty view
+                        EmptyView()
+                    }
+                }
+                .refreshable {
+                    await viewModel.onRefresh()
                 }
                 HStack(alignment: .center) {
                     Spacer()
@@ -40,9 +50,24 @@ struct BookShelfTabView: View {
             } content: {
                 AddBookView()
             }
-
+            
         }
-        .onAppear { viewModel.onAppear() }
+        .task {
+            await viewModel.onAppear()
+        }
+        .onReceive(viewModel.$state) { state in
+            switch state {
+            case .initial, .loadingNext, .refreshing:
+                break
+            case .loading:
+                LoadingHUD.show()
+            case .succeeded:
+                LoadingHUD.dismiss()
+            case .failed:
+                LoadingHUD.dismiss()
+                //                isErrorActive = true
+            }
+        }
     }
 }
 

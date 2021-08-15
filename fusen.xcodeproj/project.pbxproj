@@ -31,6 +31,7 @@
 		A007C08D26C7DB0E00270671 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C08C26C7DB0E00270671 /* Book.swift */; };
 		A007C09026C7EF9700270671 /* FirestoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C08F26C7EF9700270671 /* FirestoreDataSource.swift */; };
 		A007C09226C83A7200270671 /* Pager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C09126C83A7200270671 /* Pager.swift */; };
+		A007C09526C8CAB700270671 /* FirestoreBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C09426C8CAB600270671 /* FirestoreBook.swift */; };
 		A052EAC026C3D7430033CE47 /* AddBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EABF26C3D7430033CE47 /* AddBookView.swift */; };
 		A052EAC226C3D74C0033CE47 /* AddBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EAC126C3D74C0033CE47 /* AddBookViewModel.swift */; };
 		A052EAC426C3E4140033CE47 /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EAC326C3E4140033CE47 /* CancelButton.swift */; };
@@ -110,6 +111,7 @@
 		A007C08C26C7DB0E00270671 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		A007C08F26C7EF9700270671 /* FirestoreDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreDataSource.swift; sourceTree = "<group>"; };
 		A007C09126C83A7200270671 /* Pager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pager.swift; sourceTree = "<group>"; };
+		A007C09426C8CAB600270671 /* FirestoreBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreBook.swift; sourceTree = "<group>"; };
 		A052EABF26C3D7430033CE47 /* AddBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookView.swift; sourceTree = "<group>"; };
 		A052EAC126C3D74C0033CE47 /* AddBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewModel.swift; sourceTree = "<group>"; };
 		A052EAC326C3E4140033CE47 /* CancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
@@ -313,6 +315,14 @@
 			path = DataSource;
 			sourceTree = "<group>";
 		};
+		A007C09326C8CA9A00270671 /* Firestore */ = {
+			isa = PBXGroup;
+			children = (
+				A007C09426C8CAB600270671 /* FirestoreBook.swift */,
+			);
+			path = Firestore;
+			sourceTree = "<group>";
+		};
 		A052EABE26C3D71C0033CE47 /* AddBook */ = {
 			isa = PBXGroup;
 			children = (
@@ -351,6 +361,7 @@
 				A052EACF26C3F7F50033CE47 /* PublicationRepositoryImpl.swift */,
 				A007C08A26C7DACA00270671 /* BookRepositoryImpl.swift */,
 				A052EAD126C3F8830033CE47 /* Response */,
+				A007C09326C8CA9A00270671 /* Firestore */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -746,6 +757,7 @@
 				A0BA4CAF26C49BE100D99D8C /* ISBN.swift in Sources */,
 				A007C08B26C7DACA00270671 /* BookRepositoryImpl.swift in Sources */,
 				A007C08326C78FB400270671 /* Logger.swift in Sources */,
+				A007C09526C8CAB700270671 /* FirestoreBook.swift in Sources */,
 				A052EAD026C3F7F50033CE47 /* PublicationRepositoryImpl.swift in Sources */,
 				A052EAC026C3D7430033CE47 /* AddBookView.swift in Sources */,
 				A07507DE26C5E53C0087AE5C /* AppDelegate.swift in Sources */,

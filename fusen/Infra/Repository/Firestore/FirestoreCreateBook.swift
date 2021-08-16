@@ -16,10 +16,12 @@ struct FirestoreCreateBook {
     let impression: String = ""
     let createdAt: FieldValue = .serverTimestamp()
     let updatedAt: FieldValue = .serverTimestamp()
-    let favorite: Bool = false
+    let isFavorite: Bool = false
     let valuation: Int = 0
-    
-    static func fromDomain(_ publication: Publication) -> FirestoreCreateBook {
+}
+
+extension FirestoreCreateBook {
+    static func fromDomain(_ publication: Publication) -> Self {
         return .init(
             title: publication.title,
             author: publication.author,
@@ -37,7 +39,7 @@ struct FirestoreCreateBook {
             "impression": impression,
             "createdAt": createdAt,
             "updatedAt": updatedAt,
-            "favorite": favorite,
+            "isFavorite": isFavorite,
             "valuation": valuation,
         ]
     }

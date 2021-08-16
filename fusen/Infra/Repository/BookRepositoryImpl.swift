@@ -79,10 +79,10 @@ final class BookRepositoryImpl: BookRepository {
     func addBook(of publication: Publication, for user: User) async throws -> ID<Book> {
         typealias AddBookContinuation = CheckedContinuation<ID<Book>, Error>
         return try await withCheckedThrowingContinuation { (continuation: AddBookContinuation) in
-            let book = FirestoreCreateBook.fromDomain(publication)
+            let create = FirestoreCreateBook.fromDomain(publication)
             var ref: DocumentReference?
             ref = dataSource.booksCollection(for: user)
-                .addDocument(data: book.data()) { error in
+                .addDocument(data: create.data()) { error in
                     if let error = error {
                         log.e(error.localizedDescription)
                         continuation.resume(throwing: BookRepositoryError.unknwon)
@@ -91,6 +91,39 @@ final class BookRepositoryImpl: BookRepository {
                         continuation.resume(returning: id)
                     }
                 }
+        }
+    }
+    
+    func update(book: Book, for user: User, impression: String, isFavorite: Bool) async throws {
+        // FIXME: add properties to be updated
+        let update = FirestoreUpdateBook(
+            title: book.title,
+            author: book.author,
+            imageURL: book.imageURL?.absoluteString ?? "",
+            description: book.description,
+            impression: impression,
+            isFavorite: isFavorite,
+            valuation: book.valuation
+        )
+        let ref = dataSource.booksCollection(for: user)
+            .document(book.id.value)
+        do {
+            try await ref.updateData(update.data())
+        } catch {
+            log.e(error.localizedDescription)
+            throw BookRepositoryError.unknwon
+        }
+    }
+    
+    func delete(book: Book, for user: User) async throws {
+        let ref = dataSource.booksCollection(for: user)
+            .document(book.id.value)
+        do {
+            // FIXME: Delete all related memos
+            try await ref.delete()
+        } catch {
+            log.e(error.localizedDescription)
+            throw BookRepositoryError.unknwon
         }
     }
 }

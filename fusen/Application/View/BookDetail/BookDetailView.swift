@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct BookDetailView: View {
-    @StateObject var viewModel = BookDetailViewModel()
+    @StateObject var viewModel: BookDetailViewModel
     @State var impression: String = ""
     @State var isFavorite: Bool = false
-    
-    let book: Book
+
+    private var book: Book {
+        viewModel.book
+    }
     
     init(book: Book) {
-        self.book = book
+        self._viewModel = StateObject(wrappedValue: BookDetailViewModel(book: book))
         self.impression = book.impression
         self.isFavorite = book.isFavorite
     }
@@ -55,21 +57,25 @@ struct BookDetailView: View {
                         Text("お気に入り")
                     }
                 }
-                Button {
-                    Task {
-                        await viewModel.onUpdate()
+                Section {
+                    Button {
+                        Task {
+                            await viewModel.onUpdate(impression: "debug impression", isFavorite: isFavorite)
+                        }
+                    } label: {
+                        Text("更新")
+                            .font(.medium)
                     }
-                } label: {
-                    Text("更新")
-                        .font(.medium)
-                }
-                Button(role: .destructive) {
-                    Task {
-                        await viewModel.onDelete()
+                    .buttonStyle(PlainButtonStyle())
+                    Button(role: .destructive) {
+                        Task {
+                            await viewModel.onDelete()
+                        }
+                    } label: {
+                        Text("削除")
+                            .font(.medium)
                     }
-                } label: {
-                    Text("削除")
-                        .font(.medium)
+                    .buttonStyle(PlainButtonStyle())
                 }
             }
             .listStyle(GroupedListStyle())

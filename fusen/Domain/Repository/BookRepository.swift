@@ -16,6 +16,8 @@ protocol BookRepository {
     func getNextBooks(for user: User) async throws -> Pager<Book>
     
     func addBook(of publication: Publication, for user: User) async throws -> ID<Book>
+    func update(book: Book, for user: User, impression: String, isFavorite: Bool) async throws
+    func delete(book: Book, for user: User) async throws
 }
 
 extension BookRepository {

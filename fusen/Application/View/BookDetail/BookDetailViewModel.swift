@@ -11,26 +11,52 @@ final class BookDetailViewModel: ObservableObject {
     private let accountService: AccountServiceProtocol
     private let bookRepository: BookRepository
 
+    @Published var book: Book
     @Published var state: State = .initial
     
-    init(accountService: AccountServiceProtocol = AccountService.shared,
+    init(book: Book,
+         accountService: AccountServiceProtocol = AccountService.shared,
          bookRepository: BookRepository = BookRepositoryImpl()) {
+        self.book = book
         self.accountService = accountService
         self.bookRepository = bookRepository
     }
     
-    func onUpdate() async {
+    func onUpdate(impression: String, isFavorite: Bool) async {
+        guard let user = accountService.currentUser else { return }
+        guard !state.isLoading else { return }
         
+        state = .loading
+        do {
+            try await bookRepository.update(book: book, for: user, impression: impression, isFavorite: isFavorite)
+            DispatchQueue.main.async { [weak self] in
+                self?.state = .succeeded
+            }
+        } catch {
+            // FIXME: error handling
+            print(error.localizedDescription)
+            DispatchQueue.main.async { [weak self] in
+                self?.state = .failed
+            }
+        }
     }
     
     func onDelete() async {
         
     }
-    
+
     enum State {
         case initial
         case loading
         case succeeded
         case failed
+        
+        var isLoading: Bool {
+            if case .loading = self {
+                return true
+            } else {
+                return false
+            }
+        }
     }
 }

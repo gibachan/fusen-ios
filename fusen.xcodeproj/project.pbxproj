@@ -24,6 +24,7 @@
 		A001E03326C9E62D00AC92BA /* BookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001E03226C9E62D00AC92BA /* BookDetailViewModel.swift */; };
 		A001E03526C9F85B00AC92BA /* BookImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001E03426C9F85B00AC92BA /* BookImageView.swift */; };
 		A001E03726CA061B00AC92BA /* PlaceholderTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001E03626CA061B00AC92BA /* PlaceholderTextEditor.swift */; };
+		A001E03926CA2CDE00AC92BA /* FirestoreUpdateBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001E03826CA2CDE00AC92BA /* FirestoreUpdateBook.swift */; };
 		A007C07726C7796600270671 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C07626C7796600270671 /* TutorialView.swift */; };
 		A007C07926C7797000270671 /* TutorialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C07826C7797000270671 /* TutorialViewModel.swift */; };
 		A007C07C26C7805B00270671 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C07B26C7805B00270671 /* AccountService.swift */; };
@@ -110,6 +111,7 @@
 		A001E03226C9E62D00AC92BA /* BookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewModel.swift; sourceTree = "<group>"; };
 		A001E03426C9F85B00AC92BA /* BookImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookImageView.swift; sourceTree = "<group>"; };
 		A001E03626CA061B00AC92BA /* PlaceholderTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextEditor.swift; sourceTree = "<group>"; };
+		A001E03826CA2CDE00AC92BA /* FirestoreUpdateBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreUpdateBook.swift; sourceTree = "<group>"; };
 		A007C07626C7796600270671 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		A007C07826C7797000270671 /* TutorialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewModel.swift; sourceTree = "<group>"; };
 		A007C07B26C7805B00270671 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 			children = (
 				A007C09426C8CAB600270671 /* FirestoreGetBook.swift */,
 				A001E02B26C943AF00AC92BA /* FirestoreCreateBook.swift */,
+				A001E03826CA2CDE00AC92BA /* FirestoreUpdateBook.swift */,
 			);
 			path = Firestore;
 			sourceTree = "<group>";
@@ -765,6 +768,7 @@
 				A052EAC426C3E4140033CE47 /* CancelButton.swift in Sources */,
 				7AD1611B26C2A95300334A63 /* AddButton.swift in Sources */,
 				A001E02E26C9477700AC92BA /* BookShelfItem.swift in Sources */,
+				A001E03926CA2CDE00AC92BA /* FirestoreUpdateBook.swift in Sources */,
 				A052EACA26C3F4E90033CE47 /* Publication.swift in Sources */,
 				A007C08D26C7DB0E00270671 /* Book.swift in Sources */,
 				A0BA4CB226C4DDF100D99D8C /* ScanBarcodeView.swift in Sources */,

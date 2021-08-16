@@ -1,0 +1,35 @@
+//
+//  FirestoreUpdateBook.swift
+//  FirestoreUpdateBook
+//
+//  Created by Tatsuyuki Kobayashi on 2021/08/16.
+//
+
+import Foundation
+import FirebaseFirestore
+
+struct FirestoreUpdateBook {
+    let title: String
+    let author: String
+    let imageURL: String
+    let description: String
+    var impression: String
+    let updatedAt: FieldValue = .serverTimestamp()
+    let isFavorite: Bool
+    let valuation: Int
+}
+
+extension FirestoreUpdateBook {
+    func data() -> [String: Any] {
+        [
+            "title": title,
+            "author": author,
+            "imageURL": imageURL,
+            "description": description,
+            "impression": impression,
+            "updatedAt": updatedAt,
+            "isFavorite": isFavorite,
+            "valuation": valuation
+        ]
+    }
+}

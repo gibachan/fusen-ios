@@ -27,7 +27,6 @@ final class BookShelfTabViewModel: ObservableObject {
         
         state = .loading
         do {
-            await Task.sleep(500000000)
             let pager = try await bookRepository.getBooks(for: user)
             log.d("finished=\(pager.finished)")
             DispatchQueue.main.async { [weak self] in
@@ -49,7 +48,6 @@ final class BookShelfTabViewModel: ObservableObject {
         
         state = .refreshing
         do {
-            await Task.sleep(500000000)
             let pager = try await bookRepository.getBooks(for: user, forceRefresh: true)
             log.d("finished=\(pager.finished)")
             DispatchQueue.main.async { [weak self] in
@@ -73,7 +71,6 @@ final class BookShelfTabViewModel: ObservableObject {
         if book.id == lastBook.id {
             state = .loadingNext
             do {
-                await Task.sleep(500000000)
                 let pager = try await bookRepository.getNextBooks(for: user)
                 log.d("finished=\(pager.finished)")
                 DispatchQueue.main.async { [weak self] in

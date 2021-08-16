@@ -40,12 +40,14 @@ extension PublicationResponse.Item.VolumeInfo {
 extension PublicationResponse {
     func toDomain() -> Publication? {
         guard let item = items.first else { return nil }
+
+        var thumbnailURL: URL?
         if let thumbnail = item.volumeInfo.imageLinks?.thumbnail {
             // http -> https 変換
             let thumbnailString = thumbnail.replacingOccurrences(of: "http://", with: "https://")
-            return Publication(title: item.volumeInfo.title, thumbnailURL: URL(string: thumbnailString))
-        } else {
-            return Publication(title: item.volumeInfo.title, thumbnailURL: nil)
+            thumbnailURL = URL(string: thumbnailString)
         }
+        
+        return Publication(title: item.volumeInfo.title, author: item.volumeInfo.authors.joined(separator: ","), thumbnailURL: thumbnailURL)
     }
 }

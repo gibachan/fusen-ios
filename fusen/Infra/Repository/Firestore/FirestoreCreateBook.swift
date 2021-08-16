@@ -10,6 +10,7 @@ import FirebaseFirestore
 
 struct FirestoreCreateBook {
     let title: String
+    let author: String
     let imageURL: String
     let description: String
     let impression: String = ""
@@ -21,6 +22,7 @@ struct FirestoreCreateBook {
     static func fromDomain(_ publication: Publication) -> FirestoreCreateBook {
         return .init(
             title: publication.title,
+            author: publication.author,
             imageURL: publication.thumbnailURL?.absoluteString ?? "",
             description: ""
         )
@@ -29,6 +31,7 @@ struct FirestoreCreateBook {
     func data() -> [String: Any] {
         [
             "title": title,
+            "author": author,
             "imageURL": imageURL,
             "description": description,
             "impression": impression,

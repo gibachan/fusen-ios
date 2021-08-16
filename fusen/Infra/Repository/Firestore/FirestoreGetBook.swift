@@ -11,6 +11,7 @@ import FirebaseFirestoreSwift
 struct FirestoreGetBook: Codable {
     @DocumentID var id: String?
     let title: String
+    let author: String
     let imageURL: String
     let description: String
     let impression: String
@@ -26,6 +27,7 @@ extension FirestoreGetBook {
         return Book(
             id: ID<Book>(value: id),
             title: title,
+            author: author,
             imageURL: URL(string: imageURL)
         )
     }

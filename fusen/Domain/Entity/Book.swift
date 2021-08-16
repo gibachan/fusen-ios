@@ -10,6 +10,7 @@ import Foundation
 struct Book: Identifiable {
     let id: ID<Book>
     let title: String
+    let author: String
     let imageURL: URL?
     
 }

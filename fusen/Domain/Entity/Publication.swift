@@ -9,5 +9,6 @@ import Foundation
 
 struct Publication {
     let title: String
+    let author: String
     let thumbnailURL: URL?
 }

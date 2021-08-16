@@ -108,7 +108,7 @@ final class BookRepositoryImpl: BookRepository {
         let ref = dataSource.booksCollection(for: user)
             .document(book.id.value)
         do {
-            try await ref.updateData(update.data())
+            try await ref.setData(update.data())
         } catch {
             log.e(error.localizedDescription)
             throw BookRepositoryError.unknwon

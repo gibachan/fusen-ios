@@ -15,10 +15,12 @@ struct BookShelfTabView: View {
             VStack(alignment: .leading, spacing: 0) {
                 List {
                     ForEach(viewModel.pager.data) { book in
-                        BookShelfItem(book: book)
-                            .task {
-                                await viewModel.onItemApper(of: book)
-                            }
+                        NavigationLink(destination: LazyView(BookDetailView(book: book))) {
+                            BookShelfItem(book: book)
+                                .task {
+                                    await viewModel.onItemApper(of: book)
+                                }
+                        }
                     }
                     if viewModel.pager.data.isEmpty {
                         // FIXME: show empty view

@@ -28,7 +28,9 @@ extension FirestoreGetBook {
             id: ID<Book>(value: id),
             title: title,
             author: author,
-            imageURL: URL(string: imageURL)
+            imageURL: URL(string: imageURL),
+            impression: impression,
+            isFavorite: favorite
         )
     }
 }

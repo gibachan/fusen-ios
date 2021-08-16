@@ -20,6 +20,10 @@
 		7AD1611B26C2A95300334A63 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1611A26C2A95300334A63 /* AddButton.swift */; };
 		A001E02C26C943AF00AC92BA /* FirestoreCreateBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001E02B26C943AF00AC92BA /* FirestoreCreateBook.swift */; };
 		A001E02E26C9477700AC92BA /* BookShelfItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001E02D26C9477700AC92BA /* BookShelfItem.swift */; };
+		A001E03126C9E62400AC92BA /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001E03026C9E62400AC92BA /* BookDetailView.swift */; };
+		A001E03326C9E62D00AC92BA /* BookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001E03226C9E62D00AC92BA /* BookDetailViewModel.swift */; };
+		A001E03526C9F85B00AC92BA /* BookImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001E03426C9F85B00AC92BA /* BookImageView.swift */; };
+		A001E03726CA061B00AC92BA /* PlaceholderTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001E03626CA061B00AC92BA /* PlaceholderTextEditor.swift */; };
 		A007C07726C7796600270671 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C07626C7796600270671 /* TutorialView.swift */; };
 		A007C07926C7797000270671 /* TutorialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C07826C7797000270671 /* TutorialViewModel.swift */; };
 		A007C07C26C7805B00270671 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C07B26C7805B00270671 /* AccountService.swift */; };
@@ -102,6 +106,10 @@
 		983232E518C4EADBE80E78A4 /* Pods-fusen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen.release.xcconfig"; path = "Target Support Files/Pods-fusen/Pods-fusen.release.xcconfig"; sourceTree = "<group>"; };
 		A001E02B26C943AF00AC92BA /* FirestoreCreateBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreCreateBook.swift; sourceTree = "<group>"; };
 		A001E02D26C9477700AC92BA /* BookShelfItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfItem.swift; sourceTree = "<group>"; };
+		A001E03026C9E62400AC92BA /* BookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailView.swift; sourceTree = "<group>"; };
+		A001E03226C9E62D00AC92BA /* BookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewModel.swift; sourceTree = "<group>"; };
+		A001E03426C9F85B00AC92BA /* BookImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookImageView.swift; sourceTree = "<group>"; };
+		A001E03626CA061B00AC92BA /* PlaceholderTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextEditor.swift; sourceTree = "<group>"; };
 		A007C07626C7796600270671 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		A007C07826C7797000270671 /* TutorialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewModel.swift; sourceTree = "<group>"; };
 		A007C07B26C7805B00270671 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
@@ -227,6 +235,7 @@
 				A007C07526C7795800270671 /* Tutorial */,
 				A07507C726C546120087AE5C /* HomeTab */,
 				7AD1610C26C2A1E900334A63 /* BookShelfTab */,
+				A001E02F26C9E61000AC92BA /* BookDetail */,
 				A052EABE26C3D71C0033CE47 /* AddBook */,
 				A0BA4CB026C4DC2000D99D8C /* ScanBarcode */,
 				7AD1611926C2A93F00334A63 /* Component */,
@@ -282,8 +291,19 @@
 				A052EAC326C3E4140033CE47 /* CancelButton.swift */,
 				A0BA4CB526C4E07400D99D8C /* LazyView.swift */,
 				A007C08426C7AD9200270671 /* ToastView.swift */,
+				A001E03426C9F85B00AC92BA /* BookImageView.swift */,
+				A001E03626CA061B00AC92BA /* PlaceholderTextEditor.swift */,
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		A001E02F26C9E61000AC92BA /* BookDetail */ = {
+			isa = PBXGroup;
+			children = (
+				A001E03026C9E62400AC92BA /* BookDetailView.swift */,
+				A001E03226C9E62D00AC92BA /* BookDetailViewModel.swift */,
+			);
+			path = BookDetail;
 			sourceTree = "<group>";
 		};
 		A007C07526C7795800270671 /* Tutorial */ = {
@@ -740,6 +760,7 @@
 				A007C07E26C78E5700270671 /* User.swift in Sources */,
 				A007C07726C7796600270671 /* TutorialView.swift in Sources */,
 				A082000826C1F5CF00100357 /* FusenApp.swift in Sources */,
+				A001E03526C9F85B00AC92BA /* BookImageView.swift in Sources */,
 				7AD1611626C2A6CE00334A63 /* FontExtension.swift in Sources */,
 				A052EAC426C3E4140033CE47 /* CancelButton.swift in Sources */,
 				7AD1611B26C2A95300334A63 /* AddButton.swift in Sources */,
@@ -753,8 +774,10 @@
 				7AD1610526C29EB500334A63 /* MainView.swift in Sources */,
 				7AD1611826C2A8BC00334A63 /* UIColorExtension.swift in Sources */,
 				A007C09026C7EF9700270671 /* FirestoreDataSource.swift in Sources */,
+				A001E03726CA061B00AC92BA /* PlaceholderTextEditor.swift in Sources */,
 				A0BA4CB426C4DDFA00D99D8C /* ScanBarcodeViewModel.swift in Sources */,
 				A007C07926C7797000270671 /* TutorialViewModel.swift in Sources */,
+				A001E03126C9E62400AC92BA /* BookDetailView.swift in Sources */,
 				A052EAD326C3F89E0033CE47 /* PublicationResponse.swift in Sources */,
 				A0BA4CB826C4E34200D99D8C /* BarcodeCameraView.swift in Sources */,
 				A062C18926C5F33500C56E2A /* AppEnv.swift in Sources */,
@@ -768,6 +791,7 @@
 				A052EAD026C3F7F50033CE47 /* PublicationRepositoryImpl.swift in Sources */,
 				A052EAC026C3D7430033CE47 /* AddBookView.swift in Sources */,
 				A07507DE26C5E53C0087AE5C /* AppDelegate.swift in Sources */,
+				A001E03326C9E62D00AC92BA /* BookDetailViewModel.swift in Sources */,
 				A007C08526C7AD9200270671 /* ToastView.swift in Sources */,
 				A0BA4CB626C4E07400D99D8C /* LazyView.swift in Sources */,
 				7AD1610E26C2A25A00334A63 /* BookShelfTabView.swift in Sources */,

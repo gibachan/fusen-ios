@@ -26,4 +26,5 @@ extension Color {
     static let warning = Color.yellow
     static let error = Color.red
     static let placeholder = Color("placeholder")
+    static let inactive = Color.gray
 }

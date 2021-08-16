@@ -9,64 +9,87 @@ import SwiftUI
 
 struct BookDetailView: View {
     @StateObject var viewModel: BookDetailViewModel
-    @State var impression: String = ""
     @State var isFavorite: Bool = false
-
-    private var book: Book {
-        viewModel.book
-    }
+    
+    private var book: Book { viewModel.book }
     
     init(book: Book) {
         self._viewModel = StateObject(wrappedValue: BookDetailViewModel(book: book))
-        self.impression = book.impression
         self.isFavorite = book.isFavorite
     }
     
     var body: some View {
-        VStack {
-            HStack(spacing: 16) {
-                BookImageView(url: book.imageURL)
-                    .frame(width: 40, height: 60)
-                VStack(alignment: .leading, spacing: 0) {
-                    Text(book.title)
-                        .font(.small)
-                        .fontWeight(.bold)
-                        .lineLimit(2)
-                        .foregroundColor(.textSecondary)
-                    Spacer(minLength: 8)
-                    Text(book.author)
-                        .font(.small)
-                        .lineLimit(1)
-                        .foregroundColor(.textSecondary)
-                }
-                Spacer()
-            }
-            .frame(height: 60)
-            .padding()
-            
-            List {
-                Section {
-                    VStack(alignment: .leading, spacing: 0) {
-                        PlaceholderTextEditor(placeholder: "感想を入力", text: $impression)
-                            .frame(minHeight: 40)
-                            .font(.medium)
-                            .foregroundColor(.textSecondary)
-                    }
-                    //
-                    Toggle(isOn: $isFavorite) {
-                        Text("お気に入り")
-                    }
-                }
-                Section {
-                    Button {
-                        Task {
-                            await viewModel.onUpdate(impression: "debug impression", isFavorite: isFavorite)
+        List {
+            Section {
+                VStack(spacing: 8) {
+                    HStack(spacing: 16) {
+                        BookImageView(url: book.imageURL)
+                            .frame(width: 40, height: 60)
+                        VStack(alignment: .leading, spacing: 0) {
+                            Text(book.title)
+                                .font(.small)
+                                .fontWeight(.bold)
+                                .lineLimit(2)
+                                .foregroundColor(.textSecondary)
+                            Spacer(minLength: 8)
+                            Text(book.author)
+                                .font(.small)
+                                .lineLimit(1)
+                                .foregroundColor(.textSecondary)
                         }
-                    } label: {
-                        Text("更新")
+                        Spacer()
+                    }
+                    Divider()
+                }
+                
+                Toggle(isOn: $isFavorite) {
+                    Text("お気に入り")
+                }
+                .listRowSeparator(.visible)
+                .onChange(of: isFavorite, perform: { newValue in
+                    log.d("HIT: \(newValue)")
+                })
+                
+                NavigationLink(destination: Text("カテゴリ")) {
+                    Text("カテゴリ")
+                }
+                .listRowSeparator(.visible)
+            } header: {
+                HStack {
+                    Text("書籍情報")
+                        .font(.medium)
+                        .fontWeight(.bold)
+                    Spacer()
+                    NavigationLink(destination: Text("書籍詳細")) {
+                        Text("すべて表示")
                             .font(.medium)
                     }
-                    .buttonStyle(PlainButtonStyle())
+                }
+            }
+            .listRowSeparator(.hidden)
+            
+            Spacer()
+                .frame(height: 16)
+                .listRowSeparator(.hidden)
+            
+            Section {
+                Text("メモを追加")
+            } header: {
+                HStack {
+                    Text("メモ")
+                        .font(.medium)
+                        .fontWeight(.bold)
+                }
+            }
+            .listRowSeparator(.hidden)
+            
+            Spacer()
+                .frame(height: 16)
+                .listRowSeparator(.hidden)
+            
+            Section {
+                HStack {
+                    Spacer()
                     Button(role: .destructive) {
                         Task {
                             await viewModel.onDelete()
@@ -75,12 +98,26 @@ struct BookDetailView: View {
                         Text("削除")
                             .font(.medium)
                     }
-                    .buttonStyle(PlainButtonStyle())
+                    Spacer()
                 }
             }
-            .listStyle(GroupedListStyle())
+            .listRowSeparator(.hidden)
         }
+        .listStyle(PlainListStyle())
+        .navigationBarTitle("書籍", displayMode: .inline)
+        //        .navigationBarItems(trailing: favoriteButton)
     }
+    
+    //    private var favoriteButton: some View {
+    //        Button {
+    //            // TODO: Implement
+    //        } label: {
+    //            Image.nonFavorite
+    //                .resizable()
+    //                .frame(width: 24, height: 24)
+    //                .foregroundColor(isFavorite ? .favorite : .inactive)
+    //        }
+    //    }
 }
 
 struct BookDetailView_Previews: PreviewProvider {

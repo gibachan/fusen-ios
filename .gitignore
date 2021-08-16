@@ -96,3 +96,6 @@ vendor/
 GoogleService-Info.plist
 GoogleService-Info-staging.plist
 GoogleService-Info-development.plist
+
+## Mac
+.DS_Store

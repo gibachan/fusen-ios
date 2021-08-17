@@ -58,6 +58,10 @@
 		A052EAD026C3F7F50033CE47 /* PublicationRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EACF26C3F7F50033CE47 /* PublicationRepositoryImpl.swift */; };
 		A052EAD326C3F89E0033CE47 /* PublicationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EAD226C3F89E0033CE47 /* PublicationResponse.swift */; };
 		A062C18926C5F33500C56E2A /* AppEnv.swift in Sources */ = {isa = PBXBuildFile; fileRef = A062C18826C5F33500C56E2A /* AppEnv.swift */; };
+		A069981126CBE449006E74C6 /* MemoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069981026CBE449006E74C6 /* MemoRepository.swift */; };
+		A069981326CBE47E006E74C6 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069981226CBE47E006E74C6 /* Memo.swift */; };
+		A069981526CBE6A0006E74C6 /* MemoRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069981426CBE6A0006E74C6 /* MemoRepositoryImpl.swift */; };
+		A069981726CBE6FE006E74C6 /* FirestoreCreateMemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069981626CBE6FE006E74C6 /* FirestoreCreateMemo.swift */; };
 		A07507C926C546260087AE5C /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07507C826C546260087AE5C /* HomeTabView.swift */; };
 		A07507CB26C546330087AE5C /* HomeTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07507CA26C546330087AE5C /* HomeTabViewModel.swift */; };
 		A07507CE26C5E2F40087AE5C /* GoogleService-Info-staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = A07507CC26C5E2F40087AE5C /* GoogleService-Info-staging.plist */; };
@@ -155,6 +159,10 @@
 		A052EACF26C3F7F50033CE47 /* PublicationRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationRepositoryImpl.swift; sourceTree = "<group>"; };
 		A052EAD226C3F89E0033CE47 /* PublicationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationResponse.swift; sourceTree = "<group>"; };
 		A062C18826C5F33500C56E2A /* AppEnv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnv.swift; sourceTree = "<group>"; };
+		A069981026CBE449006E74C6 /* MemoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoRepository.swift; sourceTree = "<group>"; };
+		A069981226CBE47E006E74C6 /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
+		A069981426CBE6A0006E74C6 /* MemoRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoRepositoryImpl.swift; sourceTree = "<group>"; };
+		A069981626CBE6FE006E74C6 /* FirestoreCreateMemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreCreateMemo.swift; sourceTree = "<group>"; };
 		A07507C826C546260087AE5C /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
 		A07507CA26C546330087AE5C /* HomeTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewModel.swift; sourceTree = "<group>"; };
 		A07507CC26C5E2F40087AE5C /* GoogleService-Info-staging.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-staging.plist"; sourceTree = "<group>"; };
@@ -393,6 +401,7 @@
 				A007C09426C8CAB600270671 /* FirestoreGetBook.swift */,
 				A001E02B26C943AF00AC92BA /* FirestoreCreateBook.swift */,
 				A001E03826CA2CDE00AC92BA /* FirestoreUpdateBook.swift */,
+				A069981626CBE6FE006E74C6 /* FirestoreCreateMemo.swift */,
 			);
 			path = Firestore;
 			sourceTree = "<group>";
@@ -416,6 +425,7 @@
 				A0BA4CAE26C49BE100D99D8C /* ISBN.swift */,
 				A007C08C26C7DB0E00270671 /* Book.swift */,
 				A007C09126C83A7200270671 /* Pager.swift */,
+				A069981226CBE47E006E74C6 /* Memo.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -425,6 +435,7 @@
 			children = (
 				A052EACB26C3F79B0033CE47 /* PublicationRepository.swift */,
 				A007C08826C7DABE00270671 /* BookRepository.swift */,
+				A069981026CBE449006E74C6 /* MemoRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -434,6 +445,7 @@
 			children = (
 				A052EACF26C3F7F50033CE47 /* PublicationRepositoryImpl.swift */,
 				A007C08A26C7DACA00270671 /* BookRepositoryImpl.swift */,
+				A069981426CBE6A0006E74C6 /* MemoRepositoryImpl.swift */,
 				A052EAD126C3F8830033CE47 /* Response */,
 				A007C09326C8CA9A00270671 /* Firestore */,
 			);
@@ -815,6 +827,7 @@
 				A001E03526C9F85B00AC92BA /* BookImageView.swift in Sources */,
 				7AD1611626C2A6CE00334A63 /* FontExtension.swift in Sources */,
 				A052EAC426C3E4140033CE47 /* CancelButton.swift in Sources */,
+				A069981126CBE449006E74C6 /* MemoRepository.swift in Sources */,
 				A001E02E26C9477700AC92BA /* BookShelfItem.swift in Sources */,
 				A001E03926CA2CDE00AC92BA /* FirestoreUpdateBook.swift in Sources */,
 				A052EACA26C3F4E90033CE47 /* Publication.swift in Sources */,
@@ -840,6 +853,7 @@
 				A052EAC626C3E4650033CE47 /* AddBookItem.swift in Sources */,
 				7A11FCA326CB45DF00F1A6BC /* NotificationExtension.swift in Sources */,
 				7A11FCB826CB5DDC00F1A6BC /* AddMemoViewModel.swift in Sources */,
+				A069981526CBE6A0006E74C6 /* MemoRepositoryImpl.swift in Sources */,
 				A007C08026C78E8500270671 /* ID.swift in Sources */,
 				A007C08926C7DABE00270671 /* BookRepository.swift in Sources */,
 				7A11FCAE26CB532700F1A6BC /* ShowAllText.swift in Sources */,
@@ -853,12 +867,14 @@
 				7A11FCB326CB57FE00F1A6BC /* ControlToolbar.swift in Sources */,
 				A001E03326C9E62D00AC92BA /* BookViewModel.swift in Sources */,
 				A007C08526C7AD9200270671 /* ToastView.swift in Sources */,
+				A069981326CBE47E006E74C6 /* Memo.swift in Sources */,
 				A0BA4CB626C4E07400D99D8C /* LazyView.swift in Sources */,
 				7AD1610E26C2A25A00334A63 /* BookShelfTabView.swift in Sources */,
 				A07507CB26C546330087AE5C /* HomeTabViewModel.swift in Sources */,
 				A001E02C26C943AF00AC92BA /* FirestoreCreateBook.swift in Sources */,
 				7AD1611226C2A40000334A63 /* ColorExtension.swift in Sources */,
 				A007C08726C7C91700270671 /* LoadingHUD.swift in Sources */,
+				A069981726CBE6FE006E74C6 /* FirestoreCreateMemo.swift in Sources */,
 				A007C09226C83A7200270671 /* Pager.swift in Sources */,
 				7AD1610B26C29FE400334A63 /* ImageExtension.swift in Sources */,
 			);

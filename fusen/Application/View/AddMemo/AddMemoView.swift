@@ -53,7 +53,7 @@ struct AddMemoView: View {
             .navigationBarItems(
                 trailing: SaveButton {
                     Task {
-                        await viewModel.onSave()
+                        await viewModel.onSave(text: text, quote: quote, page: page, imageURLs: [])
                     }
                 }
                     .disabled(!viewModel.isSaveEnabled)

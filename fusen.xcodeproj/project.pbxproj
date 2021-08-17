@@ -27,8 +27,8 @@
 		7AD1611826C2A8BC00334A63 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1611726C2A8BC00334A63 /* UIColorExtension.swift */; };
 		A001E02C26C943AF00AC92BA /* FirestoreCreateBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001E02B26C943AF00AC92BA /* FirestoreCreateBook.swift */; };
 		A001E02E26C9477700AC92BA /* BookShelfItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001E02D26C9477700AC92BA /* BookShelfItem.swift */; };
-		A001E03126C9E62400AC92BA /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001E03026C9E62400AC92BA /* BookDetailView.swift */; };
-		A001E03326C9E62D00AC92BA /* BookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001E03226C9E62D00AC92BA /* BookDetailViewModel.swift */; };
+		A001E03126C9E62400AC92BA /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001E03026C9E62400AC92BA /* BookView.swift */; };
+		A001E03326C9E62D00AC92BA /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001E03226C9E62D00AC92BA /* BookViewModel.swift */; };
 		A001E03526C9F85B00AC92BA /* BookImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001E03426C9F85B00AC92BA /* BookImageView.swift */; };
 		A001E03726CA061B00AC92BA /* PlaceholderTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001E03626CA061B00AC92BA /* PlaceholderTextEditor.swift */; };
 		A001E03926CA2CDE00AC92BA /* FirestoreUpdateBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001E03826CA2CDE00AC92BA /* FirestoreUpdateBook.swift */; };
@@ -121,8 +121,8 @@
 		983232E518C4EADBE80E78A4 /* Pods-fusen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen.release.xcconfig"; path = "Target Support Files/Pods-fusen/Pods-fusen.release.xcconfig"; sourceTree = "<group>"; };
 		A001E02B26C943AF00AC92BA /* FirestoreCreateBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreCreateBook.swift; sourceTree = "<group>"; };
 		A001E02D26C9477700AC92BA /* BookShelfItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfItem.swift; sourceTree = "<group>"; };
-		A001E03026C9E62400AC92BA /* BookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailView.swift; sourceTree = "<group>"; };
-		A001E03226C9E62D00AC92BA /* BookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewModel.swift; sourceTree = "<group>"; };
+		A001E03026C9E62400AC92BA /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
+		A001E03226C9E62D00AC92BA /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
 		A001E03426C9F85B00AC92BA /* BookImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookImageView.swift; sourceTree = "<group>"; };
 		A001E03626CA061B00AC92BA /* PlaceholderTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextEditor.swift; sourceTree = "<group>"; };
 		A001E03826CA2CDE00AC92BA /* FirestoreUpdateBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreUpdateBook.swift; sourceTree = "<group>"; };
@@ -260,7 +260,7 @@
 				A007C07526C7795800270671 /* Tutorial */,
 				A07507C726C546120087AE5C /* HomeTab */,
 				7AD1610C26C2A1E900334A63 /* BookShelfTab */,
-				A001E02F26C9E61000AC92BA /* BookDetail */,
+				A001E02F26C9E61000AC92BA /* Book */,
 				A052EABE26C3D71C0033CE47 /* AddBook */,
 				A0BA4CB026C4DC2000D99D8C /* ScanBarcode */,
 				7A11FCA626CB47A600F1A6BC /* SettingTab */,
@@ -327,13 +327,13 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
-		A001E02F26C9E61000AC92BA /* BookDetail */ = {
+		A001E02F26C9E61000AC92BA /* Book */ = {
 			isa = PBXGroup;
 			children = (
-				A001E03026C9E62400AC92BA /* BookDetailView.swift */,
-				A001E03226C9E62D00AC92BA /* BookDetailViewModel.swift */,
+				A001E03026C9E62400AC92BA /* BookView.swift */,
+				A001E03226C9E62D00AC92BA /* BookViewModel.swift */,
 			);
-			path = BookDetail;
+			path = Book;
 			sourceTree = "<group>";
 		};
 		A007C07526C7795800270671 /* Tutorial */ = {
@@ -812,7 +812,7 @@
 				A001E03726CA061B00AC92BA /* PlaceholderTextEditor.swift in Sources */,
 				A0BA4CB426C4DDFA00D99D8C /* ScanBarcodeViewModel.swift in Sources */,
 				A007C07926C7797000270671 /* TutorialViewModel.swift in Sources */,
-				A001E03126C9E62400AC92BA /* BookDetailView.swift in Sources */,
+				A001E03126C9E62400AC92BA /* BookView.swift in Sources */,
 				A052EAD326C3F89E0033CE47 /* PublicationResponse.swift in Sources */,
 				7A11FCB026CB537500F1A6BC /* LatestBookItem.swift in Sources */,
 				A0BA4CB826C4E34200D99D8C /* BarcodeCameraView.swift in Sources */,
@@ -831,7 +831,7 @@
 				A052EAC026C3D7430033CE47 /* AddBookView.swift in Sources */,
 				A07507DE26C5E53C0087AE5C /* AppDelegate.swift in Sources */,
 				7A11FCB326CB57FE00F1A6BC /* ControlToolbar.swift in Sources */,
-				A001E03326C9E62D00AC92BA /* BookDetailViewModel.swift in Sources */,
+				A001E03326C9E62D00AC92BA /* BookViewModel.swift in Sources */,
 				A007C08526C7AD9200270671 /* ToastView.swift in Sources */,
 				A0BA4CB626C4E07400D99D8C /* LazyView.swift in Sources */,
 				7AD1610E26C2A25A00334A63 /* BookShelfTabView.swift in Sources */,

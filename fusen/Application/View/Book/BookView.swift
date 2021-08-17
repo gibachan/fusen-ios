@@ -1,22 +1,22 @@
 //
-//  BookDetailView.swift
-//  BookDetailView
+//  BookView.swift
+//  BookView
 //
 //  Created by Tatsuyuki Kobayashi on 2021/08/16.
 //
 
 import SwiftUI
 
-struct BookDetailView: View {
+struct BookView: View {
     @Environment(\.dismiss) private var dismiss
-    @StateObject var viewModel: BookDetailViewModel
+    @StateObject var viewModel: BookViewModel
     @State var isFavorite = false
     @State var isDeleteAlertPresented = false
     
     private var book: Book { viewModel.book }
     
     init(book: Book) {
-        self._viewModel = StateObject(wrappedValue: BookDetailViewModel(book: book))
+        self._viewModel = StateObject(wrappedValue: BookViewModel(book: book))
         // FIXME: Fetch book by its id
         self.isFavorite = book.isFavorite
     }
@@ -140,10 +140,10 @@ struct BookDetailView: View {
     }
 }
 
-struct BookDetailView_Previews: PreviewProvider {
+struct BookView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            BookDetailView(book: Book.sample)
+            BookView(book: Book.sample)
         }
     }
 }

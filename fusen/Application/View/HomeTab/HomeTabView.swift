@@ -15,7 +15,7 @@ struct HomeTabView: View {
                 List {
                     Section {
                         ForEach(viewModel.latestBooks) { book in
-                            NavigationLink(destination: LazyView(BookDetailView(book: book))) {
+                            NavigationLink(destination: LazyView(BookView(book: book))) {
                                 LatestBookItem(book: book)
                             }
                         }

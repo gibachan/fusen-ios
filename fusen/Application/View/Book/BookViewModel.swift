@@ -1,13 +1,13 @@
 //
-//  BookDetailViewModel.swift
-//  BookDetailViewModel
+//  BookViewModel.swift
+//  BookViewModel
 //
 //  Created by Tatsuyuki Kobayashi on 2021/08/16.
 //
 
 import Foundation
 
-final class BookDetailViewModel: ObservableObject {
+final class BookViewModel: ObservableObject {
     private let accountService: AccountServiceProtocol
     private let bookRepository: BookRepository
 

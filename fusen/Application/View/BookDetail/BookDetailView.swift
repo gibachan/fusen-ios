@@ -61,13 +61,10 @@ struct BookDetailView: View {
                 .listRowSeparator(.visible)
             } header: {
                 HStack {
-                    Text("書籍情報")
-                        .font(.medium)
-                        .fontWeight(.bold)
+                    SectionHeaderText("書籍情報")
                     Spacer()
                     NavigationLink(destination: Text("書籍詳細")) {
-                        Text("すべて表示")
-                            .font(.medium)
+                        ShowAllText()
                     }
                 }
             }
@@ -80,11 +77,7 @@ struct BookDetailView: View {
             Section {
                 Text("メモを追加")
             } header: {
-                HStack {
-                    Text("メモ")
-                        .font(.medium)
-                        .fontWeight(.bold)
-                }
+                SectionHeaderText("メモ")
             }
             .listRowSeparator(.hidden)
             

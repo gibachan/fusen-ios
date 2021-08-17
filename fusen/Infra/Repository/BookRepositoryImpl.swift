@@ -12,9 +12,26 @@ import FirebaseFirestoreSwift
 final class BookRepositoryImpl: BookRepository {
     private let dataSource = FirestoreDataSource()
     
+    // Pagination
     private let perPage = 20
     private var currentPager: Pager<Book> = .empty
     private var lastDocument: DocumentSnapshot?
+    
+    func getLatestBooks(for user: User) async throws -> [Book] {
+        let query = dataSource.booksCollection(for: user)
+            .orderByCreatedAtDesc()
+            .limit(to: 5)
+        do {
+            let snapshot = try await query.getDocuments()
+            let books = snapshot.documents
+                .compactMap { try? $0.data(as: FirestoreGetBook.self) }
+                .compactMap { $0.toDomain() }
+            return books
+        } catch {
+            log.e(error.localizedDescription)
+            throw  BookRepositoryError.unknwon
+        }
+    }
     
     func getBooks(for user: User, forceRefresh: Bool = false) async throws -> Pager<Book> {
         let isCacheValid = currentPager.data.count >= perPage && !forceRefresh
@@ -22,7 +39,7 @@ final class BookRepositoryImpl: BookRepository {
             return currentPager
         }
         
-        clearCache()
+        clearPaginationCache()
         let query = dataSource.booksCollection(for: user)
             .orderByCreatedAtDesc()
             .limit(to: perPage)
@@ -86,7 +103,7 @@ final class BookRepositoryImpl: BookRepository {
                     if let error = error {
                         log.e(error.localizedDescription)
                         continuation.resume(throwing: BookRepositoryError.unknwon)
-                        self?.clearCache()
+                        self?.clearPaginationCache()
                     } else {
                         let id = ID<Book>(value: ref!.documentID)
                         continuation.resume(returning: id)
@@ -109,7 +126,7 @@ final class BookRepositoryImpl: BookRepository {
             .document(book.id.value)
         do {
             try await ref.setData(update.data(), merge: true)
-            clearCache()
+            clearPaginationCache()
         } catch {
             log.e(error.localizedDescription)
             throw BookRepositoryError.unknwon
@@ -122,14 +139,14 @@ final class BookRepositoryImpl: BookRepository {
         do {
             // FIXME: Delete all related memos
             try await ref.delete()
-            clearCache()
+            clearPaginationCache()
         } catch {
             log.e(error.localizedDescription)
             throw BookRepositoryError.unknwon
         }
     }
     
-    private func clearCache() {
+    private func clearPaginationCache() {
         currentPager = .empty
         lastDocument = nil
     }

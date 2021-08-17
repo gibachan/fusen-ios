@@ -12,6 +12,7 @@ enum BookRepositoryError: Error {
 }
 
 protocol BookRepository {
+    func getLatestBooks(for user: User) async throws -> [Book]
     func getBooks(for user: User, forceRefresh: Bool) async throws -> Pager<Book>
     func getNextBooks(for user: User) async throws -> Pager<Book>
     

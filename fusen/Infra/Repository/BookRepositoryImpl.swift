@@ -22,7 +22,7 @@ final class BookRepositoryImpl: BookRepository {
             return currentPager
         }
         
-        currentPager = .empty
+        clearCache()
         let query = dataSource.booksCollection(for: user)
             .orderByCreatedAtDesc()
             .limit(to: perPage)
@@ -82,10 +82,11 @@ final class BookRepositoryImpl: BookRepository {
             let create = FirestoreCreateBook.fromDomain(publication)
             var ref: DocumentReference?
             ref = dataSource.booksCollection(for: user)
-                .addDocument(data: create.data()) { error in
+                .addDocument(data: create.data()) { [weak self] error in
                     if let error = error {
                         log.e(error.localizedDescription)
                         continuation.resume(throwing: BookRepositoryError.unknwon)
+                        self?.clearCache()
                     } else {
                         let id = ID<Book>(value: ref!.documentID)
                         continuation.resume(returning: id)
@@ -109,6 +110,7 @@ final class BookRepositoryImpl: BookRepository {
             .document(book.id.value)
         do {
             try await ref.setData(update.data())
+            clearCache()
         } catch {
             log.e(error.localizedDescription)
             throw BookRepositoryError.unknwon
@@ -121,10 +123,16 @@ final class BookRepositoryImpl: BookRepository {
         do {
             // FIXME: Delete all related memos
             try await ref.delete()
+            clearCache()
         } catch {
             log.e(error.localizedDescription)
             throw BookRepositoryError.unknwon
         }
+    }
+    
+    private func clearCache() {
+        currentPager = .empty
+        lastDocument = nil
     }
 }
 

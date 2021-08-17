@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct BookDetailView: View {
+    @Environment(\.dismiss) private var dismiss
     @StateObject var viewModel: BookDetailViewModel
-    @State var isFavorite: Bool = false
+    @State var isFavorite = false
+    @State var isDeleteAlertPresented = false
     
     private var book: Book { viewModel.book }
     
@@ -91,13 +93,13 @@ struct BookDetailView: View {
                 HStack {
                     Spacer()
                     Button(role: .destructive) {
-                        Task {
-                            await viewModel.onDelete()
-                        }
+                        isDeleteAlertPresented = true
                     } label: {
                         Text("削除")
                             .font(.medium)
+                            .foregroundColor(.red)
                     }
+                    .buttonStyle(PlainButtonStyle())
                     Spacer()
                 }
             }
@@ -106,6 +108,35 @@ struct BookDetailView: View {
         .listStyle(PlainListStyle())
         .navigationBarTitle("書籍", displayMode: .inline)
         //        .navigationBarItems(trailing: favoriteButton)
+        .alert(isPresented: $isDeleteAlertPresented) {
+            Alert(
+                title: Text("書籍を削除"),
+                message: Text("書籍を削除しますか？"),
+                primaryButton: .cancel(Text("キャンセル")),
+                secondaryButton: .destructive(Text("削除"), action: {
+                    Task {
+                        await viewModel.onDelete()
+                    }
+                })
+            )
+        }
+        .onReceive(viewModel.$state) { state in
+            switch state {
+            case .initial:
+                break
+            case .loading:
+                LoadingHUD.show()
+            case .succeeded:
+                LoadingHUD.dismiss()
+            case .deleted:
+                LoadingHUD.dismiss()
+                dismiss()
+            case .failed:
+                LoadingHUD.dismiss()
+                //                isErrorActive = true
+            }
+        }
+        
     }
     
     //    private var favoriteButton: some View {

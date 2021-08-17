@@ -49,7 +49,7 @@ final class BookDetailViewModel: ObservableObject {
         do {
             try await bookRepository.delete(book: book, for: user)
             DispatchQueue.main.async { [weak self] in
-                self?.state = .succeeded
+                self?.state = .deleted
             }
         } catch {
             // FIXME: error handling
@@ -65,6 +65,7 @@ final class BookDetailViewModel: ObservableObject {
         case initial
         case loading
         case succeeded
+        case deleted
         case failed
         
         var isLoading: Bool {

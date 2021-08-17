@@ -20,6 +20,7 @@ extension Color {
 
     // Background
     static let backgroundGray = Color("backgroundGray")
+    static let backgroundLightGray = Color("backgroundLightGray")
     
     // Misc
     static let info = Color.gray

@@ -59,7 +59,6 @@ final class BookViewModel: ObservableObject {
                 self?.state = .failed
             }
         }
-
     }
 
     enum State {

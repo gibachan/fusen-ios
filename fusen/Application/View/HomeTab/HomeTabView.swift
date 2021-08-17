@@ -48,7 +48,8 @@ struct HomeTabView: View {
         .sheet(isPresented: $isAddPresented) {
             print("dismissed")
         } content: {
-            AddMemoView()
+            // FIXME: Assign book
+            AddMemoView(book: Book.sample)
         }
         .onReceive(viewModel.$state) { state in
             switch state {

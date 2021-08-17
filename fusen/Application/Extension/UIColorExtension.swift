@@ -8,6 +8,6 @@
 import UIKit
 
 extension UIColor {
-    static let barBackground = UIColor(named: "barBackground")
+    static let backgroundLightGray = UIColor(named: "backgroundLightGray")
     static let textPrimary = UIColor(named: "textPrimary")!
 }

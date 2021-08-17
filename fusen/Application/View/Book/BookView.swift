@@ -111,7 +111,7 @@ struct BookView: View {
         .sheet(isPresented: $isAddPresented) {
             print("dismissed")
         } content: {
-            AddMemoView()
+            AddMemoView(book: book)
         }
         .alert(isPresented: $isDeleteAlertPresented) {
             Alert(
@@ -141,7 +141,6 @@ struct BookView: View {
                 //                isErrorActive = true
             }
         }
-        
     }
 }
 

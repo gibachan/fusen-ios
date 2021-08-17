@@ -46,7 +46,6 @@ struct BookShelfTabView: View {
             } content: {
                 AddBookView()
             }
-            
         }
         .task {
             await viewModel.onAppear()

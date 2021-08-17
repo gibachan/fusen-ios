@@ -34,6 +34,7 @@
 		A001E03526C9F85B00AC92BA /* BookImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001E03426C9F85B00AC92BA /* BookImageView.swift */; };
 		A001E03726CA061B00AC92BA /* PlaceholderTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001E03626CA061B00AC92BA /* PlaceholderTextEditor.swift */; };
 		A001E03926CA2CDE00AC92BA /* FirestoreUpdateBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001E03826CA2CDE00AC92BA /* FirestoreUpdateBook.swift */; };
+		A001E05526CBCA8A00AC92BA /* SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001E05426CBCA8A00AC92BA /* SaveButton.swift */; };
 		A007C07726C7796600270671 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C07626C7796600270671 /* TutorialView.swift */; };
 		A007C07926C7797000270671 /* TutorialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C07826C7797000270671 /* TutorialViewModel.swift */; };
 		A007C07C26C7805B00270671 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C07B26C7805B00270671 /* AccountService.swift */; };
@@ -130,6 +131,7 @@
 		A001E03426C9F85B00AC92BA /* BookImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookImageView.swift; sourceTree = "<group>"; };
 		A001E03626CA061B00AC92BA /* PlaceholderTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextEditor.swift; sourceTree = "<group>"; };
 		A001E03826CA2CDE00AC92BA /* FirestoreUpdateBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreUpdateBook.swift; sourceTree = "<group>"; };
+		A001E05426CBCA8A00AC92BA /* SaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButton.swift; sourceTree = "<group>"; };
 		A007C07626C7796600270671 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		A007C07826C7797000270671 /* TutorialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewModel.swift; sourceTree = "<group>"; };
 		A007C07B26C7805B00270671 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 		7AD1611926C2A93F00334A63 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				A001E05426CBCA8A00AC92BA /* SaveButton.swift */,
 				A052EAC326C3E4140033CE47 /* CancelButton.swift */,
 				A0BA4CB526C4E07400D99D8C /* LazyView.swift */,
 				A007C08426C7AD9200270671 /* ToastView.swift */,
@@ -818,6 +821,7 @@
 				A007C08D26C7DB0E00270671 /* Book.swift in Sources */,
 				A0BA4CB226C4DDF100D99D8C /* ScanBarcodeView.swift in Sources */,
 				A0BA4CBA26C4E37E00D99D8C /* CameraPreview.swift in Sources */,
+				A001E05526CBCA8A00AC92BA /* SaveButton.swift in Sources */,
 				7AD1611026C2A26300334A63 /* BookShelfTabViewModel.swift in Sources */,
 				A007C07C26C7805B00270671 /* AccountService.swift in Sources */,
 				7AD1610526C29EB500334A63 /* MainView.swift in Sources */,

@@ -15,6 +15,7 @@
 		7A11FCAC26CB521B00F1A6BC /* SectionHeaderText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11FCAB26CB521B00F1A6BC /* SectionHeaderText.swift */; };
 		7A11FCAE26CB532700F1A6BC /* ShowAllText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11FCAD26CB532700F1A6BC /* ShowAllText.swift */; };
 		7A11FCB026CB537500F1A6BC /* LatestBookItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11FCAF26CB537500F1A6BC /* LatestBookItem.swift */; };
+		7A11FCB326CB57FE00F1A6BC /* ControlToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11FCB226CB57FE00F1A6BC /* ControlToolbar.swift */; };
 		7AD1610526C29EB500334A63 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1610426C29EB500334A63 /* MainView.swift */; };
 		7AD1610826C29ED300334A63 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1610726C29ED300334A63 /* MainViewModel.swift */; };
 		7AD1610B26C29FE400334A63 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1610A26C29FE400334A63 /* ImageExtension.swift */; };
@@ -24,7 +25,6 @@
 		7AD1611426C2A45600334A63 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AD1611326C2A45500334A63 /* Colors.xcassets */; };
 		7AD1611626C2A6CE00334A63 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1611526C2A6CE00334A63 /* FontExtension.swift */; };
 		7AD1611826C2A8BC00334A63 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1611726C2A8BC00334A63 /* UIColorExtension.swift */; };
-		7AD1611B26C2A95300334A63 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1611A26C2A95300334A63 /* AddButton.swift */; };
 		A001E02C26C943AF00AC92BA /* FirestoreCreateBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001E02B26C943AF00AC92BA /* FirestoreCreateBook.swift */; };
 		A001E02E26C9477700AC92BA /* BookShelfItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001E02D26C9477700AC92BA /* BookShelfItem.swift */; };
 		A001E03126C9E62400AC92BA /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001E03026C9E62400AC92BA /* BookDetailView.swift */; };
@@ -106,6 +106,7 @@
 		7A11FCAB26CB521B00F1A6BC /* SectionHeaderText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderText.swift; sourceTree = "<group>"; };
 		7A11FCAD26CB532700F1A6BC /* ShowAllText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllText.swift; sourceTree = "<group>"; };
 		7A11FCAF26CB537500F1A6BC /* LatestBookItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestBookItem.swift; sourceTree = "<group>"; };
+		7A11FCB226CB57FE00F1A6BC /* ControlToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlToolbar.swift; sourceTree = "<group>"; };
 		7AD1610426C29EB500334A63 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		7AD1610726C29ED300334A63 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		7AD1610A26C29FE400334A63 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
@@ -115,7 +116,6 @@
 		7AD1611326C2A45500334A63 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		7AD1611526C2A6CE00334A63 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		7AD1611726C2A8BC00334A63 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
-		7AD1611A26C2A95300334A63 /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		7B88CB3E534BCE0F944FD992 /* Pods-fusenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusenTests.release.xcconfig"; path = "Target Support Files/Pods-fusenTests/Pods-fusenTests.release.xcconfig"; sourceTree = "<group>"; };
 		92BAA3A355C64643052F4562 /* Pods_fusenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fusenTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		983232E518C4EADBE80E78A4 /* Pods-fusen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen.release.xcconfig"; path = "Target Support Files/Pods-fusen/Pods-fusen.release.xcconfig"; sourceTree = "<group>"; };
@@ -315,7 +315,6 @@
 		7AD1611926C2A93F00334A63 /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				7AD1611A26C2A95300334A63 /* AddButton.swift */,
 				A052EAC326C3E4140033CE47 /* CancelButton.swift */,
 				A0BA4CB526C4E07400D99D8C /* LazyView.swift */,
 				A007C08426C7AD9200270671 /* ToastView.swift */,
@@ -323,6 +322,7 @@
 				A001E03626CA061B00AC92BA /* PlaceholderTextEditor.swift */,
 				7A11FCAB26CB521B00F1A6BC /* SectionHeaderText.swift */,
 				7A11FCAD26CB532700F1A6BC /* ShowAllText.swift */,
+				7A11FCB226CB57FE00F1A6BC /* ControlToolbar.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -797,7 +797,6 @@
 				A001E03526C9F85B00AC92BA /* BookImageView.swift in Sources */,
 				7AD1611626C2A6CE00334A63 /* FontExtension.swift in Sources */,
 				A052EAC426C3E4140033CE47 /* CancelButton.swift in Sources */,
-				7AD1611B26C2A95300334A63 /* AddButton.swift in Sources */,
 				A001E02E26C9477700AC92BA /* BookShelfItem.swift in Sources */,
 				A001E03926CA2CDE00AC92BA /* FirestoreUpdateBook.swift in Sources */,
 				A052EACA26C3F4E90033CE47 /* Publication.swift in Sources */,
@@ -831,6 +830,7 @@
 				A052EAD026C3F7F50033CE47 /* PublicationRepositoryImpl.swift in Sources */,
 				A052EAC026C3D7430033CE47 /* AddBookView.swift in Sources */,
 				A07507DE26C5E53C0087AE5C /* AppDelegate.swift in Sources */,
+				7A11FCB326CB57FE00F1A6BC /* ControlToolbar.swift in Sources */,
 				A001E03326C9E62D00AC92BA /* BookDetailViewModel.swift in Sources */,
 				A007C08526C7AD9200270671 /* ToastView.swift in Sources */,
 				A0BA4CB626C4E07400D99D8C /* LazyView.swift in Sources */,

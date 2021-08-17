@@ -30,20 +30,13 @@ struct BookShelfTabView: View {
                 .refreshable {
                     await viewModel.onRefresh()
                 }
-                HStack(alignment: .center) {
-                    Spacer()
-                    Text(viewModel.textCountText)
-                        .font(.small)
-                        .foregroundColor(.textSecondary)
-                    Spacer()
-                    AddButton {
+                ControlToolbar(
+                    text: viewModel.textCountText,
+                    trailingImage: .add,
+                    trailingAction: {
                         isAddPresented = true
                     }
-                    .frame(width: 24, height: 24)
-                    Spacer().frame(width: 16)
-                }
-                .frame(height: 48)
-                .background(Color.backgroundGray)
+                )
             }
             .listStyle(PlainListStyle())
             .navigationBarTitle("本棚")

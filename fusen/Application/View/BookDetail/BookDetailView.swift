@@ -22,86 +22,90 @@ struct BookDetailView: View {
     }
     
     var body: some View {
-        List {
-            Section {
-                VStack(spacing: 8) {
-                    HStack(spacing: 16) {
-                        BookImageView(url: book.imageURL)
-                            .frame(width: 40, height: 60)
-                        VStack(alignment: .leading, spacing: 0) {
-                            Text(book.title)
-                                .font(.small)
-                                .fontWeight(.bold)
-                                .lineLimit(2)
-                                .foregroundColor(.textSecondary)
-                            Spacer(minLength: 8)
-                            Text(book.author)
-                                .font(.small)
-                                .lineLimit(1)
-                                .foregroundColor(.textSecondary)
+        VStack(alignment: .leading, spacing: 0) {
+            List {
+                Section {
+                    VStack(spacing: 8) {
+                        HStack(spacing: 16) {
+                            BookImageView(url: book.imageURL)
+                                .frame(width: 40, height: 60)
+                            VStack(alignment: .leading, spacing: 0) {
+                                Text(book.title)
+                                    .font(.small)
+                                    .fontWeight(.bold)
+                                    .lineLimit(2)
+                                    .foregroundColor(.textSecondary)
+                                Spacer(minLength: 8)
+                                Text(book.author)
+                                    .font(.small)
+                                    .lineLimit(1)
+                                    .foregroundColor(.textSecondary)
+                            }
+                            Spacer()
                         }
+                        Divider()
+                    }
+                    
+                    Toggle(isOn: $isFavorite) {
+                        Text("お気に入り")
+                    }
+                    .listRowSeparator(.visible)
+                    
+                    NavigationLink(destination: Text("カテゴリ")) {
+                        Text("カテゴリ")
+                    }
+                    .listRowSeparator(.visible)
+                } header: {
+                    HStack {
+                        SectionHeaderText("書籍情報")
+                        Spacer()
+                        NavigationLink(destination: Text("書籍詳細")) {
+                            ShowAllText()
+                        }
+                    }
+                }
+                .listRowSeparator(.hidden)
+                
+                Spacer()
+                    .frame(height: 16)
+                    .listRowSeparator(.hidden)
+                
+                Section {
+                    Text("メモを追加")
+                } header: {
+                    SectionHeaderText("メモ")
+                }
+                .listRowSeparator(.hidden)
+                
+                Spacer()
+                    .frame(height: 16)
+                    .listRowSeparator(.hidden)
+                
+                Section {
+                    HStack {
+                        Spacer()
+                        Button(role: .destructive) {
+                            isDeleteAlertPresented = true
+                        } label: {
+                            Text("削除")
+                                .font(.medium)
+                                .foregroundColor(.red)
+                        }
+                        .buttonStyle(PlainButtonStyle())
                         Spacer()
                     }
-                    Divider()
                 }
-                
-                Toggle(isOn: $isFavorite) {
-                    Text("お気に入り")
-                }
-                .listRowSeparator(.visible)
-//                .onChange(of: isFavorite, perform: { newValue in
-//                    Task {
-//                        await viewModel.onFavoriteChange(isFavorite: newValue)
-//                    }
-//                })
-                
-                NavigationLink(destination: Text("カテゴリ")) {
-                    Text("カテゴリ")
-                }
-                .listRowSeparator(.visible)
-            } header: {
-                HStack {
-                    SectionHeaderText("書籍情報")
-                    Spacer()
-                    NavigationLink(destination: Text("書籍詳細")) {
-                        ShowAllText()
-                    }
-                }
-            }
-            .listRowSeparator(.hidden)
-            
-            Spacer()
-                .frame(height: 16)
                 .listRowSeparator(.hidden)
-            
-            Section {
-                Text("メモを追加")
-            } header: {
-                SectionHeaderText("メモ")
             }
-            .listRowSeparator(.hidden)
+            .listStyle(PlainListStyle())
             
-            Spacer()
-                .frame(height: 16)
-                .listRowSeparator(.hidden)
-            
-            Section {
-                HStack {
-                    Spacer()
-                    Button(role: .destructive) {
-                        isDeleteAlertPresented = true
-                    } label: {
-                        Text("削除")
-                            .font(.medium)
-                            .foregroundColor(.red)
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                    Spacer()
+            ControlToolbar(
+                trailingImage: .memo,
+                trailingAction: {
+                    log.d("メモを追加する")
                 }
-            }
-            .listRowSeparator(.hidden)
+            )
         }
-        .listStyle(PlainListStyle())
         .navigationBarTitle("書籍", displayMode: .inline)
         //        .navigationBarItems(trailing: favoriteButton)
         .alert(isPresented: $isDeleteAlertPresented) {

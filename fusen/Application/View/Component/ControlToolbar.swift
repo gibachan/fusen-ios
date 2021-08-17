@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct ControlToolbar: View {
-    let text: String
+    let text: String?
     let trailingImage: Image?
     let trailingAction: (() -> Void)?
     
     init(
-        text: String,
+        text: String? = nil,
         trailingImage: Image? = nil,
         trailingAction: (() -> Void)? = nil
     ) {
@@ -24,15 +24,17 @@ struct ControlToolbar: View {
     
     var body: some View {
         ZStack(alignment: .center) {
-            Text(text)
-                .font(.small)
-                .foregroundColor(.textSecondary)
+            if let text = text {
+                Text(text)
+                    .font(.small)
+                    .foregroundColor(.textSecondary)
+            }
             HStack(alignment: .center) {
                 Spacer()
                 if let trailingImage = trailingImage {
                     trailingImage
                         .foregroundColor(.primary)
-                        .frame(width: 32, height: 32)
+                        .frame(width: 36, height: 36)
                         .onTapGesture {
                             trailingAction?()
                         }

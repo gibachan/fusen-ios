@@ -30,6 +30,7 @@ struct BookShelfTabView: View {
                 .refreshable {
                     await viewModel.onRefresh()
                 }
+                
                 ControlToolbar(
                     text: viewModel.textCountText,
                     trailingImage: .add,

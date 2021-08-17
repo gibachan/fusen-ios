@@ -9,7 +9,7 @@ import Foundation
 
 struct Memo {
     let id: ID<Memo>
-    let book: Book
+    let bookId: ID<Book>
     let text: String
     let quote: String
     let page: Int?

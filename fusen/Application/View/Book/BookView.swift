@@ -72,7 +72,9 @@ struct BookView: View {
                     .listRowSeparator(.hidden)
                 
                 Section {
-                    Text("メモを追加")
+                    ForEach(viewModel.memos, id: \.id.value) { memo in
+                        Text("memo: \(memo.text)")
+                    }
                 } header: {
                     SectionHeaderText("メモ")
                 }
@@ -124,6 +126,9 @@ struct BookView: View {
                     }
                 })
             )
+        }
+        .task {
+            await viewModel.onAppear()
         }
         .onReceive(viewModel.$state) { state in
             switch state {

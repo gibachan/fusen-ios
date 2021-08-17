@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Book: Identifiable {
+struct Book {
     let id: ID<Book>
     let title: String
     let author: String

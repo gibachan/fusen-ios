@@ -15,7 +15,7 @@ struct HomeTabView: View {
             VStack(alignment: .leading, spacing: 0) {
                 List {
                     Section {
-                        ForEach(viewModel.latestBooks) { book in
+                        ForEach(viewModel.latestBooks, id: \.id.value) { book in
                             NavigationLink(destination: LazyView(BookView(book: book))) {
                                 LatestBookItem(book: book)
                             }

@@ -10,22 +10,50 @@ import Foundation
 final class BookViewModel: ObservableObject {
     private let accountService: AccountServiceProtocol
     private let bookRepository: BookRepository
-
+    private let memoRepository: MemoRepository
+    
     @Published var book: Book
     @Published var state: State = .initial
+    @Published var memos: [Memo] = []
     
-    init(book: Book,
-         accountService: AccountServiceProtocol = AccountService.shared,
-         bookRepository: BookRepository = BookRepositoryImpl()) {
+    init(
+        book: Book,
+        accountService: AccountServiceProtocol = AccountService.shared,
+        bookRepository: BookRepository = BookRepositoryImpl(),
+        memoRepository: MemoRepository = MemoRepositoryImpl()
+    ) {
         self.book = book
         self.accountService = accountService
         self.bookRepository = bookRepository
+        self.memoRepository = memoRepository
+    }
+    
+    func onAppear() async {
+        guard let user = accountService.currentUser else { return }
+        guard !state.isLoading else { return }
+        
+        state = .loading
+        do {
+//            async let book = try await bookRepository.getBookBy(id: book.id, forfor: user)
+            async let memoPager = memoRepository.getMemos(of: book, for: user, forceRefresh: false)
+            let result = try await memoPager
+            DispatchQueue.main.async { [weak self] in
+                self?.state = .succeeded
+                self?.memos = result.data
+            }
+        } catch {
+            // FIXME: error handling
+            print(error.localizedDescription)
+            DispatchQueue.main.async { [weak self] in
+                self?.state = .failed
+            }
+        }
     }
     
     func onFavoriteChange(isFavorite: Bool) async {
         guard let user = accountService.currentUser else { return }
         guard !state.isLoading else { return }
-
+        
         state = .loading
         do {
             try await bookRepository.update(book: book, for: user, isFavorite: isFavorite)
@@ -60,7 +88,7 @@ final class BookViewModel: ObservableObject {
             }
         }
     }
-
+    
     enum State {
         case initial
         case loading

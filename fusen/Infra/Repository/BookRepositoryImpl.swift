@@ -14,6 +14,7 @@ final class BookRepositoryImpl: BookRepository {
     
     // Pagination
     private let perPage = 20
+    // FIXME: Use PagerCache
     private var currentPager: Pager<Book> = .empty
     private var lastDocument: DocumentSnapshot?
     
@@ -149,11 +150,5 @@ final class BookRepositoryImpl: BookRepository {
     private func clearPaginationCache() {
         currentPager = .empty
         lastDocument = nil
-    }
-}
-
-private extension Query {
-    func orderByCreatedAtDesc() -> Query {
-        order(by: "createdAt", descending: true)
     }
 }

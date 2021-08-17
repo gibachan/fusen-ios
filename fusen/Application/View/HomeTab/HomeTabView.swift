@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeTabView: View {
     @StateObject var viewModel = HomeTabViewModel()
+    @State var isAddPresented = false
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 0) {
@@ -35,7 +36,7 @@ struct HomeTabView: View {
                 ControlToolbar(
                     trailingImage: .memo,
                     trailingAction: {
-                        log.d("読書中の書籍のメモを追加する")
+                        isAddPresented = true
                     }
                 )
             }
@@ -43,6 +44,11 @@ struct HomeTabView: View {
         }
         .task {
             await viewModel.onAppear()
+        }
+        .sheet(isPresented: $isAddPresented) {
+            print("dismissed")
+        } content: {
+            AddMemoView()
         }
         .onReceive(viewModel.$state) { state in
             switch state {

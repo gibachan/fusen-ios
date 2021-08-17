@@ -12,6 +12,7 @@ struct BookView: View {
     @StateObject var viewModel: BookViewModel
     @State var isFavorite = false
     @State var isDeleteAlertPresented = false
+    @State var isAddPresented = false
     
     private var book: Book { viewModel.book }
     
@@ -102,12 +103,16 @@ struct BookView: View {
             ControlToolbar(
                 trailingImage: .memo,
                 trailingAction: {
-                    log.d("メモを追加する")
+                    isAddPresented = true
                 }
             )
         }
         .navigationBarTitle("書籍", displayMode: .inline)
-        //        .navigationBarItems(trailing: favoriteButton)
+        .sheet(isPresented: $isAddPresented) {
+            print("dismissed")
+        } content: {
+            AddMemoView()
+        }
         .alert(isPresented: $isDeleteAlertPresented) {
             Alert(
                 title: Text("書籍を削除"),

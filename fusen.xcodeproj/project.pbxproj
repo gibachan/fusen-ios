@@ -16,6 +16,8 @@
 		7A11FCAE26CB532700F1A6BC /* ShowAllText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11FCAD26CB532700F1A6BC /* ShowAllText.swift */; };
 		7A11FCB026CB537500F1A6BC /* LatestBookItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11FCAF26CB537500F1A6BC /* LatestBookItem.swift */; };
 		7A11FCB326CB57FE00F1A6BC /* ControlToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11FCB226CB57FE00F1A6BC /* ControlToolbar.swift */; };
+		7A11FCB626CB5DD400F1A6BC /* AddMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11FCB526CB5DD400F1A6BC /* AddMemoView.swift */; };
+		7A11FCB826CB5DDC00F1A6BC /* AddMemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11FCB726CB5DDC00F1A6BC /* AddMemoViewModel.swift */; };
 		7AD1610526C29EB500334A63 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1610426C29EB500334A63 /* MainView.swift */; };
 		7AD1610826C29ED300334A63 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1610726C29ED300334A63 /* MainViewModel.swift */; };
 		7AD1610B26C29FE400334A63 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1610A26C29FE400334A63 /* ImageExtension.swift */; };
@@ -107,6 +109,8 @@
 		7A11FCAD26CB532700F1A6BC /* ShowAllText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllText.swift; sourceTree = "<group>"; };
 		7A11FCAF26CB537500F1A6BC /* LatestBookItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestBookItem.swift; sourceTree = "<group>"; };
 		7A11FCB226CB57FE00F1A6BC /* ControlToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlToolbar.swift; sourceTree = "<group>"; };
+		7A11FCB526CB5DD400F1A6BC /* AddMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoView.swift; sourceTree = "<group>"; };
+		7A11FCB726CB5DDC00F1A6BC /* AddMemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoViewModel.swift; sourceTree = "<group>"; };
 		7AD1610426C29EB500334A63 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		7AD1610726C29ED300334A63 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		7AD1610A26C29FE400334A63 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
@@ -220,6 +224,15 @@
 			path = SettingTab;
 			sourceTree = "<group>";
 		};
+		7A11FCB426CB5DC500F1A6BC /* AddMemo */ = {
+			isa = PBXGroup;
+			children = (
+				7A11FCB526CB5DD400F1A6BC /* AddMemoView.swift */,
+				7A11FCB726CB5DDC00F1A6BC /* AddMemoViewModel.swift */,
+			);
+			path = AddMemo;
+			sourceTree = "<group>";
+		};
 		7AD160FF26C29CA800334A63 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +276,7 @@
 				A001E02F26C9E61000AC92BA /* Book */,
 				A052EABE26C3D71C0033CE47 /* AddBook */,
 				A0BA4CB026C4DC2000D99D8C /* ScanBarcode */,
+				7A11FCB426CB5DC500F1A6BC /* AddMemo */,
 				7A11FCA626CB47A600F1A6BC /* SettingTab */,
 				7AD1611926C2A93F00334A63 /* Component */,
 			);
@@ -790,6 +804,7 @@
 				7AD1610826C29ED300334A63 /* MainViewModel.swift in Sources */,
 				A07507C926C546260087AE5C /* HomeTabView.swift in Sources */,
 				7A11FCA826CB47E200F1A6BC /* SettingTabViewModel.swift in Sources */,
+				7A11FCB626CB5DD400F1A6BC /* AddMemoView.swift in Sources */,
 				A052EAC226C3D74C0033CE47 /* AddBookViewModel.swift in Sources */,
 				A007C07E26C78E5700270671 /* User.swift in Sources */,
 				A007C07726C7796600270671 /* TutorialView.swift in Sources */,
@@ -820,6 +835,7 @@
 				7A11FCAC26CB521B00F1A6BC /* SectionHeaderText.swift in Sources */,
 				A052EAC626C3E4650033CE47 /* AddBookItem.swift in Sources */,
 				7A11FCA326CB45DF00F1A6BC /* NotificationExtension.swift in Sources */,
+				7A11FCB826CB5DDC00F1A6BC /* AddMemoViewModel.swift in Sources */,
 				A007C08026C78E8500270671 /* ID.swift in Sources */,
 				A007C08926C7DABE00270671 /* BookRepository.swift in Sources */,
 				7A11FCAE26CB532700F1A6BC /* ShowAllText.swift in Sources */,

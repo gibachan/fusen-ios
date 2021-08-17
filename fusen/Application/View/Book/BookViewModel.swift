@@ -14,7 +14,7 @@ final class BookViewModel: ObservableObject {
     
     @Published var book: Book
     @Published var state: State = .initial
-    @Published var memos: [Memo] = []
+    @Published var memoPager: Pager<Memo> = .empty
     
     init(
         book: Book,
@@ -30,7 +30,7 @@ final class BookViewModel: ObservableObject {
     
     func onAppear() async {
         guard let user = accountService.currentUser else { return }
-        guard !state.isLoading else { return }
+        guard !state.isInProgress else { return }
         
         state = .loading
         do {
@@ -39,7 +39,7 @@ final class BookViewModel: ObservableObject {
             let result = try await memoPager
             DispatchQueue.main.async { [weak self] in
                 self?.state = .succeeded
-                self?.memos = result.data
+                self?.memoPager = result
             }
         } catch {
             // FIXME: error handling
@@ -50,9 +50,32 @@ final class BookViewModel: ObservableObject {
         }
     }
     
+    func onItemApper(of memo: Memo) async {
+        guard case .succeeded = state, !memoPager.finished else { return }
+        guard let user = accountService.currentUser else { return }
+        guard let lastMemo = memoPager.data.last else { return }
+
+        if memo.id == lastMemo.id {
+            state = .loadingNext
+            do {
+                let pager = try await memoRepository.getNextMemos(of: book, for: user)
+                log.d("finished=\(pager.finished)")
+                DispatchQueue.main.async { [weak self] in
+                    self?.state = .succeeded
+                    self?.memoPager = pager
+                }
+            } catch {
+                log.e(error.localizedDescription)
+                DispatchQueue.main.async { [weak self] in
+                    self?.state = .failed
+                }
+            }
+        }
+    }
+    
     func onFavoriteChange(isFavorite: Bool) async {
         guard let user = accountService.currentUser else { return }
-        guard !state.isLoading else { return }
+        guard !state.isInProgress else { return }
         
         state = .loading
         do {
@@ -71,7 +94,7 @@ final class BookViewModel: ObservableObject {
     
     func onDelete() async {
         guard let user = accountService.currentUser else { return }
-        guard !state.isLoading else { return }
+        guard !state.isInProgress else { return }
         
         state = .loading
         do {
@@ -92,15 +115,17 @@ final class BookViewModel: ObservableObject {
     enum State {
         case initial
         case loading
+        case loadingNext
         case succeeded
         case deleted
         case failed
         
-        var isLoading: Bool {
-            if case .loading = self {
-                return true
-            } else {
+        var isInProgress: Bool {
+            switch self {
+            case .initial, .succeeded, .failed, .deleted:
                 return false
+            case .loading, .loadingNext:
+                return true
             }
         }
     }

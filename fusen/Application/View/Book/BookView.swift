@@ -72,8 +72,11 @@ struct BookView: View {
                     .listRowSeparator(.hidden)
                 
                 Section {
-                    ForEach(viewModel.memos, id: \.id.value) { memo in
+                    ForEach(viewModel.memoPager.data, id: \.id.value) { memo in
                         Text("memo: \(memo.text)")
+                            .task {
+                                await viewModel.onItemApper(of: memo)
+                            }
                     }
                 } header: {
                     SectionHeaderText("メモ")
@@ -136,6 +139,8 @@ struct BookView: View {
                 break
             case .loading:
                 LoadingHUD.show()
+            case .loadingNext:
+                LoadingHUD.dismiss()
             case .succeeded:
                 LoadingHUD.dismiss()
             case .deleted:

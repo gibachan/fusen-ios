@@ -57,6 +57,9 @@ final class ScanBarcodeViewModel: ObservableObject {
                 log.d("Found publication: \(publication)")
                 let id = try await bookRepository.addBook(of: publication, for: user)
                 log.d("Book is added for id: \(id.value)")
+                DispatchQueue.main.async {
+                    NotificationCenter.default.postRefreshBookShelf()
+                }
             } catch {
                 // FIXME: error handling
                 print(error.localizedDescription)

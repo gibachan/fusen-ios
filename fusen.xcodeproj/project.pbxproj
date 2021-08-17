@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6BD46DC1001EA7C1A9342435 /* Pods_fusen_fusenUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DED65B63C22476AE8B5011AE /* Pods_fusen_fusenUITests.framework */; };
+		7A11FCA326CB45DF00F1A6BC /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11FCA226CB45DF00F1A6BC /* NotificationExtension.swift */; };
+		7A11FCA526CB467C00F1A6BC /* NotificationCenterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11FCA426CB467C00F1A6BC /* NotificationCenterExtension.swift */; };
 		7AD1610526C29EB500334A63 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1610426C29EB500334A63 /* MainView.swift */; };
 		7AD1610826C29ED300334A63 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1610726C29ED300334A63 /* MainViewModel.swift */; };
 		7AD1610B26C29FE400334A63 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1610A26C29FE400334A63 /* ImageExtension.swift */; };
@@ -92,6 +94,8 @@
 		5B37FD8BE420D6FBA3462CCB /* Pods-fusenTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusenTests.staging.xcconfig"; path = "Target Support Files/Pods-fusenTests/Pods-fusenTests.staging.xcconfig"; sourceTree = "<group>"; };
 		68C9A2BDADA81FF3A49EEF8A /* Pods-fusen-fusenUITests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen-fusenUITests.staging.xcconfig"; path = "Target Support Files/Pods-fusen-fusenUITests/Pods-fusen-fusenUITests.staging.xcconfig"; sourceTree = "<group>"; };
 		6F5CBB77B19B6F9B80D8238A /* Pods-fusen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen.debug.xcconfig"; path = "Target Support Files/Pods-fusen/Pods-fusen.debug.xcconfig"; sourceTree = "<group>"; };
+		7A11FCA226CB45DF00F1A6BC /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
+		7A11FCA426CB467C00F1A6BC /* NotificationCenterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterExtension.swift; sourceTree = "<group>"; };
 		7AD1610426C29EB500334A63 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		7AD1610726C29ED300334A63 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		7AD1610A26C29FE400334A63 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
@@ -272,6 +276,8 @@
 				7AD1611526C2A6CE00334A63 /* FontExtension.swift */,
 				7AD1610A26C29FE400334A63 /* ImageExtension.swift */,
 				7AD1611726C2A8BC00334A63 /* UIColorExtension.swift */,
+				7A11FCA226CB45DF00F1A6BC /* NotificationExtension.swift */,
+				7A11FCA426CB467C00F1A6BC /* NotificationCenterExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -778,6 +784,7 @@
 				7AD1610526C29EB500334A63 /* MainView.swift in Sources */,
 				7AD1611826C2A8BC00334A63 /* UIColorExtension.swift in Sources */,
 				A007C09026C7EF9700270671 /* FirestoreDataSource.swift in Sources */,
+				7A11FCA526CB467C00F1A6BC /* NotificationCenterExtension.swift in Sources */,
 				A001E03726CA061B00AC92BA /* PlaceholderTextEditor.swift in Sources */,
 				A0BA4CB426C4DDFA00D99D8C /* ScanBarcodeViewModel.swift in Sources */,
 				A007C07926C7797000270671 /* TutorialViewModel.swift in Sources */,
@@ -786,6 +793,7 @@
 				A0BA4CB826C4E34200D99D8C /* BarcodeCameraView.swift in Sources */,
 				A062C18926C5F33500C56E2A /* AppEnv.swift in Sources */,
 				A052EAC626C3E4650033CE47 /* AddBookItem.swift in Sources */,
+				7A11FCA326CB45DF00F1A6BC /* NotificationExtension.swift in Sources */,
 				A007C08026C78E8500270671 /* ID.swift in Sources */,
 				A007C08926C7DABE00270671 /* BookRepository.swift in Sources */,
 				A0BA4CAF26C49BE100D99D8C /* ISBN.swift in Sources */,

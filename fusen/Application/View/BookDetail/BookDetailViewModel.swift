@@ -50,6 +50,7 @@ final class BookDetailViewModel: ObservableObject {
             try await bookRepository.delete(book: book, for: user)
             DispatchQueue.main.async { [weak self] in
                 self?.state = .deleted
+                NotificationCenter.default.postRefreshBookShelf()
             }
         } catch {
             // FIXME: error handling

@@ -17,6 +17,7 @@ struct BookDetailView: View {
     
     init(book: Book) {
         self._viewModel = StateObject(wrappedValue: BookDetailViewModel(book: book))
+        // FIXME: Fetch book by its id
         self.isFavorite = book.isFavorite
     }
     
@@ -48,9 +49,11 @@ struct BookDetailView: View {
                     Text("お気に入り")
                 }
                 .listRowSeparator(.visible)
-                .onChange(of: isFavorite, perform: { newValue in
-                    log.d("HIT: \(newValue)")
-                })
+//                .onChange(of: isFavorite, perform: { newValue in
+//                    Task {
+//                        await viewModel.onFavoriteChange(isFavorite: newValue)
+//                    }
+//                })
                 
                 NavigationLink(destination: Text("カテゴリ")) {
                     Text("カテゴリ")
@@ -138,17 +141,6 @@ struct BookDetailView: View {
         }
         
     }
-    
-    //    private var favoriteButton: some View {
-    //        Button {
-    //            // TODO: Implement
-    //        } label: {
-    //            Image.nonFavorite
-    //                .resizable()
-    //                .frame(width: 24, height: 24)
-    //                .foregroundColor(isFavorite ? .favorite : .inactive)
-    //        }
-    //    }
 }
 
 struct BookDetailView_Previews: PreviewProvider {

@@ -95,21 +95,20 @@ final class BookRepositoryImpl: BookRepository {
         }
     }
     
-    func update(book: Book, for user: User, impression: String, isFavorite: Bool) async throws {
-        // FIXME: add properties to be updated
+    func update(book: Book, for user: User, isFavorite: Bool) async throws {
         let update = FirestoreUpdateBook(
             title: book.title,
             author: book.author,
             imageURL: book.imageURL?.absoluteString ?? "",
             description: book.description,
-            impression: impression,
+            impression: book.impression,
             isFavorite: isFavorite,
             valuation: book.valuation
         )
         let ref = dataSource.booksCollection(for: user)
             .document(book.id.value)
         do {
-            try await ref.setData(update.data())
+            try await ref.setData(update.data(), merge: true)
             clearCache()
         } catch {
             log.e(error.localizedDescription)

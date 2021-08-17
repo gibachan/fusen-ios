@@ -22,24 +22,24 @@ final class BookDetailViewModel: ObservableObject {
         self.bookRepository = bookRepository
     }
     
-//    func onUpdate(impression: String, isFavorite: Bool) async {
-//        guard let user = accountService.currentUser else { return }
-//        guard !state.isLoading else { return }
-//
-//        state = .loading
-//        do {
-//            try await bookRepository.update(book: book, for: user, impression: impression, isFavorite: isFavorite)
-//            DispatchQueue.main.async { [weak self] in
-//                self?.state = .succeeded
-//            }
-//        } catch {
-//            // FIXME: error handling
-//            print(error.localizedDescription)
-//            DispatchQueue.main.async { [weak self] in
-//                self?.state = .failed
-//            }
-//        }
-//    }
+    func onFavoriteChange(isFavorite: Bool) async {
+        guard let user = accountService.currentUser else { return }
+        guard !state.isLoading else { return }
+
+        state = .loading
+        do {
+            try await bookRepository.update(book: book, for: user, isFavorite: isFavorite)
+            DispatchQueue.main.async { [weak self] in
+                self?.state = .succeeded
+            }
+        } catch {
+            // FIXME: error handling
+            print(error.localizedDescription)
+            DispatchQueue.main.async { [weak self] in
+                self?.state = .failed
+            }
+        }
+    }
     
     func onDelete() async {
         guard let user = accountService.currentUser else { return }

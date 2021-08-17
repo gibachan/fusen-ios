@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct HomeTabView: View {
-    @StateObject var viewModel = HomeTabViewModel()
-    @State var isAddPresented = false
+    @StateObject private var viewModel = HomeTabViewModel()
+    @State private var isAddPresented = false
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 0) {

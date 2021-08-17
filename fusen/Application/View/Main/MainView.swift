@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject var viewModel = MainViewModel()
-    @State var isTutorialPresented = false
+    @StateObject private var viewModel = MainViewModel()
+    @State private var isTutorialPresented = false
     var body: some View {
         TabView {
             HomeTabView()

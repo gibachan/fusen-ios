@@ -9,10 +9,10 @@ import SwiftUI
 
 struct BookView: View {
     @Environment(\.dismiss) private var dismiss
-    @StateObject var viewModel: BookViewModel
-    @State var isFavorite = false
-    @State var isDeleteAlertPresented = false
-    @State var isAddPresented = false
+    @StateObject private var viewModel: BookViewModel
+    @State private var isFavorite = false
+    @State private var isDeleteAlertPresented = false
+    @State private var isAddPresented = false
     
     private var book: Book { viewModel.book }
     

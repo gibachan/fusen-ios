@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct BookShelfTabView: View {
-    @StateObject var viewModel = BookShelfTabViewModel()
-    @State var isAddPresented = false
+    @StateObject private var viewModel = BookShelfTabViewModel()
+    @State private var isAddPresented = false
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 0) {

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AddMemoView: View {
-    @StateObject var viewModel = AddMemoViewModel()
+    @StateObject private var viewModel = AddMemoViewModel()
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ScanBarcodeView: View {
     @Environment(\.dismiss) private var dismiss
-    @StateObject var viewModel = ScanBarcodeViewModel()
+    @StateObject private var viewModel = ScanBarcodeViewModel()
     var body: some View {
         NavigationView {
             ZStack(alignment: .top) {

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingTabView: View {
-    @StateObject var viewModel = SettingTabViewModel()
+    @StateObject private var viewModel = SettingTabViewModel()
     var body: some View {
         NavigationView {
             List {

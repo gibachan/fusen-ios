@@ -9,8 +9,8 @@ import SwiftUI
 
 struct TutorialView: View {
     @Environment(\.dismiss) private var dismiss
-    @StateObject var viewModel = TutorialViewModel()
-    @State var isErrorActive = false
+    @StateObject private var viewModel = TutorialViewModel()
+    @State private var isErrorActive = false
     var body: some View {
         TabView {
             page1.tag(0)

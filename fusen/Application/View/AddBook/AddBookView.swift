@@ -9,9 +9,9 @@ import SwiftUI
 
 struct AddBookView: View {
     @Environment(\.dismiss) private var dismiss
-    @StateObject var viewModel = AddBookViewModel()
-    @State var isScanBarcodePresented = false
-    @State var isManualInputPresented = false
+    @StateObject private var viewModel = AddBookViewModel()
+    @State private var isScanBarcodePresented = false
+    @State private var isManualInputPresented = false
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 32) {

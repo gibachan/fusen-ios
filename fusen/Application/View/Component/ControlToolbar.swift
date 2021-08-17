@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ControlToolbar: View {
-    let text: String?
-    let trailingImage: Image?
-    let trailingAction: (() -> Void)?
+    private let text: String?
+    private let trailingImage: Image?
+    private let trailingAction: (() -> Void)?
     
     init(
         text: String? = nil,

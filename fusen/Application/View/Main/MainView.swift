@@ -20,6 +20,10 @@ struct MainView: View {
                 .tabItem {
                     Image.bookShelf
                 }
+            SettingTabView()
+                .tabItem {
+                    Image.setting
+                }
         }
         .fullScreenCover(isPresented: $isTutorialPresented) {
         } content: {

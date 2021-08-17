@@ -26,5 +26,8 @@ extension FusenApp {
         ]
         UINavigationBar.appearance().titleTextAttributes = textAttributes
         UINavigationBar.appearance().largeTitleTextAttributes = textAttributes
+        UINavigationBar.appearance().backgroundColor = .barBackground
+        
+        UITabBar.appearance().backgroundColor = .barBackground
     }
 }

@@ -13,7 +13,7 @@ struct HomeTabView: View {
         NavigationView {
             List {
             }
-            .listStyle(GroupedListStyle())
+            .listStyle(PlainListStyle())
             .navigationBarTitle("ホーム")
         }
     }

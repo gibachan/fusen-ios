@@ -45,7 +45,7 @@ struct BookShelfTabView: View {
                 .frame(height: 48)
                 .background(Color.backgroundGray)
             }
-            .listStyle(GroupedListStyle())
+            .listStyle(PlainListStyle())
             .navigationBarTitle("本棚")
             .sheet(isPresented: $isAddPresented) {
                 print("dismissed")

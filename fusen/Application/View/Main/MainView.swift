@@ -15,14 +15,17 @@ struct MainView: View {
             HomeTabView()
                 .tabItem {
                     Image.home
+                    Text("ホーム")
                 }
             BookShelfTabView()
                 .tabItem {
                     Image.bookShelf
+                    Text("本棚")
                 }
             SettingTabView()
                 .tabItem {
                     Image.setting
+                    Text("設定")
                 }
         }
         .fullScreenCover(isPresented: $isTutorialPresented) {

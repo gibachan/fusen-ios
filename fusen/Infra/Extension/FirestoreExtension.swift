@@ -1,6 +1,6 @@
 //
-//  FirestoreDataSource.swift
-//  FirestoreDataSource
+//  FirestoreExtension.swift
+//  FirestoreExtension
 //
 //  Created by Tatsuyuki Kobayashi on 2021/08/14.
 //
@@ -8,11 +8,9 @@
 import Foundation
 import FirebaseFirestore
 
-final class FirestoreDataSource {
-    private let db = Firestore.firestore()
-    
+extension Firestore {
     func usersCollection() -> CollectionReference {
-        return db.collection("users")
+        return collection("users")
     }
     
     func userDocument(of user: User) -> DocumentReference {

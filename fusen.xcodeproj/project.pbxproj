@@ -46,7 +46,7 @@
 		A007C08926C7DABE00270671 /* BookRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C08826C7DABE00270671 /* BookRepository.swift */; };
 		A007C08B26C7DACA00270671 /* BookRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C08A26C7DACA00270671 /* BookRepositoryImpl.swift */; };
 		A007C08D26C7DB0E00270671 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C08C26C7DB0E00270671 /* Book.swift */; };
-		A007C09026C7EF9700270671 /* FirestoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C08F26C7EF9700270671 /* FirestoreDataSource.swift */; };
+		A007C09026C7EF9700270671 /* FirestoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C08F26C7EF9700270671 /* FirestoreExtension.swift */; };
 		A007C09226C83A7200270671 /* Pager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C09126C83A7200270671 /* Pager.swift */; };
 		A007C09526C8CAB700270671 /* FirestoreGetBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C09426C8CAB600270671 /* FirestoreGetBook.swift */; };
 		A052EAC026C3D7430033CE47 /* AddBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EABF26C3D7430033CE47 /* AddBookView.swift */; };
@@ -150,7 +150,7 @@
 		A007C08826C7DABE00270671 /* BookRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRepository.swift; sourceTree = "<group>"; };
 		A007C08A26C7DACA00270671 /* BookRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRepositoryImpl.swift; sourceTree = "<group>"; };
 		A007C08C26C7DB0E00270671 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
-		A007C08F26C7EF9700270671 /* FirestoreDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreDataSource.swift; sourceTree = "<group>"; };
+		A007C08F26C7EF9700270671 /* FirestoreExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreExtension.swift; sourceTree = "<group>"; };
 		A007C09126C83A7200270671 /* Pager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pager.swift; sourceTree = "<group>"; };
 		A007C09426C8CAB600270671 /* FirestoreGetBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreGetBook.swift; sourceTree = "<group>"; };
 		A052EABF26C3D7430033CE47 /* AddBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookView.swift; sourceTree = "<group>"; };
@@ -277,7 +277,6 @@
 			isa = PBXGroup;
 			children = (
 				A052EACD26C3F7C60033CE47 /* Repository */,
-				A007C08E26C7EE1700270671 /* DataSource */,
 				A069981826CC3766006E74C6 /* Extension */,
 			);
 			path = Infra;
@@ -394,14 +393,6 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
-		A007C08E26C7EE1700270671 /* DataSource */ = {
-			isa = PBXGroup;
-			children = (
-				A007C08F26C7EF9700270671 /* FirestoreDataSource.swift */,
-			);
-			path = DataSource;
-			sourceTree = "<group>";
-		};
 		A007C09326C8CA9A00270671 /* Firestore */ = {
 			isa = PBXGroup;
 			children = (
@@ -472,6 +463,7 @@
 		A069981826CC3766006E74C6 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				A007C08F26C7EF9700270671 /* FirestoreExtension.swift */,
 				A069981926CC3774006E74C6 /* QueryExtension.swift */,
 			);
 			path = Extension;
@@ -858,7 +850,7 @@
 				A007C07C26C7805B00270671 /* AccountService.swift in Sources */,
 				7AD1610526C29EB500334A63 /* MainView.swift in Sources */,
 				7AD1611826C2A8BC00334A63 /* UIColorExtension.swift in Sources */,
-				A007C09026C7EF9700270671 /* FirestoreDataSource.swift in Sources */,
+				A007C09026C7EF9700270671 /* FirestoreExtension.swift in Sources */,
 				7A11FCA526CB467C00F1A6BC /* NotificationCenterExtension.swift in Sources */,
 				A001E03726CA061B00AC92BA /* PlaceholderTextEditor.swift in Sources */,
 				A0BA4CB426C4DDFA00D99D8C /* ScanBarcodeViewModel.swift in Sources */,

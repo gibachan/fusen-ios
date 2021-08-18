@@ -10,14 +10,14 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 final class BookRepositoryImpl: BookRepository {
-    private let dataSource = FirestoreDataSource()
+    private let db = Firestore.firestore()
     
     // Pagination
     private let perPage = 20
     private var cache: PagerCache<Book> = .empty
     
     func getBook(by id: ID<Book>, for user: User) async throws -> Book {
-        let ref = dataSource.booksCollection(for: user)
+        let ref = db.booksCollection(for: user)
             .document(id.value)
         do {
             let snapshot = try await ref.getDocument()
@@ -34,7 +34,7 @@ final class BookRepositoryImpl: BookRepository {
     }
     
     func getLatestBooks(for user: User) async throws -> [Book] {
-        let query = dataSource.booksCollection(for: user)
+        let query = db.booksCollection(for: user)
             .orderByCreatedAtDesc()
             .limit(to: 5)
         do {
@@ -56,7 +56,7 @@ final class BookRepositoryImpl: BookRepository {
         }
         
         clearPaginationCache()
-        let query = dataSource.booksCollection(for: user)
+        let query = db.booksCollection(for: user)
             .orderByCreatedAtDesc()
             .limit(to: perPage)
         do {
@@ -86,7 +86,7 @@ final class BookRepositoryImpl: BookRepository {
             return cache.currentPager
         }
         
-        let query = dataSource.booksCollection(for: user)
+        let query = db.booksCollection(for: user)
             .orderByCreatedAtDesc()
             .start(afterDocument: afterDocument)
             .limit(to: perPage)
@@ -114,7 +114,7 @@ final class BookRepositoryImpl: BookRepository {
         return try await withCheckedThrowingContinuation { (continuation: AddBookContinuation) in
             let create = FirestoreCreateBook.fromDomain(publication)
             var ref: DocumentReference?
-            ref = dataSource.booksCollection(for: user)
+            ref = db.booksCollection(for: user)
                 .addDocument(data: create.data()) { [weak self] error in
                     if let error = error {
                         log.e(error.localizedDescription)
@@ -138,7 +138,7 @@ final class BookRepositoryImpl: BookRepository {
             isFavorite: isFavorite,
             valuation: book.valuation
         )
-        let ref = dataSource.booksCollection(for: user)
+        let ref = db.booksCollection(for: user)
             .document(book.id.value)
         do {
             try await ref.setData(update.data(), merge: true)
@@ -150,7 +150,7 @@ final class BookRepositoryImpl: BookRepository {
     }
     
     func delete(book: Book, for user: User) async throws {
-        let ref = dataSource.booksCollection(for: user)
+        let ref = db.booksCollection(for: user)
             .document(book.id.value)
         do {
             // FIXME: Delete all related memos

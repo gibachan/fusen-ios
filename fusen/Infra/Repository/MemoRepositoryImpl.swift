@@ -10,14 +10,14 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 final class MemoRepositoryImpl: MemoRepository {
-    private let dataSource = FirestoreDataSource()
+    private let db = Firestore.firestore()
 
     // Pagination
     private let perPage = 20
     private var cache: [ID<Book>: PagerCache<Memo>] = [:]
 
     func getLatestMemos(for user: User) async throws -> [Memo] {
-        let query = dataSource.memosCollection(for: user)
+        let query = db.memosCollection(for: user)
             .orderByCreatedAtDesc()
             .limit(to: 5)
         do {
@@ -41,7 +41,7 @@ final class MemoRepositoryImpl: MemoRepository {
         }
         
         clearPaginationCache(of: book)
-        let query = dataSource.memosCollection(for: user)
+        let query = db.memosCollection(for: user)
             .whereBookId(book)
             .orderByCreatedAtDesc()
             .limit(to: perPage)
@@ -76,7 +76,7 @@ final class MemoRepositoryImpl: MemoRepository {
             return cacheOfBook.currentPager
         }
         
-        let query = dataSource.memosCollection(for: user)
+        let query = db.memosCollection(for: user)
             .whereBookId(book)
             .orderByCreatedAtDesc()
             .start(afterDocument: afterDocument)
@@ -111,7 +111,7 @@ final class MemoRepositoryImpl: MemoRepository {
                 imageURLs: imageURLs.map { $0.absoluteString }
             )
             var ref: DocumentReference?
-            ref = dataSource.memosCollection(for: user)
+            ref = db.memosCollection(for: user)
                 .addDocument(data: create.data()) { error in
                     if let error = error {
                         log.e(error.localizedDescription)

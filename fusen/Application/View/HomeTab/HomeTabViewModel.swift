@@ -10,14 +10,20 @@ import Foundation
 final class HomeTabViewModel: ObservableObject {
     private let accountService: AccountServiceProtocol
     private let bookRepository: BookRepository
+    private let memoRepository: MemoRepository
     
     @Published var state: State = .initial
     @Published var latestBooks: [Book] = []
+    @Published var latestMemos: [Memo] = []
     
-    init(accountService: AccountServiceProtocol = AccountService.shared,
-         bookRepository: BookRepository = BookRepositoryImpl()) {
+    init(
+        accountService: AccountServiceProtocol = AccountService.shared,
+        bookRepository: BookRepository = BookRepositoryImpl(),
+        memoRpository: MemoRepository = MemoRepositoryImpl()
+    ) {
         self.accountService = accountService
         self.bookRepository = bookRepository
+        self.memoRepository = memoRpository
     }
     
     func onAppear() async {
@@ -26,10 +32,13 @@ final class HomeTabViewModel: ObservableObject {
         
         state = .loading
         do {
-            let books = try await bookRepository.getLatestBooks(for: user)
+            async let books = bookRepository.getLatestBooks(for: user)
+            async let memos = memoRepository.getLatestMemos(for: user)
+            let result = (books: try await books, memos: try await memos)
             DispatchQueue.main.async { [weak self] in
                 self?.state = .succeeded
-                self?.latestBooks = books
+                self?.latestBooks = result.books
+                self?.latestMemos = result.memos
             }
         } catch {
             log.e(error.localizedDescription)

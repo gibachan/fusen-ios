@@ -24,7 +24,24 @@ struct HomeTabView: View {
                         HStack {
                             SectionHeaderText("最近追加した書籍")
                             Spacer()
-                            NavigationLink(destination: Text("書籍詳細")) {
+                            NavigationLink(destination: Text("書籍一覧")) {
+                                ShowAllText()
+                            }
+                        }
+                    }
+                    .listRowSeparator(.hidden)
+                    
+                    Section {
+                        ForEach(viewModel.latestMemos, id: \.id.value) { memo in
+                            NavigationLink(destination: LazyView(Text(memo.text))) {
+                                Text(memo.text)
+                            }
+                        }
+                    } header: {
+                        HStack {
+                            SectionHeaderText("最近追加したメモ")
+                            Spacer()
+                            NavigationLink(destination: Text("メモ一覧")) {
                                 ShowAllText()
                             }
                         }

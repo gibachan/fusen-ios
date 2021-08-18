@@ -1,30 +1,27 @@
 //
-//  BookShelfSectionModel.swift
-//  BookShelfSectionModel
+//  BookShelfItemModel.swift
+//  BookShelfItemModel
 //
-//  Created by Tatsuyuki Kobayashi on 2021/08/18.
+//  Created by Tatsuyuki Kobayashi on 2021/08/19.
 //
 
 import Foundation
 
-final class BookShelfSectionModel: ObservableObject {
+final class BookShelfItemModel: ObservableObject {
+    private let bookId: ID<Book>
     private let accountService: AccountServiceProtocol
-    private let collectionRepository: CollectionRepository
     private let bookRepository: BookRepository
     
     @Published var state: State = .initial
-    @Published var collection: Collection
-    @Published var bookIds: [ID<Book>] = []
+    @Published var book: Book?
     
     init(
-        collection: Collection,
+        bookId: ID<Book>,
         accountService: AccountServiceProtocol = AccountService.shared,
-        collectionRepository: CollectionRepository = CollectionRepositoryImpl(),
         bookRepository: BookRepository = BookRepositoryImpl()
     ) {
-        self.collection = collection
+        self.bookId = bookId
         self.accountService = accountService
-        self.collectionRepository = collectionRepository
         self.bookRepository = bookRepository
     }
     
@@ -34,10 +31,10 @@ final class BookShelfSectionModel: ObservableObject {
         
         state = .loading
         do {
-            let bookIds = try await collectionRepository.getBooks(of: collection, for: user)
+            let book = try await bookRepository.getBook(by: bookId, for: user)
             DispatchQueue.main.async { [weak self] in
                 self?.state = .succeeded
-                self?.bookIds = bookIds
+                self?.book = book
             }
         } catch {
             log.e(error.localizedDescription)

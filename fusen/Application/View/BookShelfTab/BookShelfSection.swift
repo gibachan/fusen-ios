@@ -16,10 +16,10 @@ struct BookShelfSection: View {
     
     var body: some View {
         Section {
-            ForEach(viewModel.pager.data, id: \.id.value) { book in
-                NavigationLink(destination: LazyView(BookView(book: book))) {
-                    BookShelfItem(book: book)
-                }
+            ForEach(viewModel.bookIds, id: \.value) { bookId in
+//                NavigationLink(destination: LazyView(BookView(book: book))) {
+                    BookShelfItem(bookId: bookId)
+//                }
             }
         } header: {
             HStack {

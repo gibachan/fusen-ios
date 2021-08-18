@@ -15,7 +15,7 @@ struct BookListView: View {
             List {
                 ForEach(viewModel.pager.data, id: \.id.value) { book in
                     NavigationLink(destination: LazyView(BookView(book: book))) {
-                        BookShelfItem(book: book)
+                        BookListItem(book: book)
                             .task {
                                 await viewModel.onItemApper(of: book)
                             }

@@ -120,7 +120,9 @@ struct BookView: View {
         .sheet(isPresented: $isAddPresented) {
             print("dismissed")
         } content: {
-            AddMemoView(book: book)
+            NavigationView {
+                AddMemoView(book: book)
+            }
         }
         .alert(isPresented: $isDeleteAlertPresented) {
             Alert(

@@ -1,21 +1,25 @@
 //
-//  AddMemoView.swift
-//  AddMemoView
+//  EditMemoView.swift
+//  EditMemoView
 //
-//  Created by Tatsuyuki Kobayashi on 2021/08/17.
+//  Created by Tatsuyuki Kobayashi on 2021/08/18.
 //
 
 import SwiftUI
 
-struct AddMemoView: View {
+struct EditMemoView: View {
     @Environment(\.dismiss) private var dismiss
-    @StateObject private var viewModel: AddMemoViewModel
+    @StateObject private var viewModel: EditMemoViewModel
     @State private var text = ""
     @State private var quote = ""
     @State private var page = 0
     
-    init(book: Book) {
-        self._viewModel = StateObject(wrappedValue: AddMemoViewModel(book: book))
+    init(book: Book, memo: Memo) {
+        self._viewModel = StateObject(wrappedValue: EditMemoViewModel(book: book, memo: memo))
+        
+        text = memo.text
+        quote = memo.quote
+        page = memo.page ?? 0
     }
     
     var body: some View {
@@ -74,10 +78,8 @@ struct AddMemoView: View {
     }
 }
 
-struct AddMemoView_Previews: PreviewProvider {
+struct EditMemoView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            AddMemoView(book: Book.sample)
-        }
+        EditMemoView(book: Book.sample, memo: Memo.sample)
     }
 }

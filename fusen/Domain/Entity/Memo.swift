@@ -17,3 +17,18 @@ struct Memo {
     let createdAt: Date
     let updatedAt: Date
 }
+
+extension Memo {
+    static var sample: Memo {
+        Memo(
+            id: ID<Memo>(value: "memo"),
+            bookId: Book.sample.id,
+            text: "hoge",
+            quote: "piyo",
+            page: 1,
+            imageURLs: [],
+            createdAt: Date(),
+            updatedAt: Date()
+        )
+    }
+}

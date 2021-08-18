@@ -66,7 +66,9 @@ struct HomeTabView: View {
             print("dismissed")
         } content: {
             // FIXME: Assign book
-            AddMemoView(book: Book.sample)
+            NavigationView {
+                AddMemoView(book: Book.sample)
+            }
         }
         .onReceive(viewModel.$state) { state in
             switch state {

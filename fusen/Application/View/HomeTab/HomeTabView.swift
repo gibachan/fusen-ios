@@ -24,7 +24,7 @@ struct HomeTabView: View {
                         HStack {
                             SectionHeaderText("最近追加した書籍")
                             Spacer()
-                            NavigationLink(destination: Text("書籍一覧")) {
+                            NavigationLink(destination: LazyView(BookListView())) {
                                 ShowAllText()
                             }
                         }

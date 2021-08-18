@@ -25,87 +25,21 @@ struct BookView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             List {
-                Section {
-                    VStack(spacing: 8) {
-                        HStack(spacing: 16) {
-                            BookImageView(url: book.imageURL)
-                                .frame(width: 40, height: 60)
-                            VStack(alignment: .leading, spacing: 0) {
-                                Text(book.title)
-                                    .font(.small)
-                                    .fontWeight(.bold)
-                                    .lineLimit(2)
-                                    .foregroundColor(.textSecondary)
-                                Spacer(minLength: 8)
-                                Text(book.author)
-                                    .font(.small)
-                                    .lineLimit(1)
-                                    .foregroundColor(.textSecondary)
-                            }
-                            Spacer()
-                        }
-                        Divider()
-                    }
-                    
-                    Toggle(isOn: $isFavorite) {
-                        Text("お気に入り")
-                    }
-                    .listRowSeparator(.visible)
-                    
-                    NavigationLink(destination: Text("カテゴリ")) {
-                        Text("カテゴリ")
-                    }
-                    .listRowSeparator(.visible)
-                } header: {
-                    HStack {
-                        SectionHeaderText("書籍情報")
-                        Spacer()
-                        NavigationLink(destination: Text("書籍詳細")) {
-                            ShowAllText()
-                        }
-                    }
-                }
-                .listRowSeparator(.hidden)
+                bookDetailSection
+                    .listRowSeparator(.hidden)
                 
                 Spacer()
                     .frame(height: 16)
                     .listRowSeparator(.hidden)
                 
-                Section {
-                    if viewModel.memoPager.data.isEmpty {
-                        EmptyMemoItem()
-                    } else {
-                        ForEach(viewModel.memoPager.data, id: \.id.value) { memo in
-                            MemoItem(memo: memo)
-                                .task {
-                                    await viewModel.onItemApper(of: memo)
-                                }
-                        }
-                    }
-                } header: {
-                    SectionHeaderText("メモ")
-                }
-                .listRowSeparator(.hidden)
+                memoSection
+                    .listRowSeparator(.hidden)
                 
                 Spacer()
                     .frame(height: 16)
+
+                buttonSection
                     .listRowSeparator(.hidden)
-                
-                Section {
-                    HStack {
-                        Spacer()
-                        Button(role: .destructive) {
-                            isDeleteAlertPresented = true
-                        } label: {
-                            Text("削除")
-                                .font(.medium)
-                                .foregroundColor(.red)
-                        }
-                        .buttonStyle(PlainButtonStyle())
-                        Spacer()
-                    }
-                }
-                .listRowSeparator(.hidden)
             }
             .listStyle(PlainListStyle())
             
@@ -155,6 +89,83 @@ struct BookView: View {
             case .failed:
                 LoadingHUD.dismiss()
                 //                isErrorActive = true
+            }
+        }
+    }
+    
+    private var bookDetailSection: some View {
+        Section {
+            VStack(spacing: 8) {
+                HStack(spacing: 16) {
+                    BookImageView(url: book.imageURL)
+                        .frame(width: 40, height: 60)
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text(book.title)
+                            .font(.small)
+                            .fontWeight(.bold)
+                            .lineLimit(2)
+                            .foregroundColor(.textSecondary)
+                        Spacer(minLength: 8)
+                        Text(book.author)
+                            .font(.small)
+                            .lineLimit(1)
+                            .foregroundColor(.textSecondary)
+                    }
+                    Spacer()
+                }
+                Divider()
+            }
+            
+            Toggle(isOn: $isFavorite) {
+                Text("お気に入り")
+            }
+            .listRowSeparator(.visible)
+            
+            NavigationLink(destination: Text("カテゴリ")) {
+                Text("カテゴリ")
+            }
+            .listRowSeparator(.visible)
+        } header: {
+            HStack {
+                SectionHeaderText("書籍情報")
+                Spacer()
+                NavigationLink(destination: Text("書籍詳細")) {
+                    ShowAllText()
+                }
+            }
+        }
+    }
+    
+    private var memoSection: some View {
+        Section {
+            if viewModel.memoPager.data.isEmpty {
+                EmptyMemoItem()
+            } else {
+                ForEach(viewModel.memoPager.data, id: \.id.value) { memo in
+                    MemoItem(memo: memo)
+                        .task {
+                            await viewModel.onItemApper(of: memo)
+                        }
+                }
+            }
+        } header: {
+            SectionHeaderText("メモ")
+        }
+    }
+    
+    private var buttonSection: some View {
+        Section {
+            HStack {
+                Spacer()
+                Button(role: .destructive) {
+                    isDeleteAlertPresented = true
+                } label: {
+                    Text("削除")
+                        .font(.medium)
+                        .foregroundColor(.red)
+                }
+                .buttonStyle(PlainButtonStyle())
+                Spacer()
             }
         }
     }

@@ -1,47 +1,41 @@
 //
-//  BookShelfTabViewModel.swift
-//  BookShelfTabViewModel
+//  BookShelfSectionModel.swift
+//  BookShelfSectionModel
 //
-//  Created by Tatsuyuki Kobayashi on 2021/08/10.
+//  Created by Tatsuyuki Kobayashi on 2021/08/18.
 //
 
 import Foundation
 
-final class BookShelfTabViewModel: ObservableObject {
+final class BookShelfSectionModel: ObservableObject {
     private let accountService: AccountServiceProtocol
-    private let collectionRepository: CollectionRepository
+    private let bookRepository: BookRepository
     
     @Published var state: State = .initial
-    @Published var collections: [Collection] = []
-    @Published var textCountText = ""
+    @Published var collection: Collection
+    @Published var pager: Pager<Book> = .empty
     
     init(
+        collection: Collection,
         accountService: AccountServiceProtocol = AccountService.shared,
-        collectionRepository: CollectionRepository = CollectionRepositoryImpl()
+        bookRepository: BookRepository = BookRepositoryImpl()
     ) {
+        self.collection = collection
         self.accountService = accountService
-        self.collectionRepository = collectionRepository
+        self.bookRepository = bookRepository
     }
     
     func onAppear() async {
-        await getCollections()
-    }
-    
-    func onRefresh() async {
-        await getCollections()
-    }
-    
-    private func getCollections() async {
         guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
         
         state = .loading
         do {
-            let collections = try await collectionRepository.getlCollections(for: user)
+            let pager = try await bookRepository.getBooks(for: user)
+            log.d("finished=\(pager.finished)")
             DispatchQueue.main.async { [weak self] in
-                self?.textCountText = "xx冊の書籍"
                 self?.state = .succeeded
-                self?.collections = collections
+                self?.pager = pager
             }
         } catch {
             log.e(error.localizedDescription)
@@ -56,8 +50,6 @@ final class BookShelfTabViewModel: ObservableObject {
     enum State {
         case initial
         case loading
-        case loadingNext
-        case refreshing
         case succeeded
         case failed
         
@@ -65,7 +57,7 @@ final class BookShelfTabViewModel: ObservableObject {
             switch self {
             case .initial, .succeeded, .failed:
                 return false
-            case .loading, .loadingNext, .refreshing:
+            case .loading:
                 return true
             }
         }

@@ -14,19 +14,11 @@ struct BookShelfTabView: View {
         NavigationView {
             VStack(alignment: .leading, spacing: 0) {
                 List {
-                    ForEach(viewModel.pager.data, id: \.id.value) { book in
-                        NavigationLink(destination: LazyView(BookView(book: book))) {
-                            BookShelfItem(book: book)
-                                .task {
-                                    await viewModel.onItemApper(of: book)
-                                }
-                        }
-                    }
-                    if viewModel.pager.data.isEmpty {
-                        // FIXME: show empty view
-                        EmptyView()
+                    ForEach(viewModel.collections, id: \.id.value) { collection in
+                        BookShelfSection(collection: collection)
                     }
                 }
+                .listStyle(PlainListStyle())
                 .refreshable {
                     await viewModel.onRefresh()
                 }

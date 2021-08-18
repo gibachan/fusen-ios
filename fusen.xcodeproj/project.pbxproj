@@ -21,6 +21,8 @@
 		7A11FCBA26CD33F900F1A6BC /* FirestoreGetCollectionBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11FCB926CD33F900F1A6BC /* FirestoreGetCollectionBook.swift */; };
 		7A11FCBD26CD3FC500F1A6BC /* BookListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11FCBC26CD3FC500F1A6BC /* BookListView.swift */; };
 		7A11FCBF26CD401800F1A6BC /* BookListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11FCBE26CD401800F1A6BC /* BookListViewModel.swift */; };
+		7A11FCC126CD4B9D00F1A6BC /* BookShelfSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11FCC026CD4B9D00F1A6BC /* BookShelfSection.swift */; };
+		7A11FCC326CD4BAB00F1A6BC /* BookShelfSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11FCC226CD4BAB00F1A6BC /* BookShelfSectionModel.swift */; };
 		7AD1610526C29EB500334A63 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1610426C29EB500334A63 /* MainView.swift */; };
 		7AD1610826C29ED300334A63 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1610726C29ED300334A63 /* MainViewModel.swift */; };
 		7AD1610B26C29FE400334A63 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1610A26C29FE400334A63 /* ImageExtension.swift */; };
@@ -134,6 +136,8 @@
 		7A11FCB926CD33F900F1A6BC /* FirestoreGetCollectionBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreGetCollectionBook.swift; sourceTree = "<group>"; };
 		7A11FCBC26CD3FC500F1A6BC /* BookListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListView.swift; sourceTree = "<group>"; };
 		7A11FCBE26CD401800F1A6BC /* BookListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewModel.swift; sourceTree = "<group>"; };
+		7A11FCC026CD4B9D00F1A6BC /* BookShelfSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfSection.swift; sourceTree = "<group>"; };
+		7A11FCC226CD4BAB00F1A6BC /* BookShelfSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfSectionModel.swift; sourceTree = "<group>"; };
 		7AD1610426C29EB500334A63 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		7AD1610726C29ED300334A63 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		7AD1610A26C29FE400334A63 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
@@ -372,6 +376,8 @@
 			children = (
 				7AD1610D26C2A25A00334A63 /* BookShelfTabView.swift */,
 				7AD1610F26C2A26300334A63 /* BookShelfTabViewModel.swift */,
+				7A11FCC026CD4B9D00F1A6BC /* BookShelfSection.swift */,
+				7A11FCC226CD4BAB00F1A6BC /* BookShelfSectionModel.swift */,
 				A001E02D26C9477700AC92BA /* BookShelfItem.swift */,
 			);
 			path = BookShelfTab;
@@ -908,6 +914,7 @@
 				7AD1611826C2A8BC00334A63 /* UIColorExtension.swift in Sources */,
 				A007C09026C7EF9700270671 /* FirestoreExtension.swift in Sources */,
 				7A11FCA526CB467C00F1A6BC /* NotificationCenterExtension.swift in Sources */,
+				7A11FCC126CD4B9D00F1A6BC /* BookShelfSection.swift in Sources */,
 				A001E03726CA061B00AC92BA /* PlaceholderTextEditor.swift in Sources */,
 				A0BA4CB426C4DDFA00D99D8C /* ScanBarcodeViewModel.swift in Sources */,
 				A007C07926C7797000270671 /* TutorialViewModel.swift in Sources */,
@@ -931,6 +938,7 @@
 				A0BA4CAF26C49BE100D99D8C /* ISBN.swift in Sources */,
 				A007C08B26C7DACA00270671 /* BookRepositoryImpl.swift in Sources */,
 				7A11FCBA26CD33F900F1A6BC /* FirestoreGetCollectionBook.swift in Sources */,
+				7A11FCC326CD4BAB00F1A6BC /* BookShelfSectionModel.swift in Sources */,
 				A007C08326C78FB400270671 /* Logger.swift in Sources */,
 				A007C09526C8CAB700270671 /* FirestoreGetBook.swift in Sources */,
 				A052EAD026C3F7F50033CE47 /* PublicationRepositoryImpl.swift in Sources */,

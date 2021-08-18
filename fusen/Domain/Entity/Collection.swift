@@ -21,3 +21,13 @@ struct Collection {
         let blue: Int
     }
 }
+
+extension Collection {
+    static var sample: Collection {
+        Collection(
+            id: ID(value: "hoge"),
+            name: "ミステリー",
+            color: RGB(red: 0, green: 0, blue: 255)
+        )
+    }
+}

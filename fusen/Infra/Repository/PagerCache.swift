@@ -14,10 +14,12 @@ final class PagerCache<T> {
 
     private init() {}
     
-    static var empty: PagerCache<T> { .init() }
-    
     init(pager: Pager<T>, lastDocument: DocumentSnapshot?) {
         self.currentPager = pager
         self.lastDocument = lastDocument
     }
+}
+
+extension PagerCache {
+    static var empty: PagerCache<T> { .init() }
 }

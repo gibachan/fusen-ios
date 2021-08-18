@@ -72,11 +72,15 @@ struct BookView: View {
                     .listRowSeparator(.hidden)
                 
                 Section {
-                    ForEach(viewModel.memoPager.data, id: \.id.value) { memo in
-                        Text("memo: \(memo.text)")
-                            .task {
-                                await viewModel.onItemApper(of: memo)
-                            }
+                    if viewModel.memoPager.data.isEmpty {
+                        EmptyMemoItem()
+                    } else {
+                        ForEach(viewModel.memoPager.data, id: \.id.value) { memo in
+                            MemoItem(memo: memo)
+                                .task {
+                                    await viewModel.onItemApper(of: memo)
+                                }
+                        }
                     }
                 } header: {
                     SectionHeaderText("メモ")

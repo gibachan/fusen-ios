@@ -17,6 +17,8 @@ extension Image {
     static let cameraTorchOff = Image(systemName: "bolt.slash.fill")
     static let manual = Image(systemName: "hand.point.up.left")
     static let memo = Image(systemName: "square.and.pencil")
+    static let collection = Image(systemName: "folder")
+    static let addCollection = Image(systemName: "folder.badge.plus")
     
     static let info = Image(systemName: "info.circle")
     static let warning = Image(systemName: "exclamationmark.triangle")

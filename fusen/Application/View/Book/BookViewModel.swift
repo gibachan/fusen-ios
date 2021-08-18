@@ -34,12 +34,13 @@ final class BookViewModel: ObservableObject {
         
         state = .loading
         do {
-//            async let book = try await bookRepository.getBookBy(id: book.id, forfor: user)
+            async let newBook = try await bookRepository.getBook(by: book.id, for: user)
             async let memoPager = memoRepository.getMemos(of: book, for: user, forceRefresh: false)
-            let result = try await memoPager
+            let result = (book: try await newBook, memoPager: try await memoPager)
             DispatchQueue.main.async { [weak self] in
                 self?.state = .succeeded
-                self?.memoPager = result
+                self?.book = result.book
+                self?.memoPager = result.memoPager
             }
         } catch {
             // FIXME: error handling

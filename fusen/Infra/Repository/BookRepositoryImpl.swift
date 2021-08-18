@@ -18,6 +18,23 @@ final class BookRepositoryImpl: BookRepository {
     private var currentPager: Pager<Book> = .empty
     private var lastDocument: DocumentSnapshot?
     
+    func getBook(by id: ID<Book>, for user: User) async throws -> Book {
+        let ref = dataSource.booksCollection(for: user)
+            .document(id.value)
+        do {
+            let snapshot = try await ref.getDocument()
+            if let getBook = try snapshot.data(as: FirestoreGetBook.self) {
+                if let book = getBook.toDomain() {
+                    return book
+                }
+            }
+            throw  BookRepositoryError.decodeError
+        } catch {
+            log.e(error.localizedDescription)
+            throw  BookRepositoryError.unknwon
+        }
+    }
+    
     func getLatestBooks(for user: User) async throws -> [Book] {
         let query = dataSource.booksCollection(for: user)
             .orderByCreatedAtDesc()

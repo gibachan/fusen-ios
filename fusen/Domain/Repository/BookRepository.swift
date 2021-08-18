@@ -8,10 +8,12 @@
 import Foundation
 
 enum BookRepositoryError: Error {
+    case decodeError
     case unknwon
 }
 
 protocol BookRepository {
+    func getBook(by id: ID<Book>, for user: User) async throws -> Book
     func getLatestBooks(for user: User) async throws -> [Book]
     func getBooks(for user: User, forceRefresh: Bool) async throws -> Pager<Book>
     func getNextBooks(for user: User) async throws -> Pager<Book>

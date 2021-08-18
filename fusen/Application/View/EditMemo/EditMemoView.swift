@@ -13,13 +13,12 @@ struct EditMemoView: View {
     @State private var text = ""
     @State private var quote = ""
     @State private var page = 0
-    
+    @State private var isDeleteAlertPresented = false
+    private let currentMemo: Memo
+
     init(book: Book, memo: Memo) {
+        self.currentMemo = memo
         self._viewModel = StateObject(wrappedValue: EditMemoViewModel(book: book, memo: memo))
-        
-        text = memo.text
-        quote = memo.quote
-        page = memo.page ?? 0
     }
     
     var body: some View {
@@ -33,6 +32,7 @@ struct EditMemoView: View {
             } header: {
                 SectionHeaderText("メモ")
             }
+            
             Section {
                 PlaceholderTextEditor(placeholder: "引用する文を入力する", text: $quote)
                     .frame(minHeight: 100)
@@ -49,10 +49,26 @@ struct EditMemoView: View {
             }
             .foregroundColor(.textSecondary)
             .listRowBackground(Color.backgroundLightGray)
+            
+            Section {
+                Section {
+                    HStack {
+                        Spacer()
+                        Button(role: .destructive) {
+                            isDeleteAlertPresented = true
+                        } label: {
+                            Text("削除")
+                                .font(.medium)
+                                .foregroundColor(.red)
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                        Spacer()
+                    }
+                }
+            }
         }
         .font(.medium)
-        .navigationBarTitle("メモを追加", displayMode: .inline)
-        .navigationBarItems(leading: CancelButton { dismiss() })
+        .navigationBarTitle("メモを編集", displayMode: .inline)
         .navigationBarItems(
             trailing: SaveButton {
                 Task {
@@ -61,6 +77,23 @@ struct EditMemoView: View {
             }
                 .disabled(!viewModel.isSaveEnabled)
         )
+        .alert(isPresented: $isDeleteAlertPresented) {
+            Alert(
+                title: Text("メモを削除"),
+                message: Text("メモを削除しますか？"),
+                primaryButton: .cancel(Text("キャンセル")),
+                secondaryButton: .destructive(Text("削除"), action: {
+                    Task {
+                        await viewModel.onDelete()
+                    }
+                })
+            )
+        }
+        .task {
+            text = currentMemo.text
+            quote = currentMemo.quote
+            page = currentMemo.page ?? 0
+        }
         .onReceive(viewModel.$state) { state in
             switch state {
             case .initial:
@@ -68,6 +101,9 @@ struct EditMemoView: View {
             case .loading:
                 LoadingHUD.show()
             case .succeeded:
+                LoadingHUD.dismiss()
+                dismiss()
+            case .deleted:
                 LoadingHUD.dismiss()
                 dismiss()
             case .failed:

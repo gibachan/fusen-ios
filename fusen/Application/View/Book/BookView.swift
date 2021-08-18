@@ -37,7 +37,7 @@ struct BookView: View {
                 
                 Spacer()
                     .frame(height: 16)
-
+                
                 buttonSection
                     .listRowSeparator(.hidden)
             }
@@ -142,10 +142,12 @@ struct BookView: View {
                 EmptyMemoItem()
             } else {
                 ForEach(viewModel.memoPager.data, id: \.id.value) { memo in
-                    MemoItem(memo: memo)
-                        .task {
-                            await viewModel.onItemApper(of: memo)
-                        }
+                    NavigationLink(destination: LazyView(EditMemoView(book: book, memo: memo))) {
+                        MemoItem(memo: memo)
+                            .task {
+                                await viewModel.onItemApper(of: memo)
+                            }
+                    }
                 }
             }
         } header: {

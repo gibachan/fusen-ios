@@ -17,4 +17,6 @@ protocol MemoRepository {
     func getNextMemos(of book: Book, for user: User) async throws -> Pager<Memo>
 
     func addMemo(of book: Book, text: String, quote: String, page: Int?, imageURLs: [URL], for user: User) async throws -> ID<Memo>
+    func update(memo: Memo, of book: Book, text: String, quote: String, page: Int?, imageURLs: [URL], for user: User) async throws
+    func delete(memo: Memo, of book: Book, for user: User) async throws
 }

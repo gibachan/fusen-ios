@@ -11,11 +11,11 @@ import FirebaseFirestoreSwift
 
 final class MemoRepositoryImpl: MemoRepository {
     private let db = Firestore.firestore()
-
+    
     // Pagination
     private let perPage = 20
     private var cache: [ID<Book>: PagerCache<Memo>] = [:]
-
+    
     func getLatestMemos(for user: User) async throws -> [Memo] {
         let query = db.memosCollection(for: user)
             .orderByCreatedAtDesc()
@@ -66,7 +66,7 @@ final class MemoRepositoryImpl: MemoRepository {
     func getNextMemos(of book: Book, for user: User) async throws -> Pager<Memo> {
         guard let cacheOfBook = cache[book.id] else {
             fatalError("cacheは必ず存在する")
-
+            
         }
         guard let afterDocument = cacheOfBook.lastDocument else {
             fatalError("lastDocumentは必ず存在する")
@@ -99,7 +99,7 @@ final class MemoRepositoryImpl: MemoRepository {
             throw  MemoRepositoryError.unknwon
         }
     }
-
+    
     func addMemo(of book: Book, text: String, quote: String, page: Int?, imageURLs: [URL], for user: User) async throws -> ID<Memo> {
         typealias AddMemoContinuation = CheckedContinuation<ID<Memo>, Error>
         return try await withCheckedThrowingContinuation { (continuation: AddMemoContinuation) in
@@ -121,6 +121,36 @@ final class MemoRepositoryImpl: MemoRepository {
                         continuation.resume(returning: id)
                     }
                 }
+        }
+    }
+    
+    func update(memo: Memo, of book: Book, text: String, quote: String, page: Int?, imageURLs: [URL], for user: User) async throws {
+        let update = FirestoreUpdateMemo(
+            text: text,
+            quote: quote,
+            page: page,
+            imageURLs: imageURLs.map { $0.absoluteString }
+        )
+        let ref = db.memosCollection(for: user)
+            .document(memo.id.value)
+        do {
+            try await ref.setData(update.data(), merge: true)
+            clearPaginationCache(of: book)
+        } catch {
+            log.e(error.localizedDescription)
+            throw MemoRepositoryError.unknwon
+        }
+    }
+    
+    func delete(memo: Memo, of book: Book, for user: User) async throws {
+        let ref = db.memosCollection(for: user)
+            .document(memo.id.value)
+        do {
+            try await ref.delete()
+            clearPaginationCache(of: book)
+        } catch {
+            log.e(error.localizedDescription)
+            throw MemoRepositoryError.unknwon
         }
     }
     

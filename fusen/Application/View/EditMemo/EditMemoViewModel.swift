@@ -39,15 +39,33 @@ final class EditMemoViewModel: ObservableObject {
         imageURLs: [URL]
     ) async {
         guard let user = accountService.currentUser else { return }
-        guard !state.isLoading else { return }
+        guard !state.isInProgress else { return }
         
         state = .loading
         do {
             let memoPage: Int? = page == 0 ? nil : page
-            let id = try await memoRepository.addMemo(of: book, text: text, quote: quote, page: memoPage, imageURLs: imageURLs, for: user)
-            log.d("Memo is added for id: \(id.value)")
+            try await memoRepository.update(memo: memo, of: book, text: text, quote: quote, page: memoPage, imageURLs: imageURLs, for: user)
             DispatchQueue.main.async { [weak self] in
                 self?.state = .succeeded
+            }
+        } catch {
+            // FIXME: error handling
+            print(error.localizedDescription)
+            DispatchQueue.main.async { [weak self] in
+                self?.state = .failed
+            }
+        }
+    }
+    
+    func onDelete() async {
+        guard let user = accountService.currentUser else { return }
+        guard !state.isInProgress else { return }
+        
+        state = .loading
+        do {
+            try await memoRepository.delete(memo: memo, of: book, for: user)
+            DispatchQueue.main.async { [weak self] in
+                self?.state = .deleted
             }
         } catch {
             // FIXME: error handling
@@ -62,9 +80,10 @@ final class EditMemoViewModel: ObservableObject {
         case initial
         case loading
         case succeeded
+        case deleted
         case failed
         
-        var isLoading: Bool {
+        var isInProgress: Bool {
             if case .loading = self {
                 return true
             } else {

@@ -20,7 +20,7 @@ final class BookRepositoryImpl: BookRepository {
         let ref = db.booksCollection(for: user)
             .document(id.value)
         do {
-            let snapshot = try await ref.getDocument()
+            let snapshot = try await ref.getDocument(source: FirestoreSource.cache)
             if let getBook = try snapshot.data(as: FirestoreGetBook.self) {
                 if let book = getBook.toDomain() {
                     return book

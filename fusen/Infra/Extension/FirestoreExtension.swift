@@ -32,4 +32,16 @@ extension Firestore {
     func memoDocument(of memo: Memo, for user: User) -> DocumentReference {
         return memosCollection(for: user).document(memo.id.value)
     }
+    
+    func collectionCollection(for user: User) -> CollectionReference {
+        return userDocument(of: user).collection("collections")
+    }
+    
+    func collectionDocument(of collection: Collection, for user: User) -> DocumentReference {
+        return collectionCollection(for: user).document(collection.id.value)
+    }
+    
+    func collectionBooksCollection(of collection: Collection, for user: User) -> CollectionReference {
+        return collectionDocument(of: collection, for: user).collection("books")
+    }
 }

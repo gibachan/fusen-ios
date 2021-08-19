@@ -27,6 +27,14 @@ final class HomeTabViewModel: ObservableObject {
     }
     
     func onAppear() async {
+        await loadAll()
+    }
+    
+    func onRefresh() async {
+        await loadAll()
+    }
+    
+    private func loadAll() async {
         guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
         

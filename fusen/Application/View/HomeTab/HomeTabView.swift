@@ -49,6 +49,9 @@ struct HomeTabView: View {
                     .listRowSeparator(.hidden)
                 }
                 .listStyle(PlainListStyle())
+                .refreshable {
+                    await viewModel.onRefresh()
+                }
                 
                 ControlToolbar(
                     trailingImage: .memo,

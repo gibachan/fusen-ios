@@ -94,6 +94,8 @@
 		A07507CE26C5E2F40087AE5C /* GoogleService-Info-staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = A07507CC26C5E2F40087AE5C /* GoogleService-Info-staging.plist */; };
 		A07507CF26C5E2F40087AE5C /* GoogleService-Info-development.plist in Resources */ = {isa = PBXBuildFile; fileRef = A07507CD26C5E2F40087AE5C /* GoogleService-Info-development.plist */; };
 		A07507DE26C5E53C0087AE5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07507DD26C5E53C0087AE5C /* AppDelegate.swift */; };
+		A07CAD0126CED80E0012201A /* MemoImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD0026CED80E0012201A /* MemoImage.swift */; };
+		A07CAD0326CED9A20012201A /* MemoImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD0226CED9A20012201A /* MemoImageExtension.swift */; };
 		A082000826C1F5CF00100357 /* FusenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A082000726C1F5CF00100357 /* FusenApp.swift */; };
 		A082000C26C1F5D100100357 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000B26C1F5D100100357 /* Assets.xcassets */; };
 		A082000F26C1F5D100100357 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000E26C1F5D100100357 /* Preview Assets.xcassets */; };
@@ -222,6 +224,8 @@
 		A07507CC26C5E2F40087AE5C /* GoogleService-Info-staging.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-staging.plist"; sourceTree = "<group>"; };
 		A07507CD26C5E2F40087AE5C /* GoogleService-Info-development.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-development.plist"; sourceTree = "<group>"; };
 		A07507DD26C5E53C0087AE5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A07CAD0026CED80E0012201A /* MemoImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoImage.swift; sourceTree = "<group>"; };
+		A07CAD0226CED9A20012201A /* MemoImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoImageExtension.swift; sourceTree = "<group>"; };
 		A082000426C1F5CF00100357 /* fusen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fusen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A082000726C1F5CF00100357 /* FusenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FusenApp.swift; sourceTree = "<group>"; };
 		A082000B26C1F5D100100357 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -392,6 +396,7 @@
 				7A11FCA226CB45DF00F1A6BC /* NotificationExtension.swift */,
 				7A11FCA426CB467C00F1A6BC /* NotificationCenterExtension.swift */,
 				7A33118126CE518F00EB520D /* UIApplicationExtensoin.swift */,
+				A07CAD0226CED9A20012201A /* MemoImageExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -506,6 +511,7 @@
 				A007C09126C83A7200270671 /* Pager.swift */,
 				A069981226CBE47E006E74C6 /* Memo.swift */,
 				A069982A26CD0492006E74C6 /* Collection.swift */,
+				A07CAD0026CED80E0012201A /* MemoImage.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -936,6 +942,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A052EACC26C3F79B0033CE47 /* PublicationRepository.swift in Sources */,
+				A07CAD0326CED9A20012201A /* MemoImageExtension.swift in Sources */,
 				7A11FCAA26CB47EA00F1A6BC /* SettingTabView.swift in Sources */,
 				A069981A26CC3774006E74C6 /* QueryExtension.swift in Sources */,
 				7A33118026CD692E00EB520D /* BookListItem.swift in Sources */,
@@ -957,6 +964,7 @@
 				A001E03526C9F85B00AC92BA /* BookImageView.swift in Sources */,
 				7AD1611626C2A6CE00334A63 /* FontExtension.swift in Sources */,
 				A052EAC426C3E4140033CE47 /* CancelButton.swift in Sources */,
+				A07CAD0126CED80E0012201A /* MemoImage.swift in Sources */,
 				A069981126CBE449006E74C6 /* MemoRepository.swift in Sources */,
 				A001E02E26C9477700AC92BA /* BookShelfItem.swift in Sources */,
 				A069981E26CC3ECC006E74C6 /* PagerCache.swift in Sources */,

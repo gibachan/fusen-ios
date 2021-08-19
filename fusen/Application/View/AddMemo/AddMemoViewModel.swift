@@ -95,10 +95,11 @@ extension AddMemoViewModel: VNDocumentCameraViewControllerDelegate {
     
     func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
         imageResults = []
-        let allowedPageCount = min(scan.pageCount, imageCountLimit)
-        for i in 0..<allowedPageCount {
-            imageResults.append(ImageResult(page: i, image: scan.imageOfPage(at: i)))
+        for i in 0..<scan.pageCount {
+            let image = scan.imageOfPage(at: i)
+            imageResults.append(ImageResult(page: i, image: image))
         }
+        imageResults = Array(imageResults.prefix(imageCountLimit))
         controller.dismiss(animated: true, completion: nil)
     }
 }

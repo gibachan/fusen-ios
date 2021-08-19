@@ -17,7 +17,6 @@ final class AddMemoViewModel: NSObject, ObservableObject {
     @Published var isSaveEnabled = false
     @Published var state: State = .initial
     @Published var imageResults: [ImageResult] = []
-    @Published var imageCountLimitOver = false
     
     init(
         book: Book,
@@ -96,7 +95,6 @@ extension AddMemoViewModel: VNDocumentCameraViewControllerDelegate {
         for i in 0..<allowedPageCount {
             imageResults.append(ImageResult(page: i, image: scan.imageOfPage(at: i)))
         }
-        imageCountLimitOver = scan.pageCount > imageCountLimit
         controller.dismiss(animated: true, completion: nil)
     }
 }

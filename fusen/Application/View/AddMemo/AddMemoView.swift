@@ -33,6 +33,7 @@ struct AddMemoView: View {
             Section {
                 PlaceholderTextEditor(placeholder: "引用する文を入力する", text: $quote)
                     .frame(minHeight: 100)
+                
                 Picker(
                     selection: $page,
                     label: Text("ページ")
@@ -41,42 +42,41 @@ struct AddMemoView: View {
                         Text("\(page)")
                     }
                 }
+                .frame(minHeight: 40)
                 
-                VStack {
-                    Button {
-                        guard VNDocumentCameraViewController.isSupported else {
-                            log.e("VNDocumentCameraViewController is not supported for simulator")
-                            return
-                        }
-                        guard let rootVC = UIApplication.shared.currentRootViewController else {
-                            log.e("RootViewController is missing")
-                            return
-                        }
-                        let vc = VNDocumentCameraViewController()
-                        vc.delegate = viewModel
-                        rootVC.present(vc, animated: true, completion: nil)
-                    } label: {
-                        HStack(spacing: 8) {
-                            Image.camera
-                                .resizable()
-                                .frame(width: 28, height: 24)
-                            Text("画像を撮影")
-                        }
-                        .foregroundColor(.blue)
-                    }
-                    
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("画像を撮影 :")
                     HStack {
-                        ForEach(viewModel.imageResults) { result in
-                            Image(uiImage: result.image)
-                                .resizable()
+                        if viewModel.imageResults.isEmpty {
+                            RoundedRectangle(cornerRadius: 4)
+                                .stroke(Color.placeholder, lineWidth: 1)
                                 .frame(width: 80, height: 80)
+                                .overlay(Image.camera
+                                            .resizable()
+                                            .frame(width: 32, height: 24)
+                                            .foregroundColor(.placeholder))
+                                .onTapGesture {
+                                    takeImages()
+                                }
+                        } else {
+                            ForEach(viewModel.imageResults) { result in
+                                RoundedRectangle(cornerRadius: 4)
+                                    .stroke(Color.placeholder, lineWidth: 1)
+                                    .frame(width: 80, height: 80)
+                                    .overlay(
+                                        Image(uiImage: result.image)
+                                            .resizable()
+                                    )
+                            }
                         }
+                        Spacer()
                     }
                     
-                    if viewModel.imageCountLimitOver {
-                        Text("撮影可能な画像枚数を超えています")
-                    }
+                    Text("※ 画像は1枚のみ保存できます")
+                        .font(.small)
+                        .foregroundColor(.textSecondary)
                 }
+                .padding(.vertical, 8)
             } header: {
                 SectionHeaderText("引用(オプション）")
             }
@@ -108,6 +108,20 @@ struct AddMemoView: View {
                 //                isErrorActive = true
             }
         }
+    }
+    
+    private func takeImages() {
+        guard VNDocumentCameraViewController.isSupported else {
+            log.e("VNDocumentCameraViewController is not supported for simulator")
+            return
+        }
+        guard let rootVC = UIApplication.shared.currentRootViewController else {
+            log.e("RootViewController is missing")
+            return
+        }
+        let vc = VNDocumentCameraViewController()
+        vc.delegate = viewModel
+        rootVC.present(vc, animated: true, completion: nil)
     }
 }
 

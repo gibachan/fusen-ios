@@ -39,7 +39,8 @@ struct AddBookView: View {
                 Text("Not yet implemented")
             })
             .navigationBarTitle("書籍を追加", displayMode: .inline)
-            .navigationBarItems(leading: CancelButton { dismiss() })
+            // sheet表示する場合にキャンセルボタンを表示する
+//            .navigationBarItems(leading: CancelButton { dismiss() })
         }
     }
 }

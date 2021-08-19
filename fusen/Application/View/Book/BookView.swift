@@ -49,15 +49,22 @@ struct BookView: View {
                     isAddPresented = true
                 }
             )
-        }
-        .navigationBarTitle("書籍", displayMode: .inline)
-        .sheet(isPresented: $isAddPresented) {
-            print("dismissed")
-        } content: {
-            NavigationView {
-                AddMemoView(book: book)
+            
+            // AddMemoViewはsheet表示したいが、VNDocumentCameraViewControllerが表示されない問題があるためワークアラウンドとしてNavigationLink表示する
+            NavigationLink(isActive: $isAddPresented) {
+                AddMemoView(book: Book.sample)
+            } label: {
+                EmptyView()
             }
         }
+        .navigationBarTitle("書籍", displayMode: .inline)
+//        .sheet(isPresented: $isAddPresented) {
+//            print("dismissed")
+//        } content: {
+//            NavigationView {
+//                AddMemoView(book: book)
+//            }
+//        }
         .alert(isPresented: $isDeleteAlertPresented) {
             Alert(
                 title: Text("書籍を削除"),

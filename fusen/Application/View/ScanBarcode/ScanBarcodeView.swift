@@ -10,31 +10,76 @@ import SwiftUI
 struct ScanBarcodeView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel = ScanBarcodeViewModel()
+    @State private var isSuggestPresented = false
+    
     var body: some View {
         NavigationView {
             ZStack(alignment: .top) {
                 BarcodeCameraView { code in
                     Task {
-                       await viewModel.onBarcodeScanned(code: code)
+                        await viewModel.onBarcodeScanned(code: code)
                     }
                 }
                 
-                VStack(alignment: .center, spacing: 0) {
-                    Text("カメラでバーコードを読み取ってください")
-                        .font(.medium)
-                        .foregroundColor(.white)
-                        .padding(EdgeInsets(top: 24, leading: 0, bottom: 40, trailing: 0))
-                    Rectangle()
-                        .stroke(lineWidth: 2)
-                        .fill(.white)
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 80, trailing: 0))
-                }
-                .padding()
+                cameraFrame
+                    .padding()
+                
+                scannedBook
+                    .padding()
             }
             .background(Color.black)
             .navigationBarTitle("", displayMode: .inline)
             .navigationBarItems(leading: CancelButton { dismiss() },
                                 trailing: torchButton)
+            .alert(isPresented: $isSuggestPresented) {
+                Alert(
+                    title: Text("書籍を追加"),
+                    message: Text("「\(viewModel.suggestedBook?.title ?? "")」が見つかりました。書籍を追加しますか？"),
+                    primaryButton: .cancel(Text("キャンセル"),
+                                           action: {
+                                               Task {
+                                                   await viewModel.onDeclinSuggestedBook()
+                                               }
+                                           }),
+                    secondaryButton: .default(Text("追加"), action: {
+                        Task {
+                            await viewModel.onAcceptSuggestedBook()
+                        }
+                    })
+                )
+            }
+            .onReceive(viewModel.$suggestedBook) {
+                isSuggestPresented = $0 != nil
+            }
+        }
+    }
+    
+    private var cameraFrame: some View {
+        VStack(alignment: .center, spacing: 0) {
+            Text("カメラでバーコードを読み取ってください")
+                .font(.medium)
+                .foregroundColor(.white)
+                .padding(EdgeInsets(top: 24, leading: 0, bottom: 40, trailing: 0))
+            Rectangle()
+                .stroke(lineWidth: 2)
+                .fill(.white)
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 80, trailing: 0))
+        }
+    }
+    
+    private var scannedBook: some View {
+        VStack(alignment: .center) {
+            Spacer()
+            if let scannedBook = viewModel.scannedBook {
+                withAnimation {
+                    Text("「\(scannedBook.title)」を追加しました。")
+                        .font(.small)
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.backgroundGray)
+                        .clipShape(Capsule())
+                }
+            }
         }
     }
 }

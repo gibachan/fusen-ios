@@ -11,6 +11,7 @@ import Foundation
 final class ScanBarcodeViewModel: ObservableObject {
     private let scanInterval: Double = 1.0
     private var isScanning = false
+    private var scanningCode: String?
     private var scannedCode = Set<String>()
     private var lastScannedTime = Date(timeIntervalSince1970: 0)
     private let accountService: AccountServiceProtocol
@@ -18,6 +19,8 @@ final class ScanBarcodeViewModel: ObservableObject {
     private let bookRepository: BookRepository
 
     @Published var isTorchOn: Bool = false
+    @Published var suggestedBook: Publication?
+    @Published var scannedBook: Publication?
     
     init(accountService: AccountServiceProtocol = AccountService.shared,
          publicationRepository: PublicationRepository = PublicationRepositoryImpl(),
@@ -39,7 +42,6 @@ final class ScanBarcodeViewModel: ObservableObject {
     }
 
     func onBarcodeScanned(code: String) async {
-        guard let user = accountService.currentUser else { return }
         guard !isScanning else { return }
         guard !scannedCode.contains(code) else {
             log.d("code=\(code) has benn already scanned")
@@ -51,21 +53,54 @@ final class ScanBarcodeViewModel: ObservableObject {
         if now.timeIntervalSince(lastScannedTime) >= scanInterval {
             isScanning = true
             lastScannedTime = now
+            scanningCode = code
             scannedCode.insert(code)
+
             do {
                 let publication = try await publicationRepository.findBy(isbn: isbn)
                 log.d("Found publication: \(publication)")
-                let id = try await bookRepository.addBook(of: publication, for: user)
-                log.d("Book is added for id: \(id.value)")
-                DispatchQueue.main.async {
-                    NotificationCenter.default.postRefreshBookShelf()
+                DispatchQueue.main.async { [weak self] in
+                    
+                    self?.suggestedBook = publication
                 }
             } catch {
                 // FIXME: error handling
-                print(error.localizedDescription)
+                log.e(error.localizedDescription)
+                isScanning = false
             }
-            isScanning = false
         }
+    }
+    
+    func onAcceptSuggestedBook() async {
+        guard let user = accountService.currentUser else { return }
+        guard isScanning else { return }
+        guard let publication = suggestedBook else { return }
+        
+        scanningCode = nil
+        suggestedBook = nil
+        isScanning = false
+    
+        do {
+            let id = try await bookRepository.addBook(of: publication, for: user)
+            log.d("Book is added for id: \(id.value)")
+            DispatchQueue.main.async { [weak self] in
+                self?.scannedBook = publication
+                DispatchQueue.main.asyncAfter(deadline: .now() + 4) { [weak self] in
+                    self?.scannedBook = nil
+                }
+                
+                NotificationCenter.default.postRefreshBookShelf()
+            }
+        } catch {
+            // FIXME: error handling
+            log.e(error.localizedDescription)
+        }
+    }
+    
+    func onDeclinSuggestedBook() async {
+        scanningCode = nil
+        suggestedBook = nil
+        isScanning = false
     }
     
     private func currentTorch() -> Bool {

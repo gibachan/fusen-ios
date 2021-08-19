@@ -58,13 +58,16 @@ extension CameraPreview {
             session.addOutput(metadataOutput)
             metadataOutput.metadataObjectTypes = [.ean8, .ean13]
             metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
+            
+            // 読み取り範囲を指定
+            metadataOutput.rectOfInterest = CGRect(x: 0.2, y: 0.3, width: 0.8, height: 0.4)
         }
         let previewLayer = AVCaptureVideoPreviewLayer(session: session)
         backgroundColor = UIColor.gray
         previewLayer.videoGravity = .resizeAspectFill
         layer.addSublayer(previewLayer)
         self.previewLayer = previewLayer
-
+        
         session.startRunning()
     }
 
@@ -87,9 +90,13 @@ extension CameraPreview {
 
 extension CameraPreview: AVCaptureMetadataOutputObjectsDelegate {
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+
         guard let metadataObject = metadataObjects.first,
               let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject,
               let value = readableObject.stringValue else { return }
+        
+        log.d("metadataObjects: \(metadataObjects.count) found!! \(value)")
+               
         delegate?.cameraPreviewDidDetectBarcode(code: value)
     }
 }

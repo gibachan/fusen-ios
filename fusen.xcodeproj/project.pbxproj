@@ -23,6 +23,7 @@
 		7A11FCC126CD4B9D00F1A6BC /* BookShelfSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11FCC026CD4B9D00F1A6BC /* BookShelfSection.swift */; };
 		7A11FCC326CD4BAB00F1A6BC /* BookShelfSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11FCC226CD4BAB00F1A6BC /* BookShelfSectionModel.swift */; };
 		7A33118026CD692E00EB520D /* BookListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33117F26CD692E00EB520D /* BookListItem.swift */; };
+		7A33118226CE518F00EB520D /* UIApplicationExtensoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33118126CE518F00EB520D /* UIApplicationExtensoin.swift */; };
 		7AD1610526C29EB500334A63 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1610426C29EB500334A63 /* MainView.swift */; };
 		7AD1610826C29ED300334A63 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1610726C29ED300334A63 /* MainViewModel.swift */; };
 		7AD1610B26C29FE400334A63 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1610A26C29FE400334A63 /* ImageExtension.swift */; };
@@ -145,6 +146,7 @@
 		7A11FCC026CD4B9D00F1A6BC /* BookShelfSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfSection.swift; sourceTree = "<group>"; };
 		7A11FCC226CD4BAB00F1A6BC /* BookShelfSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfSectionModel.swift; sourceTree = "<group>"; };
 		7A33117F26CD692E00EB520D /* BookListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListItem.swift; sourceTree = "<group>"; };
+		7A33118126CE518F00EB520D /* UIApplicationExtensoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtensoin.swift; sourceTree = "<group>"; };
 		7AD1610426C29EB500334A63 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		7AD1610726C29ED300334A63 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		7AD1610A26C29FE400334A63 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
@@ -384,6 +386,7 @@
 				7AD1611726C2A8BC00334A63 /* UIColorExtension.swift */,
 				7A11FCA226CB45DF00F1A6BC /* NotificationExtension.swift */,
 				7A11FCA426CB467C00F1A6BC /* NotificationCenterExtension.swift */,
+				7A33118126CE518F00EB520D /* UIApplicationExtensoin.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -956,6 +959,7 @@
 				7AD1610526C29EB500334A63 /* MainView.swift in Sources */,
 				7AD1611826C2A8BC00334A63 /* UIColorExtension.swift in Sources */,
 				A007C09026C7EF9700270671 /* FirestoreExtension.swift in Sources */,
+				7A33118226CE518F00EB520D /* UIApplicationExtensoin.swift in Sources */,
 				7A11FCA526CB467C00F1A6BC /* NotificationCenterExtension.swift in Sources */,
 				7A11FCC126CD4B9D00F1A6BC /* BookShelfSection.swift in Sources */,
 				A001E03726CA061B00AC92BA /* PlaceholderTextEditor.swift in Sources */,

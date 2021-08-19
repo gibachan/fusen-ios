@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import VisionKit
 
 struct AddMemoView: View {
     @Environment(\.dismiss) private var dismiss
@@ -38,6 +39,42 @@ struct AddMemoView: View {
                 ) {
                     ForEach(0..<999) { page in
                         Text("\(page)")
+                    }
+                }
+                
+                VStack {
+                    Button {
+                        guard VNDocumentCameraViewController.isSupported else {
+                            log.e("VNDocumentCameraViewController is not supported for simulator")
+                            return
+                        }
+                        guard let rootVC = UIApplication.shared.currentRootViewController else {
+                            log.e("RootViewController is missing")
+                            return
+                        }
+                        let vc = VNDocumentCameraViewController()
+                        vc.delegate = viewModel
+                        rootVC.present(vc, animated: true, completion: nil)
+                    } label: {
+                        HStack(spacing: 8) {
+                            Image.camera
+                                .resizable()
+                                .frame(width: 28, height: 24)
+                            Text("画像を撮影")
+                        }
+                        .foregroundColor(.blue)
+                    }
+                    
+                    HStack {
+                        ForEach(viewModel.imageResults) { result in
+                            Image(uiImage: result.image)
+                                .resizable()
+                                .frame(width: 80, height: 80)
+                        }
+                    }
+                    
+                    if viewModel.imageCountLimitOver {
+                        Text("撮影可能な画像枚数を超えています")
                     }
                 }
             } header: {

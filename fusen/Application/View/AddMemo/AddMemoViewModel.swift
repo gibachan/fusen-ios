@@ -6,14 +6,18 @@
 //
 
 import Foundation
+import VisionKit
 
-final class AddMemoViewModel: ObservableObject {
+final class AddMemoViewModel: NSObject, ObservableObject {
+    private let imageCountLimit = 1
     private let book: Book
     private let accountService: AccountServiceProtocol
     private let memoRepository: MemoRepository
     
     @Published var isSaveEnabled = false
     @Published var state: State = .initial
+    @Published var imageResults: [ImageResult] = []
+    @Published var imageCountLimitOver = false
     
     init(
         book: Book,
@@ -68,5 +72,31 @@ final class AddMemoViewModel: ObservableObject {
                 return false
             }
         }
+    }
+
+    struct ImageResult: Identifiable {
+        var id: Int { page }
+        let page: Int
+        let image: UIImage
+    }
+}
+
+extension AddMemoViewModel: VNDocumentCameraViewControllerDelegate {
+    func documentCameraViewControllerDidCancel(_ controller: VNDocumentCameraViewController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFailWithError error: Error) {
+        log.e(error.localizedDescription)
+    }
+    
+    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
+        imageResults = []
+        let allowedPageCount = min(scan.pageCount, imageCountLimit)
+        for i in 0..<allowedPageCount {
+            imageResults.append(ImageResult(page: i, image: scan.imageOfPage(at: i)))
+        }
+        imageCountLimitOver = scan.pageCount > imageCountLimit
+        controller.dismiss(animated: true, completion: nil)
     }
 }

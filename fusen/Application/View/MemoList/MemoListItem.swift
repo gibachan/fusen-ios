@@ -8,11 +8,34 @@
 import SwiftUI
 
 struct MemoListItem: View {
-    let memo: Memo
+    @StateObject var viewModel: MemoListItemModel
+    
+    init(memo: Memo) {
+        self._viewModel = StateObject(wrappedValue: MemoListItemModel(memo: memo))
+    }
+    
     var body: some View {
-        Text("memo: \(memo.text)")
-            .font(.medium)
-            .foregroundColor(Color.textPrimary)
+        Group {
+            if let book = viewModel.book {
+                NavigationLink(destination: LazyView(EditMemoView(book: book, memo: viewModel.memo))) {
+                    VStack(alignment: .leading) {
+                        Text("memo: \(viewModel.memo.text)")
+                            .font(.medium)
+                            .foregroundColor(Color.textPrimary)
+                        Text("book: \(book.title)")
+                    }
+                }
+            } else {
+                VStack(alignment: .leading) {
+                    Text("memo: \(viewModel.memo.text)")
+                        .font(.medium)
+                        .foregroundColor(Color.textPrimary)
+                }
+            }
+        }
+        .task {
+            await viewModel.onAppear()
+        }
     }
 }
 

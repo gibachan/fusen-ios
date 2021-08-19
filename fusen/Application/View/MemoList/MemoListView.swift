@@ -40,7 +40,7 @@ struct MemoListView: View {
             )
         }
         .listStyle(PlainListStyle())
-        .navigationBarTitle("すべての書籍", displayMode: .inline)
+        .navigationBarTitle("すべてのメモ", displayMode: .inline)
         .sheet(isPresented: $isAddPresented) {
             print("dismissed")
         } content: {

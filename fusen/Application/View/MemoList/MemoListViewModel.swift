@@ -53,7 +53,7 @@ final class MemoListViewModel: ObservableObject {
             let pager = try await memoRepository.getAllMemos(for: user, forceRefresh: true)
             log.d("finished=\(pager.finished)")
             DispatchQueue.main.async { [weak self] in
-                self?.textCountText = "xx冊の書籍"
+                self?.textCountText = "xx件のメモ"
                 self?.state = .succeeded
                 self?.pager = pager
             }

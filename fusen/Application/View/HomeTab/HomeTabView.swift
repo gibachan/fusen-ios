@@ -41,7 +41,7 @@ struct HomeTabView: View {
                         HStack {
                             SectionHeaderText("最近追加したメモ")
                             Spacer()
-                            NavigationLink(destination: Text("メモ一覧")) {
+                            NavigationLink(destination: MemoListView()) {
                                 ShowAllText()
                             }
                         }

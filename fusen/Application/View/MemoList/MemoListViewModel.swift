@@ -1,38 +1,35 @@
 //
-//  CollectionViewModel.swift
-//  CollectionViewModel
+//  MemoListViewModel.swift
+//  MemoListViewModel
 //
 //  Created by Tatsuyuki Kobayashi on 2021/08/19.
 //
 
 import Foundation
 
-final class CollectionViewModel: ObservableObject {
-    private let collection: Collection
+final class MemoListViewModel: ObservableObject {
     private let accountService: AccountServiceProtocol
-    private let bookRepository: BookRepository
-    
+    private let memoRepository: MemoRepository
+
     @Published var state: State = .initial
-    @Published var pager: Pager<Book> = .empty
+    @Published var pager: Pager<Memo> = .empty
     @Published var textCountText = ""
     
     init(
-        collection: Collection,
         accountService: AccountServiceProtocol = AccountService.shared,
-        bookRepository: BookRepository = BookRepositoryImpl()
+        memoRepository: MemoRepository = MemoRepositoryImpl()
     ) {
-        self.collection = collection
         self.accountService = accountService
-        self.bookRepository = bookRepository
+        self.memoRepository = memoRepository
     }
-    
+
     func onAppear() async {
         guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
         
         state = .loading
         do {
-            let pager = try await bookRepository.getBooks(by: collection, for: user, forceRefresh: false)
+            let pager = try await memoRepository.getAllMemos(for: user)
             log.d("finished=\(pager.finished)")
             DispatchQueue.main.async { [weak self] in
                 self?.textCountText = "xx冊の書籍"
@@ -53,7 +50,7 @@ final class CollectionViewModel: ObservableObject {
         
         state = .refreshing
         do {
-            let pager = try await bookRepository.getAllBooks(for: user, forceRefresh: true)
+            let pager = try await memoRepository.getAllMemos(for: user, forceRefresh: true)
             log.d("finished=\(pager.finished)")
             DispatchQueue.main.async { [weak self] in
                 self?.textCountText = "xx冊の書籍"
@@ -68,15 +65,15 @@ final class CollectionViewModel: ObservableObject {
         }
     }
     
-    func onItemApper(of book: Book) async {
+    func onItemApper(of memo: Memo) async {
         guard case .succeeded = state, !pager.finished else { return }
         guard let user = accountService.currentUser else { return }
-        guard let lastBook = pager.data.last else { return }
-        
-        if book.id == lastBook.id {
+        guard let lastMemo = pager.data.last else { return }
+
+        if memo.id == lastMemo.id {
             state = .loadingNext
             do {
-                let pager = try await bookRepository.getAllBooksNext(for: user)
+                let pager = try await memoRepository.getAllMemosNext(for: user)
                 log.d("finished=\(pager.finished)")
                 DispatchQueue.main.async { [weak self] in
                     self?.state = .succeeded

@@ -1,35 +1,38 @@
 //
-//  BookListViewModel.swift
-//  BookListViewModel
+//  CollectionViewModel.swift
+//  CollectionViewModel
 //
-//  Created by Tatsuyuki Kobayashi on 2021/08/18.
+//  Created by Tatsuyuki Kobayashi on 2021/08/19.
 //
 
 import Foundation
 
-final class BookListViewModel: ObservableObject {
+final class CollectionViewModel: ObservableObject {
+    private let collection: Collection
     private let accountService: AccountServiceProtocol
     private let bookRepository: BookRepository
-
+    
     @Published var state: State = .initial
     @Published var pager: Pager<Book> = .empty
     @Published var textCountText = ""
     
     init(
+        collection: Collection,
         accountService: AccountServiceProtocol = AccountService.shared,
         bookRepository: BookRepository = BookRepositoryImpl()
     ) {
+        self.collection = collection
         self.accountService = accountService
         self.bookRepository = bookRepository
     }
-
+    
     func onAppear() async {
         guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
         
         state = .loading
         do {
-            let pager = try await bookRepository.getBooks(for: user)
+            let pager = try await bookRepository.getBooks(by: collection, for: user, forceRefresh: false)
             log.d("finished=\(pager.finished)")
             DispatchQueue.main.async { [weak self] in
                 self?.textCountText = "xx冊の書籍"
@@ -69,7 +72,7 @@ final class BookListViewModel: ObservableObject {
         guard case .succeeded = state, !pager.finished else { return }
         guard let user = accountService.currentUser else { return }
         guard let lastBook = pager.data.last else { return }
-
+        
         if book.id == lastBook.id {
             state = .loadingNext
             do {

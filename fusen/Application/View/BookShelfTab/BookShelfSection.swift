@@ -9,9 +9,11 @@ import SwiftUI
 
 struct BookShelfSection: View {
     @StateObject private var viewModel: BookShelfSectionModel
+    private let collection: Collection
     
     init(collection: Collection) {
         self._viewModel = StateObject(wrappedValue: BookShelfSectionModel(collection: collection))
+        self.collection = collection
     }
     
     var body: some View {
@@ -29,7 +31,7 @@ struct BookShelfSection: View {
             HStack {
                 SectionHeaderText(viewModel.collection.name)
                 Spacer()
-                NavigationLink(destination: LazyView(BookListView())) {
+                NavigationLink(destination: LazyView(CollectionView(collection: collection))) {
                     ShowAllText()
                 }
             }

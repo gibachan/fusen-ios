@@ -58,6 +58,10 @@ final class AddMemoViewModel: NSObject, ObservableObject {
         }
     }
     
+    func onMemoImageDelete(image: ImageResult) {
+        imageResults = imageResults.filter { $0.id != image.id }
+    }
+    
     enum State {
         case initial
         case loading

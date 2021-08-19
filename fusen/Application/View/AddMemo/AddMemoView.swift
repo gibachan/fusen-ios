@@ -14,6 +14,9 @@ struct AddMemoView: View {
     @State private var text = ""
     @State private var quote = ""
     @State private var page = 0
+    @State private var editMemoImage: AddMemoViewModel.ImageResult?
+    private let memoImageWidth: CGFloat = 72
+    private let memoImageHeight: CGFloat = 96
     
     init(book: Book) {
         self._viewModel = StateObject(wrappedValue: AddMemoViewModel(book: book))
@@ -50,7 +53,7 @@ struct AddMemoView: View {
                         if viewModel.imageResults.isEmpty {
                             RoundedRectangle(cornerRadius: 4)
                                 .stroke(Color.placeholder, lineWidth: 1)
-                                .frame(width: 80, height: 80)
+                                .frame(width: memoImageWidth, height: memoImageHeight)
                                 .overlay(Image.camera
                                             .resizable()
                                             .frame(width: 32, height: 24)
@@ -62,11 +65,14 @@ struct AddMemoView: View {
                             ForEach(viewModel.imageResults) { result in
                                 RoundedRectangle(cornerRadius: 4)
                                     .stroke(Color.placeholder, lineWidth: 1)
-                                    .frame(width: 80, height: 80)
+                                    .frame(width: memoImageWidth, height: memoImageHeight)
                                     .overlay(
                                         Image(uiImage: result.image)
                                             .resizable()
                                     )
+                                    .onTapGesture {
+                                        editMemoImage = result
+                                    }
                             }
                         }
                         Spacer()
@@ -94,6 +100,13 @@ struct AddMemoView: View {
             }
                 .disabled(!viewModel.isSaveEnabled)
         )
+        .sheet(item: $editMemoImage, onDismiss: {}, content: { result in
+            NavigationView {
+                MemoImageView(image: result.image) {
+                    viewModel.onMemoImageDelete(image: result)
+                }
+            }
+        })
         .onReceive(viewModel.$state) { state in
             switch state {
             case .initial:

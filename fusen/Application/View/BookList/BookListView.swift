@@ -10,6 +10,7 @@ import SwiftUI
 struct BookListView: View {
     @StateObject private var viewModel = BookListViewModel()
     @State private var isAddPresented = false
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             List {

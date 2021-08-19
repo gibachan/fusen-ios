@@ -29,7 +29,7 @@ final class BookListViewModel: ObservableObject {
         
         state = .loading
         do {
-            let pager = try await bookRepository.getBooks(for: user)
+            let pager = try await bookRepository.getAllBooks(for: user)
             log.d("finished=\(pager.finished)")
             DispatchQueue.main.async { [weak self] in
                 self?.textCountText = "xx冊の書籍"
@@ -50,7 +50,7 @@ final class BookListViewModel: ObservableObject {
         
         state = .refreshing
         do {
-            let pager = try await bookRepository.getBooks(for: user, forceRefresh: true)
+            let pager = try await bookRepository.getAllBooks(for: user, forceRefresh: true)
             log.d("finished=\(pager.finished)")
             DispatchQueue.main.async { [weak self] in
                 self?.textCountText = "xx冊の書籍"
@@ -73,7 +73,7 @@ final class BookListViewModel: ObservableObject {
         if book.id == lastBook.id {
             state = .loadingNext
             do {
-                let pager = try await bookRepository.getNextBooks(for: user)
+                let pager = try await bookRepository.getAllBooksNext(for: user)
                 log.d("finished=\(pager.finished)")
                 DispatchQueue.main.async { [weak self] in
                     self?.state = .succeeded

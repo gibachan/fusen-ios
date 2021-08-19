@@ -50,7 +50,7 @@ final class BookRepositoryImpl: BookRepository {
         }
     }
     
-    func getBooks(for user: User, forceRefresh: Bool = false) async throws -> Pager<Book> {
+    func getAllBooks(for user: User, forceRefresh: Bool = false) async throws -> Pager<Book> {
         let isCacheValid = allBooksCache.currentPager.data.count >= perPage && !forceRefresh
         if isCacheValid {
             return allBooksCache.currentPager
@@ -78,7 +78,7 @@ final class BookRepositoryImpl: BookRepository {
         }
     }
     
-    func getNextBooks(for user: User) async throws -> Pager<Book> {
+    func getAllBooksNext(for user: User) async throws -> Pager<Book> {
         guard let afterDocument = allBooksCache.lastDocument else {
             fatalError("lastDocumentは必ず存在する")
         }

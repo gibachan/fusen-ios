@@ -9,8 +9,12 @@ import Foundation
 import FirebaseFirestore
 
 extension Query {
-    func whereBookId(_ book: Book) -> Query {
+    func whereBook(_ book: Book) -> Query {
         whereField("bookId", isEqualTo: book.id.value)
+    }
+    
+    func whereCollection(_ collection: Collection) -> Query {
+        whereField("collectionId", isEqualTo: collection.id.value)
     }
     
     func orderByCreatedAtDesc() -> Query {

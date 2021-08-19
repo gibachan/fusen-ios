@@ -13,6 +13,4 @@ enum CollectionRepositoryError: Error {
 
 protocol CollectionRepository {
     func getlCollections(for user: User) async throws -> [Collection]
-    
-    func getBooks(of collection: Collection, for user: User) async throws -> [ID<Book>]
 }

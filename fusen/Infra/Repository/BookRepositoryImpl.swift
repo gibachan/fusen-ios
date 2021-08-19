@@ -14,7 +14,8 @@ final class BookRepositoryImpl: BookRepository {
     
     // Pagination
     private let perPage = 20
-    private var cache: PagerCache<Book> = .empty
+    private var allBooksCache: PagerCache<Book> = .empty
+    private var collectionCache: [ID<Collection>: PagerCache<Book>] = [:]
     
     func getBook(by id: ID<Book>, for user: User) async throws -> Book {
         let ref = db.booksCollection(for: user)
@@ -50,12 +51,12 @@ final class BookRepositoryImpl: BookRepository {
     }
     
     func getBooks(for user: User, forceRefresh: Bool = false) async throws -> Pager<Book> {
-        let isCacheValid = cache.currentPager.data.count >= perPage && !forceRefresh
+        let isCacheValid = allBooksCache.currentPager.data.count >= perPage && !forceRefresh
         if isCacheValid {
-            return cache.currentPager
+            return allBooksCache.currentPager
         }
         
-        clearPaginationCache()
+        clearAllBooksCache()
         let query = db.booksCollection(for: user)
             .orderByCreatedAtDesc()
             .limit(to: perPage)
@@ -65,11 +66,11 @@ final class BookRepositoryImpl: BookRepository {
                 .compactMap { try? $0.data(as: FirestoreGetBook.self) }
                 .compactMap { $0.toDomain() }
             let finished = books.count < perPage
-            let cachedPager = cache.currentPager
+            let cachedPager = allBooksCache.currentPager
             let newPager = Pager<Book>(currentPage: cachedPager.currentPage + 1,
                                        finished: finished,
                                        data: cachedPager.data + books)
-            cache = PagerCache(pager: newPager, lastDocument: snapshot.documents.last)
+            allBooksCache = PagerCache(pager: newPager, lastDocument: snapshot.documents.last)
             return newPager
         } catch {
             log.e(error.localizedDescription)
@@ -78,12 +79,12 @@ final class BookRepositoryImpl: BookRepository {
     }
     
     func getNextBooks(for user: User) async throws -> Pager<Book> {
-        guard let afterDocument = cache.lastDocument else {
+        guard let afterDocument = allBooksCache.lastDocument else {
             fatalError("lastDocumentは必ず存在する")
         }
-        guard !cache.currentPager.finished else {
+        guard !allBooksCache.currentPager.finished else {
             log.d("All books have been already fetched")
-            return cache.currentPager
+            return allBooksCache.currentPager
         }
         
         let query = db.booksCollection(for: user)
@@ -97,11 +98,42 @@ final class BookRepositoryImpl: BookRepository {
                 .compactMap { try? $0.data(as: FirestoreGetBook.self) }
                 .compactMap { $0.toDomain() }
             let finished = books.count < perPage
-            let cachedPager = cache.currentPager
+            let cachedPager = allBooksCache.currentPager
             let newPager = Pager<Book>(currentPage: cachedPager.currentPage + 1,
                                        finished: finished,
                                        data: cachedPager.data + books)
-            cache = PagerCache(pager: newPager, lastDocument: snapshot.documents.last)
+            allBooksCache = PagerCache(pager: newPager, lastDocument: snapshot.documents.last)
+            return newPager
+        } catch {
+            log.e(error.localizedDescription)
+            throw  BookRepositoryError.unknwon
+        }
+    }
+    
+    func getBooks(by collection: Collection, for user: User, forceRefresh: Bool) async throws -> Pager<Book> {
+        if let cachedPager = collectionCache[collection.id]?.currentPager {
+            let isCacheValid = cachedPager.data.count >= perPage && !forceRefresh
+            if isCacheValid {
+                return cachedPager
+            }
+        }
+        
+        clearCollectionCache(of: collection)
+        let query = db.booksCollection(for: user)
+            .whereCollection(collection)
+            .orderByCreatedAtDesc()
+            .limit(to: perPage)
+        do {
+            let snapshot = try await query.getDocuments()
+            let books = snapshot.documents
+                .compactMap { try? $0.data(as: FirestoreGetBook.self) }
+                .compactMap { $0.toDomain() }
+            let finished = books.count < perPage
+            let cachedPager = allBooksCache.currentPager
+            let newPager = Pager<Book>(currentPage: cachedPager.currentPage + 1,
+                                       finished: finished,
+                                       data: cachedPager.data + books)
+            collectionCache[collection.id] = PagerCache(pager: newPager, lastDocument: snapshot.documents.last)
             return newPager
         } catch {
             log.e(error.localizedDescription)
@@ -119,7 +151,7 @@ final class BookRepositoryImpl: BookRepository {
                     if let error = error {
                         log.e(error.localizedDescription)
                         continuation.resume(throwing: BookRepositoryError.unknwon)
-                        self?.clearPaginationCache()
+                        self?.clearAllBooksCache()
                     } else {
                         let id = ID<Book>(value: ref!.documentID)
                         continuation.resume(returning: id)
@@ -142,7 +174,7 @@ final class BookRepositoryImpl: BookRepository {
             .document(book.id.value)
         do {
             try await ref.setData(update.data(), merge: true)
-            clearPaginationCache()
+            clearAllBooksCache()
         } catch {
             log.e(error.localizedDescription)
             throw BookRepositoryError.unknwon
@@ -155,14 +187,18 @@ final class BookRepositoryImpl: BookRepository {
         do {
             // FIXME: Delete all related memos
             try await ref.delete()
-            clearPaginationCache()
+            clearAllBooksCache()
         } catch {
             log.e(error.localizedDescription)
             throw BookRepositoryError.unknwon
         }
     }
     
-    private func clearPaginationCache() {
-        cache = .empty
+    private func clearAllBooksCache() {
+        allBooksCache = .empty
+    }
+    
+    private func clearCollectionCache(of collection: Collection) {
+        collectionCache[collection.id] = .empty
     }
 }

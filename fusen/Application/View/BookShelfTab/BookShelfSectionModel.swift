@@ -8,23 +8,21 @@
 import Foundation
 
 final class BookShelfSectionModel: ObservableObject {
+    private static let maxDiplayBookCount = 6
     private let accountService: AccountServiceProtocol
-    private let collectionRepository: CollectionRepository
     private let bookRepository: BookRepository
     
     @Published var state: State = .initial
     @Published var collection: Collection
-    @Published var bookIds: [ID<Book>] = []
+    @Published var books: [Book] = []
     
     init(
         collection: Collection,
         accountService: AccountServiceProtocol = AccountService.shared,
-        collectionRepository: CollectionRepository = CollectionRepositoryImpl(),
         bookRepository: BookRepository = BookRepositoryImpl()
     ) {
         self.collection = collection
         self.accountService = accountService
-        self.collectionRepository = collectionRepository
         self.bookRepository = bookRepository
     }
     
@@ -34,10 +32,10 @@ final class BookShelfSectionModel: ObservableObject {
         
         state = .loading
         do {
-            let bookIds = try await collectionRepository.getBooks(of: collection, for: user)
+            let pager = try await bookRepository.getBooks(by: collection, for: user, forceRefresh: false)
             DispatchQueue.main.async { [weak self] in
                 self?.state = .succeeded
-                self?.bookIds = bookIds
+                self?.books = Array(pager.data.prefix(Self.maxDiplayBookCount))
             }
         } catch {
             log.e(error.localizedDescription)

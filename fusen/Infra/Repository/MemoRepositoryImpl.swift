@@ -40,9 +40,9 @@ final class MemoRepositoryImpl: MemoRepository {
             }
         }
         
-        clearPaginationCache(of: book)
+        clearCache(of: book)
         let query = db.memosCollection(for: user)
-            .whereBookId(book)
+            .whereBook(book)
             .orderByCreatedAtDesc()
             .limit(to: perPage)
         do {
@@ -77,7 +77,7 @@ final class MemoRepositoryImpl: MemoRepository {
         }
         
         let query = db.memosCollection(for: user)
-            .whereBookId(book)
+            .whereBook(book)
             .orderByCreatedAtDesc()
             .start(afterDocument: afterDocument)
             .limit(to: perPage)
@@ -135,7 +135,7 @@ final class MemoRepositoryImpl: MemoRepository {
             .document(memo.id.value)
         do {
             try await ref.setData(update.data(), merge: true)
-            clearPaginationCache(of: book)
+            clearCache(of: book)
         } catch {
             log.e(error.localizedDescription)
             throw MemoRepositoryError.unknwon
@@ -147,14 +147,14 @@ final class MemoRepositoryImpl: MemoRepository {
             .document(memo.id.value)
         do {
             try await ref.delete()
-            clearPaginationCache(of: book)
+            clearCache(of: book)
         } catch {
             log.e(error.localizedDescription)
             throw MemoRepositoryError.unknwon
         }
     }
     
-    private func clearPaginationCache(of book: Book) {
+    private func clearCache(of book: Book) {
         cache[book.id] = .empty
     }
 }

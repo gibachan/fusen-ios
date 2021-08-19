@@ -12,7 +12,6 @@ struct FirestoreGetCollection: Codable {
     @DocumentID var id: String?
     let name: String
     let colors: [Int]
-    let createdAt: Date
 }
 
 extension FirestoreGetCollection {

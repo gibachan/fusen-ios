@@ -8,13 +8,15 @@
 import Foundation
 
 final class EditMemoViewModel: ObservableObject {
+    private let imageCountLimit = 1
     private let book: Book
-    private let memo: Memo
     private let accountService: AccountServiceProtocol
     private let memoRepository: MemoRepository
     
     @Published var isSaveEnabled = false
     @Published var state: State = .initial
+    @Published var memo: Memo
+    @Published var imageResults: [DocumentCameraView.ImageResult] = []
     
     init(
         book: Book,
@@ -30,6 +32,14 @@ final class EditMemoViewModel: ObservableObject {
     
     func onTextChange(_ text: String) {
         isSaveEnabled = !text.isEmpty
+    }
+    
+    func onMemoImageAdd(images: [DocumentCameraView.ImageResult]) {
+        imageResults = Array(images.prefix(imageCountLimit))
+    }
+    
+    func onMemoImageDelete(image: DocumentCameraView.ImageResult) {
+        imageResults = imageResults.filter { $0.id != image.id }
     }
     
     func onSave(

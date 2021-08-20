@@ -14,7 +14,10 @@ struct EditMemoView: View {
     @State private var quote = ""
     @State private var page = 0
     @State private var isDeleteAlertPresented = false
+    @State private var isDocumentCameraPresented = false
     private let currentMemo: Memo
+    private let memoImageWidth: CGFloat = 72
+    private let memoImageHeight: CGFloat = 96
 
     init(book: Book, memo: Memo) {
         self.currentMemo = memo
@@ -32,10 +35,10 @@ struct EditMemoView: View {
             } header: {
                 SectionHeaderText("メモ")
             }
-            
             Section {
                 PlaceholderTextEditor(placeholder: "引用する文を入力する", text: $quote)
                     .frame(minHeight: 100)
+                
                 Picker(
                     selection: $page,
                     label: Text("ページ")
@@ -43,6 +46,28 @@ struct EditMemoView: View {
                     ForEach(0..<999) { page in
                         Text("\(page)")
                     }
+                }
+                .frame(minHeight: 40)
+                
+                if !viewModel.memo.imageURLs.isEmpty {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("画像 :")
+                        HStack {
+                            ForEach(viewModel.memo.imageURLs, id: \.self) { imageURL in
+                                AsyncImage(url: imageURL) { image in
+                                    image
+                                        .resizable()
+                                        .clipShape(RoundedRectangle(cornerRadius: 4))
+                                } placeholder: {
+                                    RoundedRectangle(cornerRadius: 4)
+                                        .fill(Color.placeholder)
+                                }
+                                .frame(width: memoImageWidth, height: memoImageHeight)
+                            }
+                            Spacer()
+                        }
+                    }
+                    .padding(.vertical, 8)
                 }
             } header: {
                 SectionHeaderText("引用(オプション）")
@@ -77,6 +102,19 @@ struct EditMemoView: View {
             }
                 .disabled(!viewModel.isSaveEnabled)
         )
+        .fullScreenCover(isPresented: $isDocumentCameraPresented, onDismiss: {
+            log.d("dismiss")
+        }, content: {
+            DocumentCameraView { result in
+                switch result {
+                case .success(let images):
+                    viewModel.onMemoImageAdd(images: images)
+                case .failure(let error):
+                    // FIXME: Error handling
+                    log.e(error.localizedDescription)
+                }
+            }
+        })
         .alert(isPresented: $isDeleteAlertPresented) {
             Alert(
                 title: Text("メモを削除"),

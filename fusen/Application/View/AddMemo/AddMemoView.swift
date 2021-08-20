@@ -90,7 +90,7 @@ struct AddMemoView: View {
             .listRowBackground(Color.backgroundLightGray)
             
             Spacer()
-                .frame(height: 150)
+                .frame(height: 160)
                 .listRowBackground(Color(UIColor.systemGroupedBackground))
         }
         .font(.medium)

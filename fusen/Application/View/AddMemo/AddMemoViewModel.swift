@@ -31,6 +31,14 @@ final class AddMemoViewModel: NSObject, ObservableObject {
         isSaveEnabled = !text.isEmpty
     }
     
+    func onMemoImageAdd(images: [DocumentCameraView.ImageResult]) {
+        imageResults = Array(images.prefix(imageCountLimit))
+    }
+    
+    func onMemoImageDelete(image: DocumentCameraView.ImageResult) {
+        imageResults = imageResults.filter { $0.id != image.id }
+    }
+    
     func onSave(
         text: String,
         quote: String,
@@ -58,14 +66,6 @@ final class AddMemoViewModel: NSObject, ObservableObject {
                 self?.state = .failed
             }
         }
-    }
-    
-    func onMemoImageAdd(images: [DocumentCameraView.ImageResult]) {
-        imageResults = Array(images.prefix(imageCountLimit))
-    }
-    
-    func onMemoImageDelete(image: DocumentCameraView.ImageResult) {
-        imageResults = imageResults.filter { $0.id != image.id }
     }
     
     enum State {

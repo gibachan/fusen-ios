@@ -95,7 +95,7 @@ struct AddMemoView: View {
         }
         .font(.medium)
         .navigationBarTitle("メモを追加", displayMode: .inline)
-        .navigationBarItems(leading: CancelButton { dismiss() })
+//        .navigationBarItems(leading: CancelButton { dismiss() })
         .navigationBarItems(
             trailing: SaveButton {
                 Task {

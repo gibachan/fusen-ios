@@ -28,14 +28,8 @@ struct BookView: View {
                 bookDetailSection
                     .listRowSeparator(.hidden)
                 
-                Spacer()
-                    .frame(height: 8)
-                    .listRowSeparator(.hidden)
-                
                 memoSection
-                
-                Spacer()
-                    .frame(height: 16)
+                    .padding(.bottom, 16)
                 
                 buttonSection
                     .listRowSeparator(.hidden)

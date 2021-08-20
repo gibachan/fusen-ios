@@ -1,46 +1,39 @@
 //
-//  AddCollectionViewModel.swift
-//  AddCollectionViewModel
+//  LatestMemoItemModel.swift
+//  LatestMemoItemModel
 //
-//  Created by Tatsuyuki Kobayashi on 2021/08/20.
+//  Created by Tatsuyuki Kobayashi on 2021/08/21.
 //
 
 import Foundation
 
-final class AddCollectionViewModel: ObservableObject {
-    private let collectionCountLimit = 10
+final class LatestMemoItemModel: ObservableObject {
     private let accountService: AccountServiceProtocol
-    private let collectionRepository: CollectionRepository
-    
-    @Published var isSaveEnabled = false
+    private let bookRepository: BookRepository
+    @Published var memo: Memo
+    @Published var book: Book?
     @Published var state: State = .initial
-    
+
     init(
+        memo: Memo,
         accountService: AccountServiceProtocol = AccountService.shared,
-        collectionRepository: CollectionRepository = CollectionRepositoryImpl()
+        bookRepository: BookRepository = BookRepositoryImpl()
     ) {
+        self.memo = memo
         self.accountService = accountService
-        self.collectionRepository = collectionRepository
+        self.bookRepository = bookRepository
     }
     
-    func onNameChange(_ name: String) {
-        isSaveEnabled = !name.isEmpty
-    }
-    
-    func onSave(
-        name: String,
-        color: RGB
-    ) async {
+    func onAppear() async {
         guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
         
         state = .loading
         do {
-            log.d("Saving \(name) collection with \(color)")
-            let id = try await collectionRepository.addCollection(name: name, color: color, for: user)
-            log.d("Collection is added for id: \(id.value)")
+            let book = try await bookRepository.getBook(by: memo.bookId, for: user)
             DispatchQueue.main.async { [weak self] in
                 self?.state = .succeeded
+                self?.book = book
             }
         } catch {
             // FIXME: error handling
@@ -65,5 +58,4 @@ final class AddCollectionViewModel: ObservableObject {
             }
         }
     }
-
 }

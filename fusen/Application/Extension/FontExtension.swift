@@ -11,4 +11,5 @@ extension Font {
     static let large = Font.title
     static let medium = Font.body
     static let small = Font.subheadline
+    static let minimal = Font.footnote
 }

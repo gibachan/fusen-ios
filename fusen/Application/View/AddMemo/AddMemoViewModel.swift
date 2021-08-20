@@ -46,7 +46,7 @@ final class AddMemoViewModel: NSObject, ObservableObject {
         imageURLs: [URL]
     ) async {
         guard let user = accountService.currentUser else { return }
-        guard !state.isLoading else { return }
+        guard !state.isInProgress else { return }
         
         state = .loading
         do {
@@ -74,7 +74,7 @@ final class AddMemoViewModel: NSObject, ObservableObject {
         case succeeded
         case failed
         
-        var isLoading: Bool {
+        var isInProgress: Bool {
             if case .loading = self {
                 return true
             } else {

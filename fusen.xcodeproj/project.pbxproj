@@ -101,6 +101,9 @@
 		A07CAD0E26CF7F010012201A /* AddCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD0D26CF7F010012201A /* AddCollectionViewModel.swift */; };
 		A07CAD1026CF95FD0012201A /* RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD0F26CF95FD0012201A /* RGB.swift */; };
 		A07CAD1226CFBB160012201A /* FirestoreCreateCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD1126CFBB160012201A /* FirestoreCreateCollection.swift */; };
+		A07CAD1426D051D10012201A /* LatestMemoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD1326D051D10012201A /* LatestMemoItem.swift */; };
+		A07CAD1626D051DE0012201A /* LatestMemoItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD1526D051DE0012201A /* LatestMemoItemModel.swift */; };
+		A07CAD1826D055C90012201A /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD1726D055C90012201A /* DateExtension.swift */; };
 		A082000826C1F5CF00100357 /* FusenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A082000726C1F5CF00100357 /* FusenApp.swift */; };
 		A082000C26C1F5D100100357 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000B26C1F5D100100357 /* Assets.xcassets */; };
 		A082000F26C1F5D100100357 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000E26C1F5D100100357 /* Preview Assets.xcassets */; };
@@ -236,6 +239,9 @@
 		A07CAD0D26CF7F010012201A /* AddCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCollectionViewModel.swift; sourceTree = "<group>"; };
 		A07CAD0F26CF95FD0012201A /* RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGB.swift; sourceTree = "<group>"; };
 		A07CAD1126CFBB160012201A /* FirestoreCreateCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreCreateCollection.swift; sourceTree = "<group>"; };
+		A07CAD1326D051D10012201A /* LatestMemoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestMemoItem.swift; sourceTree = "<group>"; };
+		A07CAD1526D051DE0012201A /* LatestMemoItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestMemoItemModel.swift; sourceTree = "<group>"; };
+		A07CAD1726D055C90012201A /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		A082000426C1F5CF00100357 /* fusen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fusen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A082000726C1F5CF00100357 /* FusenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FusenApp.swift; sourceTree = "<group>"; };
 		A082000B26C1F5D100100357 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -417,6 +423,7 @@
 				7A11FCA426CB467C00F1A6BC /* NotificationCenterExtension.swift */,
 				7A33118126CE518F00EB520D /* UIApplicationExtensoin.swift */,
 				A07CAD0226CED9A20012201A /* MemoImageExtension.swift */,
+				A07CAD1726D055C90012201A /* DateExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -615,6 +622,8 @@
 				A07507C826C546260087AE5C /* HomeTabView.swift */,
 				A07507CA26C546330087AE5C /* HomeTabViewModel.swift */,
 				7A11FCAF26CB537500F1A6BC /* LatestBookItem.swift */,
+				A07CAD1326D051D10012201A /* LatestMemoItem.swift */,
+				A07CAD1526D051DE0012201A /* LatestMemoItemModel.swift */,
 			);
 			path = HomeTab;
 			sourceTree = "<group>";
@@ -1025,6 +1034,7 @@
 				A052EAD326C3F89E0033CE47 /* PublicationResponse.swift in Sources */,
 				7A11FCB026CB537500F1A6BC /* LatestBookItem.swift in Sources */,
 				A0BA4CB826C4E34200D99D8C /* BarcodeCameraView.swift in Sources */,
+				A07CAD1426D051D10012201A /* LatestMemoItem.swift in Sources */,
 				A069982F26CD052C006E74C6 /* CollectionRepositoryImpl.swift in Sources */,
 				A062C18926C5F33500C56E2A /* AppEnv.swift in Sources */,
 				7A11FCAC26CB521B00F1A6BC /* SectionHeaderText.swift in Sources */,
@@ -1032,6 +1042,7 @@
 				7A11FCA326CB45DF00F1A6BC /* NotificationExtension.swift in Sources */,
 				7A11FCB826CB5DDC00F1A6BC /* AddMemoViewModel.swift in Sources */,
 				A069981526CBE6A0006E74C6 /* MemoRepositoryImpl.swift in Sources */,
+				A07CAD1826D055C90012201A /* DateExtension.swift in Sources */,
 				A020544126CE88BD002FF585 /* MemoImageView.swift in Sources */,
 				A007C08026C78E8500270671 /* ID.swift in Sources */,
 				A069981C26CC37BF006E74C6 /* FirestoreGetMemo.swift in Sources */,
@@ -1052,6 +1063,7 @@
 				A07507DE26C5E53C0087AE5C /* AppDelegate.swift in Sources */,
 				7A11FCB326CB57FE00F1A6BC /* ControlToolbar.swift in Sources */,
 				A020544526CE8CC7002FF585 /* DeleteButton.swift in Sources */,
+				A07CAD1626D051DE0012201A /* LatestMemoItemModel.swift in Sources */,
 				A001E03326C9E62D00AC92BA /* BookViewModel.swift in Sources */,
 				A007C08526C7AD9200270671 /* ToastView.swift in Sources */,
 				A069982026CCA225006E74C6 /* MemoItem.swift in Sources */,

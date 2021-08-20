@@ -29,11 +29,10 @@ struct BookView: View {
                     .listRowSeparator(.hidden)
                 
                 Spacer()
-                    .frame(height: 16)
+                    .frame(height: 8)
                     .listRowSeparator(.hidden)
                 
                 memoSection
-                    .listRowSeparator(.hidden)
                 
                 Spacer()
                     .frame(height: 16)
@@ -139,11 +138,11 @@ struct BookView: View {
     private var memoSection: some View {
         Section {
             if viewModel.memoPager.data.isEmpty {
-                EmptyMemoItem()
+                BookEmptyMemoItem()
             } else {
                 ForEach(viewModel.memoPager.data, id: \.id.value) { memo in
                     NavigationLink(destination: LazyView(EditMemoView(book: book, memo: memo))) {
-                        MemoItem(memo: memo)
+                        BookMemoItem(memo: memo)
                             .task {
                                 await viewModel.onItemApper(of: memo)
                             }

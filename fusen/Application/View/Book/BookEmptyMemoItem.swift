@@ -1,13 +1,13 @@
 //
-//  EmptyMemoItem.swift
-//  EmptyMemoItem
+//  BookEmptyMemoItem.swift
+//  BookEmptyMemoItem
 //
 //  Created by Tatsuyuki Kobayashi on 2021/08/18.
 //
 
 import SwiftUI
 
-struct EmptyMemoItem: View {
+struct BookEmptyMemoItem: View {
     var body: some View {
         HStack {
             Spacer()
@@ -19,8 +19,8 @@ struct EmptyMemoItem: View {
     }
 }
 
-struct EmptyMemoItem_Previews: PreviewProvider {
+struct BookEmptyMemoItem_Previews: PreviewProvider {
     static var previews: some View {
-        EmptyMemoItem()
+        BookEmptyMemoItem()
     }
 }

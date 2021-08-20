@@ -29,6 +29,10 @@ extension Color {
     static let placeholder = Color("placeholder")
     static let inactive = Color.gray
     
+    init(rgb: RGB) {
+        self.init(red: CGFloat(rgb.red) / 255, green: CGFloat(rgb.green) / 255, blue: CGFloat(rgb.blue) / 255)
+    }
+    
     func rgb() -> RGB? {
         let uiColor = UIColor(self)
         var r: CGFloat = 0

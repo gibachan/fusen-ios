@@ -11,17 +11,17 @@ import FirebaseFirestoreSwift
 struct FirestoreGetCollection: Codable {
     @DocumentID var id: String?
     let name: String
-    let colors: [Int]
+    let color: [Int]
 }
 
 extension FirestoreGetCollection {
     func toDomain() -> Collection? {
         guard let id = id else { return nil }
-        guard colors.count == 3 else { return nil }
+        guard color.count == 3 else { return nil }
         return Collection(
             id: ID<Collection>(value: id),
             name: name,
-            color: RGB(red: colors[0], green: colors[1], blue: colors[2])
+            color: RGB(red: color[0], green: color[1], blue: color[2])
         )
     }
 }

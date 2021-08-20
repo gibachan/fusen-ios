@@ -29,19 +29,19 @@ final class AddCollectionViewModel: ObservableObject {
     
     func onSave(
         name: String,
-        rgb: RGB
+        color: RGB
     ) async {
         guard let user = accountService.currentUser else { return }
         guard !state.isLoading else { return }
         
         state = .loading
         do {
-            log.d("Saving \(name) collection with \(rgb)")
-//            let id = try await memoRepository.addMemo(of: book, text: text, quote: quote, page: memoPage, image: image, for: user)
-//            log.d("Memo is added for id: \(id.value)")
-//            DispatchQueue.main.async { [weak self] in
-//                self?.state = .succeeded
-//            }
+            log.d("Saving \(name) collection with \(color)")
+            let id = try await collectionRepository.addCollection(name: name, color: color, for: user)
+            log.d("Collection is added for id: \(id.value)")
+            DispatchQueue.main.async { [weak self] in
+                self?.state = .succeeded
+            }
         } catch {
             // FIXME: error handling
             print(error.localizedDescription)

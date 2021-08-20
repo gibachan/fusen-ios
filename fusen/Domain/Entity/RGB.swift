@@ -12,3 +12,7 @@ struct RGB {
     let green: Int
     let blue: Int
 }
+
+extension RGB {
+    var array: [Int] { [red, green, blue] }
+}

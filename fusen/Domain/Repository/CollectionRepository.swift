@@ -13,4 +13,6 @@ enum CollectionRepositoryError: Error {
 
 protocol CollectionRepository {
     func getlCollections(for user: User) async throws -> [Collection]
+    
+    func addCollection(name: String, color: RGB, for user: User) async throws -> ID<Collection>
 }

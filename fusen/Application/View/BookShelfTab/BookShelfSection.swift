@@ -29,6 +29,10 @@ struct BookShelfSection: View {
             }
         } header: {
             HStack {
+                Image.collection
+                    .resizable()
+                    .frame(width: 20, height: 18)
+                    .foregroundColor(Color(rgb: viewModel.collection.color))
                 SectionHeaderText(viewModel.collection.name)
                 Spacer()
                 NavigationLink(destination: LazyView(CollectionView(collection: collection))) {

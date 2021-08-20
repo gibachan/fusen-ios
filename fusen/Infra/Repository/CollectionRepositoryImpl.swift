@@ -25,4 +25,25 @@ final class CollectionRepositoryImpl: CollectionRepository {
             throw  CollectionRepositoryError.unknwon
         }
     }
+    
+    func addCollection(name: String, color: RGB, for user: User) async throws -> ID<Collection> {
+        typealias AddCollectionContinuation = CheckedContinuation<ID<Collection>, Error>
+        return try await withCheckedThrowingContinuation { (continuation: AddCollectionContinuation) in
+            let create = FirestoreCreateCollection(
+                name: name,
+                color: color.array
+            )
+            var ref: DocumentReference?
+            ref = db.collectionCollection(for: user)
+                .addDocument(data: create.data()) { error in
+                    if let error = error {
+                        log.e(error.localizedDescription)
+                        continuation.resume(throwing: CollectionRepositoryError.unknwon)
+                    } else {
+                        let id = ID<Collection>(value: ref!.documentID)
+                        continuation.resume(returning: id)
+                    }
+                }
+        }
+    }
 }

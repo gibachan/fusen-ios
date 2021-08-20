@@ -38,7 +38,7 @@ struct AddCollectionView: View {
             trailing: SaveButton {
                 Task {
                     guard let rgb = color.rgb() else { return }
-                    await viewModel.onSave(name: name, rgb: rgb)
+                    await viewModel.onSave(name: name, color: rgb)
                 }
             }
                 .disabled(!viewModel.isSaveEnabled)

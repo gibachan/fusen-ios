@@ -22,7 +22,8 @@ protocol BookRepository {
     func getBooks(by collection: Collection, for user: User, forceRefresh: Bool) async throws -> Pager<Book>
     
     func addBook(of publication: Publication, in collection: Collection, for user: User) async throws -> ID<Book>
-    func update(book: Book, for user: User, isFavorite: Bool) async throws
+    func update(book: Book, isFavorite: Bool, for user: User) async throws
+    func update(book: Book, collection: Collection, for user: User) async throws
     func delete(book: Book, for user: User) async throws
 }
 

@@ -20,6 +20,7 @@ extension Image {
     static let memo = Image(systemName: "square.and.pencil")
     static let collection = Image(systemName: "folder")
     static let addCollection = Image(systemName: "folder.badge.plus")
+    static let checkmark = Image(systemName: "checkmark")
     
     static let info = Image(systemName: "info.circle")
     static let warning = Image(systemName: "exclamationmark.triangle")

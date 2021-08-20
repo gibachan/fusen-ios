@@ -80,7 +80,7 @@ final class BookViewModel: ObservableObject {
         
         state = .loading
         do {
-            try await bookRepository.update(book: book, for: user, isFavorite: isFavorite)
+            try await bookRepository.update(book: book, isFavorite: isFavorite, for: user)
             DispatchQueue.main.async { [weak self] in
                 self?.state = .succeeded
             }

@@ -111,11 +111,15 @@ struct BookView: View {
             
             Toggle(isOn: $isFavorite) {
                 Text("お気に入り")
+                    .font(.medium)
+                    .foregroundColor(.textPrimary)
             }
             .listRowSeparator(.visible)
             
-            NavigationLink(destination: Text("カテゴリ")) {
-                Text("カテゴリ")
+            NavigationLink(destination: LazyView(SelectCollectionView(book: book))) {
+                Text("コレクション")
+                    .font(.medium)
+                    .foregroundColor(.textPrimary)
             }
             .listRowSeparator(.visible)
         } header: {

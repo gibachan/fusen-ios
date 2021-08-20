@@ -17,6 +17,7 @@ struct FirestoreUpdateBook {
     let updatedAt: FieldValue = .serverTimestamp()
     let isFavorite: Bool
     let valuation: Int
+    let collectionId: String
 }
 
 extension FirestoreUpdateBook {
@@ -29,7 +30,8 @@ extension FirestoreUpdateBook {
             "impression": impression,
             "updatedAt": updatedAt,
             "isFavorite": isFavorite,
-            "valuation": valuation
+            "valuation": valuation,
+            "collectionId": collectionId
         ]
     }
 }

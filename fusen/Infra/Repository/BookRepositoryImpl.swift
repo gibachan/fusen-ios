@@ -160,7 +160,7 @@ final class BookRepositoryImpl: BookRepository {
         }
     }
     
-    func update(book: Book, for user: User, isFavorite: Bool) async throws {
+    func update(book: Book, isFavorite: Bool, for user: User ) async throws {
         let update = FirestoreUpdateBook(
             title: book.title,
             author: book.author,
@@ -168,7 +168,30 @@ final class BookRepositoryImpl: BookRepository {
             description: book.description,
             impression: book.impression,
             isFavorite: isFavorite,
-            valuation: book.valuation
+            valuation: book.valuation,
+            collectionId: book.collectionId.value
+        )
+        let ref = db.booksCollection(for: user)
+            .document(book.id.value)
+        do {
+            try await ref.setData(update.data(), merge: true)
+            clearAllBooksCache()
+        } catch {
+            log.e(error.localizedDescription)
+            throw BookRepositoryError.unknwon
+        }
+    }
+    
+    func update(book: Book, collection: Collection, for user: User) async throws {
+        let update = FirestoreUpdateBook(
+            title: book.title,
+            author: book.author,
+            imageURL: book.imageURL?.absoluteString ?? "",
+            description: book.description,
+            impression: book.impression,
+            isFavorite: book.isFavorite,
+            valuation: book.valuation,
+            collectionId: collection.id.value
         )
         let ref = db.booksCollection(for: user)
             .document(book.id.value)

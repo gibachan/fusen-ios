@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import VisionKit
 
 struct AddMemoView: View {
     @Environment(\.dismiss) private var dismiss
@@ -14,7 +13,8 @@ struct AddMemoView: View {
     @State private var text = ""
     @State private var quote = ""
     @State private var page = 0
-    @State private var editMemoImage: AddMemoViewModel.ImageResult?
+    @State private var editMemoImage: DocumentCameraView.ImageResult?
+    @State private var isDocumentCameraPresented = false
     private let memoImageWidth: CGFloat = 72
     private let memoImageHeight: CGFloat = 96
     
@@ -59,7 +59,7 @@ struct AddMemoView: View {
                                             .frame(width: 32, height: 24)
                                             .foregroundColor(.placeholder))
                                 .onTapGesture {
-                                    takeImages()
+                                    isDocumentCameraPresented = true
                                 }
                         } else {
                             ForEach(viewModel.imageResults) { result in
@@ -90,13 +90,12 @@ struct AddMemoView: View {
             .listRowBackground(Color.backgroundLightGray)
             
             Spacer()
-                .frame(height: 140)
+                .frame(height: 150)
                 .listRowBackground(Color(UIColor.systemGroupedBackground))
         }
         .font(.medium)
         .navigationBarTitle("メモを追加", displayMode: .inline)
-        // sheet表示する場合にキャンセルボタンを表示する
-//        .navigationBarItems(leading: CancelButton { dismiss() })
+        .navigationBarItems(leading: CancelButton { dismiss() })
         .navigationBarItems(
             trailing: SaveButton {
                 Task {
@@ -109,6 +108,19 @@ struct AddMemoView: View {
             NavigationView {
                 MemoImageView(image: result.image) {
                     viewModel.onMemoImageDelete(image: result)
+                }
+            }
+        })
+        .fullScreenCover(isPresented: $isDocumentCameraPresented, onDismiss: {
+            log.d("dismiss")
+        }, content: {
+            DocumentCameraView { result in
+                switch result {
+                case .success(let images):
+                    viewModel.onMemoImageAdd(images: images)
+                case .failure(let error):
+                    // FIXME: Error handling
+                    log.e(error.localizedDescription)
                 }
             }
         })
@@ -127,20 +139,6 @@ struct AddMemoView: View {
             }
         }
     }
-    
-    private func takeImages() {
-        guard VNDocumentCameraViewController.isSupported else {
-            log.e("VNDocumentCameraViewController is not supported for simulator")
-            return
-        }
-        guard let rootVC = UIApplication.shared.currentRootViewController else {
-            log.e("RootViewController is missing")
-            return
-        }
-        let vc = VNDocumentCameraViewController()
-        vc.delegate = viewModel
-        rootVC.present(vc, animated: true, completion: nil)
-    }
 }
 
 struct AddMemoView_Previews: PreviewProvider {
@@ -150,3 +148,8 @@ struct AddMemoView_Previews: PreviewProvider {
         }
     }
 }
+
+
+
+
+

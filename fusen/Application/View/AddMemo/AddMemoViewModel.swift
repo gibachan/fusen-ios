@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import VisionKit
 
 final class AddMemoViewModel: NSObject, ObservableObject {
     private let imageCountLimit = 1
@@ -16,7 +15,7 @@ final class AddMemoViewModel: NSObject, ObservableObject {
     
     @Published var isSaveEnabled = false
     @Published var state: State = .initial
-    @Published var imageResults: [ImageResult] = []
+    @Published var imageResults: [DocumentCameraView.ImageResult] = []
     
     init(
         book: Book,
@@ -61,7 +60,11 @@ final class AddMemoViewModel: NSObject, ObservableObject {
         }
     }
     
-    func onMemoImageDelete(image: ImageResult) {
+    func onMemoImageAdd(images: [DocumentCameraView.ImageResult]) {
+        imageResults = Array(images.prefix(imageCountLimit))
+    }
+    
+    func onMemoImageDelete(image: DocumentCameraView.ImageResult) {
         imageResults = imageResults.filter { $0.id != image.id }
     }
     
@@ -78,31 +81,5 @@ final class AddMemoViewModel: NSObject, ObservableObject {
                 return false
             }
         }
-    }
-
-    struct ImageResult: Identifiable {
-        var id: Int { page }
-        let page: Int
-        let image: UIImage
-    }
-}
-
-extension AddMemoViewModel: VNDocumentCameraViewControllerDelegate {
-    func documentCameraViewControllerDidCancel(_ controller: VNDocumentCameraViewController) {
-        controller.dismiss(animated: true, completion: nil)
-    }
-    
-    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFailWithError error: Error) {
-        log.e(error.localizedDescription)
-    }
-    
-    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
-        imageResults = []
-        for i in 0..<scan.pageCount {
-            let image = scan.imageOfPage(at: i)
-            imageResults.append(ImageResult(page: i, image: image))
-        }
-        imageResults = Array(imageResults.prefix(imageCountLimit))
-        controller.dismiss(animated: true, completion: nil)
     }
 }

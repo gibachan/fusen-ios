@@ -59,27 +59,20 @@ struct HomeTabView: View {
                         isAddPresented = true
                     }
                 )
-
-                // AddMemoViewはsheet表示したいが、VNDocumentCameraViewControllerが表示されない問題があるためワークアラウンドとしてNavigationLink表示する
-                NavigationLink(isActive: $isAddPresented) {
-                    AddMemoView(book: Book.sample)
-                } label: {
-                    EmptyView()
-                }
             }
             .navigationBarTitle("ホーム")
         }
         .task {
             await viewModel.onAppear()
         }
-//        .sheet(isPresented: $isAddPresented) {
-//            print("dismissed")
-//        } content: {
-//            // FIXME: Assign book
-//            NavigationView {
-//                AddMemoView(book: Book.sample)
-//            }
-//        }
+        .sheet(isPresented: $isAddPresented) {
+            print("dismissed")
+        } content: {
+            // FIXME: Assign book
+            NavigationView {
+                AddMemoView(book: Book.sample)
+            }
+        }
         .onReceive(viewModel.$state) { state in
             switch state {
             case .initial:

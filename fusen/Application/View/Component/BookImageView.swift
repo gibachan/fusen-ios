@@ -14,8 +14,9 @@ struct BookImageView: View {
             image
                 .resizable()
         } placeholder: {
-            // FIXME: placeholder image
-            Color.green
+            Image.book
+                .resizable()
+                .foregroundColor(.placeholder)
         }
     }
 }

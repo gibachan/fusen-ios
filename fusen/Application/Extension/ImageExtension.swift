@@ -9,6 +9,7 @@ import SwiftUI
 
 extension Image {
     static let home = Image(systemName: "book")
+    static let book = Image(systemName: "book.closed")
     static let bookShelf = Image(systemName: "books.vertical")
     static let setting = Image(systemName: "gearshape")
     static let add = Image(systemName: "plus")

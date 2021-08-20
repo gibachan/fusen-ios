@@ -207,7 +207,7 @@ final class MemoRepositoryImpl: MemoRepository {
             let metadata = StorageMetadata()
             metadata.contentType = "image/jpeg"
             log.d("Uploading image..: \(storagePath)")
-            let _ = imageRef.putData(image.data, metadata: metadata) { (metadata, error) in
+            imageRef.putData(image.data, metadata: metadata) { (metadata, error) in
                 guard let metadata = metadata else {
                     log.e("metadata is missing")
                     continuation.resume(throwing: MemoRepositoryError.uploadImage)
@@ -216,7 +216,7 @@ final class MemoRepositoryImpl: MemoRepository {
                 log.d("Metadata size=\(metadata.size), content-type=\(metadata.contentType ?? "")")
                 imageRef.downloadURL { (url, error) in
                     guard let url = url else {
-                        log.e("downloadURL is missing")
+                        log.e("downloadURL is missing - \(error?.localizedDescription ?? "")")
                         continuation.resume(throwing: MemoRepositoryError.uploadImage)
                         return
                     }

@@ -9,4 +9,12 @@ import UIKit
 
 extension MemoImage {
     var uiImage: UIImage? { .init(data: data) }
+    
+    init?(uiImage: UIImage) {
+        // FIXME: Determine reasonable quality
+        guard let data = uiImage.jpegData(compressionQuality: 0.8) else {
+            return nil
+        }
+        self.data = data
+    }
 }

@@ -8,6 +8,7 @@
 import Foundation
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import FirebaseStorage
 
 final class MemoRepositoryImpl: MemoRepository {
     private let db = Firestore.firestore()
@@ -92,7 +93,7 @@ final class MemoRepositoryImpl: MemoRepository {
             throw  MemoRepositoryError.unknwon
         }
     }
-
+    
     func getMemos(of book: Book, for user: User, forceRefresh: Bool) async throws -> Pager<Memo> {
         if let cachedPager = cache[book.id]?.currentPager {
             let isCacheValid = cachedPager.data.count >= perPage && !forceRefresh
@@ -161,7 +162,17 @@ final class MemoRepositoryImpl: MemoRepository {
         }
     }
     
-    func addMemo(of book: Book, text: String, quote: String, page: Int?, imageURLs: [URL], for user: User) async throws -> ID<Memo> {
+    func addMemo(of book: Book, text: String, quote: String, page: Int?, image: MemoImage?, for user: User) async throws -> ID<Memo> {
+        
+        var imageURL: URL? = nil
+        if let image = image {
+            do {
+                imageURL = try await upload(image: image, of: book, for: user)
+            } catch {
+                throw MemoRepositoryError.uploadImage
+            }
+        }
+        
         typealias AddMemoContinuation = CheckedContinuation<ID<Memo>, Error>
         return try await withCheckedThrowingContinuation { (continuation: AddMemoContinuation) in
             let create = FirestoreCreateMemo(
@@ -169,7 +180,7 @@ final class MemoRepositoryImpl: MemoRepository {
                 text: text,
                 quote: quote,
                 page: page,
-                imageURLs: imageURLs.map { $0.absoluteString }
+                imageURLs: imageURL != nil ? [imageURL!.absoluteString] : []
             )
             var ref: DocumentReference?
             ref = db.memosCollection(for: user)
@@ -182,6 +193,37 @@ final class MemoRepositoryImpl: MemoRepository {
                         continuation.resume(returning: id)
                     }
                 }
+        }
+    }
+    
+    private func upload(image: MemoImage, of book: Book, for user: User) async throws -> URL {
+        typealias UploadContinuation = CheckedContinuation<URL, Error>
+        return try await withCheckedThrowingContinuation { (continuation: UploadContinuation) in
+            let storage = Storage.storage()
+            let imageName = "\(UUID().uuidString).jpg"
+            let storagePath = "users/\(user.id.value)/books/\(book.id.value)/\(imageName)"
+            let imageRef = storage.reference().child(storagePath)
+            
+            let metadata = StorageMetadata()
+            metadata.contentType = "image/jpeg"
+            log.d("Uploading image..: \(storagePath)")
+            let _ = imageRef.putData(image.data, metadata: metadata) { (metadata, error) in
+                guard let metadata = metadata else {
+                    log.e("metadata is missing")
+                    continuation.resume(throwing: MemoRepositoryError.uploadImage)
+                    return
+                }
+                log.d("Metadata size=\(metadata.size), content-type=\(metadata.contentType ?? "")")
+                imageRef.downloadURL { (url, error) in
+                    guard let url = url else {
+                        log.e("downloadURL is missing")
+                        continuation.resume(throwing: MemoRepositoryError.uploadImage)
+                        return
+                    }
+                    log.d("Successfully uploaded: \(url)")
+                    continuation.resume(returning: url)
+                }
+            }
         }
     }
     

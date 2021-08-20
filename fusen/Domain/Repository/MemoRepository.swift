@@ -8,6 +8,7 @@
 import Foundation
 
 enum MemoRepositoryError: Error {
+    case uploadImage
     case unknwon
 }
 
@@ -20,7 +21,7 @@ protocol MemoRepository {
     func getMemos(of book: Book, for user: User, forceRefresh: Bool) async throws -> Pager<Memo>
     func getNextMemos(of book: Book, for user: User) async throws -> Pager<Memo>
 
-    func addMemo(of book: Book, text: String, quote: String, page: Int?, imageURLs: [URL], for user: User) async throws -> ID<Memo>
+    func addMemo(of book: Book, text: String, quote: String, page: Int?, image: MemoImage?, for user: User) async throws -> ID<Memo>
     func update(memo: Memo, of book: Book, text: String, quote: String, page: Int?, imageURLs: [URL], for user: User) async throws
     func delete(memo: Memo, of book: Book, for user: User) async throws
 }

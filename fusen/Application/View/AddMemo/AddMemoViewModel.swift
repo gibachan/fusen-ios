@@ -44,7 +44,10 @@ final class AddMemoViewModel: NSObject, ObservableObject {
         state = .loading
         do {
             let memoPage: Int? = page == 0 ? nil : page
-            let id = try await memoRepository.addMemo(of: book, text: text, quote: quote, page: memoPage, imageURLs: imageURLs, for: user)
+            let image: MemoImage? = imageResults
+                .compactMap { MemoImage(uiImage: $0.image) }
+                .first
+            let id = try await memoRepository.addMemo(of: book, text: text, quote: quote, page: memoPage, image: image, for: user)
             log.d("Memo is added for id: \(id.value)")
             DispatchQueue.main.async { [weak self] in
                 self?.state = .succeeded

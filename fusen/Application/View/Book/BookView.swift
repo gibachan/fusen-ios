@@ -52,7 +52,7 @@ struct BookView: View {
             
             // AddMemoViewはsheet表示したいが、VNDocumentCameraViewControllerが表示されない問題があるためワークアラウンドとしてNavigationLink表示する
             NavigationLink(isActive: $isAddPresented) {
-                AddMemoView(book: Book.sample)
+                AddMemoView(book: book)
             } label: {
                 EmptyView()
             }

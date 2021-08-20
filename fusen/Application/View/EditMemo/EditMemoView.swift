@@ -10,18 +10,19 @@ import SwiftUI
 struct EditMemoView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel: EditMemoViewModel
-    @State private var text = ""
-    @State private var quote = ""
-    @State private var page = 0
+    @State private var text: String
+    @State private var quote: String
+    @State private var page: Int
     @State private var isDeleteAlertPresented = false
     @State private var isDocumentCameraPresented = false
-    private let currentMemo: Memo
     private let memoImageWidth: CGFloat = 72
     private let memoImageHeight: CGFloat = 96
 
     init(book: Book, memo: Memo) {
-        self.currentMemo = memo
         self._viewModel = StateObject(wrappedValue: EditMemoViewModel(book: book, memo: memo))
+        self._text = State(wrappedValue: memo.text)
+        self._quote = State(wrappedValue: memo.quote)
+        self._page = State(wrappedValue: memo.page ?? 0)
     }
     
     var body: some View {
@@ -126,11 +127,6 @@ struct EditMemoView: View {
                     }
                 })
             )
-        }
-        .task {
-            text = currentMemo.text
-            quote = currentMemo.quote
-            page = currentMemo.page ?? 0
         }
         .onReceive(viewModel.$state) { state in
             switch state {

@@ -28,6 +28,7 @@ final class EditMemoViewModel: ObservableObject {
         self.memo = memo
         self.accountService = accountService
         self.memoRepository = memoRepository
+        self.isSaveEnabled = !book.title.isEmpty
     }
     
     func onTextChange(_ text: String) {

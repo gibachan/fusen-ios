@@ -12,6 +12,7 @@ struct AddBookView: View {
     @StateObject private var viewModel = AddBookViewModel()
     @State private var isScanBarcodePresented = false
     @State private var isManualInputPresented = false
+    
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 32) {

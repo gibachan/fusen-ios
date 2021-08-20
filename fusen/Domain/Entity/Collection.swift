@@ -14,12 +14,6 @@ struct Collection {
     let id: ID<Collection>
     let name: String
     let color: RGB
-    
-    struct RGB {
-        let red: Int
-        let green: Int
-        let blue: Int
-    }
 }
 
 extension Collection {

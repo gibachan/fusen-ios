@@ -9,7 +9,8 @@ import SwiftUI
 
 struct BookShelfTabView: View {
     @StateObject private var viewModel = BookShelfTabViewModel()
-    @State private var isAddPresented = false
+    @State private var isAddBookPresented = false
+    @State private var isAddCollectionPresented = false
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 0) {
@@ -25,15 +26,26 @@ struct BookShelfTabView: View {
                 
                 ControlToolbar(
                     text: viewModel.textCountText,
+                    leadingImage: .collection,
+                    leadingAction: {
+                        isAddCollectionPresented = true
+                    },
                     trailingImage: .add,
                     trailingAction: {
-                        isAddPresented = true
+                        isAddBookPresented = true
                     }
                 )
             }
             .listStyle(PlainListStyle())
             .navigationBarTitle("本棚")
-            .sheet(isPresented: $isAddPresented) {
+            .sheet(isPresented: $isAddCollectionPresented) {
+                print("dismissed")
+            } content: {
+                NavigationView {
+                    AddCollectionView()
+                }
+            }
+            .sheet(isPresented: $isAddBookPresented) {
                 print("dismissed")
             } content: {
                 AddBookView()

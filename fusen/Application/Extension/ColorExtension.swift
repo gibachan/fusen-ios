@@ -28,4 +28,17 @@ extension Color {
     static let error = Color.red
     static let placeholder = Color("placeholder")
     static let inactive = Color.gray
+    
+    func rgb() -> RGB? {
+        let uiColor = UIColor(self)
+        var r: CGFloat = 0
+        var g: CGFloat = 0
+        var b: CGFloat = 0
+        var a: CGFloat = 0
+        guard uiColor.getRed(&r, green: &g, blue: &b, alpha: &a) else {
+            return nil
+        }
+
+        return RGB(red: Int(r * 255), green: Int(g * 255), blue: Int(b * 255))
+    }
 }

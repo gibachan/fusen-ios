@@ -8,16 +8,23 @@
 import SwiftUI
 
 struct ControlToolbar: View {
+    typealias Action = () -> Void
     private let text: String?
+    private let leadingImage: Image?
+    private let leadingAction: Action?
     private let trailingImage: Image?
-    private let trailingAction: (() -> Void)?
-    
+    private let trailingAction: Action?
+
     init(
         text: String? = nil,
+        leadingImage: Image? = nil,
+        leadingAction: Action? = nil,
         trailingImage: Image? = nil,
-        trailingAction: (() -> Void)? = nil
+        trailingAction: Action? = nil
     ) {
         self.text = text
+        self.leadingImage = leadingImage
+        self.leadingAction = leadingAction
         self.trailingImage = trailingImage
         self.trailingAction = trailingAction
     }
@@ -30,6 +37,14 @@ struct ControlToolbar: View {
                     .foregroundColor(.textSecondary)
             }
             HStack(alignment: .center) {
+                if let leadingImage = leadingImage {
+                    leadingImage
+                        .foregroundColor(.primary)
+                        .frame(width: 36, height: 36)
+                        .onTapGesture {
+                            leadingAction?()
+                        }
+                }
                 Spacer()
                 if let trailingImage = trailingImage {
                     trailingImage

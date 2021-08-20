@@ -21,7 +21,7 @@ extension FirestoreGetCollection {
         return Collection(
             id: ID<Collection>(value: id),
             name: name,
-            color: Collection.RGB(red: colors[0], green: colors[1], blue: colors[2])
+            color: RGB(red: colors[0], green: colors[1], blue: colors[2])
         )
     }
 }

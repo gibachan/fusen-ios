@@ -16,6 +16,7 @@ struct Book {
     let impression: String
     let isFavorite: Bool
     let valuation: Int
+    let collectionId: ID<Collection>
 }
 
 extension Book {
@@ -28,7 +29,8 @@ extension Book {
             description: "書籍の説明",
             impression: "本を読んだ感想・本を読んだ感想・本を読んだ感想・本を読んだ感想・本を読んだ感想・本を読んだ感想\nGreat book I've ever read!",
             isFavorite: true,
-            valuation: 3
+            valuation: 3,
+            collectionId: Collection.default.id
         )
     }
 }

@@ -14,19 +14,21 @@ struct FirestoreCreateBook {
     let imageURL: String
     let description: String
     let impression: String = ""
-    let createdAt: FieldValue = .serverTimestamp()
-    let updatedAt: FieldValue = .serverTimestamp()
     let isFavorite: Bool = false
     let valuation: Int = 0
+    let collectionId: String
+    let createdAt: FieldValue = .serverTimestamp()
+    let updatedAt: FieldValue = .serverTimestamp()
 }
 
 extension FirestoreCreateBook {
-    static func fromDomain(_ publication: Publication) -> Self {
+    static func fromDomain( publication: Publication, collection: Collection) -> Self {
         return .init(
             title: publication.title,
             author: publication.author,
             imageURL: publication.thumbnailURL?.absoluteString ?? "",
-            description: ""
+            description: "",
+            collectionId: collection.id.value
         )
     }
     
@@ -41,6 +43,7 @@ extension FirestoreCreateBook {
             "updatedAt": updatedAt,
             "isFavorite": isFavorite,
             "valuation": valuation,
+            "collectionId": collectionId
         ]
     }
 }

@@ -81,7 +81,7 @@ final class ScanBarcodeViewModel: ObservableObject {
         isScanning = false
     
         do {
-            let id = try await bookRepository.addBook(of: publication, for: user)
+            let id = try await bookRepository.addBook(of: publication, in: Collection.default, for: user)
             log.d("Book is added for id: \(id.value)")
             DispatchQueue.main.async { [weak self] in
                 self?.scannedBook = publication

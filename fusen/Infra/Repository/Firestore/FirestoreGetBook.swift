@@ -19,6 +19,7 @@ struct FirestoreGetBook: Codable {
     let updatedAt: Date
     let isFavorite: Bool
     let valuation: Int
+    let collectionId: String
 }
 
 extension FirestoreGetBook {
@@ -32,7 +33,8 @@ extension FirestoreGetBook {
             description: description,
             impression: impression,
             isFavorite: isFavorite,
-            valuation: valuation
+            valuation: valuation,
+            collectionId: ID<Collection>(value: collectionId)
         )
     }
 }

@@ -23,6 +23,14 @@ struct Collection {
 }
 
 extension Collection {
+    static var `default`: Collection {
+        Collection(
+            id: ID<Collection>(value: ""),
+            name: "未分類",
+            color: RGB(red: 65, green: 105, blue: 225)
+        )
+    }
+    
     static var sample: Collection {
         Collection(
             id: ID(value: "hoge"),

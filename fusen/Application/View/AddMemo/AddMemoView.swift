@@ -95,6 +95,7 @@ struct AddMemoView: View {
         }
         .font(.medium)
         .navigationBarTitle("メモを追加", displayMode: .inline)
+        // sheet表示する場合にキャンセルボタンを表示する
 //        .navigationBarItems(leading: CancelButton { dismiss() })
         .navigationBarItems(
             trailing: SaveButton {

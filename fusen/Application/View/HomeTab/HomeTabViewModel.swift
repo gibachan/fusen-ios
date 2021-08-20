@@ -45,8 +45,8 @@ final class HomeTabViewModel: ObservableObject {
             let result = (books: try await books, memos: try await memos)
             DispatchQueue.main.async { [weak self] in
                 self?.state = .succeeded
-                self?.latestBooks = result.books
-                self?.latestMemos = result.memos
+                self?.latestBooks = Array(result.books.prefix(4))
+                self?.latestMemos = Array(result.memos.prefix(4))
             }
         } catch {
             log.e(error.localizedDescription)

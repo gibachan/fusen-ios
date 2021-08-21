@@ -113,24 +113,25 @@ final class BookViewModel: ObservableObject {
         }
     }
     
-//    func onFavoriteChange(isFavorite: Bool) async {
-//        guard let user = accountService.currentUser else { return }
-//        guard !state.isInProgress else { return }
-//
-//        state = .loading
-//        do {
-//            try await bookRepository.update(book: book, isFavorite: isFavorite, for: user)
-//            DispatchQueue.main.async { [weak self] in
-//                self?.state = .succeeded
-//            }
-//        } catch {
-//            // FIXME: error handling
-//            print(error.localizedDescription)
-//            DispatchQueue.main.async { [weak self] in
-//                self?.state = .failed
-//            }
-//        }
-//    }
+    func onFavoriteChange(isFavorite: Bool) async {
+        guard let user = accountService.currentUser else { return }
+        guard let book = book else { return }
+        guard !state.isInProgress else { return }
+
+        state = .loading
+        do {
+            try await bookRepository.update(book: book, isFavorite: isFavorite, for: user)
+            DispatchQueue.main.async { [weak self] in
+                self?.state = .succeeded
+            }
+        } catch {
+            // FIXME: error handling
+            print(error.localizedDescription)
+            DispatchQueue.main.async { [weak self] in
+                self?.state = .failed
+            }
+        }
+    }
     
     func onDelete() async {
         guard let user = accountService.currentUser else { return }

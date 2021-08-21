@@ -11,12 +11,9 @@ struct BookView: View {
     @Environment(\.dismiss) private var dismiss
     
     @StateObject private var viewModel: BookViewModel
-    //    @State private var isFavorite = false
     
     init(bookId: ID<Book>) {
         self._viewModel = StateObject(wrappedValue: BookViewModel(bookId: bookId))
-        // FIXME: Fetch book by its id
-        //        self.isFavorite = book.isFavorite
     }
     
     var body: some View {
@@ -36,7 +33,12 @@ struct BookView: View {
                             await viewModel.onReadingToggle()
                         }
                     },
-                    deleteActin: {
+                    favoriteChangeAction: { isFavorite in
+                        Task {
+                            await viewModel.onFavoriteChange(isFavorite: isFavorite)
+                        }
+                    },
+                    deleteAction: {
                         Task {
                             await viewModel.onDelete()
                         }

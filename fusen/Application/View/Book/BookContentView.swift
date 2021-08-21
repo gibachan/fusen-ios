@@ -12,13 +12,35 @@ struct BookContentView: View {
     
     @State private var isDeleteAlertPresented = false
     @State private var isAddPresented = false
+    @State private var isFavorite: Bool
     
     let book: Book
     let isReadingBook: Bool
     let memos: [Memo]
     let memoItemAppearAction: (Memo) -> Void
     let readingToggleAction: () -> Void
+    let favoriteChangeAction: (Bool) -> Void
     let deleteActin: () -> Void
+    
+    init(
+        book: Book,
+        isReadingBook: Bool,
+        memos: [Memo],
+        memoItemAppearAction: @escaping (Memo) -> Void,
+        readingToggleAction: @escaping () -> Void,
+        favoriteChangeAction: @escaping (Bool) -> Void,
+        deleteAction: @escaping () -> Void
+    ) {
+        self.book = book
+        self.isReadingBook = isReadingBook
+        self.memos = memos
+        self.memoItemAppearAction = memoItemAppearAction
+        self.readingToggleAction = readingToggleAction
+        self.favoriteChangeAction = favoriteChangeAction
+        self.deleteActin = deleteAction
+        
+        self._isFavorite = State(wrappedValue: book.isFavorite)
+    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -86,12 +108,15 @@ struct BookContentView: View {
             }
             .buttonStyle(PlainButtonStyle())
             
-            //            Toggle(isOn: $isFavorite) {
-            //                Text("お気に入り")
-            //                    .font(.medium)
-            //                    .foregroundColor(.textPrimary)
-            //            }
-            //            .listRowSeparator(.visible)
+            Toggle(isOn: $isFavorite) {
+                Text("お気に入り")
+                    .font(.medium)
+                    .foregroundColor(.textPrimary)
+            }
+            .onChange(of: isFavorite, perform: { newValue in
+                favoriteChangeAction(newValue)
+            })
+            .listRowSeparator(.visible)
             
             NavigationLink(destination: LazyView(SelectCollectionView(book: book))) {
                 Text("コレクション")
@@ -147,9 +172,8 @@ struct BookContentView: View {
     }
 }
 
-
 struct BookContentView_Previews: PreviewProvider {
     static var previews: some View {
-        BookContentView(book: Book.sample, isReadingBook: true, memos: [Memo.sample], memoItemAppearAction: { _ in }, readingToggleAction: {}, deleteActin: {})
+        BookContentView(book: Book.sample, isReadingBook: true, memos: [Memo.sample], memoItemAppearAction: { _ in }, readingToggleAction: {}, favoriteChangeAction: { _ in }, deleteAction: {})
     }
 }

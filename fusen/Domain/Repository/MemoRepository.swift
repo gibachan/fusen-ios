@@ -9,7 +9,7 @@ import Foundation
 
 enum MemoRepositoryError: Error {
     case uploadImage
-    case unknwon
+    case unknown
 }
 
 protocol MemoRepository {

@@ -22,7 +22,7 @@ final class CollectionRepositoryImpl: CollectionRepository {
             return collections
         } catch {
             log.e(error.localizedDescription)
-            throw  CollectionRepositoryError.unknwon
+            throw  CollectionRepositoryError.unknown
         }
     }
     
@@ -38,7 +38,7 @@ final class CollectionRepositoryImpl: CollectionRepository {
                 .addDocument(data: create.data()) { error in
                     if let error = error {
                         log.e(error.localizedDescription)
-                        continuation.resume(throwing: CollectionRepositoryError.unknwon)
+                        continuation.resume(throwing: CollectionRepositoryError.unknown)
                     } else {
                         let id = ID<Collection>(value: ref!.documentID)
                         continuation.resume(returning: id)

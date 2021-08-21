@@ -8,7 +8,7 @@
 import Foundation
 
 enum CollectionRepositoryError: Error {
-    case unknwon
+    case unknown
 }
 
 protocol CollectionRepository {

@@ -30,7 +30,7 @@ final class BookRepositoryImpl: BookRepository {
             throw  BookRepositoryError.decodeError
         } catch {
             log.e(error.localizedDescription)
-            throw  BookRepositoryError.unknwon
+            throw  BookRepositoryError.unknown
         }
     }
     
@@ -46,7 +46,7 @@ final class BookRepositoryImpl: BookRepository {
             return books
         } catch {
             log.e(error.localizedDescription)
-            throw  BookRepositoryError.unknwon
+            throw  BookRepositoryError.unknown
         }
     }
     
@@ -74,7 +74,7 @@ final class BookRepositoryImpl: BookRepository {
             return newPager
         } catch {
             log.e(error.localizedDescription)
-            throw  BookRepositoryError.unknwon
+            throw  BookRepositoryError.unknown
         }
     }
     
@@ -106,7 +106,7 @@ final class BookRepositoryImpl: BookRepository {
             return newPager
         } catch {
             log.e(error.localizedDescription)
-            throw  BookRepositoryError.unknwon
+            throw  BookRepositoryError.unknown
         }
     }
     
@@ -137,7 +137,7 @@ final class BookRepositoryImpl: BookRepository {
             return newPager
         } catch {
             log.e(error.localizedDescription)
-            throw  BookRepositoryError.unknwon
+            throw  BookRepositoryError.unknown
         }
     }
     
@@ -150,7 +150,7 @@ final class BookRepositoryImpl: BookRepository {
                 .addDocument(data: create.data()) { [weak self] error in
                     if let error = error {
                         log.e(error.localizedDescription)
-                        continuation.resume(throwing: BookRepositoryError.unknwon)
+                        continuation.resume(throwing: BookRepositoryError.unknown)
                         self?.clearAllBooksCache()
                     } else {
                         let id = ID<Book>(value: ref!.documentID)
@@ -178,7 +178,7 @@ final class BookRepositoryImpl: BookRepository {
             clearAllBooksCache()
         } catch {
             log.e(error.localizedDescription)
-            throw BookRepositoryError.unknwon
+            throw BookRepositoryError.unknown
         }
     }
     
@@ -200,7 +200,7 @@ final class BookRepositoryImpl: BookRepository {
             clearAllBooksCache()
         } catch {
             log.e(error.localizedDescription)
-            throw BookRepositoryError.unknwon
+            throw BookRepositoryError.unknown
         }
     }
     
@@ -213,7 +213,7 @@ final class BookRepositoryImpl: BookRepository {
             clearAllBooksCache()
         } catch {
             log.e(error.localizedDescription)
-            throw BookRepositoryError.unknwon
+            throw BookRepositoryError.unknown
         }
     }
     

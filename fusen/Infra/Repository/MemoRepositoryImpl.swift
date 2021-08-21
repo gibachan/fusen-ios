@@ -30,7 +30,7 @@ final class MemoRepositoryImpl: MemoRepository {
             return memos
         } catch {
             log.e(error.localizedDescription)
-            throw  MemoRepositoryError.unknwon
+            throw  MemoRepositoryError.unknown
         }
     }
     
@@ -58,7 +58,7 @@ final class MemoRepositoryImpl: MemoRepository {
             return newPager
         } catch {
             log.e(error.localizedDescription)
-            throw  MemoRepositoryError.unknwon
+            throw  MemoRepositoryError.unknown
         }
     }
     
@@ -90,7 +90,7 @@ final class MemoRepositoryImpl: MemoRepository {
             return newPager
         } catch {
             log.e(error.localizedDescription)
-            throw  MemoRepositoryError.unknwon
+            throw  MemoRepositoryError.unknown
         }
     }
     
@@ -121,7 +121,7 @@ final class MemoRepositoryImpl: MemoRepository {
             return newPager
         } catch {
             log.e(error.localizedDescription)
-            throw  BookRepositoryError.unknwon
+            throw  MemoRepositoryError.unknown
         }
     }
     
@@ -158,7 +158,7 @@ final class MemoRepositoryImpl: MemoRepository {
             return newPager
         } catch {
             log.e(error.localizedDescription)
-            throw  MemoRepositoryError.unknwon
+            throw  MemoRepositoryError.unknown
         }
     }
     
@@ -187,7 +187,7 @@ final class MemoRepositoryImpl: MemoRepository {
                 .addDocument(data: create.data()) { error in
                     if let error = error {
                         log.e(error.localizedDescription)
-                        continuation.resume(throwing: MemoRepositoryError.unknwon)
+                        continuation.resume(throwing: MemoRepositoryError.unknown)
                     } else {
                         let id = ID<Memo>(value: ref!.documentID)
                         continuation.resume(returning: id)
@@ -241,7 +241,7 @@ final class MemoRepositoryImpl: MemoRepository {
             clearCache(of: book)
         } catch {
             log.e(error.localizedDescription)
-            throw MemoRepositoryError.unknwon
+            throw MemoRepositoryError.unknown
         }
     }
     
@@ -253,7 +253,7 @@ final class MemoRepositoryImpl: MemoRepository {
             clearCache(of: book)
         } catch {
             log.e(error.localizedDescription)
-            throw MemoRepositoryError.unknwon
+            throw MemoRepositoryError.unknown
         }
     }
     

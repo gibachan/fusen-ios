@@ -9,7 +9,7 @@ import Foundation
 
 enum BookRepositoryError: Error {
     case decodeError
-    case unknwon
+    case unknown
 }
 
 protocol BookRepository {

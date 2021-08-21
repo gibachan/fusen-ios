@@ -32,7 +32,7 @@ struct HomeTabView: View {
                     
                     Section {
                         ForEach(viewModel.latestMemos, id: \.id.value) { memo in
-                            NavigationLink(destination: LazyView(Text(memo.text))) {
+                            NavigationLink(destination: LazyView(EditMemoView(memo: memo))) {
                                 LatestMemoItem(memo: memo)
                             }
                         }

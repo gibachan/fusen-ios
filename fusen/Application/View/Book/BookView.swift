@@ -146,7 +146,7 @@ struct BookView: View {
                 BookEmptyMemoItem()
             } else {
                 ForEach(viewModel.memoPager.data, id: \.id.value) { memo in
-                    NavigationLink(destination: LazyView(EditMemoView(book: book, memo: memo))) {
+                    NavigationLink(destination: LazyView(EditMemoView(memo: memo))) {
                         BookMemoItem(memo: memo)
                             .task {
                                 await viewModel.onItemApper(of: memo)

@@ -102,7 +102,7 @@ final class MemoRepositoryImpl: MemoRepository {
             }
         }
         
-        clearCache(of: book)
+        clearCache(of: book.id)
         let query = db.memosCollection(for: user)
             .whereBook(book)
             .orderByCreatedAtDesc()
@@ -227,7 +227,7 @@ final class MemoRepositoryImpl: MemoRepository {
         }
     }
     
-    func update(memo: Memo, of book: Book, text: String, quote: String, page: Int?, imageURLs: [URL], for user: User) async throws {
+    func update(memo: Memo, text: String, quote: String, page: Int?, imageURLs: [URL], for user: User) async throws {
         let update = FirestoreUpdateMemo(
             text: text,
             quote: quote,
@@ -238,19 +238,19 @@ final class MemoRepositoryImpl: MemoRepository {
             .document(memo.id.value)
         do {
             try await ref.setData(update.data(), merge: true)
-            clearCache(of: book)
+            clearCache(of: memo.bookId)
         } catch {
             log.e(error.localizedDescription)
             throw MemoRepositoryError.unknown
         }
     }
     
-    func delete(memo: Memo, of book: Book, for user: User) async throws {
+    func delete(memo: Memo, for user: User) async throws {
         let ref = db.memosCollection(for: user)
             .document(memo.id.value)
         do {
             try await ref.delete()
-            clearCache(of: book)
+            clearCache(of: memo.bookId)
         } catch {
             log.e(error.localizedDescription)
             throw MemoRepositoryError.unknown
@@ -261,7 +261,7 @@ final class MemoRepositoryImpl: MemoRepository {
         allMemosCache = .empty
     }
     
-    private func clearCache(of book: Book) {
-        cache[book.id] = .empty
+    private func clearCache(of bookId: ID<Book>) {
+        cache[bookId] = .empty
     }
 }

@@ -18,8 +18,8 @@ struct EditMemoView: View {
     private let memoImageWidth: CGFloat = 72
     private let memoImageHeight: CGFloat = 96
 
-    init(book: Book, memo: Memo) {
-        self._viewModel = StateObject(wrappedValue: EditMemoViewModel(book: book, memo: memo))
+    init(memo: Memo) {
+        self._viewModel = StateObject(wrappedValue: EditMemoViewModel(memo: memo))
         self._text = State(wrappedValue: memo.text)
         self._quote = State(wrappedValue: memo.quote)
         self._page = State(wrappedValue: memo.page ?? 0)
@@ -150,6 +150,6 @@ struct EditMemoView: View {
 
 struct EditMemoView_Previews: PreviewProvider {
     static var previews: some View {
-        EditMemoView(book: Book.sample, memo: Memo.sample)
+        EditMemoView(memo: Memo.sample)
     }
 }

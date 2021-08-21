@@ -9,7 +9,6 @@ import Foundation
 
 final class EditMemoViewModel: ObservableObject {
     private let imageCountLimit = 1
-    private let book: Book
     private let accountService: AccountServiceProtocol
     private let memoRepository: MemoRepository
     
@@ -19,16 +18,14 @@ final class EditMemoViewModel: ObservableObject {
     @Published var imageResults: [DocumentCameraView.ImageResult] = []
     
     init(
-        book: Book,
         memo: Memo,
         accountService: AccountServiceProtocol = AccountService.shared,
         memoRepository: MemoRepository = MemoRepositoryImpl()
     ) {
-        self.book = book
         self.memo = memo
         self.accountService = accountService
         self.memoRepository = memoRepository
-        self.isSaveEnabled = !book.title.isEmpty
+        self.isSaveEnabled = !memo.text.isEmpty
     }
     
     func onTextChange(_ text: String) {
@@ -55,7 +52,7 @@ final class EditMemoViewModel: ObservableObject {
         state = .loading
         do {
             let memoPage: Int? = page == 0 ? nil : page
-            try await memoRepository.update(memo: memo, of: book, text: text, quote: quote, page: memoPage, imageURLs: imageURLs, for: user)
+            try await memoRepository.update(memo: memo, text: text, quote: quote, page: memoPage, imageURLs: imageURLs, for: user)
             DispatchQueue.main.async { [weak self] in
                 self?.state = .succeeded
             }
@@ -74,7 +71,7 @@ final class EditMemoViewModel: ObservableObject {
         
         state = .loading
         do {
-            try await memoRepository.delete(memo: memo, of: book, for: user)
+            try await memoRepository.delete(memo: memo, for: user)
             DispatchQueue.main.async { [weak self] in
                 self?.state = .deleted
             }

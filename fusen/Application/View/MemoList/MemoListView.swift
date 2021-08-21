@@ -15,12 +15,9 @@ struct MemoListView: View {
         VStack(alignment: .leading, spacing: 0) {
             List {
                 ForEach(viewModel.pager.data, id: \.id.value) { memo in
-//                    NavigationLink(destination: LazyView(EditMemoView(memo: memo))) {
+                    NavigationLink(destination: LazyView(EditMemoView(memo: memo))) {
                         MemoListItem(memo: memo)
-                            .task {
-                                await viewModel.onItemApper(of: memo)
-                            }
-//                    }
+                    }
                 }
                 if viewModel.pager.data.isEmpty {
                     // FIXME: show empty view

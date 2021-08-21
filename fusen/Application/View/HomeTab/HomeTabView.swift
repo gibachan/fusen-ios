@@ -12,7 +12,7 @@ struct HomeTabView: View {
     @State private var isAddPresented = false
     var body: some View {
         NavigationView {
-            VStack(alignment: .leading, spacing: 0) {
+            ZStack(alignment: .bottomLeading) {
                 List {
                     Section {
                         ForEach(viewModel.latestBooks, id: \.id.value) { book in
@@ -29,7 +29,6 @@ struct HomeTabView: View {
                             }
                         }
                     }
-                    .listRowSeparator(.hidden)
                     
                     Section {
                         ForEach(viewModel.latestMemos, id: \.id.value) { memo in
@@ -46,19 +45,18 @@ struct HomeTabView: View {
                             }
                         }
                     }
-                    .listRowSeparator(.hidden)
+                    
+                    Spacer().frame(height: HomeReadingBookItem.height)
                 }
                 .listStyle(PlainListStyle())
                 .refreshable {
                     await viewModel.onRefresh()
                 }
-                
-                ControlToolbar(
-                    trailingImage: .memo,
-                    trailingAction: {
+                if let readigBook = viewModel.readingBook {
+                    HomeReadingBookItem(book: readigBook) {
                         isAddPresented = true
                     }
-                )
+                }
             }
             .navigationBarTitle("ホーム")
         }
@@ -68,9 +66,10 @@ struct HomeTabView: View {
         .sheet(isPresented: $isAddPresented) {
             print("dismissed")
         } content: {
-            // FIXME: Assign book
             NavigationView {
-                AddMemoView(book: Book.sample)
+                if let readingBook = viewModel.readingBook {
+                    AddMemoView(book: readingBook)
+                }
             }
         }
         .onReceive(viewModel.$state) { state in

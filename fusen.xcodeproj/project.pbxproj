@@ -114,6 +114,7 @@
 		A07CAD2926D0C6CA0012201A /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD2826D0C6CA0012201A /* UserInfo.swift */; };
 		A07CAD2B26D0C7130012201A /* FirestoreGetUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD2A26D0C7130012201A /* FirestoreGetUserInfo.swift */; };
 		A07CAD2D26D0D1150012201A /* DocumentReferenceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD2C26D0D1150012201A /* DocumentReferenceExtension.swift */; };
+		A07CAD3026D114300012201A /* HomeReadingBookItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD2F26D114300012201A /* HomeReadingBookItem.swift */; };
 		A082000826C1F5CF00100357 /* FusenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A082000726C1F5CF00100357 /* FusenApp.swift */; };
 		A082000C26C1F5D100100357 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000B26C1F5D100100357 /* Assets.xcassets */; };
 		A082000F26C1F5D100100357 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000E26C1F5D100100357 /* Preview Assets.xcassets */; };
@@ -262,6 +263,7 @@
 		A07CAD2826D0C6CA0012201A /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		A07CAD2A26D0C7130012201A /* FirestoreGetUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreGetUserInfo.swift; sourceTree = "<group>"; };
 		A07CAD2C26D0D1150012201A /* DocumentReferenceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentReferenceExtension.swift; sourceTree = "<group>"; };
+		A07CAD2F26D114300012201A /* HomeReadingBookItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReadingBookItem.swift; sourceTree = "<group>"; };
 		A082000426C1F5CF00100357 /* fusen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fusen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A082000726C1F5CF00100357 /* FusenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FusenApp.swift; sourceTree = "<group>"; };
 		A082000B26C1F5D100100357 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -652,6 +654,7 @@
 				7A11FCAF26CB537500F1A6BC /* LatestBookItem.swift */,
 				A07CAD1326D051D10012201A /* LatestMemoItem.swift */,
 				A07CAD1526D051DE0012201A /* LatestMemoItemModel.swift */,
+				A07CAD2F26D114300012201A /* HomeReadingBookItem.swift */,
 			);
 			path = HomeTab;
 			sourceTree = "<group>";
@@ -1101,6 +1104,7 @@
 				A007C08B26C7DACA00270671 /* BookRepositoryImpl.swift in Sources */,
 				7A11FCC326CD4BAB00F1A6BC /* BookShelfSectionModel.swift in Sources */,
 				A007C08326C78FB400270671 /* Logger.swift in Sources */,
+				A07CAD3026D114300012201A /* HomeReadingBookItem.swift in Sources */,
 				A07CAD1026CF95FD0012201A /* RGB.swift in Sources */,
 				A007C09526C8CAB700270671 /* FirestoreGetBook.swift in Sources */,
 				A07CAD2126D092640012201A /* UserRepository.swift in Sources */,

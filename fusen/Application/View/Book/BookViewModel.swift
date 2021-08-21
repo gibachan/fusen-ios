@@ -8,24 +8,25 @@
 import Foundation
 
 final class BookViewModel: ObservableObject {
+    private let bookId: ID<Book>
     private let accountService: AccountServiceProtocol
     private let userRepository: UserRepository
     private let bookRepository: BookRepository
     private let memoRepository: MemoRepository
     
-    @Published var book: Book
+    @Published var book: Book?
     @Published var isReadingBook = false
     @Published var state: State = .initial
     @Published var memoPager: Pager<Memo> = .empty
     
     init(
-        book: Book,
+        bookId: ID<Book>,
         accountService: AccountServiceProtocol = AccountService.shared,
         userRepository: UserRepository = UserRepositoryImpl(),
         bookRepository: BookRepository = BookRepositoryImpl(),
         memoRepository: MemoRepository = MemoRepositoryImpl()
     ) {
-        self.book = book
+        self.bookId = bookId
         self.accountService = accountService
         self.userRepository = userRepository
         self.bookRepository = bookRepository
@@ -51,12 +52,12 @@ final class BookViewModel: ObservableObject {
 //            }
 
             let userInfo = try await userRepository.getInfo(for: user)
-            let newBook = try await bookRepository.getBook(by: book.id, for: user)
-            let memoPager = try await memoRepository.getMemos(of: book, for: user, forceRefresh: false)
+            let book = try await bookRepository.getBook(by: bookId, for: user)
+            let memoPager = try await memoRepository.getMemos(of: bookId, for: user, forceRefresh: false)
             DispatchQueue.main.async { [weak self] in
                 self?.state = .succeeded
-                self?.isReadingBook = userInfo.readingBookId == newBook.id
-                self?.book = newBook
+                self?.isReadingBook = userInfo.readingBookId == book.id
+                self?.book = book
                 self?.memoPager = memoPager
             }
         } catch {
@@ -76,7 +77,7 @@ final class BookViewModel: ObservableObject {
         if memo.id == lastMemo.id {
             state = .loadingNext
             do {
-                let pager = try await memoRepository.getNextMemos(of: book, for: user)
+                let pager = try await memoRepository.getNextMemos(of: bookId, for: user)
                 log.d("finished=\(pager.finished)")
                 DispatchQueue.main.async { [weak self] in
                     self?.state = .succeeded
@@ -133,6 +134,7 @@ final class BookViewModel: ObservableObject {
     
     func onDelete() async {
         guard let user = accountService.currentUser else { return }
+        guard let book = book else { return }
         guard !state.isInProgress else { return }
         
         state = .loading

@@ -15,7 +15,7 @@ struct BookListView: View {
         VStack(alignment: .leading, spacing: 0) {
             List {
                 ForEach(viewModel.pager.data, id: \.id.value) { book in
-                    NavigationLink(destination: LazyView(BookView(book: book))) {
+                    NavigationLink(destination: LazyView(BookView(bookId: book.id))) {
                         BookListItem(book: book)
                             .task {
                                 await viewModel.onItemApper(of: book)

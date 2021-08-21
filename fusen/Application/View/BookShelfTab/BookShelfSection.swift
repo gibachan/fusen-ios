@@ -22,7 +22,7 @@ struct BookShelfSection: View {
                 BookShelfEmptyItem()
             } else {
                 ForEach(viewModel.books, id: \.id.value) { book in
-                    NavigationLink(destination: LazyView(BookView(book: book))) {
+                    NavigationLink(destination: LazyView(BookView(bookId: book.id))) {
                         BookShelfItem(book: book)
                     }
                 }

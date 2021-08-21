@@ -94,17 +94,17 @@ final class MemoRepositoryImpl: MemoRepository {
         }
     }
     
-    func getMemos(of book: Book, for user: User, forceRefresh: Bool) async throws -> Pager<Memo> {
-        if let cachedPager = cache[book.id]?.currentPager {
+    func getMemos(of bookId: ID<Book>, for user: User, forceRefresh: Bool) async throws -> Pager<Memo> {
+        if let cachedPager = cache[bookId]?.currentPager {
             let isCacheValid = cachedPager.data.count >= perPage && !forceRefresh
             if isCacheValid {
                 return cachedPager
             }
         }
         
-        clearCache(of: book.id)
+        clearCache(of: bookId)
         let query = db.memosCollection(for: user)
-            .whereBook(book)
+            .whereBook(bookId)
             .orderByCreatedAtDesc()
             .limit(to: perPage)
         do {
@@ -113,11 +113,11 @@ final class MemoRepositoryImpl: MemoRepository {
                 .compactMap { try? $0.data(as: FirestoreGetMemo.self) }
                 .compactMap { $0.toDomain() }
             let finished = memos.count < perPage
-            let cachedPager = cache[book.id]?.currentPager ?? .empty
+            let cachedPager = cache[bookId]?.currentPager ?? .empty
             let newPager = Pager<Memo>(currentPage: cachedPager.currentPage + 1,
                                        finished: finished,
                                        data: cachedPager.data + memos)
-            cache[book.id] = PagerCache(pager: newPager, lastDocument: snapshot.documents.last)
+            cache[bookId] = PagerCache(pager: newPager, lastDocument: snapshot.documents.last)
             return newPager
         } catch {
             log.e(error.localizedDescription)
@@ -125,8 +125,8 @@ final class MemoRepositoryImpl: MemoRepository {
         }
     }
     
-    func getNextMemos(of book: Book, for user: User) async throws -> Pager<Memo> {
-        guard let cacheOfBook = cache[book.id] else {
+    func getNextMemos(of bookId: ID<Book>, for user: User) async throws -> Pager<Memo> {
+        guard let cacheOfBook = cache[bookId] else {
             fatalError("cacheは必ず存在する")
             
         }
@@ -139,7 +139,7 @@ final class MemoRepositoryImpl: MemoRepository {
         }
         
         let query = db.memosCollection(for: user)
-            .whereBook(book)
+            .whereBook(bookId)
             .orderByCreatedAtDesc()
             .start(afterDocument: afterDocument)
             .limit(to: perPage)
@@ -150,11 +150,11 @@ final class MemoRepositoryImpl: MemoRepository {
                 .compactMap { try? $0.data(as: FirestoreGetMemo.self) }
                 .compactMap { $0.toDomain() }
             let finished = memos.count < perPage
-            let cachedPager = cache[book.id]?.currentPager ?? .empty
+            let cachedPager = cache[bookId]?.currentPager ?? .empty
             let newPager = Pager<Memo>(currentPage: cachedPager.currentPage + 1,
                                        finished: finished,
                                        data: cachedPager.data + memos)
-            cache[book.id] = PagerCache(pager: newPager, lastDocument: snapshot.documents.last)
+            cache[bookId] = PagerCache(pager: newPager, lastDocument: snapshot.documents.last)
             return newPager
         } catch {
             log.e(error.localizedDescription)

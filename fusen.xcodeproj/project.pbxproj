@@ -114,6 +114,8 @@
 		A07CAD2B26D0C7130012201A /* FirestoreGetUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD2A26D0C7130012201A /* FirestoreGetUserInfo.swift */; };
 		A07CAD2D26D0D1150012201A /* DocumentReferenceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD2C26D0D1150012201A /* DocumentReferenceExtension.swift */; };
 		A07CAD3026D114300012201A /* HomeReadingBookItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD2F26D114300012201A /* HomeReadingBookItem.swift */; };
+		A07CAD3726D146D40012201A /* BookContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD3626D146D30012201A /* BookContentView.swift */; };
+		A07CAD3926D147230012201A /* BookEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD3826D147230012201A /* BookEmptyView.swift */; };
 		A082000826C1F5CF00100357 /* FusenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A082000726C1F5CF00100357 /* FusenApp.swift */; };
 		A082000C26C1F5D100100357 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000B26C1F5D100100357 /* Assets.xcassets */; };
 		A082000F26C1F5D100100357 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000E26C1F5D100100357 /* Preview Assets.xcassets */; };
@@ -262,6 +264,8 @@
 		A07CAD2A26D0C7130012201A /* FirestoreGetUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreGetUserInfo.swift; sourceTree = "<group>"; };
 		A07CAD2C26D0D1150012201A /* DocumentReferenceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentReferenceExtension.swift; sourceTree = "<group>"; };
 		A07CAD2F26D114300012201A /* HomeReadingBookItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReadingBookItem.swift; sourceTree = "<group>"; };
+		A07CAD3626D146D30012201A /* BookContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookContentView.swift; sourceTree = "<group>"; };
+		A07CAD3826D147230012201A /* BookEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookEmptyView.swift; sourceTree = "<group>"; };
 		A082000426C1F5CF00100357 /* fusen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fusen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A082000726C1F5CF00100357 /* FusenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FusenApp.swift; sourceTree = "<group>"; };
 		A082000B26C1F5D100100357 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -487,6 +491,8 @@
 				A001E03226C9E62D00AC92BA /* BookViewModel.swift */,
 				A069981F26CCA225006E74C6 /* BookMemoItem.swift */,
 				A069982126CCA231006E74C6 /* BookEmptyMemoItem.swift */,
+				A07CAD3626D146D30012201A /* BookContentView.swift */,
+				A07CAD3826D147230012201A /* BookEmptyView.swift */,
 			);
 			path = Book;
 			sourceTree = "<group>";
@@ -1054,6 +1060,7 @@
 				A052EACA26C3F4E90033CE47 /* Publication.swift in Sources */,
 				A007C08D26C7DB0E00270671 /* Book.swift in Sources */,
 				7A11FCBF26CD401800F1A6BC /* BookListViewModel.swift in Sources */,
+				A07CAD3926D147230012201A /* BookEmptyView.swift in Sources */,
 				A0BA4CB226C4DDF100D99D8C /* ScanBarcodeView.swift in Sources */,
 				A0BA4CBA26C4E37E00D99D8C /* CameraPreview.swift in Sources */,
 				A069983F26CDDD7F006E74C6 /* MemoListItem.swift in Sources */,
@@ -1062,6 +1069,7 @@
 				A007C07C26C7805B00270671 /* AccountService.swift in Sources */,
 				7AD1610526C29EB500334A63 /* MainView.swift in Sources */,
 				7AD1611826C2A8BC00334A63 /* UIColorExtension.swift in Sources */,
+				A07CAD3726D146D40012201A /* BookContentView.swift in Sources */,
 				A007C09026C7EF9700270671 /* FirestoreExtension.swift in Sources */,
 				7A33118226CE518F00EB520D /* UIApplicationExtensoin.swift in Sources */,
 				7A11FCA526CB467C00F1A6BC /* NotificationCenterExtension.swift in Sources */,

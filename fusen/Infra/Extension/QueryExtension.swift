@@ -9,8 +9,8 @@ import Foundation
 import FirebaseFirestore
 
 extension Query {
-    func whereBook(_ book: Book) -> Query {
-        whereField("bookId", isEqualTo: book.id.value)
+    func whereBook(_ bookId: ID<Book>) -> Query {
+        whereField("bookId", isEqualTo: bookId.value)
     }
     
     func whereCollection(_ collection: Collection) -> Query {

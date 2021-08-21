@@ -10,7 +10,7 @@ import SwiftUI
 struct BookView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel: BookViewModel
-    @State private var isFavorite = false
+//    @State private var isFavorite = false
     @State private var isDeleteAlertPresented = false
     @State private var isAddPresented = false
     
@@ -19,7 +19,7 @@ struct BookView: View {
     init(book: Book) {
         self._viewModel = StateObject(wrappedValue: BookViewModel(book: book))
         // FIXME: Fetch book by its id
-        self.isFavorite = book.isFavorite
+//        self.isFavorite = book.isFavorite
     }
     
     var body: some View {
@@ -105,16 +105,23 @@ struct BookView: View {
                             .foregroundColor(.textSecondary)
                     }
                     Spacer()
+                    Button {
+                        Task {
+                            await viewModel.onReadingToggle()
+                        }
+                    } label: {
+                        ReadingMark(isReading: viewModel.isReadingBook)
+                    }
                 }
-                Divider()
             }
+            .buttonStyle(PlainButtonStyle())
             
-            Toggle(isOn: $isFavorite) {
-                Text("お気に入り")
-                    .font(.medium)
-                    .foregroundColor(.textPrimary)
-            }
-            .listRowSeparator(.visible)
+//            Toggle(isOn: $isFavorite) {
+//                Text("お気に入り")
+//                    .font(.medium)
+//                    .foregroundColor(.textPrimary)
+//            }
+//            .listRowSeparator(.visible)
             
             NavigationLink(destination: LazyView(SelectCollectionView(book: book))) {
                 Text("コレクション")

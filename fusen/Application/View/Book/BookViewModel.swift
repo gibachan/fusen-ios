@@ -9,21 +9,25 @@ import Foundation
 
 final class BookViewModel: ObservableObject {
     private let accountService: AccountServiceProtocol
+    private let userRepository: UserRepository
     private let bookRepository: BookRepository
     private let memoRepository: MemoRepository
     
     @Published var book: Book
+    @Published var isReadingBook = false
     @Published var state: State = .initial
     @Published var memoPager: Pager<Memo> = .empty
     
     init(
         book: Book,
         accountService: AccountServiceProtocol = AccountService.shared,
+        userRepository: UserRepository = UserRepositoryImpl(),
         bookRepository: BookRepository = BookRepositoryImpl(),
         memoRepository: MemoRepository = MemoRepositoryImpl()
     ) {
         self.book = book
         self.accountService = accountService
+        self.userRepository = userRepository
         self.bookRepository = bookRepository
         self.memoRepository = memoRepository
     }
@@ -34,17 +38,30 @@ final class BookViewModel: ObservableObject {
         
         state = .loading
         do {
-            async let newBook = try await bookRepository.getBook(by: book.id, for: user)
-            async let memoPager = memoRepository.getMemos(of: book, for: user, forceRefresh: false)
-            let result = (book: try await newBook, memoPager: try await memoPager)
+            // async letで例外が発生したときに何故かキャッチできずにクラッシュする
+//            async let userInfo = userRepository.getInfo(for: user)
+//            async let newBook = bookRepository.getBook(by: book.id, for: user)
+//            async let memoPager = memoRepository.getMemos(of: book, for: user, forceRefresh: false)
+//            let result = try await (userInfo: userInfo, book: newBook, memoPager: memoPager)
+//            DispatchQueue.main.async { [weak self] in
+//                self?.state = .succeeded
+//                self?.isReadingBook = result.userInfo.readingBookId == result.book.id
+//                self?.book = result.book
+//                self?.memoPager = result.memoPager
+//            }
+
+            let userInfo = try await userRepository.getInfo(for: user)
+            let newBook = try await bookRepository.getBook(by: book.id, for: user)
+            let memoPager = try await memoRepository.getMemos(of: book, for: user, forceRefresh: false)
             DispatchQueue.main.async { [weak self] in
                 self?.state = .succeeded
-                self?.book = result.book
-                self?.memoPager = result.memoPager
+                self?.isReadingBook = userInfo.readingBookId == newBook.id
+                self?.book = newBook
+                self?.memoPager = memoPager
             }
         } catch {
             // FIXME: error handling
-            print(error.localizedDescription)
+            log.e(error.localizedDescription)
             DispatchQueue.main.async { [weak self] in
                 self?.state = .failed
             }
@@ -74,15 +91,17 @@ final class BookViewModel: ObservableObject {
         }
     }
     
-    func onFavoriteChange(isFavorite: Bool) async {
+    func onReadingToggle() async {
         guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
         
         state = .loading
         do {
-            try await bookRepository.update(book: book, isFavorite: isFavorite, for: user)
+            let readingBook: Book? = isReadingBook ? nil : book
+            try await userRepository.update(readingBook: readingBook, for: user)
             DispatchQueue.main.async { [weak self] in
                 self?.state = .succeeded
+                self?.isReadingBook = readingBook != nil
             }
         } catch {
             // FIXME: error handling
@@ -92,6 +111,25 @@ final class BookViewModel: ObservableObject {
             }
         }
     }
+    
+//    func onFavoriteChange(isFavorite: Bool) async {
+//        guard let user = accountService.currentUser else { return }
+//        guard !state.isInProgress else { return }
+//
+//        state = .loading
+//        do {
+//            try await bookRepository.update(book: book, isFavorite: isFavorite, for: user)
+//            DispatchQueue.main.async { [weak self] in
+//                self?.state = .succeeded
+//            }
+//        } catch {
+//            // FIXME: error handling
+//            print(error.localizedDescription)
+//            DispatchQueue.main.async { [weak self] in
+//                self?.state = .failed
+//            }
+//        }
+//    }
     
     func onDelete() async {
         guard let user = accountService.currentUser else { return }

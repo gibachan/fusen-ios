@@ -107,6 +107,13 @@
 		A07CAD1B26D0641E0012201A /* SelectCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD1A26D0641E0012201A /* SelectCollectionView.swift */; };
 		A07CAD1D26D064290012201A /* SelectCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD1C26D064290012201A /* SelectCollectionViewModel.swift */; };
 		A07CAD1F26D0670A0012201A /* CollectionItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD1E26D0670A0012201A /* CollectionItemView.swift */; };
+		A07CAD2126D092640012201A /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD2026D092640012201A /* UserRepository.swift */; };
+		A07CAD2326D095520012201A /* UserRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD2226D095520012201A /* UserRepositoryImpl.swift */; };
+		A07CAD2526D096020012201A /* FirestoreUpdateUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD2426D096020012201A /* FirestoreUpdateUser.swift */; };
+		A07CAD2726D0C0560012201A /* ReadingMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD2626D0C0560012201A /* ReadingMark.swift */; };
+		A07CAD2926D0C6CA0012201A /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD2826D0C6CA0012201A /* UserInfo.swift */; };
+		A07CAD2B26D0C7130012201A /* FirestoreGetUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD2A26D0C7130012201A /* FirestoreGetUserInfo.swift */; };
+		A07CAD2D26D0D1150012201A /* DocumentReferenceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD2C26D0D1150012201A /* DocumentReferenceExtension.swift */; };
 		A082000826C1F5CF00100357 /* FusenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A082000726C1F5CF00100357 /* FusenApp.swift */; };
 		A082000C26C1F5D100100357 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000B26C1F5D100100357 /* Assets.xcassets */; };
 		A082000F26C1F5D100100357 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000E26C1F5D100100357 /* Preview Assets.xcassets */; };
@@ -248,6 +255,13 @@
 		A07CAD1A26D0641E0012201A /* SelectCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCollectionView.swift; sourceTree = "<group>"; };
 		A07CAD1C26D064290012201A /* SelectCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCollectionViewModel.swift; sourceTree = "<group>"; };
 		A07CAD1E26D0670A0012201A /* CollectionItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionItemView.swift; sourceTree = "<group>"; };
+		A07CAD2026D092640012201A /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		A07CAD2226D095520012201A /* UserRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryImpl.swift; sourceTree = "<group>"; };
+		A07CAD2426D096020012201A /* FirestoreUpdateUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreUpdateUser.swift; sourceTree = "<group>"; };
+		A07CAD2626D0C0560012201A /* ReadingMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingMark.swift; sourceTree = "<group>"; };
+		A07CAD2826D0C6CA0012201A /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		A07CAD2A26D0C7130012201A /* FirestoreGetUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreGetUserInfo.swift; sourceTree = "<group>"; };
+		A07CAD2C26D0D1150012201A /* DocumentReferenceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentReferenceExtension.swift; sourceTree = "<group>"; };
 		A082000426C1F5CF00100357 /* fusen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fusen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A082000726C1F5CF00100357 /* FusenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FusenApp.swift; sourceTree = "<group>"; };
 		A082000B26C1F5D100100357 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -461,6 +475,7 @@
 				7A11FCAB26CB521B00F1A6BC /* SectionHeaderText.swift */,
 				7A11FCAD26CB532700F1A6BC /* ShowAllText.swift */,
 				7A11FCB226CB57FE00F1A6BC /* ControlToolbar.swift */,
+				A07CAD2626D0C0560012201A /* ReadingMark.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -505,6 +520,8 @@
 		A007C09326C8CA9A00270671 /* Firestore */ = {
 			isa = PBXGroup;
 			children = (
+				A07CAD2A26D0C7130012201A /* FirestoreGetUserInfo.swift */,
+				A07CAD2426D096020012201A /* FirestoreUpdateUser.swift */,
 				A007C09426C8CAB600270671 /* FirestoreGetBook.swift */,
 				A001E02B26C943AF00AC92BA /* FirestoreCreateBook.swift */,
 				A001E03826CA2CDE00AC92BA /* FirestoreUpdateBook.swift */,
@@ -548,6 +565,7 @@
 				A069982A26CD0492006E74C6 /* Collection.swift */,
 				A07CAD0026CED80E0012201A /* MemoImage.swift */,
 				A07CAD0F26CF95FD0012201A /* RGB.swift */,
+				A07CAD2826D0C6CA0012201A /* UserInfo.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -556,6 +574,7 @@
 			isa = PBXGroup;
 			children = (
 				A052EACB26C3F79B0033CE47 /* PublicationRepository.swift */,
+				A07CAD2026D092640012201A /* UserRepository.swift */,
 				A007C08826C7DABE00270671 /* BookRepository.swift */,
 				A069981026CBE449006E74C6 /* MemoRepository.swift */,
 				A069982C26CD050D006E74C6 /* CollectionRepository.swift */,
@@ -567,6 +586,7 @@
 			isa = PBXGroup;
 			children = (
 				A052EACF26C3F7F50033CE47 /* PublicationRepositoryImpl.swift */,
+				A07CAD2226D095520012201A /* UserRepositoryImpl.swift */,
 				A007C08A26C7DACA00270671 /* BookRepositoryImpl.swift */,
 				A069981426CBE6A0006E74C6 /* MemoRepositoryImpl.swift */,
 				A069982E26CD052C006E74C6 /* CollectionRepositoryImpl.swift */,
@@ -590,6 +610,7 @@
 			children = (
 				A007C08F26C7EF9700270671 /* FirestoreExtension.swift */,
 				A069981926CC3774006E74C6 /* QueryExtension.swift */,
+				A07CAD2C26D0D1150012201A /* DocumentReferenceExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -999,6 +1020,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A052EACC26C3F79B0033CE47 /* PublicationRepository.swift in Sources */,
+				A07CAD2526D096020012201A /* FirestoreUpdateUser.swift in Sources */,
 				A07CAD0326CED9A20012201A /* MemoImageExtension.swift in Sources */,
 				7A11FCAA26CB47EA00F1A6BC /* SettingTabView.swift in Sources */,
 				A069981A26CC3774006E74C6 /* QueryExtension.swift in Sources */,
@@ -1025,6 +1047,8 @@
 				A052EAC426C3E4140033CE47 /* CancelButton.swift in Sources */,
 				A07CAD0126CED80E0012201A /* MemoImage.swift in Sources */,
 				A069981126CBE449006E74C6 /* MemoRepository.swift in Sources */,
+				A07CAD2D26D0D1150012201A /* DocumentReferenceExtension.swift in Sources */,
+				A07CAD2726D0C0560012201A /* ReadingMark.swift in Sources */,
 				A001E02E26C9477700AC92BA /* BookShelfItem.swift in Sources */,
 				A069981E26CC3ECC006E74C6 /* PagerCache.swift in Sources */,
 				A001E03926CA2CDE00AC92BA /* FirestoreUpdateBook.swift in Sources */,
@@ -1048,7 +1072,9 @@
 				A0BA4CB426C4DDFA00D99D8C /* ScanBarcodeViewModel.swift in Sources */,
 				A007C07926C7797000270671 /* TutorialViewModel.swift in Sources */,
 				A001E03126C9E62400AC92BA /* BookView.swift in Sources */,
+				A07CAD2926D0C6CA0012201A /* UserInfo.swift in Sources */,
 				A069982D26CD050D006E74C6 /* CollectionRepository.swift in Sources */,
+				A07CAD2326D095520012201A /* UserRepositoryImpl.swift in Sources */,
 				7A33118526CFD59100EB520D /* DocumentCameraView.swift in Sources */,
 				A052EAD326C3F89E0033CE47 /* PublicationResponse.swift in Sources */,
 				7A11FCB026CB537500F1A6BC /* LatestBookItem.swift in Sources */,
@@ -1069,6 +1095,7 @@
 				A07CAD0E26CF7F010012201A /* AddCollectionViewModel.swift in Sources */,
 				A069983626CDD9CB006E74C6 /* CollectionView.swift in Sources */,
 				A007C08926C7DABE00270671 /* BookRepository.swift in Sources */,
+				A07CAD2B26D0C7130012201A /* FirestoreGetUserInfo.swift in Sources */,
 				7A11FCAE26CB532700F1A6BC /* ShowAllText.swift in Sources */,
 				A0BA4CAF26C49BE100D99D8C /* ISBN.swift in Sources */,
 				A007C08B26C7DACA00270671 /* BookRepositoryImpl.swift in Sources */,
@@ -1076,6 +1103,7 @@
 				A007C08326C78FB400270671 /* Logger.swift in Sources */,
 				A07CAD1026CF95FD0012201A /* RGB.swift in Sources */,
 				A007C09526C8CAB700270671 /* FirestoreGetBook.swift in Sources */,
+				A07CAD2126D092640012201A /* UserRepository.swift in Sources */,
 				A052EAD026C3F7F50033CE47 /* PublicationRepositoryImpl.swift in Sources */,
 				A052EAC026C3D7430033CE47 /* AddBookView.swift in Sources */,
 				A069982926CCAB07006E74C6 /* FirestoreUpdateMemo.swift in Sources */,

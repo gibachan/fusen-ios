@@ -10,6 +10,7 @@ import SwiftUI
 struct BookContentView: View {
     @Environment(\.dismiss) private var dismiss
     
+    @State private var isDetailCollapsed = true
     @State private var isDeleteAlertPresented = false
     @State private var isAddPresented = false
     @State private var isFavorite: Bool
@@ -108,29 +109,46 @@ struct BookContentView: View {
             }
             .buttonStyle(PlainButtonStyle())
             
-            Toggle(isOn: $isFavorite) {
-                Text("お気に入り")
-                    .font(.medium)
-                    .foregroundColor(.textPrimary)
+            if !isDetailCollapsed {
+                Toggle(isOn: $isFavorite) {
+                    Text("お気に入り")
+                        .font(.medium)
+                        .foregroundColor(.textPrimary)
+                }
+                .onChange(of: isFavorite, perform: { newValue in
+                    favoriteChangeAction(newValue)
+                })
+                .listRowSeparator(.visible)
+                
+                NavigationLink(destination: LazyView(SelectCollectionView(book: book))) {
+                    Text("コレクション")
+                        .font(.medium)
+                        .foregroundColor(.textPrimary)
+                }
+                .listRowSeparator(.visible)
             }
-            .onChange(of: isFavorite, perform: { newValue in
-                favoriteChangeAction(newValue)
-            })
-            .listRowSeparator(.visible)
-            
-            NavigationLink(destination: LazyView(SelectCollectionView(book: book))) {
-                Text("コレクション")
-                    .font(.medium)
-                    .foregroundColor(.textPrimary)
-            }
-            .listRowSeparator(.visible)
         } header: {
             HStack {
                 SectionHeaderText("書籍情報")
                 Spacer()
-                NavigationLink(destination: Text("書籍詳細")) {
-                    ShowAllText()
+                Button {
+                    withAnimation {
+                        isDetailCollapsed.toggle()
+                    }
+                } label: {
+                    if isDetailCollapsed {
+                        Image.expand
+                            .resizable()
+                            .foregroundColor(.active)
+                            .frame(width: 20, height: 12)
+                    } else {
+                        Image.collapse
+                            .resizable()
+                            .foregroundColor(.active)
+                            .frame(width: 20, height: 12)
+                    }
                 }
+
             }
         }
     }

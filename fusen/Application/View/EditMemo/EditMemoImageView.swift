@@ -7,16 +7,24 @@
 
 import SwiftUI
 
-struct MemoImageView: View {
+struct EditMemoImageView: View {
     @Environment(\.dismiss) private var dismiss
-    let image: UIImage
-    let deleteAction: () -> Void
+    
+    @State var offset: CGSize = .zero
+    @State var initialOffset: CGSize = .zero
+    @State var scale: CGFloat = 1.0
+    @State var initialScale: CGFloat = 1.0
+    
+    let url: URL
+    let deleteAction: (() -> Void)
     
     var body: some View {
         VStack {
-            Image(uiImage: image)
-                .resizable()
-                .padding()
+            AsyncImage(url: url) { image in
+                GestureImageView(image: image)
+            } placeholder: {
+                Color.black
+            }
         }
         .background(Color.black)
         .navigationBarTitle("画像", displayMode: .inline)
@@ -30,10 +38,10 @@ struct MemoImageView: View {
     }
 }
 
-struct MemoImageView_Previews: PreviewProvider {
+struct EditMemoImageView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            MemoImageView(image: UIImage.strokedCheckmark) {
+            EditMemoImageView(url: Memo.sample.imageURLs.first!) {
                 print("delete")
             }
         }

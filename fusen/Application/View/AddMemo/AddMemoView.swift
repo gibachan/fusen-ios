@@ -106,7 +106,7 @@ struct AddMemoView: View {
         )
         .sheet(item: $editMemoImage, onDismiss: {}, content: { result in
             NavigationView {
-                MemoImageView(image: result.image) {
+                AddMemoImageView(image: result.image) {
                     viewModel.onMemoImageDelete(image: result)
                 }
             }

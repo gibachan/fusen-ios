@@ -56,7 +56,7 @@
 		A007C09026C7EF9700270671 /* FirestoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C08F26C7EF9700270671 /* FirestoreExtension.swift */; };
 		A007C09226C83A7200270671 /* Pager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C09126C83A7200270671 /* Pager.swift */; };
 		A007C09526C8CAB700270671 /* FirestoreGetBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C09426C8CAB600270671 /* FirestoreGetBook.swift */; };
-		A020544126CE88BD002FF585 /* MemoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A020544026CE88BD002FF585 /* MemoImageView.swift */; };
+		A020544126CE88BD002FF585 /* EditMemoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A020544026CE88BD002FF585 /* EditMemoImageView.swift */; };
 		A020544526CE8CC7002FF585 /* DeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A020544426CE8CC7002FF585 /* DeleteButton.swift */; };
 		A052EAC026C3D7430033CE47 /* AddBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EABF26C3D7430033CE47 /* AddBookView.swift */; };
 		A052EAC226C3D74C0033CE47 /* AddBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EAC126C3D74C0033CE47 /* AddBookViewModel.swift */; };
@@ -66,6 +66,8 @@
 		A052EACC26C3F79B0033CE47 /* PublicationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EACB26C3F79B0033CE47 /* PublicationRepository.swift */; };
 		A052EAD026C3F7F50033CE47 /* PublicationRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EACF26C3F7F50033CE47 /* PublicationRepositoryImpl.swift */; };
 		A052EAD326C3F89E0033CE47 /* PublicationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EAD226C3F89E0033CE47 /* PublicationResponse.swift */; };
+		A05CE89326D17FD3007F9CF2 /* AddMemoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05CE89226D17FD3007F9CF2 /* AddMemoImageView.swift */; };
+		A05CE89526D1A6C6007F9CF2 /* GestureImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05CE89426D1A6C6007F9CF2 /* GestureImageView.swift */; };
 		A062C18926C5F33500C56E2A /* AppEnv.swift in Sources */ = {isa = PBXBuildFile; fileRef = A062C18826C5F33500C56E2A /* AppEnv.swift */; };
 		A069981126CBE449006E74C6 /* MemoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069981026CBE449006E74C6 /* MemoRepository.swift */; };
 		A069981326CBE47E006E74C6 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069981226CBE47E006E74C6 /* Memo.swift */; };
@@ -206,7 +208,7 @@
 		A007C08F26C7EF9700270671 /* FirestoreExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreExtension.swift; sourceTree = "<group>"; };
 		A007C09126C83A7200270671 /* Pager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pager.swift; sourceTree = "<group>"; };
 		A007C09426C8CAB600270671 /* FirestoreGetBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreGetBook.swift; sourceTree = "<group>"; };
-		A020544026CE88BD002FF585 /* MemoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoImageView.swift; sourceTree = "<group>"; };
+		A020544026CE88BD002FF585 /* EditMemoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMemoImageView.swift; sourceTree = "<group>"; };
 		A020544426CE8CC7002FF585 /* DeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButton.swift; sourceTree = "<group>"; };
 		A052EABF26C3D7430033CE47 /* AddBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookView.swift; sourceTree = "<group>"; };
 		A052EAC126C3D74C0033CE47 /* AddBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewModel.swift; sourceTree = "<group>"; };
@@ -216,6 +218,8 @@
 		A052EACB26C3F79B0033CE47 /* PublicationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationRepository.swift; sourceTree = "<group>"; };
 		A052EACF26C3F7F50033CE47 /* PublicationRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationRepositoryImpl.swift; sourceTree = "<group>"; };
 		A052EAD226C3F89E0033CE47 /* PublicationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationResponse.swift; sourceTree = "<group>"; };
+		A05CE89226D17FD3007F9CF2 /* AddMemoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoImageView.swift; sourceTree = "<group>"; };
+		A05CE89426D1A6C6007F9CF2 /* GestureImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureImageView.swift; sourceTree = "<group>"; };
 		A062C18826C5F33500C56E2A /* AppEnv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnv.swift; sourceTree = "<group>"; };
 		A069981026CBE449006E74C6 /* MemoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoRepository.swift; sourceTree = "<group>"; };
 		A069981226CBE47E006E74C6 /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
@@ -337,6 +341,7 @@
 			children = (
 				7A11FCB526CB5DD400F1A6BC /* AddMemoView.swift */,
 				7A11FCB726CB5DDC00F1A6BC /* AddMemoViewModel.swift */,
+				A05CE89226D17FD3007F9CF2 /* AddMemoImageView.swift */,
 			);
 			path = AddMemo;
 			sourceTree = "<group>";
@@ -410,7 +415,6 @@
 				7A11FCB426CB5DC500F1A6BC /* AddMemo */,
 				A069982326CCA59A006E74C6 /* EditMemo */,
 				7A33118326CFD57C00EB520D /* DocumentCamera */,
-				A020543F26CE88A1002FF585 /* MemoImage */,
 				7A11FCA626CB47A600F1A6BC /* SettingTab */,
 				7AD1611926C2A93F00334A63 /* Component */,
 			);
@@ -480,6 +484,7 @@
 				7A11FCAD26CB532700F1A6BC /* ShowAllText.swift */,
 				7A11FCB226CB57FE00F1A6BC /* ControlToolbar.swift */,
 				A07CAD2626D0C0560012201A /* ReadingMark.swift */,
+				A05CE89426D1A6C6007F9CF2 /* GestureImageView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -538,14 +543,6 @@
 				A07CAD1126CFBB160012201A /* FirestoreCreateCollection.swift */,
 			);
 			path = Firestore;
-			sourceTree = "<group>";
-		};
-		A020543F26CE88A1002FF585 /* MemoImage */ = {
-			isa = PBXGroup;
-			children = (
-				A020544026CE88BD002FF585 /* MemoImageView.swift */,
-			);
-			path = MemoImage;
 			sourceTree = "<group>";
 		};
 		A052EABE26C3D71C0033CE47 /* AddBook */ = {
@@ -626,6 +623,7 @@
 			children = (
 				A069982426CCA5AD006E74C6 /* EditMemoView.swift */,
 				A069982626CCA5BD006E74C6 /* EditMemoViewModel.swift */,
+				A020544026CE88BD002FF585 /* EditMemoImageView.swift */,
 			);
 			path = EditMemo;
 			sourceTree = "<group>";
@@ -1026,6 +1024,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A052EACC26C3F79B0033CE47 /* PublicationRepository.swift in Sources */,
+				A05CE89326D17FD3007F9CF2 /* AddMemoImageView.swift in Sources */,
 				A07CAD2526D096020012201A /* FirestoreUpdateUser.swift in Sources */,
 				A07CAD0326CED9A20012201A /* MemoImageExtension.swift in Sources */,
 				7A11FCAA26CB47EA00F1A6BC /* SettingTabView.swift in Sources */,
@@ -1034,6 +1033,7 @@
 				7AD1610826C29ED300334A63 /* MainViewModel.swift in Sources */,
 				A07507C926C546260087AE5C /* HomeTabView.swift in Sources */,
 				A069983326CDD85B006E74C6 /* BookShelfEmptyItem.swift in Sources */,
+				A05CE89526D1A6C6007F9CF2 /* GestureImageView.swift in Sources */,
 				A07CAD1F26D0670A0012201A /* CollectionItemView.swift in Sources */,
 				7A11FCA826CB47E200F1A6BC /* SettingTabViewModel.swift in Sources */,
 				7A11FCB626CB5DD400F1A6BC /* AddMemoView.swift in Sources */,
@@ -1095,7 +1095,7 @@
 				7A11FCB826CB5DDC00F1A6BC /* AddMemoViewModel.swift in Sources */,
 				A069981526CBE6A0006E74C6 /* MemoRepositoryImpl.swift in Sources */,
 				A07CAD1826D055C90012201A /* DateExtension.swift in Sources */,
-				A020544126CE88BD002FF585 /* MemoImageView.swift in Sources */,
+				A020544126CE88BD002FF585 /* EditMemoImageView.swift in Sources */,
 				A007C08026C78E8500270671 /* ID.swift in Sources */,
 				A069981C26CC37BF006E74C6 /* FirestoreGetMemo.swift in Sources */,
 				A069982526CCA5AD006E74C6 /* EditMemoView.swift in Sources */,

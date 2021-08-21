@@ -46,7 +46,9 @@ struct HomeTabView: View {
                         }
                     }
                     
-                    Spacer().frame(height: HomeReadingBookItem.height)
+                    Spacer()
+                        .frame(height: HomeReadingBookItem.height)
+                        .listRowSeparator(.hidden)
                 }
                 .listStyle(PlainListStyle())
                 .refreshable {

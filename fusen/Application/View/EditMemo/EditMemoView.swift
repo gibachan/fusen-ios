@@ -13,6 +13,7 @@ struct EditMemoView: View {
     @State private var text: String
     @State private var quote: String
     @State private var page: Int
+    @State private var editMemoImage: EditMemoViewModel.EditMemoImage?
     @State private var isDeleteAlertPresented = false
     @State private var isDocumentCameraPresented = false
     private let memoImageWidth: CGFloat = 72
@@ -54,16 +55,24 @@ struct EditMemoView: View {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("画像 :")
                         HStack {
-                            ForEach(viewModel.memo.imageURLs, id: \.self) { imageURL in
-                                AsyncImage(url: imageURL) { image in
-                                    image
-                                        .resizable()
-                                        .clipShape(RoundedRectangle(cornerRadius: 4))
-                                } placeholder: {
-                                    RoundedRectangle(cornerRadius: 4)
-                                        .fill(Color.placeholder)
+                            ForEach(viewModel.memoImages, id: \.self) { image in
+                                switch image.type {
+                                case .url(let url):
+                                    AsyncImage(url: url) { image in
+                                        image
+                                            .resizable()
+                                            .clipShape(RoundedRectangle(cornerRadius: 4))
+                                    } placeholder: {
+                                        RoundedRectangle(cornerRadius: 4)
+                                            .fill(Color.placeholder)
+                                    }
+                                    .frame(width: memoImageWidth, height: memoImageHeight)
+                                    .onTapGesture {
+                                        editMemoImage = image
+                                    }
+                                case .memory:
+                                    EmptyView()
                                 }
-                                .frame(width: memoImageWidth, height: memoImageHeight)
                             }
                             Spacer()
                         }
@@ -103,6 +112,19 @@ struct EditMemoView: View {
             }
                 .disabled(!viewModel.isSaveEnabled)
         )
+        .sheet(item: $editMemoImage, onDismiss: {}, content: { image in
+            NavigationView {
+                switch image.type {
+                case .url(let url):
+                    EditMemoImageView(url: url) {
+    //                    viewModel.onMemoImageDelete(image: result)
+                    }
+                case .memory:
+                    EmptyView()
+                }
+                
+            }
+        })
         .fullScreenCover(isPresented: $isDocumentCameraPresented, onDismiss: {
             log.d("dismiss")
         }, content: {

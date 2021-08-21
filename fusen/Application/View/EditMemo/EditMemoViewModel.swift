@@ -16,6 +16,7 @@ final class EditMemoViewModel: ObservableObject {
     @Published var state: State = .initial
     @Published var memo: Memo
     @Published var imageResults: [DocumentCameraView.ImageResult] = []
+    @Published var memoImages: [EditMemoImage] = []
     
     init(
         memo: Memo,
@@ -25,7 +26,11 @@ final class EditMemoViewModel: ObservableObject {
         self.memo = memo
         self.accountService = accountService
         self.memoRepository = memoRepository
+        
         self.isSaveEnabled = !memo.text.isEmpty
+        self.memoImages = memo.imageURLs.enumerated().map { index, url in
+            EditMemoImage(position: index, type: .url(url))
+        }
     }
     
     func onTextChange(_ text: String) {
@@ -82,6 +87,18 @@ final class EditMemoViewModel: ObservableObject {
                 self?.state = .failed
             }
         }
+    }
+    
+    enum EditMemoImageType: Hashable {
+        case url(URL)
+        case memory
+    }
+    
+    struct EditMemoImage: Identifiable, Hashable {
+        let position: Int
+        let type: EditMemoImageType
+        
+        var id: Int { position }
     }
     
     enum State {

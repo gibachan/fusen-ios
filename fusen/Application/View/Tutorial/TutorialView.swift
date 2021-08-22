@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AuthenticationServices
 
 struct TutorialView: View {
     @Environment(\.dismiss) private var dismiss
@@ -46,16 +47,25 @@ extension TutorialView {
     }
     
     private var page2: some View {
-        VStack(spacing: 16) {
-            Text("Tutorial 2")
-            Button {
-                Task {
-                    await viewModel.onClose()
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack(spacing: 16) {
+                Text("Tutorial 2")
+                
+                SignInWithAppleButton(
+                    .signIn,
+                    onRequest: viewModel.onSignInWithAppleRequest,
+                    onCompletion: viewModel.onSignInWithAppleCompletion
+                ).signInWithAppleButtonStyle(.whiteOutline)
+                    
+                Button {
+                    Task {
+                        await viewModel.onSkip()
+                    }
+                } label: {
+                    Text("スキップ")
                 }
-            } label: {
-                Text("閉じる")
+                Spacer()
             }
-            Spacer()
         }
         .padding()
     }

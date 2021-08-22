@@ -6,12 +6,22 @@
 //
 
 import SwiftUI
+import AuthenticationServices
 
 struct SettingTabView: View {
     @StateObject private var viewModel = SettingTabViewModel()
     var body: some View {
         NavigationView {
             List {
+                Section {
+                    SignInWithAppleButton(
+                        .signIn,
+                        onRequest: viewModel.onSignInWithAppleRequest,
+                        onCompletion: viewModel.onSignInWithAppleCompletion
+                    ).signInWithAppleButtonStyle(.whiteOutline)
+                } header: {
+                    SectionHeaderText("デバッグ")
+                }
 #if DEBUG
                 Section {
                     Button {

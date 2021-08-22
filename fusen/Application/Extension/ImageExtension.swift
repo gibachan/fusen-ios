@@ -21,8 +21,7 @@ extension Image {
     static let collection = Image(systemName: "folder")
     static let addCollection = Image(systemName: "folder.badge.plus")
     static let checkmark = Image(systemName: "checkmark")
-    static let collapse = Image(systemName: "chevron.up")
-    static let expand = Image(systemName: "chevron.down")
+    static let chevronRight = Image(systemName: "chevron.right")
     
     static let info = Image(systemName: "info.circle")
     static let warning = Image(systemName: "exclamationmark.triangle")

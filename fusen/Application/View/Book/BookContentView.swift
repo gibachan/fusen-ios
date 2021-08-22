@@ -136,17 +136,11 @@ struct BookContentView: View {
                         isDetailCollapsed.toggle()
                     }
                 } label: {
-                    if isDetailCollapsed {
-                        Image.expand
-                            .resizable()
-                            .foregroundColor(.active)
-                            .frame(width: 20, height: 12)
-                    } else {
-                        Image.collapse
-                            .resizable()
-                            .foregroundColor(.active)
-                            .frame(width: 20, height: 12)
-                    }
+                    Image.chevronRight
+                        .resizable()
+                        .foregroundColor(.active)
+                        .frame(width: 12, height: 18)
+                        .rotationEffect(Angle(degrees: isDetailCollapsed ? 0 : 90))
                 }
 
             }

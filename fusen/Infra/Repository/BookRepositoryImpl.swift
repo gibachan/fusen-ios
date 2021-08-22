@@ -15,6 +15,7 @@ final class BookRepositoryImpl: BookRepository {
     // Pagination
     private let perPage = 20
     private var allBooksCache: PagerCache<Book> = .empty
+    private var favoriteBooksCache: PagerCache<Book> = .empty
     private var collectionCache: [ID<Collection>: PagerCache<Book>] = [:]
     
     func getBook(by id: ID<Book>, for user: User) async throws -> Book {
@@ -110,6 +111,68 @@ final class BookRepositoryImpl: BookRepository {
         }
     }
     
+    func getFavoriteBooks(for user: User, forceRefresh: Bool) async throws -> Pager<Book> {
+        let isCacheValid = favoriteBooksCache.currentPager.data.count >= perPage && !forceRefresh
+        if isCacheValid {
+            return favoriteBooksCache.currentPager
+        }
+        
+        clearFavoriteBooksCache()
+        let query = db.booksCollection(for: user)
+            .whereIsFavorite(true)
+            .orderByCreatedAtDesc()
+            .limit(to: perPage)
+        do {
+            let snapshot = try await query.getDocuments()
+            let books = snapshot.documents
+                .compactMap { try? $0.data(as: FirestoreGetBook.self) }
+                .compactMap { $0.toDomain() }
+            let finished = books.count < perPage
+            let cachedPager = favoriteBooksCache.currentPager
+            let newPager = Pager<Book>(currentPage: cachedPager.currentPage + 1,
+                                       finished: finished,
+                                       data: cachedPager.data + books)
+            favoriteBooksCache = PagerCache(pager: newPager, lastDocument: snapshot.documents.last)
+            return newPager
+        } catch {
+            log.e(error.localizedDescription)
+            throw  BookRepositoryError.unknown
+        }
+    }
+    
+    func getFavoriteBooksNext(for user: User) async throws -> Pager<Book> {
+        guard let afterDocument = favoriteBooksCache.lastDocument else {
+            fatalError("lastDocumentは必ず存在する")
+        }
+        guard !favoriteBooksCache.currentPager.finished else {
+            log.d("Favorite books have been already fetched")
+            return favoriteBooksCache.currentPager
+        }
+        
+        let query = db.booksCollection(for: user)
+            .whereIsFavorite(true)
+            .orderByCreatedAtDesc()
+            .start(afterDocument: afterDocument)
+            .limit(to: perPage)
+        
+        do {
+            let snapshot = try await query.getDocuments()
+            let books = snapshot.documents
+                .compactMap { try? $0.data(as: FirestoreGetBook.self) }
+                .compactMap { $0.toDomain() }
+            let finished = books.count < perPage
+            let cachedPager = favoriteBooksCache.currentPager
+            let newPager = Pager<Book>(currentPage: cachedPager.currentPage + 1,
+                                       finished: finished,
+                                       data: cachedPager.data + books)
+            favoriteBooksCache = PagerCache(pager: newPager, lastDocument: snapshot.documents.last)
+            return newPager
+        } catch {
+            log.e(error.localizedDescription)
+            throw  BookRepositoryError.unknown
+        }
+    }
+
     func getBooks(by collection: Collection, for user: User, forceRefresh: Bool) async throws -> Pager<Book> {
         if let cachedPager = collectionCache[collection.id]?.currentPager {
             let isCacheValid = cachedPager.data.count >= perPage && !forceRefresh
@@ -220,7 +283,11 @@ final class BookRepositoryImpl: BookRepository {
     private func clearAllBooksCache() {
         allBooksCache = .empty
     }
-    
+
+    private func clearFavoriteBooksCache() {
+        favoriteBooksCache = .empty
+    }
+
     private func clearCollectionCache(of collection: Collection) {
         collectionCache[collection.id] = .empty
     }

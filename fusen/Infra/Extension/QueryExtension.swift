@@ -12,7 +12,11 @@ extension Query {
     func whereBook(_ bookId: ID<Book>) -> Query {
         whereField("bookId", isEqualTo: bookId.value)
     }
-    
+
+    func whereIsFavorite(_ isFavorite: Bool) -> Query {
+        whereField("isFavorite", isEqualTo: true)
+    }
+
     func whereCollection(_ collection: Collection) -> Query {
         whereField("collectionId", isEqualTo: collection.id.value)
     }

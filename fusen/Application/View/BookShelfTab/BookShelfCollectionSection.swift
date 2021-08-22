@@ -1,18 +1,18 @@
 //
-//  BookShelfSection.swift
-//  BookShelfSection
+//  BookShelfCollectionSection.swift
+//  BookShelfCollectionSection
 //
 //  Created by Tatsuyuki Kobayashi on 2021/08/18.
 //
 
 import SwiftUI
 
-struct BookShelfSection: View {
-    @StateObject private var viewModel: BookShelfSectionModel
+struct BookShelfCollectionSection: View {
+    @StateObject private var viewModel: BookShelfCollectionSectionModel
     private let collection: Collection
     
     init(collection: Collection) {
-        self._viewModel = StateObject(wrappedValue: BookShelfSectionModel(collection: collection))
+        self._viewModel = StateObject(wrappedValue: BookShelfCollectionSectionModel(collection: collection))
         self.collection = collection
     }
     
@@ -46,8 +46,8 @@ struct BookShelfSection: View {
     }
 }
 
-struct BookShelfSection_Previews: PreviewProvider {
+struct BookShelfCollectionSection_Previews: PreviewProvider {
     static var previews: some View {
-        BookShelfSection(collection: Collection.sample)
+        BookShelfCollectionSection(collection: Collection.sample)
     }
 }

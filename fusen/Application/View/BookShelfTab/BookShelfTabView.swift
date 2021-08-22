@@ -15,9 +15,11 @@ struct BookShelfTabView: View {
         NavigationView {
             VStack(alignment: .leading, spacing: 0) {
                 List {
+                    // TODO: Favorite Books Section
                     ForEach(viewModel.collections, id: \.id.value) { collection in
-                        BookShelfSection(collection: collection)
+                        BookShelfCollectionSection(collection: collection)
                     }
+                    BookShelfAllBooksSection()
                 }
                 .listStyle(PlainListStyle())
                 .refreshable {

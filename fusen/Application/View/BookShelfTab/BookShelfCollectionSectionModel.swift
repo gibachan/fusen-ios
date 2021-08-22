@@ -1,13 +1,13 @@
 //
-//  BookShelfSectionModel.swift
-//  BookShelfSectionModel
+//  BookShelfCollectionSectionModel.swift
+//  BookShelfCollectionSectionModel
 //
 //  Created by Tatsuyuki Kobayashi on 2021/08/18.
 //
 
 import Foundation
 
-final class BookShelfSectionModel: ObservableObject {
+final class BookShelfCollectionSectionModel: ObservableObject {
     private static let maxDiplayBookCount = 6
     private let accountService: AccountServiceProtocol
     private let bookRepository: BookRepository

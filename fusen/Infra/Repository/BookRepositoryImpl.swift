@@ -141,7 +141,7 @@ final class BookRepositoryImpl: BookRepository {
         }
     }
     
-    func addBook(of publication: Publication, in collection: Collection, for user: User) async throws -> ID<Book> {
+    func addBook(of publication: Publication, in collection: Collection?, for user: User) async throws -> ID<Book> {
         typealias AddBookContinuation = CheckedContinuation<ID<Book>, Error>
         return try await withCheckedThrowingContinuation { (continuation: AddBookContinuation) in
             let create = FirestoreCreateBook.fromDomain(publication: publication, collection: collection)

@@ -41,7 +41,7 @@ final class BookShelfTabViewModel: ObservableObject {
             DispatchQueue.main.async { [weak self] in
                 self?.textCountText = "xx冊の書籍"
                 self?.state = .succeeded
-                self?.collections = [collections, [Collection.default]].flatMap { $0 }
+                self?.collections = collections
             }
         } catch {
             log.e(error.localizedDescription)

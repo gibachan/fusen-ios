@@ -30,7 +30,7 @@ extension Book {
             impression: "本を読んだ感想・本を読んだ感想・本を読んだ感想・本を読んだ感想・本を読んだ感想・本を読んだ感想\nGreat book I've ever read!",
             isFavorite: true,
             valuation: 3,
-            collectionId: Collection.default.id
+            collectionId: Collection.sample.id
         )
     }
 }

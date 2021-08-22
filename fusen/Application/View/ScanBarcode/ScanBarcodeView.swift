@@ -41,7 +41,7 @@ struct ScanBarcodeView: View {
                                                    await viewModel.onDeclinSuggestedBook()
                                                }
                                            }),
-                    secondaryButton: .default(Text("追加"), action: {
+                    secondaryButton: .default(Text("追加").fontWeight(.bold), action: {
                         Task {
                             await viewModel.onAcceptSuggestedBook()
                         }

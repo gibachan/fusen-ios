@@ -10,7 +10,6 @@ import FirebaseFirestoreSwift
 
 struct FirestoreGetCollection: Codable {
     @DocumentID var id: String?
-    let name: String
     let color: [Int]
 }
 
@@ -20,7 +19,6 @@ extension FirestoreGetCollection {
         guard color.count == 3 else { return nil }
         return Collection(
             id: ID<Collection>(value: id),
-            name: name,
             color: RGB(red: color[0], green: color[1], blue: color[2])
         )
     }

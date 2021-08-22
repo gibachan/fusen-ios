@@ -9,7 +9,6 @@ import Foundation
 import FirebaseFirestore
 
 struct FirestoreCreateCollection {
-    let name: String
     let color: [Int]
     let createdAt: FieldValue = .serverTimestamp()
 }
@@ -17,7 +16,6 @@ struct FirestoreCreateCollection {
 extension FirestoreCreateCollection {
     func data() -> [String: Any] {
         [
-            "name": name,
             "color": color,
             "createdAt": createdAt
         ]

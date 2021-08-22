@@ -37,7 +37,7 @@ final class SelectCollectionViewModel: ObservableObject {
             let collections = try await collectionRepository.getlCollections(for: user)
             DispatchQueue.main.async { [weak self] in
                 self?.state = .loaded
-                self?.collections = [collections, [Collection.default]].flatMap { $0 }
+                self?.collections = collections
             }
         } catch {
             // FIXME: error handling

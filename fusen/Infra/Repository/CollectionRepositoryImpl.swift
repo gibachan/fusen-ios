@@ -30,20 +30,20 @@ final class CollectionRepositoryImpl: CollectionRepository {
         typealias AddCollectionContinuation = CheckedContinuation<ID<Collection>, Error>
         return try await withCheckedThrowingContinuation { (continuation: AddCollectionContinuation) in
             let create = FirestoreCreateCollection(
-                name: name,
                 color: color.array
             )
             var ref: DocumentReference?
             ref = db.collectionCollection(for: user)
-                .addDocument(data: create.data()) { error in
-                    if let error = error {
-                        log.e(error.localizedDescription)
-                        continuation.resume(throwing: CollectionRepositoryError.unknown)
-                    } else {
-                        let id = ID<Collection>(value: ref!.documentID)
-                        continuation.resume(returning: id)
-                    }
+                .document(name)
+            ref?.setData(create.data()) { error in
+                if let error = error {
+                    log.e(error.localizedDescription)
+                    continuation.resume(throwing: CollectionRepositoryError.unknown)
+                } else {
+                    let id = ID<Collection>(value: ref!.documentID)
+                    continuation.resume(returning: id)
                 }
+            }
         }
     }
 }

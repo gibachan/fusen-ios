@@ -22,13 +22,13 @@ struct FirestoreCreateBook {
 }
 
 extension FirestoreCreateBook {
-    static func fromDomain( publication: Publication, collection: Collection) -> Self {
+    static func fromDomain( publication: Publication, collection: Collection?) -> Self {
         return .init(
             title: publication.title,
             author: publication.author,
             imageURL: publication.thumbnailURL?.absoluteString ?? "",
             description: "",
-            collectionId: collection.id.value
+            collectionId: collection?.id.value ?? ""
         )
     }
     

@@ -16,6 +16,9 @@ protocol AccountServiceProtocol {
     var isLoggedIn: Bool { get }
     var currentUser: User? { get }
     @discardableResult func logInAnonymously() async throws -> User
+#if DEBUG
+    func logOut()
+#endif
 }
 
 final class AccountService: AccountServiceProtocol {
@@ -43,6 +46,14 @@ final class AccountService: AccountServiceProtocol {
         } catch {
             log.e(error.localizedDescription)
             throw AccountServiceError.failedToLogInAnonymously
+        }
+    }
+    
+    func logOut() {
+        do {
+            try auth.signOut()
+        } catch {
+            log.e(error.localizedDescription)
         }
     }
 }

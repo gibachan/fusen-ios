@@ -12,6 +12,17 @@ struct SettingTabView: View {
     var body: some View {
         NavigationView {
             List {
+#if DEBUG
+                Section {
+                    Button {
+                        viewModel.logOut()
+                    } label: {
+                        Text("ログアウト")
+                    }
+                } header: {
+                    SectionHeaderText("デバッグ")
+                }
+#endif
             }
             .listStyle(InsetGroupedListStyle())
             .navigationBarTitle("設定")

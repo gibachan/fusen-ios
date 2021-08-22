@@ -46,4 +46,15 @@ final class CollectionRepositoryImpl: CollectionRepository {
             }
         }
     }
+    
+    func delete(collection: Collection, for user: User) async throws {
+        let ref = db.collectionCollection(for: user)
+            .document(collection.id.value)
+        do {
+            try await ref.delete()
+        } catch {
+            log.e(error.localizedDescription)
+            throw CollectionRepositoryError.unknown
+        }
+    }
 }

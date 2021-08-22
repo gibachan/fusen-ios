@@ -11,6 +11,7 @@ final class CollectionViewModel: ObservableObject {
     private let collection: Collection
     private let accountService: AccountServiceProtocol
     private let bookRepository: BookRepository
+    private let collectionRepository: CollectionRepository
     
     @Published var state: State = .initial
     @Published var pager: Pager<Book> = .empty
@@ -19,11 +20,13 @@ final class CollectionViewModel: ObservableObject {
     init(
         collection: Collection,
         accountService: AccountServiceProtocol = AccountService.shared,
-        bookRepository: BookRepository = BookRepositoryImpl()
+        bookRepository: BookRepository = BookRepositoryImpl(),
+        collectionRepository: CollectionRepository = CollectionRepositoryImpl()
     ) {
         self.collection = collection
         self.accountService = accountService
         self.bookRepository = bookRepository
+        self.collectionRepository = collectionRepository
     }
     
     func onAppear() async {
@@ -91,6 +94,26 @@ final class CollectionViewModel: ObservableObject {
         }
     }
     
+    func onDelete() async {
+        guard let user = accountService.currentUser else { return }
+        guard !state.isInProgress else { return }
+        
+        state = .loading
+        do {
+            try await collectionRepository.delete(collection: collection, for: user)
+            DispatchQueue.main.async { [weak self] in
+                self?.state = .deleted
+                NotificationCenter.default.postRefreshBookShelf()
+            }
+        } catch {
+            // FIXME: error handling
+            print(error.localizedDescription)
+            DispatchQueue.main.async { [weak self] in
+                self?.state = .failed
+            }
+        }
+    }
+    
     // associated valueに変更があってもSwiftUIは検知してくれない
     // (state自体が変更されない限りViewが更新されない）
     enum State {
@@ -99,11 +122,12 @@ final class CollectionViewModel: ObservableObject {
         case loadingNext
         case refreshing
         case succeeded
+        case deleted
         case failed
         
         var isInProgress: Bool {
             switch self {
-            case .initial, .succeeded, .failed:
+            case .initial, .succeeded, .deleted, .failed:
                 return false
             case .loading, .loadingNext, .refreshing:
                 return true

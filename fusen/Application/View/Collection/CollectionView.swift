@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct CollectionView: View {
+    @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel: CollectionViewModel
     @State private var isAddPresented = false
+    @State private var isDeleteAlertPresented = false
     private let collection: Collection
     
     init(collection: Collection) {
@@ -32,6 +34,20 @@ struct CollectionView: View {
                     // FIXME: show empty view
                     EmptyView()
                 }
+                
+                Section {
+                    HStack {
+                        Spacer()
+                        Button(role: .destructive) {
+                            isDeleteAlertPresented = true
+                        } label: {
+                            Text("コレクションを削除")
+                                .font(.medium)
+                                .foregroundColor(.red)
+                        }
+                        Spacer()
+                    }
+                }
             }
             .refreshable {
                 await viewModel.onRefresh()
@@ -52,6 +68,18 @@ struct CollectionView: View {
         } content: {
             AddBookView()
         }
+        .alert(isPresented: $isDeleteAlertPresented) {
+            Alert(
+                title: Text("コレクションを削除"),
+                message: Text("コレクションを削除しますか？"),
+                primaryButton: .cancel(Text("キャンセル")),
+                secondaryButton: .destructive(Text("削除"), action: {
+                    Task {
+                        await viewModel.onDelete()
+                    }
+                })
+            )
+        }
         .task {
             await viewModel.onAppear()
         }
@@ -63,6 +91,9 @@ struct CollectionView: View {
                 LoadingHUD.show()
             case .succeeded:
                 LoadingHUD.dismiss()
+            case .deleted:
+                LoadingHUD.dismiss()
+                dismiss()
             case .failed:
                 LoadingHUD.dismiss()
                 //                isErrorActive = true

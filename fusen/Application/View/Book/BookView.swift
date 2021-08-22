@@ -9,7 +9,6 @@ import SwiftUI
 
 struct BookView: View {
     @Environment(\.dismiss) private var dismiss
-    
     @StateObject private var viewModel: BookViewModel
     
     init(bookId: ID<Book>) {

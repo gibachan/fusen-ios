@@ -1,14 +1,14 @@
 //
-//  BookShelfAllBooksSection.swift
-//  BookShelfAllBooksSection
+//  BookShelfAllSection.swift
+//  BookShelfAllSection
 //
 //  Created by Tatsuyuki Kobayashi on 2021/08/22.
 //
 
 import SwiftUI
 
-struct BookShelfAllBooksSection: View {
-    @StateObject private var viewModel = BookShelfAllBooksSectionModel()
+struct BookShelfAllSection: View {
+    @StateObject private var viewModel = BookShelfAllSectionModel()
     
     var body: some View {
         Section {
@@ -36,8 +36,8 @@ struct BookShelfAllBooksSection: View {
     }
 }
 
-struct BookShelfAllBooksSection_Previews: PreviewProvider {
+struct BookShelfAllSection_Previews: PreviewProvider {
     static var previews: some View {
-        BookShelfAllBooksSection()
+        BookShelfAllSection()
     }
 }

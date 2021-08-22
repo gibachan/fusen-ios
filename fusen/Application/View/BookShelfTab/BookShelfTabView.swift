@@ -19,7 +19,7 @@ struct BookShelfTabView: View {
                     ForEach(viewModel.collections, id: \.id.value) { collection in
                         BookShelfCollectionSection(collection: collection)
                     }
-                    BookShelfAllBooksSection()
+                    BookShelfAllSection()
                 }
                 .listStyle(PlainListStyle())
                 .refreshable {

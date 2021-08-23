@@ -1,15 +1,15 @@
 //
-//  AddBookView.swift
-//  AddBookView
+//  AddBookMenuView.swift
+//  AddBookMenuView
 //
 //  Created by Tatsuyuki Kobayashi on 2021/08/11.
 //
 
 import SwiftUI
 
-struct AddBookView: View {
+struct AddBookMenuView: View {
     @Environment(\.dismiss) private var dismiss
-    @StateObject private var viewModel = AddBookViewModel()
+    @StateObject private var viewModel = AddBookMenuViewModel()
     @State private var isScanBarcodePresented = false
     @State private var isManualInputPresented = false
     
@@ -20,12 +20,12 @@ struct AddBookView: View {
                 Button {
                     isScanBarcodePresented = true
                 } label: {
-                    AddBookItem(type: AddBookType.camera)
+                    AddBookMenuItem(type: AddBookMenuType.camera)
                 }
                 Button {
                     isManualInputPresented = true
                 } label: {
-                    AddBookItem(type: AddBookType.manual)
+                    AddBookMenuItem(type: AddBookMenuType.manual)
                 }
                 Spacer()
             }
@@ -45,7 +45,7 @@ struct AddBookView: View {
     }
 }
 
-enum AddBookType: Identifiable, CaseIterable {
+enum AddBookMenuType: Identifiable, CaseIterable {
     case camera
     case manual
 
@@ -66,8 +66,8 @@ enum AddBookType: Identifiable, CaseIterable {
     }
 }
 
-struct AddBookView_Previews: PreviewProvider {
+struct AddBookMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        AddBookView()
+        AddBookMenuView()
     }
 }

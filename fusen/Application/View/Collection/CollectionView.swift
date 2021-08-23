@@ -66,7 +66,7 @@ struct CollectionView: View {
         .sheet(isPresented: $isAddPresented) {
             print("dismissed")
         } content: {
-            AddBookView()
+            AddBookMenuView()
         }
         .alert(isPresented: $isDeleteAlertPresented) {
             Alert(

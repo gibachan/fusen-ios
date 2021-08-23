@@ -62,10 +62,10 @@
 		A007C09526C8CAB700270671 /* FirestoreGetBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C09426C8CAB600270671 /* FirestoreGetBook.swift */; };
 		A020544126CE88BD002FF585 /* EditMemoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A020544026CE88BD002FF585 /* EditMemoImageView.swift */; };
 		A020544526CE8CC7002FF585 /* DeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A020544426CE8CC7002FF585 /* DeleteButton.swift */; };
-		A052EAC026C3D7430033CE47 /* AddBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EABF26C3D7430033CE47 /* AddBookView.swift */; };
-		A052EAC226C3D74C0033CE47 /* AddBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EAC126C3D74C0033CE47 /* AddBookViewModel.swift */; };
+		A052EAC026C3D7430033CE47 /* AddBookMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EABF26C3D7430033CE47 /* AddBookMenuView.swift */; };
+		A052EAC226C3D74C0033CE47 /* AddBookMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EAC126C3D74C0033CE47 /* AddBookMenuViewModel.swift */; };
 		A052EAC426C3E4140033CE47 /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EAC326C3E4140033CE47 /* CancelButton.swift */; };
-		A052EAC626C3E4650033CE47 /* AddBookItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EAC526C3E4650033CE47 /* AddBookItem.swift */; };
+		A052EAC626C3E4650033CE47 /* AddBookMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EAC526C3E4650033CE47 /* AddBookMenuItem.swift */; };
 		A052EACA26C3F4E90033CE47 /* Publication.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EAC926C3F4E90033CE47 /* Publication.swift */; };
 		A052EACC26C3F79B0033CE47 /* PublicationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EACB26C3F79B0033CE47 /* PublicationRepository.swift */; };
 		A052EAD026C3F7F50033CE47 /* PublicationRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EACF26C3F7F50033CE47 /* PublicationRepositoryImpl.swift */; };
@@ -220,10 +220,10 @@
 		A007C09426C8CAB600270671 /* FirestoreGetBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreGetBook.swift; sourceTree = "<group>"; };
 		A020544026CE88BD002FF585 /* EditMemoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMemoImageView.swift; sourceTree = "<group>"; };
 		A020544426CE8CC7002FF585 /* DeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButton.swift; sourceTree = "<group>"; };
-		A052EABF26C3D7430033CE47 /* AddBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookView.swift; sourceTree = "<group>"; };
-		A052EAC126C3D74C0033CE47 /* AddBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewModel.swift; sourceTree = "<group>"; };
+		A052EABF26C3D7430033CE47 /* AddBookMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookMenuView.swift; sourceTree = "<group>"; };
+		A052EAC126C3D74C0033CE47 /* AddBookMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookMenuViewModel.swift; sourceTree = "<group>"; };
 		A052EAC326C3E4140033CE47 /* CancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
-		A052EAC526C3E4650033CE47 /* AddBookItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookItem.swift; sourceTree = "<group>"; };
+		A052EAC526C3E4650033CE47 /* AddBookMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookMenuItem.swift; sourceTree = "<group>"; };
 		A052EAC926C3F4E90033CE47 /* Publication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Publication.swift; path = fusen/Domain/Entity/Publication.swift; sourceTree = SOURCE_ROOT; };
 		A052EACB26C3F79B0033CE47 /* PublicationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationRepository.swift; sourceTree = "<group>"; };
 		A052EACF26C3F7F50033CE47 /* PublicationRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationRepositoryImpl.swift; sourceTree = "<group>"; };
@@ -430,7 +430,7 @@
 				A07CAD0A26CF7ED40012201A /* AddCollection */,
 				7A11FCBB26CD3FB400F1A6BC /* BookList */,
 				A001E02F26C9E61000AC92BA /* Book */,
-				A052EABE26C3D71C0033CE47 /* AddBook */,
+				A052EABE26C3D71C0033CE47 /* AddBookMenu */,
 				7AA6D7A526D3426000781F48 /* EditBook */,
 				A07CAD1926D064090012201A /* SelectCollection */,
 				A0BA4CB026C4DC2000D99D8C /* ScanBarcode */,
@@ -572,14 +572,14 @@
 			path = Firestore;
 			sourceTree = "<group>";
 		};
-		A052EABE26C3D71C0033CE47 /* AddBook */ = {
+		A052EABE26C3D71C0033CE47 /* AddBookMenu */ = {
 			isa = PBXGroup;
 			children = (
-				A052EABF26C3D7430033CE47 /* AddBookView.swift */,
-				A052EAC126C3D74C0033CE47 /* AddBookViewModel.swift */,
-				A052EAC526C3E4650033CE47 /* AddBookItem.swift */,
+				A052EABF26C3D7430033CE47 /* AddBookMenuView.swift */,
+				A052EAC126C3D74C0033CE47 /* AddBookMenuViewModel.swift */,
+				A052EAC526C3E4650033CE47 /* AddBookMenuItem.swift */,
 			);
-			path = AddBook;
+			path = AddBookMenu;
 			sourceTree = "<group>";
 		};
 		A052EAC726C3F4C00033CE47 /* Entity */ = {
@@ -1065,7 +1065,7 @@
 				A07CAD1F26D0670A0012201A /* CollectionItemView.swift in Sources */,
 				7A11FCA826CB47E200F1A6BC /* SettingTabViewModel.swift in Sources */,
 				7A11FCB626CB5DD400F1A6BC /* AddMemoView.swift in Sources */,
-				A052EAC226C3D74C0033CE47 /* AddBookViewModel.swift in Sources */,
+				A052EAC226C3D74C0033CE47 /* AddBookMenuViewModel.swift in Sources */,
 				A069983826CDD9D6006E74C6 /* CollectionViewModel.swift in Sources */,
 				A07CAD1226CFBB160012201A /* FirestoreCreateCollection.swift in Sources */,
 				A069983D26CDDD21006E74C6 /* MemoListViewModel.swift in Sources */,
@@ -1119,7 +1119,7 @@
 				7AA6D7A426D2831000781F48 /* BookShelfFavoriteSectionModel.swift in Sources */,
 				A062C18926C5F33500C56E2A /* AppEnv.swift in Sources */,
 				7A11FCAC26CB521B00F1A6BC /* SectionHeaderText.swift in Sources */,
-				A052EAC626C3E4650033CE47 /* AddBookItem.swift in Sources */,
+				A052EAC626C3E4650033CE47 /* AddBookMenuItem.swift in Sources */,
 				7A11FCA326CB45DF00F1A6BC /* NotificationExtension.swift in Sources */,
 				7A11FCB826CB5DDC00F1A6BC /* AddMemoViewModel.swift in Sources */,
 				A069981526CBE6A0006E74C6 /* MemoRepositoryImpl.swift in Sources */,
@@ -1144,7 +1144,7 @@
 				A007C09526C8CAB700270671 /* FirestoreGetBook.swift in Sources */,
 				A07CAD2126D092640012201A /* UserRepository.swift in Sources */,
 				A052EAD026C3F7F50033CE47 /* PublicationRepositoryImpl.swift in Sources */,
-				A052EAC026C3D7430033CE47 /* AddBookView.swift in Sources */,
+				A052EAC026C3D7430033CE47 /* AddBookMenuView.swift in Sources */,
 				7AA6D7A226D2830200781F48 /* BookShelfFavoriteSection.swift in Sources */,
 				A069982926CCAB07006E74C6 /* FirestoreUpdateMemo.swift in Sources */,
 				A05CE89826D26D23007F9CF2 /* BookShelfAllSection.swift in Sources */,

@@ -1,14 +1,14 @@
 //
-//  AddBookItem.swift
-//  AddBookItem
+//  AddBookMenuItem.swift
+//  AddBookMenuItem
 //
 //  Created by Tatsuyuki Kobayashi on 2021/08/11.
 //
 
 import SwiftUI
 
-struct AddBookItem: View {
-    let type: AddBookType
+struct AddBookMenuItem: View {
+    let type: AddBookMenuType
     var body: some View {
         HStack(spacing: 8) {
             type.icon
@@ -21,8 +21,8 @@ struct AddBookItem: View {
     }
 }
 
-struct AddBookItem_Previews: PreviewProvider {
+struct AddBookMenuItem_Previews: PreviewProvider {
     static var previews: some View {
-        AddBookItem(type: .camera)
+        AddBookMenuItem(type: .camera)
     }
 }

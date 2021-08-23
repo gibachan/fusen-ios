@@ -1,13 +1,13 @@
 //
-//  MemoImageExtension.swift
-//  MemoImageExtension
+//  ImageDataExtension.swift
+//  ImageDataExtension
 //
 //  Created by Tatsuyuki Kobayashi on 2021/08/20.
 //
 
 import UIKit
 
-extension MemoImage {
+extension ImageData {
     var uiImage: UIImage? { .init(data: data) }
     
     init?(uiImage: UIImage) {

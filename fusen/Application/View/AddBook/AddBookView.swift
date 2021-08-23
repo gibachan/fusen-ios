@@ -10,16 +10,36 @@ import SwiftUI
 struct AddBookView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel = AddBookViewModel()
-
-    @State var thumbnail: UIImage?
+    
+    @State var thumbnailImage: ImageData?
     @State var title: String = ""
     @State var author: String = ""
+    @State var isThumbnailPickerPresented = false
+    @State var isCameraPickerPresented = false
+    @State var isPhotoLibraryPresented = false
     
     var body: some View {
         Form {
             Section {
-                BookImageView(url: nil)
-                    .frame(width: 64, height: 80)
+                Button {
+                    isThumbnailPickerPresented = true
+                } label: {
+                    HStack(alignment: .bottom, spacing: 16) {
+                        if let image = thumbnailImage,
+                           let uiImage = image.uiImage {
+                            Image(uiImage: uiImage)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 64, height: 80)
+                        } else {
+                            BookImageView(url: nil)
+                                .frame(width: 64, height: 80)
+                        }
+                        Text("画像をタップして変更")
+                            .font(.small)
+                            .foregroundColor(.textSecondary)
+                    }
+                }
             } header: {
                 SectionHeaderText("書籍画像")
             }
@@ -33,11 +53,11 @@ struct AddBookView: View {
                     .onChange(of: title, perform: { newValue in
                         viewModel.onTextChange(title: newValue, author: author)
                     })
-
+                
             } header: {
                 SectionHeaderText("タイトル（必須）")
             }
-
+            
             Section {
                 PlaceholderTextEditor(placeholder: "著者を入力", text: $author)
                     .font(.medium)
@@ -46,7 +66,7 @@ struct AddBookView: View {
                     .onChange(of: author, perform: { newValue in
                         viewModel.onTextChange(title: title, author: newValue)
                     })
-
+                
             } header: {
                 SectionHeaderText("著者")
             }
@@ -56,16 +76,6 @@ struct AddBookView: View {
                 .listRowBackground(Color.backgroundSystemGroup)
         }
         .font(.medium)
-//        .sheet(isPresented: $isScanBarcodePresented, onDismiss: {
-//            print("dimiss")
-//        }, content: {
-//            ScanBarcodeView()
-//        })
-//        .sheet(isPresented: $isManualInputPresented, onDismiss: {
-//            print("dimiss")
-//        }, content: {
-//            Text("Not yet implemented")
-//        })
         .navigationBarTitle("マニュアル入力", displayMode: .inline)
         .navigationBarItems(
             leading: CancelButton {
@@ -78,6 +88,40 @@ struct AddBookView: View {
             }
                 .disabled(!viewModel.isSaveEnabled)
         )
+        .actionSheet(isPresented: $isThumbnailPickerPresented) {
+            ActionSheet(
+                title: Text("書籍画像を変更"),
+                buttons: [
+                    .default(Text("カメラで撮影")) {
+                        isCameraPickerPresented = true
+                    },
+                    .default(Text("フォトライブラリから選択")) {
+                        isPhotoLibraryPresented = true
+                    },
+                    .cancel()
+                ]
+            )
+        }
+        .sheet(isPresented: $isCameraPickerPresented) {
+            ImagePickerView(type: .camera) { result in
+                switch result {
+                case .success(let image):
+                    thumbnailImage = image
+                case .failure(let error):
+                    log.e(error.localizedDescription)
+                }
+            }
+        }
+        .sheet(isPresented: $isPhotoLibraryPresented) {
+            ImagePickerView(type: .photoLibrary) { result in
+                switch result {
+                case .success(let image):
+                    thumbnailImage = image
+                case .failure(let error):
+                    log.e(error.localizedDescription)
+                }
+            }
+        }
         .onReceive(viewModel.$state) { state in
             switch state {
             case .initial:

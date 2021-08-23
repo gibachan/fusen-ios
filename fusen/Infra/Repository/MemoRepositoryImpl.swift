@@ -162,7 +162,7 @@ final class MemoRepositoryImpl: MemoRepository {
         }
     }
     
-    func addMemo(of book: Book, text: String, quote: String, page: Int?, image: MemoImage?, for user: User) async throws -> ID<Memo> {
+    func addMemo(of book: Book, text: String, quote: String, page: Int?, image: ImageData?, for user: User) async throws -> ID<Memo> {
         
         var imageURL: URL? = nil
         if let image = image {
@@ -196,7 +196,7 @@ final class MemoRepositoryImpl: MemoRepository {
         }
     }
     
-    private func upload(image: MemoImage, of book: Book, for user: User) async throws -> URL {
+    private func upload(image: ImageData, of book: Book, for user: User) async throws -> URL {
         typealias UploadContinuation = CheckedContinuation<URL, Error>
         return try await withCheckedThrowingContinuation { (continuation: UploadContinuation) in
             let storage = Storage.storage()

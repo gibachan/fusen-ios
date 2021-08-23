@@ -1,12 +1,12 @@
 //
-//  MemoImage.swift
-//  MemoImage
+//  ImageData.swift
+//  ImageData
 //
 //  Created by Tatsuyuki Kobayashi on 2021/08/20.
 //
 
 import Foundation
 
-struct MemoImage {
+struct ImageData {
     let data: Data
 }

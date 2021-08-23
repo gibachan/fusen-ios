@@ -72,7 +72,7 @@ struct AddBookView: View {
             }
             
             Spacer()
-                .frame(height: 160)
+                .frame(height: 190)
                 .listRowBackground(Color.backgroundSystemGroup)
         }
         .font(.medium)

@@ -35,9 +35,9 @@ final class ScanBarcodeViewModel: ObservableObject {
         guard let backCamera = AVCaptureDevice.default(for: AVMediaType.video),
             backCamera.hasTorch else { return }
         try? backCamera.lockForConfiguration()
-        backCamera.torchMode = isTorchOn ? .on : .off
+        backCamera.torchMode = isTorchOn ? .off : .on
         backCamera.unlockForConfiguration()
-        
+
         isTorchOn = currentTorch()
     }
 

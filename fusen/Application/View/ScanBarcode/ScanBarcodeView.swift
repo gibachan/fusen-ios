@@ -20,8 +20,10 @@ struct ScanBarcodeView: View {
                 }
             }
             
-            cameraFrame
-                .padding()
+            Text("カメラでバーコードを読み取ってください")
+                .font(.medium)
+                .foregroundColor(.white)
+                .padding(.top, 36)
             
             scannedBook
                 .padding()
@@ -49,19 +51,6 @@ struct ScanBarcodeView: View {
         }
         .onReceive(viewModel.$suggestedBook) {
             isSuggestPresented = $0 != nil
-        }
-    }
-    
-    private var cameraFrame: some View {
-        VStack(alignment: .center, spacing: 0) {
-            Text("カメラでバーコードを読み取ってください")
-                .font(.medium)
-                .foregroundColor(.white)
-                .padding(EdgeInsets(top: 24, leading: 0, bottom: 40, trailing: 0))
-            Rectangle()
-                .stroke(lineWidth: 2)
-                .fill(.white)
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: 80, trailing: 0))
         }
     }
     

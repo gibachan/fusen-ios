@@ -17,7 +17,14 @@ class CameraPreview: UIView {
     private let metadataOutput = AVCaptureMetadataOutput()
     private var previewLayer: AVCaptureVideoPreviewLayer?
     private var label: UILabel?
-
+    
+    // 読み取り範囲
+    private let detectionX: CGFloat = 0.1
+    private let detectionY: CGFloat = 0.4
+    private let detectionWidth: CGFloat = 0.8
+    private let detectionHeight: CGFloat = 0.2
+    private var detectionAreaView: UIView?
+    
     weak var delegate: CameraPreviewDelegate?
     
     override func layoutSubviews() {
@@ -27,6 +34,7 @@ class CameraPreview: UIView {
         #else
             previewLayer?.frame = self.bounds
         #endif
+        detectionAreaView?.frame = CGRect(x: frame.size.width * detectionX, y: frame.size.height * detectionY, width: frame.size.width * detectionWidth, height: frame.size.height * detectionHeight)
     }
 }
 
@@ -60,14 +68,20 @@ extension CameraPreview {
             metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             
             // 読み取り範囲を指定
-            metadataOutput.rectOfInterest = CGRect(x: 0.2, y: 0.3, width: 0.8, height: 0.4)
+            metadataOutput.rectOfInterest = CGRect(x: detectionY, y: 1 - detectionX - detectionWidth, width: detectionHeight, height: detectionWidth)
         }
         let previewLayer = AVCaptureVideoPreviewLayer(session: session)
-        backgroundColor = UIColor.gray
         previewLayer.videoGravity = .resizeAspectFill
         layer.addSublayer(previewLayer)
         self.previewLayer = previewLayer
-        
+
+        // 読み取り範囲の枠を表示
+        let detectionAreaView = UIView()
+        detectionAreaView.layer.borderColor = UIColor.white.cgColor
+        detectionAreaView.layer.borderWidth = 2
+        addSubview(detectionAreaView)
+        self.detectionAreaView = detectionAreaView
+
         session.startRunning()
     }
 

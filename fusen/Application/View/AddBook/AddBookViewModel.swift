@@ -1,64 +1,48 @@
 //
-//  EditBookViewModel.swift
-//  EditBookViewModel
+//  AddBookViewModel.swift
+//  AddBookViewModel
 //
 //  Created by Tatsuyuki Kobayashi on 2021/08/23.
 //
 
 import Foundation
 
-final class EditViewModel: ObservableObject {
+final class AddBookViewModel: ObservableObject {
     private let accountService: AccountServiceProtocol
     private let bookRepository: BookRepository
 
     @Published var isSaveEnabled = false
     @Published var state: State = .initial
-    @Published var book: Book
 
     init(
-        book: Book,
         accountService: AccountServiceProtocol = AccountService.shared,
         bookRepository: BookRepository = BookRepositoryImpl()
     ) {
-        self.book = book
         self.accountService = accountService
         self.bookRepository = bookRepository
     }
     
-    func onTextChange(title: String, author: String, description: String) {
-        isSaveEnabled = book.title != title || book.author != author || book.description != description
+    func onTextChange(title: String, author: String) {
+        isSaveEnabled = !title.isEmpty
     }
     
-//    func onAppear() async {
-//        guard let user = accountService.currentUser else { return }
-//        guard !state.isInProgress else { return }
-//
-//        state = .loading
-//        do {
-//            let pager = try await bookRepository.getAllBooks(for: user)
-//            log.d("finished=\(pager.finished)")
-//            DispatchQueue.main.async { [weak self] in
-//                self?.textCountText = "xx冊の書籍"
-//                self?.state = .succeeded
-//                self?.pager = pager
-//            }
-//        } catch {
-//            log.e(error.localizedDescription)
-//            DispatchQueue.main.async { [weak self] in
-//                self?.state = .failed
-//            }
-//        }
-//    }
-    
-    func onSave(title: String, author: String, description: String) async {
+    func onSave(title: String, author: String) async {
         guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
+        
+        let publication = Publication(
+            title: title,
+            author: author,
+            thumbnailURL: nil
+        )
 
         state = .loading
         do {
-            try await bookRepository.update(book: book, title: title, author: author, description: description, for: user)
+            let id = try await bookRepository.addBook(of: publication, in: nil, for: user)
+            log.d("Book is added for id: \(id.value)")
             DispatchQueue.main.async { [weak self] in
                 self?.state = .succeeded
+                NotificationCenter.default.postRefreshBookShelf()
             }
         } catch {
             // FIXME: error handling

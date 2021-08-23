@@ -13,44 +13,42 @@ struct ScanBarcodeView: View {
     @State private var isSuggestPresented = false
     
     var body: some View {
-        NavigationView {
-            ZStack(alignment: .top) {
-                BarcodeCameraView { code in
-                    Task {
-                        await viewModel.onBarcodeScanned(code: code)
-                    }
+        ZStack(alignment: .top) {
+            BarcodeCameraView { code in
+                Task {
+                    await viewModel.onBarcodeScanned(code: code)
                 }
-                
-                cameraFrame
-                    .padding()
-                
-                scannedBook
-                    .padding()
             }
-            .background(Color.black)
-            .navigationBarTitle("", displayMode: .inline)
-            .navigationBarItems(leading: CancelButton { dismiss() },
-                                trailing: torchButton)
-            .alert(isPresented: $isSuggestPresented) {
-                Alert(
-                    title: Text("書籍を追加"),
-                    message: Text("「\(viewModel.suggestedBook?.title ?? "")」が見つかりました。書籍を追加しますか？"),
-                    primaryButton: .cancel(Text("キャンセル"),
-                                           action: {
-                                               Task {
-                                                   await viewModel.onDeclinSuggestedBook()
-                                               }
-                                           }),
-                    secondaryButton: .default(Text("追加").fontWeight(.bold), action: {
-                        Task {
-                            await viewModel.onAcceptSuggestedBook()
-                        }
-                    })
-                )
-            }
-            .onReceive(viewModel.$suggestedBook) {
-                isSuggestPresented = $0 != nil
-            }
+            
+            cameraFrame
+                .padding()
+            
+            scannedBook
+                .padding()
+        }
+        .background(Color.black)
+        .navigationBarTitle("", displayMode: .inline)
+        .navigationBarItems(leading: CancelButton { dismiss() },
+                            trailing: torchButton)
+        .alert(isPresented: $isSuggestPresented) {
+            Alert(
+                title: Text("書籍を追加"),
+                message: Text("「\(viewModel.suggestedBook?.title ?? "")」が見つかりました。書籍を追加しますか？"),
+                primaryButton: .cancel(Text("キャンセル"),
+                                       action: {
+                                           Task {
+                                               await viewModel.onDeclinSuggestedBook()
+                                           }
+                                       }),
+                secondaryButton: .default(Text("追加").fontWeight(.bold), action: {
+                    Task {
+                        await viewModel.onAcceptSuggestedBook()
+                    }
+                })
+            )
+        }
+        .onReceive(viewModel.$suggestedBook) {
+            isSuggestPresented = $0 != nil
         }
     }
     

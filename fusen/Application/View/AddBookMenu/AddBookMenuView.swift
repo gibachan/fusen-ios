@@ -32,12 +32,16 @@ struct AddBookMenuView: View {
             .sheet(isPresented: $isScanBarcodePresented, onDismiss: {
                 print("dimiss")
             }, content: {
-                ScanBarcodeView()
+                NavigationView {
+                    ScanBarcodeView()
+                }
             })
             .sheet(isPresented: $isManualInputPresented, onDismiss: {
                 print("dimiss")
             }, content: {
-                Text("Not yet implemented")
+                NavigationView {
+                    AddBookView()
+                }
             })
             .navigationBarTitle("書籍を追加", displayMode: .inline)
             .navigationBarItems(leading: CancelButton { dismiss() })

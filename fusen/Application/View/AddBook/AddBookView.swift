@@ -1,30 +1,24 @@
 //
-//  EditBookView.swift
-//  EditBookView
+//  AddBookView.swift
+//  AddBookView
 //
 //  Created by Tatsuyuki Kobayashi on 2021/08/23.
 //
 
 import SwiftUI
 
-struct EditBookView: View {
+struct AddBookView: View {
     @Environment(\.dismiss) private var dismiss
-    @StateObject private var viewModel: EditViewModel
-    @State var title: String
-    @State var author: String
-    @State var description: String
-    
-    init(book: Book) {
-        self._viewModel = StateObject(wrappedValue: EditViewModel(book: book))
-        self._title = State(wrappedValue: book.title)
-        self._author = State(wrappedValue: book.author)
-        self._description = State(wrappedValue: book.description)
-    }
+    @StateObject private var viewModel = AddBookViewModel()
+
+    @State var thumbnail: UIImage?
+    @State var title: String = ""
+    @State var author: String = ""
     
     var body: some View {
         Form {
             Section {
-                BookImageView(url: viewModel.book.imageURL)
+                BookImageView(url: nil)
                     .frame(width: 64, height: 80)
             } header: {
                 SectionHeaderText("書籍画像")
@@ -37,7 +31,7 @@ struct EditBookView: View {
                     .foregroundColor(.textPrimary)
                     .frame(minHeight: 80)
                     .onChange(of: title, perform: { newValue in
-                        viewModel.onTextChange(title: newValue, author: author, description: description)
+                        viewModel.onTextChange(title: newValue, author: author)
                     })
 
             } header: {
@@ -50,23 +44,11 @@ struct EditBookView: View {
                     .foregroundColor(.textPrimary)
                     .frame(minHeight: 80)
                     .onChange(of: author, perform: { newValue in
-                        viewModel.onTextChange(title: title, author: newValue, description: description)
+                        viewModel.onTextChange(title: title, author: newValue)
                     })
 
             } header: {
                 SectionHeaderText("著者")
-            }
-
-            Section {
-                PlaceholderTextEditor(placeholder: "概要を入力", text: $description)
-                    .font(.medium)
-                    .foregroundColor(.textPrimary)
-                    .frame(minHeight: 120)
-                    .onChange(of: description, perform: { newValue in
-                        viewModel.onTextChange(title: title, author: author, description: newValue)
-                    })
-            } header: {
-                SectionHeaderText("概要")
             }
             
             Spacer()
@@ -84,11 +66,14 @@ struct EditBookView: View {
 //        }, content: {
 //            Text("Not yet implemented")
 //        })
-        .navigationBarTitle("書籍を編集", displayMode: .inline)
+        .navigationBarTitle("マニュアル入力", displayMode: .inline)
         .navigationBarItems(
+            leading: CancelButton {
+                dismiss()
+            },
             trailing: SaveButton {
                 Task {
-                    await viewModel.onSave(title: title, author: author, description: description)
+                    await viewModel.onSave(title: title, author: author)
                 }
             }
                 .disabled(!viewModel.isSaveEnabled)
@@ -110,10 +95,8 @@ struct EditBookView: View {
     }
 }
 
-struct EditBookView_Previews: PreviewProvider {
+struct AddBookView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            EditBookView(book: Book.sample)
-        }
+        AddBookView()
     }
 }

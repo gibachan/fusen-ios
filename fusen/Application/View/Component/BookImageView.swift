@@ -7,16 +7,30 @@
 
 import SwiftUI
 
+private var cache: [URL: Image] = [:]
+
 struct BookImageView: View {
     let url: URL?
+
     var body: some View {
-        AsyncImage(url: url) { image in
+        if let url = url,
+           let image = cache[url] {
             image
                 .resizable()
-        } placeholder: {
-            Image.book
-                .resizable()
-                .foregroundColor(.placeholder)
+        } else {
+            AsyncImage(url: url) { image in
+                image
+                    .resizable()
+                    .onAppear(perform: {
+                        if let url = url {
+                            cache[url] = image
+                        }
+                    })
+            } placeholder: {
+                Image.book
+                    .resizable()
+                    .foregroundColor(.placeholder)
+            }
         }
     }
 }

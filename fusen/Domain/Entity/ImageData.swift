@@ -8,5 +8,10 @@
 import Foundation
 
 struct ImageData {
+    enum ImageType {
+        case book
+        case memo
+    }
+    let type: ImageType
     let data: Data
 }

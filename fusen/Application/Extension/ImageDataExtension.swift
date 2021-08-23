@@ -10,11 +10,19 @@ import UIKit
 extension ImageData {
     var uiImage: UIImage? { .init(data: data) }
     
-    init?(uiImage: UIImage) {
+    init?(type: ImageType, uiImage: UIImage) {
         // FIXME: Determine reasonable quality
-        guard let data = uiImage.jpegData(compressionQuality: 0.8) else {
+        let quality: CGFloat
+        switch type {
+        case .book: quality = 0.8
+        case .memo: quality = 0.8
+        }
+        
+        guard let data = uiImage.jpegData(compressionQuality: quality) else {
             return nil
         }
+        
+        self.type = type
         self.data = data
     }
 }

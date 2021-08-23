@@ -52,7 +52,7 @@ final class AddMemoViewModel: NSObject, ObservableObject {
         do {
             let memoPage: Int? = page == 0 ? nil : page
             let image: ImageData? = imageResults
-                .compactMap { ImageData(uiImage: $0.image) }
+                .compactMap { ImageData(type: .memo, uiImage: $0.image) }
                 .first
             let id = try await memoRepository.addMemo(of: book, text: text, quote: quote, page: memoPage, image: image, for: user)
             log.d("Memo is added for id: \(id.value)")

@@ -26,7 +26,7 @@ final class AddBookViewModel: ObservableObject {
         isSaveEnabled = !title.isEmpty
     }
     
-    func onSave(title: String, author: String) async {
+    func onSave(title: String, author: String, thumbnailImage: ImageData?) async {
         guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
         
@@ -40,6 +40,12 @@ final class AddBookViewModel: ObservableObject {
         do {
             let id = try await bookRepository.addBook(of: publication, in: nil, for: user)
             log.d("Book is added for id: \(id.value)")
+            
+            if let image = thumbnailImage {
+                let book = try await bookRepository.getBook(by: id, for: user)
+                try await bookRepository.update(book: book, image: image, for: user)
+                log.d("Thumbnail image is updated for book id: \(id.value)")
+            }
             DispatchQueue.main.async { [weak self] in
                 self?.state = .succeeded
                 NotificationCenter.default.postRefreshBookShelf()

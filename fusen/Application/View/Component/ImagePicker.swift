@@ -15,17 +15,19 @@ struct ImagePickerView: UIViewControllerRepresentable {
         case photoLibrary
     }
     
-    private let type: PickerType
+    private let imageType: ImageData.ImageType
+    private let pickerType: PickerType
     private let handler: Handler
     
-    init(type: PickerType, _ handler: @escaping Handler) {
-        self.type = type
+    init(imageType: ImageData.ImageType, pickerType: PickerType, _ handler: @escaping Handler) {
+        self.imageType = imageType
+        self.pickerType = pickerType
         self.handler = handler
     }
     
     func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePickerView>) -> UIImagePickerController {
         let controller = UIImagePickerController()
-        switch type {
+        switch pickerType {
         case .camera:
             controller.sourceType = .camera
         case .photoLibrary:
@@ -39,15 +41,19 @@ struct ImagePickerView: UIViewControllerRepresentable {
     }
     
     func makeCoordinator() -> Coodinator {
-        return Coordinator(handler: handler)
+        return Coordinator { image in
+            if let imageData = ImageData(type: imageType, uiImage: image) {
+                handler(.success(imageData))
+            }
+        }
     }
 }
 
 extension ImagePickerView {
     final class Coodinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-        private var handler: Handler
+        private var handler: (UIImage) -> Void
         
-        init(handler: @escaping Handler) {
+        init(handler: @escaping (UIImage) -> Void) {
             self.handler = handler
         }
         
@@ -56,9 +62,8 @@ extension ImagePickerView {
         }
         
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-            if let image = info[.originalImage] as? UIImage,
-               let thumbnail = ImageData(uiImage: image){
-                handler(.success(thumbnail))
+            if let image = info[.originalImage] as? UIImage {
+                handler(image)
             }
             picker.dismiss(animated: true)
         }

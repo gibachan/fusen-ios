@@ -83,7 +83,7 @@ struct AddBookView: View {
             },
             trailing: SaveButton {
                 Task {
-                    await viewModel.onSave(title: title, author: author)
+                    await viewModel.onSave(title: title, author: author, thumbnailImage: thumbnailImage)
                 }
             }
                 .disabled(!viewModel.isSaveEnabled)
@@ -103,7 +103,7 @@ struct AddBookView: View {
             )
         }
         .sheet(isPresented: $isCameraPickerPresented) {
-            ImagePickerView(type: .camera) { result in
+            ImagePickerView(imageType: .book, pickerType: .camera) { result in
                 switch result {
                 case .success(let image):
                     thumbnailImage = image
@@ -113,7 +113,7 @@ struct AddBookView: View {
             }
         }
         .sheet(isPresented: $isPhotoLibraryPresented) {
-            ImagePickerView(type: .photoLibrary) { result in
+            ImagePickerView(imageType: .book, pickerType: .photoLibrary) { result in
                 switch result {
                 case .success(let image):
                     thumbnailImage = image

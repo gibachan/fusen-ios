@@ -132,6 +132,7 @@
 		A082001926C1F5D100100357 /* fusenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A082001826C1F5D100100357 /* fusenTests.swift */; };
 		A082002326C1F5D100100357 /* fusenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A082002226C1F5D100100357 /* fusenUITests.swift */; };
 		A0B9482D26D3A32300C47204 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9482C26D3A32300C47204 /* ImagePicker.swift */; };
+		A0B9482F26D3BF4C00C47204 /* StorageImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9482E26D3BF4C00C47204 /* StorageImageUploader.swift */; };
 		A0BA4CAF26C49BE100D99D8C /* ISBN.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BA4CAE26C49BE100D99D8C /* ISBN.swift */; };
 		A0BA4CB226C4DDF100D99D8C /* ScanBarcodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BA4CB126C4DDF100D99D8C /* ScanBarcodeView.swift */; };
 		A0BA4CB426C4DDFA00D99D8C /* ScanBarcodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BA4CB326C4DDFA00D99D8C /* ScanBarcodeViewModel.swift */; };
@@ -297,6 +298,7 @@
 		A082001E26C1F5D100100357 /* fusenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fusenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A082002226C1F5D100100357 /* fusenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fusenUITests.swift; sourceTree = "<group>"; };
 		A0B9482C26D3A32300C47204 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		A0B9482E26D3BF4C00C47204 /* StorageImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageImageUploader.swift; sourceTree = "<group>"; };
 		A0BA4CAE26C49BE100D99D8C /* ISBN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISBN.swift; sourceTree = "<group>"; };
 		A0BA4CB126C4DDF100D99D8C /* ScanBarcodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanBarcodeView.swift; sourceTree = "<group>"; };
 		A0BA4CB326C4DDFA00D99D8C /* ScanBarcodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanBarcodeViewModel.swift; sourceTree = "<group>"; };
@@ -585,6 +587,7 @@
 				A069982826CCAB07006E74C6 /* FirestoreUpdateMemo.swift */,
 				A069983026CD3158006E74C6 /* FirestoreGetCollection.swift */,
 				A07CAD1126CFBB160012201A /* FirestoreCreateCollection.swift */,
+				A0B9482E26D3BF4C00C47204 /* StorageImageUploader.swift */,
 			);
 			path = Firestore;
 			sourceTree = "<group>";
@@ -1079,6 +1082,7 @@
 				A07507C926C546260087AE5C /* HomeTabView.swift in Sources */,
 				A069983326CDD85B006E74C6 /* BookShelfEmptyItem.swift in Sources */,
 				A05CE89526D1A6C6007F9CF2 /* GestureImageView.swift in Sources */,
+				A0B9482F26D3BF4C00C47204 /* StorageImageUploader.swift in Sources */,
 				A07CAD1F26D0670A0012201A /* CollectionItemView.swift in Sources */,
 				7A11FCA826CB47E200F1A6BC /* SettingTabViewModel.swift in Sources */,
 				7A11FCB626CB5DD400F1A6BC /* AddMemoView.swift in Sources */,

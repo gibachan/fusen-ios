@@ -9,6 +9,7 @@ import Foundation
 
 enum BookRepositoryError: Error {
     case decodeError
+    case uploadImage
     case unknown
 }
 
@@ -28,6 +29,7 @@ protocol BookRepository {
     func update(book: Book, isFavorite: Bool, for user: User) async throws
     func update(book: Book, title: String, author: String, description: String, for user: User) async throws
     func update(book: Book, collection: Collection, for user: User) async throws
+    func update(book: Book, image: ImageData, for user: User) async throws
     func delete(book: Book, for user: User) async throws
 }
 

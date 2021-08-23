@@ -8,7 +8,6 @@
 import Foundation
 import FirebaseFirestore
 import FirebaseFirestoreSwift
-import FirebaseStorage
 
 final class MemoRepositoryImpl: MemoRepository {
     private let db = Firestore.firestore()
@@ -164,10 +163,11 @@ final class MemoRepositoryImpl: MemoRepository {
     
     func addMemo(of book: Book, text: String, quote: String, page: Int?, image: ImageData?, for user: User) async throws -> ID<Memo> {
         
-        var imageURL: URL? = nil
+        var imageURL: URL?
         if let image = image {
             do {
-                imageURL = try await upload(image: image, of: book, for: user)
+                let uploader = StorageImageUploader()
+                imageURL = try await uploader.upload(image: image, of: book.id, for: user)
             } catch {
                 throw MemoRepositoryError.uploadImage
             }
@@ -193,37 +193,6 @@ final class MemoRepositoryImpl: MemoRepository {
                         continuation.resume(returning: id)
                     }
                 }
-        }
-    }
-    
-    private func upload(image: ImageData, of book: Book, for user: User) async throws -> URL {
-        typealias UploadContinuation = CheckedContinuation<URL, Error>
-        return try await withCheckedThrowingContinuation { (continuation: UploadContinuation) in
-            let storage = Storage.storage()
-            let imageName = "\(UUID().uuidString).jpg"
-            let storagePath = "users/\(user.id.value)/books/\(book.id.value)/\(imageName)"
-            let imageRef = storage.reference().child(storagePath)
-            
-            let metadata = StorageMetadata()
-            metadata.contentType = "image/jpeg"
-            log.d("Uploading image..: \(storagePath)")
-            imageRef.putData(image.data, metadata: metadata) { (metadata, error) in
-                guard let metadata = metadata else {
-                    log.e("metadata is missing")
-                    continuation.resume(throwing: MemoRepositoryError.uploadImage)
-                    return
-                }
-                log.d("Metadata size=\(metadata.size), content-type=\(metadata.contentType ?? "")")
-                imageRef.downloadURL { (url, error) in
-                    guard let url = url else {
-                        log.e("downloadURL is missing - \(error?.localizedDescription ?? "")")
-                        continuation.resume(throwing: MemoRepositoryError.uploadImage)
-                        return
-                    }
-                    log.d("Successfully uploaded: \(url)")
-                    continuation.resume(returning: url)
-                }
-            }
         }
     }
     

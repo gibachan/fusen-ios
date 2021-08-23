@@ -245,6 +245,28 @@ final class BookRepositoryImpl: BookRepository {
         }
     }
     
+    func update(book: Book, title: String, author: String, description: String, for user: User) async throws {
+        let update = FirestoreUpdateBook(
+            title: title,
+            author: author,
+            imageURL: book.imageURL?.absoluteString ?? "",
+            description: description,
+            impression: book.impression,
+            isFavorite: book.isFavorite,
+            valuation: book.valuation,
+            collectionId: book.collectionId.value
+        )
+        let ref = db.booksCollection(for: user)
+            .document(book.id.value)
+        do {
+            try await ref.setData(update.data(), merge: true)
+            clearAllBooksCache()
+        } catch {
+            log.e(error.localizedDescription)
+            throw BookRepositoryError.unknown
+        }
+    }
+    
     func update(book: Book, collection: Collection, for user: User) async throws {
         let update = FirestoreUpdateBook(
             title: book.title,

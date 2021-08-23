@@ -10,6 +10,7 @@ import SwiftUI
 struct BookContentView: View {
     @Environment(\.dismiss) private var dismiss
     
+//    @State private var isEditBookPresented = false
     @State private var isDetailCollapsed = true
     @State private var isDeleteAlertPresented = false
     @State private var isAddPresented = false
@@ -126,7 +127,18 @@ struct BookContentView: View {
                         .foregroundColor(.textPrimary)
                 }
                 .listRowSeparator(.visible)
+
+                NavigationLink(destination: LazyView(EditBookView(book: book))) {
+                    Text("情報を編集")
+                        .font(.medium)
+                        .foregroundColor(.textPrimary)
+                }
             }
+            
+//            NavigationLink(destination: LazyView(EditBookView(book: book)),
+//                           isActive: $isEditBookPresented) {
+//                EmptyView()
+//            }.hidden()
         } header: {
             HStack {
                 SectionHeaderText("書籍情報")

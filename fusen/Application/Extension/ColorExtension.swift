@@ -21,6 +21,7 @@ extension Color {
     // Background
     static let backgroundGray = Color("backgroundGray")
     static let backgroundLightGray = Color("backgroundLightGray")
+    static let backgroundSystemGroup = Color(UIColor.systemGroupedBackground)
     
     // Misc
     static let info = Color.gray

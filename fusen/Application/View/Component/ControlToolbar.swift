@@ -39,8 +39,9 @@ struct ControlToolbar: View {
             HStack(alignment: .center) {
                 if let leadingImage = leadingImage {
                     leadingImage
-                        .foregroundColor(.primary)
-                        .frame(width: 36, height: 36)
+                        .resizable()
+                        .frame(width: 24, height: 24)
+                        .foregroundColor(.active)
                         .onTapGesture {
                             leadingAction?()
                         }
@@ -48,8 +49,9 @@ struct ControlToolbar: View {
                 Spacer()
                 if let trailingImage = trailingImage {
                     trailingImage
-                        .foregroundColor(.primary)
-                        .frame(width: 36, height: 36)
+                        .resizable()
+                        .frame(width: 24, height: 24)
+                        .foregroundColor(.active)
                         .onTapGesture {
                             trailingAction?()
                         }

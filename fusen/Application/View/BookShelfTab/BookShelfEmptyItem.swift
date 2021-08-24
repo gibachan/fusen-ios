@@ -16,7 +16,7 @@ struct BookShelfEmptyItem: View {
                 .foregroundColor(.placeholder)
             Spacer()
         }
-        .frame(height: 40)
+        .frame(minHeight: 64)
     }
 }
 

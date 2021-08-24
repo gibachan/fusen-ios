@@ -15,10 +15,13 @@ struct BookShelfAllSection: View {
             if viewModel.books.isEmpty {
                 BookShelfEmptyItem()
             } else {
-                ForEach(viewModel.books, id: \.id.value) { book in
-                    NavigationLink(destination: LazyView(BookView(bookId: book.id))) {
-                        BookShelfItem(book: book)
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(alignment: .top, spacing: 24) {
+                        ForEach(viewModel.books, id: \.id.value) { book in
+                            BookShelfItem(book: book)
+                        }
                     }
+                    .padding(.vertical, 8)
                 }
             }
         } header: {

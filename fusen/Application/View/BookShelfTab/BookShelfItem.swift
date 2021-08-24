@@ -10,22 +10,32 @@ import SwiftUI
 struct BookShelfItem: View {
     let book: Book
     
+    @State private var isBookPresented = false
+    
     var body: some View {
-        HStack {
-            BookImageView(url: book.imageURL)
-                .frame(width: 40, height: 60)
-            VStack(alignment: .leading, spacing: 0) {
-                Text(book.title)
-                    .font(.small)
-                    .fontWeight(.bold)
-                    .lineLimit(2)
-                    .foregroundColor(.textSecondary)
-                Spacer(minLength: 8)
-                Text(book.author)
-                    .font(.small)
-                    .lineLimit(1)
-                    .foregroundColor(.textSecondary)
+        VStack(alignment: .leading, spacing: 4) {
+            HStack {
+//                Spacer()
+                BookImageView(url: book.imageURL)
+                    .frame(width: 40, height: 60)
+                Spacer()
             }
+            Text(book.title)
+                .font(.small)
+                .fontWeight(.bold)
+                .lineLimit(2)
+                .foregroundColor(.textSecondary)
+            
+            NavigationLink(isActive: $isBookPresented) {
+                LazyView(BookView(bookId: book.id))
+            } label: {
+                EmptyView()
+            }
+            .buttonStyle(PlainButtonStyle())
+        }
+        .frame(width: 120)
+        .onTapGesture {
+            isBookPresented = true
         }
     }
 }

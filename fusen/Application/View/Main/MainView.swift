@@ -28,6 +28,7 @@ struct MainView: View {
                     Text("設定")
                 }
         }
+        .accentColor(.active)
         .fullScreenCover(isPresented: $isTutorialPresented) {
         } content: {
             TutorialView()

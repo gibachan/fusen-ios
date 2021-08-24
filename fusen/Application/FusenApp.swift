@@ -24,6 +24,7 @@ extension FusenApp {
         let textAttributes: [NSAttributedString.Key: Any] = [
             NSAttributedString.Key.foregroundColor: UIColor.textPrimary
         ]
+        UINavigationBar.appearance().tintColor = .active
         UINavigationBar.appearance().titleTextAttributes = textAttributes
         UINavigationBar.appearance().largeTitleTextAttributes = textAttributes
         UINavigationBar.appearance().backgroundColor = .backgroundLightGray

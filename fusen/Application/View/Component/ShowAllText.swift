@@ -11,6 +11,7 @@ struct ShowAllText: View {
     var body: some View {
         Text("すべて表示")
             .font(.medium)
+            .foregroundColor(.active)
     }
 }
 

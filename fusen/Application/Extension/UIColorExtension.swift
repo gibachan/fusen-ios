@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIColor {
+    static let active = UIColor(named: "active")
     static let backgroundLightGray = UIColor(named: "backgroundLightGray")
     static let textPrimary = UIColor(named: "textPrimary")!
 }

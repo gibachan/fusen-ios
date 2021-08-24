@@ -9,7 +9,7 @@ import SwiftUI
 
 extension Color {
     // App
-    static let primary = Color("primary")
+//    static let primary = Color("primary")
 
     // Text
     static let textPrimary = Color("textPrimary")

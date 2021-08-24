@@ -25,11 +25,10 @@ struct LatestMemoItem: View {
                     .foregroundColor(.textPrimary)
                     .lineLimit(1)
                 Spacer()
-                HStack {
+                HStack(spacing: 16) {
                     Text("\(memo.updatedAt.string)")
                         .font(.minimal)
                         .foregroundColor(.textSecondary)
-                    Spacer()
                     if let book = book {
                         Text(book.title)
                             .font(.small)

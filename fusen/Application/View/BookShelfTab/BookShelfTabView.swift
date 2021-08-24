@@ -27,7 +27,6 @@ struct BookShelfTabView: View {
                 }
                 
                 ControlToolbar(
-                    text: viewModel.textCountText,
                     leadingImage: .addCollection,
                     leadingAction: {
                         isAddCollectionPresented = true

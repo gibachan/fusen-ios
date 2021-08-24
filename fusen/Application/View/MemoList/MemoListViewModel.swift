@@ -13,7 +13,6 @@ final class MemoListViewModel: ObservableObject {
 
     @Published var state: State = .initial
     @Published var pager: Pager<Memo> = .empty
-    @Published var textCountText = ""
     
     init(
         accountService: AccountServiceProtocol = AccountService.shared,
@@ -32,7 +31,6 @@ final class MemoListViewModel: ObservableObject {
             let pager = try await memoRepository.getAllMemos(for: user)
             log.d("finished=\(pager.finished)")
             DispatchQueue.main.async { [weak self] in
-                self?.textCountText = "xx冊の書籍"
                 self?.state = .succeeded
                 self?.pager = pager
             }
@@ -53,7 +51,6 @@ final class MemoListViewModel: ObservableObject {
             let pager = try await memoRepository.getAllMemos(for: user, forceRefresh: true)
             log.d("finished=\(pager.finished)")
             DispatchQueue.main.async { [weak self] in
-                self?.textCountText = "xx件のメモ"
                 self?.state = .succeeded
                 self?.pager = pager
             }

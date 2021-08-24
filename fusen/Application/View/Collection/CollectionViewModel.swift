@@ -15,7 +15,6 @@ final class CollectionViewModel: ObservableObject {
     
     @Published var state: State = .initial
     @Published var pager: Pager<Book> = .empty
-    @Published var textCountText = ""
     
     init(
         collection: Collection,
@@ -38,7 +37,6 @@ final class CollectionViewModel: ObservableObject {
             let pager = try await bookRepository.getBooks(by: collection, for: user, forceRefresh: false)
             log.d("finished=\(pager.finished)")
             DispatchQueue.main.async { [weak self] in
-                self?.textCountText = "xx冊の書籍"
                 self?.state = .succeeded
                 self?.pager = pager
             }
@@ -59,7 +57,6 @@ final class CollectionViewModel: ObservableObject {
             let pager = try await bookRepository.getAllBooks(for: user, forceRefresh: true)
             log.d("finished=\(pager.finished)")
             DispatchQueue.main.async { [weak self] in
-                self?.textCountText = "xx冊の書籍"
                 self?.state = .succeeded
                 self?.pager = pager
             }

@@ -29,7 +29,6 @@ struct MemoListView: View {
             }
             
             ControlToolbar(
-                text: viewModel.textCountText,
                 trailingImage: .add,
                 trailingAction: {
                     isAddPresented = true

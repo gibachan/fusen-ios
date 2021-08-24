@@ -13,7 +13,6 @@ final class BookListViewModel: ObservableObject {
 
     @Published var state: State = .initial
     @Published var pager: Pager<Book> = .empty
-    @Published var textCountText = ""
     
     init(
         accountService: AccountServiceProtocol = AccountService.shared,
@@ -32,7 +31,6 @@ final class BookListViewModel: ObservableObject {
             let pager = try await bookRepository.getAllBooks(for: user)
             log.d("finished=\(pager.finished)")
             DispatchQueue.main.async { [weak self] in
-                self?.textCountText = "xx冊の書籍"
                 self?.state = .succeeded
                 self?.pager = pager
             }
@@ -53,7 +51,6 @@ final class BookListViewModel: ObservableObject {
             let pager = try await bookRepository.getAllBooks(for: user, forceRefresh: true)
             log.d("finished=\(pager.finished)")
             DispatchQueue.main.async { [weak self] in
-                self?.textCountText = "xx冊の書籍"
                 self?.state = .succeeded
                 self?.pager = pager
             }

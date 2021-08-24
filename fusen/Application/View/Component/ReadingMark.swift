@@ -12,15 +12,15 @@ struct ReadingMark: View {
     var body: some View {
         if isReading {
             Text("読書中")
-                .font(.small)
+                .font(.medium)
                 .foregroundColor(.white)
                 .padding(.horizontal, 12)
                 .padding(.vertical, 4)
                 .background(Capsule().fill(Color.active))
         } else {
             Text("読書中")
-                .font(.small)
-                .foregroundColor(.textSecondary)
+                .font(.medium)
+                .foregroundColor(.inactive)
                 .padding(.horizontal, 12)
                 .padding(.vertical, 4)
                 .background(Capsule().stroke(Color.inactive, lineWidth: 1))

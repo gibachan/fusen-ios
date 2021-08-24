@@ -38,7 +38,7 @@ struct HomeReadingBookItem: View {
                 }
         }
         .padding(.vertical, 8)
-        .padding(.horizontal, 16)
+        .padding(.horizontal, 24)
         .border(Color.backgroundGray, width: 0.5)
         .frame(height: Self.height)
         .background(Color.white.opacity(0.9))

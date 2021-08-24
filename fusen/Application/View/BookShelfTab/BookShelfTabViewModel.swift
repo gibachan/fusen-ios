@@ -13,7 +13,6 @@ final class BookShelfTabViewModel: ObservableObject {
     
     @Published var state: State = .initial
     @Published var collections: [Collection] = []
-    @Published var textCountText = ""
     
     init(
         accountService: AccountServiceProtocol = AccountService.shared,
@@ -39,7 +38,6 @@ final class BookShelfTabViewModel: ObservableObject {
         do {
             let collections = try await collectionRepository.getlCollections(for: user)
             DispatchQueue.main.async { [weak self] in
-                self?.textCountText = "xx冊の書籍"
                 self?.state = .succeeded
                 self?.collections = collections
             }

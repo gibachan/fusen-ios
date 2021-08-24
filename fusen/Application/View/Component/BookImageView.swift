@@ -30,6 +30,7 @@ struct BookImageView: View {
                 Image.book
                     .resizable()
                     .foregroundColor(.placeholder)
+                    .padding(4)
             }
         }
     }

@@ -13,17 +13,16 @@ struct BookShelfItem: View {
     @State private var isBookPresented = false
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            HStack {
-//                Spacer()
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(spacing: 4) {
+                Spacer()
                 BookImageView(url: book.imageURL)
                     .frame(width: 40, height: 60)
                 Spacer()
             }
             Text(book.title)
-                .font(.small)
-                .fontWeight(.bold)
-                .lineLimit(2)
+                .font(.minimal)
+                .lineLimit(3)
                 .foregroundColor(.textSecondary)
             
             NavigationLink(isActive: $isBookPresented) {
@@ -33,7 +32,7 @@ struct BookShelfItem: View {
             }
             .buttonStyle(PlainButtonStyle())
         }
-        .frame(width: 120)
+        .frame(width: 100)
         .onTapGesture {
             isBookPresented = true
         }

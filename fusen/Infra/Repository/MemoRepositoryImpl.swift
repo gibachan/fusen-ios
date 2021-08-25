@@ -166,8 +166,8 @@ final class MemoRepositoryImpl: MemoRepository {
         var imageURL: URL?
         if let image = image {
             do {
-                let uploader = StorageImageUploader()
-                imageURL = try await uploader.upload(image: image, of: book.id, for: user)
+                let storage = ImageStorage()
+                imageURL = try await storage.upload(image: image, of: book.id, for: user)
             } catch {
                 throw MemoRepositoryError.uploadImage
             }
@@ -218,6 +218,11 @@ final class MemoRepositoryImpl: MemoRepository {
         let ref = db.memosCollection(for: user)
             .document(memo.id.value)
         do {
+            if let imageURL = memo.imageURLs.first {
+                let storage = ImageStorage()
+                try await storage.delete(url: imageURL, for: user)
+            }
+
             try await ref.delete()
             clearCache(of: memo.bookId)
         } catch {

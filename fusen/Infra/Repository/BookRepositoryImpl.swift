@@ -292,8 +292,8 @@ final class BookRepositoryImpl: BookRepository {
     func update(book: Book, image: ImageData, for user: User) async throws {
         var imageURL: URL?
         do {
-            let uploader = StorageImageUploader()
-            imageURL = try await uploader.upload(image: image, of: book.id, for: user)
+            let storage = ImageStorage()
+            imageURL = try await storage.upload(image: image, of: book.id, for: user)
         } catch {
             throw BookRepositoryError.uploadImage
         }

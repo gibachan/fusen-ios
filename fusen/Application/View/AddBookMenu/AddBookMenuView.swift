@@ -15,8 +15,7 @@ struct AddBookMenuView: View {
     
     var body: some View {
         NavigationView {
-            VStack(alignment: .leading, spacing: 32) {
-                Spacer().frame(height: 32)
+            List {
                 Button {
                     isScanBarcodePresented = true
                 } label: {
@@ -27,7 +26,6 @@ struct AddBookMenuView: View {
                 } label: {
                     AddBookMenuItem(type: AddBookMenuType.manual)
                 }
-                Spacer()
             }
             .sheet(isPresented: $isScanBarcodePresented, onDismiss: {
                 print("dimiss")

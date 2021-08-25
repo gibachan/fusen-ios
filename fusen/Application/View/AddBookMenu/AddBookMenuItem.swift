@@ -13,11 +13,12 @@ struct AddBookMenuItem: View {
         HStack(spacing: 8) {
             type.icon
                 .resizable()
-                .frame(width: 24, height: 24)
+                .frame(width: 28, height: 24)
             Text(type.title)
                 .font(.medium)
         }
-        .foregroundColor(.textPrimary)
+        .padding(.vertical, 8)
+        .foregroundColor(.active)
     }
 }
 

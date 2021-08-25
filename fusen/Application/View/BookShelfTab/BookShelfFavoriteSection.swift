@@ -16,7 +16,7 @@ struct BookShelfFavoriteSection: View {
                 BookShelfEmptyItem()
             } else {
                 ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(alignment: .top, spacing: 24) {
+                    HStack(alignment: .top, spacing: 8) {
                         ForEach(viewModel.books, id: \.id.value) { book in
                             BookShelfItem(book: book)
                         }

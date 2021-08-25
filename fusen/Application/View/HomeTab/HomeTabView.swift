@@ -61,6 +61,8 @@ struct HomeTabView: View {
                         isAddPresented = true
                     }
                 }
+
+                Divider() // FIXME: Find another way to show top edge of tabbar
             }
             .navigationBarTitle("ホーム")
         }

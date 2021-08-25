@@ -13,17 +13,18 @@ struct BookShelfItem: View {
     @State private var isBookPresented = false
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack(spacing: 4) {
-                Spacer()
-                BookImageView(url: book.imageURL)
-                    .frame(width: 40, height: 60)
+        HStack(alignment: .top, spacing: 4) {
+            BookImageView(url: book.imageURL)
+                .frame(width: 40, height: 60)
+            VStack {
+                Text(book.title)
+                    .font(.minimal)
+                    .lineLimit(3)
+                    .foregroundColor(.textSecondary)
                 Spacer()
             }
-            Text(book.title)
-                .font(.minimal)
-                .lineLimit(3)
-                .foregroundColor(.textSecondary)
+            .frame(width: 80)
+            Spacer()
             
             NavigationLink(isActive: $isBookPresented) {
                 LazyView(BookView(bookId: book.id))
@@ -32,7 +33,7 @@ struct BookShelfItem: View {
             }
             .buttonStyle(PlainButtonStyle())
         }
-        .frame(width: 100)
+        .background(Color.white) // Enable to tap empty space
         .onTapGesture {
             isBookPresented = true
         }

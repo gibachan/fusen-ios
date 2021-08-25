@@ -89,6 +89,7 @@ final class ScanBarcodeViewModel: ObservableObject {
                     self?.scannedBook = nil
                 }
                 
+                NotificationCenter.default.postRefreshHome()
                 NotificationCenter.default.postRefreshBookShelf()
             }
         } catch {

@@ -172,7 +172,7 @@ final class BookRepositoryImpl: BookRepository {
             throw  BookRepositoryError.unknown
         }
     }
-
+    
     func getBooks(by collection: Collection, for user: User, forceRefresh: Bool) async throws -> Pager<Book> {
         if let cachedPager = collectionCache[collection.id]?.currentPager {
             let isCacheValid = cachedPager.data.count >= perPage && !forceRefresh
@@ -320,26 +320,43 @@ final class BookRepositoryImpl: BookRepository {
     }
     
     func delete(book: Book, for user: User) async throws {
-        let ref = db.booksCollection(for: user)
+        let memosCollectionRef = db.memosCollection(for: user)
+        let memosSnapshot = try await memosCollectionRef
+            .whereBook(book.id)
+            .getDocuments()
+        let memoDocuments = memosSnapshot.documents
+        let bookRef = db.booksCollection(for: user)
             .document(book.id.value)
-        do {
-            // FIXME: Delete all related memos
-            try await ref.delete()
-            clearAllBooksCache()
-        } catch {
-            log.e(error.localizedDescription)
-            throw BookRepositoryError.unknown
+        
+        typealias DeleteBookContinuation = CheckedContinuation<Void, Error>
+        return try await withCheckedThrowingContinuation { (continuation: DeleteBookContinuation) in
+            db.runTransaction { (transaction, _) -> Any? in
+                memoDocuments.forEach { memoDocument in
+                    let memoRef = memosCollectionRef.document(memoDocument.documentID)
+                    transaction.deleteDocument(memoRef)
+                }
+                transaction.deleteDocument(bookRef)
+                return nil
+            } completion: { (_, error) in
+                if let error = error {
+                    log.e(error.localizedDescription)
+                    continuation.resume(throwing: BookRepositoryError.unknown)
+                } else {
+                    log.d("Deleted book: \(book.id.value) - \(book.title)")
+                    continuation.resume(returning: ())
+                }
+            }
         }
     }
     
     private func clearAllBooksCache() {
         allBooksCache = .empty
     }
-
+    
     private func clearFavoriteBooksCache() {
         favoriteBooksCache = .empty
     }
-
+    
     private func clearCollectionCache(of collection: Collection) {
         collectionCache[collection.id] = .empty
     }

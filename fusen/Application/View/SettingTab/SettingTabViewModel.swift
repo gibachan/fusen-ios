@@ -12,9 +12,16 @@ final class SettingTabViewModel: ObservableObject {
     private let accountService: AccountServiceProtocol
 
     @Published var state: State = .initial
-
+    @Published var userId: String = ""
+    @Published var version: String = ""
+    
     init(accountService: AccountServiceProtocol = AccountService.shared) {
         self.accountService = accountService
+    }
+    
+    func onApper() {
+        userId = accountService.currentUser?.id.value ?? ""
+        version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
     }
     
     func onSignInWithAppleRequest(_ resutst: ASAuthorizationAppleIDRequest) {

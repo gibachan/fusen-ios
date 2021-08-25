@@ -14,4 +14,7 @@ extension Notification.Name {
     static var refreshBookShelf: Notification.Name {
         Notification.Name("refreshBookShelf")
     }
+    static var refreshBook: Notification.Name {
+        Notification.Name("refreshBook")
+    }
 }

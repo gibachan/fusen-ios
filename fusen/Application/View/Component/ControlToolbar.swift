@@ -41,7 +41,7 @@ struct ControlToolbar: View {
             if let trailingImage = trailingImage {
                 trailingImage
                     .resizable()
-                    .frame(width: 28, height: 24)
+                    .frame(width: 24, height: 24)
                     .foregroundColor(.active)
                     .onTapGesture {
                         trailingAction?()

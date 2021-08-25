@@ -58,6 +58,7 @@ final class AddMemoViewModel: NSObject, ObservableObject {
             log.d("Memo is added for id: \(id.value)")
             DispatchQueue.main.async { [weak self] in
                 self?.state = .succeeded
+                NotificationCenter.default.postRefreshHome()
             }
         } catch {
             // FIXME: error handling

@@ -76,6 +76,11 @@ struct HomeTabView: View {
                 }
             }
         }
+        .onReceive(NotificationCenter.default.refreshHomePublisher()) { _ in
+            Task {
+                await viewModel.onRefresh()
+            }
+        }
         .onReceive(viewModel.$state) { state in
             switch state {
             case .initial:

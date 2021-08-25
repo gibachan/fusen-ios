@@ -24,6 +24,14 @@ final class BookShelfAllSectionModel: ObservableObject {
     }
     
     func onAppear() async {
+        await getBooks()
+    }
+    
+    func onRefresh() async {
+        await getBooks()
+    }
+    
+    private func getBooks() async {
         guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
         

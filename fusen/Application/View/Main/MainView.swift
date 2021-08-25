@@ -12,21 +12,29 @@ struct MainView: View {
     @State private var isTutorialPresented = false
     var body: some View {
         TabView {
-            HomeTabView()
-                .tabItem {
-                    Image.home
-                    Text("ホーム")
-                }
-            BookShelfTabView()
-                .tabItem {
-                    Image.bookShelf
-                    Text("本棚")
-                }
-            SettingTabView()
-                .tabItem {
-                    Image.setting
-                    Text("設定")
-                }
+            NavigationView {
+                HomeTabView()
+            }
+            .tabItem {
+                Image.home
+                Text("ホーム")
+            }
+            
+            NavigationView {
+                BookShelfTabView()
+            }
+            .tabItem {
+                Image.bookShelf
+                Text("本棚")
+            }
+            
+            NavigationView {
+                SettingTabView()
+            }
+            .tabItem {
+                Image.setting
+                Text("設定")
+            }
         }
         .accentColor(.active)
         .fullScreenCover(isPresented: $isTutorialPresented) {

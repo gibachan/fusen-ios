@@ -11,61 +11,59 @@ struct HomeTabView: View {
     @StateObject private var viewModel = HomeTabViewModel()
     @State private var isAddPresented = false
     var body: some View {
-        NavigationView {
-            ZStack(alignment: .bottomLeading) {
-                List {
-                    Section {
-                        ForEach(viewModel.latestBooks, id: \.id.value) { book in
-                            NavigationLink(destination: LazyView(BookView(bookId: book.id))) {
-                                LatestBookItem(book: book)
-                                    .padding(.vertical, 8)
-                            }
-                        }
-                    } header: {
-                        HStack {
-                            SectionHeaderText("最近追加した書籍")
-                            Spacer()
-                            NavigationLink(destination: LazyView(BookListView())) {
-                                ShowAllText()
-                            }
+        ZStack(alignment: .bottomLeading) {
+            List {
+                Section {
+                    ForEach(viewModel.latestBooks, id: \.id.value) { book in
+                        NavigationLink(destination: LazyView(BookView(bookId: book.id))) {
+                            LatestBookItem(book: book)
+                                .padding(.vertical, 8)
                         }
                     }
-                    
-                    Section {
-                        ForEach(viewModel.latestMemos, id: \.id.value) { memo in
-                            NavigationLink(destination: LazyView(EditMemoView(memo: memo))) {
-                                LatestMemoItem(memo: memo)
-                                    .padding(.vertical, 8)
-                            }
-                        }
-                    } header: {
-                        HStack {
-                            SectionHeaderText("最近追加したメモ")
-                            Spacer()
-                            NavigationLink(destination: MemoListView()) {
-                                ShowAllText()
-                            }
+                } header: {
+                    HStack {
+                        SectionHeaderText("最近追加した書籍")
+                        Spacer()
+                        NavigationLink(destination: LazyView(BookListView())) {
+                            ShowAllText()
                         }
                     }
-                    
-                    Spacer()
-                        .frame(height: HomeReadingBookItem.height)
-                        .listRowSeparator(.hidden)
                 }
-                .listStyle(PlainListStyle())
-                .refreshable {
-                    await viewModel.onRefresh()
-                }
-                if let readigBook = viewModel.readingBook {
-                    HomeReadingBookItem(book: readigBook) {
-                        isAddPresented = true
+                
+                Section {
+                    ForEach(viewModel.latestMemos, id: \.id.value) { memo in
+                        NavigationLink(destination: LazyView(EditMemoView(memo: memo))) {
+                            LatestMemoItem(memo: memo)
+                                .padding(.vertical, 8)
+                        }
+                    }
+                } header: {
+                    HStack {
+                        SectionHeaderText("最近追加したメモ")
+                        Spacer()
+                        NavigationLink(destination: MemoListView()) {
+                            ShowAllText()
+                        }
                     }
                 }
-
-                Divider() // FIXME: Find another way to show top edge of tabbar
+                
+                Spacer()
+                    .frame(height: HomeReadingBookItem.height)
+                    .listRowSeparator(.hidden)
             }
-            .navigationBarTitle("ホーム")
+            .listStyle(PlainListStyle())
+            .refreshable {
+                await viewModel.onRefresh()
+            }
+            if let readigBook = viewModel.readingBook {
+                HomeReadingBookItem(book: readigBook) {
+                    isAddPresented = true
+                }
+            }
+            
+            Divider() // FIXME: Find another way to show top edge of tabbar
         }
+        .navigationBarTitle("ホーム")
         .task {
             await viewModel.onAppear()
         }

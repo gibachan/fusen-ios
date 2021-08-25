@@ -12,45 +12,43 @@ struct BookShelfTabView: View {
     @State private var isAddBookPresented = false
     @State private var isAddCollectionPresented = false
     var body: some View {
-        NavigationView {
-            VStack(alignment: .leading, spacing: 0) {
-                List {
-                    BookShelfFavoriteSection()
-                    ForEach(viewModel.collections, id: \.id.value) { collection in
-                        BookShelfCollectionSection(collection: collection)
-                    }
-                    BookShelfAllSection()
+        VStack(alignment: .leading, spacing: 0) {
+            List {
+                BookShelfFavoriteSection()
+                ForEach(viewModel.collections, id: \.id.value) { collection in
+                    BookShelfCollectionSection(collection: collection)
                 }
-                .listStyle(PlainListStyle())
-                .refreshable {
-                    await viewModel.onRefresh()
-                }
-                
-                ControlToolbar(
-                    leadingImage: .addCollection,
-                    leadingAction: {
-                        isAddCollectionPresented = true
-                    },
-                    trailingImage: .add,
-                    trailingAction: {
-                        isAddBookPresented = true
-                    }
-                )
+                BookShelfAllSection()
             }
             .listStyle(PlainListStyle())
-            .navigationBarTitle("本棚")
-            .sheet(isPresented: $isAddCollectionPresented) {
-                print("dismissed")
-            } content: {
-                NavigationView {
-                    AddCollectionView()
+            .refreshable {
+                await viewModel.onRefresh()
+            }
+            
+            ControlToolbar(
+                leadingImage: .addCollection,
+                leadingAction: {
+                    isAddCollectionPresented = true
+                },
+                trailingImage: .add,
+                trailingAction: {
+                    isAddBookPresented = true
                 }
+            )
+        }
+        .listStyle(PlainListStyle())
+        .navigationBarTitle("本棚")
+        .sheet(isPresented: $isAddCollectionPresented) {
+            print("dismissed")
+        } content: {
+            NavigationView {
+                AddCollectionView()
             }
-            .sheet(isPresented: $isAddBookPresented) {
-                print("dismissed")
-            } content: {
-                AddBookMenuView()
-            }
+        }
+        .sheet(isPresented: $isAddBookPresented) {
+            print("dismissed")
+        } content: {
+            AddBookMenuView()
         }
         .task {
             await viewModel.onAppear()

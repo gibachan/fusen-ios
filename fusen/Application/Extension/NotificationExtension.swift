@@ -11,4 +11,15 @@ extension Notification.Name {
     static var refreshBookShelfAllCollection: Notification.Name {
         Notification.Name("refreshBookShelfAllCollection")
     }
+    static var error: Notification.Name {
+        Notification.Name("error")
+    }
+}
+
+extension Notification {
+    static let errorMessageParam = "error_message"
+    
+    var errorMessage: ErrorMessage? {
+        userInfo?[Notification.errorMessageParam] as? ErrorMessage
+    }
 }

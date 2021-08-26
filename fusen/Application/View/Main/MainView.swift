@@ -10,30 +10,53 @@ import SwiftUI
 struct MainView: View {
     @StateObject private var viewModel = MainViewModel()
     @State private var isTutorialPresented = false
+    @State private var toastText = ""
+    @State private var isToastPresented = false
+    
     var body: some View {
-        TabView {
-            NavigationView {
-                HomeTabView()
+        ZStack {
+            TabView {
+                NavigationView {
+                    HomeTabView()
+                }
+                .tabItem {
+                    Image.home
+                    Text("ホーム")
+                }
+                
+                NavigationView {
+                    BookShelfTabView()
+                }
+                .tabItem {
+                    Image.bookShelf
+                    Text("本棚")
+                }
+                
+                NavigationView {
+                    SettingTabView()
+                }
+                .tabItem {
+                    Image.setting
+                    Text("設定")
+                }
             }
-            .tabItem {
-                Image.home
-                Text("ホーム")
-            }
+            .zIndex(0)
             
-            NavigationView {
-                BookShelfTabView()
-            }
-            .tabItem {
-                Image.bookShelf
-                Text("本棚")
-            }
-            
-            NavigationView {
-                SettingTabView()
-            }
-            .tabItem {
-                Image.setting
-                Text("設定")
+            if isToastPresented {
+                ToastView(text: toastText, type: .error)
+                    .zIndex(1)
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                            withAnimation {
+                                isToastPresented = false
+                            }
+                        }
+                    }
+                    .onTapGesture {
+                        withAnimation {
+                            isToastPresented = false
+                        }
+                    }
             }
         }
         .accentColor(.active)
@@ -46,6 +69,12 @@ struct MainView: View {
         }
         .onReceive(viewModel.$showTutorial) {
             isTutorialPresented = $0
+        }
+        .onReceive(NotificationCenter.default.errorPublisher()) { notification in
+            toastText = notification.errorMessage?.string ?? ""
+            withAnimation {
+                isToastPresented = true
+            }
         }
     }
 }

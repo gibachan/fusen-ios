@@ -57,6 +57,7 @@ final class TutorialViewModel: ObservableObject {
             }
         } catch {
             DispatchQueue.main.async { [weak self] in
+                NotificationCenter.default.postError(message: .unexpected)
                 self?.state = .failed
             }
         }

@@ -11,7 +11,6 @@ import AuthenticationServices
 struct TutorialView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel = TutorialViewModel()
-    @State private var isErrorActive = false
     var body: some View {
         TabView {
             page1.tag(0)
@@ -19,7 +18,6 @@ struct TutorialView: View {
         }
         .tabViewStyle(PageTabViewStyle())
         .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
-        .toast(text: "Unexpected error occured!", type: .error, isActive: $isErrorActive)
         .onReceive(viewModel.$state) { state in
             switch state {
             case .initial:
@@ -31,7 +29,6 @@ struct TutorialView: View {
                 dismiss()
             case .failed:
                 LoadingHUD.dismiss()
-                isErrorActive = true
             }
         }
     }

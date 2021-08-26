@@ -97,7 +97,6 @@ struct BookView: View {
         .task {
             await viewModel.onAppear()
         }
-        .networkError(isActive: $isErrorActive)
         .onReceive(viewModel.$state) { state in
             switch state {
             case .initial:
@@ -111,7 +110,6 @@ struct BookView: View {
                 dismiss()
             case .failed:
                 LoadingHUD.dismiss()
-                isErrorActive = true
             }
         }
         .onReceive(NotificationCenter.default.refreshBookShelfAllCollectionPublisher()) { _ in

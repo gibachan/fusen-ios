@@ -14,6 +14,7 @@ final class SettingTabViewModel: ObservableObject {
     @Published var state: State = .initial
     @Published var userId: String = ""
     @Published var version: String = ""
+    @Published var isLinkedAppleId = false
     
     init(accountService: AccountServiceProtocol = AccountService.shared) {
         self.accountService = accountService
@@ -21,6 +22,7 @@ final class SettingTabViewModel: ObservableObject {
     
     func onApper() {
         userId = accountService.currentUser?.id.value ?? ""
+        isLinkedAppleId = accountService.isLinkedWithAppleId
         version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
     }
     

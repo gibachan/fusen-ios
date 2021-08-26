@@ -21,13 +21,41 @@ struct SettingTabView: View {
                         Spacer()
                         Text(viewModel.userId)
                             .font(.small)
-                            .foregroundColor(.textPrimary)
+                            .foregroundColor(.textSecondary)
                     }
-                    SignInWithAppleButton(
-                        .signIn,
-                        onRequest: viewModel.onSignInWithAppleRequest,
-                        onCompletion: viewModel.onSignInWithAppleCompletion
-                    ).signInWithAppleButtonStyle(.whiteOutline)
+                    
+                    VStack(alignment: .leading, spacing: 8) {
+                        HStack {
+                            Text("Apple IDと連携")
+                                .font(.medium)
+                                .foregroundColor(.textPrimary)
+                            Spacer()
+                            
+                            if viewModel.isLinkedAppleId {
+                                Text("連携済み")
+                                    .font(.small)
+                                    .foregroundColor(.textSecondary)
+                            }
+                        }
+                        if !viewModel.isLinkedAppleId {
+                            Text("※ 連携すると、他のデバイスとデータを共有してご利用いただけます。")
+                                .font(.small)
+                                .foregroundColor(.textSecondary)
+                        
+                            HStack {
+                                Spacer()
+                                SignInWithAppleButton(
+                                    .signIn,
+                                    onRequest: viewModel.onSignInWithAppleRequest,
+                                    onCompletion: viewModel.onSignInWithAppleCompletion
+                                ).signInWithAppleButtonStyle(.black)
+                                    .frame(width: 200, height: 32)
+                                Spacer()
+                            }
+                            .padding(.top, 8)
+                        }
+                    }
+                    .padding(.vertical, 8)
                 } header: {
                     SectionHeaderText("アカウント")
                 }
@@ -60,7 +88,7 @@ struct SettingTabView: View {
                         Spacer()
                         Text(viewModel.version)
                             .font(.small)
-                            .foregroundColor(.textPrimary)
+                            .foregroundColor(.textSecondary)
                     }
                 } header: {
                     SectionHeaderText("アプリ")

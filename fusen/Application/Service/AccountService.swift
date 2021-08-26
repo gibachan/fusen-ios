@@ -19,6 +19,7 @@ enum AccountServiceError: Error {
 
 protocol AccountServiceProtocol {
     var isLoggedIn: Bool { get }
+    var isLinkedWithAppleId: Bool { get }
     var currentUser: User? { get }
     @discardableResult func logInAnonymously() async throws -> User
     
@@ -44,6 +45,11 @@ final class AccountService: AccountServiceProtocol {
     
     var isLoggedIn: Bool {
         auth.currentUser != nil
+    }
+    
+    var isLinkedWithAppleId: Bool {
+        guard let user = auth.currentUser else { return false }
+        return user.providerData.contains(where: { $0.providerID == appleProviderId })
     }
     
     var currentUser: User? {

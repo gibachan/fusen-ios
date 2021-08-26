@@ -26,11 +26,20 @@ struct BookShelfTabView: View {
             }
             
             ControlToolbar(
-                leadingImage: .addCollection,
+                leadingView: {
+                    Image.addCollection
+                        .resizable()
+                        .frame(width: 28, height: 24)
+                    
+                },
                 leadingAction: {
                     isAddCollectionPresented = true
                 },
-                trailingImage: .add,
+                trailingView: {
+                    Image.add
+                        .resizable()
+                        .frame(width: 24, height: 24)
+                },
                 trailingAction: {
                     isAddBookPresented = true
                 }

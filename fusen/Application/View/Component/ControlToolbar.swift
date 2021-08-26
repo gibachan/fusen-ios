@@ -7,46 +7,38 @@
 
 import SwiftUI
 
-struct ControlToolbar: View {
+struct ControlToolbar<L: View, R: View>: View {
     typealias Action = () -> Void
-    private let leadingImage: Image?
+    private let leadingView: L
     private let leadingAction: Action?
-    private let trailingImage: Image?
+    private let trailingView: R
     private let trailingAction: Action?
 
     init(
-        leadingImage: Image? = nil,
+        @ViewBuilder leadingView: () -> L,
         leadingAction: Action? = nil,
-        trailingImage: Image? = nil,
+        @ViewBuilder trailingView: () -> R,
         trailingAction: Action? = nil
     ) {
-        self.leadingImage = leadingImage
+        self.leadingView = leadingView()
         self.leadingAction = leadingAction
-        self.trailingImage = trailingImage
+        self.trailingView = trailingView()
         self.trailingAction = trailingAction
     }
     
     var body: some View {
         HStack(alignment: .center) {
-            if let leadingImage = leadingImage {
-                leadingImage
-                    .resizable()
-                    .frame(width: 28, height: 24)
-                    .foregroundColor(.active)
-                    .onTapGesture {
-                        leadingAction?()
-                    }
-            }
+            leadingView
+                .foregroundColor(.active)
+                .onTapGesture {
+                    leadingAction?()
+                }
             Spacer()
-            if let trailingImage = trailingImage {
-                trailingImage
-                    .resizable()
-                    .frame(width: 24, height: 24)
-                    .foregroundColor(.active)
-                    .onTapGesture {
-                        trailingAction?()
-                    }
-            }
+            trailingView
+                .foregroundColor(.active)
+                .onTapGesture {
+                    trailingAction?()
+                }
         }
         .padding(.horizontal, 24)
         .frame(height: 48)
@@ -55,8 +47,31 @@ struct ControlToolbar: View {
     }
 }
 
+struct TrailingControlToolbar<R: View>: View {
+    typealias Action = () -> Void
+    private let trailingView: R
+    private let trailingAction: Action?
+
+    init(
+        @ViewBuilder trailingView: () -> R,
+        trailingAction: Action? = nil
+    ) {
+        self.trailingView = trailingView()
+        self.trailingAction = trailingAction
+    }
+    
+    var body: some View {
+        ControlToolbar(
+            leadingView: { EmptyView() },
+            leadingAction: nil,
+            trailingView: { trailingView },
+            trailingAction: trailingAction
+        )
+    }
+}
+
 struct ControlToolbar_Previews: PreviewProvider {
     static var previews: some View {
-        ControlToolbar()
+        ControlToolbar(leadingView: { EmptyView() }, leadingAction: nil, trailingView: { EmptyView() }, trailingAction: nil)
     }
 }

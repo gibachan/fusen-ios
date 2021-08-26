@@ -28,8 +28,12 @@ struct MemoListView: View {
                 await viewModel.onRefresh()
             }
             
-            ControlToolbar(
-                trailingImage: .add,
+            TrailingControlToolbar(
+                trailingView: {
+                    Image.add
+                        .resizable()
+                        .frame(width: 24, height: 24)
+                },
                 trailingAction: {
                     isAddPresented = true
                 }

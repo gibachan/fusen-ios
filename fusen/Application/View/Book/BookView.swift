@@ -48,11 +48,19 @@ struct BookView: View {
                     .listStyle(PlainListStyle())
 
                     ControlToolbar(
-                        leadingImage: .delete,
+                        leadingView: {
+                            Image.delete
+                                .resizable()
+                                .frame(width: 24, height: 24)
+                        },
                         leadingAction: {
                             isDeleteAlertPresented = true
                         },
-                        trailingImage: .memo,
+                        trailingView: {
+                            Image.memo
+                                .resizable()
+                                .frame(width: 24, height: 24)
+                        },
                         trailingAction: {
                             isAddPresented = true
                         }

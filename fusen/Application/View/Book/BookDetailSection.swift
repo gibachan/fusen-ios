@@ -109,8 +109,8 @@ struct BookDetailSection: View {
     }
 }
 
-//struct BookDetailSection_Previews: PreviewProvider {
-//    static var previews: some View {
-//        BookDetailSection()
-//    }
-//}
+struct BookDetailSection_Previews: PreviewProvider {
+    static var previews: some View {
+        BookDetailSection(book: Book.sample, isReadingBook: false, isFavorite: false, readingToggleAction: {}, favoriteChangeAction: { _ in }, isDetailCollapsed: Binding<Bool>.constant(false))
+    }
+}

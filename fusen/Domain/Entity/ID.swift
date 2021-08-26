@@ -7,6 +7,7 @@
 
 import Foundation
 
+// swiftlint:disable:next type_name
 struct ID<T>: Hashable {
     let value: String
 }

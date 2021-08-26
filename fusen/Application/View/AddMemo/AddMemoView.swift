@@ -148,8 +148,3 @@ struct AddMemoView_Previews: PreviewProvider {
         }
     }
 }
-
-
-
-
-

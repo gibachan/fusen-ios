@@ -12,7 +12,7 @@ struct HomeTabEmptyView: View {
         HStack {
             Spacer()
             VStack(alignment: .center) {
-                Spacer()
+                Spacer().frame(height: 40)
                 Text("書籍が登録されていません。")
                 HStack(alignment: .center, spacing: 4) {
                     Image.bookShelf
@@ -20,6 +20,14 @@ struct HomeTabEmptyView: View {
                         .frame(width: 16, height: 16)
                     Text("タブから追加してください。")
                 }
+                Image("App")
+                    .renderingMode(.template)
+                    .resizable()
+                    .foregroundColor(.placeholder)
+                    .opacity(0.4)
+                    .frame(width: 112, height: 112)
+                    .padding(.top, 8)
+
             }
             Spacer()
         }

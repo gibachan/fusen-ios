@@ -139,6 +139,7 @@
 		A0BA4CB626C4E07400D99D8C /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BA4CB526C4E07400D99D8C /* LazyView.swift */; };
 		A0BA4CB826C4E34200D99D8C /* BarcodeCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BA4CB726C4E34200D99D8C /* BarcodeCameraView.swift */; };
 		A0BA4CBA26C4E37E00D99D8C /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BA4CB926C4E37E00D99D8C /* CameraPreview.swift */; };
+		A0C3C23E26D7680E0032B2C7 /* HomeTabEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C3C23D26D7680E0032B2C7 /* HomeTabEmptyView.swift */; };
 		F7BDF62C75CD8279F9805768 /* Pods_fusenTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92BAA3A355C64643052F4562 /* Pods_fusenTests.framework */; };
 		FAFA9C3195C337A6656292D4 /* Pods_fusen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A120C1BA338A419E1C4AC1E /* Pods_fusen.framework */; };
 /* End PBXBuildFile section */
@@ -305,6 +306,7 @@
 		A0BA4CB526C4E07400D99D8C /* LazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyView.swift; sourceTree = "<group>"; };
 		A0BA4CB726C4E34200D99D8C /* BarcodeCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeCameraView.swift; sourceTree = "<group>"; };
 		A0BA4CB926C4E37E00D99D8C /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
+		A0C3C23D26D7680E0032B2C7 /* HomeTabEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabEmptyView.swift; sourceTree = "<group>"; };
 		B9CE5958189153717B673230 /* Pods-fusen-fusenUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen-fusenUITests.debug.xcconfig"; path = "Target Support Files/Pods-fusen-fusenUITests/Pods-fusen-fusenUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BA1243C082F110680D93D45F /* Pods-fusenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusenTests.debug.xcconfig"; path = "Target Support Files/Pods-fusenTests/Pods-fusenTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DED65B63C22476AE8B5011AE /* Pods_fusen_fusenUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fusen_fusenUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -703,6 +705,7 @@
 				A07CAD1326D051D10012201A /* LatestMemoItem.swift */,
 				A07CAD1526D051DE0012201A /* LatestMemoItemModel.swift */,
 				A07CAD2F26D114300012201A /* HomeReadingBookItem.swift */,
+				A0C3C23D26D7680E0032B2C7 /* HomeTabEmptyView.swift */,
 			);
 			path = HomeTab;
 			sourceTree = "<group>";
@@ -1088,6 +1091,7 @@
 				7A11FCB626CB5DD400F1A6BC /* AddMemoView.swift in Sources */,
 				A052EAC226C3D74C0033CE47 /* AddBookMenuViewModel.swift in Sources */,
 				A069983826CDD9D6006E74C6 /* CollectionViewModel.swift in Sources */,
+				A0C3C23E26D7680E0032B2C7 /* HomeTabEmptyView.swift in Sources */,
 				A07CAD1226CFBB160012201A /* FirestoreCreateCollection.swift in Sources */,
 				A069983D26CDDD21006E74C6 /* MemoListViewModel.swift in Sources */,
 				A069982726CCA5BD006E74C6 /* EditMemoViewModel.swift in Sources */,

@@ -8,6 +8,9 @@
 import Foundation
 
 final class HomeTabViewModel: ObservableObject {
+    private let visibleLatestBooksLimit = 4
+    private let visibleLatestMemosLimit = 4
+    
     private let accountService: AccountServiceProtocol
     private let userRepository: UserRepository
     private let bookRepository: BookRepository
@@ -15,8 +18,6 @@ final class HomeTabViewModel: ObservableObject {
     
     @Published var state: State = .initial
     @Published var readingBook: Book?
-    @Published var latestBooks: [Book] = []
-    @Published var latestMemos: [Memo] = []
     
     init(
         accountService: AccountServiceProtocol = AccountService.shared,
@@ -52,17 +53,22 @@ final class HomeTabViewModel: ObservableObject {
             if let readingBookId = userInfo.readingBookId {
                 let readingBook = try await bookRepository.getBook(by: readingBookId, for: user)
                 DispatchQueue.main.async { [weak self] in
-                    self?.readingBook = readingBook
+                    guard let self = self else { return }
+                    self.readingBook = readingBook
                 }
             } else {
                 DispatchQueue.main.async { [weak self] in
-                    self?.readingBook = nil
+                    guard let self = self else { return }
+                    self.readingBook = nil
                 }
             }
             DispatchQueue.main.async { [weak self] in
-                self?.state = .succeeded
-                self?.latestBooks = Array(result.books.prefix(4))
-                self?.latestMemos = Array(result.memos.prefix(4))
+                guard let self = self else { return }
+                if result.books.isEmpty && result.memos.isEmpty {
+                    self.state = .empty
+                } else {
+                    self.state = .loaded(latestBooks: Array(result.books.prefix(self.visibleLatestBooksLimit)), latestMemos: Array(result.memos.prefix(self.visibleLatestMemosLimit)))
+                }
             }
         } catch {
             log.e(error.localizedDescription)
@@ -75,12 +81,13 @@ final class HomeTabViewModel: ObservableObject {
     enum State {
         case initial
         case loading
-        case succeeded
+        case loaded(latestBooks: [Book], latestMemos: [Memo])
+        case empty
         case failed
         
         var isInProgress: Bool {
             switch self {
-            case .initial, .succeeded, .failed:
+            case .initial, .loaded, .empty, .failed:
                 return false
             case .loading:
                 return true

@@ -24,13 +24,13 @@ extension Color {
     static let backgroundSystemGroup = Color(UIColor.systemGroupedBackground)
     
     // Misc
-    static let info = Color.gray
-    static let warning = Color.yellow
-    static let error = Color.red
+    static let info = Color(UIColor.systemGray)
+    static let warning = Color(UIColor.systemYellow)
+    static let error = Color(UIColor.systemRed)
     static let placeholder = Color("placeholder")
     
     static let active = Color("active")
-    static let inactive = Color.gray
+    static let inactive = Color(UIColor.systemGray)
     
     init(rgb: RGB) {
         self.init(red: CGFloat(rgb.red) / 255, green: CGFloat(rgb.green) / 255, blue: CGFloat(rgb.blue) / 255)

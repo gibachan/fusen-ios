@@ -15,19 +15,16 @@ struct ToastView: View {
     var body: some View {
         VStack {
             Spacer()
-            HStack {
-                type.image
-                Text(text)
-            }
-            .font(.headline)
+            Text(text)
+            .font(.small)
             .foregroundColor(type.foregroundColor)
-            .padding(.vertical, 20)
-            .padding(.horizontal, 40)
-            .background(type.backgroundColor)
+            .padding(.vertical, 16)
+            .padding(.horizontal, 24)
+            .background(type.backgroundColor.opacity(0.9))
             .clipShape(Capsule())
+            Spacer().frame(height: 16)
         }
-        .frame(width: UIScreen.main.bounds.width * 0.8)
-        .transition(AnyTransition.move(edge: .bottom).combined(with: .opacity))
+        .frame(width: UIScreen.main.bounds.width * 0.94)
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 withAnimation {
@@ -90,6 +87,10 @@ struct ToastOverlay<T: View>: ViewModifier {
 extension View {
     func toast(text: String, type: ToastView.ToastType, isActive: Binding<Bool>) -> some View {
         self.modifier(ToastOverlay(show: isActive, toast: ToastView(text: text, type: type, show: isActive)))
+    }
+    
+    func networkError(isActive: Binding<Bool>) -> some View {
+        self.toast(text: "データを取得できませんでした。\nネットワーク環境を確認してみてください。", type: .error, isActive: isActive)
     }
 }
 

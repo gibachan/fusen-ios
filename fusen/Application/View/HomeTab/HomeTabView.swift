@@ -10,41 +10,49 @@ import SwiftUI
 struct HomeTabView: View {
     @StateObject private var viewModel = HomeTabViewModel()
     @State private var isAddPresented = false
+    @State private var isErrorActive = false
+    
     var body: some View {
         ZStack(alignment: .bottomLeading) {
             List {
-                Section {
-                    ForEach(viewModel.latestBooks, id: \.id.value) { book in
-                        NavigationLink(destination: LazyView(BookView(bookId: book.id))) {
-                            LatestBookItem(book: book)
-                                .padding(.vertical, 8)
+                if case let .loaded(latestBooks, latestMemos) = viewModel.state {
+                    Section {
+                        ForEach(latestBooks, id: \.id.value) { book in
+                            NavigationLink(destination: LazyView(BookView(bookId: book.id))) {
+                                LatestBookItem(book: book)
+                                    .padding(.vertical, 8)
+                            }
+                        }
+                    } header: {
+                        HStack {
+                            SectionHeaderText("最近追加した書籍")
+                            Spacer()
+                            NavigationLink(destination: LazyView(BookListView())) {
+                                ShowAllText()
+                            }
                         }
                     }
-                } header: {
-                    HStack {
-                        SectionHeaderText("最近追加した書籍")
-                        Spacer()
-                        NavigationLink(destination: LazyView(BookListView())) {
-                            ShowAllText()
+                    
+                    Section {
+                        ForEach(latestMemos, id: \.id.value) { memo in
+                            NavigationLink(destination: LazyView(EditMemoView(memo: memo))) {
+                                LatestMemoItem(memo: memo)
+                                    .padding(.vertical, 8)
+                            }
+                        }
+                    } header: {
+                        HStack {
+                            SectionHeaderText("最近追加したメモ")
+                            Spacer()
+                            NavigationLink(destination: MemoListView()) {
+                                ShowAllText()
+                            }
                         }
                     }
                 }
                 
-                Section {
-                    ForEach(viewModel.latestMemos, id: \.id.value) { memo in
-                        NavigationLink(destination: LazyView(EditMemoView(memo: memo))) {
-                            LatestMemoItem(memo: memo)
-                                .padding(.vertical, 8)
-                        }
-                    }
-                } header: {
-                    HStack {
-                        SectionHeaderText("最近追加したメモ")
-                        Spacer()
-                        NavigationLink(destination: MemoListView()) {
-                            ShowAllText()
-                        }
-                    }
+                if case .empty = viewModel.state {
+                    HomeTabEmptyView()
                 }
                 
                 Spacer()
@@ -55,6 +63,7 @@ struct HomeTabView: View {
             .refreshable {
                 await viewModel.onRefresh()
             }
+            
             if let readigBook = viewModel.readingBook {
                 HomeReadingBookItem(book: readigBook) {
                     isAddPresented = true
@@ -67,6 +76,7 @@ struct HomeTabView: View {
         .task {
             await viewModel.onAppear()
         }
+        .networkError(isActive: $isErrorActive)
         .sheet(isPresented: $isAddPresented) {
             print("dismissed")
         } content: {
@@ -87,11 +97,13 @@ struct HomeTabView: View {
                 break
             case .loading:
                 LoadingHUD.show()
-            case .succeeded:
+            case .loaded, .empty:
                 LoadingHUD.dismiss()
             case .failed:
                 LoadingHUD.dismiss()
-                //                isErrorActive = true
+                withAnimation {
+                    isErrorActive = true
+                }
             }
         }
     }

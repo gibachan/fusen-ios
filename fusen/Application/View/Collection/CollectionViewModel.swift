@@ -100,7 +100,6 @@ final class CollectionViewModel: ObservableObject {
             try await collectionRepository.delete(collection: collection, for: user)
             DispatchQueue.main.async { [weak self] in
                 self?.state = .deleted
-                NotificationCenter.default.postRefreshBookShelf()
             }
         } catch {
             // FIXME: error handling

@@ -8,17 +8,11 @@
 import Foundation
 
 extension NotificationCenter {
-    func postRefreshBookShelf() {
-        post(name: Notification.Name.refreshBookShelf, object: nil)
-    }
-    func postRefreshBook() {
-        post(name: Notification.Name.refreshBook, object: nil)
+    func postRefreshBookShelfAllCollection() {
+        post(name: Notification.Name.refreshBookShelfAllCollection, object: nil)
     }
 
-    func refreshBookShelfPublisher() -> Publisher {
-        publisher(for: Notification.Name.refreshBookShelf)
-    }
-    func refreshBookPublisher() -> Publisher {
-        publisher(for: Notification.Name.refreshBook)
+    func refreshBookShelfAllCollectionPublisher() -> Publisher {
+        publisher(for: Notification.Name.refreshBookShelfAllCollection)
     }
 }

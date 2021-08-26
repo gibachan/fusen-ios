@@ -85,6 +85,9 @@ final class ScanBarcodeViewModel: ObservableObject {
             log.d("Book is added for id: \(id.value)")
             DispatchQueue.main.async { [weak self] in
                 self?.scannedBook = publication
+                // 強制的に更新 -> Viewの再構築が発生するため注意
+                NotificationCenter.default.postRefreshBookShelfAllCollection()
+
                 DispatchQueue.main.asyncAfter(deadline: .now() + 4) { [weak self] in
                     self?.scannedBook = nil
                 }

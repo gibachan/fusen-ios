@@ -48,6 +48,8 @@ final class AddBookViewModel: ObservableObject {
             }
             DispatchQueue.main.async { [weak self] in
                 self?.state = .succeeded
+                // 強制的に更新 -> Viewの再構築が発生するため注意
+                NotificationCenter.default.postRefreshBookShelfAllCollection()
             }
         } catch {
             // FIXME: error handling

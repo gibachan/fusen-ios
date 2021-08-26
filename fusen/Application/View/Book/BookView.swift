@@ -112,7 +112,7 @@ struct BookView: View {
                 isErrorActive = true
             }
         }
-        .onReceive(NotificationCenter.default.refreshBookPublisher()) { _ in
+        .onReceive(NotificationCenter.default.refreshBookShelfAllCollectionPublisher()) { _ in
             Task {
                 await viewModel.onRefresh()
             }

@@ -67,11 +67,6 @@ struct BookListView: View {
                 //                isErrorActive = true
             }
         }
-        .onReceive(NotificationCenter.default.refreshBookShelfPublisher()) { _ in
-            Task {
-                await viewModel.onRefresh()
-            }
-        }
     }
 }
 

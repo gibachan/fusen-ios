@@ -36,7 +36,7 @@ struct BookShelfAllSection: View {
         .task {
             await viewModel.onAppear()
         }
-        .onReceive(NotificationCenter.default.refreshBookShelfPublisher()) { _ in
+        .onReceive(NotificationCenter.default.refreshBookShelfAllCollectionPublisher()) { _ in
             Task {
                 await viewModel.onRefresh()
             }

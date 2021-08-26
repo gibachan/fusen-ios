@@ -29,7 +29,6 @@ struct AddCollectionView: View {
                 SectionHeaderText("新しいコレクション")
             }
             .foregroundColor(.textSecondary)
-            .listRowBackground(Color.backgroundLightGray)
         }
         .font(.medium)
         .navigationBarTitle("コレクションを追加", displayMode: .inline)

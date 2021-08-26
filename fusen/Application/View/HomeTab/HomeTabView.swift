@@ -73,22 +73,23 @@ struct HomeTabView: View {
             Divider() // FIXME: Find another way to show top edge of tabbar
         }
         .navigationBarTitle("ホーム")
+        .onAppear(perform: {
+            log.d("Home onAppear")
+        })
         .task {
+            log.d("Home task")
             await viewModel.onAppear()
         }
         .networkError(isActive: $isErrorActive)
         .sheet(isPresented: $isAddPresented) {
-            print("dismissed")
+            Task {
+                await viewModel.onRefresh()
+            }
         } content: {
             NavigationView {
                 if let readingBook = viewModel.readingBook {
                     AddMemoView(book: readingBook)
                 }
-            }
-        }
-        .onReceive(NotificationCenter.default.refreshHomePublisher()) { _ in
-            Task {
-                await viewModel.onRefresh()
             }
         }
         .onReceive(viewModel.$state) { state in

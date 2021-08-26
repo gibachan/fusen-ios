@@ -67,7 +67,9 @@ struct BookView: View {
                     )
                 }
                 .fullScreenCover(isPresented: $isAddPresented) {
-                    print("dismissed")
+                    Task {
+                        await viewModel.onRefresh()
+                    }
                 } content: {
                     NavigationView {
                         AddMemoView(book: book)

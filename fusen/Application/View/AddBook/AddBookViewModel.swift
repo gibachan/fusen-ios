@@ -48,9 +48,6 @@ final class AddBookViewModel: ObservableObject {
             }
             DispatchQueue.main.async { [weak self] in
                 self?.state = .succeeded
-                
-                NotificationCenter.default.postRefreshHome()
-                NotificationCenter.default.postRefreshBookShelf()
             }
         } catch {
             // FIXME: error handling

@@ -45,7 +45,9 @@ struct BookListView: View {
         .listStyle(PlainListStyle())
         .navigationBarTitle("すべての書籍", displayMode: .inline)
         .sheet(isPresented: $isAddPresented) {
-            print("dismissed")
+            Task {
+                await viewModel.onRefresh()
+            }
         } content: {
             AddBookMenuView()
         }

@@ -88,9 +88,6 @@ final class ScanBarcodeViewModel: ObservableObject {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 4) { [weak self] in
                     self?.scannedBook = nil
                 }
-                
-                NotificationCenter.default.postRefreshHome()
-                NotificationCenter.default.postRefreshBookShelf()
             }
         } catch {
             // FIXME: error handling

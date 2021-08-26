@@ -48,14 +48,18 @@ struct BookShelfTabView: View {
         .listStyle(PlainListStyle())
         .navigationBarTitle("本棚")
         .sheet(isPresented: $isAddCollectionPresented) {
-            print("dismissed")
+            Task {
+                await viewModel.onRefresh()
+            }
         } content: {
             NavigationView {
                 AddCollectionView()
             }
         }
         .sheet(isPresented: $isAddBookPresented) {
-            print("dismissed")
+            Task {
+                await viewModel.onRefresh()
+            }
         } content: {
             AddBookMenuView()
         }

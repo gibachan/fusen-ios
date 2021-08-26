@@ -67,7 +67,9 @@ struct CollectionView: View {
         .listStyle(PlainListStyle())
         .navigationBarTitle(collection.name, displayMode: .inline)
         .sheet(isPresented: $isAddPresented) {
-            print("dismissed")
+            Task {
+                await viewModel.onRefresh()
+            }
         } content: {
             AddBookMenuView()
         }

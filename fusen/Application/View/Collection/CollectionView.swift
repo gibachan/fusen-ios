@@ -31,29 +31,24 @@ struct CollectionView: View {
                     }
                 }
                 if viewModel.pager.data.isEmpty {
-                    // FIXME: show empty view
-                    EmptyView()
-                }
-                
-                Section {
-                    HStack {
-                        Spacer()
-                        Button(role: .destructive) {
-                            isDeleteAlertPresented = true
-                        } label: {
-                            Text("コレクションを削除")
-                                .font(.medium)
-                                .foregroundColor(.red)
-                        }
-                        Spacer()
-                    }
+                    BookShelfEmptyItem()
+                        .listRowSeparator(.hidden)
                 }
             }
             .refreshable {
                 await viewModel.onRefresh()
             }
             
-            TrailingControlToolbar(
+            ControlToolbar(
+                leadingView: {
+                    Image.delete
+                        .resizable()
+                        .frame(width: 24, height: 24)
+                        .foregroundColor(.red)
+                },
+                leadingAction: {
+                    isDeleteAlertPresented = true
+                },
                 trailingView: {
                     Image.add
                         .resizable()

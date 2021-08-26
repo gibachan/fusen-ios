@@ -13,20 +13,18 @@ struct HomeTabEmptyView: View {
             Spacer()
             VStack(alignment: .center) {
                 Spacer()
-                Text("書籍が登録されてません。")
-                    .font(.medium)
-                    .foregroundColor(.textPrimary)
+                Text("書籍が登録されていません。")
                 HStack(alignment: .center, spacing: 4) {
                     Image.bookShelf
                         .resizable()
-                        .frame(width: 12, height: 12)
+                        .frame(width: 16, height: 16)
                     Text("タブから追加してください。")
-                        .font(.medium)
-                        .foregroundColor(.textPrimary)
                 }
             }
             Spacer()
         }
+        .font(.medium)
+        .foregroundColor(.placeholder)
         .padding(EdgeInsets(top: 32, leading: 0, bottom: 0, trailing: 0))
     }
 }

@@ -11,7 +11,7 @@ struct BookShelfEmptyItem: View {
     var body: some View {
         HStack {
             Spacer()
-            Text("書籍が設定されていません")
+            Text("書籍が登録されていません。")
                 .font(.medium)
                 .foregroundColor(.placeholder)
             Spacer()

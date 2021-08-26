@@ -23,8 +23,8 @@ struct BookListView: View {
                     }
                 }
                 if viewModel.pager.data.isEmpty {
-                    // FIXME: show empty view
-                    EmptyView()
+                    BookShelfEmptyItem()
+                        .listRowSeparator(.hidden)
                 }
             }
             .refreshable {

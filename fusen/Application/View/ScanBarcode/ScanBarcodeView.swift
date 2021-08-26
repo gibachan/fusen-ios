@@ -23,7 +23,7 @@ struct ScanBarcodeView: View {
             Text("カメラでバーコードを読み取ってください")
                 .font(.medium)
                 .foregroundColor(.white)
-                .padding(.top, 36)
+                .padding(.top, 32)
             
             scannedBook
                 .padding()

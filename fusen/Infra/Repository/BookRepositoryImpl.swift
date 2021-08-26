@@ -325,12 +325,21 @@ final class BookRepositoryImpl: BookRepository {
             .whereBook(book.id)
             .getDocuments()
         let memoDocuments = memosSnapshot.documents
+        let userRef = db.userDocument(of: user)
         let bookRef = db.booksCollection(for: user)
             .document(book.id.value)
         
         typealias DeleteBookContinuation = CheckedContinuation<Void, Error>
         return try await withCheckedThrowingContinuation { (continuation: DeleteBookContinuation) in
             db.runTransaction { (transaction, _) -> Any? in
+                if let userSnapshot = try? transaction.getDocument(userRef),
+                   userSnapshot.data() != nil,
+                   let userInfo = try? userSnapshot.data(as: FirestoreGetUserInfo.self),
+                   userInfo.readingBookId == book.id.value {
+                    let newUserInfo = FirestoreUpdateUser(readingBookId: "")
+                    transaction.setData(newUserInfo.data(), forDocument: userRef, merge: true)
+                }
+
                 memoDocuments.forEach { memoDocument in
                     let memoRef = memosCollectionRef.document(memoDocument.documentID)
                     transaction.deleteDocument(memoRef)

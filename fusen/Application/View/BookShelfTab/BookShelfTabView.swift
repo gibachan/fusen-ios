@@ -30,6 +30,7 @@ struct BookShelfTabView: View {
                     Image.addCollection
                         .resizable()
                         .frame(width: 28, height: 24)
+                        .foregroundColor(.active)
                     
                 },
                 leadingAction: {
@@ -39,6 +40,7 @@ struct BookShelfTabView: View {
                     Image.add
                         .resizable()
                         .frame(width: 24, height: 24)
+                        .foregroundColor(.active)
                 },
                 trailingAction: {
                     isAddBookPresented = true

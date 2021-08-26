@@ -52,6 +52,7 @@ struct BookView: View {
                             Image.delete
                                 .resizable()
                                 .frame(width: 24, height: 24)
+                                .foregroundColor(.red)
                         },
                         leadingAction: {
                             isDeleteAlertPresented = true
@@ -60,6 +61,7 @@ struct BookView: View {
                             Image.memo
                                 .resizable()
                                 .frame(width: 24, height: 24)
+                                .foregroundColor(.active)
                         },
                         trailingAction: {
                             isAddPresented = true

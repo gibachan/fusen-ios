@@ -51,10 +51,19 @@ final class HomeTabViewModel: ObservableObject {
             async let memos = memoRepository.getLatestMemos(for: user)
             let result = try await (books: books, memos: memos)
             if let readingBookId = userInfo.readingBookId {
-                let readingBook = try await bookRepository.getBook(by: readingBookId, for: user)
-                DispatchQueue.main.async { [weak self] in
-                    guard let self = self else { return }
-                    self.readingBook = readingBook
+                do {
+                    let readingBook = try await bookRepository.getBook(by: readingBookId, for: user)
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self = self else { return }
+                        self.readingBook = readingBook
+                    }
+                } catch {
+                    // Reaches when the readingBook has been already deleted which is unexpected situation.
+                    log.e(error.localizedDescription)
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self = self else { return }
+                        self.readingBook = nil
+                    }
                 }
             } else {
                 DispatchQueue.main.async { [weak self] in

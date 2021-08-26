@@ -29,13 +29,11 @@ struct ControlToolbar<L: View, R: View>: View {
     var body: some View {
         HStack(alignment: .center) {
             leadingView
-                .foregroundColor(.active)
                 .onTapGesture {
                     leadingAction?()
                 }
             Spacer()
             trailingView
-                .foregroundColor(.active)
                 .onTapGesture {
                     trailingAction?()
                 }

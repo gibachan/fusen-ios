@@ -12,16 +12,44 @@ struct BookMemoItem: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 8) {
+                if !memo.quote.isEmpty {
+                    HStack {
+                        Text(memo.quote)
+                            .font(.medium)
+                            .foregroundColor(.textSecondary)
+                            .lineLimit(4)
+                        Spacer()
+                    }
+                    .padding(.vertical, 4)
+                    .padding(.horizontal, 8)
+                    .background(Color.backgroundLightGray)
+                    .cornerRadius(4)
+                }
+
                 Text(memo.text)
                     .font(.medium)
                     .foregroundColor(.textPrimary)
                     .lineLimit(4)
                 Spacer()
-                HStack {
+                
+                HStack(spacing: 8) {
                     Text("\(memo.updatedAt.string)")
                         .font(.minimal)
                         .foregroundColor(.textSecondary)
                     Spacer()
+                    if let page = memo.page {
+                        Text("\(page)ページ")
+                            .font(.minimal)
+                            .foregroundColor(.textSecondary)
+
+                    }
+                    if !memo.imageURLs.isEmpty {
+                        Image.image
+                            .renderingMode(.template)
+                            .resizable()
+                            .frame(width: 12, height: 12)
+                            .foregroundColor(.textSecondary)
+                    }
                 }
             }
         }

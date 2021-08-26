@@ -13,7 +13,7 @@ final class BookShelfFavoriteSectionModel: ObservableObject {
     private let bookRepository: BookRepository
     
     @Published var state: State = .initial
-    @Published var books: [Book] = []
+    @Published var books: [[Book]] = []
     
     init(
         accountService: AccountServiceProtocol = AccountService.shared,
@@ -31,13 +31,23 @@ final class BookShelfFavoriteSectionModel: ObservableObject {
         do {
             let pager = try await bookRepository.getFavoriteBooks(for: user, forceRefresh: false)
             DispatchQueue.main.async { [weak self] in
-                self?.state = .succeeded
-                self?.books = Array(pager.data.prefix(Self.maxDiplayBookCount))
+                guard let self = self else { return }
+                self.state = .succeeded
+                
+                var displayBooks = Array(pager.data.prefix(Self.maxDiplayBookCount))
+                var resultBooks: [[Book]] = []
+                while !displayBooks.isEmpty {
+                    let books = Array(displayBooks.prefix(2))
+                    displayBooks = Array(displayBooks.dropFirst(2))
+                    resultBooks.append(books)
+                }
+                self.books = resultBooks
             }
         } catch {
             log.e(error.localizedDescription)
             DispatchQueue.main.async { [weak self] in
-                self?.state = .failed
+                guard let self = self else { return }
+                self.state = .failed
             }
         }
     }

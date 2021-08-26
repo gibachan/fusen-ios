@@ -14,11 +14,11 @@ struct BookShelfTabView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             List {
+                BookShelfAllSection()
                 BookShelfFavoriteSection()
                 ForEach(viewModel.collections, id: \.id.value) { collection in
                     BookShelfCollectionSection(collection: collection)
                 }
-                BookShelfAllSection()
             }
             .listStyle(PlainListStyle())
             .refreshable {

@@ -17,8 +17,18 @@ struct BookShelfFavoriteSection: View {
             } else {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(alignment: .top, spacing: 8) {
-                        ForEach(viewModel.books, id: \.id.value) { book in
-                            BookShelfItem(book: book)
+                        ForEach(0..<viewModel.books.count) { columnIndex in
+                            let booksColumn = viewModel.books[columnIndex]
+                            VStack(alignment: .leading, spacing: 8) {
+                                ForEach(0..<booksColumn.count) { index in
+                                    let book = booksColumn[index]
+                                    BookShelfItem(book: book)
+                                    if index < booksColumn.count - 1 {
+                                        Divider()
+                                    }
+                                }
+                            }
+                            .frame(width: 240)
                         }
                     }
                     .padding(.vertical, 8)

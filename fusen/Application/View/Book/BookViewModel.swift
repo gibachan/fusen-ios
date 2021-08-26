@@ -12,25 +12,24 @@ final class BookViewModel: ObservableObject {
     private let accountService: AccountServiceProtocol
     private let userRepository: UserRepository
     private let bookRepository: BookRepository
-    private let memoRepository: MemoRepository
     
-    @Published var book: Book?
+    private var favoriteState: FavoriteState = .initial
+    private var readingBookState: ReadingBookState = .initial
+    
+    @Published var isFavorite = false
     @Published var isReadingBook = false
     @Published var state: State = .initial
-    @Published var memoPager: Pager<Memo> = .empty
     
     init(
         bookId: ID<Book>,
         accountService: AccountServiceProtocol = AccountService.shared,
         userRepository: UserRepository = UserRepositoryImpl(),
-        bookRepository: BookRepository = BookRepositoryImpl(),
-        memoRepository: MemoRepository = MemoRepositoryImpl()
+        bookRepository: BookRepository = BookRepositoryImpl()
     ) {
         self.bookId = bookId
         self.accountService = accountService
         self.userRepository = userRepository
         self.bookRepository = bookRepository
-        self.memoRepository = memoRepository
     }
     
     func onAppear() async {
@@ -41,74 +40,56 @@ final class BookViewModel: ObservableObject {
         await load()
     }
     
-    func onItemApper(of memo: Memo) async {
-        guard case .succeeded = state, !memoPager.finished else { return }
-        guard let user = accountService.currentUser else { return }
-        guard let lastMemo = memoPager.data.last else { return }
-
-        if memo.id == lastMemo.id {
-            state = .loadingNext
-            do {
-                let pager = try await memoRepository.getNextMemos(of: bookId, for: user)
-                log.d("finished=\(pager.finished)")
-                DispatchQueue.main.async { [weak self] in
-                    self?.state = .succeeded
-                    self?.memoPager = pager
-                }
-            } catch {
-                log.e(error.localizedDescription)
-                DispatchQueue.main.async { [weak self] in
-                    self?.state = .failed
-                }
-            }
-        }
-    }
-    
     func onReadingToggle() async {
         guard let user = accountService.currentUser else { return }
-        guard !state.isInProgress else { return }
+        guard case let .loaded(book) = state else { return }
+        guard !readingBookState.isInProgress else { return }
         
-        state = .loading
+        readingBookState = .loading
         do {
             let readingBook: Book? = isReadingBook ? nil : book
             try await userRepository.update(readingBook: readingBook, for: user)
             DispatchQueue.main.async { [weak self] in
-                self?.state = .succeeded
-                self?.isReadingBook = readingBook != nil
+                guard let self = self else { return }
+                self.readingBookState = .loaded
+                self.isReadingBook = readingBook != nil
             }
         } catch {
-            // FIXME: error handling
-            print(error.localizedDescription)
+            log.e(error.localizedDescription)
             DispatchQueue.main.async { [weak self] in
-                self?.state = .failed
+                // FIXME: error handling
+                guard let self = self else { return }
+                self.readingBookState = .failed
             }
         }
     }
     
     func onFavoriteChange(isFavorite: Bool) async {
         guard let user = accountService.currentUser else { return }
-        guard let book = book else { return }
-        guard !state.isInProgress else { return }
+        guard case let .loaded(book) = state else { return }
+        guard !favoriteState.isInProgress else { return }
 
-        state = .loading
+        favoriteState = .loading
         do {
             try await bookRepository.update(book: book, isFavorite: isFavorite, for: user)
             DispatchQueue.main.async { [weak self] in
-                self?.state = .succeeded
+                guard let self = self else { return }
+                self.favoriteState = .loaded
+                self.isFavorite = isFavorite
             }
         } catch {
-            // FIXME: error handling
-            print(error.localizedDescription)
+            log.e(error.localizedDescription)
             DispatchQueue.main.async { [weak self] in
-                self?.state = .failed
+                // FIXME: error handling
+                guard let self = self else { return }
+                self.favoriteState = .failed
             }
         }
     }
     
     func onDelete() async {
         guard let user = accountService.currentUser else { return }
-        guard let book = book else { return }
-        guard !state.isInProgress else { return }
+        guard case let .loaded(book) = state else { return }
         
         state = .loading
         do {
@@ -146,18 +127,18 @@ final class BookViewModel: ObservableObject {
 
             let userInfo = try await userRepository.getInfo(for: user)
             let book = try await bookRepository.getBook(by: bookId, for: user)
-            let memoPager = try await memoRepository.getMemos(of: bookId, for: user, forceRefresh: false)
             DispatchQueue.main.async { [weak self] in
-                self?.state = .succeeded
-                self?.isReadingBook = userInfo.readingBookId == book.id
-                self?.book = book
-                self?.memoPager = memoPager
+                guard let self = self else { return }
+                self.state = .loaded(book: book)
+                self.isReadingBook = userInfo.readingBookId == book.id
+                self.isFavorite = book.isFavorite
             }
         } catch {
             // FIXME: error handling
             log.e(error.localizedDescription)
             DispatchQueue.main.async { [weak self] in
-                self?.state = .failed
+                guard let self = self else { return }
+                self.state = .failed
             }
         }
     }
@@ -165,16 +146,47 @@ final class BookViewModel: ObservableObject {
     enum State {
         case initial
         case loading
-        case loadingNext
-        case succeeded
+        case loaded(book: Book)
         case deleted
         case failed
         
         var isInProgress: Bool {
             switch self {
-            case .initial, .succeeded, .failed, .deleted:
+            case .initial, .loaded, .failed, .deleted:
                 return false
-            case .loading, .loadingNext:
+            case .loading:
+                return true
+            }
+        }
+    }
+    
+    enum FavoriteState {
+        case initial
+        case loading
+        case loaded
+        case failed
+        
+        var isInProgress: Bool {
+            switch self {
+            case .initial, .loaded, .failed:
+                return false
+            case .loading:
+                return true
+            }
+        }
+    }
+    
+    enum ReadingBookState {
+        case initial
+        case loading
+        case loaded
+        case failed
+        
+        var isInProgress: Bool {
+            switch self {
+            case .initial, .loaded, .failed:
+                return false
+            case .loading:
                 return true
             }
         }

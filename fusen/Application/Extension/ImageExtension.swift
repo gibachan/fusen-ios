@@ -22,7 +22,7 @@ extension Image {
     static let addCollection = Image(systemName: "folder.badge.plus")
     static let checkmark = Image(systemName: "checkmark")
     static let chevronRight = Image(systemName: "chevron.right")
-    
+    static let delete = Image(systemName: "trash")
     static let info = Image(systemName: "info.circle")
     static let warning = Image(systemName: "exclamationmark.triangle")
     static let error = Image(systemName: "xmark.octagon.fill")

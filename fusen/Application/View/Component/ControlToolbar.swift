@@ -40,7 +40,6 @@ struct ControlToolbar<L: View, R: View>: View {
         }
         .padding(.horizontal, 24)
         .frame(height: 48)
-        .background(Color.white)
         .border(Color.backgroundGray, width: 0.5)
     }
 }

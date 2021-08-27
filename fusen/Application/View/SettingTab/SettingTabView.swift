@@ -106,8 +106,6 @@ struct SettingTabView: View {
 #endif
             }
             .listStyle(InsetGroupedListStyle())
-            
-            Divider() // FIXME: Find another way to show top edge of tabbar
         }
         .navigationBarTitle("設定")
         .onAppear {

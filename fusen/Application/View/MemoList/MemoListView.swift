@@ -38,7 +38,6 @@ struct MemoListView: View {
 //                    isAddPresented = true
 //                }
 //            )
-            Divider() // FIXME: Find another way to show top edge of tabbar
         }
         .listStyle(PlainListStyle())
         .navigationBarTitle("すべてのメモ", displayMode: .inline)

@@ -15,7 +15,7 @@ struct SettingTabView: View {
             List {
                 Section {
                     HStack {
-                        Text("ID")
+                        Text("ID :")
                             .font(.medium)
                             .foregroundColor(.textPrimary)
                         Spacer()
@@ -26,7 +26,7 @@ struct SettingTabView: View {
                     
                     VStack(alignment: .leading, spacing: 8) {
                         HStack {
-                            Text("Apple IDと連携")
+                            Text("Apple IDと連携 :")
                                 .font(.medium)
                                 .foregroundColor(.textPrimary)
                             Spacer()
@@ -82,7 +82,7 @@ struct SettingTabView: View {
                     }
                     
                     HStack {
-                        Text("バージョン")
+                        Text("バージョン :")
                             .font(.medium)
                             .foregroundColor(.textPrimary)
                         Spacer()

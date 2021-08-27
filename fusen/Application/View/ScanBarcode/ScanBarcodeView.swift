@@ -11,6 +11,11 @@ struct ScanBarcodeView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel = ScanBarcodeViewModel()
     @State private var isSuggestPresented = false
+    private let collection: Collection?
+    
+    init(in collection: Collection? = nil) {
+        self.collection = collection
+    }
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -44,7 +49,7 @@ struct ScanBarcodeView: View {
                                        }),
                 secondaryButton: .default(Text("追加").fontWeight(.bold), action: {
                     Task {
-                        await viewModel.onAcceptSuggestedBook()
+                        await viewModel.onAcceptSuggestedBook(collection: collection)
                     }
                 })
             )

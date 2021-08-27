@@ -10,13 +10,17 @@ import SwiftUI
 struct AddBookView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel = AddBookViewModel()
-    
     @State var thumbnailImage: ImageData?
     @State var title: String = ""
     @State var author: String = ""
     @State var isThumbnailPickerPresented = false
     @State var isCameraPickerPresented = false
     @State var isPhotoLibraryPresented = false
+    private let collection: Collection?
+    
+    init(in collection: Collection? = nil) {
+        self.collection = collection
+    }
     
     var body: some View {
         Form {
@@ -83,7 +87,7 @@ struct AddBookView: View {
             },
             trailing: SaveButton {
                 Task {
-                    await viewModel.onSave(title: title, author: author, thumbnailImage: thumbnailImage)
+                    await viewModel.onSave(title: title, author: author, thumbnailImage: thumbnailImage, collection: collection)
                 }
             }
                 .disabled(!viewModel.isSaveEnabled)

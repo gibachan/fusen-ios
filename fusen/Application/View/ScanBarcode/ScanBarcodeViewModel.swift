@@ -71,7 +71,7 @@ final class ScanBarcodeViewModel: ObservableObject {
         }
     }
     
-    func onAcceptSuggestedBook() async {
+    func onAcceptSuggestedBook(collection: Collection?) async {
         guard let user = accountService.currentUser else { return }
         guard isScanning else { return }
         guard let publication = suggestedBook else { return }
@@ -81,7 +81,7 @@ final class ScanBarcodeViewModel: ObservableObject {
         isScanning = false
     
         do {
-            let id = try await bookRepository.addBook(of: publication, in: nil, for: user)
+            let id = try await bookRepository.addBook(of: publication, in: collection, for: user)
             log.d("Book is added for id: \(id.value)")
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }

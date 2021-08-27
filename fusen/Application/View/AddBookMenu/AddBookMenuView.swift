@@ -12,6 +12,11 @@ struct AddBookMenuView: View {
     @StateObject private var viewModel = AddBookMenuViewModel()
     @State private var isScanBarcodePresented = false
     @State private var isManualInputPresented = false
+    private let collection: Collection?
+    
+    init(in collection: Collection? = nil) {
+        self.collection = collection
+    }
     
     var body: some View {
         NavigationView {
@@ -31,14 +36,14 @@ struct AddBookMenuView: View {
                 print("dimiss")
             }, content: {
                 NavigationView {
-                    ScanBarcodeView()
+                    ScanBarcodeView(in: collection)
                 }
             })
             .sheet(isPresented: $isManualInputPresented, onDismiss: {
                 print("dimiss")
             }, content: {
                 NavigationView {
-                    AddBookView()
+                    AddBookView(in: collection)
                 }
             })
             .navigationBarTitle("書籍を追加", displayMode: .inline)

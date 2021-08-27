@@ -26,7 +26,7 @@ final class AddBookViewModel: ObservableObject {
         isSaveEnabled = !title.isEmpty
     }
     
-    func onSave(title: String, author: String, thumbnailImage: ImageData?) async {
+    func onSave(title: String, author: String, thumbnailImage: ImageData?, collection: Collection?) async {
         guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
         
@@ -38,7 +38,7 @@ final class AddBookViewModel: ObservableObject {
 
         state = .loading
         do {
-            let id = try await bookRepository.addBook(of: publication, in: nil, for: user)
+            let id = try await bookRepository.addBook(of: publication, in: collection, for: user)
             log.d("Book is added for id: \(id.value)")
             
             if let image = thumbnailImage {

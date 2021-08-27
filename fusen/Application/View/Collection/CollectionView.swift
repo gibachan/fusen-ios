@@ -67,7 +67,7 @@ struct CollectionView: View {
                 await viewModel.onRefresh()
             }
         } content: {
-            AddBookMenuView()
+            AddBookMenuView(in: collection)
         }
         .alert(isPresented: $isDeleteAlertPresented) {
             Alert(

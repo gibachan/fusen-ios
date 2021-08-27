@@ -63,6 +63,7 @@
 		A007C09026C7EF9700270671 /* FirestoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C08F26C7EF9700270671 /* FirestoreExtension.swift */; };
 		A007C09226C83A7200270671 /* Pager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C09126C83A7200270671 /* Pager.swift */; };
 		A007C09526C8CAB700270671 /* FirestoreGetBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C09426C8CAB600270671 /* FirestoreGetBook.swift */; };
+		A008976A26D87296003EFD08 /* ErrorHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = A008976926D87296003EFD08 /* ErrorHUD.swift */; };
 		A020544126CE88BD002FF585 /* EditMemoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A020544026CE88BD002FF585 /* EditMemoImageView.swift */; };
 		A020544526CE8CC7002FF585 /* DeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A020544426CE8CC7002FF585 /* DeleteButton.swift */; };
 		A052EAC026C3D7430033CE47 /* AddBookMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EABF26C3D7430033CE47 /* AddBookMenuView.swift */; };
@@ -230,6 +231,7 @@
 		A007C08F26C7EF9700270671 /* FirestoreExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreExtension.swift; sourceTree = "<group>"; };
 		A007C09126C83A7200270671 /* Pager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pager.swift; sourceTree = "<group>"; };
 		A007C09426C8CAB600270671 /* FirestoreGetBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreGetBook.swift; sourceTree = "<group>"; };
+		A008976926D87296003EFD08 /* ErrorHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHUD.swift; sourceTree = "<group>"; };
 		A020544026CE88BD002FF585 /* EditMemoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMemoImageView.swift; sourceTree = "<group>"; };
 		A020544426CE8CC7002FF585 /* DeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButton.swift; sourceTree = "<group>"; };
 		A052EABF26C3D7430033CE47 /* AddBookMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookMenuView.swift; sourceTree = "<group>"; };
@@ -583,6 +585,7 @@
 			children = (
 				A007C08226C78FB400270671 /* Logger.swift */,
 				A007C08626C7C91700270671 /* LoadingHUD.swift */,
+				A008976926D87296003EFD08 /* ErrorHUD.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1138,6 +1141,7 @@
 				7AD1610526C29EB500334A63 /* MainView.swift in Sources */,
 				7AD1611826C2A8BC00334A63 /* UIColorExtension.swift in Sources */,
 				A007C09026C7EF9700270671 /* FirestoreExtension.swift in Sources */,
+				A008976A26D87296003EFD08 /* ErrorHUD.swift in Sources */,
 				7A33118226CE518F00EB520D /* UIApplicationExtensoin.swift in Sources */,
 				7A11FCA526CB467C00F1A6BC /* NotificationCenterExtension.swift in Sources */,
 				7A11FCC126CD4B9D00F1A6BC /* BookShelfCollectionSection.swift in Sources */,

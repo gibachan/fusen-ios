@@ -57,15 +57,14 @@ final class AddMemoViewModel: NSObject, ObservableObject {
             let id = try await memoRepository.addMemo(of: book, text: text, quote: quote, page: memoPage, image: image, for: user)
             log.d("Memo is added for id: \(id.value)")
             DispatchQueue.main.async { [weak self] in
-                self?.state = .succeeded
-//                NotificationCenter.default.postRefreshHome()
-//                NotificationCenter.default.postRefreshBook()
+                guard let self = self else { return }
+                self.state = .succeeded
             }
         } catch {
-            // FIXME: error handling
-            print(error.localizedDescription)
+            log.e(error.localizedDescription)
             DispatchQueue.main.async { [weak self] in
-                self?.state = .failed
+                guard let self = self else { return }
+                self.state = .failed
             }
         }
     }

@@ -31,13 +31,16 @@ final class BookListViewModel: ObservableObject {
             let pager = try await bookRepository.getAllBooks(for: user)
             log.d("finished=\(pager.finished)")
             DispatchQueue.main.async { [weak self] in
-                self?.state = .succeeded
-                self?.pager = pager
+                guard let self = self else { return }
+                self.state = .succeeded
+                self.pager = pager
             }
         } catch {
             log.e(error.localizedDescription)
             DispatchQueue.main.async { [weak self] in
-                self?.state = .failed
+                guard let self = self else { return }
+                self.state = .failed
+                NotificationCenter.default.postError(message: .network)
             }
         }
     }
@@ -51,13 +54,16 @@ final class BookListViewModel: ObservableObject {
             let pager = try await bookRepository.getAllBooks(for: user, forceRefresh: true)
             log.d("finished=\(pager.finished)")
             DispatchQueue.main.async { [weak self] in
-                self?.state = .succeeded
-                self?.pager = pager
+                guard let self = self else { return }
+                self.state = .succeeded
+                self.pager = pager
             }
         } catch {
             log.e(error.localizedDescription)
             DispatchQueue.main.async { [weak self] in
-                self?.state = .failed
+                guard let self = self else { return }
+                self.state = .failed
+                NotificationCenter.default.postError(message: .network)
             }
         }
     }
@@ -73,20 +79,21 @@ final class BookListViewModel: ObservableObject {
                 let pager = try await bookRepository.getAllBooksNext(for: user)
                 log.d("finished=\(pager.finished)")
                 DispatchQueue.main.async { [weak self] in
-                    self?.state = .succeeded
-                    self?.pager = pager
+                    guard let self = self else { return }
+                    self.state = .succeeded
+                    self.pager = pager
                 }
             } catch {
                 log.e(error.localizedDescription)
                 DispatchQueue.main.async { [weak self] in
-                    self?.state = .failed
+                    guard let self = self else { return }
+                    self.state = .failed
+                    NotificationCenter.default.postError(message: .network)
                 }
             }
         }
     }
     
-    // associated valueに変更があってもSwiftUIは検知してくれない
-    // (state自体が変更されない限りViewが更新されない）
     enum State {
         case initial
         case loading

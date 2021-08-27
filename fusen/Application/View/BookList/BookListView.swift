@@ -65,7 +65,6 @@ struct BookListView: View {
                 LoadingHUD.dismiss()
             case .failed:
                 LoadingHUD.dismiss()
-                //                isErrorActive = true
             }
         }
     }

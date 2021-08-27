@@ -133,8 +133,8 @@ struct EditMemoView: View {
                 case .success(let images):
                     viewModel.onMemoImageAdd(images: images)
                 case .failure(let error):
-                    // FIXME: Error handling
                     log.e(error.localizedDescription)
+                    ErrorHUD.show(message: .unexpected)
                 }
             }
         })
@@ -164,7 +164,6 @@ struct EditMemoView: View {
                 dismiss()
             case .failed:
                 LoadingHUD.dismiss()
-                //                isErrorActive = true
             }
         }
     }

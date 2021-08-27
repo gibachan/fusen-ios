@@ -47,15 +47,16 @@ final class AddBookViewModel: ObservableObject {
                 log.d("Thumbnail image is updated for book id: \(id.value)")
             }
             DispatchQueue.main.async { [weak self] in
-                self?.state = .succeeded
+                guard let self = self else { return }
+                self.state = .succeeded
                 // 強制的に更新 -> Viewの再構築が発生するため注意
                 NotificationCenter.default.postRefreshBookShelfAllCollection()
             }
         } catch {
-            // FIXME: error handling
             print(error.localizedDescription)
             DispatchQueue.main.async { [weak self] in
-                self?.state = .failed
+                guard let self = self else { return }
+                self.state = .failed
             }
         }
     }

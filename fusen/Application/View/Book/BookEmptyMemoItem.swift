@@ -13,7 +13,7 @@ struct BookEmptyMemoItem: View {
             Spacer()
             Text("メモはまだありません")
                 .font(.medium)
-                .foregroundColor(.textPrimary)
+                .foregroundColor(.placeholder)
             Spacer()
         }
     }

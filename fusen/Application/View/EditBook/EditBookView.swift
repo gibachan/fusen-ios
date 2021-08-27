@@ -104,7 +104,6 @@ struct EditBookView: View {
                 dismiss()
             case .failed:
                 LoadingHUD.dismiss()
-                //                isErrorActive = true
             }
         }
     }

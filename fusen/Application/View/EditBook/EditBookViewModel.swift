@@ -58,13 +58,15 @@ final class EditViewModel: ObservableObject {
         do {
             try await bookRepository.update(book: book, title: title, author: author, description: description, for: user)
             DispatchQueue.main.async { [weak self] in
-                self?.state = .succeeded
+                guard let self = self else { return }
+                self.state = .succeeded
             }
         } catch {
-            // FIXME: error handling
-            print(error.localizedDescription)
+            log.e(error.localizedDescription)
             DispatchQueue.main.async { [weak self] in
-                self?.state = .failed
+                guard let self = self else { return }
+                self.state = .failed
+                NotificationCenter.default.postError(message: .editBook)
             }
         }
     }

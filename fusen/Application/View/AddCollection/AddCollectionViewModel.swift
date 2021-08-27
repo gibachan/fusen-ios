@@ -40,13 +40,14 @@ final class AddCollectionViewModel: ObservableObject {
             let id = try await collectionRepository.addCollection(name: name, color: color, for: user)
             log.d("Collection is added for id: \(id.value)")
             DispatchQueue.main.async { [weak self] in
-                self?.state = .succeeded
+                guard let self = self else { return }
+                self.state = .succeeded
             }
         } catch {
-            // FIXME: error handling
             print(error.localizedDescription)
             DispatchQueue.main.async { [weak self] in
-                self?.state = .failed
+                guard let self = self else { return }
+                self.state = .failed
             }
         }
     }

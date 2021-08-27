@@ -82,7 +82,8 @@ final class HomeTabViewModel: ObservableObject {
         } catch {
             log.e(error.localizedDescription)
             DispatchQueue.main.async { [weak self] in
-                self?.state = .failed
+                guard let self = self else { return }
+                self.state = .failed
                 NotificationCenter.default.postError(message: .network)
             }
         }

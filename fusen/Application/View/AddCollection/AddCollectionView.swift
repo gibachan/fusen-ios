@@ -53,7 +53,7 @@ struct AddCollectionView: View {
                 dismiss()
             case .failed:
                 LoadingHUD.dismiss()
-                //                isErrorActive = true
+                ErrorHUD.show(message: .addCollection)
             }
         }
     }

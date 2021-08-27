@@ -97,7 +97,6 @@ struct CollectionView: View {
                 dismiss()
             case .failed:
                 LoadingHUD.dismiss()
-                //                isErrorActive = true
             }
         }
     }

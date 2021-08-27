@@ -10,7 +10,6 @@ import SwiftUI
 struct HomeTabView: View {
     @StateObject private var viewModel = HomeTabViewModel()
     @State private var isAddPresented = false
-    @State private var isErrorActive = false
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
@@ -97,9 +96,6 @@ struct HomeTabView: View {
                 LoadingHUD.dismiss()
             case .failed:
                 LoadingHUD.dismiss()
-                withAnimation {
-                    isErrorActive = true
-                }
             }
         }
     }

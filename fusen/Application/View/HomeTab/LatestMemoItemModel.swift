@@ -32,14 +32,15 @@ final class LatestMemoItemModel: ObservableObject {
         do {
             let book = try await bookRepository.getBook(by: memo.bookId, for: user)
             DispatchQueue.main.async { [weak self] in
-                self?.state = .succeeded
-                self?.book = book
+                guard let self = self else { return }
+                self.state = .succeeded
+                self.book = book
             }
         } catch {
-            // FIXME: error handling
             print(error.localizedDescription)
             DispatchQueue.main.async { [weak self] in
-                self?.state = .failed
+                guard let self = self else { return }
+                self.state = .failed
             }
         }
     }

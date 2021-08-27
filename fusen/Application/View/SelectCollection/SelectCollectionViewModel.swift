@@ -36,14 +36,16 @@ final class SelectCollectionViewModel: ObservableObject {
         do {
             let collections = try await collectionRepository.getlCollections(for: user)
             DispatchQueue.main.async { [weak self] in
-                self?.state = .loaded
-                self?.collections = collections
+                guard let self = self else { return }
+                self.state = .loaded
+                self.collections = collections
             }
         } catch {
-            // FIXME: error handling
-            print(error.localizedDescription)
+            log.e(error.localizedDescription)
             DispatchQueue.main.async { [weak self] in
-                self?.state = .failed
+                guard let self = self else { return }
+                self.state = .failed
+                NotificationCenter.default.postError(message: .network)
             }
         }
     }
@@ -59,10 +61,11 @@ final class SelectCollectionViewModel: ObservableObject {
                 self?.state = .updated
             }
         } catch {
-            // FIXME: error handling
-            print(error.localizedDescription)
+            log.e(error.localizedDescription)
             DispatchQueue.main.async { [weak self] in
-                self?.state = .failed
+                guard let self = self else { return }
+                self.state = .failed
+                NotificationCenter.default.postError(message: .selectCollection)
             }
         }
     }

@@ -62,10 +62,11 @@ final class EditMemoViewModel: ObservableObject {
                 self?.state = .succeeded
             }
         } catch {
-            // FIXME: error handling
-            print(error.localizedDescription)
+            log.e(error.localizedDescription)
             DispatchQueue.main.async { [weak self] in
-                self?.state = .failed
+                guard let self = self else { return }
+                self.state = .failed
+                NotificationCenter.default.postError(message: .editMemo)
             }
         }
     }
@@ -78,13 +79,15 @@ final class EditMemoViewModel: ObservableObject {
         do {
             try await memoRepository.delete(memo: memo, for: user)
             DispatchQueue.main.async { [weak self] in
-                self?.state = .deleted
+                guard let self = self else { return }
+                self.state = .deleted
             }
         } catch {
-            // FIXME: error handling
-            print(error.localizedDescription)
+            log.e(error.localizedDescription)
             DispatchQueue.main.async { [weak self] in
-                self?.state = .failed
+                guard let self = self else { return }
+                self.state = .failed
+                NotificationCenter.default.postError(message: .deleteMemo)
             }
         }
     }

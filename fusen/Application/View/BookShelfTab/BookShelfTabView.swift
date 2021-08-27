@@ -78,7 +78,6 @@ struct BookShelfTabView: View {
                 LoadingHUD.dismiss()
             case .failed:
                 LoadingHUD.dismiss()
-                //                isErrorActive = true
             }
         }
     }

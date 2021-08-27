@@ -60,13 +60,13 @@ final class ScanBarcodeViewModel: ObservableObject {
                 let publication = try await publicationRepository.findBy(isbn: isbn)
                 log.d("Found publication: \(publication)")
                 DispatchQueue.main.async { [weak self] in
-                    
-                    self?.suggestedBook = publication
+                    guard let self = self else { return }
+                    self.suggestedBook = publication
                 }
             } catch {
-                // FIXME: error handling
                 log.e(error.localizedDescription)
                 isScanning = false
+                ErrorHUD.show(message: .scanBarcode)
             }
         }
     }
@@ -84,17 +84,19 @@ final class ScanBarcodeViewModel: ObservableObject {
             let id = try await bookRepository.addBook(of: publication, in: nil, for: user)
             log.d("Book is added for id: \(id.value)")
             DispatchQueue.main.async { [weak self] in
-                self?.scannedBook = publication
+                guard let self = self else { return }
+                self.scannedBook = publication
                 // 強制的に更新 -> Viewの再構築が発生するため注意
                 NotificationCenter.default.postRefreshBookShelfAllCollection()
 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 4) { [weak self] in
-                    self?.scannedBook = nil
+                    guard let self = self else { return }
+                    self.scannedBook = nil
                 }
             }
         } catch {
-            // FIXME: error handling
             log.e(error.localizedDescription)
+            ErrorHUD.show(message: .addBook)
         }
     }
     

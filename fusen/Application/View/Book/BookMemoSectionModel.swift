@@ -80,11 +80,11 @@ final class BookMemoSectionModel: ObservableObject {
                 self.state = .loaded(memos: memoPager.data)
             }
         } catch {
-            // FIXME: error handling
             log.e(error.localizedDescription)
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 self.state = .failed
+                NotificationCenter.default.postError(message: .getMemo)
             }
         }
     }

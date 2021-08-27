@@ -27,17 +27,6 @@ struct MemoListView: View {
             .refreshable {
                 await viewModel.onRefresh()
             }
-            
-//            TrailingControlToolbar(
-//                trailingView: {
-//                    Image.add
-//                        .resizable()
-//                        .frame(width: 24, height: 24)
-//                },
-//                trailingAction: {
-//                    isAddPresented = true
-//                }
-//            )
         }
         .listStyle(PlainListStyle())
         .navigationBarTitle("すべてのメモ", displayMode: .inline)

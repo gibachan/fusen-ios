@@ -20,8 +20,8 @@ struct MemoListView: View {
                     }
                 }
                 if viewModel.pager.data.isEmpty {
-                    // FIXME: show empty view
-                    EmptyView()
+                    BookEmptyMemoItem()
+                        .listRowSeparator(.hidden)
                 }
             }
             .refreshable {

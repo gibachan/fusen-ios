@@ -38,21 +38,23 @@ final class SettingTabViewModel: ObservableObject {
                     try await accountService.linkWithApple(authorization: authorization)
                     log.d("Successfully linked with Apple: user=\(accountService.currentUser?.id ?? "")")
                     DispatchQueue.main.async { [weak self] in
-                        self?.state = .succeeded
+                        guard let self = self else { return }
+                        self.state = .succeeded
+                        self.isLinkedAppleId = true
                     }
                 } catch AccountServiceError.linkWithApple {
                     // すでにlinkされている場合はエラーとなる(This credential is already associated with a different user account.)
                     log.e("AccountServiceError.linkWithApple")
                     DispatchQueue.main.async { [weak self] in
-                        self?.state = .failed
+                        guard let self = self else { return }
+                        self.state = .failed
                     }
-
                 } catch {
                     log.e("Unknown error: \(error.localizedDescription)")
                     DispatchQueue.main.async { [weak self] in
-                        self?.state = .failed
+                        guard let self = self else { return }
+                        self.state = .failed
                     }
-
                 }
             }
         case .failure(let error):
@@ -61,13 +63,14 @@ final class SettingTabViewModel: ObservableObject {
         }
     }
     
-    func onDeleteAccount() async {
+    func onUnlinkWithAppleID() async {
         do {
-            try await accountService.delete()
-            log.d("Successfully deleted the account")
+            try await accountService.unlinkWithApple()
+            log.d("Successfully unlinked with AppleID")
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 self.state = .succeeded
+                self.isLinkedAppleId = false
             }
         } catch {
             log.e("Unknown error: \(error.localizedDescription)")

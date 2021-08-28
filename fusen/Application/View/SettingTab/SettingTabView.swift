@@ -10,7 +10,7 @@ import AuthenticationServices
 
 struct SettingTabView: View {
     @StateObject private var viewModel = SettingTabViewModel()
-    @State private var isDeleteAlertPresented = false
+    @State private var isUnlinkAlertPresented = false
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
@@ -37,6 +37,9 @@ struct SettingTabView: View {
                                 Text("連携済み")
                                     .font(.small)
                                     .foregroundColor(.textSecondary)
+                                    .onTapGesture {
+                                        isUnlinkAlertPresented = true
+                                    }
                             }
                         }
                         if !viewModel.isLinkedAppleId {
@@ -95,21 +98,6 @@ struct SettingTabView: View {
                 } header: {
                     SectionHeaderText("アプリ")
                 }
-                
-                Section {
-                    HStack {
-                        Spacer()
-                        Button {
-                            isDeleteAlertPresented = true
-                        } label: {
-                            Text("アカウントを削除する")
-                                .font(.medium)
-                                .foregroundColor(.red)
-                        }
-                        Spacer()
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                }
 #if DEBUG
                 Section {
                     Button {
@@ -128,14 +116,14 @@ struct SettingTabView: View {
         .onAppear {
             viewModel.onApper()
         }
-        .alert(isPresented: $isDeleteAlertPresented) {
+        .alert(isPresented: $isUnlinkAlertPresented) {
             Alert(
-                title: Text("アカウントを削除"),
-                message: Text("削除するとすべてのデータが失われてしまいます。アカウントを削除しますか？"),
+                title: Text("アカウント連携を解除"),
+                message: Text("Apple IDとの連携を解除しますか？"),
                 primaryButton: .cancel(Text("キャンセル")),
-                secondaryButton: .destructive(Text("削除"), action: {
+                secondaryButton: .destructive(Text("連携を解除"), action: {
                     Task {
-                        await viewModel.onDeleteAccount()
+                        await viewModel.onUnlinkWithAppleID()
                     }
                 })
             )

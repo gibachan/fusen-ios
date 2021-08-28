@@ -15,6 +15,7 @@ enum AccountServiceError: Error {
     case logInApple
     case linkWithApple
     case logOut
+    case unlinkWithApple
     case deleteAccount
 }
 
@@ -28,6 +29,7 @@ protocol AccountServiceProtocol {
     @discardableResult func logInWithApple(authorization: ASAuthorization) async throws -> User
     @discardableResult func linkWithApple(authorization: ASAuthorization) async throws -> User
     
+    func unlinkWithApple() async throws
     func delete() async throws
     
 #if DEBUG
@@ -153,7 +155,17 @@ final class AccountService: AccountServiceProtocol {
         }
     }
     
+    func unlinkWithApple() async throws {
+        do {
+            try await auth.currentUser?.unlink(fromProvider: appleProviderId)
+        } catch {
+            log.e(error.localizedDescription)
+            throw AccountServiceError.unlinkWithApple
+        }
+    }
+    
     func delete() async throws {
+        // FIXME: ユーザー削除の前には再認証が必要 https://firebase.google.com/docs/auth/web/manage-users?hl=ja#re-authenticate_a_user
         do {
             try await auth.currentUser?.delete()
             // TODO: delete firestore user document & its children

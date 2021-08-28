@@ -17,7 +17,12 @@ struct PlaceholderTextEditor: View {
                     .foregroundColor(.placeholder)
                     .padding(EdgeInsets(top: 9, leading: 4, bottom: 0, trailing: 0))
             }
-            TextEditor(text: $text)
+            // ZStack is required for dynamic height of TextEditor
+            // ref: https://stackoverflow.com/questions/62620613/dynamic-row-hight-containing-texteditor-inside-a-list-in-swiftui
+            ZStack {
+                TextEditor(text: $text)
+                Text(text).opacity(0).padding(.all, 8)
+            }
         }
         .onAppear {
             UITextView.appearance().backgroundColor = .clear

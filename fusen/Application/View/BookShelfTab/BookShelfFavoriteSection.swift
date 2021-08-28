@@ -38,8 +38,10 @@ struct BookShelfFavoriteSection: View {
             HStack {
                 SectionHeaderText("お気に入り")
                 Spacer()
-                NavigationLink(destination: LazyView(FavoriteBookListView())) {
-                    ShowAllText()
+                if viewModel.books.isNotEmpty {
+                    NavigationLink(destination: LazyView(FavoriteBookListView())) {
+                        ShowAllText()
+                    }
                 }
             }
         }

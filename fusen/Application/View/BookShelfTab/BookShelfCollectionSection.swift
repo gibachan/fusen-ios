@@ -48,8 +48,10 @@ struct BookShelfCollectionSection: View {
                     .foregroundColor(Color(rgb: viewModel.collection.color))
                 SectionHeaderText(viewModel.collection.name)
                 Spacer()
-                NavigationLink(destination: LazyView(CollectionView(collection: collection))) {
-                    ShowAllText()
+                if viewModel.books.isNotEmpty {
+                    NavigationLink(destination: LazyView(CollectionView(collection: collection))) {
+                        ShowAllText()
+                    }
                 }
             }
         }

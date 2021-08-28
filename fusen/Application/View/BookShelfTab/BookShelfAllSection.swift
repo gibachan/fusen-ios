@@ -38,8 +38,10 @@ struct BookShelfAllSection: View {
             HStack {
                 SectionHeaderText("すべての書籍")
                 Spacer()
-                NavigationLink(destination: LazyView(BookListView())) {
-                    ShowAllText()
+                if viewModel.books.isNotEmpty {
+                    NavigationLink(destination: LazyView(BookListView())) {
+                        ShowAllText()
+                    }
                 }
             }
         }

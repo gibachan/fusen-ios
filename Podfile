@@ -14,6 +14,7 @@ target 'fusen' do
   pod 'Firebase/Storage'
   pod 'SVProgressHUD'
   pod 'SwiftLint'
+  pod 'GoogleMLKit/TextRecognitionJapanese', '2.3.0'
 
   target 'fusenTests' do
     inherit! :search_paths

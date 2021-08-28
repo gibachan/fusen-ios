@@ -856,6 +856,7 @@
 				A082000226C1F5CF00100357 /* Resources */,
 				A082002F26C1F74300100357 /* SwiftLint */,
 				0D502F6FD4CEAE7DA729E03E /* [CP] Embed Pods Frameworks */,
+				BB4E535C5BF40E7A5BFA3BBA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -894,6 +895,7 @@
 				A082001B26C1F5D100100357 /* Frameworks */,
 				A082001C26C1F5D100100357 /* Resources */,
 				5F8A750192022CB9C53CA88F /* [CP] Embed Pods Frameworks */,
+				8C26B85F46A8D5BA5E0F49B6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1078,6 +1080,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		8C26B85F46A8D5BA5E0F49B6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-fusen-fusenUITests/Pods-fusen-fusenUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-fusen-fusenUITests/Pods-fusen-fusenUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-fusen-fusenUITests/Pods-fusen-fusenUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A082002F26C1F74300100357 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1095,6 +1114,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which ${PODS_ROOT}/SwiftLint/swiftlint >/dev/null; then\n  ${PODS_ROOT}/SwiftLint/swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		BB4E535C5BF40E7A5BFA3BBA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-fusen/Pods-fusen-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-fusen/Pods-fusen-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-fusen/Pods-fusen-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 

@@ -11,19 +11,23 @@ final class AddMemoViewModel: NSObject, ObservableObject {
     private let imageCountLimit = 1
     private let book: Book
     private let accountService: AccountServiceProtocol
+    private let textRecognizeService: TextRecognizeServiceProtocol
     private let memoRepository: MemoRepository
     
     @Published var isSaveEnabled = false
     @Published var state: State = .initial
     @Published var imageResults: [DocumentCameraView.ImageResult] = []
+    @Published var recognizedQuote = ""
     
     init(
         book: Book,
         accountService: AccountServiceProtocol = AccountService.shared,
+        textRecognizeService: TextRecognizeServiceProtocol = TextRecognizeService(),
         memoRepository: MemoRepository = MemoRepositoryImpl()
     ) {
         self.book = book
         self.accountService = accountService
+        self.textRecognizeService = textRecognizeService
         self.memoRepository = memoRepository
     }
     
@@ -33,6 +37,15 @@ final class AddMemoViewModel: NSObject, ObservableObject {
     
     func onMemoImageAdd(images: [DocumentCameraView.ImageResult]) {
         imageResults = Array(images.prefix(imageCountLimit))
+        Task {
+            guard let image = images.first else { return }
+            let text = await textRecognizeService.text(from: image.image)
+            log.d("recognized=\(text)")
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.recognizedQuote = text
+            }
+        }
     }
     
     func onMemoImageDelete(image: DocumentCameraView.ImageResult) {

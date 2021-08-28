@@ -124,6 +124,9 @@ struct AddMemoView: View {
                 }
             }
         })
+        .onReceive(viewModel.$recognizedQuote) { recognizedQuote in
+            quote = recognizedQuote
+        }
         .onReceive(viewModel.$state) { state in
             switch state {
             case .initial:

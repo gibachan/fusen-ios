@@ -101,6 +101,7 @@
 		A069983B26CDDD18006E74C6 /* MemoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069983A26CDDD18006E74C6 /* MemoListView.swift */; };
 		A069983D26CDDD21006E74C6 /* MemoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069983C26CDDD21006E74C6 /* MemoListViewModel.swift */; };
 		A069983F26CDDD7F006E74C6 /* MemoListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069983E26CDDD7F006E74C6 /* MemoListItem.swift */; };
+		A07334F026DA420F004C5436 /* TextRecognizeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07334EF26DA420F004C5436 /* TextRecognizeService.swift */; };
 		A07507C926C546260087AE5C /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07507C826C546260087AE5C /* HomeTabView.swift */; };
 		A07507CB26C546330087AE5C /* HomeTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07507CA26C546330087AE5C /* HomeTabViewModel.swift */; };
 		A07507CE26C5E2F40087AE5C /* GoogleService-Info-staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = A07507CC26C5E2F40087AE5C /* GoogleService-Info-staging.plist */; };
@@ -272,6 +273,7 @@
 		A069983A26CDDD18006E74C6 /* MemoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListView.swift; sourceTree = "<group>"; };
 		A069983C26CDDD21006E74C6 /* MemoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListViewModel.swift; sourceTree = "<group>"; };
 		A069983E26CDDD7F006E74C6 /* MemoListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListItem.swift; sourceTree = "<group>"; };
+		A07334EF26DA420F004C5436 /* TextRecognizeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognizeService.swift; sourceTree = "<group>"; };
 		A07507C826C546260087AE5C /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
 		A07507CA26C546330087AE5C /* HomeTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewModel.swift; sourceTree = "<group>"; };
 		A07507CC26C5E2F40087AE5C /* GoogleService-Info-staging.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-staging.plist"; sourceTree = "<group>"; };
@@ -581,6 +583,7 @@
 			isa = PBXGroup;
 			children = (
 				A007C07B26C7805B00270671 /* AccountService.swift */,
+				A07334EF26DA420F004C5436 /* TextRecognizeService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1143,6 +1146,7 @@
 				A05CE89326D17FD3007F9CF2 /* AddMemoImageView.swift in Sources */,
 				A07CAD2526D096020012201A /* FirestoreUpdateUser.swift in Sources */,
 				A07CAD0326CED9A20012201A /* ImageDataExtension.swift in Sources */,
+				A07334F026DA420F004C5436 /* TextRecognizeService.swift in Sources */,
 				7A11FCAA26CB47EA00F1A6BC /* SettingTabView.swift in Sources */,
 				A069981A26CC3774006E74C6 /* QueryExtension.swift in Sources */,
 				7A33118026CD692E00EB520D /* BookListItem.swift in Sources */,

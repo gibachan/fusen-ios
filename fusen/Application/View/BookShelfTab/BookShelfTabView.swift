@@ -15,7 +15,9 @@ struct BookShelfTabView: View {
         VStack(alignment: .leading, spacing: 0) {
             List {
                 BookShelfAllSection()
-                BookShelfFavoriteSection()
+                if viewModel.isFavoriteVisible {
+                    BookShelfFavoriteSection()
+                }
                 ForEach(viewModel.collections, id: \.id.value) { collection in
                     BookShelfCollectionSection(collection: collection)
                 }

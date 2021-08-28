@@ -9,16 +9,20 @@ import Foundation
 
 final class BookShelfTabViewModel: ObservableObject {
     private let accountService: AccountServiceProtocol
+    private let bookRepository: BookRepository
     private let collectionRepository: CollectionRepository
     
     @Published var state: State = .initial
+    @Published var isFavoriteVisible = false
     @Published var collections: [Collection] = []
     
     init(
         accountService: AccountServiceProtocol = AccountService.shared,
+        bookRepository: BookRepository = BookRepositoryImpl(),
         collectionRepository: CollectionRepository = CollectionRepositoryImpl()
     ) {
         self.accountService = accountService
+        self.bookRepository = bookRepository
         self.collectionRepository = collectionRepository
     }
     
@@ -36,15 +40,19 @@ final class BookShelfTabViewModel: ObservableObject {
         
         state = .loading
         do {
+            let favoriteBooks = try await bookRepository.getFavoriteBooks(for: user, forceRefresh: true)
             let collections = try await collectionRepository.getlCollections(for: user)
             DispatchQueue.main.async { [weak self] in
-                self?.state = .succeeded
-                self?.collections = collections
+                guard let self = self else { return }
+                self.state = .succeeded
+                self.isFavoriteVisible = !favoriteBooks.data.isEmpty
+                self.collections = collections
             }
         } catch {
             log.e(error.localizedDescription)
             DispatchQueue.main.async { [weak self] in
-                self?.state = .failed
+                guard let self = self else { return }
+                self.state = .failed
             }
         }
     }

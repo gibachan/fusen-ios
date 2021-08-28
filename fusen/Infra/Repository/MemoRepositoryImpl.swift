@@ -7,7 +7,6 @@
 
 import Foundation
 import FirebaseFirestore
-import FirebaseFirestoreSwift
 
 final class MemoRepositoryImpl: MemoRepository {
     private let db = Firestore.firestore()
@@ -24,7 +23,7 @@ final class MemoRepositoryImpl: MemoRepository {
         do {
             let snapshot = try await query.getDocuments()
             let memos = snapshot.documents
-                .compactMap { try? $0.data(as: FirestoreGetMemo.self) }
+                .compactMap { FirestoreGetMemo.from(id: $0.documentID, data: $0.data()) }
                 .compactMap { $0.toDomain() }
             return memos
         } catch {
@@ -46,7 +45,7 @@ final class MemoRepositoryImpl: MemoRepository {
         do {
             let snapshot = try await query.getDocuments()
             let memos = snapshot.documents
-                .compactMap { try? $0.data(as: FirestoreGetMemo.self) }
+                .compactMap { FirestoreGetMemo.from(id: $0.documentID, data: $0.data()) }
                 .compactMap { $0.toDomain() }
             let finished = memos.count < perPage
             let cachedPager = allMemosCache.currentPager
@@ -78,7 +77,7 @@ final class MemoRepositoryImpl: MemoRepository {
         do {
             let snapshot = try await query.getDocuments()
             let memeos = snapshot.documents
-                .compactMap { try? $0.data(as: FirestoreGetMemo.self) }
+                .compactMap { FirestoreGetMemo.from(id: $0.documentID, data: $0.data()) }
                 .compactMap { $0.toDomain() }
             let finished = memeos.count < perPage
             let cachedPager = allMemosCache.currentPager
@@ -109,7 +108,7 @@ final class MemoRepositoryImpl: MemoRepository {
         do {
             let snapshot = try await query.getDocuments()
             let memos = snapshot.documents
-                .compactMap { try? $0.data(as: FirestoreGetMemo.self) }
+                .compactMap { FirestoreGetMemo.from(id: $0.documentID, data: $0.data()) }
                 .compactMap { $0.toDomain() }
             let finished = memos.count < perPage
             let cachedPager = cache[bookId]?.currentPager ?? .empty
@@ -146,7 +145,7 @@ final class MemoRepositoryImpl: MemoRepository {
         do {
             let snapshot = try await query.getDocuments()
             let memos = snapshot.documents
-                .compactMap { try? $0.data(as: FirestoreGetMemo.self) }
+                .compactMap { FirestoreGetMemo.from(id: $0.documentID, data: $0.data()) }
                 .compactMap { $0.toDomain() }
             let finished = memos.count < perPage
             let cachedPager = cache[bookId]?.currentPager ?? .empty

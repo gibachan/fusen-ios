@@ -18,7 +18,7 @@ final class UserRepositoryImpl: UserRepository {
             if snapshot.data() == nil {
                 // フィールドが存在しない場合は `data() == nil` となる
                 return .none
-            } else if let getUserInfo = try snapshot.data(as: FirestoreGetUserInfo.self) {
+            } else if let getUserInfo = FirestoreGetUserInfo.from(data: snapshot.data()) {
                 return getUserInfo.toDomain()
             }
             throw  UserRepositoryError.unknown

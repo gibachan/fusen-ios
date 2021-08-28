@@ -6,10 +6,10 @@
 //
 
 import Foundation
-import FirebaseFirestoreSwift
+import FirebaseFirestore
 
 struct FirestoreGetBook: Codable {
-    @DocumentID var id: String?
+    let id: String
     let title: String
     let author: String
     let imageURL: String
@@ -23,8 +23,37 @@ struct FirestoreGetBook: Codable {
 }
 
 extension FirestoreGetBook {
-    func toDomain() -> Book? {
-        guard let id = id else { return nil }
+    static func from(id: String, data: [String: Any]?) -> Self? {
+        guard let data = data else { return nil }
+        guard let title = data["title"] as? String,
+              let author = data["author"] as? String,
+              let imageURL = data["imageURL"] as? String,
+              let description = data["description"] as? String,
+              let impression = data["impression"] as? String,
+              let createdAt = data["createdAt"] as? Timestamp,
+              let updatedAt = data["updatedAt"] as? Timestamp,
+              let isFavorite = data["isFavorite"] as? Bool,
+              let valuation = data["valuation"] as? Int,
+              let collectionId = data["collectionId"] as? String else {
+                  return nil
+              }
+              
+        return FirestoreGetBook(
+            id: id,
+            title: title,
+            author: author,
+            imageURL: imageURL,
+            description: description,
+            impression: impression,
+            createdAt: createdAt.dateValue(),
+            updatedAt: updatedAt.dateValue(),
+            isFavorite: isFavorite,
+            valuation: valuation,
+            collectionId: collectionId
+        )
+    }
+ 
+    func toDomain() -> Book {
         return Book(
             id: ID<Book>(value: id),
             title: title,

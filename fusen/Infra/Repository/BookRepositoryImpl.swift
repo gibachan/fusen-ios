@@ -7,7 +7,6 @@
 
 import Foundation
 import FirebaseFirestore
-import FirebaseFirestoreSwift
 
 final class BookRepositoryImpl: BookRepository {
     private let db = Firestore.firestore()
@@ -23,10 +22,8 @@ final class BookRepositoryImpl: BookRepository {
             .document(id.value)
         do {
             let snapshot = try await ref.getDocument(source: FirestoreSource.cache)
-            if let getBook = try snapshot.data(as: FirestoreGetBook.self) {
-                if let book = getBook.toDomain() {
-                    return book
-                }
+            if let getBook = FirestoreGetBook.from(id: snapshot.documentID, data: snapshot.data()) {
+                return getBook.toDomain()
             }
             throw  BookRepositoryError.decodeError
         } catch {
@@ -42,7 +39,7 @@ final class BookRepositoryImpl: BookRepository {
         do {
             let snapshot = try await query.getDocuments()
             let books = snapshot.documents
-                .compactMap { try? $0.data(as: FirestoreGetBook.self) }
+                .compactMap { FirestoreGetBook.from(id: $0.documentID, data: $0.data()) }
                 .compactMap { $0.toDomain() }
             return books
         } catch {
@@ -64,7 +61,7 @@ final class BookRepositoryImpl: BookRepository {
         do {
             let snapshot = try await query.getDocuments()
             let books = snapshot.documents
-                .compactMap { try? $0.data(as: FirestoreGetBook.self) }
+                .compactMap { FirestoreGetBook.from(id: $0.documentID, data: $0.data()) }
                 .compactMap { $0.toDomain() }
             let finished = books.count < perPage
             let cachedPager = allBooksCache.currentPager
@@ -96,7 +93,7 @@ final class BookRepositoryImpl: BookRepository {
         do {
             let snapshot = try await query.getDocuments()
             let books = snapshot.documents
-                .compactMap { try? $0.data(as: FirestoreGetBook.self) }
+                .compactMap { FirestoreGetBook.from(id: $0.documentID, data: $0.data()) }
                 .compactMap { $0.toDomain() }
             let finished = books.count < perPage
             let cachedPager = allBooksCache.currentPager
@@ -125,7 +122,7 @@ final class BookRepositoryImpl: BookRepository {
         do {
             let snapshot = try await query.getDocuments()
             let books = snapshot.documents
-                .compactMap { try? $0.data(as: FirestoreGetBook.self) }
+                .compactMap { FirestoreGetBook.from(id: $0.documentID, data: $0.data()) }
                 .compactMap { $0.toDomain() }
             let finished = books.count < perPage
             let cachedPager = favoriteBooksCache.currentPager
@@ -158,7 +155,7 @@ final class BookRepositoryImpl: BookRepository {
         do {
             let snapshot = try await query.getDocuments()
             let books = snapshot.documents
-                .compactMap { try? $0.data(as: FirestoreGetBook.self) }
+                .compactMap { FirestoreGetBook.from(id: $0.documentID, data: $0.data()) }
                 .compactMap { $0.toDomain() }
             let finished = books.count < perPage
             let cachedPager = favoriteBooksCache.currentPager
@@ -189,7 +186,7 @@ final class BookRepositoryImpl: BookRepository {
         do {
             let snapshot = try await query.getDocuments()
             let books = snapshot.documents
-                .compactMap { try? $0.data(as: FirestoreGetBook.self) }
+                .compactMap { FirestoreGetBook.from(id: $0.documentID, data: $0.data()) }
                 .compactMap { $0.toDomain() }
             let finished = books.count < perPage
             let cachedPager = allBooksCache.currentPager
@@ -334,7 +331,7 @@ final class BookRepositoryImpl: BookRepository {
             db.runTransaction { (transaction, _) -> Any? in
                 if let userSnapshot = try? transaction.getDocument(userRef),
                    userSnapshot.data() != nil,
-                   let userInfo = try? userSnapshot.data(as: FirestoreGetUserInfo.self),
+                   let userInfo = FirestoreGetUserInfo.from(data: userSnapshot.data()),
                    userInfo.readingBookId == book.id.value {
                     let newUserInfo = FirestoreUpdateUser(readingBookId: "")
                     transaction.setData(newUserInfo.data(), forDocument: userRef, merge: true)

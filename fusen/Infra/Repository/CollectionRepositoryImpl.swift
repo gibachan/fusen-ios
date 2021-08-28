@@ -17,7 +17,7 @@ final class CollectionRepositoryImpl: CollectionRepository {
         do {
             let snapshot = try await query.getDocuments()
             let collections = snapshot.documents
-                .compactMap { try? $0.data(as: FirestoreGetCollection.self) }
+                .compactMap { FirestoreGetCollection.from(id: $0.documentID, data: $0.data()) }
                 .compactMap { $0.toDomain() }
             return collections
         } catch {

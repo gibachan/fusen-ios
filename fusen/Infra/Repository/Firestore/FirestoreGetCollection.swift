@@ -6,16 +6,22 @@
 //
 
 import Foundation
-import FirebaseFirestoreSwift
+import SwiftUI
 
 struct FirestoreGetCollection: Codable {
-    @DocumentID var id: String?
+    let id: String
     let color: [Int]
 }
 
 extension FirestoreGetCollection {
+    static func from(id: String, data: [String: Any]?) -> Self? {
+        guard let data = data else { return nil }
+        guard let color = data["color"] as? [Int] else { return nil }
+        
+        return FirestoreGetCollection(id: id, color: color)
+    }
+    
     func toDomain() -> Collection? {
-        guard let id = id else { return nil }
         guard color.count == 3 else { return nil }
         return Collection(
             id: ID<Collection>(value: id),

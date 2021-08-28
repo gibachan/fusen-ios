@@ -10,12 +10,12 @@ import SwiftUI
 struct AddBookView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel = AddBookViewModel()
-    @State var thumbnailImage: ImageData?
-    @State var title: String = ""
-    @State var author: String = ""
-    @State var isThumbnailPickerPresented = false
-    @State var isCameraPickerPresented = false
-    @State var isPhotoLibraryPresented = false
+    @State private var thumbnailImage: ImageData?
+    @State private var title: String = ""
+    @State private var author: String = ""
+    @State private var isThumbnailPickerPresented = false
+    @State private var isCameraPickerPresented = false
+    @State private var isPhotoLibraryPresented = false
     private let collection: Collection?
     
     init(in collection: Collection? = nil) {

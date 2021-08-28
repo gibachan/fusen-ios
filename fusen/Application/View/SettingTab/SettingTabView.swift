@@ -10,6 +10,8 @@ import AuthenticationServices
 
 struct SettingTabView: View {
     @StateObject private var viewModel = SettingTabViewModel()
+    @State private var isDeleteAlertPresented = false
+    
     var body: some View {
         ZStack(alignment: .bottomLeading) {
             List {
@@ -93,6 +95,21 @@ struct SettingTabView: View {
                 } header: {
                     SectionHeaderText("アプリ")
                 }
+                
+                Section {
+                    HStack {
+                        Spacer()
+                        Button {
+                            isDeleteAlertPresented = true
+                        } label: {
+                            Text("アカウントを削除する")
+                                .font(.medium)
+                                .foregroundColor(.red)
+                        }
+                        Spacer()
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                }
 #if DEBUG
                 Section {
                     Button {
@@ -110,6 +127,18 @@ struct SettingTabView: View {
         .navigationBarTitle("設定")
         .onAppear {
             viewModel.onApper()
+        }
+        .alert(isPresented: $isDeleteAlertPresented) {
+            Alert(
+                title: Text("アカウントを削除"),
+                message: Text("削除するとすべてのデータが失われてしまいます。アカウントを削除しますか？"),
+                primaryButton: .cancel(Text("キャンセル")),
+                secondaryButton: .destructive(Text("削除"), action: {
+                    Task {
+                        await viewModel.onDeleteAccount()
+                    }
+                })
+            )
         }
     }
 }

@@ -61,6 +61,23 @@ final class SettingTabViewModel: ObservableObject {
         }
     }
     
+    func onDeleteAccount() async {
+        do {
+            try await accountService.delete()
+            log.d("Successfully deleted the account")
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.state = .succeeded
+            }
+        } catch {
+            log.e("Unknown error: \(error.localizedDescription)")
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.state = .failed
+            }
+        }
+    }
+    
     enum State {
         case initial
         case linkingWithApple

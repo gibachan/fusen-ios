@@ -15,6 +15,7 @@ enum AccountServiceError: Error {
     case logInApple
     case linkWithApple
     case logOut
+    case deleteAccount
 }
 
 protocol AccountServiceProtocol {
@@ -26,6 +27,8 @@ protocol AccountServiceProtocol {
     func prepareLogInWithAppleRequest(request: ASAuthorizationAppleIDRequest)
     @discardableResult func logInWithApple(authorization: ASAuthorization) async throws -> User
     @discardableResult func linkWithApple(authorization: ASAuthorization) async throws -> User
+    
+    func delete() async throws
     
 #if DEBUG
     func logOut() throws
@@ -147,6 +150,16 @@ final class AccountService: AccountServiceProtocol {
         } catch {
             log.e(error.localizedDescription)
             throw AccountServiceError.linkWithApple
+        }
+    }
+    
+    func delete() async throws {
+        do {
+            try await auth.currentUser?.delete()
+            // TODO: delete firestore user document & its children
+        } catch {
+            log.e(error.localizedDescription)
+            throw AccountServiceError.deleteAccount
         }
     }
     

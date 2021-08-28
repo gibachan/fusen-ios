@@ -18,6 +18,7 @@ struct BookMemoSection: View {
         Section {
             if viewModel.memoPager.data.isEmpty {
                 BookEmptyMemoItem()
+                    .listRowSeparator(.hidden)
             } else {
                 ForEach(viewModel.memoPager.data, id: \.id.value) { memo in
                     NavigationLink(destination: LazyView(EditMemoView(memo: memo))) {

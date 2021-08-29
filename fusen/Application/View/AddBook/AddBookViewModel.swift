@@ -38,14 +38,8 @@ final class AddBookViewModel: ObservableObject {
 
         state = .loading
         do {
-            let id = try await bookRepository.addBook(of: publication, in: collection, for: user)
+            let id = try await bookRepository.addBook(of: publication, in: collection, image: thumbnailImage, for: user)
             log.d("Book is added for id: \(id.value)")
-            
-            if let image = thumbnailImage {
-                let book = try await bookRepository.getBook(by: id, for: user)
-                try await bookRepository.update(book: book, image: image, for: user)
-                log.d("Thumbnail image is updated for book id: \(id.value)")
-            }
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 self.state = .succeeded
@@ -53,7 +47,7 @@ final class AddBookViewModel: ObservableObject {
                 NotificationCenter.default.postRefreshBookShelfAllCollection()
             }
         } catch {
-            print(error.localizedDescription)
+            log.e(error.localizedDescription)
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 self.state = .failed

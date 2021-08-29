@@ -201,10 +201,23 @@ final class BookRepositoryImpl: BookRepository {
         }
     }
     
-    func addBook(of publication: Publication, in collection: Collection?, for user: User) async throws -> ID<Book> {
+    func addBook(of publication: Publication, in collection: Collection?, image: ImageData?, for user: User) async throws -> ID<Book> {
+        let newBookDocRef = db.booksCollection(for: user).document()
+        let newBookId = ID<Book>(value: newBookDocRef.documentID)
+        
+        var imageURL: URL?
+        if let image = image {
+            do {
+                let storage = ImageStorage()
+                imageURL = try await storage.upload(image: image, bookId: newBookId, for: user)
+            } catch {
+                throw BookRepositoryError.uploadImage
+            }
+        }
+        
         typealias AddBookContinuation = CheckedContinuation<ID<Book>, Error>
         return try await withCheckedThrowingContinuation { (continuation: AddBookContinuation) in
-            let create = FirestoreCreateBook.fromDomain(publication: publication, collection: collection)
+            let create = FirestoreCreateBook.fromDomain(publication: publication, imageURL: imageURL, collection: collection)
             var ref: DocumentReference?
             ref = db.booksCollection(for: user)
                 .addDocument(data: create.data()) { [weak self] error in

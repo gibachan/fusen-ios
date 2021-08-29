@@ -15,6 +15,7 @@ struct AddMemoView: View {
     @State private var page = 0
     @State private var editMemoImage: DocumentCameraView.ImageResult?
     @State private var isDocumentCameraPresented = false
+    @State private var isQuoteCameraPresented = false
     private let memoImageWidth: CGFloat = 72
     private let memoImageHeight: CGFloat = 96
     
@@ -34,12 +35,26 @@ struct AddMemoView: View {
                 SectionHeaderText("メモ")
             }
             Section {
-                PlaceholderTextEditor(placeholder: "引用する文を入力する", text: $quote)
-                    .frame(minHeight: 100)
+                ZStack(alignment: .topTrailing) {
+                    PlaceholderTextEditor(placeholder: "引用する文を入力する", text: $quote)
+                        .frame(minHeight: 100)
+                    
+                    Button {
+                        isQuoteCameraPresented = true
+                    } label: {
+                        Image.camera
+                            .resizable()
+                            .renderingMode(.template)
+                            .frame(width: 24, height: 20)
+                            .foregroundColor(.placeholder)
+                            .offset(y: 8)
+                    }
+                }
+                .buttonStyle(PlainButtonStyle())
                 
                 Picker(
                     selection: $page,
-                    label: Text("ページ")
+                    label: Text("ページ :")
                 ) {
                     ForEach(0..<999) { page in
                         Text("\(page)")
@@ -48,39 +63,37 @@ struct AddMemoView: View {
                 .frame(minHeight: 40)
                 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("画像を撮影 :")
-                    HStack {
-                        if viewModel.imageResults.isEmpty {
-                            RoundedRectangle(cornerRadius: 4)
-                                .stroke(Color.placeholder, lineWidth: 1)
-                                .frame(width: memoImageWidth, height: memoImageHeight)
-                                .overlay(Image.camera
-                                            .resizable()
-                                            .frame(width: 32, height: 24)
-                                            .foregroundColor(.placeholder))
-                                .onTapGesture {
-                                    isDocumentCameraPresented = true
-                                }
-                        } else {
-                            ForEach(viewModel.imageResults) { result in
+                    HStack(alignment: .top) {
+                        Text("画像を撮影 :")
+                        Spacer()
+                        HStack {
+                            if viewModel.imageResults.isEmpty {
                                 RoundedRectangle(cornerRadius: 4)
                                     .stroke(Color.placeholder, lineWidth: 1)
                                     .frame(width: memoImageWidth, height: memoImageHeight)
-                                    .overlay(
-                                        Image(uiImage: result.image)
-                                            .resizable()
-                                    )
+                                    .overlay(Image.camera
+                                                .resizable()
+                                                .frame(width: 32, height: 24)
+                                                .foregroundColor(.placeholder))
                                     .onTapGesture {
-                                        editMemoImage = result
+                                        isDocumentCameraPresented = true
                                     }
+                            } else {
+                                ForEach(viewModel.imageResults) { result in
+                                    RoundedRectangle(cornerRadius: 4)
+                                        .stroke(Color.placeholder, lineWidth: 1)
+                                        .frame(width: memoImageWidth, height: memoImageHeight)
+                                        .overlay(
+                                            Image(uiImage: result.image)
+                                                .resizable()
+                                        )
+                                        .onTapGesture {
+                                            editMemoImage = result
+                                        }
+                                }
                             }
                         }
-                        Spacer()
                     }
-                    
-                    Text("※ 画像は1枚のみ保存できます")
-                        .font(.small)
-                        .foregroundColor(.textSecondary)
                 }
                 .padding(.vertical, 8)
             } header: {
@@ -118,6 +131,21 @@ struct AddMemoView: View {
                 switch result {
                 case .success(let images):
                     viewModel.onMemoImageAdd(images: images)
+                case .failure(let error):
+                    log.e(error.localizedDescription)
+                    ErrorHUD.show(message: .unexpected)
+                }
+            }
+        })
+        .fullScreenCover(isPresented: $isQuoteCameraPresented, onDismiss: {
+            log.d("dismiss")
+        }, content: {
+            DocumentCameraView { result in
+                switch result {
+                case .success(let images):
+                    Task {
+                        await viewModel.onQuoteImageTaken(images: images)
+                    }
                 case .failure(let error):
                     log.e(error.localizedDescription)
                     ErrorHUD.show(message: .unexpected)

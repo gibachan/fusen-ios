@@ -44,7 +44,7 @@ struct EditMemoView: View {
                     
                     Picker(
                         selection: $page,
-                        label: Text("ページ")
+                        label: Text("ページ :")
                     ) {
                         ForEach(0..<999) { page in
                             Text("\(page)")

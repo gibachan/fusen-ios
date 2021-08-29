@@ -21,22 +21,8 @@ class TextRecognizeService: TextRecognizeServiceProtocol {
         visionImage.orientation = image.imageOrientation
         
         do {
-            let text = try await textRecognizer.process(visionImage)
-            var result = ""
-            log.d("block count = \(text.blocks.count)")
-            for block in text.blocks {
-                // Lines.
-                log.d("line count = \(block.lines.count)")
-                for line in block.lines {
-                    // Elements.
-                    log.d("element count = \(line.elements.count)")
-                    for element in line.elements {
-                        log.d("text = \(element.text)")
-                        result += element.text
-                    }
-                }
-            }
-            return result
+            let result = try await textRecognizer.process(visionImage)
+            return result.text
         } catch {
             log.e(error.localizedDescription)
             return ""

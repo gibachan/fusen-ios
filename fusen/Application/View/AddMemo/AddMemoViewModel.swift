@@ -35,17 +35,18 @@ final class AddMemoViewModel: NSObject, ObservableObject {
         isSaveEnabled = !text.isEmpty
     }
     
+    func onQuoteImageTaken(images: [DocumentCameraView.ImageResult]) async {
+        guard let image = images.first else { return }
+        let text = await textRecognizeService.text(from: image.image)
+        log.d("recognized=\(text)")
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.recognizedQuote = text
+        }
+    }
+    
     func onMemoImageAdd(images: [DocumentCameraView.ImageResult]) {
         imageResults = Array(images.prefix(imageCountLimit))
-        Task {
-            guard let image = images.first else { return }
-            let text = await textRecognizeService.text(from: image.image)
-            log.d("recognized=\(text)")
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.recognizedQuote = text
-            }
-        }
     }
     
     func onMemoImageDelete(image: DocumentCameraView.ImageResult) {

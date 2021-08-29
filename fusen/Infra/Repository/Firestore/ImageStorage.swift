@@ -16,25 +16,32 @@ enum ImageStorageError: Error {
 struct ImageStorage {
     private let storage = Storage.storage()
     
-    func upload(image: ImageData, of bookId: ID<Book>, for user: User) async throws -> URL {
+    func upload(image: ImageData, bookId: ID<Book>, for user: User) async throws -> URL {
+        let imageName = "book-\(UUID().uuidString).jpg"
+        let storagePath = "users/\(user.id.value)/books/\(bookId.value)/\(imageName)"
+        return try await upload(image: image, storagePath: storagePath, for: user)
+    }
+    
+    func uploadMemo(image: ImageData, memoId: ID<Memo>, bookId: ID<Book>, for user: User) async throws -> URL {
+        let imageName = "memo-\(UUID().uuidString).jpg"
+        let storagePath = "users/\(user.id.value)/books/\(bookId.value)/memos/\(memoId.value)/\(imageName)"
+        return try await upload(image: image, storagePath: storagePath, for: user)
+    }
+    
+    private func upload(image: ImageData, storagePath: String, for user: User) async throws -> URL {
         typealias UploadContinuation = CheckedContinuation<URL, Error>
         return try await withCheckedThrowingContinuation { (continuation: UploadContinuation) in
-            let imageName: String
-            switch image.type {
-            case .book:
-                imageName = "book-\(UUID().uuidString).jpg"
-                
-            case .memo:
-                imageName = "memo-\(UUID().uuidString).jpg"
-            }
-            
-            let storagePath = "users/\(user.id.value)/books/\(bookId.value)/\(imageName)"
             let imageRef = storage.reference().child(storagePath)
             
             let metadata = StorageMetadata()
             metadata.contentType = "image/jpeg"
             log.d("Uploading image..: \(storagePath)")
             imageRef.putData(image.data, metadata: metadata) { (metadata, error) in
+                if let error = error {
+                    log.e(error.localizedDescription)
+                    continuation.resume(throwing: ImageStorageError.upload)
+                    return
+                }
                 guard let metadata = metadata else {
                     log.e("metadata is missing")
                     continuation.resume(throwing: ImageStorageError.upload)

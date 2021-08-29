@@ -290,7 +290,7 @@ final class BookRepositoryImpl: BookRepository {
         var imageURL: URL?
         do {
             let storage = ImageStorage()
-            imageURL = try await storage.upload(image: image, of: book.id, for: user)
+            imageURL = try await storage.upload(image: image, bookId: book.id, for: user)
         } catch {
             throw BookRepositoryError.uploadImage
         }

@@ -161,12 +161,13 @@ final class MemoRepositoryImpl: MemoRepository {
     }
     
     func addMemo(of book: Book, text: String, quote: String, page: Int?, image: ImageData?, for user: User) async throws -> ID<Memo> {
-        
+        let newMemoDocRef = db.memosCollection(for: user).document()
+
         var imageURL: URL?
         if let image = image {
             do {
                 let storage = ImageStorage()
-                imageURL = try await storage.upload(image: image, of: book.id, for: user)
+                imageURL = try await storage.uploadMemo(image: image, memoId: ID<Memo>(value: newMemoDocRef.documentID), bookId: book.id, for: user)
             } catch {
                 throw MemoRepositoryError.uploadImage
             }
@@ -181,17 +182,15 @@ final class MemoRepositoryImpl: MemoRepository {
                 page: page,
                 imageURLs: imageURL != nil ? [imageURL!.absoluteString] : []
             )
-            var ref: DocumentReference?
-            ref = db.memosCollection(for: user)
-                .addDocument(data: create.data()) { error in
-                    if let error = error {
-                        log.e(error.localizedDescription)
-                        continuation.resume(throwing: MemoRepositoryError.unknown)
-                    } else {
-                        let id = ID<Memo>(value: ref!.documentID)
-                        continuation.resume(returning: id)
-                    }
+            newMemoDocRef.setData(create.data(), merge: false) { error in
+                if let error = error {
+                    log.e(error.localizedDescription)
+                    continuation.resume(throwing: MemoRepositoryError.unknown)
+                } else {
+                    let id = ID<Memo>(value: newMemoDocRef.documentID)
+                    continuation.resume(returning: id)
                 }
+            }
         }
     }
     

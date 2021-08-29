@@ -16,15 +16,18 @@ struct BookShelfItem: View {
         HStack(alignment: .top, spacing: 4) {
             BookImageView(url: book.imageURL)
                 .frame(width: 40, height: 60)
-            VStack {
+            VStack(alignment: .leading) {
                 Text(book.title)
                     .font(.minimal)
+                    .fontWeight(.bold)
                     .lineLimit(3)
                     .foregroundColor(.textSecondary)
-                Spacer()
+                Spacer(minLength: 8)
+                Text(book.author)
+                    .font(.minimal)
+                    .lineLimit(1)
+                    .foregroundColor(.textSecondary)
             }
-            .frame(width: 80)
-            Spacer()
             
             NavigationLink(isActive: $isBookPresented) {
                 LazyView(BookView(bookId: book.id))
@@ -32,6 +35,7 @@ struct BookShelfItem: View {
                 EmptyView()
             }
             .buttonStyle(PlainButtonStyle())
+            Spacer()
         }
         .background(Color.white) // Enable to tap empty space
         .onTapGesture {

@@ -34,7 +34,7 @@ struct BookShelfCollectionSection: View {
                                     }
                                 }
                             }
-                            .frame(width: 240)
+                            .frame(width: 200)
                         }
                     }
                     .padding(.vertical, 8)

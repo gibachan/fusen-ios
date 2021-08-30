@@ -12,7 +12,7 @@ final class MemoRepositoryImpl: MemoRepository {
     private let db = Firestore.firestore()
     
     // Pagination
-    private let perPage = 20
+    private let perPage = 100
     private var allMemosCache: PagerCache<Memo> = .empty
     private var cache: [ID<Book>: PagerCache<Memo>] = [:]
     

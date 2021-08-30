@@ -12,7 +12,7 @@ final class BookRepositoryImpl: BookRepository {
     private let db = Firestore.firestore()
     
     // Pagination
-    private let perPage = 20
+    private let perPage = 100
     private var allBooksCache: PagerCache<Book> = .empty
     private var favoriteBooksCache: PagerCache<Book> = .empty
     private var collectionCache: [ID<Collection>: PagerCache<Book>] = [:]

@@ -16,15 +16,24 @@ struct AddCollectionView: View {
     var body: some View {
         Form {
             Section {
+                if viewModel.isCollectionCountOver {
+                    Text("コレクションの上限数を超えたため、新たに作成できません。")
+                        .padding(.bottom, 16)
+                        .font(.medium)
+                        .foregroundColor(.error)
+                        .listRowSeparator(.hidden)
+                }
                 HStack(spacing: 4) {
                     Text("名前 : ")
                     TextField("名前を入力する", text: $name)
                         .textFieldStyle(.roundedBorder)
+                        .disabled(viewModel.isCollectionCountOver)
                         .onChange(of: name) { newValue in
                             viewModel.onNameChange(newValue)
                         }
                 }
                 ColorPicker("カラー : ", selection: $color)
+                    .disabled(viewModel.isCollectionCountOver)
             } header: {
                 SectionHeaderText("新しいコレクション")
             }
@@ -42,18 +51,26 @@ struct AddCollectionView: View {
             }
                 .disabled(!viewModel.isSaveEnabled)
         )
+        .task {
+            await viewModel.onAppear()
+        }
         .onReceive(viewModel.$state) { state in
             switch state {
             case .initial:
                 break
             case .loading:
                 LoadingHUD.show()
-            case .succeeded:
+            case .collectionsLoaded:
+                LoadingHUD.dismiss()
+            case .collectionAdded:
                 LoadingHUD.dismiss()
                 dismiss()
             case .failed:
                 LoadingHUD.dismiss()
                 ErrorHUD.show(message: .addCollection)
+            case .collectionCountOver:
+                LoadingHUD.dismiss()
+                ErrorHUD.show(message: .collectionCountOver)
             }
         }
     }

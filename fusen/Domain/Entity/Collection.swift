@@ -7,9 +7,6 @@
 
 import Foundation
 
-let collectionCountLimit = 20
-let collectionBooksCountLimit = 100
-
 struct Collection {
     let id: ID<Collection>
     let color: RGB
@@ -18,6 +15,8 @@ struct Collection {
 }
 
 extension Collection {
+    static let countLimit = 20
+    
     static var sample: Collection {
         Collection(
             id: ID(value: "ミステリー"),

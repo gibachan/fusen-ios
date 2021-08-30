@@ -12,6 +12,7 @@ enum ErrorMessage {
     case readingBookChange
     case favoriteBookChange
     case addCollection
+    case collectionCountOver
     case selectCollection
     case deleteCollection
     case scanBarcode
@@ -36,6 +37,8 @@ extension ErrorMessage {
             return "お気に入りの設定を変更できませんでした。"
         case .addCollection:
             return "コレクションを追加できませんでした。"
+        case .collectionCountOver:
+            return "コレクションの上限数を超えたため、新たに作成できません。"
         case .selectCollection:
             return "コレクションを設定できませんでした。"
         case .deleteCollection:

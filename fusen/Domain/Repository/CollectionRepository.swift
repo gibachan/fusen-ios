@@ -8,6 +8,7 @@
 import Foundation
 
 enum CollectionRepositoryError: Error {
+    case countLimitOver
     case unknown
 }
 

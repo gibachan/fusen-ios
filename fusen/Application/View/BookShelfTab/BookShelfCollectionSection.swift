@@ -20,6 +20,7 @@ struct BookShelfCollectionSection: View {
         Section {
             if viewModel.books.isEmpty {
                 BookShelfEmptyItem()
+                    .listRowSeparator(.hidden)
             } else {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(alignment: .top, spacing: 8) {

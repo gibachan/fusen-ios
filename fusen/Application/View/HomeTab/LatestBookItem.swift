@@ -12,7 +12,7 @@ struct LatestBookItem: View {
     var body: some View {
         HStack {
             BookImageView(url: book.imageURL)
-                .frame(width: 40, height: 60)
+                .frame(width: 48, height: 64)
             VStack(alignment: .leading, spacing: 0) {
                 Text(book.title)
                     .font(.small)

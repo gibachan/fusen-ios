@@ -19,7 +19,7 @@ struct HomeTabView: View {
                         ForEach(latestBooks, id: \.id.value) { book in
                             NavigationLink(destination: LazyView(BookView(bookId: book.id))) {
                                 LatestBookItem(book: book)
-                                    .padding(.vertical, 8)
+                                    .padding(.vertical, 4)
                             }
                         }
                     } header: {
@@ -36,7 +36,7 @@ struct HomeTabView: View {
                         ForEach(latestMemos, id: \.id.value) { memo in
                             NavigationLink(destination: LazyView(EditMemoView(memo: memo))) {
                                 LatestMemoItem(memo: memo)
-                                    .padding(.vertical, 8)
+                                    .padding(.vertical, 4)
                             }
                         }
                     } header: {

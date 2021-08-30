@@ -31,7 +31,7 @@ struct BookShelfTabView: View {
                 leadingView: {
                     Image.addCollection
                         .resizable()
-                        .frame(width: 28, height: 24)
+                        .frame(width: 28, height: 22)
                         .foregroundColor(.active)
                     
                 },

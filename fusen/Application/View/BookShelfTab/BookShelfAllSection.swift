@@ -14,6 +14,7 @@ struct BookShelfAllSection: View {
         Section {
             if viewModel.books.isEmpty {
                 BookShelfEmptyItem()
+                    .listRowSeparator(.hidden)
             } else {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(alignment: .top, spacing: 8) {
@@ -31,7 +32,7 @@ struct BookShelfAllSection: View {
                             .frame(width: 200)
                         }
                     }
-                    .padding(.vertical, 8)
+                    .padding(.vertical, 4)
                 }
             }
         } header: {

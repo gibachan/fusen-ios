@@ -15,7 +15,7 @@ struct BookShelfItem: View {
     var body: some View {
         HStack(alignment: .top, spacing: 4) {
             BookImageView(url: book.imageURL)
-                .frame(width: 40, height: 60)
+                .frame(width: 48, height: 64)
             VStack(alignment: .leading) {
                 Text(book.title)
                     .font(.minimal)

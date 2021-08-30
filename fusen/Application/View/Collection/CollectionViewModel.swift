@@ -56,7 +56,7 @@ final class CollectionViewModel: ObservableObject {
         
         state = .refreshing
         do {
-            let pager = try await bookRepository.getAllBooks(for: user, forceRefresh: true)
+            let pager = try await bookRepository.getBooks(by: collection, for: user, forceRefresh: true)
             log.d("finished=\(pager.finished)")
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
@@ -81,7 +81,7 @@ final class CollectionViewModel: ObservableObject {
         if book.id == lastBook.id {
             state = .loadingNext
             do {
-                let pager = try await bookRepository.getAllBooksNext(for: user)
+                let pager = try await bookRepository.getBooksNext(by: collection, for: user)
                 log.d("finished=\(pager.finished)")
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self else { return }

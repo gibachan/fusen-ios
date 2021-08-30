@@ -56,6 +56,8 @@ final class AddCollectionViewModel: ObservableObject {
         guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
         
+        state = .loading
+
         // Check collection count
         do {
             let collections = try await collectionRepository.getlCollections(for: user)
@@ -74,8 +76,6 @@ final class AddCollectionViewModel: ObservableObject {
                 self.state = .failed
             }
         }
-        
-        state = .loading
         do {
             log.d("Saving \(name) collection with \(color)")
             let id = try await collectionRepository.addCollection(name: name, color: color, for: user)

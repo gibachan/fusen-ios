@@ -201,6 +201,42 @@ final class BookRepositoryImpl: BookRepository {
         }
     }
     
+    func getBooksNext(by collection: Collection, for user: User) async throws -> Pager<Book> {
+        guard let cache = collectionCache[collection.id] else {
+            fatalError("cacheは必ず存在する")
+        }
+        guard let afterDocument = cache.lastDocument else {
+            fatalError("lastDocumentは必ず存在する")
+        }
+        guard !cache.currentPager.finished else {
+            log.d("Books in \(collection.id.value) have been already fetched")
+            return cache.currentPager
+        }
+        
+        let query = db.booksCollection(for: user)
+            .whereCollection(collection)
+            .orderByCreatedAtDesc()
+            .start(afterDocument: afterDocument)
+            .limit(to: perPage)
+        
+        do {
+            let snapshot = try await query.getDocuments()
+            let books = snapshot.documents
+                .compactMap { FirestoreGetBook.from(id: $0.documentID, data: $0.data()) }
+                .compactMap { $0.toDomain() }
+            let finished = books.count < perPage
+            let cachedPager = cache.currentPager
+            let newPager = Pager<Book>(currentPage: cachedPager.currentPage + 1,
+                                       finished: finished,
+                                       data: cachedPager.data + books)
+            collectionCache[collection.id] = PagerCache(pager: newPager, lastDocument: snapshot.documents.last)
+            return newPager
+        } catch {
+            log.e(error.localizedDescription)
+            throw  BookRepositoryError.unknown
+        }
+    }
+    
     func addBook(of publication: Publication, in collection: Collection?, image: ImageData?, for user: User) async throws -> ID<Book> {
         let newBookDocRef = db.booksCollection(for: user).document()
         let newBookId = ID<Book>(value: newBookDocRef.documentID)

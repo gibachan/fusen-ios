@@ -13,7 +13,7 @@ enum MemoRepositoryError: Error {
 }
 
 protocol MemoRepository {
-    func getLatestMemos(for user: User) async throws -> [Memo]
+    func getLatestMemos(count: Int, for user: User) async throws -> [Memo]
 
     func getAllMemos(for user: User, forceRefresh: Bool) async throws -> Pager<Memo>
     func getAllMemosNext(for user: User) async throws -> Pager<Memo>

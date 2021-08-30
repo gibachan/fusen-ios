@@ -8,8 +8,8 @@
 import Foundation
 
 final class HomeTabViewModel: ObservableObject {
-    private let visibleLatestBooksLimit = 4
-    private let visibleLatestMemosLimit = 4
+    private let latestBooksCount = 4
+    private let latestMemosCount = 4
     
     private let accountService: AccountServiceProtocol
     private let userRepository: UserRepository
@@ -47,8 +47,8 @@ final class HomeTabViewModel: ObservableObject {
         do {
             let userInfo = try await userRepository.getInfo(for: user)
             
-            async let books = bookRepository.getLatestBooks(for: user)
-            async let memos = memoRepository.getLatestMemos(for: user)
+            async let books = bookRepository.getLatestBooks(count: latestBooksCount, for: user)
+            async let memos = memoRepository.getLatestMemos(count: latestMemosCount, for: user)
             let result = try await (books: books, memos: memos)
             if let readingBookId = userInfo.readingBookId {
                 do {
@@ -76,7 +76,7 @@ final class HomeTabViewModel: ObservableObject {
                 if result.books.isEmpty && result.memos.isEmpty {
                     self.state = .empty
                 } else {
-                    self.state = .loaded(latestBooks: Array(result.books.prefix(self.visibleLatestBooksLimit)), latestMemos: Array(result.memos.prefix(self.visibleLatestMemosLimit)))
+                    self.state = .loaded(latestBooks: result.books, latestMemos: result.memos)
                 }
             }
         } catch {

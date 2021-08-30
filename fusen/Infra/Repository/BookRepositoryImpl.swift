@@ -32,10 +32,10 @@ final class BookRepositoryImpl: BookRepository {
         }
     }
     
-    func getLatestBooks(for user: User) async throws -> [Book] {
+    func getLatestBooks(count: Int, for user: User) async throws -> [Book] {
         let query = db.booksCollection(for: user)
             .orderByCreatedAtDesc()
-            .limit(to: 5)
+            .limit(to: count)
         do {
             let snapshot = try await query.getDocuments()
             let books = snapshot.documents

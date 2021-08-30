@@ -16,10 +16,10 @@ final class MemoRepositoryImpl: MemoRepository {
     private var allMemosCache: PagerCache<Memo> = .empty
     private var cache: [ID<Book>: PagerCache<Memo>] = [:]
     
-    func getLatestMemos(for user: User) async throws -> [Memo] {
+    func getLatestMemos(count: Int, for user: User) async throws -> [Memo] {
         let query = db.memosCollection(for: user)
             .orderByCreatedAtDesc()
-            .limit(to: 5)
+            .limit(to: count)
         do {
             let snapshot = try await query.getDocuments()
             let memos = snapshot.documents

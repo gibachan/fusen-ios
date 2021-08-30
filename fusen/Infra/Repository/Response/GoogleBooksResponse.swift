@@ -1,18 +1,18 @@
 //
-//  PublicationResponse.swift
-//  PublicationResponse
+//  GoogleBooksResponse.swift
+//  GoogleBooksResponse
 //
 //  Created by Tatsuyuki Kobayashi on 2021/08/11.
 //
 
 import Foundation
 
-struct PublicationResponse: Decodable {
+struct GoogleBooksResponse: Decodable {
     let totalItems: Int
     let items: [Item]
 }
 
-extension PublicationResponse {
+extension GoogleBooksResponse {
     struct Item: Decodable {
         let kind: String
         let id: String
@@ -20,7 +20,7 @@ extension PublicationResponse {
     }
 }
 
-extension PublicationResponse.Item {
+extension GoogleBooksResponse.Item {
     struct VolumeInfo: Decodable {
         let title: String
         let subtitle: String?
@@ -31,13 +31,13 @@ extension PublicationResponse.Item {
     }
 }
 
-extension PublicationResponse.Item.VolumeInfo {
+extension GoogleBooksResponse.Item.VolumeInfo {
     struct ImageLink: Decodable {
         let thumbnail: String
     }
 }
 
-extension PublicationResponse {
+extension GoogleBooksResponse {
     func toDomain() -> Publication? {
         guard let item = items.first else { return nil }
 

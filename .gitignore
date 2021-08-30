@@ -97,5 +97,8 @@ GoogleService-Info.plist
 GoogleService-Info-staging.plist
 GoogleService-Info-development.plist
 
+## API Key
+fusen/Infra/Resource/APIKey.swift
+
 ## Mac
 .DS_Store

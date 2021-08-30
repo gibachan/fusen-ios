@@ -1,13 +1,13 @@
 //
-//  PublicationRepositoryImpl.swift
-//  PublicationRepositoryImpl
+//  RakutenBooksPublicationRepositoryImpl.swift
+//  RakutenBooksPublicationRepositoryImpl
 //
-//  Created by Tatsuyuki Kobayashi on 2021/08/11.
+//  Created by Tatsuyuki Kobayashi on 2021/08/30.
 //
 
 import Foundation
 
-struct PublicationRepositoryImpl: PublicationRepository {
+struct RakutenBooksPublicationRepositoryImpl: PublicationRepository {
     private let session: URLSession
     private let decoder = JSONDecoder()
 
@@ -16,15 +16,16 @@ struct PublicationRepositoryImpl: PublicationRepository {
     }
 
     func findBy(isbn: ISBN) async throws -> Publication {
-        let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=isbn:\(isbn.value)")!
-        print("request: \(url.absoluteURL)")
+        let urlString = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?applicationId=\(rakutenApplicationId)&formatVersion=2&isbn=\(isbn.value)"
+        let url = URL(string: urlString)!
+        log.d("request: \(url.absoluteURL)")
         let request = URLRequest(url: url)
         let (data, response) = try await session.data(for: request)
         guard (response as? HTTPURLResponse)?.statusCode == 200 else {
             throw PublicationRepositoryError.notFound
         }
         do {
-            let bookResponse = try decoder.decode(PublicationResponse.self, from: data)
+            let bookResponse = try decoder.decode(RakutenBooksResponse.self, from: data)
             if let book = bookResponse.toDomain() {
                 return book
             } else {

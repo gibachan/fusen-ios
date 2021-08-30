@@ -23,7 +23,7 @@ final class ScanBarcodeViewModel: ObservableObject {
     @Published var scannedBook: Publication?
     
     init(accountService: AccountServiceProtocol = AccountService.shared,
-         publicationRepository: PublicationRepository = PublicationRepositoryImpl(),
+         publicationRepository: PublicationRepository = RakutenBooksPublicationRepositoryImpl(),
          bookRepository: BookRepository = BookRepositoryImpl()) {
         self.accountService = accountService
         self.publicationRepository = publicationRepository

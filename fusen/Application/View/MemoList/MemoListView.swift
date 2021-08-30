@@ -17,6 +17,9 @@ struct MemoListView: View {
                 ForEach(viewModel.pager.data, id: \.id.value) { memo in
                     NavigationLink(destination: LazyView(EditMemoView(memo: memo))) {
                         MemoListItem(memo: memo)
+                            .task {
+                                await viewModel.onItemApper(of: memo)
+                            }
                     }
                 }
                 if viewModel.pager.data.isEmpty {

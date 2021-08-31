@@ -22,6 +22,7 @@ struct SettingTabView: View {
                             .foregroundColor(.textPrimary)
                         Spacer()
                         Text(viewModel.userId)
+                            .textSelection(.enabled)
                             .font(.small)
                             .foregroundColor(.textSecondary)
                     }

@@ -16,6 +16,7 @@ extension ImageData {
         switch type {
         case .book: quality = 0.8
         case .memo: quality = 0.8
+        case .memoQuote: quality = 0.8
         }
         
         guard let data = uiImage.jpegData(compressionQuality: quality) else {

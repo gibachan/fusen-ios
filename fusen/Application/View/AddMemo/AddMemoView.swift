@@ -13,8 +13,11 @@ struct AddMemoView: View {
     @State private var text = ""
     @State private var quote = ""
     @State private var page = 0
-    @State private var editMemoImage: DocumentCameraView.ImageResult?
-    @State private var isDocumentCameraPresented = false
+    @State private var image: ImageData?
+    @State private var isEditMemoImage = false
+    @State private var isImagePickerSelectionPresented = false
+    @State private var isCameraPickerPresented = false
+    @State private var isPhotoLibraryPresented = false
     @State private var isQuoteCameraPresented = false
     private let memoImageWidth: CGFloat = 72
     private let memoImageHeight: CGFloat = 96
@@ -52,6 +55,7 @@ struct AddMemoView: View {
                 }
                 .buttonStyle(PlainButtonStyle())
                 
+                // FIXME: 実機でタイトル入力後にページ画面へ遷移してもすぐさま戻される問題がある
                 Picker(
                     selection: $page,
                     label: Text("ページ :")
@@ -64,33 +68,32 @@ struct AddMemoView: View {
                 
                 VStack(alignment: .leading, spacing: 8) {
                     HStack(alignment: .top) {
-                        Text("画像を撮影 :")
+                        Text("画像を添付 :")
                         Spacer()
                         HStack {
-                            if viewModel.imageResults.isEmpty {
+                            if let image = image,
+                               let uiImage = image.uiImage {
                                 RoundedRectangle(cornerRadius: 4)
                                     .stroke(Color.placeholder, lineWidth: 1)
                                     .frame(width: memoImageWidth, height: memoImageHeight)
-                                    .overlay(Image.camera
-                                                .resizable()
-                                                .frame(width: 24, height: 20)
-                                                .foregroundColor(.active))
+                                    .overlay(
+                                        Image(uiImage: uiImage)
+                                            .resizable()
+                                    )
                                     .onTapGesture {
-                                        isDocumentCameraPresented = true
+                                        isEditMemoImage = true
                                     }
                             } else {
-                                ForEach(viewModel.imageResults) { result in
-                                    RoundedRectangle(cornerRadius: 4)
-                                        .stroke(Color.placeholder, lineWidth: 1)
-                                        .frame(width: memoImageWidth, height: memoImageHeight)
-                                        .overlay(
-                                            Image(uiImage: result.image)
+                                RoundedRectangle(cornerRadius: 4)
+                                    .stroke(Color.active, lineWidth: 1)
+                                    .frame(width: memoImageWidth, height: memoImageHeight)
+                                    .overlay(Image.image
                                                 .resizable()
-                                        )
-                                        .onTapGesture {
-                                            editMemoImage = result
-                                        }
-                                }
+                                                .frame(width: 24, height: 24)
+                                                .foregroundColor(.active))
+                                    .onTapGesture {
+                                        isImagePickerSelectionPresented = true
+                                    }
                             }
                         }
                     }
@@ -108,39 +111,44 @@ struct AddMemoView: View {
         .navigationBarItems(
             trailing: SaveButton {
                 Task {
-                    await viewModel.onSave(text: text, quote: quote, page: page, imageURLs: [])
+                    await viewModel.onSave(text: text, quote: quote, page: page, image: image)
                 }
             }
                 .disabled(!viewModel.isSaveEnabled)
         )
-        .sheet(item: $editMemoImage, onDismiss: {}, content: { result in
-            NavigationView {
-                AddMemoImageView(image: result.image) {
-                    viewModel.onMemoImageDelete(image: result)
-                }
-            }
-        })
-        .fullScreenCover(isPresented: $isDocumentCameraPresented, onDismiss: {
-            log.d("dismiss")
+        .actionSheet(isPresented: $isImagePickerSelectionPresented) {
+            ActionSheet(
+                title: Text("画像を添付"),
+                buttons: [
+                    .default(Text("カメラで撮影")) {
+                        isCameraPickerPresented = true
+                    },
+                    .default(Text("フォトライブラリから選択")) {
+                        isPhotoLibraryPresented = true
+                    },
+                    .cancel()
+                ]
+            )
+        }
+        .sheet(isPresented: $isEditMemoImage, onDismiss: {
         }, content: {
-            DocumentCameraView { result in
-                switch result {
-                case .success(let images):
-                    viewModel.onMemoImageAdd(images: images)
-                case .failure(let error):
-                    log.e(error.localizedDescription)
-                    ErrorHUD.show(message: .unexpected)
+            NavigationView {
+                if let image = image,
+                   let uiImage = image.uiImage {
+                    AddMemoImageView(image: uiImage) {
+                        self.image = nil
+                    }
                 }
             }
         })
         .fullScreenCover(isPresented: $isQuoteCameraPresented, onDismiss: {
             log.d("dismiss")
         }, content: {
-            DocumentCameraView { result in
+            MemoQuoteView { result in
                 switch result {
-                case .success(let images):
+                case .success(let imageData):
                     Task {
-                        await viewModel.onQuoteImageTaken(images: images)
+                        await viewModel.onQuoteImageTaken(imageData: imageData)
                     }
                 case .failure(let error):
                     log.e(error.localizedDescription)
@@ -148,6 +156,26 @@ struct AddMemoView: View {
                 }
             }
         })
+        .fullScreenCover(isPresented: $isCameraPickerPresented) {
+            ImagePickerView(imageType: .book, pickerType: .camera) { result in
+                switch result {
+                case .success(let image):
+                    self.image = image
+                case .failure(let error):
+                    log.e(error.localizedDescription)
+                }
+            }
+        }
+        .sheet(isPresented: $isPhotoLibraryPresented) {
+            ImagePickerView(imageType: .book, pickerType: .photoLibrary) { result in
+                switch result {
+                case .success(let image):
+                    self.image = image
+                case .failure(let error):
+                    log.e(error.localizedDescription)
+                }
+            }
+        }
         .onReceive(viewModel.$recognizedQuote) { recognizedQuote in
             quote = recognizedQuote
         }
@@ -160,6 +188,8 @@ struct AddMemoView: View {
             case .succeeded:
                 LoadingHUD.dismiss()
                 dismiss()
+            case .recognizedQuote:
+                LoadingHUD.dismiss()
             case .failed:
                 LoadingHUD.dismiss()
                 ErrorHUD.show(message: .addMemo)

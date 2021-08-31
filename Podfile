@@ -17,6 +17,7 @@ target 'fusen' do
   pod 'SVProgressHUD'
   pod 'SwiftLint'
   pod 'GoogleMLKit/TextRecognitionJapanese', '2.3.0'
+  pod 'CropViewController'
 
   target 'fusenTests' do
     inherit! :search_paths

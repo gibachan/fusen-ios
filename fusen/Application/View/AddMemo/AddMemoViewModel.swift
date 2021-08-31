@@ -16,7 +16,7 @@ final class AddMemoViewModel: NSObject, ObservableObject {
     
     @Published var isSaveEnabled = false
     @Published var state: State = .initial
-    @Published var imageResults: [DocumentCameraView.ImageResult] = []
+    @Published private var memoImage: ImageData?
     @Published var recognizedQuote = ""
     
     init(
@@ -35,29 +35,25 @@ final class AddMemoViewModel: NSObject, ObservableObject {
         isSaveEnabled = !text.isEmpty
     }
     
-    func onQuoteImageTaken(images: [DocumentCameraView.ImageResult]) async {
-        guard let image = images.first else { return }
-        let text = await textRecognizeService.text(from: image.image)
+    func onQuoteImageTaken(imageData: ImageData) async {
+        guard !state.isInProgress else { return }
+        guard let image = imageData.uiImage else { return }
+        
+        state = .loading
+        let text = await textRecognizeService.text(from: image)
         log.d("recognized=\(text)")
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
+            self.state = .recognizedQuote
             self.recognizedQuote = text
         }
-    }
-    
-    func onMemoImageAdd(images: [DocumentCameraView.ImageResult]) {
-        imageResults = Array(images.prefix(imageCountLimit))
-    }
-    
-    func onMemoImageDelete(image: DocumentCameraView.ImageResult) {
-        imageResults = imageResults.filter { $0.id != image.id }
     }
     
     func onSave(
         text: String,
         quote: String,
         page: Int,
-        imageURLs: [URL]
+        image: ImageData?
     ) async {
         guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
@@ -65,9 +61,6 @@ final class AddMemoViewModel: NSObject, ObservableObject {
         state = .loading
         do {
             let memoPage: Int? = page == 0 ? nil : page
-            let image: ImageData? = imageResults
-                .compactMap { ImageData(type: .memo, uiImage: $0.image) }
-                .first
             let id = try await memoRepository.addMemo(of: book, text: text, quote: quote, page: memoPage, image: image, for: user)
             log.d("Memo is added for id: \(id.value)")
             DispatchQueue.main.async { [weak self] in
@@ -87,6 +80,7 @@ final class AddMemoViewModel: NSObject, ObservableObject {
         case initial
         case loading
         case succeeded
+        case recognizedQuote
         case failed
         
         var isInProgress: Bool {

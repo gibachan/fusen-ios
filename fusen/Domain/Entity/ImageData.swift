@@ -11,6 +11,7 @@ struct ImageData {
     enum ImageType {
         case book
         case memo
+        case memoQuote
     }
     let type: ImageType
     let data: Data

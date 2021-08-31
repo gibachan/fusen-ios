@@ -103,6 +103,7 @@
 		A069983D26CDDD21006E74C6 /* MemoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069983C26CDDD21006E74C6 /* MemoListViewModel.swift */; };
 		A069983F26CDDD7F006E74C6 /* MemoListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069983E26CDDD7F006E74C6 /* MemoListItem.swift */; };
 		A07334F026DA420F004C5436 /* TextRecognizeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07334EF26DA420F004C5436 /* TextRecognizeService.swift */; };
+		A07334F426DDA872004C5436 /* AddBookIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07334F326DDA872004C5436 /* AddBookIcon.swift */; };
 		A07507C926C546260087AE5C /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07507C826C546260087AE5C /* HomeTabView.swift */; };
 		A07507CB26C546330087AE5C /* HomeTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07507CA26C546330087AE5C /* HomeTabViewModel.swift */; };
 		A07507CE26C5E2F40087AE5C /* GoogleService-Info-staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = A07507CC26C5E2F40087AE5C /* GoogleService-Info-staging.plist */; };
@@ -276,6 +277,7 @@
 		A069983C26CDDD21006E74C6 /* MemoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListViewModel.swift; sourceTree = "<group>"; };
 		A069983E26CDDD7F006E74C6 /* MemoListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListItem.swift; sourceTree = "<group>"; };
 		A07334EF26DA420F004C5436 /* TextRecognizeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognizeService.swift; sourceTree = "<group>"; };
+		A07334F326DDA872004C5436 /* AddBookIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookIcon.swift; sourceTree = "<group>"; };
 		A07507C826C546260087AE5C /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
 		A07507CA26C546330087AE5C /* HomeTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewModel.swift; sourceTree = "<group>"; };
 		A07507CC26C5E2F40087AE5C /* GoogleService-Info-staging.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-staging.plist"; sourceTree = "<group>"; };
@@ -554,6 +556,7 @@
 				A07CAD2626D0C0560012201A /* ReadingMark.swift */,
 				A05CE89426D1A6C6007F9CF2 /* GestureImageView.swift */,
 				A0B9482C26D3A32300C47204 /* ImagePicker.swift */,
+				A07334F326DDA872004C5436 /* AddBookIcon.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1180,6 +1183,7 @@
 				A07CAD0126CED80E0012201A /* ImageData.swift in Sources */,
 				A069981126CBE449006E74C6 /* MemoRepository.swift in Sources */,
 				7AA6D7AC26D386BB00781F48 /* AddBookView.swift in Sources */,
+				A07334F426DDA872004C5436 /* AddBookIcon.swift in Sources */,
 				A07CAD2D26D0D1150012201A /* DocumentReferenceExtension.swift in Sources */,
 				A07CAD2726D0C0560012201A /* ReadingMark.swift in Sources */,
 				A001E02E26C9477700AC92BA /* BookShelfItem.swift in Sources */,

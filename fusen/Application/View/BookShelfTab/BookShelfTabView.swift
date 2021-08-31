@@ -39,7 +39,7 @@ struct BookShelfTabView: View {
                     isAddCollectionPresented = true
                 },
                 trailingView: {
-                    addBooKIcon
+                    AddBookIcon()
                 },
                 trailingAction: {
                     isAddBookPresented = true
@@ -79,28 +79,6 @@ struct BookShelfTabView: View {
                 LoadingHUD.dismiss()
             }
         }
-    }
-}
-
-extension BookShelfTabView {
-    private var addBooKIcon: some View {
-        Image.book
-            .resizable()
-            .frame(width: 20, height: 24)
-            .overlay {
-                Circle()
-                    .foregroundColor(.white)
-                    .frame(width: 15, height: 15)
-                    .offset(x: 8, y: -8)
-            }
-            .overlay {
-                Image.addCircle
-                    .resizable()
-                    .frame(width: 12, height: 12)
-                    .background(Color.white)
-                    .offset(x: 8, y: -8)
-            }
-            .foregroundColor(.active)
     }
 }
 

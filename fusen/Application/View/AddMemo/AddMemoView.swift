@@ -46,7 +46,7 @@ struct AddMemoView: View {
                             .resizable()
                             .renderingMode(.template)
                             .frame(width: 24, height: 20)
-                            .foregroundColor(.placeholder)
+                            .foregroundColor(.active)
                             .offset(y: 8)
                     }
                 }
@@ -73,8 +73,8 @@ struct AddMemoView: View {
                                     .frame(width: memoImageWidth, height: memoImageHeight)
                                     .overlay(Image.camera
                                                 .resizable()
-                                                .frame(width: 32, height: 24)
-                                                .foregroundColor(.placeholder))
+                                                .frame(width: 24, height: 20)
+                                                .foregroundColor(.active))
                                     .onTapGesture {
                                         isDocumentCameraPresented = true
                                     }

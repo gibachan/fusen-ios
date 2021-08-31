@@ -33,7 +33,7 @@ struct ScanBarcodeView: View {
             scannedBook
                 .padding()
         }
-        .background(Color.black)
+        .backgroundColor(.black)
         .navigationBarTitle("", displayMode: .inline)
         .navigationBarItems(leading: CancelButton { dismiss() },
                             trailing: torchButton)
@@ -68,7 +68,7 @@ struct ScanBarcodeView: View {
                         .font(.small)
                         .foregroundColor(.white)
                         .padding()
-                        .background(Color.backgroundGray)
+                        .backgroundColor(.backgroundGray)
                         .clipShape(Capsule())
                 }
             }

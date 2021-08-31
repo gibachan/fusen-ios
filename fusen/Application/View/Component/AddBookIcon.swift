@@ -22,7 +22,7 @@ struct AddBookIcon: View {
                 Image.addCircle
                     .resizable()
                     .frame(width: 12, height: 12)
-                    .background(Color.white)
+                    .backgroundColor(.white)
                     .offset(x: 8, y: -8)
             }
             .foregroundColor(.active)

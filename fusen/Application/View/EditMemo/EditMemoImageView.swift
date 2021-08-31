@@ -26,7 +26,7 @@ struct EditMemoImageView: View {
                 Color.black
             }
         }
-        .background(Color.black)
+        .backgroundColor(.black)
         .navigationBarTitle("画像", displayMode: .inline)
         .navigationBarItems(
             leading: CancelButton { dismiss() },

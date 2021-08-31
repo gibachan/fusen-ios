@@ -104,6 +104,7 @@
 		A069983F26CDDD7F006E74C6 /* MemoListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069983E26CDDD7F006E74C6 /* MemoListItem.swift */; };
 		A07334F026DA420F004C5436 /* TextRecognizeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07334EF26DA420F004C5436 /* TextRecognizeService.swift */; };
 		A07334F426DDA872004C5436 /* AddBookIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07334F326DDA872004C5436 /* AddBookIcon.swift */; };
+		A07334F626DDAD35004C5436 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07334F526DDAD35004C5436 /* ViewExtension.swift */; };
 		A07507C926C546260087AE5C /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07507C826C546260087AE5C /* HomeTabView.swift */; };
 		A07507CB26C546330087AE5C /* HomeTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07507CA26C546330087AE5C /* HomeTabViewModel.swift */; };
 		A07507CE26C5E2F40087AE5C /* GoogleService-Info-staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = A07507CC26C5E2F40087AE5C /* GoogleService-Info-staging.plist */; };
@@ -278,6 +279,7 @@
 		A069983E26CDDD7F006E74C6 /* MemoListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListItem.swift; sourceTree = "<group>"; };
 		A07334EF26DA420F004C5436 /* TextRecognizeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognizeService.swift; sourceTree = "<group>"; };
 		A07334F326DDA872004C5436 /* AddBookIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookIcon.swift; sourceTree = "<group>"; };
+		A07334F526DDAD35004C5436 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		A07507C826C546260087AE5C /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
 		A07507CA26C546330087AE5C /* HomeTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewModel.swift; sourceTree = "<group>"; };
 		A07507CC26C5E2F40087AE5C /* GoogleService-Info-staging.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-staging.plist"; sourceTree = "<group>"; };
@@ -519,6 +521,7 @@
 				7A33118126CE518F00EB520D /* UIApplicationExtensoin.swift */,
 				A07CAD0226CED9A20012201A /* ImageDataExtension.swift */,
 				A07CAD1726D055C90012201A /* DateExtension.swift */,
+				A07334F526DDAD35004C5436 /* ViewExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1162,6 +1165,7 @@
 				A05CE89526D1A6C6007F9CF2 /* GestureImageView.swift in Sources */,
 				A0B9482F26D3BF4C00C47204 /* ImageStorage.swift in Sources */,
 				A07CAD1F26D0670A0012201A /* CollectionItemView.swift in Sources */,
+				A07334F626DDAD35004C5436 /* ViewExtension.swift in Sources */,
 				7A11FCA826CB47E200F1A6BC /* SettingTabViewModel.swift in Sources */,
 				7A11FCB626CB5DD400F1A6BC /* AddMemoView.swift in Sources */,
 				A052EAC226C3D74C0033CE47 /* AddBookMenuViewModel.swift in Sources */,

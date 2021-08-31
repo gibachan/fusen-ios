@@ -29,7 +29,7 @@ struct MemoListItem: View {
                     }
                     .padding(.vertical, 4)
                     .padding(.horizontal, 8)
-                    .background(Color.backgroundLightGray)
+                    .backgroundColor(.backgroundLightGray)
                     .cornerRadius(4)
                 }
                 

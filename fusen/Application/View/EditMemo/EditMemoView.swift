@@ -101,7 +101,7 @@ struct EditMemoView: View {
                 trailingView: { EmptyView() },
                 trailingAction: {}
             )
-                .background(Color.backgroundSystemGroup)
+                .backgroundColor(.backgroundSystemGroup)
         }
         .navigationBarTitle("メモを編集", displayMode: .inline)
         .navigationBarItems(

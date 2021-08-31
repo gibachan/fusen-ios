@@ -37,7 +37,7 @@ struct BookShelfItem: View {
             .buttonStyle(PlainButtonStyle())
             Spacer()
         }
-        .background(Color.white) // Enable to tap empty space
+        .backgroundColor(.white) // Enable to tap empty space
         .onTapGesture {
             isBookPresented = true
         }

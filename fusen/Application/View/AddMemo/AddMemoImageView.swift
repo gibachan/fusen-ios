@@ -16,7 +16,7 @@ struct AddMemoImageView: View {
         VStack {
             GestureImageView(image: Image(uiImage: image))
         }
-        .background(Color.black)
+        .backgroundColor(.black)
         .navigationBarTitle("画像", displayMode: .inline)
         .navigationBarItems(
             leading: CancelButton { dismiss() },

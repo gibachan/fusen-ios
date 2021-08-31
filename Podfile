@@ -13,6 +13,7 @@ target 'fusen' do
   # pod 'FirebaseFirestoreSwift' # Unavaiable since it conflicts with GoogleMLKit/TextRecognition for nanopb
   pod 'Firebase/Storage'
   pod 'Firebase/RemoteConfig'
+  pod 'Firebase/Functions'
   pod 'SVProgressHUD'
   pod 'SwiftLint'
   pod 'GoogleMLKit/TextRecognitionJapanese', '2.3.0'

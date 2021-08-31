@@ -22,7 +22,7 @@ final class AddMemoViewModel: NSObject, ObservableObject {
     init(
         book: Book,
         accountService: AccountServiceProtocol = AccountService.shared,
-        textRecognizeService: TextRecognizeServiceProtocol = TextRecognizeService(),
+        textRecognizeService: TextRecognizeServiceProtocol = VisionTextRecognizeService(),
         memoRepository: MemoRepository = MemoRepositoryImpl()
     ) {
         self.book = book

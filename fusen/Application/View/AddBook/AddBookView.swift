@@ -106,7 +106,7 @@ struct AddBookView: View {
                 ]
             )
         }
-        .sheet(isPresented: $isCameraPickerPresented) {
+        .fullScreenCover(isPresented: $isCameraPickerPresented) {
             ImagePickerView(imageType: .book, pickerType: .camera) { result in
                 switch result {
                 case .success(let image):

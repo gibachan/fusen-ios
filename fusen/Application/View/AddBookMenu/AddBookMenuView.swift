@@ -32,7 +32,7 @@ struct AddBookMenuView: View {
                     AddBookMenuItem(type: AddBookMenuType.manual)
                 }
             }
-            .sheet(isPresented: $isScanBarcodePresented, onDismiss: {
+            .fullScreenCover(isPresented: $isScanBarcodePresented, onDismiss: {
                 print("dimiss")
             }, content: {
                 NavigationView {

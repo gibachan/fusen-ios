@@ -68,7 +68,7 @@ struct BookView: View {
                         }
                     )
                 }
-                .fullScreenCover(isPresented: $isAddPresented) {
+                .sheet(isPresented: $isAddPresented) {
                     Task {
                         await viewModel.onRefresh()
                     }

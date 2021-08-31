@@ -26,7 +26,7 @@ struct AddCollectionView: View {
                 HStack(spacing: 4) {
                     Text("名前 : ")
                     TextField("名前を入力する", text: $name)
-                        .textFieldStyle(.roundedBorder)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
                         .disabled(viewModel.isCollectionCountOver)
                         .onChange(of: name) { newValue in
                             viewModel.onNameChange(newValue)

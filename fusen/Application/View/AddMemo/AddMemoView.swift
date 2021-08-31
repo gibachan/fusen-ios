@@ -101,10 +101,6 @@ struct AddMemoView: View {
             }
             .foregroundColor(.textSecondary)
             .listRowBackground(Color.backgroundLightGray)
-            
-            Spacer()
-                .frame(height: 160)
-                .listRowBackground(Color(UIColor.systemGroupedBackground))
         }
         .font(.medium)
         .navigationBarTitle("メモを追加", displayMode: .inline)

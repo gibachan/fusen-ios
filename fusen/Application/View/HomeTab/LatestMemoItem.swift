@@ -19,13 +19,8 @@ struct LatestMemoItem: View {
     
     var body: some View {
         HStack {
-            VStack(alignment: .leading, spacing: 8) {
-                Text(memo.text)
-                    .font(.medium)
-                    .foregroundColor(.textPrimary)
-                    .lineLimit(1)
-                Spacer()
-                HStack(spacing: 16) {
+            VStack(alignment: .leading) {
+                HStack(spacing: 8) {
                     Text("\(memo.updatedAt.string)")
                         .font(.minimal)
                         .foregroundColor(.textSecondary)
@@ -36,6 +31,11 @@ struct LatestMemoItem: View {
                             .lineLimit(1)
                     }
                 }
+                Spacer()
+                Text(memo.text)
+                    .font(.medium)
+                    .foregroundColor(.textPrimary)
+                    .lineLimit(2)
             }
         }
         .task {

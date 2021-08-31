@@ -10,6 +10,7 @@ import SwiftUI
 struct MainView: View {
     @StateObject private var viewModel = MainViewModel()
     @State private var isTutorialPresented = false
+    @State private var isMaintenancePresented = false
     @State private var toastText = ""
     @State private var isToastPresented = false
     
@@ -64,11 +65,18 @@ struct MainView: View {
         } content: {
             TutorialView()
         }
-        .onAppear {
-            viewModel.onAppear()
+        .fullScreenCover(isPresented: $isMaintenancePresented) {
+        } content: {
+            MaintenanceView()
+        }
+        .task {
+            await viewModel.onAppear()
         }
         .onReceive(viewModel.$showTutorial) {
-            isTutorialPresented = $0
+            isTutorialPresented = $0 && !viewModel.isMaintaining
+        }
+        .onReceive(viewModel.$isMaintaining) {
+            isMaintenancePresented = $0
         }
         .onReceive(NotificationCenter.default.errorPublisher()) { notification in
             toastText = notification.errorMessage?.string ?? ""

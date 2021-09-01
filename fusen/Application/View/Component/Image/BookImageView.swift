@@ -6,33 +6,23 @@
 //
 
 import SwiftUI
-
-private var cache: [URL: Image] = [:]
+import Kingfisher
 
 struct BookImageView: View {
     let url: URL?
-
+    
     var body: some View {
-        if let url = url,
-           let image = cache[url] {
-            image
-                .resizable()
-        } else {
-            AsyncImage(url: url) { image in
-                image
-                    .resizable()
-                    .onAppear(perform: {
-                        if let url = url {
-                            cache[url] = image
-                        }
-                    })
-            } placeholder: {
+        KFImage(url)
+            .placeholder {
                 Image.book
                     .resizable()
                     .foregroundColor(.placeholder)
                     .padding(4)
             }
-        }
+            .fade(duration: 0.25)
+            .retry(maxCount: 3, interval: .seconds(5))
+            .cancelOnDisappear(true)
+            .resizable()
     }
 }
 

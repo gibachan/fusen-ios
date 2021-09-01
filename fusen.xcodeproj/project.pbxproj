@@ -572,21 +572,12 @@
 		7AD1611926C2A93F00334A63 /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				A001E05426CBCA8A00AC92BA /* SaveButton.swift */,
-				A052EAC326C3E4140033CE47 /* CancelButton.swift */,
-				A020544426CE8CC7002FF585 /* DeleteButton.swift */,
+				A0B1FECE26DEFA8B00586151 /* Text */,
+				A0B1FECC26DEF9FA00586151 /* Button */,
+				A0B1FECD26DEFA0600586151 /* Image */,
 				A0BA4CB526C4E07400D99D8C /* LazyView.swift */,
 				A007C08426C7AD9200270671 /* ToastView.swift */,
-				A001E03426C9F85B00AC92BA /* BookImageView.swift */,
-				A001E03626CA061B00AC92BA /* PlaceholderTextEditor.swift */,
-				7A11FCAB26CB521B00F1A6BC /* SectionHeaderText.swift */,
-				7A11FCAD26CB532700F1A6BC /* ShowAllText.swift */,
 				7A11FCB226CB57FE00F1A6BC /* ControlToolbar.swift */,
-				A07CAD2626D0C0560012201A /* ReadingMark.swift */,
-				A05CE89426D1A6C6007F9CF2 /* GestureImageView.swift */,
-				A0B9482C26D3A32300C47204 /* ImagePicker.swift */,
-				A07334F326DDA872004C5436 /* AddBookIcon.swift */,
-				A0B1FECA26DEEAF600586151 /* MemoQuoteView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -866,6 +857,39 @@
 				A0A09C9626D91B9B00FF6A1E /* FavoriteBookListViewModel.swift */,
 			);
 			path = FavoriteBookList;
+			sourceTree = "<group>";
+		};
+		A0B1FECC26DEF9FA00586151 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				A001E05426CBCA8A00AC92BA /* SaveButton.swift */,
+				A052EAC326C3E4140033CE47 /* CancelButton.swift */,
+				A020544426CE8CC7002FF585 /* DeleteButton.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		A0B1FECD26DEFA0600586151 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				A05CE89426D1A6C6007F9CF2 /* GestureImageView.swift */,
+				A001E03426C9F85B00AC92BA /* BookImageView.swift */,
+				A0B9482C26D3A32300C47204 /* ImagePicker.swift */,
+				A0B1FECA26DEEAF600586151 /* MemoQuoteView.swift */,
+				A07334F326DDA872004C5436 /* AddBookIcon.swift */,
+				A07CAD2626D0C0560012201A /* ReadingMark.swift */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		A0B1FECE26DEFA8B00586151 /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				A001E03626CA061B00AC92BA /* PlaceholderTextEditor.swift */,
+				7A11FCAB26CB521B00F1A6BC /* SectionHeaderText.swift */,
+				7A11FCAD26CB532700F1A6BC /* ShowAllText.swift */,
+			);
+			path = Text;
 			sourceTree = "<group>";
 		};
 		A0BA4CB026C4DC2000D99D8C /* ScanBarcode */ = {

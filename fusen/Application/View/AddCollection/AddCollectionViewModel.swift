@@ -58,7 +58,7 @@ final class AddCollectionViewModel: ObservableObject {
             let collections = try await collectionRepository.getlCollections(for: user)
             log.d("Current collection count: \(collections.count)")
             if collections.count >= Collection.countLimit {
-                state = .failed
+                state = .collectionCountOver
                 return
             }
         } catch {

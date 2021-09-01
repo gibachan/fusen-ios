@@ -44,7 +44,7 @@ struct SettingTabView: View {
                             }
                         }
                         if !viewModel.isLinkedAppleId {
-                            Text("※ 連携すると、他のデバイスとデータを共有してご利用いただけます。")
+                            Text("※ 連携すると、複数のデバイスとデータを共有してご利用いただけます。")
                                 .font(.small)
                                 .foregroundColor(.textSecondary)
                         

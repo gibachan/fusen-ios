@@ -21,6 +21,7 @@ extension Image {
     static let memo = Image(systemName: "square.and.pencil")
     static let collection = Image(systemName: "folder")
     static let addCollection = Image(systemName: "folder.badge.plus")
+    static let account = Image(systemName: "person")
     static let checkmark = Image(systemName: "checkmark")
     static let image = Image(systemName: "doc.richtext")
     static let chevronRight = Image(systemName: "chevron.right")

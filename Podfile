@@ -19,6 +19,7 @@ target 'fusen' do
   pod 'GoogleMLKit/TextRecognitionJapanese', '2.3.0'
   pod 'CropViewController'
   pod 'Kingfisher'
+  pod 'LicensePlist'
 
   target 'fusenTests' do
     inherit! :search_paths

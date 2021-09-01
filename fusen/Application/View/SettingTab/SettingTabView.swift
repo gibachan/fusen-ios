@@ -78,16 +78,6 @@ struct SettingTabView: View {
                     }
 
                     NavigationLink {
-                        Text("Not implemented yet")
-                    } label: {
-                        HStack {
-                            Text("ライセンス")
-                                .font(.medium)
-                                .foregroundColor(.textPrimary)
-                        }
-                    }
-                    
-                    NavigationLink {
                         VStack(alignment: .center) {
                             Text("Supported by Rakuten Developers")
                                 .font(.medium)

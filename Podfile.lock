@@ -523,6 +523,7 @@ PODS:
   - GTMSessionFetcher/Core (1.6.1)
   - Kingfisher (6.3.1)
   - leveldb-library (1.22.1)
+  - LicensePlist (3.13.0)
   - MLImage (1.0.0-beta1)
   - MLKitCommon (3.1.0):
     - GoogleDataTransport (~> 9.0)
@@ -568,6 +569,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - GoogleMLKit/TextRecognitionJapanese (= 2.3.0)
   - Kingfisher
+  - LicensePlist
   - SVProgressHUD
   - SwiftLint
 
@@ -599,6 +601,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - Kingfisher
     - leveldb-library
+    - LicensePlist
     - MLImage
     - MLKitCommon
     - MLKitTextRecognitionCommon
@@ -637,6 +640,7 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 36689134877faeb055b27dfa4ccc9ceaa42e029e
   Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
+  LicensePlist: 4e87d3438e03ae2d368ff5bd85344aa03ca722eb
   MLImage: 647f3d580c10b3c9a3f6154f5d7baead60c42a0c
   MLKitCommon: 1b5c79d52f79d9cc93ab5300e9713c4c215121ea
   MLKitTextRecognitionCommon: 923315fc744326806d1a1355899be55320182454
@@ -648,6 +652,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
 
-PODFILE CHECKSUM: 625c3fba63bd4640ceec8ebd8441e51dd0beaafe
+PODFILE CHECKSUM: 008e16e662993fc057ba734169af0edc4cee140a
 
 COCOAPODS: 1.10.2

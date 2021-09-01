@@ -146,6 +146,7 @@
 		A0A09C9726D91B9B00FF6A1E /* FavoriteBookListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A09C9626D91B9B00FF6A1E /* FavoriteBookListViewModel.swift */; };
 		A0B1FECB26DEEAF600586151 /* MemoQuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B1FECA26DEEAF600586151 /* MemoQuoteView.swift */; };
 		A0B1FED026DF0AD000586151 /* MemoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B1FECF26DF0AD000586151 /* MemoImageView.swift */; };
+		A0B1FEDE26E0452F00586151 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A0B1FEDD26E0452F00586151 /* Settings.bundle */; };
 		A0B9482D26D3A32300C47204 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9482C26D3A32300C47204 /* ImagePicker.swift */; };
 		A0B9482F26D3BF4C00C47204 /* ImageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9482E26D3BF4C00C47204 /* ImageStorage.swift */; };
 		A0BA4CAF26C49BE100D99D8C /* ISBN.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BA4CAE26C49BE100D99D8C /* ISBN.swift */; };
@@ -332,6 +333,7 @@
 		A0A09C9626D91B9B00FF6A1E /* FavoriteBookListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBookListViewModel.swift; sourceTree = "<group>"; };
 		A0B1FECA26DEEAF600586151 /* MemoQuoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoQuoteView.swift; sourceTree = "<group>"; };
 		A0B1FECF26DF0AD000586151 /* MemoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoImageView.swift; sourceTree = "<group>"; };
+		A0B1FEDD26E0452F00586151 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		A0B9482C26D3A32300C47204 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		A0B9482E26D3BF4C00C47204 /* ImageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStorage.swift; sourceTree = "<group>"; };
 		A0BA4CAE26C49BE100D99D8C /* ISBN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISBN.swift; sourceTree = "<group>"; };
@@ -520,6 +522,7 @@
 				A07507CC26C5E2F40087AE5C /* GoogleService-Info-staging.plist */,
 				A082000B26C1F5D100100357 /* Assets.xcassets */,
 				7AD1611326C2A45500334A63 /* Colors.xcassets */,
+				A0B1FEDD26E0452F00586151 /* Settings.bundle */,
 				7A69930626D7FC8B006B0697 /* ErrorMessage.swift */,
 			);
 			path = Resource;
@@ -933,6 +936,7 @@
 				A082002F26C1F74300100357 /* SwiftLint */,
 				0D502F6FD4CEAE7DA729E03E /* [CP] Embed Pods Frameworks */,
 				BB4E535C5BF40E7A5BFA3BBA /* [CP] Copy Pods Resources */,
+				A0B1FED826E0401000586151 /* LicensePlist */,
 			);
 			buildRules = (
 			);
@@ -1036,6 +1040,7 @@
 				A07507CF26C5E2F40087AE5C /* GoogleService-Info-development.plist in Resources */,
 				A07507CE26C5E2F40087AE5C /* GoogleService-Info-staging.plist in Resources */,
 				A082000C26C1F5D100100357 /* Assets.xcassets in Resources */,
+				A0B1FEDE26E0452F00586151 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1190,6 +1195,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which ${PODS_ROOT}/SwiftLint/swiftlint >/dev/null; then\n  ${PODS_ROOT}/SwiftLint/swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		A0B1FED826E0401000586151 /* LicensePlist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = LicensePlist;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ $CONFIGURATION = \"Debug\" ]; then\n    ${PODS_ROOT}/LicensePlist/license-plist --output-path fusen/Application/Resource/Settings.bundle --suppress-opening-directory\nfi\n";
 		};
 		BB4E535C5BF40E7A5BFA3BBA /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;

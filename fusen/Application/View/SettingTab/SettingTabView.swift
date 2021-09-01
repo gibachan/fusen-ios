@@ -67,15 +67,15 @@ struct SettingTabView: View {
                 }
                 
                 Section {
-                    NavigationLink {
-                        Text("Not implemented yet")
-                    } label: {
-                        HStack {
-                            Text("アプリを評価")
-                                .font(.medium)
-                                .foregroundColor(.textPrimary)
-                        }
-                    }
+//                    NavigationLink {
+//                        Text("Not implemented yet")
+//                    } label: {
+//                        HStack {
+//                            Text("アプリを評価")
+//                                .font(.medium)
+//                                .foregroundColor(.textPrimary)
+//                        }
+//                    }
 
                     NavigationLink {
                         VStack(alignment: .center) {

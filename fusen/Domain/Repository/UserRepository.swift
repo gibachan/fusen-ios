@@ -8,7 +8,7 @@
 import Foundation
 
 enum UserRepositoryError: Error {
-    case unknown
+    case network
 }
 
 protocol UserRepository {

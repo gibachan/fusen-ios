@@ -28,7 +28,7 @@ final class BookRepositoryImpl: BookRepository {
             throw  BookRepositoryError.decodeError
         } catch {
             log.e(error.localizedDescription)
-            throw  BookRepositoryError.unknown
+            throw  BookRepositoryError.network
         }
     }
     
@@ -44,7 +44,7 @@ final class BookRepositoryImpl: BookRepository {
             return books
         } catch {
             log.e(error.localizedDescription)
-            throw  BookRepositoryError.unknown
+            throw  BookRepositoryError.network
         }
     }
     
@@ -72,7 +72,7 @@ final class BookRepositoryImpl: BookRepository {
             return newPager
         } catch {
             log.e(error.localizedDescription)
-            throw  BookRepositoryError.unknown
+            throw  BookRepositoryError.network
         }
     }
     
@@ -104,7 +104,7 @@ final class BookRepositoryImpl: BookRepository {
             return newPager
         } catch {
             log.e(error.localizedDescription)
-            throw  BookRepositoryError.unknown
+            throw  BookRepositoryError.network
         }
     }
     
@@ -133,7 +133,7 @@ final class BookRepositoryImpl: BookRepository {
             return newPager
         } catch {
             log.e(error.localizedDescription)
-            throw  BookRepositoryError.unknown
+            throw  BookRepositoryError.network
         }
     }
     
@@ -166,7 +166,7 @@ final class BookRepositoryImpl: BookRepository {
             return newPager
         } catch {
             log.e(error.localizedDescription)
-            throw  BookRepositoryError.unknown
+            throw  BookRepositoryError.network
         }
     }
     
@@ -197,7 +197,7 @@ final class BookRepositoryImpl: BookRepository {
             return newPager
         } catch {
             log.e(error.localizedDescription)
-            throw  BookRepositoryError.unknown
+            throw  BookRepositoryError.network
         }
     }
     
@@ -233,7 +233,7 @@ final class BookRepositoryImpl: BookRepository {
             return newPager
         } catch {
             log.e(error.localizedDescription)
-            throw  BookRepositoryError.unknown
+            throw  BookRepositoryError.network
         }
     }
     
@@ -259,7 +259,7 @@ final class BookRepositoryImpl: BookRepository {
                 .addDocument(data: create.data()) { [weak self] error in
                     if let error = error {
                         log.e(error.localizedDescription)
-                        continuation.resume(throwing: BookRepositoryError.unknown)
+                        continuation.resume(throwing: BookRepositoryError.network)
                         self?.clearAllBooksCache()
                     } else {
                         let id = ID<Book>(value: ref!.documentID)
@@ -287,7 +287,7 @@ final class BookRepositoryImpl: BookRepository {
             clearAllBooksCache()
         } catch {
             log.e(error.localizedDescription)
-            throw BookRepositoryError.unknown
+            throw BookRepositoryError.network
         }
     }
     
@@ -309,7 +309,7 @@ final class BookRepositoryImpl: BookRepository {
             clearAllBooksCache()
         } catch {
             log.e(error.localizedDescription)
-            throw BookRepositoryError.unknown
+            throw BookRepositoryError.network
         }
     }
     
@@ -331,7 +331,7 @@ final class BookRepositoryImpl: BookRepository {
             clearAllBooksCache()
         } catch {
             log.e(error.localizedDescription)
-            throw BookRepositoryError.unknown
+            throw BookRepositoryError.network
         }
     }
     
@@ -361,7 +361,7 @@ final class BookRepositoryImpl: BookRepository {
             clearAllBooksCache()
         } catch {
             log.e(error.localizedDescription)
-            throw BookRepositoryError.unknown
+            throw BookRepositoryError.network
         }
     }
     
@@ -395,7 +395,7 @@ final class BookRepositoryImpl: BookRepository {
             } completion: { (_, error) in
                 if let error = error {
                     log.e(error.localizedDescription)
-                    continuation.resume(throwing: BookRepositoryError.unknown)
+                    continuation.resume(throwing: BookRepositoryError.network)
                 } else {
                     log.d("Deleted book: \(book.id.value) - \(book.title)")
                     continuation.resume(returning: ())

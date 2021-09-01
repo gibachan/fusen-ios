@@ -22,7 +22,7 @@ final class CollectionRepositoryImpl: CollectionRepository {
             return collections
         } catch {
             log.e(error.localizedDescription)
-            throw  CollectionRepositoryError.unknown
+            throw  CollectionRepositoryError.network
         }
     }
     
@@ -38,7 +38,7 @@ final class CollectionRepositoryImpl: CollectionRepository {
             ref?.setData(create.data()) { error in
                 if let error = error {
                     log.e(error.localizedDescription)
-                    continuation.resume(throwing: CollectionRepositoryError.unknown)
+                    continuation.resume(throwing: CollectionRepositoryError.network)
                 } else {
                     let id = ID<Collection>(value: ref!.documentID)
                     continuation.resume(returning: id)
@@ -54,7 +54,7 @@ final class CollectionRepositoryImpl: CollectionRepository {
             try await ref.delete()
         } catch {
             log.e(error.localizedDescription)
-            throw CollectionRepositoryError.unknown
+            throw CollectionRepositoryError.network
         }
     }
 }

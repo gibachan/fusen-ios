@@ -10,7 +10,7 @@ import Foundation
 enum BookRepositoryError: Error {
     case decodeError
     case uploadImage
-    case unknown
+    case network
 }
 
 protocol BookRepository {

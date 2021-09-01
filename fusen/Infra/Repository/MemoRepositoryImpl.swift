@@ -28,7 +28,7 @@ final class MemoRepositoryImpl: MemoRepository {
             return memos
         } catch {
             log.e(error.localizedDescription)
-            throw  MemoRepositoryError.unknown
+            throw  MemoRepositoryError.network
         }
     }
     
@@ -56,7 +56,7 @@ final class MemoRepositoryImpl: MemoRepository {
             return newPager
         } catch {
             log.e(error.localizedDescription)
-            throw  MemoRepositoryError.unknown
+            throw  MemoRepositoryError.network
         }
     }
     
@@ -88,7 +88,7 @@ final class MemoRepositoryImpl: MemoRepository {
             return newPager
         } catch {
             log.e(error.localizedDescription)
-            throw  MemoRepositoryError.unknown
+            throw  MemoRepositoryError.network
         }
     }
     
@@ -119,7 +119,7 @@ final class MemoRepositoryImpl: MemoRepository {
             return newPager
         } catch {
             log.e(error.localizedDescription)
-            throw  MemoRepositoryError.unknown
+            throw  MemoRepositoryError.network
         }
     }
     
@@ -156,7 +156,7 @@ final class MemoRepositoryImpl: MemoRepository {
             return newPager
         } catch {
             log.e(error.localizedDescription)
-            throw  MemoRepositoryError.unknown
+            throw  MemoRepositoryError.network
         }
     }
     
@@ -185,7 +185,7 @@ final class MemoRepositoryImpl: MemoRepository {
             newMemoDocRef.setData(create.data(), merge: false) { error in
                 if let error = error {
                     log.e(error.localizedDescription)
-                    continuation.resume(throwing: MemoRepositoryError.unknown)
+                    continuation.resume(throwing: MemoRepositoryError.network)
                 } else {
                     let id = ID<Memo>(value: newMemoDocRef.documentID)
                     continuation.resume(returning: id)
@@ -208,7 +208,7 @@ final class MemoRepositoryImpl: MemoRepository {
             clearCache(of: memo.bookId)
         } catch {
             log.e(error.localizedDescription)
-            throw MemoRepositoryError.unknown
+            throw MemoRepositoryError.network
         }
     }
     
@@ -225,7 +225,7 @@ final class MemoRepositoryImpl: MemoRepository {
             clearCache(of: memo.bookId)
         } catch {
             log.e(error.localizedDescription)
-            throw MemoRepositoryError.unknown
+            throw MemoRepositoryError.network
         }
     }
     

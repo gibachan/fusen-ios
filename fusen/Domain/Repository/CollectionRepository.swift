@@ -9,7 +9,7 @@ import Foundation
 
 enum CollectionRepositoryError: Error {
     case countLimitOver
-    case unknown
+    case network
 }
 
 protocol CollectionRepository {

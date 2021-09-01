@@ -21,10 +21,10 @@ final class UserRepositoryImpl: UserRepository {
             } else if let getUserInfo = FirestoreGetUserInfo.from(data: snapshot.data()) {
                 return getUserInfo.toDomain()
             }
-            throw  UserRepositoryError.unknown
+            throw  UserRepositoryError.network
         } catch {
             log.e(error.localizedDescription)
-            throw  UserRepositoryError.unknown
+            throw  UserRepositoryError.network
         }
     }
 
@@ -37,7 +37,7 @@ final class UserRepositoryImpl: UserRepository {
             try await ref.setData(update.data(), merge: true)
         } catch {
             log.e(error.localizedDescription)
-            throw UserRepositoryError.unknown
+            throw UserRepositoryError.network
         }
     }
 }

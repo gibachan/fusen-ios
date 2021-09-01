@@ -8,6 +8,9 @@
 import Foundation
 
 extension Notification.Name {
+    static var tutorialFinished: Notification.Name {
+        Notification.Name("tutorialFinished")
+    }
     static var refreshBookShelfAllCollection: Notification.Name {
         Notification.Name("refreshBookShelfAllCollection")
     }

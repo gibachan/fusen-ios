@@ -28,17 +28,21 @@ final class TutorialViewModel: ObservableObject {
                 do {
                     try await accountService.logInWithApple(authorization: authorization)
                     DispatchQueue.main.async { [weak self] in
-                        self?.state = .succeeded
+                        guard let self = self else { return }
+                        self.state = .succeeded
+                        NotificationCenter.default.postTutorialFinished()
                     }
                 } catch AccountServiceError.logInApple {
                     log.e("AccountServiceError.logInApple")
                     DispatchQueue.main.async { [weak self] in
-                        self?.state = .succeeded
+                        guard let self = self else { return }
+                        self.state = .failedlinkingWithApple
                     }
                 } catch {
                     log.e("Unknown error: \(error.localizedDescription)")
                     DispatchQueue.main.async { [weak self] in
-                        self?.state = .succeeded
+                        guard let self = self else { return }
+                        self.state = .failedlinkingWithApple
                     }
                 }
             }
@@ -53,12 +57,14 @@ final class TutorialViewModel: ObservableObject {
         do {
             try await accountService.logInAnonymously()
             DispatchQueue.main.async { [weak self] in
-                self?.state = .succeeded
+                guard let self = self else { return }
+                self.state = .succeeded
+                NotificationCenter.default.postTutorialFinished()
             }
         } catch {
             DispatchQueue.main.async { [weak self] in
-                NotificationCenter.default.postError(message: .unexpected)
-                self?.state = .failed
+                guard let self = self else { return }
+                self.state = .failed
             }
         }
     }
@@ -68,5 +74,6 @@ final class TutorialViewModel: ObservableObject {
         case loading
         case succeeded
         case failed
+        case failedlinkingWithApple
     }
 }

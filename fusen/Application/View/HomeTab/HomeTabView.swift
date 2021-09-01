@@ -96,6 +96,11 @@ struct HomeTabView: View {
                 LoadingHUD.dismiss()
             }
         }
+        .onReceive(NotificationCenter.default.tutorialFinishedPublisher()) { notification in
+            Task {
+                await viewModel.onRefresh()
+            }
+        }
     }
 }
 

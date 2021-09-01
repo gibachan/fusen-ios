@@ -133,6 +133,22 @@ struct SettingTabView: View {
         .onAppear {
             viewModel.onApper()
         }
+        .onReceive(viewModel.$state) { state in
+            switch state {
+            case .initial:
+                break
+            case .linkingWithApple:
+                LoadingHUD.show()
+            case .succeeded:
+                LoadingHUD.dismiss()
+            case .failed:
+                LoadingHUD.dismiss()
+                ErrorHUD.show(message: .network)
+            case .failedlinkingWithApple:
+                LoadingHUD.dismiss()
+                ErrorHUD.show(message: .linkWithAppleId)
+            }
+        }
         .alert(isPresented: $isUnlinkAlertPresented) {
             Alert(
                 title: Text("アカウント連携を解除"),

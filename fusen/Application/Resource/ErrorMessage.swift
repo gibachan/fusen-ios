@@ -23,6 +23,7 @@ enum ErrorMessage {
     case addMemo
     case editMemo
     case deleteMemo
+    case linkWithAppleId
     case unexpected
 }
 
@@ -59,6 +60,8 @@ extension ErrorMessage {
             return "メモを編集できませんでした。"
         case .deleteMemo:
             return "メモを削除できませんでした。"
+        case .linkWithAppleId:
+            return "Apple IDとの連携ができませんでした。\n既に連携済みであった場合は、アプリを再インストールしてからログインをお試しください。"
         case .unexpected:
             return "予期しない問題が発生しました。"
         }

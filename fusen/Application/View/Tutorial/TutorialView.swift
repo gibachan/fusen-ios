@@ -108,6 +108,10 @@ struct TutorialView: View {
                 dismiss()
             case .failed:
                 LoadingHUD.dismiss()
+                ErrorHUD.show(message: .network)
+            case .failedlinkingWithApple:
+                LoadingHUD.dismiss()
+                ErrorHUD.show(message: .linkWithAppleId)
             }
         }
     }

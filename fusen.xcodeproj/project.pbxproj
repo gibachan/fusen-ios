@@ -108,9 +108,9 @@
 		A07334F026DA420F004C5436 /* TextRecognizeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07334EF26DA420F004C5436 /* TextRecognizeService.swift */; };
 		A07334F426DDA872004C5436 /* AddBookIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07334F326DDA872004C5436 /* AddBookIcon.swift */; };
 		A07334F626DDAD35004C5436 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07334F526DDAD35004C5436 /* ViewExtension.swift */; };
-		A07334F826DDAF5D004C5436 /* Maintenance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07334F726DDAF5D004C5436 /* Maintenance.swift */; };
-		A07334FA26DDAF98004C5436 /* MaintenanceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07334F926DDAF98004C5436 /* MaintenanceRepository.swift */; };
-		A07334FC26DDAFDE004C5436 /* MaintenanceRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07334FB26DDAFDE004C5436 /* MaintenanceRepositoryImpl.swift */; };
+		A07334F826DDAF5D004C5436 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07334F726DDAF5D004C5436 /* AppConfig.swift */; };
+		A07334FA26DDAF98004C5436 /* AppConfigRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07334F926DDAF98004C5436 /* AppConfigRepository.swift */; };
+		A07334FC26DDAFDE004C5436 /* AppConfigRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07334FB26DDAFDE004C5436 /* AppConfigRepositoryImpl.swift */; };
 		A07334FF26DDB1EA004C5436 /* MaintenanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07334FE26DDB1EA004C5436 /* MaintenanceView.swift */; };
 		A07507C926C546260087AE5C /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07507C826C546260087AE5C /* HomeTabView.swift */; };
 		A07507CB26C546330087AE5C /* HomeTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07507CA26C546330087AE5C /* HomeTabViewModel.swift */; };
@@ -292,9 +292,9 @@
 		A07334EF26DA420F004C5436 /* TextRecognizeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognizeService.swift; sourceTree = "<group>"; };
 		A07334F326DDA872004C5436 /* AddBookIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookIcon.swift; sourceTree = "<group>"; };
 		A07334F526DDAD35004C5436 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
-		A07334F726DDAF5D004C5436 /* Maintenance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maintenance.swift; sourceTree = "<group>"; };
-		A07334F926DDAF98004C5436 /* MaintenanceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceRepository.swift; sourceTree = "<group>"; };
-		A07334FB26DDAFDE004C5436 /* MaintenanceRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceRepositoryImpl.swift; sourceTree = "<group>"; };
+		A07334F726DDAF5D004C5436 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		A07334F926DDAF98004C5436 /* AppConfigRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigRepository.swift; sourceTree = "<group>"; };
+		A07334FB26DDAFDE004C5436 /* AppConfigRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigRepositoryImpl.swift; sourceTree = "<group>"; };
 		A07334FE26DDB1EA004C5436 /* MaintenanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceView.swift; sourceTree = "<group>"; };
 		A07507C826C546260087AE5C /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
 		A07507CA26C546330087AE5C /* HomeTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewModel.swift; sourceTree = "<group>"; };
@@ -669,7 +669,7 @@
 				A07CAD0026CED80E0012201A /* ImageData.swift */,
 				A07CAD0F26CF95FD0012201A /* RGB.swift */,
 				A07CAD2826D0C6CA0012201A /* UserInfo.swift */,
-				A07334F726DDAF5D004C5436 /* Maintenance.swift */,
+				A07334F726DDAF5D004C5436 /* AppConfig.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -682,7 +682,7 @@
 				A007C08826C7DABE00270671 /* BookRepository.swift */,
 				A069981026CBE449006E74C6 /* MemoRepository.swift */,
 				A069982C26CD050D006E74C6 /* CollectionRepository.swift */,
-				A07334F926DDAF98004C5436 /* MaintenanceRepository.swift */,
+				A07334F926DDAF98004C5436 /* AppConfigRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -697,7 +697,7 @@
 				A069981426CBE6A0006E74C6 /* MemoRepositoryImpl.swift */,
 				A069982E26CD052C006E74C6 /* CollectionRepositoryImpl.swift */,
 				A069981D26CC3ECC006E74C6 /* PagerCache.swift */,
-				A07334FB26DDAFDE004C5436 /* MaintenanceRepositoryImpl.swift */,
+				A07334FB26DDAFDE004C5436 /* AppConfigRepositoryImpl.swift */,
 				A052EAD126C3F8830033CE47 /* Response */,
 				A007C09326C8CA9A00270671 /* Firestore */,
 			);
@@ -1221,7 +1221,7 @@
 				A052EACC26C3F79B0033CE47 /* PublicationRepository.swift in Sources */,
 				A05CE89326D17FD3007F9CF2 /* AddMemoImageView.swift in Sources */,
 				A07CAD2526D096020012201A /* FirestoreUpdateUser.swift in Sources */,
-				A07334FC26DDAFDE004C5436 /* MaintenanceRepositoryImpl.swift in Sources */,
+				A07334FC26DDAFDE004C5436 /* AppConfigRepositoryImpl.swift in Sources */,
 				A07CAD0326CED9A20012201A /* ImageDataExtension.swift in Sources */,
 				A07334F026DA420F004C5436 /* TextRecognizeService.swift in Sources */,
 				7A11FCAA26CB47EA00F1A6BC /* SettingTabView.swift in Sources */,
@@ -1279,7 +1279,7 @@
 				A007C09026C7EF9700270671 /* FirestoreExtension.swift in Sources */,
 				A008976A26D87296003EFD08 /* ErrorHUD.swift in Sources */,
 				7A33118226CE518F00EB520D /* UIApplicationExtensoin.swift in Sources */,
-				A07334F826DDAF5D004C5436 /* Maintenance.swift in Sources */,
+				A07334F826DDAF5D004C5436 /* AppConfig.swift in Sources */,
 				7A11FCA526CB467C00F1A6BC /* NotificationCenterExtension.swift in Sources */,
 				7A11FCC126CD4B9D00F1A6BC /* BookShelfCollectionSection.swift in Sources */,
 				A001E03726CA061B00AC92BA /* PlaceholderTextEditor.swift in Sources */,
@@ -1362,7 +1362,7 @@
 				A069981726CBE6FE006E74C6 /* FirestoreCreateMemo.swift in Sources */,
 				A007C09226C83A7200270671 /* Pager.swift in Sources */,
 				7AD1610B26C29FE400334A63 /* ImageExtension.swift in Sources */,
-				A07334FA26DDAF98004C5436 /* MaintenanceRepository.swift in Sources */,
+				A07334FA26DDAF98004C5436 /* AppConfigRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

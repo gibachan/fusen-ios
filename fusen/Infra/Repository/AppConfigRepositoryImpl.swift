@@ -1,6 +1,6 @@
 //
-//  MaintenanceRepositoryImpl.swift
-//  MaintenanceRepositoryImpl
+//  AppConfigRepositoryImpl.swift
+//  AppConfigRepositoryImpl
 //
 //  Created by Tatsuyuki Kobayashi on 2021/08/31.
 //
@@ -8,8 +8,9 @@
 import Foundation
 import FirebaseRemoteConfig
 
-final class MaintenanceRepositoryImpl: MaintenanceRepository {
+final class AppConfigRepositoryImpl: AppConfigRepository {
     private static let maintenanceKey = "maintenance"
+    private static let visionApiUseKey = "vision_api_use"
 
     private static let remoteConfig: RemoteConfig = {
         let config = RemoteConfig.remoteConfig()
@@ -21,19 +22,21 @@ final class MaintenanceRepositoryImpl: MaintenanceRepository {
         #endif
         config.configSettings = settings
         config.setDefaults([
-            maintenanceKey: false as NSObject
+            maintenanceKey: false as NSObject,
+            visionApiUseKey: false as NSObject
         ])
         return config
     }()
     
-    func get() async throws -> Maintenance {
+    func get() async -> AppConfig {
         do {
             let result = try await Self.remoteConfig.fetch()
             if case .success = result {
                 let changed = try await Self.remoteConfig.activate()
                 if changed {
                     let maintenanceValue = Self.remoteConfig.configValue(forKey: Self.maintenanceKey)
-                    return Maintenance(isMaintaining: maintenanceValue.boolValue)
+                    let visionApiUseValue = Self.remoteConfig.configValue(forKey: Self.visionApiUseKey)
+                    return AppConfig(isMaintaining: maintenanceValue.boolValue, isVisionAPIUse: visionApiUseValue.boolValue)
                 }
             }
             return .default

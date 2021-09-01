@@ -12,28 +12,21 @@ final class MainViewModel: ObservableObject {
     @Published var isMaintaining = false
     
     private let accountService: AccountServiceProtocol
-    private let maintenanceRepository: MaintenanceRepository
+    private let appConfigRepository: AppConfigRepository
     
     init(
         accountService: AccountServiceProtocol = AccountService.shared,
-        maintenanceRepository: MaintenanceRepository = MaintenanceRepositoryImpl()
+        appConfigRepository: AppConfigRepository = AppConfigRepositoryImpl()
     ) {
         self.accountService = accountService
-        self.maintenanceRepository = maintenanceRepository
+        self.appConfigRepository = appConfigRepository
     }
     
     func onAppear() async {
         log.d("logged in user=\(accountService.currentUser?.id.value ?? "nil")")
         showTutorial = !accountService.isLoggedIn
 
-        do {
-            let maintenance = try await maintenanceRepository.get()
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.isMaintaining = maintenance.isMaintaining
-            }
-        } catch {
-            log.e("failed to get maintenance: \(error.localizedDescription)")
-        }
+        let config = await appConfigRepository.get()
+        self.isMaintaining = config.isMaintaining
     }
 }

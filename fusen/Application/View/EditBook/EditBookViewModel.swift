@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 final class EditViewModel: ObservableObject {
     private let accountService: AccountServiceProtocol
     private let bookRepository: BookRepository
@@ -29,27 +30,6 @@ final class EditViewModel: ObservableObject {
         isSaveEnabled = book.title != title || book.author != author || book.description != description
     }
     
-//    func onAppear() async {
-//        guard let user = accountService.currentUser else { return }
-//        guard !state.isInProgress else { return }
-//
-//        state = .loading
-//        do {
-//            let pager = try await bookRepository.getAllBooks(for: user)
-//            log.d("finished=\(pager.finished)")
-//            DispatchQueue.main.async { [weak self] in
-//                self?.textCountText = "xx冊の書籍"
-//                self?.state = .succeeded
-//                self?.pager = pager
-//            }
-//        } catch {
-//            log.e(error.localizedDescription)
-//            DispatchQueue.main.async { [weak self] in
-//                self?.state = .failed
-//            }
-//        }
-//    }
-    
     func onSave(title: String, author: String, description: String) async {
         guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
@@ -57,17 +37,11 @@ final class EditViewModel: ObservableObject {
         state = .loading
         do {
             try await bookRepository.update(book: book, title: title, author: author, description: description, for: user)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .succeeded
-            }
+            self.state = .succeeded
         } catch {
             log.e(error.localizedDescription)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .failed
-                NotificationCenter.default.postError(message: .editBook)
-            }
+            self.state = .failed
+            NotificationCenter.default.postError(message: .editBook)
         }
     }
 

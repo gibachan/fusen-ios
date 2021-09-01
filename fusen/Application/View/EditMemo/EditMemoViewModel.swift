@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 final class EditMemoViewModel: ObservableObject {
     private let accountService: AccountServiceProtocol
     private let memoRepository: MemoRepository
@@ -45,16 +46,11 @@ final class EditMemoViewModel: ObservableObject {
         do {
             let memoPage: Int? = page == 0 ? nil : page
             try await memoRepository.update(memo: memo, text: text, quote: quote, page: memoPage, imageURLs: memo.imageURLs, for: user)
-            DispatchQueue.main.async { [weak self] in
-                self?.state = .succeeded
-            }
+            state = .succeeded
         } catch {
             log.e(error.localizedDescription)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .failed
-                NotificationCenter.default.postError(message: .editMemo)
-            }
+            state = .failed
+            NotificationCenter.default.postError(message: .editMemo)
         }
     }
     
@@ -65,17 +61,11 @@ final class EditMemoViewModel: ObservableObject {
         state = .loading
         do {
             try await memoRepository.delete(memo: memo, for: user)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .deleted
-            }
+            state = .deleted
         } catch {
             log.e(error.localizedDescription)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .failed
-                NotificationCenter.default.postError(message: .deleteMemo)
-            }
+            state = .failed
+            NotificationCenter.default.postError(message: .deleteMemo)
         }
     }
     

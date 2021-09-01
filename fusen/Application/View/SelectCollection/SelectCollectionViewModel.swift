@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 final class SelectCollectionViewModel: ObservableObject {
     private let accountService: AccountServiceProtocol
     private let bookRepository: BookRepository
@@ -35,18 +36,12 @@ final class SelectCollectionViewModel: ObservableObject {
         state = .loading
         do {
             let collections = try await collectionRepository.getlCollections(for: user)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .loaded
-                self.collections = collections
-            }
+            self.state = .loaded
+            self.collections = collections
         } catch {
             log.e(error.localizedDescription)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .failed
-                NotificationCenter.default.postError(message: .network)
-            }
+            self.state = .failed
+            NotificationCenter.default.postError(message: .network)
         }
     }
     
@@ -57,16 +52,11 @@ final class SelectCollectionViewModel: ObservableObject {
         state = .loading
         do {
             try await bookRepository.update(book: book, collection: collection, for: user)
-            DispatchQueue.main.async { [weak self] in
-                self?.state = .updated
-            }
+            state = .updated
         } catch {
             log.e(error.localizedDescription)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .failed
-                NotificationCenter.default.postError(message: .selectCollection)
-            }
+            state = .failed
+            NotificationCenter.default.postError(message: .selectCollection)
         }
     }
     

@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 final class AddMemoViewModel: NSObject, ObservableObject {
     private let imageCountLimit = 1
     private let book: Book
@@ -58,11 +59,8 @@ final class AddMemoViewModel: NSObject, ObservableObject {
         }
         let text = await textRecognizeService.text(from: image)
         log.d("recognized=\(text)")
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.state = .recognizedQuote
-            self.recognizedQuote = text
-        }
+        state = .recognizedQuote
+        recognizedQuote = text
     }
     
     func onSave(
@@ -79,16 +77,10 @@ final class AddMemoViewModel: NSObject, ObservableObject {
             let memoPage: Int? = page == 0 ? nil : page
             let id = try await memoRepository.addMemo(of: book, text: text, quote: quote, page: memoPage, image: image, for: user)
             log.d("Memo is added for id: \(id.value)")
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .succeeded
-            }
+            state = .succeeded
         } catch {
             log.e(error.localizedDescription)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .failed
-            }
+            state = .failed
         }
     }
     

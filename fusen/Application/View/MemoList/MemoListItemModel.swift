@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 final class MemoListItemModel: ObservableObject {
     private let memo: Memo
     private let accountService: AccountServiceProtocol
@@ -32,17 +33,11 @@ final class MemoListItemModel: ObservableObject {
         state = .loading
         do {
             let book = try await bookRepository.getBook(by: memo.bookId, for: user)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .loaded(book: book)
-                self.bookTitle = book.title
-            }
+            state = .loaded(book: book)
+            bookTitle = book.title
         } catch {
             log.e(error.localizedDescription)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .failed
-            }
+            state = .failed
         }
     }
     

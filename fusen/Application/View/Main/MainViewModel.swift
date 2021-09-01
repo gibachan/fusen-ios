@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 final class MainViewModel: ObservableObject {
     @Published var showTutorial = false
     @Published var isMaintaining = false

@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 final class CollectionViewModel: ObservableObject {
     private let collection: Collection
     private let accountService: AccountServiceProtocol
@@ -36,17 +37,12 @@ final class CollectionViewModel: ObservableObject {
         do {
             let pager = try await bookRepository.getBooks(by: collection, for: user, forceRefresh: false)
             log.d("finished=\(pager.finished)")
-            DispatchQueue.main.async { [weak self] in
-                self?.state = .succeeded
-                self?.pager = pager
-            }
+            self.state = .succeeded
+            self.pager = pager
         } catch {
             log.e(error.localizedDescription)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .failed
-                NotificationCenter.default.postError(message: .network)
-            }
+            self.state = .failed
+            NotificationCenter.default.postError(message: .network)
         }
     }
     
@@ -58,18 +54,11 @@ final class CollectionViewModel: ObservableObject {
         do {
             let pager = try await bookRepository.getBooks(by: collection, for: user, forceRefresh: true)
             log.d("finished=\(pager.finished)")
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .succeeded
-                self.pager = pager
-            }
+            self.state = .succeeded
+            self.pager = pager
         } catch {
             log.e(error.localizedDescription)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .failed
-                NotificationCenter.default.postError(message: .network)
-            }
+            self.state = .failed
         }
     }
     
@@ -83,17 +72,11 @@ final class CollectionViewModel: ObservableObject {
             do {
                 let pager = try await bookRepository.getBooksNext(by: collection, for: user)
                 log.d("finished=\(pager.finished)")
-                DispatchQueue.main.async { [weak self] in
-                    guard let self = self else { return }
-                    self.state = .succeeded
-                    self.pager = pager
-                }
+                self.state = .succeeded
+                self.pager = pager
             } catch {
                 log.e(error.localizedDescription)
-                DispatchQueue.main.async { [weak self] in
-                    guard let self = self else { return }
-                    self.state = .failed
-                }
+                self.state = .failed
             }
         }
     }
@@ -105,17 +88,11 @@ final class CollectionViewModel: ObservableObject {
         state = .loading
         do {
             try await collectionRepository.delete(collection: collection, for: user)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .deleted
-            }
+            state = .deleted
         } catch {
             print(error.localizedDescription)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .failed
-                NotificationCenter.default.postError(message: .deleteCollection)
-            }
+            state = .failed
+            NotificationCenter.default.postError(message: .deleteCollection)
         }
     }
     

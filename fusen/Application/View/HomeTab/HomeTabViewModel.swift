@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 final class HomeTabViewModel: ObservableObject {
     private let latestBooksCount = 4
     private let latestMemosCount = 4
@@ -52,40 +53,24 @@ final class HomeTabViewModel: ObservableObject {
             let result = try await (books: books, memos: memos)
             if let readingBookId = userInfo.readingBookId {
                 do {
-                    let readingBook = try await bookRepository.getBook(by: readingBookId, for: user)
-                    DispatchQueue.main.async { [weak self] in
-                        guard let self = self else { return }
-                        self.readingBook = readingBook
-                    }
+                    readingBook = try await bookRepository.getBook(by: readingBookId, for: user)
                 } catch {
                     // Reaches when the readingBook has been already deleted which is unexpected situation.
                     log.e(error.localizedDescription)
-                    DispatchQueue.main.async { [weak self] in
-                        guard let self = self else { return }
-                        self.readingBook = nil
-                    }
+                    readingBook = nil
                 }
             } else {
-                DispatchQueue.main.async { [weak self] in
-                    guard let self = self else { return }
-                    self.readingBook = nil
-                }
+                readingBook = nil
             }
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                if result.books.isEmpty && result.memos.isEmpty {
-                    self.state = .empty
-                } else {
-                    self.state = .loaded(latestBooks: result.books, latestMemos: result.memos)
-                }
+            if result.books.isEmpty && result.memos.isEmpty {
+                state = .empty
+            } else {
+                state = .loaded(latestBooks: result.books, latestMemos: result.memos)
             }
         } catch {
             log.e(error.localizedDescription)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .failed
-                NotificationCenter.default.postError(message: .network)
-            }
+            state = .failed
+            NotificationCenter.default.postError(message: .network)
         }
     }
     

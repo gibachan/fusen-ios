@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 final class FavoriteBookListViewModel: ObservableObject {
     private let accountService: AccountServiceProtocol
     private let bookRepository: BookRepository
@@ -30,18 +31,12 @@ final class FavoriteBookListViewModel: ObservableObject {
         do {
             let pager = try await bookRepository.getFavoriteBooks(for: user, forceRefresh: false)
             log.d("finished=\(pager.finished)")
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .succeeded
-                self.pager = pager
-            }
+            self.state = .succeeded
+            self.pager = pager
         } catch {
             log.e(error.localizedDescription)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .failed
-                NotificationCenter.default.postError(message: .network)
-            }
+            self.state = .failed
+            NotificationCenter.default.postError(message: .network)
         }
     }
     
@@ -53,18 +48,12 @@ final class FavoriteBookListViewModel: ObservableObject {
         do {
             let pager = try await bookRepository.getFavoriteBooks(for: user, forceRefresh: true)
             log.d("finished=\(pager.finished)")
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .succeeded
-                self.pager = pager
-            }
+            self.state = .succeeded
+            self.pager = pager
         } catch {
             log.e(error.localizedDescription)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .failed
-                NotificationCenter.default.postError(message: .network)
-            }
+            self.state = .failed
+            NotificationCenter.default.postError(message: .network)
         }
     }
     
@@ -78,18 +67,12 @@ final class FavoriteBookListViewModel: ObservableObject {
             do {
                 let pager = try await bookRepository.getFavoriteBooksNext(for: user)
                 log.d("finished=\(pager.finished)")
-                DispatchQueue.main.async { [weak self] in
-                    guard let self = self else { return }
-                    self.state = .succeeded
-                    self.pager = pager
-                }
+                self.state = .succeeded
+                self.pager = pager
             } catch {
                 log.e(error.localizedDescription)
-                DispatchQueue.main.async { [weak self] in
-                    guard let self = self else { return }
-                    self.state = .failed
-                    NotificationCenter.default.postError(message: .network)
-                }
+                self.state = .failed
+                NotificationCenter.default.postError(message: .network)
             }
         }
     }

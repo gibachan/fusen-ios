@@ -8,6 +8,7 @@
 import AVFoundation
 import Foundation
 
+@MainActor
 final class ScanBarcodeViewModel: ObservableObject {
     private let scanInterval: Double = 1.0
     private var isScanning = false
@@ -59,10 +60,7 @@ final class ScanBarcodeViewModel: ObservableObject {
             do {
                 let publication = try await publicationRepository.findBy(isbn: isbn)
                 log.d("Found publication: \(publication)")
-                DispatchQueue.main.async { [weak self] in
-                    guard let self = self else { return }
-                    self.suggestedBook = publication
-                }
+                suggestedBook = publication
             } catch {
                 log.e(error.localizedDescription)
                 isScanning = false
@@ -83,16 +81,12 @@ final class ScanBarcodeViewModel: ObservableObject {
         do {
             let id = try await bookRepository.addBook(of: publication, in: collection, image: nil, for: user)
             log.d("Book is added for id: \(id.value)")
-            DispatchQueue.main.async { [weak self] in
+            scannedBook = publication
+            // 強制的に更新 -> Viewの再構築が発生するため注意
+            NotificationCenter.default.postRefreshBookShelfAllCollection()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4) { [weak self] in
                 guard let self = self else { return }
-                self.scannedBook = publication
-                // 強制的に更新 -> Viewの再構築が発生するため注意
-                NotificationCenter.default.postRefreshBookShelfAllCollection()
-
-                DispatchQueue.main.asyncAfter(deadline: .now() + 4) { [weak self] in
-                    guard let self = self else { return }
-                    self.scannedBook = nil
-                }
+                self.scannedBook = nil
             }
         } catch {
             log.e(error.localizedDescription)

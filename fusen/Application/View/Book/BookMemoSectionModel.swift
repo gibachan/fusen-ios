@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 final class BookMemoSectionModel: ObservableObject {
     private let bookId: ID<Book>
     private let accountService: AccountServiceProtocol
@@ -43,14 +44,10 @@ final class BookMemoSectionModel: ObservableObject {
             do {
                 let pager = try await memoRepository.getNextMemos(of: bookId, for: user)
                 log.d("finished=\(pager.finished)")
-                DispatchQueue.main.async { [weak self] in
-                    self?.memoPager = pager
-                }
+                memoPager = pager
             } catch {
                 log.e(error.localizedDescription)
-                DispatchQueue.main.async { [weak self] in
-                    self?.state = .failed
-                }
+                state = .failed
             }
         }
     }
@@ -74,18 +71,12 @@ final class BookMemoSectionModel: ObservableObject {
             //            }
             
             let memoPager = try await memoRepository.getMemos(of: bookId, for: user, forceRefresh: false)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.memoPager = memoPager
-                self.state = .loaded(memos: memoPager.data)
-            }
+            self.memoPager = memoPager
+            self.state = .loaded(memos: memoPager.data)
         } catch {
             log.e(error.localizedDescription)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .failed
-                NotificationCenter.default.postError(message: .getMemo)
-            }
+            self.state = .failed
+            NotificationCenter.default.postError(message: .getMemo)
         }
     }
     

@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 final class BookShelfFavoriteSectionModel: ObservableObject {
     private static let maxDiplayBookCount = 6
     private let accountService: AccountServiceProtocol
@@ -30,25 +31,19 @@ final class BookShelfFavoriteSectionModel: ObservableObject {
         state = .loading
         do {
             let pager = try await bookRepository.getFavoriteBooks(for: user, forceRefresh: false)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .succeeded
-                
-                var displayBooks = Array(pager.data.prefix(Self.maxDiplayBookCount))
-                var resultBooks: [[Book]] = []
-                while !displayBooks.isEmpty {
-                    let books = Array(displayBooks.prefix(2))
-                    displayBooks = Array(displayBooks.dropFirst(2))
-                    resultBooks.append(books)
-                }
-                self.books = resultBooks
+            state = .succeeded
+            
+            var displayBooks = Array(pager.data.prefix(Self.maxDiplayBookCount))
+            var resultBooks: [[Book]] = []
+            while !displayBooks.isEmpty {
+                let books = Array(displayBooks.prefix(2))
+                displayBooks = Array(displayBooks.dropFirst(2))
+                resultBooks.append(books)
             }
+            books = resultBooks
         } catch {
             log.e(error.localizedDescription)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .failed
-            }
+            state = .failed
         }
     }
     

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct AddBookMenuView: View {
     @Environment(\.dismiss) private var dismiss
-    @StateObject private var viewModel = AddBookMenuViewModel()
     @State private var isScanBarcodePresented = false
     @State private var isManualInputPresented = false
     private let collection: Collection?

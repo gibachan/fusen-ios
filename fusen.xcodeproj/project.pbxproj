@@ -71,7 +71,6 @@
 		A020544126CE88BD002FF585 /* EditMemoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A020544026CE88BD002FF585 /* EditMemoImageView.swift */; };
 		A020544526CE8CC7002FF585 /* DeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A020544426CE8CC7002FF585 /* DeleteButton.swift */; };
 		A052EAC026C3D7430033CE47 /* AddBookMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EABF26C3D7430033CE47 /* AddBookMenuView.swift */; };
-		A052EAC226C3D74C0033CE47 /* AddBookMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EAC126C3D74C0033CE47 /* AddBookMenuViewModel.swift */; };
 		A052EAC426C3E4140033CE47 /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EAC326C3E4140033CE47 /* CancelButton.swift */; };
 		A052EAC626C3E4650033CE47 /* AddBookMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EAC526C3E4650033CE47 /* AddBookMenuItem.swift */; };
 		A052EACA26C3F4E90033CE47 /* Publication.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EAC926C3F4E90033CE47 /* Publication.swift */; };
@@ -254,7 +253,6 @@
 		A020544026CE88BD002FF585 /* EditMemoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMemoImageView.swift; sourceTree = "<group>"; };
 		A020544426CE8CC7002FF585 /* DeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButton.swift; sourceTree = "<group>"; };
 		A052EABF26C3D7430033CE47 /* AddBookMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookMenuView.swift; sourceTree = "<group>"; };
-		A052EAC126C3D74C0033CE47 /* AddBookMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookMenuViewModel.swift; sourceTree = "<group>"; };
 		A052EAC326C3E4140033CE47 /* CancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
 		A052EAC526C3E4650033CE47 /* AddBookMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookMenuItem.swift; sourceTree = "<group>"; };
 		A052EAC926C3F4E90033CE47 /* Publication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Publication.swift; path = fusen/Domain/Entity/Publication.swift; sourceTree = SOURCE_ROOT; };
@@ -649,7 +647,6 @@
 			isa = PBXGroup;
 			children = (
 				A052EABF26C3D7430033CE47 /* AddBookMenuView.swift */,
-				A052EAC126C3D74C0033CE47 /* AddBookMenuViewModel.swift */,
 				A052EAC526C3E4650033CE47 /* AddBookMenuItem.swift */,
 			);
 			path = AddBookMenu;
@@ -1236,7 +1233,6 @@
 				A07334F626DDAD35004C5436 /* ViewExtension.swift in Sources */,
 				7A11FCA826CB47E200F1A6BC /* SettingTabViewModel.swift in Sources */,
 				7A11FCB626CB5DD400F1A6BC /* AddMemoView.swift in Sources */,
-				A052EAC226C3D74C0033CE47 /* AddBookMenuViewModel.swift in Sources */,
 				A069983826CDD9D6006E74C6 /* CollectionViewModel.swift in Sources */,
 				A0C3C23E26D7680E0032B2C7 /* HomeTabEmptyView.swift in Sources */,
 				A07CAD1226CFBB160012201A /* FirestoreCreateCollection.swift in Sources */,

@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 final class AddBookViewModel: ObservableObject {
     private let accountService: AccountServiceProtocol
     private let bookRepository: BookRepository
@@ -40,18 +41,12 @@ final class AddBookViewModel: ObservableObject {
         do {
             let id = try await bookRepository.addBook(of: publication, in: collection, image: thumbnailImage, for: user)
             log.d("Book is added for id: \(id.value)")
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .succeeded
-                // 強制的に更新 -> Viewの再構築が発生するため注意
-                NotificationCenter.default.postRefreshBookShelfAllCollection()
-            }
+            state = .succeeded
+            // 強制的に更新 -> Viewの再構築が発生するため注意
+            NotificationCenter.default.postRefreshBookShelfAllCollection()
         } catch {
             log.e(error.localizedDescription)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .failed
-            }
+            state = .failed
         }
     }
 

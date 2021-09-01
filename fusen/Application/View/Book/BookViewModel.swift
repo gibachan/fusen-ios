@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 final class BookViewModel: ObservableObject {
     private let bookId: ID<Book>
     private let accountService: AccountServiceProtocol
@@ -49,18 +50,12 @@ final class BookViewModel: ObservableObject {
         do {
             let readingBook: Book? = isReadingBook ? nil : book
             try await userRepository.update(readingBook: readingBook, for: user)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.readingBookState = .loaded
-                self.isReadingBook = readingBook != nil
-            }
+            readingBookState = .loaded
+            isReadingBook = readingBook != nil
         } catch {
             log.e(error.localizedDescription)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.readingBookState = .failed
-                NotificationCenter.default.postError(message: .readingBookChange)
-            }
+            readingBookState = .failed
+            NotificationCenter.default.postError(message: .readingBookChange)
         }
     }
     
@@ -72,18 +67,12 @@ final class BookViewModel: ObservableObject {
         favoriteState = .loading
         do {
             try await bookRepository.update(book: book, isFavorite: isFavorite, for: user)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.favoriteState = .loaded
-                self.isFavorite = isFavorite
-            }
+            self.favoriteState = .loaded
+            self.isFavorite = isFavorite
         } catch {
             log.e(error.localizedDescription)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.favoriteState = .failed
-                NotificationCenter.default.postError(message: .favoriteBookChange)
-            }
+            self.favoriteState = .failed
+            NotificationCenter.default.postError(message: .favoriteBookChange)
         }
     }
     
@@ -94,17 +83,11 @@ final class BookViewModel: ObservableObject {
         state = .loading
         do {
             try await bookRepository.delete(book: book, for: user)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .deleted
-            }
+            state = .deleted
         } catch {
             log.e(error.localizedDescription)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .failed
-                NotificationCenter.default.postError(message: .deleteBook)
-            }
+            state = .failed
+            NotificationCenter.default.postError(message: .deleteBook)
         }
     }
     
@@ -128,19 +111,13 @@ final class BookViewModel: ObservableObject {
 
             let userInfo = try await userRepository.getInfo(for: user)
             let book = try await bookRepository.getBook(by: bookId, for: user)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .loaded(book: book)
-                self.isReadingBook = userInfo.readingBookId == book.id
-                self.isFavorite = book.isFavorite
-            }
+            self.state = .loaded(book: book)
+            self.isReadingBook = userInfo.readingBookId == book.id
+            self.isFavorite = book.isFavorite
         } catch {
             log.e(error.localizedDescription)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .failed
-                NotificationCenter.default.postError(message: .network)
-            }
+            self.state = .failed
+            NotificationCenter.default.postError(message: .network)
         }
     }
     

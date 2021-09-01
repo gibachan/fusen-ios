@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 final class BookShelfTabViewModel: ObservableObject {
     private let accountService: AccountServiceProtocol
     private let bookRepository: BookRepository
@@ -42,18 +43,12 @@ final class BookShelfTabViewModel: ObservableObject {
         do {
             let favoriteBooks = try await bookRepository.getFavoriteBooks(for: user, forceRefresh: true)
             let collections = try await collectionRepository.getlCollections(for: user)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .succeeded
-                self.isFavoriteVisible = !favoriteBooks.data.isEmpty
-                self.collections = collections
-            }
+            self.state = .succeeded
+            self.isFavoriteVisible = !favoriteBooks.data.isEmpty
+            self.collections = collections
         } catch {
             log.e(error.localizedDescription)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .failed
-            }
+            state = .failed
         }
     }
     

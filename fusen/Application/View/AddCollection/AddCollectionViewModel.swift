@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 final class AddCollectionViewModel: ObservableObject {
     private let collectionCountLimit = 10
     private let accountService: AccountServiceProtocol
@@ -31,17 +32,11 @@ final class AddCollectionViewModel: ObservableObject {
         state = .loading
         do {
             let collections = try await collectionRepository.getlCollections(for: user)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .collectionsLoaded
-                self.isCollectionCountOver = collections.count >= Collection.countLimit
-            }
+            state = .collectionsLoaded
+            isCollectionCountOver = collections.count >= Collection.countLimit
         } catch {
             log.e(error.localizedDescription)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .failed
-            }
+            state = .failed
         }
     }
     
@@ -63,33 +58,21 @@ final class AddCollectionViewModel: ObservableObject {
             let collections = try await collectionRepository.getlCollections(for: user)
             log.d("Current collection count: \(collections.count)")
             if collections.count >= Collection.countLimit {
-                DispatchQueue.main.async { [weak self] in
-                    guard let self = self else { return }
-                    self.state = .failed
-                }
+                state = .failed
                 return
             }
         } catch {
             log.e(error.localizedDescription)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .failed
-            }
+            state = .failed
         }
         do {
             log.d("Saving \(name) collection with \(color)")
             let id = try await collectionRepository.addCollection(name: name, color: color, for: user)
             log.d("Collection is added for id: \(id.value)")
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .collectionAdded
-            }
+            state = .collectionAdded
         } catch {
             log.e(error.localizedDescription)
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .failed
-            }
+            state = .failed
         }
     }
     

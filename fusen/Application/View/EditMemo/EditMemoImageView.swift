@@ -15,25 +15,28 @@ struct EditMemoImageView: View {
     @State var scale: CGFloat = 1.0
     @State var initialScale: CGFloat = 1.0
     
-    let url: URL
-    let deleteAction: (() -> Void)
+    let url: URL?
     
     var body: some View {
-        VStack {
-            AsyncImage(url: url) { image in
-                GestureImageView(image: image)
-            } placeholder: {
-                Color.black
-            }
+        ZStack {
+            Color.black
+            MemoImageView(url: url)
+                .offset(offset)
+                .scaleEffect(scale)
+                .gesture(SimultaneousGesture(
+                    MagnificationGesture()
+                        .onChanged { scale = $0 * initialScale }
+                        .onEnded { _ in initialScale = scale },
+                    DragGesture()
+                        .onChanged { offset = CGSize(width: initialOffset.width + $0.translation.width, height: initialOffset.height + $0.translation.height) }
+                        .onEnded { _ in initialOffset = offset }
+                )
+                )
         }
-        .backgroundColor(.black)
-        .navigationBarTitle("画像", displayMode: .inline)
+        .ignoresSafeArea(.container, edges: .bottom)
+        .navigationBarTitle("添付画像", displayMode: .inline)
         .navigationBarItems(
-            leading: CancelButton { dismiss() },
-            trailing: DeleteButton {
-                deleteAction()
-                dismiss()
-            }
+            leading: CancelButton { dismiss() }
         )
     }
 }
@@ -41,9 +44,7 @@ struct EditMemoImageView: View {
 struct EditMemoImageView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            EditMemoImageView(url: Memo.sample.imageURLs.first!) {
-                print("delete")
-            }
+            EditMemoImageView(url: Memo.sample.imageURLs.first!)
         }
     }
 }

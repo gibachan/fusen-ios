@@ -1,23 +1,22 @@
 //
-//  BookImageView.swift
-//  BookImageView
+//  MemoImageView.swift
+//  MemoImageView
 //
-//  Created by Tatsuyuki Kobayashi on 2021/08/16.
+//  Created by Tatsuyuki Kobayashi on 2021/09/01.
 //
 
 import SwiftUI
 import Kingfisher
 
-struct BookImageView: View {
+struct MemoImageView: View {
     let url: URL?
     
     var body: some View {
         KFImage(url)
             .placeholder {
-                Image.book
+                Image.image
                     .resizable()
                     .foregroundColor(.placeholder)
-                    .padding(4)
             }
             .fade(duration: 0.25)
             .retry(maxCount: 3, interval: .seconds(5))
@@ -27,8 +26,8 @@ struct BookImageView: View {
     }
 }
 
-struct BookImageView_Previews: PreviewProvider {
+struct MemoImageView_Previews: PreviewProvider {
     static var previews: some View {
-        BookImageView(url: Book.sample.imageURL)
+        MemoImageView(url: Memo.sample.imageURLs.first)
     }
 }

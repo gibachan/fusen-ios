@@ -8,48 +8,35 @@
 import Foundation
 
 final class EditMemoViewModel: ObservableObject {
-    private let imageCountLimit = 1
     private let accountService: AccountServiceProtocol
     private let memoRepository: MemoRepository
     
     @Published var isSaveEnabled = false
     @Published var state: State = .initial
     @Published var memo: Memo
-    @Published var imageResults: [DocumentCameraView.ImageResult] = []
-    @Published var memoImages: [EditMemoImage] = []
+    @Published var memoImageURL: URL?
     
     init(
         memo: Memo,
         accountService: AccountServiceProtocol = AccountService.shared,
         memoRepository: MemoRepository = MemoRepositoryImpl()
     ) {
-        self.memo = memo
         self.accountService = accountService
         self.memoRepository = memoRepository
-        
+
+        self.memo = memo
+        self.memoImageURL = memo.imageURLs.first
         self.isSaveEnabled = !memo.text.isEmpty
-        self.memoImages = memo.imageURLs.enumerated().map { index, url in
-            EditMemoImage(position: index, type: .url(url))
-        }
     }
     
     func onTextChange(_ text: String) {
         isSaveEnabled = !text.isEmpty
     }
     
-    func onMemoImageAdd(images: [DocumentCameraView.ImageResult]) {
-        imageResults = Array(images.prefix(imageCountLimit))
-    }
-    
-    func onMemoImageDelete(image: DocumentCameraView.ImageResult) {
-        imageResults = imageResults.filter { $0.id != image.id }
-    }
-    
     func onSave(
         text: String,
         quote: String,
-        page: Int,
-        imageURLs: [URL]
+        page: Int
     ) async {
         guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
@@ -57,7 +44,7 @@ final class EditMemoViewModel: ObservableObject {
         state = .loading
         do {
             let memoPage: Int? = page == 0 ? nil : page
-            try await memoRepository.update(memo: memo, text: text, quote: quote, page: memoPage, imageURLs: imageURLs, for: user)
+            try await memoRepository.update(memo: memo, text: text, quote: quote, page: memoPage, imageURLs: memo.imageURLs, for: user)
             DispatchQueue.main.async { [weak self] in
                 self?.state = .succeeded
             }
@@ -90,18 +77,6 @@ final class EditMemoViewModel: ObservableObject {
                 NotificationCenter.default.postError(message: .deleteMemo)
             }
         }
-    }
-    
-    enum EditMemoImageType: Hashable {
-        case url(URL)
-        case memory
-    }
-    
-    struct EditMemoImage: Identifiable, Hashable {
-        let position: Int
-        let type: EditMemoImageType
-        
-        var id: Int { position }
     }
     
     enum State {

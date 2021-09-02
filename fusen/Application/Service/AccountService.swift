@@ -7,6 +7,8 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseAnalytics
+import FirebaseCrashlytics
 import CryptoKit
 import AuthenticationServices
 
@@ -21,7 +23,6 @@ enum AccountServiceError: Error {
 
 protocol AccountServiceProtocol {
     var isLoggedIn: Bool { get }
-    var isLinkedWithAppleId: Bool { get }
     var currentUser: User? { get }
     @discardableResult func logInAnonymously() async throws -> User
     
@@ -52,22 +53,27 @@ final class AccountService: AccountServiceProtocol {
         auth.currentUser != nil
     }
     
-    var isLinkedWithAppleId: Bool {
-        guard let user = auth.currentUser else { return false }
-        return user.providerData.contains(where: { $0.providerID == appleProviderId })
-    }
-    
     var currentUser: User? {
-        guard let user = auth.currentUser else { return nil }
-        return User(id: ID<User>(value: user.uid), isAnonymous: user.isAnonymous)
+        guard let authUser = auth.currentUser else { return nil }
+        return User(
+            id: ID<User>(value: authUser.uid),
+            isAnonymous: authUser.isAnonymous,
+            isLinkedWithAppleId: authUser.isLinkedWithAppleId
+        )
     }
     
     @discardableResult func logInAnonymously() async throws -> User {
         do {
             let result = try await auth.signInAnonymously()
-            let user = result.user
-            log.d("logInAnonymously: uid=\(user.uid)")
-            return User(id: ID<User>(value: user.uid), isAnonymous: user.isAnonymous)
+            let authUser = result.user
+            log.d("logInAnonymously: uid=\(authUser.uid)")
+            let user = User(
+                id: ID<User>(value: authUser.uid),
+                isAnonymous: authUser.isAnonymous,
+                isLinkedWithAppleId: authUser.isLinkedWithAppleId
+            )
+            setUserProperty(user: user)
+            return user
         } catch {
             log.e(error.localizedDescription)
             throw AccountServiceError.logInAnonymously
@@ -106,10 +112,16 @@ final class AccountService: AccountServiceProtocol {
         // Sign in with Firebase.
         do {
             let result = try await auth.signIn(with: providerCredential)
-            let user = result.user
-            log.d("logInWithApple: uid=\(user.uid)")
+            let authUser = result.user
+            log.d("logInWithApple: uid=\(authUser.uid)")
             currentNonce = nil
-            return User(id: ID<User>(value: user.uid), isAnonymous: user.isAnonymous)
+            let user = User(
+                id: ID<User>(value: authUser.uid),
+                isAnonymous: authUser.isAnonymous,
+                isLinkedWithAppleId: authUser.isLinkedWithAppleId
+            )
+            setUserProperty(user: user)
+            return user
         } catch {
             log.e(error.localizedDescription)
             throw AccountServiceError.logInApple
@@ -117,7 +129,7 @@ final class AccountService: AccountServiceProtocol {
     }
     
     @discardableResult func linkWithApple(authorization: ASAuthorization) async throws -> User {
-        guard let user = auth.currentUser else {
+        guard let authUser = auth.currentUser else {
             log.e("currentUser is missing")
             throw AccountServiceError.linkWithApple
         }
@@ -144,11 +156,17 @@ final class AccountService: AccountServiceProtocol {
                                                   rawNonce: nonce)
         // link with Firebase.
         do {
-            let result = try await user.link(with: providerCredential)
-            let linkedUser = result.user
-            log.d("linkWithApple: uid=\(linkedUser.uid)")
+            let result = try await authUser.link(with: providerCredential)
+            let linkedAuthUser = result.user
+            log.d("linkWithApple: uid=\(linkedAuthUser.uid)")
             currentNonce = nil
-            return User(id: ID<User>(value: linkedUser.uid), isAnonymous: linkedUser.isAnonymous)
+            let user = User(
+                id: ID<User>(value: linkedAuthUser.uid),
+                isAnonymous: linkedAuthUser.isAnonymous,
+                isLinkedWithAppleId: linkedAuthUser.isLinkedWithAppleId
+            )
+            setUserProperty(user: user)
+            return user
         } catch {
             log.e(error.localizedDescription)
             throw AccountServiceError.linkWithApple
@@ -178,12 +196,25 @@ final class AccountService: AccountServiceProtocol {
     func logOut() throws {
         do {
             try auth.signOut()
+            resetsetUserProperty()
         } catch let signOutError as NSError {
             log.e("Error signing out: \(signOutError)")
             throw AccountServiceError.logOut
         } catch {
             throw AccountServiceError.logOut
         }
+    }
+    
+    private func setUserProperty(user: User) {
+        Analytics.setUserID(user.id.value)
+        Analytics.setUserProperty(user.isLinkedWithAppleId ? "true" : "false", forName: "linked_with_apple_id")
+        Crashlytics.crashlytics().setUserID(user.id.value)
+    }
+    
+    private func resetsetUserProperty() {
+        Analytics.setUserID(nil)
+        Analytics.setUserProperty(nil, forName: "linked_with_apple_id")
+        Crashlytics.crashlytics().setUserID("")
     }
 }
 

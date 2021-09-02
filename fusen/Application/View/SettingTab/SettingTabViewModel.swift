@@ -21,8 +21,9 @@ final class SettingTabViewModel: ObservableObject {
     }
     
     func onApper() {
-        userId = accountService.currentUser?.id.value ?? ""
-        isLinkedAppleId = accountService.isLinkedWithAppleId
+        let user = accountService.currentUser
+        userId = user?.id.value ?? ""
+        isLinkedAppleId = user?.isLinkedWithAppleId ?? false
         version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
     }
     

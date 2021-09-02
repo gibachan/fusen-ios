@@ -16,6 +16,7 @@ final class ScanBarcodeViewModel: ObservableObject {
     private var scannedCode = Set<String>()
     private var lastScannedTime = Date(timeIntervalSince1970: 0)
     private let accountService: AccountServiceProtocol
+    private let analyticsService: AnalyticsServiceProtocol
     private let publicationRepository: PublicationRepository
     private let bookRepository: BookRepository
 
@@ -24,9 +25,11 @@ final class ScanBarcodeViewModel: ObservableObject {
     @Published var scannedBook: Publication?
     
     init(accountService: AccountServiceProtocol = AccountService.shared,
+         analyticsService: AnalyticsServiceProtocol = AnalyticsService.shared,
          publicationRepository: PublicationRepository = RakutenBooksPublicationRepositoryImpl(),
          bookRepository: BookRepository = BookRepositoryImpl()) {
         self.accountService = accountService
+        self.analyticsService = analyticsService
         self.publicationRepository = publicationRepository
         self.bookRepository = bookRepository
         self.isTorchOn = currentTorch()
@@ -64,6 +67,7 @@ final class ScanBarcodeViewModel: ObservableObject {
             } catch {
                 log.e(error.localizedDescription)
                 isScanning = false
+                analyticsService.log(event: .scanBarcodeError(code: code))
                 ErrorHUD.show(message: .scanBarcode)
             }
         }
@@ -84,10 +88,8 @@ final class ScanBarcodeViewModel: ObservableObject {
             scannedBook = publication
             // 強制的に更新 -> Viewの再構築が発生するため注意
             NotificationCenter.default.postRefreshBookShelfAllCollection()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 4) { [weak self] in
-                guard let self = self else { return }
-                self.scannedBook = nil
-            }
+            scannedBook = nil
+            analyticsService.log(event: .addBookByBarcode)
         } catch {
             log.e(error.localizedDescription)
             ErrorHUD.show(message: .addBook)

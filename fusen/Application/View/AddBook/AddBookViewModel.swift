@@ -10,6 +10,7 @@ import Foundation
 @MainActor
 final class AddBookViewModel: ObservableObject {
     private let accountService: AccountServiceProtocol
+    private let analyticsService: AnalyticsServiceProtocol
     private let bookRepository: BookRepository
 
     @Published var isSaveEnabled = false
@@ -17,9 +18,11 @@ final class AddBookViewModel: ObservableObject {
 
     init(
         accountService: AccountServiceProtocol = AccountService.shared,
+        analyticsService: AnalyticsServiceProtocol = AnalyticsService.shared,
         bookRepository: BookRepository = BookRepositoryImpl()
     ) {
         self.accountService = accountService
+        self.analyticsService = analyticsService
         self.bookRepository = bookRepository
     }
     
@@ -44,6 +47,7 @@ final class AddBookViewModel: ObservableObject {
             state = .succeeded
             // 強制的に更新 -> Viewの再構築が発生するため注意
             NotificationCenter.default.postRefreshBookShelfAllCollection()
+            analyticsService.log(event: .addBookByManual)
         } catch {
             log.e(error.localizedDescription)
             state = .failed

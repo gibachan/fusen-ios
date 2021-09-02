@@ -33,6 +33,10 @@ struct HomeTabView: View {
                     }
                     
                     Section {
+                        if latestMemos.isEmpty {
+                            BookEmptyMemoItem()
+                                .listRowSeparator(.hidden)
+                        }
                         ForEach(latestMemos, id: \.id.value) { memo in
                             NavigationLink(destination: LazyView(EditMemoView(memo: memo))) {
                                 LatestMemoItem(memo: memo)

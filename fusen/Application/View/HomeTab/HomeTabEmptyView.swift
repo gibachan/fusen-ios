@@ -18,7 +18,7 @@ struct HomeTabEmptyView: View {
                     Image.bookShelf
                         .resizable()
                         .frame(width: 16, height: 16)
-                    Text("タブから登録してください。")
+                    Text("本棚タブから登録してください。")
                 }
                 Image("App")
                     .renderingMode(.template)

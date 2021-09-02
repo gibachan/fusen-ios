@@ -52,6 +52,7 @@ struct HomeTabView: View {
                 
                 if case .empty = viewModel.state {
                     HomeTabEmptyView()
+                        .listRowSeparator(.hidden)
                 }
                 
                 Spacer()

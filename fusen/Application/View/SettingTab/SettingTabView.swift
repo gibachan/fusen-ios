@@ -107,6 +107,26 @@ struct SettingTabView: View {
                 }
 #if DEBUG
                 Section {
+                    HStack {
+                        Text("環境 :")
+                            .font(.medium)
+                            .foregroundColor(.textPrimary)
+                        Spacer()
+                        switch AppEnv.current {
+                        case .development:
+                            Text("development")
+                                .font(.small)
+                                .foregroundColor(.textSecondary)
+                        case .staging:
+                            Text("staging")
+                                .font(.small)
+                                .foregroundColor(.textSecondary)
+                        case .production:
+                            Text("production")
+                                .font(.small)
+                                .foregroundColor(.textSecondary)
+                        }
+                    }
                     Button {
                         viewModel.logOut()
                     } label: {

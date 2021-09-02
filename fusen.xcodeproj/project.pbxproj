@@ -163,6 +163,9 @@
 		A0F97CE426E0B898007CACE5 /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F97CE326E0B898007CACE5 /* AnalyticsService.swift */; };
 		A0F97CE626E0BC12007CACE5 /* FirebaseAuthExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F97CE526E0BC12007CACE5 /* FirebaseAuthExtension.swift */; };
 		A0F97CE826E0C571007CACE5 /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F97CE726E0C571007CACE5 /* AnalyticsEvent.swift */; };
+		A0F97CEB26E0CA61007CACE5 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F97CEA26E0CA61007CACE5 /* WebViewController.swift */; };
+		A0F97CED26E0CA84007CACE5 /* WebPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F97CEC26E0CA84007CACE5 /* WebPageView.swift */; };
+		A0F97CEF26E0CD55007CACE5 /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F97CEE26E0CD55007CACE5 /* URLExtension.swift */; };
 		F7BDF62C75CD8279F9805768 /* Pods_fusenTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92BAA3A355C64643052F4562 /* Pods_fusenTests.framework */; };
 		FAFA9C3195C337A6656292D4 /* Pods_fusen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A120C1BA338A419E1C4AC1E /* Pods_fusen.framework */; };
 /* End PBXBuildFile section */
@@ -353,6 +356,9 @@
 		A0F97CE326E0B898007CACE5 /* AnalyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
 		A0F97CE526E0BC12007CACE5 /* FirebaseAuthExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthExtension.swift; sourceTree = "<group>"; };
 		A0F97CE726E0C571007CACE5 /* AnalyticsEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEvent.swift; sourceTree = "<group>"; };
+		A0F97CEA26E0CA61007CACE5 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		A0F97CEC26E0CA84007CACE5 /* WebPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPageView.swift; sourceTree = "<group>"; };
+		A0F97CEE26E0CD55007CACE5 /* URLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
 		B9CE5958189153717B673230 /* Pods-fusen-fusenUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen-fusenUITests.debug.xcconfig"; path = "Target Support Files/Pods-fusen-fusenUITests/Pods-fusen-fusenUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BA1243C082F110680D93D45F /* Pods-fusenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusenTests.debug.xcconfig"; path = "Target Support Files/Pods-fusenTests/Pods-fusenTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DED65B63C22476AE8B5011AE /* Pods_fusen_fusenUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fusen_fusenUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -516,6 +522,7 @@
 				A069982326CCA59A006E74C6 /* EditMemo */,
 				7A33118326CFD57C00EB520D /* DocumentCamera */,
 				7A11FCA626CB47A600F1A6BC /* SettingTab */,
+				A0F97CE926E0CA4F007CACE5 /* WebPageView */,
 				7AD1611926C2A93F00334A63 /* Component */,
 			);
 			path = View;
@@ -558,6 +565,7 @@
 				A07CAD1726D055C90012201A /* DateExtension.swift */,
 				A07334F526DDAD35004C5436 /* ViewExtension.swift */,
 				A0F97CE526E0BC12007CACE5 /* FirebaseAuthExtension.swift */,
+				A0F97CEE26E0CD55007CACE5 /* URLExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -913,6 +921,15 @@
 				A0BA4CB926C4E37E00D99D8C /* CameraPreview.swift */,
 			);
 			path = ScanBarcode;
+			sourceTree = "<group>";
+		};
+		A0F97CE926E0CA4F007CACE5 /* WebPageView */ = {
+			isa = PBXGroup;
+			children = (
+				A0F97CEA26E0CA61007CACE5 /* WebViewController.swift */,
+				A0F97CEC26E0CA84007CACE5 /* WebPageView.swift */,
+			);
+			path = WebPageView;
 			sourceTree = "<group>";
 		};
 		E9F15947474F72C9A1C5E49C /* Pods */ = {
@@ -1304,6 +1321,7 @@
 				A007C07C26C7805B00270671 /* AccountService.swift in Sources */,
 				7AD1610526C29EB500334A63 /* MainView.swift in Sources */,
 				7AD1611826C2A8BC00334A63 /* UIColorExtension.swift in Sources */,
+				A0F97CED26E0CA84007CACE5 /* WebPageView.swift in Sources */,
 				A007C09026C7EF9700270671 /* FirestoreExtension.swift in Sources */,
 				A008976A26D87296003EFD08 /* ErrorHUD.swift in Sources */,
 				7A33118226CE518F00EB520D /* UIApplicationExtensoin.swift in Sources */,
@@ -1311,6 +1329,7 @@
 				7A11FCA526CB467C00F1A6BC /* NotificationCenterExtension.swift in Sources */,
 				7A11FCC126CD4B9D00F1A6BC /* BookShelfCollectionSection.swift in Sources */,
 				A001E03726CA061B00AC92BA /* PlaceholderTextEditor.swift in Sources */,
+				A0F97CEF26E0CD55007CACE5 /* URLExtension.swift in Sources */,
 				A07CAD1B26D0641E0012201A /* SelectCollectionView.swift in Sources */,
 				A0BA4CB426C4DDFA00D99D8C /* ScanBarcodeViewModel.swift in Sources */,
 				A007C07926C7797000270671 /* TutorialViewModel.swift in Sources */,
@@ -1358,6 +1377,7 @@
 				A07CAD3026D114300012201A /* HomeReadingBookItem.swift in Sources */,
 				A07CAD1026CF95FD0012201A /* RGB.swift in Sources */,
 				A007C09526C8CAB700270671 /* FirestoreGetBook.swift in Sources */,
+				A0F97CEB26E0CA61007CACE5 /* WebViewController.swift in Sources */,
 				A07CAD2126D092640012201A /* UserRepository.swift in Sources */,
 				A052EAD026C3F7F50033CE47 /* GoogleBooksPublicationRepositoryImpl.swift in Sources */,
 				A0F97CE426E0B898007CACE5 /* AnalyticsService.swift in Sources */,

@@ -67,6 +67,29 @@ struct SettingTabView: View {
                 }
                 
                 Section {
+                    NavigationLink {
+                        WebPageView(url: URL.term)
+                            .navigationBarTitle("利用規約", displayMode: .inline)
+
+                    } label: {
+                        HStack {
+                            Text("利用規約")
+                                .font(.medium)
+                                .foregroundColor(.textPrimary)
+                        }
+                    }
+                    
+                    NavigationLink {
+                        WebPageView(url: URL.privacy)
+                            .navigationBarTitle("プライバシーポリシー", displayMode: .inline)
+                    } label: {
+                        HStack {
+                            Text("プライバシーポリシー")
+                                .font(.medium)
+                                .foregroundColor(.textPrimary)
+                        }
+                    }
+                    
 //                    NavigationLink {
 //                        Text("Not implemented yet")
 //                    } label: {

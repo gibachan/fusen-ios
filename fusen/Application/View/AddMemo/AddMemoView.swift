@@ -38,24 +38,10 @@ struct AddMemoView: View {
                 SectionHeaderText("メモ")
             }
             Section {
-                ZStack(alignment: .topTrailing) {
-                    PlaceholderTextEditor(placeholder: "引用する文を入力する", text: $quote)
-                        .frame(minHeight: 100)
-                    
-                    Button {
-                        isQuoteCameraPresented = true
-                    } label: {
-                        Image.camera
-                            .resizable()
-                            .renderingMode(.template)
-                            .frame(width: 24, height: 20)
-                            .foregroundColor(.active)
-                            .offset(y: 8)
-                    }
-                }
-                .buttonStyle(PlainButtonStyle())
+                PlaceholderTextEditor(placeholder: "引用する文を入力する", text: $quote)
+                    .frame(minHeight: 100)
+                    .buttonStyle(PlainButtonStyle())
                 
-                // FIXME: 実機でタイトル入力後にページ画面へ遷移してもすぐさま戻される問題がある
                 Picker(
                     selection: $page,
                     label: Text("ページ :")
@@ -66,41 +52,51 @@ struct AddMemoView: View {
                 }
                 .frame(minHeight: 40)
                 
-                VStack(alignment: .leading, spacing: 8) {
-                    HStack(alignment: .top) {
-                        Text("画像を添付 :")
-                        Spacer()
-                        HStack {
-                            if let image = image,
-                               let uiImage = image.uiImage {
-                                RoundedRectangle(cornerRadius: 4)
-                                    .stroke(Color.placeholder, lineWidth: 1)
-                                    .frame(width: memoImageWidth, height: memoImageHeight)
-                                    .overlay(
-                                        Image(uiImage: uiImage)
+                HStack(alignment: .top) {
+                    Text("画像を添付 :")
+                    Spacer()
+                    HStack {
+                        if let image = image,
+                           let uiImage = image.uiImage {
+                            RoundedRectangle(cornerRadius: 4)
+                                .stroke(Color.placeholder, lineWidth: 1)
+                                .frame(width: memoImageWidth, height: memoImageHeight)
+                                .overlay(
+                                    Image(uiImage: uiImage)
+                                        .resizable()
+                                )
+                                .onTapGesture {
+                                    isEditMemoImage = true
+                                }
+                        } else {
+                            RoundedRectangle(cornerRadius: 4)
+                                .stroke(Color.active, lineWidth: 1)
+                                .frame(width: memoImageWidth, height: memoImageHeight)
+                                .overlay(Image.image
                                             .resizable()
-                                    )
-                                    .onTapGesture {
-                                        isEditMemoImage = true
-                                    }
-                            } else {
-                                RoundedRectangle(cornerRadius: 4)
-                                    .stroke(Color.active, lineWidth: 1)
-                                    .frame(width: memoImageWidth, height: memoImageHeight)
-                                    .overlay(Image.image
-                                                .resizable()
-                                                .frame(width: 24, height: 24)
-                                                .foregroundColor(.active))
-                                    .onTapGesture {
-                                        isImagePickerSelectionPresented = true
-                                    }
-                            }
+                                            .frame(width: 24, height: 24)
+                                            .foregroundColor(.active))
+                                .onTapGesture {
+                                    isImagePickerSelectionPresented = true
+                                }
                         }
                     }
                 }
                 .padding(.vertical, 8)
             } header: {
-                SectionHeaderText("引用(オプション）")
+                HStack(alignment: .center) {
+                    SectionHeaderText("引用(オプション）")
+                    Spacer()
+                    Button {
+                        isQuoteCameraPresented = true
+                    } label: {
+                        Image.camera
+                            .resizable()
+                            .renderingMode(.template)
+                            .frame(width: 24, height: 20)
+                            .foregroundColor(.active)
+                    }
+                }
             }
             .foregroundColor(.textSecondary)
             .listRowBackground(Color.backgroundLightGray)

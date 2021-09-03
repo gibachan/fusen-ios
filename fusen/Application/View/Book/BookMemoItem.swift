@@ -12,6 +12,11 @@ struct BookMemoItem: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 8) {
+                Text(memo.text)
+                    .font(.medium)
+                    .foregroundColor(.textPrimary)
+                    .lineLimit(4)
+                
                 if !memo.quote.isEmpty {
                     HStack {
                         Text(memo.quote)
@@ -26,10 +31,6 @@ struct BookMemoItem: View {
                     .cornerRadius(4)
                 }
 
-                Text(memo.text)
-                    .font(.medium)
-                    .foregroundColor(.textPrimary)
-                    .lineLimit(4)
                 Spacer()
                 
                 HStack(spacing: 8) {

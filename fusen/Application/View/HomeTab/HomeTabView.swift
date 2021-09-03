@@ -15,43 +15,8 @@ struct HomeTabView: View {
         ZStack(alignment: .bottomLeading) {
             List {
                 if case let .loaded(latestBooks, latestMemos) = viewModel.state {
-                    Section {
-                        ForEach(latestBooks, id: \.id.value) { book in
-                            NavigationLink(destination: LazyView(BookView(bookId: book.id))) {
-                                LatestBookItem(book: book)
-                                    .padding(.vertical, 4)
-                            }
-                        }
-                    } header: {
-                        HStack {
-                            SectionHeaderText("最近追加した書籍")
-                            Spacer()
-                            NavigationLink(destination: LazyView(BookListView())) {
-                                ShowAllText()
-                            }
-                        }
-                    }
-                    
-                    Section {
-                        if latestMemos.isEmpty {
-                            BookEmptyMemoItem()
-                                .listRowSeparator(.hidden)
-                        }
-                        ForEach(latestMemos, id: \.id.value) { memo in
-                            NavigationLink(destination: LazyView(EditMemoView(memo: memo))) {
-                                LatestMemoItem(memo: memo)
-                                    .padding(.vertical, 4)
-                            }
-                        }
-                    } header: {
-                        HStack {
-                            SectionHeaderText("最近追加したメモ")
-                            Spacer()
-                            NavigationLink(destination: MemoListView()) {
-                                ShowAllText()
-                            }
-                        }
-                    }
+                    latestBooksSectin(books: latestBooks)
+                    latestMemosSection(memos: latestMemos)
                 }
                 
                 if case .empty = viewModel.state {
@@ -104,6 +69,50 @@ struct HomeTabView: View {
         .onReceive(NotificationCenter.default.tutorialFinishedPublisher()) { _ in
             Task {
                 await viewModel.onRefresh()
+            }
+        }
+    }
+}
+
+extension HomeTabView {
+    private func latestBooksSectin(books: [Book]) -> some View {
+        Section {
+            ForEach(books, id: \.id.value) { book in
+                NavigationLink(destination: LazyView(BookView(bookId: book.id))) {
+                    LatestBookItem(book: book)
+                        .padding(.vertical, 4)
+                }
+            }
+        } header: {
+            HStack {
+                SectionHeaderText("最近追加した書籍")
+                Spacer()
+                NavigationLink(destination: LazyView(BookListView())) {
+                    ShowAllText()
+                }
+            }
+        }
+    }
+    
+    private func latestMemosSection(memos: [Memo]) -> some View {
+        Section {
+            if memos.isEmpty {
+                BookEmptyMemoItem()
+                    .listRowSeparator(.hidden)
+            }
+            ForEach(memos, id: \.id.value) { memo in
+                NavigationLink(destination: LazyView(EditMemoView(memo: memo))) {
+                    LatestMemoItem(memo: memo)
+                        .padding(.vertical, 4)
+                }
+            }
+        } header: {
+            HStack {
+                SectionHeaderText("最近追加したメモ")
+                Spacer()
+                NavigationLink(destination: MemoListView()) {
+                    ShowAllText()
+                }
             }
         }
     }

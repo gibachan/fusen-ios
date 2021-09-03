@@ -65,15 +65,15 @@ struct BookDetailSection: View {
             }
             
             if !isDetailCollapsed {
-                Toggle(isOn: $isFavorite) {
-                    Text("お気に入り")
-                        .font(.medium)
-                        .foregroundColor(.textPrimary)
-                }
-                .onChange(of: isFavorite, perform: { newValue in
-                    favoriteChangeAction(newValue)
-                })
-                .listRowSeparator(.visible)
+//                Toggle(isOn: $isFavorite) {
+//                    Text("お気に入り")
+//                        .font(.medium)
+//                        .foregroundColor(.textPrimary)
+//                }
+//                .onChange(of: isFavorite, perform: { newValue in
+//                    favoriteChangeAction(newValue)
+//                })
+//                .listRowSeparator(.visible)
                 
                 NavigationLink(destination: LazyView(SelectCollectionView(book: book))) {
                     Text("コレクション")

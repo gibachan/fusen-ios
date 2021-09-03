@@ -15,7 +15,7 @@ struct BookShelfItem: View {
     var body: some View {
         HStack(alignment: .top, spacing: 4) {
             BookImageView(url: book.imageURL)
-                .frame(width: 48, height: 64)
+                .frame(width: 48)
             VStack(alignment: .leading) {
                 Text(book.title)
                     .font(.minimal)
@@ -37,6 +37,7 @@ struct BookShelfItem: View {
             .buttonStyle(PlainButtonStyle())
             Spacer()
         }
+        .frame(height: 72)
         .backgroundColor(.white) // Enable to tap empty space
         .onTapGesture {
             isBookPresented = true

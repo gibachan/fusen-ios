@@ -24,6 +24,7 @@ struct BookImageView: View {
             .cancelOnDisappear(true)
             .resizable()
             .scaledToFit()
+            .shadow(color: .backgroundGray, radius: 2)
     }
 }
 

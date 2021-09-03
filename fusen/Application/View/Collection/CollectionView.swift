@@ -69,7 +69,7 @@ struct CollectionView: View {
         .alert(isPresented: $isDeleteAlertPresented) {
             Alert(
                 title: Text("コレクションを削除"),
-                message: Text("コレクションを削除しますか？"),
+                message: Text("コレクションを削除しても、コレクションに設定された書籍は削除されません。コレクションを削除しますか？"),
                 primaryButton: .cancel(Text("キャンセル")),
                 secondaryButton: .destructive(Text("削除"), action: {
                     Task {

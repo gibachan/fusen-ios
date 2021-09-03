@@ -30,7 +30,7 @@ struct TutorialView: View {
                             Text("書籍を登録")
                                 .font(.small.bold())
                                 .foregroundColor(.textPrimary)
-                            Text("バーコードを読み取って簡単に書籍を登録できます。マニュアル登録も可能です。\n書籍はコレクションで分類して整理できます。")
+                            Text("バーコードを読み取って簡単に書籍を登録できます。マニュアル登録も可能です。書籍はコレクションで分類して整理できます。")
                                 .font(.small)
                                 .foregroundColor(.textSecondary)
                         }

@@ -58,6 +58,11 @@ struct BookDetailSection: View {
                 }
             }
             .buttonStyle(PlainButtonStyle())
+            .onTapGesture {
+                withAnimation {
+                    isDetailCollapsed.toggle()
+                }
+            }
             
             if !isDetailCollapsed {
                 Toggle(isOn: $isFavorite) {
@@ -83,11 +88,6 @@ struct BookDetailSection: View {
                         .foregroundColor(.textPrimary)
                 }
             }
-            
-//            NavigationLink(destination: LazyView(EditBookView(book: book)),
-//                           isActive: $isEditBookPresented) {
-//                EmptyView()
-//            }.hidden()
         } header: {
             HStack {
                 SectionHeaderText("書籍情報")

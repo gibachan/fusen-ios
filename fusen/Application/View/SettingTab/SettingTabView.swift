@@ -125,8 +125,6 @@ struct SettingTabView: View {
                             .font(.small)
                             .foregroundColor(.textSecondary)
                     }
-                } header: {
-                    SectionHeaderText("アプリ")
                 }
 #if DEBUG
                 Section {

@@ -80,7 +80,7 @@ struct BookView: View {
                 .alert(isPresented: $isDeleteAlertPresented) {
                     Alert(
                         title: Text("書籍を削除"),
-                        message: Text("書籍を削除しますか？"),
+                        message: Text("書籍と共に関連するデータをすべて削除します。書籍を削除しますか？"),
                         primaryButton: .cancel(Text("キャンセル")),
                         secondaryButton: .destructive(Text("削除"), action: {
                             Task {

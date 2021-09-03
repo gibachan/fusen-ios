@@ -17,7 +17,8 @@ final class ScanBarcodeViewModel: ObservableObject {
     private var lastScannedTime = Date(timeIntervalSince1970: 0)
     private let accountService: AccountServiceProtocol
     private let analyticsService: AnalyticsServiceProtocol
-    private let publicationRepository: PublicationRepository
+    private let rakutenBooksPublicationRepository: PublicationRepository
+    private let googleBooksPublicationRepository: PublicationRepository
     private let bookRepository: BookRepository
 
     @Published var isTorchOn: Bool = false
@@ -26,11 +27,13 @@ final class ScanBarcodeViewModel: ObservableObject {
     
     init(accountService: AccountServiceProtocol = AccountService.shared,
          analyticsService: AnalyticsServiceProtocol = AnalyticsService.shared,
-         publicationRepository: PublicationRepository = RakutenBooksPublicationRepositoryImpl(),
+         rakutenBooksPublicationRepository: PublicationRepository = RakutenBooksPublicationRepositoryImpl(),
+         googleBooksPublicationRepository: PublicationRepository = GoogleBooksPublicationRepositoryImpl(),
          bookRepository: BookRepository = BookRepositoryImpl()) {
         self.accountService = accountService
         self.analyticsService = analyticsService
-        self.publicationRepository = publicationRepository
+        self.rakutenBooksPublicationRepository = rakutenBooksPublicationRepository
+        self.googleBooksPublicationRepository = googleBooksPublicationRepository
         self.bookRepository = bookRepository
         self.isTorchOn = currentTorch()
     }
@@ -59,16 +62,27 @@ final class ScanBarcodeViewModel: ObservableObject {
             lastScannedTime = now
             scanningCode = code
             scannedCode.insert(code)
-
+            
             do {
-                let publication = try await publicationRepository.findBy(isbn: isbn)
-                log.d("Found publication: \(publication)")
+                let publication = try await rakutenBooksPublicationRepository.findBy(isbn: isbn)
+                log.d("Found publication by Rakuten Books API: \(publication)")
                 suggestedBook = publication
+                return
             } catch {
-                log.e(error.localizedDescription)
-                isScanning = false
-                analyticsService.log(event: .scanBarcodeError(code: code))
-                ErrorHUD.show(message: .scanBarcode)
+                log.e("Not Found publiction by Rakuten Books API for \(isbn): \(error.localizedDescription)")
+                analyticsService.log(event: .scanBarcodeByRakutenError(code: code))
+                
+                do {
+                    let publication = try await googleBooksPublicationRepository.findBy(isbn: isbn)
+                    log.d("Found publication by Google Books API: \(publication)")
+                    suggestedBook = publication
+                    return
+                } catch {
+                    log.e("Not Found publiction by Google Books API for \(isbn): \(error.localizedDescription)")
+                    isScanning = false
+                    analyticsService.log(event: .scanBarcodeByGoogleError(code: code))
+                    ErrorHUD.show(message: .scanBarcode)
+                }
             }
         }
     }
@@ -88,8 +102,11 @@ final class ScanBarcodeViewModel: ObservableObject {
             scannedBook = publication
             // 強制的に更新 -> Viewの再構築が発生するため注意
             NotificationCenter.default.postRefreshBookShelfAllCollection()
-            scannedBook = nil
             analyticsService.log(event: .addBookByBarcode)
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
+                self?.scannedBook = nil
+            }
         } catch {
             log.e(error.localizedDescription)
             ErrorHUD.show(message: .addBook)

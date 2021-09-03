@@ -10,7 +10,8 @@ import Foundation
 enum AnalyticsEvent {
     case addBookByManual
     case addBookByBarcode
-    case scanBarcodeError(code: String)
+    case scanBarcodeByRakutenError(code: String)
+    case scanBarcodeByGoogleError(code: String)
 }
 
 extension AnalyticsEvent {
@@ -20,8 +21,10 @@ extension AnalyticsEvent {
             return "add_book_by_manual"
         case .addBookByBarcode:
             return "add_book_by_barcode"
-        case .scanBarcodeError:
-            return "scan_barcode_error"
+        case .scanBarcodeByRakutenError:
+            return "scan_barcode_by_rakuten_error"
+        case .scanBarcodeByGoogleError:
+            return "scan_barcode_by_google_error"
         }
     }
     
@@ -31,7 +34,11 @@ extension AnalyticsEvent {
             return [:]
         case .addBookByBarcode:
             return [:]
-        case let .scanBarcodeError(code: code):
+        case let .scanBarcodeByRakutenError(code: code):
+            return [
+                "barcode": code
+            ]
+        case let .scanBarcodeByGoogleError(code: code):
             return [
                 "barcode": code
             ]

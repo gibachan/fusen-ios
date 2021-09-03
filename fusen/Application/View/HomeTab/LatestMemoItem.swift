@@ -32,10 +32,25 @@ struct LatestMemoItem: View {
                     }
                 }
                 Spacer()
-                Text(memo.text)
-                    .font(.medium)
-                    .foregroundColor(.textPrimary)
-                    .lineLimit(2)
+                
+                if memo.text.isNotEmpty {
+                    Text(memo.text)
+                        .font(.medium)
+                        .foregroundColor(.textPrimary)
+                        .lineLimit(2)
+                } else if memo.quote.isNotEmpty {
+                    HStack {
+                        Text(memo.quote)
+                            .font(.medium)
+                            .foregroundColor(.textSecondary)
+                            .lineLimit(2)
+                        Spacer()
+                    }
+                    .padding(.vertical, 4)
+                    .padding(.horizontal, 8)
+                    .backgroundColor(.backgroundLightGray)
+                    .cornerRadius(4)
+                }
             }
         }
         .task {

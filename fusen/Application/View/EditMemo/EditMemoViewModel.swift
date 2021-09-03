@@ -30,8 +30,8 @@ final class EditMemoViewModel: ObservableObject {
         self.isSaveEnabled = !memo.text.isEmpty
     }
     
-    func onTextChange(_ text: String) {
-        isSaveEnabled = !text.isEmpty
+    func onTextChange(text: String, quote: String) {
+        isSaveEnabled = text.isNotEmpty || quote.isNotEmpty
     }
     
     func onSave(

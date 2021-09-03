@@ -30,7 +30,7 @@ struct EditMemoView: View {
                     PlaceholderTextEditor(placeholder: "メモを入力する", text: $text)
                         .frame(minHeight: 120)
                         .onChange(of: text) { newValue in
-                            viewModel.onTextChange(newValue)
+                            viewModel.onTextChange(text: newValue, quote: quote)
                         }
                 } header: {
                     SectionHeaderText("メモ")
@@ -38,6 +38,9 @@ struct EditMemoView: View {
                 Section {
                     PlaceholderTextEditor(placeholder: "引用する文を入力する", text: $quote)
                         .frame(minHeight: 100)
+                        .onChange(of: quote) { newValue in
+                            viewModel.onTextChange(text: text, quote: newValue)
+                        }
                     
                     Picker(
                         selection: $page,
@@ -61,7 +64,7 @@ struct EditMemoView: View {
                         }
                     }
                 } header: {
-                    SectionHeaderText("引用(オプション）")
+                    SectionHeaderText("引用")
                 }
                 .foregroundColor(.textSecondary)
                 .listRowBackground(Color.backgroundLightGray)

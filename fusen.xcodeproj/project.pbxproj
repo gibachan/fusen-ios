@@ -137,6 +137,7 @@
 		A07CAD2D26D0D1150012201A /* DocumentReferenceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD2C26D0D1150012201A /* DocumentReferenceExtension.swift */; };
 		A07CAD3026D114300012201A /* HomeReadingBookItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD2F26D114300012201A /* HomeReadingBookItem.swift */; };
 		A07CAD3926D147230012201A /* BookEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD3826D147230012201A /* BookEmptyView.swift */; };
+		A07D1A8426E2E7BB00ADF384 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07D1A8326E2E7BB00ADF384 /* StringExtension.swift */; };
 		A082000826C1F5CF00100357 /* FusenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A082000726C1F5CF00100357 /* FusenApp.swift */; };
 		A082000C26C1F5D100100357 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000B26C1F5D100100357 /* Assets.xcassets */; };
 		A082000F26C1F5D100100357 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000E26C1F5D100100357 /* Preview Assets.xcassets */; };
@@ -327,6 +328,7 @@
 		A07CAD2C26D0D1150012201A /* DocumentReferenceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentReferenceExtension.swift; sourceTree = "<group>"; };
 		A07CAD2F26D114300012201A /* HomeReadingBookItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReadingBookItem.swift; sourceTree = "<group>"; };
 		A07CAD3826D147230012201A /* BookEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookEmptyView.swift; sourceTree = "<group>"; };
+		A07D1A8326E2E7BB00ADF384 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		A082000426C1F5CF00100357 /* fusen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fusen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A082000726C1F5CF00100357 /* FusenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FusenApp.swift; sourceTree = "<group>"; };
 		A082000B26C1F5D100100357 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -557,6 +559,7 @@
 				A07334F526DDAD35004C5436 /* ViewExtension.swift */,
 				A0F97CE526E0BC12007CACE5 /* FirebaseAuthExtension.swift */,
 				A0F97CEE26E0CD55007CACE5 /* URLExtension.swift */,
+				A07D1A8326E2E7BB00ADF384 /* StringExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1338,6 +1341,7 @@
 				A0B1FECB26DEEAF600586151 /* MemoQuoteView.swift in Sources */,
 				A07334FF26DDB1EA004C5436 /* MaintenanceView.swift in Sources */,
 				7A69930726D7FC8B006B0697 /* ErrorMessage.swift in Sources */,
+				A07D1A8426E2E7BB00ADF384 /* StringExtension.swift in Sources */,
 				A069982D26CD050D006E74C6 /* CollectionRepository.swift in Sources */,
 				A07CAD2326D095520012201A /* UserRepositoryImpl.swift in Sources */,
 				7A33118526CFD59100EB520D /* DocumentCameraView.swift in Sources */,

@@ -32,7 +32,7 @@ struct AddMemoView: View {
                 PlaceholderTextEditor(placeholder: "メモを入力する", text: $text)
                     .frame(minHeight: 120)
                     .onChange(of: text) { newValue in
-                        viewModel.onTextChange(newValue)
+                        viewModel.onTextChange(text: newValue, quote: quote)
                     }
             } header: {
                 SectionHeaderText("メモ")
@@ -40,8 +40,10 @@ struct AddMemoView: View {
             Section {
                 PlaceholderTextEditor(placeholder: "引用する文を入力する", text: $quote)
                     .frame(minHeight: 100)
-                    .buttonStyle(PlainButtonStyle())
-                
+                    .onChange(of: quote) { newValue in
+                        viewModel.onTextChange(text: text, quote: newValue)
+                    }
+
                 Picker(
                     selection: $page,
                     label: Text("ページ :")
@@ -85,7 +87,7 @@ struct AddMemoView: View {
                 .padding(.vertical, 8)
             } header: {
                 HStack(alignment: .center) {
-                    SectionHeaderText("引用(オプション）")
+                    SectionHeaderText("引用")
                     Spacer()
                     Button {
                         isQuoteCameraPresented = true

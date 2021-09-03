@@ -38,8 +38,8 @@ final class AddMemoViewModel: NSObject, ObservableObject {
         self.memoRepository = memoRepository
     }
     
-    func onTextChange(_ text: String) {
-        isSaveEnabled = !text.isEmpty
+    func onTextChange(text: String, quote: String) {
+        isSaveEnabled = text.isNotEmpty || quote.isNotEmpty
     }
     
     func onQuoteImageTaken(imageData: ImageData) async {

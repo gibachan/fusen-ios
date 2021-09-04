@@ -17,22 +17,11 @@ struct BookMemoItem: View {
                     .foregroundColor(.textPrimary)
                     .lineLimit(4)
                 
-                if !memo.quote.isEmpty {
-                    HStack {
-                        Text(memo.quote)
-                            .font(.medium)
-                            .foregroundColor(.textSecondary)
-                            .lineLimit(4)
-                        Spacer()
-                    }
-                    .padding(.vertical, 4)
-                    .padding(.horizontal, 8)
-                    .backgroundColor(.backgroundLightGray)
-                    .cornerRadius(4)
+                if memo.quote.isNotEmpty {
+                    QuoteText(text: memo.quote)
+                        .lineLimit(4)
                 }
 
-                Spacer()
-                
                 HStack(spacing: 8) {
                     Text("\(memo.updatedAt.string)")
                         .font(.minimal)
@@ -44,7 +33,7 @@ struct BookMemoItem: View {
                             .foregroundColor(.textSecondary)
 
                     }
-                    if !memo.imageURLs.isEmpty {
+                    if memo.imageURLs.isNotEmpty {
                         Image.image
                             .renderingMode(.template)
                             .resizable()

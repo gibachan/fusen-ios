@@ -138,6 +138,7 @@
 		A07CAD3026D114300012201A /* HomeReadingBookItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD2F26D114300012201A /* HomeReadingBookItem.swift */; };
 		A07CAD3926D147230012201A /* BookEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD3826D147230012201A /* BookEmptyView.swift */; };
 		A07D1A8426E2E7BB00ADF384 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07D1A8326E2E7BB00ADF384 /* StringExtension.swift */; };
+		A07D1A8626E2FAE100ADF384 /* QuoteText.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07D1A8526E2FAE100ADF384 /* QuoteText.swift */; };
 		A082000826C1F5CF00100357 /* FusenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A082000726C1F5CF00100357 /* FusenApp.swift */; };
 		A082000C26C1F5D100100357 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000B26C1F5D100100357 /* Assets.xcassets */; };
 		A082000F26C1F5D100100357 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000E26C1F5D100100357 /* Preview Assets.xcassets */; };
@@ -329,6 +330,7 @@
 		A07CAD2F26D114300012201A /* HomeReadingBookItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReadingBookItem.swift; sourceTree = "<group>"; };
 		A07CAD3826D147230012201A /* BookEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookEmptyView.swift; sourceTree = "<group>"; };
 		A07D1A8326E2E7BB00ADF384 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		A07D1A8526E2FAE100ADF384 /* QuoteText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteText.swift; sourceTree = "<group>"; };
 		A082000426C1F5CF00100357 /* fusen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fusen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A082000726C1F5CF00100357 /* FusenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FusenApp.swift; sourceTree = "<group>"; };
 		A082000B26C1F5D100100357 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -911,6 +913,7 @@
 				A001E03626CA061B00AC92BA /* PlaceholderTextEditor.swift */,
 				7A11FCAB26CB521B00F1A6BC /* SectionHeaderText.swift */,
 				7A11FCAD26CB532700F1A6BC /* ShowAllText.swift */,
+				A07D1A8526E2FAE100ADF384 /* QuoteText.swift */,
 			);
 			path = Text;
 			sourceTree = "<group>";
@@ -1288,6 +1291,7 @@
 				A069983826CDD9D6006E74C6 /* CollectionViewModel.swift in Sources */,
 				A0C3C23E26D7680E0032B2C7 /* HomeTabEmptyView.swift in Sources */,
 				A07CAD1226CFBB160012201A /* FirestoreCreateCollection.swift in Sources */,
+				A07D1A8626E2FAE100ADF384 /* QuoteText.swift in Sources */,
 				A0C3C24826D853EF0032B2C7 /* MemoListItemModel.swift in Sources */,
 				A0C3C24426D78DB80032B2C7 /* BookMemoSection.swift in Sources */,
 				A069983D26CDDD21006E74C6 /* MemoListViewModel.swift in Sources */,

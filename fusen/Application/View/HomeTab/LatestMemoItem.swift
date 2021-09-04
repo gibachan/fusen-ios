@@ -39,17 +39,8 @@ struct LatestMemoItem: View {
                         .foregroundColor(.textPrimary)
                         .lineLimit(2)
                 } else if memo.quote.isNotEmpty {
-                    HStack {
-                        Text(memo.quote)
-                            .font(.medium)
-                            .foregroundColor(.textSecondary)
-                            .lineLimit(2)
-                        Spacer()
-                    }
-                    .padding(.vertical, 4)
-                    .padding(.horizontal, 8)
-                    .backgroundColor(.backgroundLightGray)
-                    .cornerRadius(4)
+                    QuoteText(text: memo.quote)
+                        .lineLimit(2)
                 }
             }
         }

@@ -21,6 +21,7 @@ struct AddMemoView: View {
     @State private var isQuoteCameraPresented = false
     private let memoImageWidth: CGFloat = 72
     private let memoImageHeight: CGFloat = 96
+    private let isImageAvailable = false
     
     init(book: Book) {
         self._viewModel = StateObject(wrappedValue: AddMemoViewModel(book: book))
@@ -54,37 +55,39 @@ struct AddMemoView: View {
                 }
                 .frame(minHeight: 40)
                 
-                HStack(alignment: .top) {
-                    Text("画像を添付 :")
-                    Spacer()
-                    HStack {
-                        if let image = image,
-                           let uiImage = image.uiImage {
-                            RoundedRectangle(cornerRadius: 4)
-                                .stroke(Color.placeholder, lineWidth: 1)
-                                .frame(width: memoImageWidth, height: memoImageHeight)
-                                .overlay(
-                                    Image(uiImage: uiImage)
-                                        .resizable()
-                                )
-                                .onTapGesture {
-                                    isEditMemoImage = true
-                                }
-                        } else {
-                            RoundedRectangle(cornerRadius: 4)
-                                .stroke(Color.active, lineWidth: 1)
-                                .frame(width: memoImageWidth, height: memoImageHeight)
-                                .overlay(Image.image
+                if isImageAvailable {
+                    HStack(alignment: .top) {
+                        Text("画像を添付 :")
+                        Spacer()
+                        HStack {
+                            if let image = image,
+                               let uiImage = image.uiImage {
+                                RoundedRectangle(cornerRadius: 4)
+                                    .stroke(Color.placeholder, lineWidth: 1)
+                                    .frame(width: memoImageWidth, height: memoImageHeight)
+                                    .overlay(
+                                        Image(uiImage: uiImage)
                                             .resizable()
-                                            .frame(width: 24, height: 24)
-                                            .foregroundColor(.active))
-                                .onTapGesture {
-                                    isImagePickerSelectionPresented = true
-                                }
+                                    )
+                                    .onTapGesture {
+                                        isEditMemoImage = true
+                                    }
+                            } else {
+                                RoundedRectangle(cornerRadius: 4)
+                                    .stroke(Color.active, lineWidth: 1)
+                                    .frame(width: memoImageWidth, height: memoImageHeight)
+                                    .overlay(Image.image
+                                                .resizable()
+                                                .frame(width: 24, height: 24)
+                                                .foregroundColor(.active))
+                                    .onTapGesture {
+                                        isImagePickerSelectionPresented = true
+                                    }
+                            }
                         }
                     }
+                    .padding(.vertical, 8)
                 }
-                .padding(.vertical, 8)
             } header: {
                 HStack(alignment: .center) {
                     SectionHeaderText("引用")

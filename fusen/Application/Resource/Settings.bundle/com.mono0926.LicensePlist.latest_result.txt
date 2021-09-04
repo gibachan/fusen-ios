@@ -181,12 +181,12 @@ version: 2.3.2
 name: GoogleUtilities, nameSpecified: 
 body: 
                    …
-version: 7.5.1
+version: 7.5.2
 
 name: GoogleUtilities, nameSpecified: 
 body: 
                    …
-version: 7.5.1
+version: 7.5.2
 
 name: GoogleUtilitiesComponents, nameSpecified: 
 body: 
@@ -221,12 +221,12 @@ version: 1.28.2
 name: GTMSessionFetcher, nameSpecified: 
 body: 
                    …
-version: 1.6.1
+version: 1.7.0
 
 name: GTMSessionFetcher, nameSpecified: 
 body: 
                    …
-version: 1.6.1
+version: 1.7.0
 
 name: Kingfisher, nameSpecified: 
 body: The MIT License (MIT…

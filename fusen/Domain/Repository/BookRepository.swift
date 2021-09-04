@@ -17,7 +17,7 @@ protocol BookRepository {
     func getBook(by id: ID<Book>, for user: User) async throws -> Book
     func getLatestBooks(count: Int, for user: User) async throws -> [Book]
 
-    func getAllBooks(for user: User, forceRefresh: Bool) async throws -> Pager<Book>
+    func getAllBooks(sortedBy: BookSort, for user: User, forceRefresh: Bool) async throws -> Pager<Book>
     func getAllBooksNext(for user: User) async throws -> Pager<Book>
     
     func getFavoriteBooks(for user: User, forceRefresh: Bool) async throws -> Pager<Book>
@@ -32,10 +32,4 @@ protocol BookRepository {
     func update(book: Book, collection: Collection, for user: User) async throws
     func update(book: Book, image: ImageData, for user: User) async throws
     func delete(book: Book, for user: User) async throws
-}
-
-extension BookRepository {
-    func getAllBooks(for user: User, forceRefresh: Bool = false) async throws -> Pager<Book> {
-        return try await getAllBooks(for: user, forceRefresh: forceRefresh)
-    }
 }

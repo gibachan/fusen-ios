@@ -14,6 +14,7 @@ final class BookListViewModel: ObservableObject {
 
     @Published var state: State = .initial
     @Published var pager: Pager<Book> = .empty
+    @Published var sortedBy: BookSort = .createdAt
     
     init(
         accountService: AccountServiceProtocol = AccountService.shared,
@@ -29,7 +30,7 @@ final class BookListViewModel: ObservableObject {
         
         state = .loading
         do {
-            let pager = try await bookRepository.getAllBooks(for: user)
+            let pager = try await bookRepository.getAllBooks(sortedBy: sortedBy, for: user, forceRefresh: false)
             log.d("finished=\(pager.finished)")
             self.state = .succeeded
             self.pager = pager
@@ -41,20 +42,7 @@ final class BookListViewModel: ObservableObject {
     }
     
     func onRefresh() async {
-        guard let user = accountService.currentUser else { return }
-        guard !state.isInProgress else { return }
-        
-        state = .refreshing
-        do {
-            let pager = try await bookRepository.getAllBooks(for: user, forceRefresh: true)
-            log.d("finished=\(pager.finished)")
-            self.state = .succeeded
-            self.pager = pager
-        } catch {
-            log.e(error.localizedDescription)
-            self.state = .failed
-            NotificationCenter.default.postError(message: .network)
-        }
+        await refresh()
     }
     
     func onItemApper(of book: Book) async {
@@ -74,6 +62,28 @@ final class BookListViewModel: ObservableObject {
                 self.state = .failed
                 NotificationCenter.default.postError(message: .network)
             }
+        }
+    }
+    
+    func onSort(_ sortedBy: BookSort) async {
+        self.sortedBy = sortedBy
+        await refresh()
+    }
+    
+    private func refresh() async {
+        guard let user = accountService.currentUser else { return }
+        guard !state.isInProgress else { return }
+        
+        state = .refreshing
+        do {
+            let pager = try await bookRepository.getAllBooks(sortedBy: sortedBy, for: user, forceRefresh: true)
+            log.d("finished=\(pager.finished)")
+            self.state = .succeeded
+            self.pager = pager
+        } catch {
+            log.e(error.localizedDescription)
+            self.state = .failed
+            NotificationCenter.default.postError(message: .network)
         }
     }
     

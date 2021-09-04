@@ -24,4 +24,12 @@ extension Query {
     func orderByCreatedAtDesc() -> Query {
         order(by: "createdAt", descending: true)
     }
+
+    func orderByTitleAsc() -> Query {
+        order(by: "title", descending: false)
+    }
+
+    func orderByAuthorAsc() -> Query {
+        order(by: "author", descending: false)
+    }
 }

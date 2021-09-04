@@ -13,6 +13,7 @@ final class BookRepositoryImpl: BookRepository {
     
     // Pagination
     private let perPage = 100
+    private var allBooksSortedBy: BookSort = .createdAt
     private var allBooksCache: PagerCache<Book> = .empty
     private var favoriteBooksCache: PagerCache<Book> = .empty
     private var collectionCache: [ID<Collection>: PagerCache<Book>] = [:]
@@ -48,16 +49,28 @@ final class BookRepositoryImpl: BookRepository {
         }
     }
     
-    func getAllBooks(for user: User, forceRefresh: Bool = false) async throws -> Pager<Book> {
+    func getAllBooks(sortedBy: BookSort, for user: User, forceRefresh: Bool = false) async throws -> Pager<Book> {
         let isCacheValid = allBooksCache.currentPager.data.count >= perPage && !forceRefresh
         if isCacheValid {
             return allBooksCache.currentPager
         }
         
+        allBooksSortedBy = sortedBy
         clearAllBooksCache()
-        let query = db.booksCollection(for: user)
-            .orderByCreatedAtDesc()
-            .limit(to: perPage)
+        
+        let books = db.booksCollection(for: user)
+        var query: Query
+        switch allBooksSortedBy {
+        case .createdAt:
+            query = books.orderByCreatedAtDesc()
+        case .title:
+            query = books.orderByTitleAsc()
+        case .author:
+            query = books.orderByAuthorAsc()
+                .orderByTitleAsc()
+        }
+        query = query.limit(to: perPage)
+        
         do {
             let snapshot = try await query.getDocuments()
             let books = snapshot.documents
@@ -85,9 +98,17 @@ final class BookRepositoryImpl: BookRepository {
             return allBooksCache.currentPager
         }
         
-        let query = db.booksCollection(for: user)
-            .orderByCreatedAtDesc()
-            .start(afterDocument: afterDocument)
+        let books = db.booksCollection(for: user)
+        var query: Query
+        switch allBooksSortedBy {
+        case .createdAt:
+            query = books.orderByCreatedAtDesc()
+        case .title:
+            query = books.orderByTitleAsc()
+        case .author:
+            query = books.orderByAuthorAsc()
+        }
+        query = query.start(afterDocument: afterDocument)
             .limit(to: perPage)
         
         do {

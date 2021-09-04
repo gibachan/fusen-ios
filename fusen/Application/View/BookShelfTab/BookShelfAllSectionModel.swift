@@ -38,7 +38,7 @@ final class BookShelfAllSectionModel: ObservableObject {
         
         state = .loading
         do {
-            let pager = try await bookRepository.getAllBooks(for: user, forceRefresh: false)
+            let pager = try await bookRepository.getAllBooks(sortedBy: .createdAt, for: user, forceRefresh: false)
             state = .succeeded
             
             var displayBooks = Array(pager.data.prefix(Self.maxDiplayBookCount))

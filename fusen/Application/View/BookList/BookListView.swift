@@ -10,6 +10,7 @@ import SwiftUI
 struct BookListView: View {
     @StateObject private var viewModel = BookListViewModel()
     @State private var isAddPresented = false
+    @State private var isSortPresented = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -42,12 +43,38 @@ struct BookListView: View {
         }
         .listStyle(PlainListStyle())
         .navigationBarTitle("すべての書籍", displayMode: .inline)
+        .navigationBarItems(trailing: SortButton {
+            isSortPresented = true
+        })
         .sheet(isPresented: $isAddPresented) {
             Task {
                 await viewModel.onRefresh()
             }
         } content: {
             AddBookMenuView()
+        }
+        .actionSheet(isPresented: $isSortPresented) {
+            ActionSheet(
+                title: Text("書籍をソート"),
+                buttons: [
+                    .default(Text("作成日時でソート")) {
+                        Task {
+                            await viewModel.onSort(.createdAt)
+                        }
+                    },
+                    .default(Text("タイトルでソート")) {
+                        Task {
+                            await viewModel.onSort(.title)
+                        }
+                    },
+                    .default(Text("著者でソート")) {
+                        Task {
+                            await viewModel.onSort(.author)
+                        }
+                    },
+                    .cancel()
+                ]
+            )
         }
         .task {
             await viewModel.onAppear()

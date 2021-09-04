@@ -81,6 +81,8 @@
 		A05CE89526D1A6C6007F9CF2 /* GestureImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05CE89426D1A6C6007F9CF2 /* GestureImageView.swift */; };
 		A05CE89826D26D23007F9CF2 /* BookShelfAllSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05CE89726D26D23007F9CF2 /* BookShelfAllSection.swift */; };
 		A05CE89A26D26D2E007F9CF2 /* BookShelfAllSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05CE89926D26D2E007F9CF2 /* BookShelfAllSectionModel.swift */; };
+		A060092826E365B100EA0BC2 /* SortButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060092726E365B100EA0BC2 /* SortButton.swift */; };
+		A060092C26E3686D00EA0BC2 /* BookSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060092B26E3686D00EA0BC2 /* BookSort.swift */; };
 		A062C18926C5F33500C56E2A /* AppEnv.swift in Sources */ = {isa = PBXBuildFile; fileRef = A062C18826C5F33500C56E2A /* AppEnv.swift */; };
 		A069981126CBE449006E74C6 /* MemoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069981026CBE449006E74C6 /* MemoRepository.swift */; };
 		A069981326CBE47E006E74C6 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069981226CBE47E006E74C6 /* Memo.swift */; };
@@ -273,6 +275,8 @@
 		A05CE89626D1E735007F9CF2 /* fusen.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = fusen.entitlements; sourceTree = "<group>"; };
 		A05CE89726D26D23007F9CF2 /* BookShelfAllSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfAllSection.swift; sourceTree = "<group>"; };
 		A05CE89926D26D2E007F9CF2 /* BookShelfAllSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfAllSectionModel.swift; sourceTree = "<group>"; };
+		A060092726E365B100EA0BC2 /* SortButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortButton.swift; sourceTree = "<group>"; };
+		A060092B26E3686D00EA0BC2 /* BookSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSort.swift; sourceTree = "<group>"; };
 		A062C18826C5F33500C56E2A /* AppEnv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnv.swift; sourceTree = "<group>"; };
 		A069981026CBE449006E74C6 /* MemoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoRepository.swift; sourceTree = "<group>"; };
 		A069981226CBE47E006E74C6 /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
@@ -480,6 +484,7 @@
 			isa = PBXGroup;
 			children = (
 				A052EAC726C3F4C00033CE47 /* Entity */,
+				A060092A26E3685D00EA0BC2 /* Logic */,
 				A052EAC826C3F4C90033CE47 /* Repository */,
 			);
 			path = Domain;
@@ -727,6 +732,14 @@
 			path = Response;
 			sourceTree = "<group>";
 		};
+		A060092A26E3685D00EA0BC2 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				A060092B26E3686D00EA0BC2 /* BookSort.swift */,
+			);
+			path = Logic;
+			sourceTree = "<group>";
+		};
 		A069981826CC3766006E74C6 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -890,6 +903,7 @@
 				A001E05426CBCA8A00AC92BA /* SaveButton.swift */,
 				A052EAC326C3E4140033CE47 /* CancelButton.swift */,
 				A020544426CE8CC7002FF585 /* DeleteButton.swift */,
+				A060092726E365B100EA0BC2 /* SortButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -1286,6 +1300,7 @@
 				A0B9482F26D3BF4C00C47204 /* ImageStorage.swift in Sources */,
 				A07CAD1F26D0670A0012201A /* CollectionItemView.swift in Sources */,
 				A07334F626DDAD35004C5436 /* ViewExtension.swift in Sources */,
+				A060092826E365B100EA0BC2 /* SortButton.swift in Sources */,
 				7A11FCA826CB47E200F1A6BC /* SettingTabViewModel.swift in Sources */,
 				7A11FCB626CB5DD400F1A6BC /* AddMemoView.swift in Sources */,
 				A069983826CDD9D6006E74C6 /* CollectionViewModel.swift in Sources */,
@@ -1364,6 +1379,7 @@
 				7A11FCA326CB45DF00F1A6BC /* NotificationExtension.swift in Sources */,
 				7A11FCB826CB5DDC00F1A6BC /* AddMemoViewModel.swift in Sources */,
 				A069981526CBE6A0006E74C6 /* MemoRepositoryImpl.swift in Sources */,
+				A060092C26E3686D00EA0BC2 /* BookSort.swift in Sources */,
 				A07CAD1826D055C90012201A /* DateExtension.swift in Sources */,
 				A020544126CE88BD002FF585 /* EditMemoImageView.swift in Sources */,
 				A007C08026C78E8500270671 /* ID.swift in Sources */,

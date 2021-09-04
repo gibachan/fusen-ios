@@ -25,6 +25,7 @@ extension Image {
     static let checkmark = Image(systemName: "checkmark")
     static let image = Image(systemName: "doc.richtext")
     static let chevronRight = Image(systemName: "chevron.right")
+    static let sort = Image(systemName: "arrow.up.arrow.down")
     static let delete = Image(systemName: "trash")
     static let info = Image(systemName: "info.circle")
     static let warning = Image(systemName: "exclamationmark.triangle")

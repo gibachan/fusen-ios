@@ -10,18 +10,15 @@ import Foundation
 @MainActor
 final class BookShelfAllSectionModel: ObservableObject {
     private static let maxDiplayBookCount = 6
-    private let accountService: AccountServiceProtocol
-    private let bookRepository: BookRepository
+    private let getAllBooksUseCase: GetAllBooksUseCase
     
     @Published var state: State = .initial
     @Published var books: [[Book]] = []
     
     init(
-        accountService: AccountServiceProtocol = AccountService.shared,
-        bookRepository: BookRepository = BookRepositoryImpl()
+        getAllBooksUseCase: GetAllBooksUseCase = GetAllBooksUseCaseImpl(sortedBy: .default)
     ) {
-        self.accountService = accountService
-        self.bookRepository = bookRepository
+        self.getAllBooksUseCase = getAllBooksUseCase
     }
     
     func onAppear() async {
@@ -33,12 +30,11 @@ final class BookShelfAllSectionModel: ObservableObject {
     }
     
     private func getBooks() async {
-        guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
         
         state = .loading
         do {
-            let pager = try await bookRepository.getAllBooks(sortedBy: .default, for: user, forceRefresh: false)
+            let pager = try await getAllBooksUseCase.invoke(forceRefresh: false)
             state = .succeeded
             
             var displayBooks = Array(pager.data.prefix(Self.maxDiplayBookCount))
@@ -55,8 +51,6 @@ final class BookShelfAllSectionModel: ObservableObject {
         }
     }
     
-    // associated valueに変更があってもSwiftUIは検知してくれない
-    // (state自体が変更されない限りViewが更新されない）
     enum State {
         case initial
         case loading

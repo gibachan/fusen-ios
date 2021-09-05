@@ -10,9 +10,11 @@ import Foundation
 @MainActor
 final class BookViewModel: ObservableObject {
     private let bookId: ID<Book>
-    private let accountService: AccountServiceProtocol
-    private let userRepository: UserRepository
-    private let bookRepository: BookRepository
+    private let getBookByIdUseCase: GetBookByIdUseCase
+    private let getReadingBookUseCase: GetReadingBookUseCase
+    private let updateReadingBookUseCase: UpdateReadingBookUseCase
+    private let updateFavoriteBookUseCase: UpdateFavoriteBookUseCase
+    private let deleteBookUseCase: DeleteBookUseCase
     
     private var favoriteState: FavoriteState = .initial
     private var readingBookState: ReadingBookState = .initial
@@ -23,14 +25,18 @@ final class BookViewModel: ObservableObject {
     
     init(
         bookId: ID<Book>,
-        accountService: AccountServiceProtocol = AccountService.shared,
-        userRepository: UserRepository = UserRepositoryImpl(),
-        bookRepository: BookRepository = BookRepositoryImpl()
+        getBookByIdUseCase: GetBookByIdUseCase = GetBookByIdUseCaseImpl(),
+        getReadingBookUseCase: GetReadingBookUseCase = GetReadingBookUseCaseImpl(),
+        updateReadingBookUseCase: UpdateReadingBookUseCase = UpdateReadingBookUseCaseImpl(),
+        updateFavoriteBookUseCase: UpdateFavoriteBookUseCase = UpdateFavoriteBookUseCaseImpl(),
+        deleteBookUseCase: DeleteBookUseCase = DeleteBookUseCaseImpl()
     ) {
         self.bookId = bookId
-        self.accountService = accountService
-        self.userRepository = userRepository
-        self.bookRepository = bookRepository
+        self.getBookByIdUseCase = getBookByIdUseCase
+        self.getReadingBookUseCase = getReadingBookUseCase
+        self.updateReadingBookUseCase = updateReadingBookUseCase
+        self.updateFavoriteBookUseCase = updateFavoriteBookUseCase
+        self.deleteBookUseCase = deleteBookUseCase
     }
     
     func onAppear() async {
@@ -42,14 +48,13 @@ final class BookViewModel: ObservableObject {
     }
     
     func onReadingToggle() async {
-        guard let user = accountService.currentUser else { return }
         guard case let .loaded(book) = state else { return }
         guard !readingBookState.isInProgress else { return }
         
         readingBookState = .loading
         do {
             let readingBook: Book? = isReadingBook ? nil : book
-            try await userRepository.update(readingBook: readingBook, for: user)
+            try await updateReadingBookUseCase.invoke(readingBook: readingBook)
             readingBookState = .loaded
             isReadingBook = readingBook != nil
         } catch {
@@ -60,13 +65,12 @@ final class BookViewModel: ObservableObject {
     }
     
     func onFavoriteChange(isFavorite: Bool) async {
-        guard let user = accountService.currentUser else { return }
         guard case let .loaded(book) = state else { return }
         guard !favoriteState.isInProgress else { return }
 
         favoriteState = .loading
         do {
-            try await bookRepository.update(book: book, isFavorite: isFavorite, for: user)
+            try await updateFavoriteBookUseCase.invoke(book: book, isFavorite: isFavorite)
             self.favoriteState = .loaded
             self.isFavorite = isFavorite
         } catch {
@@ -77,12 +81,11 @@ final class BookViewModel: ObservableObject {
     }
     
     func onDelete() async {
-        guard let user = accountService.currentUser else { return }
         guard case let .loaded(book) = state else { return }
         
         state = .loading
         do {
-            try await bookRepository.delete(book: book, for: user)
+            try await deleteBookUseCase.invoke(book: book)
             state = .deleted
         } catch {
             log.e(error.localizedDescription)
@@ -92,7 +95,6 @@ final class BookViewModel: ObservableObject {
     }
     
     private func load() async {
-        guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
         
         state = .loading
@@ -109,10 +111,10 @@ final class BookViewModel: ObservableObject {
 //                self?.memoPager = result.memoPager
 //            }
 
-            let userInfo = try await userRepository.getInfo(for: user)
-            let book = try await bookRepository.getBook(by: bookId, for: user)
+            let book = try await getBookByIdUseCase.invoke(id: bookId)
+            let readingBook = try await getReadingBookUseCase.invoke()
             self.state = .loaded(book: book)
-            self.isReadingBook = userInfo.readingBookId == book.id
+            self.isReadingBook = readingBook?.id == book.id
             self.isFavorite = book.isFavorite
         } catch {
             log.e(error.localizedDescription)

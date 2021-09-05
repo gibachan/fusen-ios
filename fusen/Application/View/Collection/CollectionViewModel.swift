@@ -10,32 +10,27 @@ import Foundation
 @MainActor
 final class CollectionViewModel: ObservableObject {
     private let collection: Collection
-    private let accountService: AccountServiceProtocol
-    private let bookRepository: BookRepository
-    private let collectionRepository: CollectionRepository
+    private let getBooksByCollectionUseCase: GetBooksByCollectionUseCase
+    private let deleteCollectionUseCase: DeleteCollectionUseCase
     
     @Published var state: State = .initial
     @Published var pager: Pager<Book> = .empty
     
     init(
         collection: Collection,
-        accountService: AccountServiceProtocol = AccountService.shared,
-        bookRepository: BookRepository = BookRepositoryImpl(),
-        collectionRepository: CollectionRepository = CollectionRepositoryImpl()
+        deleteCollectionUseCase: DeleteCollectionUseCase = DeleteCollectionUseCaseImpl()
     ) {
         self.collection = collection
-        self.accountService = accountService
-        self.bookRepository = bookRepository
-        self.collectionRepository = collectionRepository
+        self.getBooksByCollectionUseCase = GetBooksByCollectionUseCaseImpl(collection: collection)
+        self.deleteCollectionUseCase = deleteCollectionUseCase
     }
     
     func onAppear() async {
-        guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
         
         state = .loading
         do {
-            let pager = try await bookRepository.getBooks(by: collection, for: user, forceRefresh: false)
+            let pager = try await getBooksByCollectionUseCase.invoke(forceRefresh: false)
             log.d("finished=\(pager.finished)")
             self.state = .succeeded
             self.pager = pager
@@ -47,12 +42,11 @@ final class CollectionViewModel: ObservableObject {
     }
     
     func onRefresh() async {
-        guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
         
         state = .refreshing
         do {
-            let pager = try await bookRepository.getBooks(by: collection, for: user, forceRefresh: true)
+            let pager = try await getBooksByCollectionUseCase.invoke(forceRefresh: true)
             log.d("finished=\(pager.finished)")
             self.state = .succeeded
             self.pager = pager
@@ -64,13 +58,12 @@ final class CollectionViewModel: ObservableObject {
     
     func onItemApper(of book: Book) async {
         guard case .succeeded = state, !pager.finished else { return }
-        guard let user = accountService.currentUser else { return }
         guard let lastBook = pager.data.last else { return }
         
         if book.id == lastBook.id {
             state = .loadingNext
             do {
-                let pager = try await bookRepository.getBooksNext(by: collection, for: user)
+                let pager = try await getBooksByCollectionUseCase.invokeNext()
                 log.d("finished=\(pager.finished)")
                 self.state = .succeeded
                 self.pager = pager
@@ -82,12 +75,11 @@ final class CollectionViewModel: ObservableObject {
     }
     
     func onDelete() async {
-        guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
         
         state = .loading
         do {
-            try await collectionRepository.delete(collection: collection, for: user)
+            try await deleteCollectionUseCase.invoke(collection: collection)
             state = .deleted
         } catch {
             print(error.localizedDescription)

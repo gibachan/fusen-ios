@@ -13,21 +13,21 @@ final class MainViewModel: ObservableObject {
     @Published var isMaintaining = false
     
     private let accountService: AccountServiceProtocol
-    private let appConfigRepository: AppConfigRepository
+    private let getAppConfigUseCase: GetAppConfigUseCase
     
     init(
         accountService: AccountServiceProtocol = AccountService.shared,
-        appConfigRepository: AppConfigRepository = AppConfigRepositoryImpl()
+        getAppConfigUseCase: GetAppConfigUseCase = GetAppConfigUseCaseImpl()
     ) {
         self.accountService = accountService
-        self.appConfigRepository = appConfigRepository
+        self.getAppConfigUseCase = getAppConfigUseCase
     }
     
     func onAppear() async {
         log.d("logged in user=\(accountService.currentUser?.id.value ?? "nil")")
         showTutorial = !accountService.isLoggedIn
 
-        let config = await appConfigRepository.get()
+        let config = await getAppConfigUseCase.invoke()
         self.isMaintaining = config.isMaintaining
     }
 }

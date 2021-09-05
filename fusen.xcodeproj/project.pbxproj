@@ -85,6 +85,7 @@
 		A060092C26E3686D00EA0BC2 /* BookSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060092B26E3686D00EA0BC2 /* BookSort.swift */; };
 		A060092E26E43B4400EA0BC2 /* MemoSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060092D26E43B4400EA0BC2 /* MemoSort.swift */; };
 		A060093226E48A0700EA0BC2 /* GetAllBooksUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060093126E48A0700EA0BC2 /* GetAllBooksUseCase.swift */; };
+		A060093426E48F5900EA0BC2 /* GetAppConfigUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060093326E48F5900EA0BC2 /* GetAppConfigUseCase.swift */; };
 		A062C18926C5F33500C56E2A /* AppEnv.swift in Sources */ = {isa = PBXBuildFile; fileRef = A062C18826C5F33500C56E2A /* AppEnv.swift */; };
 		A069981126CBE449006E74C6 /* MemoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069981026CBE449006E74C6 /* MemoRepository.swift */; };
 		A069981326CBE47E006E74C6 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069981226CBE47E006E74C6 /* Memo.swift */; };
@@ -281,6 +282,7 @@
 		A060092B26E3686D00EA0BC2 /* BookSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSort.swift; sourceTree = "<group>"; };
 		A060092D26E43B4400EA0BC2 /* MemoSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoSort.swift; sourceTree = "<group>"; };
 		A060093126E48A0700EA0BC2 /* GetAllBooksUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllBooksUseCase.swift; sourceTree = "<group>"; };
+		A060093326E48F5900EA0BC2 /* GetAppConfigUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAppConfigUseCase.swift; sourceTree = "<group>"; };
 		A062C18826C5F33500C56E2A /* AppEnv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnv.swift; sourceTree = "<group>"; };
 		A069981026CBE449006E74C6 /* MemoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoRepository.swift; sourceTree = "<group>"; };
 		A069981226CBE47E006E74C6 /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
@@ -749,6 +751,7 @@
 		A060093026E489EA00EA0BC2 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				A060093326E48F5900EA0BC2 /* GetAppConfigUseCase.swift */,
 				A060093126E48A0700EA0BC2 /* GetAllBooksUseCase.swift */,
 			);
 			path = UseCase;
@@ -1425,6 +1428,7 @@
 				7AA6D7A226D2830200781F48 /* BookShelfFavoriteSection.swift in Sources */,
 				A069982926CCAB07006E74C6 /* FirestoreUpdateMemo.swift in Sources */,
 				A05CE89826D26D23007F9CF2 /* BookShelfAllSection.swift in Sources */,
+				A060093426E48F5900EA0BC2 /* GetAppConfigUseCase.swift in Sources */,
 				A07507DE26C5E53C0087AE5C /* AppDelegate.swift in Sources */,
 				A0B9482D26D3A32300C47204 /* ImagePicker.swift in Sources */,
 				7A11FCB326CB57FE00F1A6BC /* ControlToolbar.swift in Sources */,

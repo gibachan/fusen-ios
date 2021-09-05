@@ -9,22 +9,19 @@ import Foundation
 
 @MainActor
 final class BookShelfTabViewModel: ObservableObject {
-    private let accountService: AccountServiceProtocol
-    private let bookRepository: BookRepository
-    private let collectionRepository: CollectionRepository
+    private let getFavoriteBooksUseCase: GetFavoriteBooksUseCase
+    private let getCollectionsUseCase: GetCollectionsUseCase
     
     @Published var state: State = .initial
     @Published var isFavoriteVisible = false
     @Published var collections: [Collection] = []
     
     init(
-        accountService: AccountServiceProtocol = AccountService.shared,
-        bookRepository: BookRepository = BookRepositoryImpl(),
-        collectionRepository: CollectionRepository = CollectionRepositoryImpl()
+        getFavoriteBooksUseCase: GetFavoriteBooksUseCase = GetFavoriteBooksUseCaseImpl(),
+        getCollectionsUseCase: GetCollectionsUseCase = GetCollectionsUseCaseImpl()
     ) {
-        self.accountService = accountService
-        self.bookRepository = bookRepository
-        self.collectionRepository = collectionRepository
+        self.getFavoriteBooksUseCase = getFavoriteBooksUseCase
+        self.getCollectionsUseCase = getCollectionsUseCase
     }
     
     func onAppear() async {
@@ -36,13 +33,12 @@ final class BookShelfTabViewModel: ObservableObject {
     }
     
     private func getCollections() async {
-        guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
         
         state = .loading
         do {
-            let favoriteBooks = try await bookRepository.getFavoriteBooks(for: user, forceRefresh: true)
-            let collections = try await collectionRepository.getlCollections(for: user)
+            let favoriteBooks = try await getFavoriteBooksUseCase.invoke(forceRefresh: true)
+            let collections = try await getCollectionsUseCase.invoke()
             self.state = .succeeded
             self.isFavoriteVisible = !favoriteBooks.data.isEmpty
             self.collections = collections
@@ -57,8 +53,6 @@ final class BookShelfTabViewModel: ObservableObject {
     enum State {
         case initial
         case loading
-        case loadingNext
-        case refreshing
         case succeeded
         case failed
         
@@ -66,7 +60,7 @@ final class BookShelfTabViewModel: ObservableObject {
             switch self {
             case .initial, .succeeded, .failed:
                 return false
-            case .loading, .loadingNext, .refreshing:
+            case .loading:
                 return true
             }
         }

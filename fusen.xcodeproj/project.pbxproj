@@ -90,6 +90,8 @@
 		A060093826E492FF00EA0BC2 /* GetReadingBookUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060093726E492FF00EA0BC2 /* GetReadingBookUseCase.swift */; };
 		A060093A26E4932F00EA0BC2 /* LatestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060093926E4932F00EA0BC2 /* LatestData.swift */; };
 		A060093C26E4963400EA0BC2 /* GetBookByIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060093B26E4963400EA0BC2 /* GetBookByIdUseCase.swift */; };
+		A060093E26E498E600EA0BC2 /* GetFavoriteBooksUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060093D26E498E600EA0BC2 /* GetFavoriteBooksUseCase.swift */; };
+		A060094026E499F300EA0BC2 /* GetCollectionsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060093F26E499F300EA0BC2 /* GetCollectionsUseCase.swift */; };
 		A062C18926C5F33500C56E2A /* AppEnv.swift in Sources */ = {isa = PBXBuildFile; fileRef = A062C18826C5F33500C56E2A /* AppEnv.swift */; };
 		A069981126CBE449006E74C6 /* MemoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069981026CBE449006E74C6 /* MemoRepository.swift */; };
 		A069981326CBE47E006E74C6 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069981226CBE47E006E74C6 /* Memo.swift */; };
@@ -291,6 +293,8 @@
 		A060093726E492FF00EA0BC2 /* GetReadingBookUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReadingBookUseCase.swift; sourceTree = "<group>"; };
 		A060093926E4932F00EA0BC2 /* LatestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestData.swift; sourceTree = "<group>"; };
 		A060093B26E4963400EA0BC2 /* GetBookByIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBookByIdUseCase.swift; sourceTree = "<group>"; };
+		A060093D26E498E600EA0BC2 /* GetFavoriteBooksUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFavoriteBooksUseCase.swift; sourceTree = "<group>"; };
+		A060093F26E499F300EA0BC2 /* GetCollectionsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCollectionsUseCase.swift; sourceTree = "<group>"; };
 		A062C18826C5F33500C56E2A /* AppEnv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnv.swift; sourceTree = "<group>"; };
 		A069981026CBE449006E74C6 /* MemoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoRepository.swift; sourceTree = "<group>"; };
 		A069981226CBE47E006E74C6 /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
@@ -761,10 +765,12 @@
 			isa = PBXGroup;
 			children = (
 				A060093326E48F5900EA0BC2 /* GetAppConfigUseCase.swift */,
-				A060093126E48A0700EA0BC2 /* GetAllBooksUseCase.swift */,
 				A060093526E490BB00EA0BC2 /* GetLatestDataUseCase.swift */,
 				A060093726E492FF00EA0BC2 /* GetReadingBookUseCase.swift */,
 				A060093B26E4963400EA0BC2 /* GetBookByIdUseCase.swift */,
+				A060093126E48A0700EA0BC2 /* GetAllBooksUseCase.swift */,
+				A060093D26E498E600EA0BC2 /* GetFavoriteBooksUseCase.swift */,
+				A060093F26E499F300EA0BC2 /* GetCollectionsUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -1318,6 +1324,7 @@
 				A07CAD2526D096020012201A /* FirestoreUpdateUser.swift in Sources */,
 				A07334FC26DDAFDE004C5436 /* AppConfigRepositoryImpl.swift in Sources */,
 				A07CAD0326CED9A20012201A /* ImageDataExtension.swift in Sources */,
+				A060093E26E498E600EA0BC2 /* GetFavoriteBooksUseCase.swift in Sources */,
 				A07334F026DA420F004C5436 /* TextRecognizeService.swift in Sources */,
 				7A11FCAA26CB47EA00F1A6BC /* SettingTabView.swift in Sources */,
 				A069981A26CC3774006E74C6 /* QueryExtension.swift in Sources */,
@@ -1366,6 +1373,7 @@
 				A07CAD3926D147230012201A /* BookEmptyView.swift in Sources */,
 				7A69931226DD0836006B0697 /* RakutenBooksResponse.swift in Sources */,
 				A0BA4CB226C4DDF100D99D8C /* ScanBarcodeView.swift in Sources */,
+				A060094026E499F300EA0BC2 /* GetCollectionsUseCase.swift in Sources */,
 				A0BA4CBA26C4E37E00D99D8C /* CameraPreview.swift in Sources */,
 				A069983F26CDDD7F006E74C6 /* MemoListItem.swift in Sources */,
 				A001E05526CBCA8A00AC92BA /* SaveButton.swift in Sources */,

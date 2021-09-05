@@ -12,30 +12,32 @@ struct HomeReadingBookItem: View {
     let book: Book
     let action: () -> Void
     var body: some View {
-        HStack(alignment: .center) {
-            VStack(alignment: .leading, spacing: 4) {
-                Text("読書中の書籍")
-                    .font(.small)
-                    .fontWeight(.bold)
-                    .foregroundColor(.textSecondary)
-                HStack(alignment: .center) {
-                    BookImageView(url: book.imageURL)
-                        .frame(width: 30, height: 40)
-                    Text(book.title)
+        NavigationLink(destination: LazyView(BookView(bookId: book.id))) {
+            HStack(alignment: .center) {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("読書中の書籍")
                         .font(.small)
-                        .lineLimit(2)
+                        .fontWeight(.bold)
                         .foregroundColor(.textSecondary)
-                    
+                    HStack(alignment: .center) {
+                        BookImageView(url: book.imageURL)
+                            .frame(width: 30, height: 40)
+                        Text(book.title)
+                            .font(.small)
+                            .lineLimit(2)
+                            .foregroundColor(.textSecondary)
+                        
+                    }
                 }
+                Spacer()
+                Image.memo
+                    .resizable()
+                    .foregroundColor(.active)
+                    .frame(width: 24, height: 24)
+                    .onTapGesture {
+                        action()
+                    }
             }
-            Spacer()
-            Image.memo
-                .resizable()
-                .foregroundColor(.active)
-                .frame(width: 24, height: 24)
-                .onTapGesture {
-                    action()
-                }
         }
         .padding(.vertical, 8)
         .padding(.horizontal, 24)

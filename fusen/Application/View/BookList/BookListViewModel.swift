@@ -13,10 +13,12 @@ final class BookListViewModel: ObservableObject {
 
     @Published var state: State = .initial
     @Published var pager: Pager<Book> = .empty
-    @Published var sortedBy: BookSort = .default
+    @Published var sortedBy: BookSort
     
     init() {
-        getAllBooksUseCase = GetAllBooksUseCaseImpl(sortedBy: .default)
+        let sortedBy = BookSort.default
+        self.sortedBy = sortedBy
+        getAllBooksUseCase = GetAllBooksUseCaseImpl(sortedBy: sortedBy)
     }
 
     func onAppear() async {

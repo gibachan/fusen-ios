@@ -15,6 +15,7 @@ final class BookMemoSectionModel: ObservableObject {
     
     @Published var state: State = .initial
     @Published var memoPager: Pager<Memo> = .empty
+    @Published var sortedBy: MemoSort = .default
     
     init(
         bookId: ID<Book>,
@@ -52,6 +53,11 @@ final class BookMemoSectionModel: ObservableObject {
         }
     }
     
+    func onSort(_ sortedBy: MemoSort) async {
+        self.sortedBy = sortedBy
+        await load()
+    }
+    
     private func load() async {
         guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
@@ -70,7 +76,7 @@ final class BookMemoSectionModel: ObservableObject {
             //                self?.memoPager = result.memoPager
             //            }
             
-            let memoPager = try await memoRepository.getMemos(of: bookId, for: user, forceRefresh: false)
+            let memoPager = try await memoRepository.getMemos(of: bookId, sortedBy: sortedBy, for: user, forceRefresh: false)
             self.memoPager = memoPager
             self.state = .loaded(memos: memoPager.data)
         } catch {

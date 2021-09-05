@@ -13,7 +13,7 @@ final class BookRepositoryImpl: BookRepository {
     
     // Pagination
     private let perPage = 100
-    private var allBooksSortedBy: BookSort = .createdAt
+    private var allBooksSortedBy: BookSort = .default
     private var allBooksCache: PagerCache<Book> = .empty
     private var favoriteBooksCache: PagerCache<Book> = .empty
     private var collectionCache: [ID<Collection>: PagerCache<Book>] = [:]

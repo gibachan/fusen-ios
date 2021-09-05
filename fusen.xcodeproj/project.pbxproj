@@ -83,6 +83,7 @@
 		A05CE89A26D26D2E007F9CF2 /* BookShelfAllSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05CE89926D26D2E007F9CF2 /* BookShelfAllSectionModel.swift */; };
 		A060092826E365B100EA0BC2 /* SortButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060092726E365B100EA0BC2 /* SortButton.swift */; };
 		A060092C26E3686D00EA0BC2 /* BookSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060092B26E3686D00EA0BC2 /* BookSort.swift */; };
+		A060092E26E43B4400EA0BC2 /* MemoSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060092D26E43B4400EA0BC2 /* MemoSort.swift */; };
 		A062C18926C5F33500C56E2A /* AppEnv.swift in Sources */ = {isa = PBXBuildFile; fileRef = A062C18826C5F33500C56E2A /* AppEnv.swift */; };
 		A069981126CBE449006E74C6 /* MemoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069981026CBE449006E74C6 /* MemoRepository.swift */; };
 		A069981326CBE47E006E74C6 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069981226CBE47E006E74C6 /* Memo.swift */; };
@@ -277,6 +278,7 @@
 		A05CE89926D26D2E007F9CF2 /* BookShelfAllSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfAllSectionModel.swift; sourceTree = "<group>"; };
 		A060092726E365B100EA0BC2 /* SortButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortButton.swift; sourceTree = "<group>"; };
 		A060092B26E3686D00EA0BC2 /* BookSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSort.swift; sourceTree = "<group>"; };
+		A060092D26E43B4400EA0BC2 /* MemoSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoSort.swift; sourceTree = "<group>"; };
 		A062C18826C5F33500C56E2A /* AppEnv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnv.swift; sourceTree = "<group>"; };
 		A069981026CBE449006E74C6 /* MemoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoRepository.swift; sourceTree = "<group>"; };
 		A069981226CBE47E006E74C6 /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
@@ -736,6 +738,7 @@
 			isa = PBXGroup;
 			children = (
 				A060092B26E3686D00EA0BC2 /* BookSort.swift */,
+				A060092D26E43B4400EA0BC2 /* MemoSort.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -1390,6 +1393,7 @@
 				7AA6D7A926D3427E00781F48 /* EditBookViewModel.swift in Sources */,
 				A0C3C24626D78DC30032B2C7 /* BookMemoSectionModel.swift in Sources */,
 				A007C08926C7DABE00270671 /* BookRepository.swift in Sources */,
+				A060092E26E43B4400EA0BC2 /* MemoSort.swift in Sources */,
 				A07CAD2B26D0C7130012201A /* FirestoreGetUserInfo.swift in Sources */,
 				A0C3C24026D77D780032B2C7 /* BookDetailSection.swift in Sources */,
 				7A11FCAE26CB532700F1A6BC /* ShowAllText.swift in Sources */,

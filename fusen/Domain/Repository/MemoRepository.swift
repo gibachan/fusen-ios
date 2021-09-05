@@ -18,7 +18,7 @@ protocol MemoRepository {
     func getAllMemos(for user: User, forceRefresh: Bool) async throws -> Pager<Memo>
     func getAllMemosNext(for user: User) async throws -> Pager<Memo>
 
-    func getMemos(of bookId: ID<Book>, for user: User, forceRefresh: Bool) async throws -> Pager<Memo>
+    func getMemos(of bookId: ID<Book>, sortedBy: MemoSort, for user: User, forceRefresh: Bool) async throws -> Pager<Memo>
     func getNextMemos(of bookId: ID<Book>, for user: User) async throws -> Pager<Memo>
 
     func addMemo(of book: Book, text: String, quote: String, page: Int?, image: ImageData?, for user: User) async throws -> ID<Memo>

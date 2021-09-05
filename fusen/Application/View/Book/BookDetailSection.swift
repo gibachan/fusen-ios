@@ -54,6 +54,7 @@ struct BookDetailSection: View {
                         readingToggleAction()
                     } label: {
                         ReadingMark(isReading: isReadingBook)
+                            .shadow(color: .backgroundGray, radius: 2, x: 2, y: 2)
                     }
                 }
             }

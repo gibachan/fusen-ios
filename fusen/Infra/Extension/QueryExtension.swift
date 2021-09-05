@@ -32,4 +32,8 @@ extension Query {
     func orderByAuthorAsc() -> Query {
         order(by: "author", descending: false)
     }
+    
+    func orderByPageAsc() -> Query {
+        order(by: "page", descending: false)
+    }
 }

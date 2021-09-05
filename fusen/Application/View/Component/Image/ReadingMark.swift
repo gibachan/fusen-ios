@@ -15,16 +15,16 @@ struct ReadingMark: View {
                 .font(.medium)
                 .foregroundColor(.white)
                 .padding(.horizontal, 12)
-                .padding(.vertical, 4)
+                .padding(.vertical, 6)
                 .background(Capsule().fill(Color.active))
         } else {
             Text("読書中")
                 .font(.medium)
                 .foregroundColor(.inactive)
                 .padding(.horizontal, 12)
-                .padding(.vertical, 4)
+                .padding(.vertical, 6)
                 .background(Capsule().stroke(Color.inactive, lineWidth: 1))
-                .background(Capsule().fill(Color.backgroundLightGray))
+                .background(Capsule().fill(Color.white))
         }
     }
 }

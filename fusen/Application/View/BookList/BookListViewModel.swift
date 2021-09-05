@@ -14,7 +14,7 @@ final class BookListViewModel: ObservableObject {
 
     @Published var state: State = .initial
     @Published var pager: Pager<Book> = .empty
-    @Published var sortedBy: BookSort = .createdAt
+    @Published var sortedBy: BookSort = .default
     
     init(
         accountService: AccountServiceProtocol = AccountService.shared,

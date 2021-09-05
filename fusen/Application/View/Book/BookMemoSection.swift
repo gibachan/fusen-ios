@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct BookMemoSection: View {
-    @StateObject var viewModel: BookMemoSectionModel
+    @StateObject private var viewModel: BookMemoSectionModel
+    @State private var isSortPresented = false
     
     init(book: Book) {
         self._viewModel = StateObject(wrappedValue: BookMemoSectionModel(bookId: book.id))
@@ -27,16 +28,40 @@ struct BookMemoSection: View {
                                 Task {
                                     await viewModel.onItemApper(of: memo)
                                 }
-
                             }
                     }
                 }
             }
         } header: {
-            SectionHeaderText("メモ")
+            HStack {
+                SectionHeaderText("メモ")
+                Spacer()
+                SortButton {
+                    isSortPresented = true
+                }
+                .frame(width: 22, height: 18)
+            }
         }
         .task {
             await viewModel.onAppear()
+        }
+        .actionSheet(isPresented: $isSortPresented) {
+            ActionSheet(
+                title: Text("メモをソート"),
+                buttons: [
+                    .default(Text("作成日時でソート")) {
+                        Task {
+                            await viewModel.onSort(.createdAt)
+                        }
+                    },
+                    .default(Text("ページでソート")) {
+                        Task {
+                            await viewModel.onSort(.page)
+                        }
+                    },
+                    .cancel()
+                ]
+            )
         }
     }
 }

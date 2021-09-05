@@ -12,3 +12,7 @@ enum BookSort {
     case title
     case author
 }
+
+extension BookSort {
+    static var `default`: BookSort { .createdAt }
+}

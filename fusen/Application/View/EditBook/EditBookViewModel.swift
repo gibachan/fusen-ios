@@ -9,8 +9,7 @@ import Foundation
 
 @MainActor
 final class EditViewModel: ObservableObject {
-    private let accountService: AccountServiceProtocol
-    private let bookRepository: BookRepository
+    private let updateBookUseCase: UpdateBookUseCase
 
     @Published var isSaveEnabled = false
     @Published var state: State = .initial
@@ -18,12 +17,10 @@ final class EditViewModel: ObservableObject {
 
     init(
         book: Book,
-        accountService: AccountServiceProtocol = AccountService.shared,
-        bookRepository: BookRepository = BookRepositoryImpl()
+        updateBookUseCase: UpdateBookUseCase = UpdateBookUseCaseImpl()
     ) {
         self.book = book
-        self.accountService = accountService
-        self.bookRepository = bookRepository
+        self.updateBookUseCase = updateBookUseCase
     }
     
     func onTextChange(title: String, author: String, description: String) {
@@ -31,12 +28,11 @@ final class EditViewModel: ObservableObject {
     }
     
     func onSave(title: String, author: String, description: String) async {
-        guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
 
         state = .loading
         do {
-            try await bookRepository.update(book: book, title: title, author: author, description: description, for: user)
+            try await updateBookUseCase.invoke(book: book, title: title, author: author, description: description)
             self.state = .succeeded
         } catch {
             log.e(error.localizedDescription)

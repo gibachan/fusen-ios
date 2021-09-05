@@ -10,29 +10,25 @@ import Foundation
 @MainActor
 final class MemoListItemModel: ObservableObject {
     private let memo: Memo
-    private let accountService: AccountServiceProtocol
-    private let bookRepository: BookRepository
+    private let getBookByIdUseCase: GetBookByIdUseCase
     private var state: State = .initial
 
     @Published var bookTitle: String = ""
     
     init(
         memo: Memo,
-        accountService: AccountServiceProtocol = AccountService.shared,
-        bookRepository: BookRepository = BookRepositoryImpl()
+        getBookByIdUseCase: GetBookByIdUseCase = GetBookByIdUseCaseImpl()
     ) {
         self.memo = memo
-        self.accountService = accountService
-        self.bookRepository = bookRepository
+        self.getBookByIdUseCase = getBookByIdUseCase
     }
     
     func onAppear() async {
-        guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
         
         state = .loading
         do {
-            let book = try await bookRepository.getBook(by: memo.bookId, for: user)
+            let book = try await getBookByIdUseCase.invoke(id: memo.bookId)
             state = .loaded(book: book)
             bookTitle = book.title
         } catch {

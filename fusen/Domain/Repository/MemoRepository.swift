@@ -25,9 +25,3 @@ protocol MemoRepository {
     func update(memo: Memo, text: String, quote: String, page: Int?, imageURLs: [URL], for user: User) async throws
     func delete(memo: Memo, for user: User) async throws
 }
-
-extension MemoRepository {
-    func getAllMemos(for user: User, forceRefresh: Bool = false) async throws -> Pager<Memo> {
-        return try await getAllMemos(for: user, forceRefresh: forceRefresh)
-    }
-}

@@ -89,6 +89,7 @@
 		A060093626E490BB00EA0BC2 /* GetLatestDataUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060093526E490BB00EA0BC2 /* GetLatestDataUseCase.swift */; };
 		A060093826E492FF00EA0BC2 /* GetReadingBookUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060093726E492FF00EA0BC2 /* GetReadingBookUseCase.swift */; };
 		A060093A26E4932F00EA0BC2 /* LatestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060093926E4932F00EA0BC2 /* LatestData.swift */; };
+		A060093C26E4963400EA0BC2 /* GetBookByIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060093B26E4963400EA0BC2 /* GetBookByIdUseCase.swift */; };
 		A062C18926C5F33500C56E2A /* AppEnv.swift in Sources */ = {isa = PBXBuildFile; fileRef = A062C18826C5F33500C56E2A /* AppEnv.swift */; };
 		A069981126CBE449006E74C6 /* MemoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069981026CBE449006E74C6 /* MemoRepository.swift */; };
 		A069981326CBE47E006E74C6 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069981226CBE47E006E74C6 /* Memo.swift */; };
@@ -289,6 +290,7 @@
 		A060093526E490BB00EA0BC2 /* GetLatestDataUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLatestDataUseCase.swift; sourceTree = "<group>"; };
 		A060093726E492FF00EA0BC2 /* GetReadingBookUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReadingBookUseCase.swift; sourceTree = "<group>"; };
 		A060093926E4932F00EA0BC2 /* LatestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestData.swift; sourceTree = "<group>"; };
+		A060093B26E4963400EA0BC2 /* GetBookByIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBookByIdUseCase.swift; sourceTree = "<group>"; };
 		A062C18826C5F33500C56E2A /* AppEnv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnv.swift; sourceTree = "<group>"; };
 		A069981026CBE449006E74C6 /* MemoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoRepository.swift; sourceTree = "<group>"; };
 		A069981226CBE47E006E74C6 /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
@@ -762,6 +764,7 @@
 				A060093126E48A0700EA0BC2 /* GetAllBooksUseCase.swift */,
 				A060093526E490BB00EA0BC2 /* GetLatestDataUseCase.swift */,
 				A060093726E492FF00EA0BC2 /* GetReadingBookUseCase.swift */,
+				A060093B26E4963400EA0BC2 /* GetBookByIdUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -1384,6 +1387,7 @@
 				A0BA4CB426C4DDFA00D99D8C /* ScanBarcodeViewModel.swift in Sources */,
 				A007C07926C7797000270671 /* TutorialViewModel.swift in Sources */,
 				A001E03126C9E62400AC92BA /* BookView.swift in Sources */,
+				A060093C26E4963400EA0BC2 /* GetBookByIdUseCase.swift in Sources */,
 				A07CAD2926D0C6CA0012201A /* UserInfo.swift in Sources */,
 				A0B1FECB26DEEAF600586151 /* MemoQuoteView.swift in Sources */,
 				A07334FF26DDB1EA004C5436 /* MaintenanceView.swift in Sources */,

@@ -9,28 +9,22 @@ import Foundation
 
 @MainActor
 final class BookListViewModel: ObservableObject {
-    private let accountService: AccountServiceProtocol
-    private let bookRepository: BookRepository
+    private var getAllBooksUseCase: GetAllBooksUseCase
 
     @Published var state: State = .initial
     @Published var pager: Pager<Book> = .empty
     @Published var sortedBy: BookSort = .default
     
-    init(
-        accountService: AccountServiceProtocol = AccountService.shared,
-        bookRepository: BookRepository = BookRepositoryImpl()
-    ) {
-        self.accountService = accountService
-        self.bookRepository = bookRepository
+    init() {
+        getAllBooksUseCase = GetAllBooksUseCaseImpl(sortedBy: .default)
     }
 
     func onAppear() async {
-        guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
         
         state = .loading
         do {
-            let pager = try await bookRepository.getAllBooks(sortedBy: sortedBy, for: user, forceRefresh: false)
+            let pager = try await getAllBooksUseCase.invoke(forceRefresh: false)
             log.d("finished=\(pager.finished)")
             self.state = .succeeded
             self.pager = pager
@@ -47,13 +41,12 @@ final class BookListViewModel: ObservableObject {
     
     func onItemApper(of book: Book) async {
         guard case .succeeded = state, !pager.finished else { return }
-        guard let user = accountService.currentUser else { return }
         guard let lastBook = pager.data.last else { return }
 
         if book.id == lastBook.id {
             state = .loadingNext
             do {
-                let pager = try await bookRepository.getAllBooksNext(for: user)
+                let pager = try await getAllBooksUseCase.invokeNext()
                 log.d("finished=\(pager.finished)")
                 self.state = .succeeded
                 self.pager = pager
@@ -67,16 +60,16 @@ final class BookListViewModel: ObservableObject {
     
     func onSort(_ sortedBy: BookSort) async {
         self.sortedBy = sortedBy
+        self.getAllBooksUseCase = GetAllBooksUseCaseImpl(sortedBy: sortedBy)
         await refresh()
     }
     
     private func refresh() async {
-        guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
         
         state = .refreshing
         do {
-            let pager = try await bookRepository.getAllBooks(sortedBy: sortedBy, for: user, forceRefresh: true)
+            let pager = try await getAllBooksUseCase.invoke(forceRefresh: true)
             log.d("finished=\(pager.finished)")
             self.state = .succeeded
             self.pager = pager

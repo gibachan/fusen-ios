@@ -86,6 +86,9 @@
 		A060092E26E43B4400EA0BC2 /* MemoSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060092D26E43B4400EA0BC2 /* MemoSort.swift */; };
 		A060093226E48A0700EA0BC2 /* GetAllBooksUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060093126E48A0700EA0BC2 /* GetAllBooksUseCase.swift */; };
 		A060093426E48F5900EA0BC2 /* GetAppConfigUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060093326E48F5900EA0BC2 /* GetAppConfigUseCase.swift */; };
+		A060093626E490BB00EA0BC2 /* GetLatestDataUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060093526E490BB00EA0BC2 /* GetLatestDataUseCase.swift */; };
+		A060093826E492FF00EA0BC2 /* GetReadingBookUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060093726E492FF00EA0BC2 /* GetReadingBookUseCase.swift */; };
+		A060093A26E4932F00EA0BC2 /* LatestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060093926E4932F00EA0BC2 /* LatestData.swift */; };
 		A062C18926C5F33500C56E2A /* AppEnv.swift in Sources */ = {isa = PBXBuildFile; fileRef = A062C18826C5F33500C56E2A /* AppEnv.swift */; };
 		A069981126CBE449006E74C6 /* MemoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069981026CBE449006E74C6 /* MemoRepository.swift */; };
 		A069981326CBE47E006E74C6 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069981226CBE47E006E74C6 /* Memo.swift */; };
@@ -283,6 +286,9 @@
 		A060092D26E43B4400EA0BC2 /* MemoSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoSort.swift; sourceTree = "<group>"; };
 		A060093126E48A0700EA0BC2 /* GetAllBooksUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllBooksUseCase.swift; sourceTree = "<group>"; };
 		A060093326E48F5900EA0BC2 /* GetAppConfigUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAppConfigUseCase.swift; sourceTree = "<group>"; };
+		A060093526E490BB00EA0BC2 /* GetLatestDataUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLatestDataUseCase.swift; sourceTree = "<group>"; };
+		A060093726E492FF00EA0BC2 /* GetReadingBookUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReadingBookUseCase.swift; sourceTree = "<group>"; };
+		A060093926E4932F00EA0BC2 /* LatestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestData.swift; sourceTree = "<group>"; };
 		A062C18826C5F33500C56E2A /* AppEnv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnv.swift; sourceTree = "<group>"; };
 		A069981026CBE449006E74C6 /* MemoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoRepository.swift; sourceTree = "<group>"; };
 		A069981226CBE47E006E74C6 /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
@@ -696,6 +702,7 @@
 				A07CAD0F26CF95FD0012201A /* RGB.swift */,
 				A07CAD2826D0C6CA0012201A /* UserInfo.swift */,
 				A07334F726DDAF5D004C5436 /* AppConfig.swift */,
+				A060093926E4932F00EA0BC2 /* LatestData.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -753,6 +760,8 @@
 			children = (
 				A060093326E48F5900EA0BC2 /* GetAppConfigUseCase.swift */,
 				A060093126E48A0700EA0BC2 /* GetAllBooksUseCase.swift */,
+				A060093526E490BB00EA0BC2 /* GetLatestDataUseCase.swift */,
+				A060093726E492FF00EA0BC2 /* GetReadingBookUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -1360,6 +1369,7 @@
 				7AD1611026C2A26300334A63 /* BookShelfTabViewModel.swift in Sources */,
 				A007C07C26C7805B00270671 /* AccountService.swift in Sources */,
 				7AD1610526C29EB500334A63 /* MainView.swift in Sources */,
+				A060093626E490BB00EA0BC2 /* GetLatestDataUseCase.swift in Sources */,
 				7AD1611826C2A8BC00334A63 /* UIColorExtension.swift in Sources */,
 				A0F97CED26E0CA84007CACE5 /* WebPageView.swift in Sources */,
 				A007C09026C7EF9700270671 /* FirestoreExtension.swift in Sources */,
@@ -1382,6 +1392,7 @@
 				A069982D26CD050D006E74C6 /* CollectionRepository.swift in Sources */,
 				A07CAD2326D095520012201A /* UserRepositoryImpl.swift in Sources */,
 				7A33118526CFD59100EB520D /* DocumentCameraView.swift in Sources */,
+				A060093A26E4932F00EA0BC2 /* LatestData.swift in Sources */,
 				A052EAD326C3F89E0033CE47 /* GoogleBooksResponse.swift in Sources */,
 				7A11FCB026CB537500F1A6BC /* LatestBookItem.swift in Sources */,
 				A0BA4CB826C4E34200D99D8C /* BarcodeCameraView.swift in Sources */,
@@ -1452,6 +1463,7 @@
 				A07507CB26C546330087AE5C /* HomeTabViewModel.swift in Sources */,
 				A001E02C26C943AF00AC92BA /* FirestoreCreateBook.swift in Sources */,
 				7AD1611226C2A40000334A63 /* ColorExtension.swift in Sources */,
+				A060093826E492FF00EA0BC2 /* GetReadingBookUseCase.swift in Sources */,
 				A007C08726C7C91700270671 /* LoadingHUD.swift in Sources */,
 				A05CE89A26D26D2E007F9CF2 /* BookShelfAllSectionModel.swift in Sources */,
 				A069981726CBE6FE006E74C6 /* FirestoreCreateMemo.swift in Sources */,

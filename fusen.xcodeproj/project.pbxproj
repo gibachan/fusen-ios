@@ -31,6 +31,8 @@
 		7A69931026DD0708006B0697 /* RakutenBooksPublicationRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69930F26DD0708006B0697 /* RakutenBooksPublicationRepositoryImpl.swift */; };
 		7A69931226DD0836006B0697 /* RakutenBooksResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69931126DD0836006B0697 /* RakutenBooksResponse.swift */; };
 		7A9E34D626E4F00C00F4E985 /* GetAllMemosUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E34D526E4F00C00F4E985 /* GetAllMemosUseCase.swift */; };
+		7A9E34D826E4F1A800F4E985 /* AddMemoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E34D726E4F1A800F4E985 /* AddMemoUseCase.swift */; };
+		7A9E34DA26E4F2BB00F4E985 /* RecognizeTextUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E34D926E4F2BB00F4E985 /* RecognizeTextUseCase.swift */; };
 		7AA6D7A226D2830200781F48 /* BookShelfFavoriteSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6D7A126D2830200781F48 /* BookShelfFavoriteSection.swift */; };
 		7AA6D7A426D2831000781F48 /* BookShelfFavoriteSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6D7A326D2831000781F48 /* BookShelfFavoriteSectionModel.swift */; };
 		7AA6D7A726D3427500781F48 /* EditBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6D7A626D3427500781F48 /* EditBookView.swift */; };
@@ -243,6 +245,8 @@
 		7A69930F26DD0708006B0697 /* RakutenBooksPublicationRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakutenBooksPublicationRepositoryImpl.swift; sourceTree = "<group>"; };
 		7A69931126DD0836006B0697 /* RakutenBooksResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakutenBooksResponse.swift; sourceTree = "<group>"; };
 		7A9E34D526E4F00C00F4E985 /* GetAllMemosUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllMemosUseCase.swift; sourceTree = "<group>"; };
+		7A9E34D726E4F1A800F4E985 /* AddMemoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoUseCase.swift; sourceTree = "<group>"; };
+		7A9E34D926E4F2BB00F4E985 /* RecognizeTextUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizeTextUseCase.swift; sourceTree = "<group>"; };
 		7AA6D7A126D2830200781F48 /* BookShelfFavoriteSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfFavoriteSection.swift; sourceTree = "<group>"; };
 		7AA6D7A326D2831000781F48 /* BookShelfFavoriteSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfFavoriteSectionModel.swift; sourceTree = "<group>"; };
 		7AA6D7A626D3427500781F48 /* EditBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookView.swift; sourceTree = "<group>"; };
@@ -799,6 +803,8 @@
 				7A9E34D526E4F00C00F4E985 /* GetAllMemosUseCase.swift */,
 				A060094D26E4B92A00EA0BC2 /* GetMemosUseCase.swift */,
 				A060095526E4DF2900EA0BC2 /* SearchPublicationByBarcodeUseCase.swift */,
+				7A9E34D726E4F1A800F4E985 /* AddMemoUseCase.swift */,
+				7A9E34D926E4F2BB00F4E985 /* RecognizeTextUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -1409,6 +1415,7 @@
 				A07CAD2D26D0D1150012201A /* DocumentReferenceExtension.swift in Sources */,
 				A07CAD2726D0C0560012201A /* ReadingMark.swift in Sources */,
 				A001E02E26C9477700AC92BA /* BookShelfItem.swift in Sources */,
+				7A9E34DA26E4F2BB00F4E985 /* RecognizeTextUseCase.swift in Sources */,
 				A069981E26CC3ECC006E74C6 /* PagerCache.swift in Sources */,
 				A0B1FED026DF0AD000586151 /* MemoImageView.swift in Sources */,
 				A001E03926CA2CDE00AC92BA /* FirestoreUpdateBook.swift in Sources */,
@@ -1517,6 +1524,7 @@
 				A069982026CCA225006E74C6 /* BookMemoItem.swift in Sources */,
 				A069981326CBE47E006E74C6 /* Memo.swift in Sources */,
 				A0BA4CB626C4E07400D99D8C /* LazyView.swift in Sources */,
+				7A9E34D826E4F1A800F4E985 /* AddMemoUseCase.swift in Sources */,
 				7A69931026DD0708006B0697 /* RakutenBooksPublicationRepositoryImpl.swift in Sources */,
 				7A11FCBD26CD3FC500F1A6BC /* BookListView.swift in Sources */,
 				A060094626E4A01600EA0BC2 /* AddCollectionUseCase.swift in Sources */,

@@ -15,11 +15,11 @@ struct CollectionItemView: View {
             if isSelected {
                 Image.checkmark
                     .resizable()
-                    .foregroundColor(.primary)
-                    .frame(width: 20, height: 20)
+                    .foregroundColor(.active)
+                    .frame(width: 16, height: 16)
             } else {
                 Color.clear
-                    .frame(width: 20, height: 20)
+                    .frame(width: 16, height: 16)
             }
             Image.collection
                 .resizable()

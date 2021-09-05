@@ -52,6 +52,7 @@ final class BookMemoSectionModel: ObservableObject {
     
     func onSort(_ sortedBy: MemoSort) async {
         self.sortedBy = sortedBy
+        self.getMemosUseCase = GetMemosUseCaseImpl(bookId: bookId, sortedBy: sortedBy)
         await load()
     }
     

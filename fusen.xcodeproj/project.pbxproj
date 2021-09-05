@@ -99,6 +99,7 @@
 		A060094A26E4AAEA00EA0BC2 /* UpdateFavoriteBookUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060094926E4AAEA00EA0BC2 /* UpdateFavoriteBookUseCase.swift */; };
 		A060094C26E4ADF300EA0BC2 /* DeleteBookUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060094B26E4ADF300EA0BC2 /* DeleteBookUseCase.swift */; };
 		A060094E26E4B92A00EA0BC2 /* GetMemosUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060094D26E4B92A00EA0BC2 /* GetMemosUseCase.swift */; };
+		A060095026E4D37200EA0BC2 /* AddBookByManualUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060094F26E4D37200EA0BC2 /* AddBookByManualUseCase.swift */; };
 		A062C18926C5F33500C56E2A /* AppEnv.swift in Sources */ = {isa = PBXBuildFile; fileRef = A062C18826C5F33500C56E2A /* AppEnv.swift */; };
 		A069981126CBE449006E74C6 /* MemoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069981026CBE449006E74C6 /* MemoRepository.swift */; };
 		A069981326CBE47E006E74C6 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069981226CBE47E006E74C6 /* Memo.swift */; };
@@ -309,6 +310,7 @@
 		A060094926E4AAEA00EA0BC2 /* UpdateFavoriteBookUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFavoriteBookUseCase.swift; sourceTree = "<group>"; };
 		A060094B26E4ADF300EA0BC2 /* DeleteBookUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteBookUseCase.swift; sourceTree = "<group>"; };
 		A060094D26E4B92A00EA0BC2 /* GetMemosUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMemosUseCase.swift; sourceTree = "<group>"; };
+		A060094F26E4D37200EA0BC2 /* AddBookByManualUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookByManualUseCase.swift; sourceTree = "<group>"; };
 		A062C18826C5F33500C56E2A /* AppEnv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnv.swift; sourceTree = "<group>"; };
 		A069981026CBE449006E74C6 /* MemoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoRepository.swift; sourceTree = "<group>"; };
 		A069981226CBE47E006E74C6 /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
@@ -786,6 +788,7 @@
 				A060093126E48A0700EA0BC2 /* GetAllBooksUseCase.swift */,
 				A060093D26E498E600EA0BC2 /* GetFavoriteBooksUseCase.swift */,
 				A060094126E49C4900EA0BC2 /* GetBooksByCollectionUseCase.swift */,
+				A060094F26E4D37200EA0BC2 /* AddBookByManualUseCase.swift */,
 				A060094926E4AAEA00EA0BC2 /* UpdateFavoriteBookUseCase.swift */,
 				A060094B26E4ADF300EA0BC2 /* DeleteBookUseCase.swift */,
 				A060093F26E499F300EA0BC2 /* GetCollectionsUseCase.swift */,
@@ -1439,6 +1442,7 @@
 				A0F97CE826E0C571007CACE5 /* AnalyticsEvent.swift in Sources */,
 				7AA6D7A426D2831000781F48 /* BookShelfFavoriteSectionModel.swift in Sources */,
 				A062C18926C5F33500C56E2A /* AppEnv.swift in Sources */,
+				A060095026E4D37200EA0BC2 /* AddBookByManualUseCase.swift in Sources */,
 				7A69930B26DA75A1006B0697 /* ArrayExtension.swift in Sources */,
 				7A11FCAC26CB521B00F1A6BC /* SectionHeaderText.swift in Sources */,
 				A052EAC626C3E4650033CE47 /* AddBookMenuItem.swift in Sources */,

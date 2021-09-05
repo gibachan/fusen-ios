@@ -28,7 +28,7 @@ final class BookShelfCollectionSectionModel: ObservableObject {
         
         state = .loading
         do {
-            let pager = try await getBooksByCollectionUseCase.invoke(forceRefresh: false)
+            let pager = try await getBooksByCollectionUseCase.invoke(forceRefresh: true)
             state = .succeeded
             
             var displayBooks = Array(pager.data.prefix(Self.maxDiplayBookCount))

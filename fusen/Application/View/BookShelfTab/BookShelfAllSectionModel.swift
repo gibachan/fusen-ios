@@ -34,7 +34,7 @@ final class BookShelfAllSectionModel: ObservableObject {
         
         state = .loading
         do {
-            let pager = try await getAllBooksUseCase.invoke(forceRefresh: false)
+            let pager = try await getAllBooksUseCase.invoke(forceRefresh: true)
             state = .succeeded
             
             var displayBooks = Array(pager.data.prefix(Self.maxDiplayBookCount))

@@ -26,7 +26,7 @@ final class BookShelfFavoriteSectionModel: ObservableObject {
         
         state = .loading
         do {
-            let pager = try await getFavoriteBooksUseCase.invoke(forceRefresh: false)
+            let pager = try await getFavoriteBooksUseCase.invoke(forceRefresh: true)
             state = .succeeded
             
             var displayBooks = Array(pager.data.prefix(Self.maxDiplayBookCount))

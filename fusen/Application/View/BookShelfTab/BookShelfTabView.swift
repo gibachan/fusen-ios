@@ -69,7 +69,7 @@ struct BookShelfTabView: View {
         }
         .onReceive(viewModel.$state) { state in
             switch state {
-            case .initial, .loadingNext, .refreshing:
+            case .initial:
                 break
             case .loading:
                 LoadingHUD.show()

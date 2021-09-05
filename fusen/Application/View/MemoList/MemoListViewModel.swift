@@ -9,27 +9,23 @@ import Foundation
 
 @MainActor
 final class MemoListViewModel: ObservableObject {
-    private let accountService: AccountServiceProtocol
-    private let memoRepository: MemoRepository
+    private let getAllMemosUseCase: GetAllMemosUseCase
 
     @Published var state: State = .initial
     @Published var pager: Pager<Memo> = .empty
     
     init(
-        accountService: AccountServiceProtocol = AccountService.shared,
-        memoRepository: MemoRepository = MemoRepositoryImpl()
+        getAllMemosUseCase: GetAllMemosUseCase = GetAllMemosUseCaseImpl()
     ) {
-        self.accountService = accountService
-        self.memoRepository = memoRepository
+        self.getAllMemosUseCase = getAllMemosUseCase
     }
 
     func onAppear() async {
-        guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
         
         state = .loading
         do {
-            let pager = try await memoRepository.getAllMemos(for: user)
+            let pager = try await getAllMemosUseCase.invoke(forceRefresh: false)
             log.d("finished=\(pager.finished)")
             self.state = .succeeded
             self.pager = pager
@@ -41,12 +37,11 @@ final class MemoListViewModel: ObservableObject {
     }
     
     func onRefresh() async {
-        guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
         
         state = .refreshing
         do {
-            let pager = try await memoRepository.getAllMemos(for: user, forceRefresh: true)
+            let pager = try await getAllMemosUseCase.invoke(forceRefresh: true)
             log.d("finished=\(pager.finished)")
             self.state = .succeeded
             self.pager = pager
@@ -59,13 +54,12 @@ final class MemoListViewModel: ObservableObject {
     
     func onItemApper(of memo: Memo) async {
         guard case .succeeded = state, !pager.finished else { return }
-        guard let user = accountService.currentUser else { return }
         guard let lastMemo = pager.data.last else { return }
 
         if memo.id == lastMemo.id {
             state = .loadingNext
             do {
-                let pager = try await memoRepository.getAllMemosNext(for: user)
+                let pager = try await getAllMemosUseCase.invokeNext()
                 log.d("finished=\(pager.finished)")
                 self.state = .succeeded
                 self.pager = pager

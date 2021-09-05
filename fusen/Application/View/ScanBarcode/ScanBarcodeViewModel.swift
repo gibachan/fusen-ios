@@ -15,26 +15,22 @@ final class ScanBarcodeViewModel: ObservableObject {
     private var scanningCode: String?
     private var scannedCode = Set<String>()
     private var lastScannedTime = Date(timeIntervalSince1970: 0)
-    private let accountService: AccountServiceProtocol
     private let analyticsService: AnalyticsServiceProtocol
-    private let rakutenBooksPublicationRepository: PublicationRepository
-    private let googleBooksPublicationRepository: PublicationRepository
-    private let bookRepository: BookRepository
+    private let searchPublicationByBarcodeUseCase: SearchPublicationByBarcodeUseCase
+    private let addBookByPublicationUseCase: AddBookByPublicationUseCase
 
     @Published var isTorchOn: Bool = false
     @Published var suggestedBook: Publication?
     @Published var scannedBook: Publication?
     
-    init(accountService: AccountServiceProtocol = AccountService.shared,
-         analyticsService: AnalyticsServiceProtocol = AnalyticsService.shared,
-         rakutenBooksPublicationRepository: PublicationRepository = RakutenBooksPublicationRepositoryImpl(),
-         googleBooksPublicationRepository: PublicationRepository = GoogleBooksPublicationRepositoryImpl(),
-         bookRepository: BookRepository = BookRepositoryImpl()) {
-        self.accountService = accountService
+    init(
+        analyticsService: AnalyticsServiceProtocol = AnalyticsService.shared,
+        searchPublicationByBarcodeUseCase: SearchPublicationByBarcodeUseCase = SearchPublicationByBarcodeUseCaseImpl(),
+        addBookByPublicationUseCase: AddBookByPublicationUseCase = AddBookByPublicationUseCaseImpl()
+    ) {
         self.analyticsService = analyticsService
-        self.rakutenBooksPublicationRepository = rakutenBooksPublicationRepository
-        self.googleBooksPublicationRepository = googleBooksPublicationRepository
-        self.bookRepository = bookRepository
+        self.searchPublicationByBarcodeUseCase = searchPublicationByBarcodeUseCase
+        self.addBookByPublicationUseCase = addBookByPublicationUseCase
         self.isTorchOn = currentTorch()
     }
     
@@ -64,31 +60,24 @@ final class ScanBarcodeViewModel: ObservableObject {
             scannedCode.insert(code)
             
             do {
-                let publication = try await rakutenBooksPublicationRepository.findBy(isbn: isbn)
-                log.d("Found publication by Rakuten Books API: \(publication)")
-                suggestedBook = publication
-                return
-            } catch {
-                log.e("Not Found publiction by Rakuten Books API for \(isbn): \(error.localizedDescription)")
-                analyticsService.log(event: .scanBarcodeByRakutenError(code: code))
-                
-                do {
-                    let publication = try await googleBooksPublicationRepository.findBy(isbn: isbn)
+                let result = try await searchPublicationByBarcodeUseCase.invoke(barcode: code)
+                switch result {
+                case let .foundByRakutenBooks(publication: publication):
+                    log.d("Found publication by Rakuten Books API: \(publication)")
+                    suggestedBook = publication
+                case let .foundByGoogleBooks(publication: publication):
                     log.d("Found publication by Google Books API: \(publication)")
                     suggestedBook = publication
-                    return
-                } catch {
-                    log.e("Not Found publiction by Google Books API for \(isbn): \(error.localizedDescription)")
-                    isScanning = false
-                    analyticsService.log(event: .scanBarcodeByGoogleError(code: code))
-                    ErrorHUD.show(message: .scanBarcode)
                 }
+            } catch {
+                log.e("Not Found Book for \(isbn): \(error.localizedDescription)")
+                isScanning = false
+                ErrorHUD.show(message: .scanBarcode)
             }
         }
     }
     
     func onAcceptSuggestedBook(collection: Collection?) async {
-        guard let user = accountService.currentUser else { return }
         guard isScanning else { return }
         guard let publication = suggestedBook else { return }
         
@@ -97,7 +86,7 @@ final class ScanBarcodeViewModel: ObservableObject {
         isScanning = false
     
         do {
-            let id = try await bookRepository.addBook(of: publication, in: collection, image: nil, for: user)
+            let id = try await addBookByPublicationUseCase.invoke(publication: publication, collection: collection)
             log.d("Book is added for id: \(id.value)")
             scannedBook = publication
             // 強制的に更新 -> Viewの再構築が発生するため注意

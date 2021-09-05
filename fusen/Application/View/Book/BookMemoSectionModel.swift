@@ -10,21 +10,19 @@ import Foundation
 @MainActor
 final class BookMemoSectionModel: ObservableObject {
     private let bookId: ID<Book>
-    private let accountService: AccountServiceProtocol
-    private let memoRepository: MemoRepository
+    private var getMemosUseCase: GetMemosUseCase
     
     @Published var state: State = .initial
     @Published var memoPager: Pager<Memo> = .empty
-    @Published var sortedBy: MemoSort = .default
+    @Published var sortedBy: MemoSort
     
     init(
-        bookId: ID<Book>,
-        accountService: AccountServiceProtocol = AccountService.shared,
-        memoRepository: MemoRepository = MemoRepositoryImpl()
+        bookId: ID<Book>
     ) {
         self.bookId = bookId
-        self.accountService = accountService
-        self.memoRepository = memoRepository
+        let sortedBy = MemoSort.default
+        self.sortedBy = sortedBy
+        self.getMemosUseCase = GetMemosUseCaseImpl(bookId: bookId, sortedBy: sortedBy)
     }
     
     func onAppear() async {
@@ -37,13 +35,12 @@ final class BookMemoSectionModel: ObservableObject {
     
     func onItemApper(of memo: Memo) async {
         guard case .loaded = state, !memoPager.finished else { return }
-        guard let user = accountService.currentUser else { return }
         guard let lastMemo = memoPager.data.last else { return }
         
         if memo.id == lastMemo.id {
             //            state = .loadingNext
             do {
-                let pager = try await memoRepository.getNextMemos(of: bookId, for: user)
+                let pager = try await getMemosUseCase.invokeNext()
                 log.d("finished=\(pager.finished)")
                 memoPager = pager
             } catch {
@@ -55,28 +52,16 @@ final class BookMemoSectionModel: ObservableObject {
     
     func onSort(_ sortedBy: MemoSort) async {
         self.sortedBy = sortedBy
+        self.getMemosUseCase = GetMemosUseCaseImpl(bookId: bookId, sortedBy: sortedBy)
         await load()
     }
     
     private func load() async {
-        guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
         
         state = .loading
         do {
-            // async letで例外が発生したときに何故かキャッチできずにクラッシュする
-            //            async let userInfo = userRepository.getInfo(for: user)
-            //            async let newBook = bookRepository.getBook(by: book.id, for: user)
-            //            async let memoPager = memoRepository.getMemos(of: book, for: user, forceRefresh: false)
-            //            let result = try await (userInfo: userInfo, book: newBook, memoPager: memoPager)
-            //            DispatchQueue.main.async { [weak self] in
-            //                self?.state = .succeeded
-            //                self?.isReadingBook = result.userInfo.readingBookId == result.book.id
-            //                self?.book = result.book
-            //                self?.memoPager = result.memoPager
-            //            }
-            
-            let memoPager = try await memoRepository.getMemos(of: bookId, sortedBy: sortedBy, for: user, forceRefresh: false)
+            let memoPager = try await getMemosUseCase.invoke(forceRefresh: false)
             self.memoPager = memoPager
             self.state = .loaded(memos: memoPager.data)
         } catch {

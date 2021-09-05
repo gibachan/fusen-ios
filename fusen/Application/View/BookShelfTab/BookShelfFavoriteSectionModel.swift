@@ -10,27 +10,23 @@ import Foundation
 @MainActor
 final class BookShelfFavoriteSectionModel: ObservableObject {
     private static let maxDiplayBookCount = 6
-    private let accountService: AccountServiceProtocol
-    private let bookRepository: BookRepository
+    private let getFavoriteBooksUseCase: GetFavoriteBooksUseCase
     
     @Published var state: State = .initial
     @Published var books: [[Book]] = []
     
     init(
-        accountService: AccountServiceProtocol = AccountService.shared,
-        bookRepository: BookRepository = BookRepositoryImpl()
+        getFavoriteBooksUseCase: GetFavoriteBooksUseCase = GetFavoriteBooksUseCaseImpl()
     ) {
-        self.accountService = accountService
-        self.bookRepository = bookRepository
+        self.getFavoriteBooksUseCase = getFavoriteBooksUseCase
     }
     
     func onAppear() async {
-        guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
         
         state = .loading
         do {
-            let pager = try await bookRepository.getFavoriteBooks(for: user, forceRefresh: false)
+            let pager = try await getFavoriteBooksUseCase.invoke(forceRefresh: true)
             state = .succeeded
             
             var displayBooks = Array(pager.data.prefix(Self.maxDiplayBookCount))

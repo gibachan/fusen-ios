@@ -9,8 +9,8 @@ import Foundation
 
 @MainActor
 final class EditMemoViewModel: ObservableObject {
-    private let accountService: AccountServiceProtocol
-    private let memoRepository: MemoRepository
+    private let updateMemoUseCase: UpdateMemoUseCase
+    private let deleteMemoUseCase: DeleteMemoUseCase
     
     @Published var isSaveEnabled = false
     @Published var state: State = .initial
@@ -19,11 +19,11 @@ final class EditMemoViewModel: ObservableObject {
     
     init(
         memo: Memo,
-        accountService: AccountServiceProtocol = AccountService.shared,
-        memoRepository: MemoRepository = MemoRepositoryImpl()
+        updateMemoUseCase: UpdateMemoUseCase = UpdateMemoUseCaseImpl(),
+        deleteMemoUseCase: DeleteMemoUseCase = DeleteMemoUseCaseImpl()
     ) {
-        self.accountService = accountService
-        self.memoRepository = memoRepository
+        self.updateMemoUseCase = updateMemoUseCase
+        self.deleteMemoUseCase = deleteMemoUseCase
 
         self.memo = memo
         self.memoImageURL = memo.imageURLs.first
@@ -39,13 +39,11 @@ final class EditMemoViewModel: ObservableObject {
         quote: String,
         page: Int
     ) async {
-        guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
         
         state = .loading
         do {
-            let memoPage: Int? = page == 0 ? nil : page
-            try await memoRepository.update(memo: memo, text: text, quote: quote, page: memoPage, imageURLs: memo.imageURLs, for: user)
+            try await updateMemoUseCase.invoke(memo: memo, text: text, quote: quote, page: page, imageURLs: memo.imageURLs)
             state = .succeeded
         } catch {
             log.e(error.localizedDescription)
@@ -55,12 +53,11 @@ final class EditMemoViewModel: ObservableObject {
     }
     
     func onDelete() async {
-        guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
         
         state = .loading
         do {
-            try await memoRepository.delete(memo: memo, for: user)
+            try await deleteMemoUseCase.invoke(memo: memo)
             state = .deleted
         } catch {
             log.e(error.localizedDescription)

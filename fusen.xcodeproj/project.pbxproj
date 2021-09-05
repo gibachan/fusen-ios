@@ -30,6 +30,11 @@
 		7A69930D26DD05C5006B0697 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69930C26DD05C5006B0697 /* APIKey.swift */; };
 		7A69931026DD0708006B0697 /* RakutenBooksPublicationRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69930F26DD0708006B0697 /* RakutenBooksPublicationRepositoryImpl.swift */; };
 		7A69931226DD0836006B0697 /* RakutenBooksResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69931126DD0836006B0697 /* RakutenBooksResponse.swift */; };
+		7A9E34D626E4F00C00F4E985 /* GetAllMemosUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E34D526E4F00C00F4E985 /* GetAllMemosUseCase.swift */; };
+		7A9E34D826E4F1A800F4E985 /* AddMemoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E34D726E4F1A800F4E985 /* AddMemoUseCase.swift */; };
+		7A9E34DA26E4F2BB00F4E985 /* RecognizeTextUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E34D926E4F2BB00F4E985 /* RecognizeTextUseCase.swift */; };
+		7A9E34DC26E4F44300F4E985 /* UpdateMemoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E34DB26E4F44300F4E985 /* UpdateMemoUseCase.swift */; };
+		7A9E34DE26E4F54F00F4E985 /* DeleteMemoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E34DD26E4F54F00F4E985 /* DeleteMemoUseCase.swift */; };
 		7AA6D7A226D2830200781F48 /* BookShelfFavoriteSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6D7A126D2830200781F48 /* BookShelfFavoriteSection.swift */; };
 		7AA6D7A426D2831000781F48 /* BookShelfFavoriteSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6D7A326D2831000781F48 /* BookShelfFavoriteSectionModel.swift */; };
 		7AA6D7A726D3427500781F48 /* EditBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6D7A626D3427500781F48 /* EditBookView.swift */; };
@@ -84,6 +89,26 @@
 		A060092826E365B100EA0BC2 /* SortButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060092726E365B100EA0BC2 /* SortButton.swift */; };
 		A060092C26E3686D00EA0BC2 /* BookSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060092B26E3686D00EA0BC2 /* BookSort.swift */; };
 		A060092E26E43B4400EA0BC2 /* MemoSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060092D26E43B4400EA0BC2 /* MemoSort.swift */; };
+		A060093226E48A0700EA0BC2 /* GetAllBooksUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060093126E48A0700EA0BC2 /* GetAllBooksUseCase.swift */; };
+		A060093426E48F5900EA0BC2 /* GetAppConfigUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060093326E48F5900EA0BC2 /* GetAppConfigUseCase.swift */; };
+		A060093626E490BB00EA0BC2 /* GetLatestDataUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060093526E490BB00EA0BC2 /* GetLatestDataUseCase.swift */; };
+		A060093826E492FF00EA0BC2 /* GetReadingBookUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060093726E492FF00EA0BC2 /* GetReadingBookUseCase.swift */; };
+		A060093A26E4932F00EA0BC2 /* LatestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060093926E4932F00EA0BC2 /* LatestData.swift */; };
+		A060093C26E4963400EA0BC2 /* GetBookByIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060093B26E4963400EA0BC2 /* GetBookByIdUseCase.swift */; };
+		A060093E26E498E600EA0BC2 /* GetFavoriteBooksUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060093D26E498E600EA0BC2 /* GetFavoriteBooksUseCase.swift */; };
+		A060094026E499F300EA0BC2 /* GetCollectionsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060093F26E499F300EA0BC2 /* GetCollectionsUseCase.swift */; };
+		A060094226E49C4900EA0BC2 /* GetBooksByCollectionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060094126E49C4900EA0BC2 /* GetBooksByCollectionUseCase.swift */; };
+		A060094426E49EB500EA0BC2 /* DeleteCollectionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060094326E49EB500EA0BC2 /* DeleteCollectionUseCase.swift */; };
+		A060094626E4A01600EA0BC2 /* AddCollectionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060094526E4A01600EA0BC2 /* AddCollectionUseCase.swift */; };
+		A060094826E4A79E00EA0BC2 /* UpdateReadingBookUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060094726E4A79E00EA0BC2 /* UpdateReadingBookUseCase.swift */; };
+		A060094A26E4AAEA00EA0BC2 /* UpdateFavoriteBookUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060094926E4AAEA00EA0BC2 /* UpdateFavoriteBookUseCase.swift */; };
+		A060094C26E4ADF300EA0BC2 /* DeleteBookUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060094B26E4ADF300EA0BC2 /* DeleteBookUseCase.swift */; };
+		A060094E26E4B92A00EA0BC2 /* GetMemosUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060094D26E4B92A00EA0BC2 /* GetMemosUseCase.swift */; };
+		A060095026E4D37200EA0BC2 /* AddBookByManualUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060094F26E4D37200EA0BC2 /* AddBookByManualUseCase.swift */; };
+		A060095226E4D4CA00EA0BC2 /* UpdateBookUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060095126E4D4CA00EA0BC2 /* UpdateBookUseCase.swift */; };
+		A060095426E4DDBA00EA0BC2 /* UpdateBookCollectionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060095326E4DDBA00EA0BC2 /* UpdateBookCollectionUseCase.swift */; };
+		A060095626E4DF2900EA0BC2 /* SearchPublicationByBarcodeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060095526E4DF2900EA0BC2 /* SearchPublicationByBarcodeUseCase.swift */; };
+		A060095826E4E39B00EA0BC2 /* AddBookByPublicationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060095726E4E39B00EA0BC2 /* AddBookByPublicationUseCase.swift */; };
 		A062C18926C5F33500C56E2A /* AppEnv.swift in Sources */ = {isa = PBXBuildFile; fileRef = A062C18826C5F33500C56E2A /* AppEnv.swift */; };
 		A069981126CBE449006E74C6 /* MemoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069981026CBE449006E74C6 /* MemoRepository.swift */; };
 		A069981326CBE47E006E74C6 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069981226CBE47E006E74C6 /* Memo.swift */; };
@@ -221,6 +246,11 @@
 		7A69930C26DD05C5006B0697 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		7A69930F26DD0708006B0697 /* RakutenBooksPublicationRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakutenBooksPublicationRepositoryImpl.swift; sourceTree = "<group>"; };
 		7A69931126DD0836006B0697 /* RakutenBooksResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakutenBooksResponse.swift; sourceTree = "<group>"; };
+		7A9E34D526E4F00C00F4E985 /* GetAllMemosUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllMemosUseCase.swift; sourceTree = "<group>"; };
+		7A9E34D726E4F1A800F4E985 /* AddMemoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoUseCase.swift; sourceTree = "<group>"; };
+		7A9E34D926E4F2BB00F4E985 /* RecognizeTextUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizeTextUseCase.swift; sourceTree = "<group>"; };
+		7A9E34DB26E4F44300F4E985 /* UpdateMemoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMemoUseCase.swift; sourceTree = "<group>"; };
+		7A9E34DD26E4F54F00F4E985 /* DeleteMemoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteMemoUseCase.swift; sourceTree = "<group>"; };
 		7AA6D7A126D2830200781F48 /* BookShelfFavoriteSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfFavoriteSection.swift; sourceTree = "<group>"; };
 		7AA6D7A326D2831000781F48 /* BookShelfFavoriteSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfFavoriteSectionModel.swift; sourceTree = "<group>"; };
 		7AA6D7A626D3427500781F48 /* EditBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookView.swift; sourceTree = "<group>"; };
@@ -279,6 +309,26 @@
 		A060092726E365B100EA0BC2 /* SortButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortButton.swift; sourceTree = "<group>"; };
 		A060092B26E3686D00EA0BC2 /* BookSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSort.swift; sourceTree = "<group>"; };
 		A060092D26E43B4400EA0BC2 /* MemoSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoSort.swift; sourceTree = "<group>"; };
+		A060093126E48A0700EA0BC2 /* GetAllBooksUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllBooksUseCase.swift; sourceTree = "<group>"; };
+		A060093326E48F5900EA0BC2 /* GetAppConfigUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAppConfigUseCase.swift; sourceTree = "<group>"; };
+		A060093526E490BB00EA0BC2 /* GetLatestDataUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLatestDataUseCase.swift; sourceTree = "<group>"; };
+		A060093726E492FF00EA0BC2 /* GetReadingBookUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReadingBookUseCase.swift; sourceTree = "<group>"; };
+		A060093926E4932F00EA0BC2 /* LatestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestData.swift; sourceTree = "<group>"; };
+		A060093B26E4963400EA0BC2 /* GetBookByIdUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBookByIdUseCase.swift; sourceTree = "<group>"; };
+		A060093D26E498E600EA0BC2 /* GetFavoriteBooksUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFavoriteBooksUseCase.swift; sourceTree = "<group>"; };
+		A060093F26E499F300EA0BC2 /* GetCollectionsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCollectionsUseCase.swift; sourceTree = "<group>"; };
+		A060094126E49C4900EA0BC2 /* GetBooksByCollectionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBooksByCollectionUseCase.swift; sourceTree = "<group>"; };
+		A060094326E49EB500EA0BC2 /* DeleteCollectionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCollectionUseCase.swift; sourceTree = "<group>"; };
+		A060094526E4A01600EA0BC2 /* AddCollectionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCollectionUseCase.swift; sourceTree = "<group>"; };
+		A060094726E4A79E00EA0BC2 /* UpdateReadingBookUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateReadingBookUseCase.swift; sourceTree = "<group>"; };
+		A060094926E4AAEA00EA0BC2 /* UpdateFavoriteBookUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFavoriteBookUseCase.swift; sourceTree = "<group>"; };
+		A060094B26E4ADF300EA0BC2 /* DeleteBookUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteBookUseCase.swift; sourceTree = "<group>"; };
+		A060094D26E4B92A00EA0BC2 /* GetMemosUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMemosUseCase.swift; sourceTree = "<group>"; };
+		A060094F26E4D37200EA0BC2 /* AddBookByManualUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookByManualUseCase.swift; sourceTree = "<group>"; };
+		A060095126E4D4CA00EA0BC2 /* UpdateBookUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateBookUseCase.swift; sourceTree = "<group>"; };
+		A060095326E4DDBA00EA0BC2 /* UpdateBookCollectionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateBookCollectionUseCase.swift; sourceTree = "<group>"; };
+		A060095526E4DF2900EA0BC2 /* SearchPublicationByBarcodeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPublicationByBarcodeUseCase.swift; sourceTree = "<group>"; };
+		A060095726E4E39B00EA0BC2 /* AddBookByPublicationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookByPublicationUseCase.swift; sourceTree = "<group>"; };
 		A062C18826C5F33500C56E2A /* AppEnv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnv.swift; sourceTree = "<group>"; };
 		A069981026CBE449006E74C6 /* MemoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoRepository.swift; sourceTree = "<group>"; };
 		A069981226CBE47E006E74C6 /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
@@ -475,7 +525,6 @@
 				A062C18826C5F33500C56E2A /* AppEnv.swift */,
 				7AD1610326C29CE000334A63 /* Resource */,
 				7AD1610226C29CCF00334A63 /* View */,
-				A007C07A26C7804D00270671 /* Service */,
 				A007C08126C78FA500270671 /* Utility */,
 				7AD1610926C29FCA00334A63 /* Extension */,
 			);
@@ -488,6 +537,8 @@
 				A052EAC726C3F4C00033CE47 /* Entity */,
 				A060092A26E3685D00EA0BC2 /* Logic */,
 				A052EAC826C3F4C90033CE47 /* Repository */,
+				A060093026E489EA00EA0BC2 /* UseCase */,
+				A060095926E4E55C00EA0BC2 /* Service */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -628,17 +679,6 @@
 			path = Tutorial;
 			sourceTree = "<group>";
 		};
-		A007C07A26C7804D00270671 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				A007C07B26C7805B00270671 /* AccountService.swift */,
-				A07334EF26DA420F004C5436 /* TextRecognizeService.swift */,
-				A0F97CE326E0B898007CACE5 /* AnalyticsService.swift */,
-				A0F97CE726E0C571007CACE5 /* AnalyticsEvent.swift */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
 		A007C08126C78FA500270671 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
@@ -691,6 +731,7 @@
 				A07CAD0F26CF95FD0012201A /* RGB.swift */,
 				A07CAD2826D0C6CA0012201A /* UserInfo.swift */,
 				A07334F726DDAF5D004C5436 /* AppConfig.swift */,
+				A060093926E4932F00EA0BC2 /* LatestData.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -741,6 +782,48 @@
 				A060092D26E43B4400EA0BC2 /* MemoSort.swift */,
 			);
 			path = Logic;
+			sourceTree = "<group>";
+		};
+		A060093026E489EA00EA0BC2 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				A060093326E48F5900EA0BC2 /* GetAppConfigUseCase.swift */,
+				A060093526E490BB00EA0BC2 /* GetLatestDataUseCase.swift */,
+				A060093726E492FF00EA0BC2 /* GetReadingBookUseCase.swift */,
+				A060094726E4A79E00EA0BC2 /* UpdateReadingBookUseCase.swift */,
+				A060093B26E4963400EA0BC2 /* GetBookByIdUseCase.swift */,
+				A060093126E48A0700EA0BC2 /* GetAllBooksUseCase.swift */,
+				A060093D26E498E600EA0BC2 /* GetFavoriteBooksUseCase.swift */,
+				A060094126E49C4900EA0BC2 /* GetBooksByCollectionUseCase.swift */,
+				A060094F26E4D37200EA0BC2 /* AddBookByManualUseCase.swift */,
+				A060095726E4E39B00EA0BC2 /* AddBookByPublicationUseCase.swift */,
+				A060095126E4D4CA00EA0BC2 /* UpdateBookUseCase.swift */,
+				A060094926E4AAEA00EA0BC2 /* UpdateFavoriteBookUseCase.swift */,
+				A060095326E4DDBA00EA0BC2 /* UpdateBookCollectionUseCase.swift */,
+				A060094B26E4ADF300EA0BC2 /* DeleteBookUseCase.swift */,
+				A060093F26E499F300EA0BC2 /* GetCollectionsUseCase.swift */,
+				A060094526E4A01600EA0BC2 /* AddCollectionUseCase.swift */,
+				A060094326E49EB500EA0BC2 /* DeleteCollectionUseCase.swift */,
+				7A9E34D526E4F00C00F4E985 /* GetAllMemosUseCase.swift */,
+				A060094D26E4B92A00EA0BC2 /* GetMemosUseCase.swift */,
+				7A9E34D726E4F1A800F4E985 /* AddMemoUseCase.swift */,
+				7A9E34DB26E4F44300F4E985 /* UpdateMemoUseCase.swift */,
+				7A9E34DD26E4F54F00F4E985 /* DeleteMemoUseCase.swift */,
+				A060095526E4DF2900EA0BC2 /* SearchPublicationByBarcodeUseCase.swift */,
+				7A9E34D926E4F2BB00F4E985 /* RecognizeTextUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		A060095926E4E55C00EA0BC2 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				A07334EF26DA420F004C5436 /* TextRecognizeService.swift */,
+				A007C07B26C7805B00270671 /* AccountService.swift */,
+				A0F97CE326E0B898007CACE5 /* AnalyticsService.swift */,
+				A0F97CE726E0C571007CACE5 /* AnalyticsEvent.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		A069981826CC3766006E74C6 /* Extension */ = {
@@ -1287,11 +1370,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A9E34DE26E4F54F00F4E985 /* DeleteMemoUseCase.swift in Sources */,
 				A052EACC26C3F79B0033CE47 /* PublicationRepository.swift in Sources */,
+				A060094A26E4AAEA00EA0BC2 /* UpdateFavoriteBookUseCase.swift in Sources */,
 				A05CE89326D17FD3007F9CF2 /* AddMemoImageView.swift in Sources */,
+				A060095626E4DF2900EA0BC2 /* SearchPublicationByBarcodeUseCase.swift in Sources */,
+				A060094226E49C4900EA0BC2 /* GetBooksByCollectionUseCase.swift in Sources */,
 				A07CAD2526D096020012201A /* FirestoreUpdateUser.swift in Sources */,
 				A07334FC26DDAFDE004C5436 /* AppConfigRepositoryImpl.swift in Sources */,
 				A07CAD0326CED9A20012201A /* ImageDataExtension.swift in Sources */,
+				A060095826E4E39B00EA0BC2 /* AddBookByPublicationUseCase.swift in Sources */,
+				A060093E26E498E600EA0BC2 /* GetFavoriteBooksUseCase.swift in Sources */,
 				A07334F026DA420F004C5436 /* TextRecognizeService.swift in Sources */,
 				7A11FCAA26CB47EA00F1A6BC /* SettingTabView.swift in Sources */,
 				A069981A26CC3774006E74C6 /* QueryExtension.swift in Sources */,
@@ -1301,6 +1390,8 @@
 				A069983326CDD85B006E74C6 /* BookShelfEmptyItem.swift in Sources */,
 				A05CE89526D1A6C6007F9CF2 /* GestureImageView.swift in Sources */,
 				A0B9482F26D3BF4C00C47204 /* ImageStorage.swift in Sources */,
+				A060094426E49EB500EA0BC2 /* DeleteCollectionUseCase.swift in Sources */,
+				7A9E34DC26E4F44300F4E985 /* UpdateMemoUseCase.swift in Sources */,
 				A07CAD1F26D0670A0012201A /* CollectionItemView.swift in Sources */,
 				A07334F626DDAD35004C5436 /* ViewExtension.swift in Sources */,
 				A060092826E365B100EA0BC2 /* SortButton.swift in Sources */,
@@ -1310,10 +1401,12 @@
 				A0C3C23E26D7680E0032B2C7 /* HomeTabEmptyView.swift in Sources */,
 				A07CAD1226CFBB160012201A /* FirestoreCreateCollection.swift in Sources */,
 				A07D1A8626E2FAE100ADF384 /* QuoteText.swift in Sources */,
+				A060094C26E4ADF300EA0BC2 /* DeleteBookUseCase.swift in Sources */,
 				A0C3C24826D853EF0032B2C7 /* MemoListItemModel.swift in Sources */,
 				A0C3C24426D78DB80032B2C7 /* BookMemoSection.swift in Sources */,
 				A069983D26CDDD21006E74C6 /* MemoListViewModel.swift in Sources */,
 				A069982726CCA5BD006E74C6 /* EditMemoViewModel.swift in Sources */,
+				A060093226E48A0700EA0BC2 /* GetAllBooksUseCase.swift in Sources */,
 				A007C07E26C78E5700270671 /* User.swift in Sources */,
 				A007C07726C7796600270671 /* TutorialView.swift in Sources */,
 				A069983126CD3158006E74C6 /* FirestoreGetCollection.swift in Sources */,
@@ -1330,6 +1423,7 @@
 				A07CAD2D26D0D1150012201A /* DocumentReferenceExtension.swift in Sources */,
 				A07CAD2726D0C0560012201A /* ReadingMark.swift in Sources */,
 				A001E02E26C9477700AC92BA /* BookShelfItem.swift in Sources */,
+				7A9E34DA26E4F2BB00F4E985 /* RecognizeTextUseCase.swift in Sources */,
 				A069981E26CC3ECC006E74C6 /* PagerCache.swift in Sources */,
 				A0B1FED026DF0AD000586151 /* MemoImageView.swift in Sources */,
 				A001E03926CA2CDE00AC92BA /* FirestoreUpdateBook.swift in Sources */,
@@ -1339,12 +1433,14 @@
 				A07CAD3926D147230012201A /* BookEmptyView.swift in Sources */,
 				7A69931226DD0836006B0697 /* RakutenBooksResponse.swift in Sources */,
 				A0BA4CB226C4DDF100D99D8C /* ScanBarcodeView.swift in Sources */,
+				A060094026E499F300EA0BC2 /* GetCollectionsUseCase.swift in Sources */,
 				A0BA4CBA26C4E37E00D99D8C /* CameraPreview.swift in Sources */,
 				A069983F26CDDD7F006E74C6 /* MemoListItem.swift in Sources */,
 				A001E05526CBCA8A00AC92BA /* SaveButton.swift in Sources */,
 				7AD1611026C2A26300334A63 /* BookShelfTabViewModel.swift in Sources */,
 				A007C07C26C7805B00270671 /* AccountService.swift in Sources */,
 				7AD1610526C29EB500334A63 /* MainView.swift in Sources */,
+				A060093626E490BB00EA0BC2 /* GetLatestDataUseCase.swift in Sources */,
 				7AD1611826C2A8BC00334A63 /* UIColorExtension.swift in Sources */,
 				A0F97CED26E0CA84007CACE5 /* WebPageView.swift in Sources */,
 				A007C09026C7EF9700270671 /* FirestoreExtension.swift in Sources */,
@@ -1359,6 +1455,7 @@
 				A0BA4CB426C4DDFA00D99D8C /* ScanBarcodeViewModel.swift in Sources */,
 				A007C07926C7797000270671 /* TutorialViewModel.swift in Sources */,
 				A001E03126C9E62400AC92BA /* BookView.swift in Sources */,
+				A060093C26E4963400EA0BC2 /* GetBookByIdUseCase.swift in Sources */,
 				A07CAD2926D0C6CA0012201A /* UserInfo.swift in Sources */,
 				A0B1FECB26DEEAF600586151 /* MemoQuoteView.swift in Sources */,
 				A07334FF26DDB1EA004C5436 /* MaintenanceView.swift in Sources */,
@@ -1367,6 +1464,7 @@
 				A069982D26CD050D006E74C6 /* CollectionRepository.swift in Sources */,
 				A07CAD2326D095520012201A /* UserRepositoryImpl.swift in Sources */,
 				7A33118526CFD59100EB520D /* DocumentCameraView.swift in Sources */,
+				A060093A26E4932F00EA0BC2 /* LatestData.swift in Sources */,
 				A052EAD326C3F89E0033CE47 /* GoogleBooksResponse.swift in Sources */,
 				7A11FCB026CB537500F1A6BC /* LatestBookItem.swift in Sources */,
 				A0BA4CB826C4E34200D99D8C /* BarcodeCameraView.swift in Sources */,
@@ -1376,6 +1474,7 @@
 				A0F97CE826E0C571007CACE5 /* AnalyticsEvent.swift in Sources */,
 				7AA6D7A426D2831000781F48 /* BookShelfFavoriteSectionModel.swift in Sources */,
 				A062C18926C5F33500C56E2A /* AppEnv.swift in Sources */,
+				A060095026E4D37200EA0BC2 /* AddBookByManualUseCase.swift in Sources */,
 				7A69930B26DA75A1006B0697 /* ArrayExtension.swift in Sources */,
 				7A11FCAC26CB521B00F1A6BC /* SectionHeaderText.swift in Sources */,
 				A052EAC626C3E4650033CE47 /* AddBookMenuItem.swift in Sources */,
@@ -1386,9 +1485,13 @@
 				A07CAD1826D055C90012201A /* DateExtension.swift in Sources */,
 				A020544126CE88BD002FF585 /* EditMemoImageView.swift in Sources */,
 				A007C08026C78E8500270671 /* ID.swift in Sources */,
+				A060095426E4DDBA00EA0BC2 /* UpdateBookCollectionUseCase.swift in Sources */,
 				A069981C26CC37BF006E74C6 /* FirestoreGetMemo.swift in Sources */,
 				A069982526CCA5AD006E74C6 /* EditMemoView.swift in Sources */,
 				A07CAD0E26CF7F010012201A /* AddCollectionViewModel.swift in Sources */,
+				A060094E26E4B92A00EA0BC2 /* GetMemosUseCase.swift in Sources */,
+				A060094826E4A79E00EA0BC2 /* UpdateReadingBookUseCase.swift in Sources */,
+				7A9E34D626E4F00C00F4E985 /* GetAllMemosUseCase.swift in Sources */,
 				A069983626CDD9CB006E74C6 /* CollectionView.swift in Sources */,
 				7AA6D7A926D3427E00781F48 /* EditBookViewModel.swift in Sources */,
 				A0C3C24626D78DC30032B2C7 /* BookMemoSectionModel.swift in Sources */,
@@ -1403,6 +1506,7 @@
 				7A11FCC326CD4BAB00F1A6BC /* BookShelfCollectionSectionModel.swift in Sources */,
 				A007C08326C78FB400270671 /* Logger.swift in Sources */,
 				A07CAD3026D114300012201A /* HomeReadingBookItem.swift in Sources */,
+				A060095226E4D4CA00EA0BC2 /* UpdateBookUseCase.swift in Sources */,
 				A07CAD1026CF95FD0012201A /* RGB.swift in Sources */,
 				A007C09526C8CAB700270671 /* FirestoreGetBook.swift in Sources */,
 				A0F97CEB26E0CA61007CACE5 /* WebViewController.swift in Sources */,
@@ -1413,6 +1517,7 @@
 				7AA6D7A226D2830200781F48 /* BookShelfFavoriteSection.swift in Sources */,
 				A069982926CCAB07006E74C6 /* FirestoreUpdateMemo.swift in Sources */,
 				A05CE89826D26D23007F9CF2 /* BookShelfAllSection.swift in Sources */,
+				A060093426E48F5900EA0BC2 /* GetAppConfigUseCase.swift in Sources */,
 				A07507DE26C5E53C0087AE5C /* AppDelegate.swift in Sources */,
 				A0B9482D26D3A32300C47204 /* ImagePicker.swift in Sources */,
 				7A11FCB326CB57FE00F1A6BC /* ControlToolbar.swift in Sources */,
@@ -1427,8 +1532,10 @@
 				A069982026CCA225006E74C6 /* BookMemoItem.swift in Sources */,
 				A069981326CBE47E006E74C6 /* Memo.swift in Sources */,
 				A0BA4CB626C4E07400D99D8C /* LazyView.swift in Sources */,
+				7A9E34D826E4F1A800F4E985 /* AddMemoUseCase.swift in Sources */,
 				7A69931026DD0708006B0697 /* RakutenBooksPublicationRepositoryImpl.swift in Sources */,
 				7A11FCBD26CD3FC500F1A6BC /* BookListView.swift in Sources */,
+				A060094626E4A01600EA0BC2 /* AddCollectionUseCase.swift in Sources */,
 				A07CAD0C26CF7EF60012201A /* AddCollectionView.swift in Sources */,
 				A069983B26CDDD18006E74C6 /* MemoListView.swift in Sources */,
 				A069982B26CD0492006E74C6 /* Collection.swift in Sources */,
@@ -1436,6 +1543,7 @@
 				A07507CB26C546330087AE5C /* HomeTabViewModel.swift in Sources */,
 				A001E02C26C943AF00AC92BA /* FirestoreCreateBook.swift in Sources */,
 				7AD1611226C2A40000334A63 /* ColorExtension.swift in Sources */,
+				A060093826E492FF00EA0BC2 /* GetReadingBookUseCase.swift in Sources */,
 				A007C08726C7C91700270671 /* LoadingHUD.swift in Sources */,
 				A05CE89A26D26D2E007F9CF2 /* BookShelfAllSectionModel.swift in Sources */,
 				A069981726CBE6FE006E74C6 /* FirestoreCreateMemo.swift in Sources */,

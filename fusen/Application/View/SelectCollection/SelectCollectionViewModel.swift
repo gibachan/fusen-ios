@@ -9,9 +9,8 @@ import Foundation
 
 @MainActor
 final class SelectCollectionViewModel: ObservableObject {
-    private let accountService: AccountServiceProtocol
-    private let bookRepository: BookRepository
-    private let collectionRepository: CollectionRepository
+    private let getCollectionsUseCase: GetCollectionsUseCase
+    private let updateBookCollectionUseCase: UpdateBookCollectionUseCase
     
     @Published var state: State = .initial
     @Published var book: Book
@@ -19,23 +18,20 @@ final class SelectCollectionViewModel: ObservableObject {
     
     init(
         book: Book,
-        accountService: AccountServiceProtocol = AccountService.shared,
-        bookRepository: BookRepository = BookRepositoryImpl(),
-        collectionRepository: CollectionRepository = CollectionRepositoryImpl()
+        getCollectionsUseCase: GetCollectionsUseCase = GetCollectionsUseCaseImpl(),
+        updateBookCollectionUseCase: UpdateBookCollectionUseCase = UpdateBookCollectionUseCaseImpl()
     ) {
         self.book = book
-        self.accountService = accountService
-        self.bookRepository = bookRepository
-        self.collectionRepository = collectionRepository
+        self.getCollectionsUseCase = getCollectionsUseCase
+        self.updateBookCollectionUseCase = updateBookCollectionUseCase
     }
     
     func onAppear() async {
-        guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
         
         state = .loading
         do {
-            let collections = try await collectionRepository.getlCollections(for: user)
+            let collections = try await getCollectionsUseCase.invoke()
             self.state = .loaded
             self.collections = collections
         } catch {
@@ -46,12 +42,11 @@ final class SelectCollectionViewModel: ObservableObject {
     }
     
     func onSelect(collection: Collection) async {
-        guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
         
         state = .loading
         do {
-            try await bookRepository.update(book: book, collection: collection, for: user)
+            try await updateBookCollectionUseCase.invoke(book: book, collection: collection)
             state = .updated
         } catch {
             log.e(error.localizedDescription)

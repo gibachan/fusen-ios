@@ -11,11 +11,8 @@ import Foundation
 final class AddMemoViewModel: NSObject, ObservableObject {
     private let imageCountLimit = 1
     private let book: Book
-    private let accountService: AccountServiceProtocol
-    private let onDeviceTextRecognizeService: TextRecognizeServiceProtocol
-    private let visionTextRecognizeService: TextRecognizeServiceProtocol
-    private let appConfigRepository: AppConfigRepository
-    private let memoRepository: MemoRepository
+    private let addMemoUseCase: AddMemoUseCase
+    private let recognizeTextUseCase: RecognizeTextUseCase
     
     @Published var isSaveEnabled = false
     @Published var state: State = .initial
@@ -24,18 +21,12 @@ final class AddMemoViewModel: NSObject, ObservableObject {
     
     init(
         book: Book,
-        accountService: AccountServiceProtocol = AccountService.shared,
-        onDeviceTextRecognizeService: TextRecognizeServiceProtocol = OnDeviceTextRecognizeService(),
-        visionTextRecognizeService: TextRecognizeServiceProtocol = VisionTextRecognizeService(),
-        appConfigRepository: AppConfigRepository = AppConfigRepositoryImpl(),
-        memoRepository: MemoRepository = MemoRepositoryImpl()
+        addMemoUseCase: AddMemoUseCase = AddMemoUseCaseImpl(),
+        recognizeTextUseCase: RecognizeTextUseCase = RecognizeTextUseCaseImpl()
     ) {
         self.book = book
-        self.accountService = accountService
-        self.onDeviceTextRecognizeService = onDeviceTextRecognizeService
-        self.visionTextRecognizeService = visionTextRecognizeService
-        self.appConfigRepository = appConfigRepository
-        self.memoRepository = memoRepository
+        self.addMemoUseCase = addMemoUseCase
+        self.recognizeTextUseCase = recognizeTextUseCase
     }
     
     func onTextChange(text: String, quote: String) {
@@ -44,20 +35,9 @@ final class AddMemoViewModel: NSObject, ObservableObject {
     
     func onQuoteImageTaken(imageData: ImageData) async {
         guard !state.isInProgress else { return }
-        guard let image = imageData.uiImage else { return }
         
         state = .loading
-        
-        let config = await appConfigRepository.get()
-        let textRecognizeService: TextRecognizeServiceProtocol
-        if config.isVisionAPIUse {
-            log.d("Use VisionTextRecognizeService")
-            textRecognizeService = visionTextRecognizeService
-        } else {
-            log.d("Use OnDeviceTextRecognizeService")
-            textRecognizeService = onDeviceTextRecognizeService
-        }
-        let text = await textRecognizeService.text(from: image)
+        let text = await recognizeTextUseCase.invoke(imageData: imageData)
         log.d("recognized=\(text)")
         state = .recognizedQuote
         recognizedQuote = text
@@ -69,13 +49,11 @@ final class AddMemoViewModel: NSObject, ObservableObject {
         page: Int,
         image: ImageData?
     ) async {
-        guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
         
         state = .loading
         do {
-            let memoPage: Int? = page == 0 ? nil : page
-            let id = try await memoRepository.addMemo(of: book, text: text, quote: quote, page: memoPage, image: image, for: user)
+            let id = try await addMemoUseCase.invoke(book: book, text: text, quote: quote, page: page, image: image)
             log.d("Memo is added for id: \(id.value)")
             state = .succeeded
         } catch {

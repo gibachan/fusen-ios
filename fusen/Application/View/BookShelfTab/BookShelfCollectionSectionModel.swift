@@ -10,30 +10,25 @@ import Foundation
 @MainActor
 final class BookShelfCollectionSectionModel: ObservableObject {
     private static let maxDiplayBookCount = 6
-    private let accountService: AccountServiceProtocol
-    private let bookRepository: BookRepository
+    private let getBooksByCollectionUseCase: GetBooksByCollectionUseCase
     
     @Published var state: State = .initial
     @Published var collection: Collection
     @Published var books: [[Book]] = []
     
     init(
-        collection: Collection,
-        accountService: AccountServiceProtocol = AccountService.shared,
-        bookRepository: BookRepository = BookRepositoryImpl()
+        collection: Collection
     ) {
         self.collection = collection
-        self.accountService = accountService
-        self.bookRepository = bookRepository
+        self.getBooksByCollectionUseCase = GetBooksByCollectionUseCaseImpl(collection: collection)
     }
     
     func onAppear() async {
-        guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
         
         state = .loading
         do {
-            let pager = try await bookRepository.getBooks(by: collection, for: user, forceRefresh: false)
+            let pager = try await getBooksByCollectionUseCase.invoke(forceRefresh: true)
             state = .succeeded
             
             var displayBooks = Array(pager.data.prefix(Self.maxDiplayBookCount))

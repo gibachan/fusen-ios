@@ -9,27 +9,23 @@ import Foundation
 
 @MainActor
 final class FavoriteBookListViewModel: ObservableObject {
-    private let accountService: AccountServiceProtocol
-    private let bookRepository: BookRepository
+    private let getFavoriteBooksUseCase: GetFavoriteBooksUseCase
 
     @Published var state: State = .initial
     @Published var pager: Pager<Book> = .empty
     
     init(
-        accountService: AccountServiceProtocol = AccountService.shared,
-        bookRepository: BookRepository = BookRepositoryImpl()
+        getFavoriteBooksUseCase: GetFavoriteBooksUseCase = GetFavoriteBooksUseCaseImpl()
     ) {
-        self.accountService = accountService
-        self.bookRepository = bookRepository
+        self.getFavoriteBooksUseCase = getFavoriteBooksUseCase
     }
 
     func onAppear() async {
-        guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
         
         state = .loading
         do {
-            let pager = try await bookRepository.getFavoriteBooks(for: user, forceRefresh: false)
+            let pager = try await getFavoriteBooksUseCase.invoke(forceRefresh: false)
             log.d("finished=\(pager.finished)")
             self.state = .succeeded
             self.pager = pager
@@ -41,12 +37,11 @@ final class FavoriteBookListViewModel: ObservableObject {
     }
     
     func onRefresh() async {
-        guard let user = accountService.currentUser else { return }
         guard !state.isInProgress else { return }
         
         state = .refreshing
         do {
-            let pager = try await bookRepository.getFavoriteBooks(for: user, forceRefresh: true)
+            let pager = try await getFavoriteBooksUseCase.invoke(forceRefresh: true)
             log.d("finished=\(pager.finished)")
             self.state = .succeeded
             self.pager = pager
@@ -59,13 +54,12 @@ final class FavoriteBookListViewModel: ObservableObject {
     
     func onItemApper(of book: Book) async {
         guard case .succeeded = state, !pager.finished else { return }
-        guard let user = accountService.currentUser else { return }
         guard let lastBook = pager.data.last else { return }
 
         if book.id == lastBook.id {
             state = .loadingNext
             do {
-                let pager = try await bookRepository.getFavoriteBooksNext(for: user)
+                let pager = try await getFavoriteBooksUseCase.invokeNext()
                 log.d("finished=\(pager.finished)")
                 self.state = .succeeded
                 self.pager = pager

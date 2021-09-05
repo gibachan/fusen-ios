@@ -102,6 +102,8 @@
 		A060095026E4D37200EA0BC2 /* AddBookByManualUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060094F26E4D37200EA0BC2 /* AddBookByManualUseCase.swift */; };
 		A060095226E4D4CA00EA0BC2 /* UpdateBookUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060095126E4D4CA00EA0BC2 /* UpdateBookUseCase.swift */; };
 		A060095426E4DDBA00EA0BC2 /* UpdateBookCollectionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060095326E4DDBA00EA0BC2 /* UpdateBookCollectionUseCase.swift */; };
+		A060095626E4DF2900EA0BC2 /* SearchPublicationByBarcodeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060095526E4DF2900EA0BC2 /* SearchPublicationByBarcodeUseCase.swift */; };
+		A060095826E4E39B00EA0BC2 /* AddBookByPublicationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060095726E4E39B00EA0BC2 /* AddBookByPublicationUseCase.swift */; };
 		A062C18926C5F33500C56E2A /* AppEnv.swift in Sources */ = {isa = PBXBuildFile; fileRef = A062C18826C5F33500C56E2A /* AppEnv.swift */; };
 		A069981126CBE449006E74C6 /* MemoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069981026CBE449006E74C6 /* MemoRepository.swift */; };
 		A069981326CBE47E006E74C6 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069981226CBE47E006E74C6 /* Memo.swift */; };
@@ -315,6 +317,8 @@
 		A060094F26E4D37200EA0BC2 /* AddBookByManualUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookByManualUseCase.swift; sourceTree = "<group>"; };
 		A060095126E4D4CA00EA0BC2 /* UpdateBookUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateBookUseCase.swift; sourceTree = "<group>"; };
 		A060095326E4DDBA00EA0BC2 /* UpdateBookCollectionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateBookCollectionUseCase.swift; sourceTree = "<group>"; };
+		A060095526E4DF2900EA0BC2 /* SearchPublicationByBarcodeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPublicationByBarcodeUseCase.swift; sourceTree = "<group>"; };
+		A060095726E4E39B00EA0BC2 /* AddBookByPublicationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookByPublicationUseCase.swift; sourceTree = "<group>"; };
 		A062C18826C5F33500C56E2A /* AppEnv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnv.swift; sourceTree = "<group>"; };
 		A069981026CBE449006E74C6 /* MemoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoRepository.swift; sourceTree = "<group>"; };
 		A069981226CBE47E006E74C6 /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
@@ -511,7 +515,6 @@
 				A062C18826C5F33500C56E2A /* AppEnv.swift */,
 				7AD1610326C29CE000334A63 /* Resource */,
 				7AD1610226C29CCF00334A63 /* View */,
-				A007C07A26C7804D00270671 /* Service */,
 				A007C08126C78FA500270671 /* Utility */,
 				7AD1610926C29FCA00334A63 /* Extension */,
 			);
@@ -525,6 +528,7 @@
 				A060092A26E3685D00EA0BC2 /* Logic */,
 				A052EAC826C3F4C90033CE47 /* Repository */,
 				A060093026E489EA00EA0BC2 /* UseCase */,
+				A060095926E4E55C00EA0BC2 /* Service */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -665,17 +669,6 @@
 			path = Tutorial;
 			sourceTree = "<group>";
 		};
-		A007C07A26C7804D00270671 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				A007C07B26C7805B00270671 /* AccountService.swift */,
-				A07334EF26DA420F004C5436 /* TextRecognizeService.swift */,
-				A0F97CE326E0B898007CACE5 /* AnalyticsService.swift */,
-				A0F97CE726E0C571007CACE5 /* AnalyticsEvent.swift */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
 		A007C08126C78FA500270671 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
@@ -793,6 +786,7 @@
 				A060093D26E498E600EA0BC2 /* GetFavoriteBooksUseCase.swift */,
 				A060094126E49C4900EA0BC2 /* GetBooksByCollectionUseCase.swift */,
 				A060094F26E4D37200EA0BC2 /* AddBookByManualUseCase.swift */,
+				A060095726E4E39B00EA0BC2 /* AddBookByPublicationUseCase.swift */,
 				A060095126E4D4CA00EA0BC2 /* UpdateBookUseCase.swift */,
 				A060094926E4AAEA00EA0BC2 /* UpdateFavoriteBookUseCase.swift */,
 				A060095326E4DDBA00EA0BC2 /* UpdateBookCollectionUseCase.swift */,
@@ -801,8 +795,20 @@
 				A060094526E4A01600EA0BC2 /* AddCollectionUseCase.swift */,
 				A060094326E49EB500EA0BC2 /* DeleteCollectionUseCase.swift */,
 				A060094D26E4B92A00EA0BC2 /* GetMemosUseCase.swift */,
+				A060095526E4DF2900EA0BC2 /* SearchPublicationByBarcodeUseCase.swift */,
 			);
 			path = UseCase;
+			sourceTree = "<group>";
+		};
+		A060095926E4E55C00EA0BC2 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				A07334EF26DA420F004C5436 /* TextRecognizeService.swift */,
+				A007C07B26C7805B00270671 /* AccountService.swift */,
+				A0F97CE326E0B898007CACE5 /* AnalyticsService.swift */,
+				A0F97CE726E0C571007CACE5 /* AnalyticsEvent.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		A069981826CC3766006E74C6 /* Extension */ = {
@@ -1352,10 +1358,12 @@
 				A052EACC26C3F79B0033CE47 /* PublicationRepository.swift in Sources */,
 				A060094A26E4AAEA00EA0BC2 /* UpdateFavoriteBookUseCase.swift in Sources */,
 				A05CE89326D17FD3007F9CF2 /* AddMemoImageView.swift in Sources */,
+				A060095626E4DF2900EA0BC2 /* SearchPublicationByBarcodeUseCase.swift in Sources */,
 				A060094226E49C4900EA0BC2 /* GetBooksByCollectionUseCase.swift in Sources */,
 				A07CAD2526D096020012201A /* FirestoreUpdateUser.swift in Sources */,
 				A07334FC26DDAFDE004C5436 /* AppConfigRepositoryImpl.swift in Sources */,
 				A07CAD0326CED9A20012201A /* ImageDataExtension.swift in Sources */,
+				A060095826E4E39B00EA0BC2 /* AddBookByPublicationUseCase.swift in Sources */,
 				A060093E26E498E600EA0BC2 /* GetFavoriteBooksUseCase.swift in Sources */,
 				A07334F026DA420F004C5436 /* TextRecognizeService.swift in Sources */,
 				7A11FCAA26CB47EA00F1A6BC /* SettingTabView.swift in Sources */,

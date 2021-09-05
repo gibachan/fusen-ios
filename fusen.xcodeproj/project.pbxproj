@@ -33,6 +33,8 @@
 		7A9E34D626E4F00C00F4E985 /* GetAllMemosUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E34D526E4F00C00F4E985 /* GetAllMemosUseCase.swift */; };
 		7A9E34D826E4F1A800F4E985 /* AddMemoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E34D726E4F1A800F4E985 /* AddMemoUseCase.swift */; };
 		7A9E34DA26E4F2BB00F4E985 /* RecognizeTextUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E34D926E4F2BB00F4E985 /* RecognizeTextUseCase.swift */; };
+		7A9E34DC26E4F44300F4E985 /* UpdateMemoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E34DB26E4F44300F4E985 /* UpdateMemoUseCase.swift */; };
+		7A9E34DE26E4F54F00F4E985 /* DeleteMemoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E34DD26E4F54F00F4E985 /* DeleteMemoUseCase.swift */; };
 		7AA6D7A226D2830200781F48 /* BookShelfFavoriteSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6D7A126D2830200781F48 /* BookShelfFavoriteSection.swift */; };
 		7AA6D7A426D2831000781F48 /* BookShelfFavoriteSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6D7A326D2831000781F48 /* BookShelfFavoriteSectionModel.swift */; };
 		7AA6D7A726D3427500781F48 /* EditBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6D7A626D3427500781F48 /* EditBookView.swift */; };
@@ -247,6 +249,8 @@
 		7A9E34D526E4F00C00F4E985 /* GetAllMemosUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllMemosUseCase.swift; sourceTree = "<group>"; };
 		7A9E34D726E4F1A800F4E985 /* AddMemoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoUseCase.swift; sourceTree = "<group>"; };
 		7A9E34D926E4F2BB00F4E985 /* RecognizeTextUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizeTextUseCase.swift; sourceTree = "<group>"; };
+		7A9E34DB26E4F44300F4E985 /* UpdateMemoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMemoUseCase.swift; sourceTree = "<group>"; };
+		7A9E34DD26E4F54F00F4E985 /* DeleteMemoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteMemoUseCase.swift; sourceTree = "<group>"; };
 		7AA6D7A126D2830200781F48 /* BookShelfFavoriteSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfFavoriteSection.swift; sourceTree = "<group>"; };
 		7AA6D7A326D2831000781F48 /* BookShelfFavoriteSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfFavoriteSectionModel.swift; sourceTree = "<group>"; };
 		7AA6D7A626D3427500781F48 /* EditBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookView.swift; sourceTree = "<group>"; };
@@ -802,8 +806,10 @@
 				A060094326E49EB500EA0BC2 /* DeleteCollectionUseCase.swift */,
 				7A9E34D526E4F00C00F4E985 /* GetAllMemosUseCase.swift */,
 				A060094D26E4B92A00EA0BC2 /* GetMemosUseCase.swift */,
-				A060095526E4DF2900EA0BC2 /* SearchPublicationByBarcodeUseCase.swift */,
 				7A9E34D726E4F1A800F4E985 /* AddMemoUseCase.swift */,
+				7A9E34DB26E4F44300F4E985 /* UpdateMemoUseCase.swift */,
+				7A9E34DD26E4F54F00F4E985 /* DeleteMemoUseCase.swift */,
+				A060095526E4DF2900EA0BC2 /* SearchPublicationByBarcodeUseCase.swift */,
 				7A9E34D926E4F2BB00F4E985 /* RecognizeTextUseCase.swift */,
 			);
 			path = UseCase;
@@ -1364,6 +1370,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A9E34DE26E4F54F00F4E985 /* DeleteMemoUseCase.swift in Sources */,
 				A052EACC26C3F79B0033CE47 /* PublicationRepository.swift in Sources */,
 				A060094A26E4AAEA00EA0BC2 /* UpdateFavoriteBookUseCase.swift in Sources */,
 				A05CE89326D17FD3007F9CF2 /* AddMemoImageView.swift in Sources */,
@@ -1384,6 +1391,7 @@
 				A05CE89526D1A6C6007F9CF2 /* GestureImageView.swift in Sources */,
 				A0B9482F26D3BF4C00C47204 /* ImageStorage.swift in Sources */,
 				A060094426E49EB500EA0BC2 /* DeleteCollectionUseCase.swift in Sources */,
+				7A9E34DC26E4F44300F4E985 /* UpdateMemoUseCase.swift in Sources */,
 				A07CAD1F26D0670A0012201A /* CollectionItemView.swift in Sources */,
 				A07334F626DDAD35004C5436 /* ViewExtension.swift in Sources */,
 				A060092826E365B100EA0BC2 /* SortButton.swift in Sources */,

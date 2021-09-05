@@ -30,13 +30,13 @@ final class UpdateBookUseCaseImpl: UpdateBookUseCase {
     
     func invoke(book: Book, title: String, author: String, description: String) async throws {
         guard let user = accountService.currentUser else {
-            throw UpdateFavoriteBookUseCaseError.notAuthenticated
+            throw UpdateBookUseCaseError.notAuthenticated
         }
         
         do {
             try await bookRepository.update(book: book, title: title, author: author, description: description, for: user)
         } catch {
-            throw UpdateFavoriteBookUseCaseError.badNetwork
+            throw UpdateBookUseCaseError.badNetwork
         }
     }
 }

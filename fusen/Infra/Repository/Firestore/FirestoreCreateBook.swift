@@ -28,7 +28,6 @@ extension FirestoreCreateBook {
         collection: Collection?
     ) -> Self {
         
-        
         return .init(
             title: publication.title,
             author: publication.author,

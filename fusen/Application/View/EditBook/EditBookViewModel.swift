@@ -13,6 +13,7 @@ final class EditViewModel: ObservableObject {
 
     @Published var isSaveEnabled = false
     @Published var state: State = .initial
+    @Published var imageURL: URL?
     @Published var book: Book
 
     init(
@@ -21,6 +22,10 @@ final class EditViewModel: ObservableObject {
     ) {
         self.book = book
         self.updateBookUseCase = updateBookUseCase
+    }
+    
+    func onAppear() {
+        imageURL = book.imageURL
     }
     
     func onTextChange(title: String, author: String, description: String) {

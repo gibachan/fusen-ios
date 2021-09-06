@@ -11,4 +11,9 @@ extension View {
     func backgroundColor(_ color: Color) -> some View {
         self.background(color)
     }
+    
+    func debug(_ block: () -> Void) -> some View {
+        block()
+        return self
+    }
 }

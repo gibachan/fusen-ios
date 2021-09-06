@@ -24,8 +24,8 @@ struct EditBookView: View {
     var body: some View {
         Form {
             Section {
-                BookImageView(url: viewModel.book.imageURL)
-                    .frame(width: 64, height: 80)
+                BookImageView(url: viewModel.imageURL)
+                    .frame(width: 72, height: 80)
             } header: {
                 SectionHeaderText("書籍画像")
             }
@@ -93,6 +93,9 @@ struct EditBookView: View {
             }
                 .disabled(!viewModel.isSaveEnabled)
         )
+        .task {
+            viewModel.onAppear()
+        }
         .onReceive(viewModel.$state) { state in
             switch state {
             case .initial:

@@ -8,26 +8,22 @@
 import SwiftUI
 
 struct HomeReadingBookItem: View {
-    static let height: CGFloat = 72
+    static let height: CGFloat = 56
     let book: Book
     let action: () -> Void
     var body: some View {
         NavigationLink(destination: LazyView(BookView(bookId: book.id))) {
             HStack(alignment: .center) {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("読書中の書籍")
+                BookImageView(url: book.imageURL)
+                    .frame(width: 30, height: 40)
+                VStack(alignment: .leading) {
+                    Text("読書中")
                         .font(.small)
-                        .fontWeight(.bold)
                         .foregroundColor(.textSecondary)
-                    HStack(alignment: .center) {
-                        BookImageView(url: book.imageURL)
-                            .frame(width: 30, height: 40)
-                        Text(book.title)
-                            .font(.small)
-                            .lineLimit(2)
-                            .foregroundColor(.textSecondary)
-                        
-                    }
+                    Text(book.title)
+                        .font(.small)
+                        .lineLimit(1)
+                        .foregroundColor(.textPrimary)
                 }
                 Spacer()
                 Image.memo
@@ -40,10 +36,10 @@ struct HomeReadingBookItem: View {
             }
         }
         .padding(.vertical, 8)
-        .padding(.horizontal, 24)
-        .border(Color.backgroundGray, width: 0.5)
+        .padding(.horizontal, 16)
         .frame(height: Self.height)
         .backgroundColor(.white.opacity(0.9))
+        .shadow(color: .backgroundGray, radius: 1)
     }
 }
 

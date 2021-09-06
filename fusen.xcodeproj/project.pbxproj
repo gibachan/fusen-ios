@@ -109,6 +109,7 @@
 		A060095426E4DDBA00EA0BC2 /* UpdateBookCollectionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060095326E4DDBA00EA0BC2 /* UpdateBookCollectionUseCase.swift */; };
 		A060095626E4DF2900EA0BC2 /* SearchPublicationByBarcodeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060095526E4DF2900EA0BC2 /* SearchPublicationByBarcodeUseCase.swift */; };
 		A060095826E4E39B00EA0BC2 /* AddBookByPublicationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060095726E4E39B00EA0BC2 /* AddBookByPublicationUseCase.swift */; };
+		A060096226E5B5E300EA0BC2 /* SearchPublicationByBarcodeUseCaseSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060096126E5B5E300EA0BC2 /* SearchPublicationByBarcodeUseCaseSpec.swift */; };
 		A062C18926C5F33500C56E2A /* AppEnv.swift in Sources */ = {isa = PBXBuildFile; fileRef = A062C18826C5F33500C56E2A /* AppEnv.swift */; };
 		A069981126CBE449006E74C6 /* MemoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069981026CBE449006E74C6 /* MemoRepository.swift */; };
 		A069981326CBE47E006E74C6 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069981226CBE47E006E74C6 /* Memo.swift */; };
@@ -329,6 +330,7 @@
 		A060095326E4DDBA00EA0BC2 /* UpdateBookCollectionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateBookCollectionUseCase.swift; sourceTree = "<group>"; };
 		A060095526E4DF2900EA0BC2 /* SearchPublicationByBarcodeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPublicationByBarcodeUseCase.swift; sourceTree = "<group>"; };
 		A060095726E4E39B00EA0BC2 /* AddBookByPublicationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookByPublicationUseCase.swift; sourceTree = "<group>"; };
+		A060096126E5B5E300EA0BC2 /* SearchPublicationByBarcodeUseCaseSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPublicationByBarcodeUseCaseSpec.swift; sourceTree = "<group>"; };
 		A062C18826C5F33500C56E2A /* AppEnv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnv.swift; sourceTree = "<group>"; };
 		A069981026CBE449006E74C6 /* MemoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoRepository.swift; sourceTree = "<group>"; };
 		A069981226CBE47E006E74C6 /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
@@ -826,6 +828,22 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		A060095F26E5B5E300EA0BC2 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				A060096026E5B5E300EA0BC2 /* UseCase */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		A060096026E5B5E300EA0BC2 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				A060096126E5B5E300EA0BC2 /* SearchPublicationByBarcodeUseCaseSpec.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
 		A069981826CC3766006E74C6 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -949,6 +967,7 @@
 		A082001726C1F5D100100357 /* fusenTests */ = {
 			isa = PBXGroup;
 			children = (
+				A060095F26E5B5E300EA0BC2 /* Domain */,
 				A082001826C1F5D100100357 /* fusenTests.swift */,
 			);
 			path = fusenTests;
@@ -1558,6 +1577,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A082001926C1F5D100100357 /* fusenTests.swift in Sources */,
+				A060096226E5B5E300EA0BC2 /* SearchPublicationByBarcodeUseCaseSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

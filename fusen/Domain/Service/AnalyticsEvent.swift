@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum AnalyticsEvent {
+enum AnalyticsEvent: Equatable {
     case addBookByManual
     case addBookByBarcode
     case scanBarcodeByRakutenError(code: String)

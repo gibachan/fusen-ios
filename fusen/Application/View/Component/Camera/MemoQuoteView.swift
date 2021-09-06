@@ -67,7 +67,13 @@ extension MemoQuoteView {
             // 'image' is the newly cropped version of the original image
             handler(image)
             cropViewController.dismiss(animated: true) { [weak self] in
-                self?.pickerVC?.dismiss(animated: false)
+                self?.pickerVC?.dismiss(animated: true)
+            }
+        }
+        
+        func cropViewController(_ cropViewController: CropViewController, didFinishCancelled cancelled: Bool) {
+            cropViewController.dismiss(animated: true) { [weak self] in
+                self?.pickerVC?.dismiss(animated: true)
             }
         }
     }

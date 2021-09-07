@@ -10,14 +10,19 @@ import AuthenticationServices
 
 final class SettingTabViewModel: ObservableObject {
     private let accountService: AccountServiceProtocol
+    private let resetUserActionHistoryUseCase: ResetUserActionHistoryUseCase
 
     @Published var state: State = .initial
     @Published var userId: String = ""
     @Published var version: String = ""
     @Published var isLinkedAppleId = false
     
-    init(accountService: AccountServiceProtocol = AccountService.shared) {
+    init(
+        accountService: AccountServiceProtocol = AccountService.shared,
+        resetUserActionHistoryUseCase: ResetUserActionHistoryUseCase = ResetUserActionHistoryUseCaseImpl()
+    ) {
         self.accountService = accountService
+        self.resetUserActionHistoryUseCase = resetUserActionHistoryUseCase
     }
     
     func onApper() {
@@ -99,7 +104,11 @@ final class SettingTabViewModel: ObservableObject {
     }
     
 #if DEBUG
-    func logOut() {
+    func onResetUserActionHstory() async {
+        await resetUserActionHistoryUseCase.invoke()
+    }
+    
+    func onLogOut() {
         do {
             try accountService.logOut()
             fatalError("logged out")

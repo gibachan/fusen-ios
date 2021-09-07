@@ -149,7 +149,14 @@ struct SettingTabView: View {
                         }
                     }
                     Button {
-                        viewModel.logOut()
+                        Task {
+                            await viewModel.onResetUserActionHstory()
+                        }
+                    } label: {
+                        Text("ユーザー行動履歴をリセット")
+                    }
+                    Button {
+                        viewModel.onLogOut()
                     } label: {
                         Text("ログアウト")
                     }

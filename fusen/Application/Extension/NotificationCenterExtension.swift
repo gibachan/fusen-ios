@@ -11,6 +11,9 @@ extension NotificationCenter {
     func postTutorialFinished() {
         post(name: Notification.Name.tutorialFinished, object: nil)
     }
+    func postShowReadingBookDescription() {
+        post(name: Notification.Name.showReadingBookDescription, object: nil)
+    }
     func postError(message: ErrorMessage) {
         post(name: Notification.Name.error, object: nil, userInfo: [Notification.errorMessageParam: message])
     }
@@ -20,6 +23,9 @@ extension NotificationCenter {
     
     func tutorialFinishedPublisher() -> Publisher {
         publisher(for: Notification.Name.tutorialFinished)
+    }
+    func showReadingBookDescriptionPublisher() -> Publisher {
+        publisher(for: Notification.Name.showReadingBookDescription)
     }
     func errorPublisher() -> Publisher {
         publisher(for: Notification.Name.error)

@@ -15,6 +15,8 @@ final class BookViewModel: ObservableObject {
     private let updateReadingBookUseCase: UpdateReadingBookUseCase
     private let updateFavoriteBookUseCase: UpdateFavoriteBookUseCase
     private let deleteBookUseCase: DeleteBookUseCase
+    private let getUserActionHistoryUseCase: GetUserActionHistoryUseCase
+    private let confirmReadingBookDescriptionUseCase: ConfirmReadingBookDescriptionUseCase
     
     private var favoriteState: FavoriteState = .initial
     private var readingBookState: ReadingBookState = .initial
@@ -29,7 +31,9 @@ final class BookViewModel: ObservableObject {
         getReadingBookUseCase: GetReadingBookUseCase = GetReadingBookUseCaseImpl(),
         updateReadingBookUseCase: UpdateReadingBookUseCase = UpdateReadingBookUseCaseImpl(),
         updateFavoriteBookUseCase: UpdateFavoriteBookUseCase = UpdateFavoriteBookUseCaseImpl(),
-        deleteBookUseCase: DeleteBookUseCase = DeleteBookUseCaseImpl()
+        deleteBookUseCase: DeleteBookUseCase = DeleteBookUseCaseImpl(),
+        getUserActionHistoryUseCase: GetUserActionHistoryUseCase = GetUserActionHistoryUseCaseImpl(),
+        confirmReadingBookDescriptionUseCase: ConfirmReadingBookDescriptionUseCase = ConfirmReadingBookDescriptionUseCaseImpl()
     ) {
         self.bookId = bookId
         self.getBookByIdUseCase = getBookByIdUseCase
@@ -37,6 +41,8 @@ final class BookViewModel: ObservableObject {
         self.updateReadingBookUseCase = updateReadingBookUseCase
         self.updateFavoriteBookUseCase = updateFavoriteBookUseCase
         self.deleteBookUseCase = deleteBookUseCase
+        self.getUserActionHistoryUseCase = getUserActionHistoryUseCase
+        self.confirmReadingBookDescriptionUseCase = confirmReadingBookDescriptionUseCase
     }
     
     func onAppear() async {
@@ -57,6 +63,13 @@ final class BookViewModel: ObservableObject {
             try await updateReadingBookUseCase.invoke(readingBook: readingBook)
             readingBookState = .loaded
             isReadingBook = readingBook != nil
+            
+            // Confirt reading book description
+            let userActionHistory = await getUserActionHistoryUseCase.invoke()
+            if !userActionHistory.didConfirmReadingBookDescription {
+                NotificationCenter.default.postShowReadingBookDescription()
+            }
+            await confirmReadingBookDescriptionUseCase.invoke()
         } catch {
             log.e(error.localizedDescription)
             readingBookState = .failed

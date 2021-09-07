@@ -13,6 +13,7 @@ struct MainView: View {
     @State private var isMaintenancePresented = false
     @State private var toastText = ""
     @State private var isToastPresented = false
+    @State private var isReadingBookDescriptionPresented = false
     
     var body: some View {
         ZStack {
@@ -42,6 +43,15 @@ struct MainView: View {
                 }
             }
             .zIndex(0)
+            
+            if isReadingBookDescriptionPresented {
+                ReadingBookDescriptionView()
+                    .onTapGesture {
+                        withAnimation {
+                            isReadingBookDescriptionPresented = false
+                        }
+                    }
+            }
             
             if isToastPresented {
                 ToastView(text: toastText, type: .error)
@@ -82,6 +92,11 @@ struct MainView: View {
             toastText = notification.errorMessage?.string ?? ""
             withAnimation {
                 isToastPresented = true
+            }
+        }
+        .onReceive(NotificationCenter.default.showReadingBookDescriptionPublisher()) { _ in
+            withAnimation {
+                isReadingBookDescriptionPresented = true
             }
         }
     }

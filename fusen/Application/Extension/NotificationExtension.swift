@@ -11,6 +11,9 @@ extension Notification.Name {
     static var tutorialFinished: Notification.Name {
         Notification.Name("tutorialFinished")
     }
+    static var showReadingBookDescription: Notification.Name {
+        Notification.Name("showReadingBookDescription")
+    }
     static var refreshBookShelfAllCollection: Notification.Name {
         Notification.Name("refreshBookShelfAllCollection")
     }

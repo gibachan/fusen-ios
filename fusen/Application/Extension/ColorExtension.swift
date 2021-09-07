@@ -24,6 +24,7 @@ extension Color {
     static let backgroundSystemGroup = Color(UIColor.systemGroupedBackground)
     
     // Misc
+    static let border = Color("border")
     static let info = Color(UIColor.systemGray)
     static let warning = Color(UIColor.systemYellow)
     static let error = Color(UIColor.systemRed)

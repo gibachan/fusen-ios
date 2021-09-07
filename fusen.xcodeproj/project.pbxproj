@@ -73,6 +73,8 @@
 		A007C09226C83A7200270671 /* Pager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C09126C83A7200270671 /* Pager.swift */; };
 		A007C09526C8CAB700270671 /* FirestoreGetBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C09426C8CAB600270671 /* FirestoreGetBook.swift */; };
 		A008976A26D87296003EFD08 /* ErrorHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = A008976926D87296003EFD08 /* ErrorHUD.swift */; };
+		A0198ADA26E80A2700553CDA /* AddCollectionUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0198AD926E80A2700553CDA /* AddCollectionUseCaseTests.swift */; };
+		A0198ADD26E80AE100553CDA /* MockAccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0198ADC26E80AE100553CDA /* MockAccountService.swift */; };
 		A020544126CE88BD002FF585 /* EditMemoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A020544026CE88BD002FF585 /* EditMemoImageView.swift */; };
 		A020544526CE8CC7002FF585 /* DeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A020544426CE8CC7002FF585 /* DeleteButton.swift */; };
 		A052EAC026C3D7430033CE47 /* AddBookMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EABF26C3D7430033CE47 /* AddBookMenuView.swift */; };
@@ -109,7 +111,7 @@
 		A060095426E4DDBA00EA0BC2 /* UpdateBookCollectionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060095326E4DDBA00EA0BC2 /* UpdateBookCollectionUseCase.swift */; };
 		A060095626E4DF2900EA0BC2 /* SearchPublicationByBarcodeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060095526E4DF2900EA0BC2 /* SearchPublicationByBarcodeUseCase.swift */; };
 		A060095826E4E39B00EA0BC2 /* AddBookByPublicationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060095726E4E39B00EA0BC2 /* AddBookByPublicationUseCase.swift */; };
-		A060096226E5B5E300EA0BC2 /* SearchPublicationByBarcodeUseCaseSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060096126E5B5E300EA0BC2 /* SearchPublicationByBarcodeUseCaseSpec.swift */; };
+		A060096226E5B5E300EA0BC2 /* SearchPublicationByBarcodeUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060096126E5B5E300EA0BC2 /* SearchPublicationByBarcodeUseCaseTests.swift */; };
 		A060096426E6D59E00EA0BC2 /* UserActionHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060096326E6D59C00EA0BC2 /* UserActionHistory.swift */; };
 		A060096626E6D67C00EA0BC2 /* GetUserActionHistoryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060096526E6D67C00EA0BC2 /* GetUserActionHistoryUseCase.swift */; };
 		A060096826E6D71600EA0BC2 /* UserActionHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060096726E6D71600EA0BC2 /* UserActionHistoryRepository.swift */; };
@@ -301,6 +303,8 @@
 		A007C09126C83A7200270671 /* Pager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pager.swift; sourceTree = "<group>"; };
 		A007C09426C8CAB600270671 /* FirestoreGetBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreGetBook.swift; sourceTree = "<group>"; };
 		A008976926D87296003EFD08 /* ErrorHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHUD.swift; sourceTree = "<group>"; };
+		A0198AD926E80A2700553CDA /* AddCollectionUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCollectionUseCaseTests.swift; sourceTree = "<group>"; };
+		A0198ADC26E80AE100553CDA /* MockAccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAccountService.swift; sourceTree = "<group>"; };
 		A020544026CE88BD002FF585 /* EditMemoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMemoImageView.swift; sourceTree = "<group>"; };
 		A020544426CE8CC7002FF585 /* DeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButton.swift; sourceTree = "<group>"; };
 		A052EABF26C3D7430033CE47 /* AddBookMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookMenuView.swift; sourceTree = "<group>"; };
@@ -338,7 +342,7 @@
 		A060095326E4DDBA00EA0BC2 /* UpdateBookCollectionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateBookCollectionUseCase.swift; sourceTree = "<group>"; };
 		A060095526E4DF2900EA0BC2 /* SearchPublicationByBarcodeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPublicationByBarcodeUseCase.swift; sourceTree = "<group>"; };
 		A060095726E4E39B00EA0BC2 /* AddBookByPublicationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookByPublicationUseCase.swift; sourceTree = "<group>"; };
-		A060096126E5B5E300EA0BC2 /* SearchPublicationByBarcodeUseCaseSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPublicationByBarcodeUseCaseSpec.swift; sourceTree = "<group>"; };
+		A060096126E5B5E300EA0BC2 /* SearchPublicationByBarcodeUseCaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPublicationByBarcodeUseCaseTests.swift; sourceTree = "<group>"; };
 		A060096326E6D59C00EA0BC2 /* UserActionHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActionHistory.swift; sourceTree = "<group>"; };
 		A060096526E6D67C00EA0BC2 /* GetUserActionHistoryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserActionHistoryUseCase.swift; sourceTree = "<group>"; };
 		A060096726E6D71600EA0BC2 /* UserActionHistoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActionHistoryRepository.swift; sourceTree = "<group>"; };
@@ -726,6 +730,14 @@
 			path = Firestore;
 			sourceTree = "<group>";
 		};
+		A0198ADB26E80AD000553CDA /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				A0198ADC26E80AE100553CDA /* MockAccountService.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
 		A052EABE26C3D71C0033CE47 /* AddBookMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -863,7 +875,8 @@
 		A060096026E5B5E300EA0BC2 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				A060096126E5B5E300EA0BC2 /* SearchPublicationByBarcodeUseCaseSpec.swift */,
+				A060096126E5B5E300EA0BC2 /* SearchPublicationByBarcodeUseCaseTests.swift */,
+				A0198AD926E80A2700553CDA /* AddCollectionUseCaseTests.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -999,6 +1012,7 @@
 		A082001726C1F5D100100357 /* fusenTests */ = {
 			isa = PBXGroup;
 			children = (
+				A0198ADB26E80AD000553CDA /* Mock */,
 				A060095F26E5B5E300EA0BC2 /* Domain */,
 				A082001826C1F5D100100357 /* fusenTests.swift */,
 			);
@@ -1616,8 +1630,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0198ADA26E80A2700553CDA /* AddCollectionUseCaseTests.swift in Sources */,
 				A082001926C1F5D100100357 /* fusenTests.swift in Sources */,
-				A060096226E5B5E300EA0BC2 /* SearchPublicationByBarcodeUseCaseSpec.swift in Sources */,
+				A060096226E5B5E300EA0BC2 /* SearchPublicationByBarcodeUseCaseTests.swift in Sources */,
+				A0198ADD26E80AE100553CDA /* MockAccountService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

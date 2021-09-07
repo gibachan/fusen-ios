@@ -9,7 +9,6 @@ import Foundation
 
 @MainActor
 final class AddCollectionViewModel: ObservableObject {
-    private let collectionCountLimit = 10
     private let getCollectionsUseCase: GetCollectionsUseCase
     private let addCollectionUseCase: AddCollectionUseCase
     
@@ -50,24 +49,14 @@ final class AddCollectionViewModel: ObservableObject {
         guard !state.isInProgress else { return }
         
         state = .loading
-
-        // Check collection count
-        do {
-            let collections = try await getCollectionsUseCase.invoke()
-            log.d("Current collection count: \(collections.count)")
-            if collections.count >= Collection.countLimit {
-                state = .collectionCountOver
-                return
-            }
-        } catch {
-            log.e(error.localizedDescription)
-            state = .failed
-        }
         do {
             log.d("Saving \(name) collection with \(color)")
             let id = try await addCollectionUseCase.invoke(name: name, color: color)
             log.d("Collection is added for id: \(id.value)")
             state = .collectionAdded
+        } catch AddCollectionUseCaseError.countOver {
+            log.e("collection count limit over")
+            state = .collectionCountOver
         } catch {
             log.e(error.localizedDescription)
             state = .failed

@@ -1,6 +1,6 @@
 //
-//  SearchPublicationByBarcodeUseCaseSpec.swift
-//  SearchPublicationByBarcodeUseCaseSpec
+//  SearchPublicationByBarcodeUseCaseTests.swift
+//  SearchPublicationByBarcodeUseCaseTests
 //
 //  Created by Tatsuyuki Kobayashi on 2021/09/06.
 //

@@ -9,6 +9,7 @@ import Foundation
 
 enum AddCollectionUseCaseError: Error {
     case notAuthenticated
+    case countOver
     case badNetwork
 }
 
@@ -32,7 +33,18 @@ final class AddCollectionUseCaseImpl: AddCollectionUseCase {
         guard let user = accountService.currentUser else {
             throw AddCollectionUseCaseError.notAuthenticated
         }
+
+        let collections: [Collection]
+        do {
+            collections = try await collectionRepository.getlCollections(for: user)
+        } catch {
+            throw AddCollectionUseCaseError.badNetwork
+        }
         
+        guard collections.count < Collection.countLimit else {
+            throw AddCollectionUseCaseError.countOver
+        }
+
         do {
             return try await collectionRepository.addCollection(name: name, color: color, for: user)
         } catch {

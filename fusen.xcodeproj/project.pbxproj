@@ -535,7 +535,7 @@
 			path = AddBook;
 			sourceTree = "<group>";
 		};
-		7AD160FF26C29CA800334A63 /* Application */ = {
+		7AD160FF26C29CA800334A63 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
 				A082000726C1F5CF00100357 /* FusenApp.swift */,
@@ -546,7 +546,7 @@
 				A007C08126C78FA500270671 /* Utility */,
 				7AD1610926C29FCA00334A63 /* Extension */,
 			);
-			path = Application;
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		7AD1610026C29CB100334A63 /* Domain */ = {
@@ -561,14 +561,14 @@
 			path = Domain;
 			sourceTree = "<group>";
 		};
-		7AD1610126C29CB700334A63 /* Infra */ = {
+		7AD1610126C29CB700334A63 /* Data */ = {
 			isa = PBXGroup;
 			children = (
 				7A69930E26DD069F006B0697 /* Resource */,
 				A052EACD26C3F7C60033CE47 /* Repository */,
 				A069981826CC3766006E74C6 /* Extension */,
 			);
-			path = Infra;
+			path = Data;
 			sourceTree = "<group>";
 		};
 		7AD1610226C29CCF00334A63 /* View */ = {
@@ -980,9 +980,9 @@
 			isa = PBXGroup;
 			children = (
 				A05CE89626D1E735007F9CF2 /* fusen.entitlements */,
-				7AD160FF26C29CA800334A63 /* Application */,
+				7AD160FF26C29CA800334A63 /* Presentation */,
 				7AD1610026C29CB100334A63 /* Domain */,
-				7AD1610126C29CB700334A63 /* Infra */,
+				7AD1610126C29CB700334A63 /* Data */,
 				A082000D26C1F5D100100357 /* Preview Content */,
 			);
 			path = fusen;
@@ -1395,7 +1395,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ $CONFIGURATION = \"Debug\" ]; then\n    ${PODS_ROOT}/LicensePlist/license-plist --output-path fusen/Application/Resource/Settings.bundle --suppress-opening-directory\nfi\n";
+			shellScript = "if [ $CONFIGURATION = \"Debug\" ]; then\n    ${PODS_ROOT}/LicensePlist/license-plist --output-path fusen/Presentation/Resource/Settings.bundle --suppress-opening-directory\nfi\n";
 		};
 		BB4E535C5BF40E7A5BFA3BBA /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;

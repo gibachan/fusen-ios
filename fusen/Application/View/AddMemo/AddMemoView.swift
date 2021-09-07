@@ -90,7 +90,7 @@ struct AddMemoView: View {
                 }
             } header: {
                 HStack(alignment: .center) {
-                    SectionHeaderText("引用")
+                    SectionHeaderText("書籍から引用")
                     Spacer()
                     Button {
                         isQuoteCameraPresented = true

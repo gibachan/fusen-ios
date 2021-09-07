@@ -64,7 +64,7 @@ struct EditMemoView: View {
                         }
                     }
                 } header: {
-                    SectionHeaderText("引用")
+                    SectionHeaderText("書籍から引用")
                 }
                 .foregroundColor(.textSecondary)
                 .listRowBackground(Color.backgroundLightGray)

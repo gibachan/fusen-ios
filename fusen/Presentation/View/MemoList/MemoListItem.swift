@@ -17,45 +17,41 @@ struct MemoListItem: View {
     }
     
     var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 8) {
-                Text(memo.text)
-                    .font(.medium)
-                    .foregroundColor(.textPrimary)
-                    .lineLimit(4)
-
-                if memo.quote.isNotEmpty {
-                    QuoteText(text: memo.quote)
-                        .lineLimit(4)
-                }
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(spacing: 8) {
+                Text("\(memo.updatedAt.string)")
+                    .font(.minimal)
+                    .foregroundColor(.textSecondary)
+                
+                Text(viewModel.bookTitle)
+                    .font(.minimal)
+                    .foregroundColor(.textSecondary)
+                    .lineLimit(1)
                 
                 Spacer()
-                
-                HStack(spacing: 8) {
-                    Text("\(memo.updatedAt.string)")
+                if let page = memo.page {
+                    Text("\(page)ページ")
                         .font(.minimal)
                         .foregroundColor(.textSecondary)
                     
-                    Text(viewModel.bookTitle)
-                        .font(.minimal)
-                        .foregroundColor(.textSecondary)
-                        .lineLimit(1)
-
-                    Spacer()
-                    if let page = memo.page {
-                        Text("\(page)ページ")
-                            .font(.minimal)
-                            .foregroundColor(.textSecondary)
-
-                    }
-                    if !memo.imageURLs.isEmpty {
-                        Image.image
-                            .renderingMode(.template)
-                            .resizable()
-                            .frame(width: 12, height: 12)
-                            .foregroundColor(.textSecondary)
-                    }
                 }
+                if !memo.imageURLs.isEmpty {
+                    Image.image
+                        .renderingMode(.template)
+                        .resizable()
+                        .frame(width: 12, height: 12)
+                        .foregroundColor(.textSecondary)
+                }
+            }
+            
+            Text(memo.text)
+                .font(.medium)
+                .foregroundColor(.textPrimary)
+                .lineLimit(4)
+            
+            if memo.quote.isNotEmpty {
+                QuoteText(text: memo.quote)
+                    .lineLimit(4)
             }
         }
         .task {

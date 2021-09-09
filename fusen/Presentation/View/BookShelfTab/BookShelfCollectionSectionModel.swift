@@ -14,7 +14,7 @@ final class BookShelfCollectionSectionModel: ObservableObject {
     
     @Published var state: State = .initial
     @Published var collection: Collection
-    @Published var books: [[Book]] = []
+    @Published var bookColumns: [BookShelfColumn] = []
     
     init(
         collection: Collection
@@ -32,13 +32,14 @@ final class BookShelfCollectionSectionModel: ObservableObject {
             state = .succeeded
             
             var displayBooks = Array(pager.data.prefix(Self.maxDiplayBookCount))
-            var resultBooks: [[Book]] = []
+            var resultColumns: [BookShelfColumn] = []
             while !displayBooks.isEmpty {
                 let books = Array(displayBooks.prefix(2))
+                let column = BookShelfColumn(id: UUID().uuidString, books: books)
                 displayBooks = Array(displayBooks.dropFirst(2))
-                resultBooks.append(books)
+                resultColumns.append(column)
             }
-            books = resultBooks
+            bookColumns = resultColumns
         } catch {
             log.e(error.localizedDescription)
             state = .failed

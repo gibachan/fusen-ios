@@ -12,19 +12,16 @@ struct BookShelfFavoriteSection: View {
     
     var body: some View {
         Section {
-            if viewModel.books.isEmpty {
+            if viewModel.bookColumns.isEmpty {
                 BookShelfEmptyItem()
-                    .listRowSeparator(.hidden)
             } else {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(alignment: .top, spacing: 8) {
-                        ForEach(0..<viewModel.books.count) { columnIndex in
-                            let booksColumn = viewModel.books[columnIndex]
+                        ForEach(viewModel.bookColumns) { column in
                             VStack(alignment: .leading, spacing: 8) {
-                                ForEach(0..<booksColumn.count) { index in
-                                    let book = booksColumn[index]
+                                ForEach(column.books, id: \.id) { book in
                                     BookShelfItem(book: book)
-                                    if index < booksColumn.count - 1 {
+                                    if book.id != column.books.last?.id {
                                         Divider()
                                     }
                                 }
@@ -39,7 +36,7 @@ struct BookShelfFavoriteSection: View {
             HStack {
                 SectionHeaderText("お気に入り")
                 Spacer()
-                if viewModel.books.isNotEmpty {
+                if viewModel.bookColumns.isNotEmpty {
                     NavigationLink(destination: LazyView(FavoriteBookListView())) {
                         ShowAllText()
                     }

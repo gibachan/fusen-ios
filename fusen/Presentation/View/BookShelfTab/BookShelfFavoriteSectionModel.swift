@@ -13,7 +13,7 @@ final class BookShelfFavoriteSectionModel: ObservableObject {
     private let getFavoriteBooksUseCase: GetFavoriteBooksUseCase
     
     @Published var state: State = .initial
-    @Published var books: [[Book]] = []
+    @Published var bookColumns: [BookShelfColumn] = []
     
     init(
         getFavoriteBooksUseCase: GetFavoriteBooksUseCase = GetFavoriteBooksUseCaseImpl()
@@ -30,13 +30,14 @@ final class BookShelfFavoriteSectionModel: ObservableObject {
             state = .succeeded
             
             var displayBooks = Array(pager.data.prefix(Self.maxDiplayBookCount))
-            var resultBooks: [[Book]] = []
+            var resultColumns: [BookShelfColumn] = []
             while !displayBooks.isEmpty {
                 let books = Array(displayBooks.prefix(2))
+                let column = BookShelfColumn(id: UUID().uuidString, books: books)
                 displayBooks = Array(displayBooks.dropFirst(2))
-                resultBooks.append(books)
+                resultColumns.append(column)
             }
-            books = resultBooks
+            bookColumns = resultColumns
         } catch {
             log.e(error.localizedDescription)
             state = .failed

@@ -9,10 +9,11 @@ import Foundation
 
 struct UserActionHistory {
     let didConfirmReadingBookDescription: Bool
+    let readBook: [ID<Book>: Int]
 }
 
 extension UserActionHistory {
     static var `default`: UserActionHistory {
-        UserActionHistory(didConfirmReadingBookDescription: false)
+        UserActionHistory(didConfirmReadingBookDescription: false, readBook: [:])
     }
 }

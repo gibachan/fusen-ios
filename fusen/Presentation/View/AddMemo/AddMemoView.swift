@@ -44,13 +44,16 @@ struct AddMemoView: View {
                     .onChange(of: quote) { newValue in
                         viewModel.onTextChange(text: text, quote: newValue)
                     }
-
-                Picker(
-                    selection: $page,
-                    label: Text("ページ :")
-                ) {
-                    ForEach(0..<999) { page in
-                        Text("\(page)")
+                
+                NavigationLink {
+                    PageListView(page: $page, initialPage: viewModel.initialPage)
+                } label: {
+                    HStack {
+                        Text("ページ :")
+                        Spacer()
+                        if page != 0 {
+                            Text("\(page)")
+                        }
                     }
                 }
                 .frame(minHeight: 40)
@@ -176,6 +179,9 @@ struct AddMemoView: View {
                     log.e(error.localizedDescription)
                 }
             }
+        }
+        .task {
+            await viewModel.onAppear()
         }
         .onReceive(viewModel.$recognizedQuote) { recognizedQuote in
             quote = recognizedQuote

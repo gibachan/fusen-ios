@@ -42,12 +42,15 @@ struct EditMemoView: View {
                             viewModel.onTextChange(text: text, quote: newValue)
                         }
                     
-                    Picker(
-                        selection: $page,
-                        label: Text("ページ :")
-                    ) {
-                        ForEach(0..<999) { page in
-                            Text("\(page)")
+                    NavigationLink {
+                        PageListView(page: $page, initialPage: page)
+                    } label: {
+                        HStack {
+                            Text("ページ :")
+                            Spacer()
+                            if page != 0 {
+                                Text("\(page)")
+                            }
                         }
                     }
                     .frame(minHeight: 40)

@@ -16,6 +16,7 @@ extension RakutenBooksResponse {
         let title: String
         let author: String
         let smallImageUrl: String
+        let largeImageUrl: String
     }
 }
 
@@ -23,6 +24,6 @@ extension RakutenBooksResponse {
     func toDomain() -> Publication? {
         guard let item = Items.first else { return nil }
         
-        return Publication(title: item.title, author: item.author, thumbnailURL: URL(string: item.smallImageUrl))
+        return Publication(title: item.title, author: item.author, thumbnailURL: URL(string: item.largeImageUrl))
     }
 }

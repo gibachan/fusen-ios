@@ -112,18 +112,6 @@ final class BookViewModel: ObservableObject {
         
         state = .loading
         do {
-            // async letで例外が発生したときに何故かキャッチできずにクラッシュする
-//            async let userInfo = userRepository.getInfo(for: user)
-//            async let newBook = bookRepository.getBook(by: book.id, for: user)
-//            async let memoPager = memoRepository.getMemos(of: book, for: user, forceRefresh: false)
-//            let result = try await (userInfo: userInfo, book: newBook, memoPager: memoPager)
-//            DispatchQueue.main.async { [weak self] in
-//                self?.state = .succeeded
-//                self?.isReadingBook = result.userInfo.readingBookId == result.book.id
-//                self?.book = result.book
-//                self?.memoPager = result.memoPager
-//            }
-
             let book = try await getBookByIdUseCase.invoke(id: bookId)
             let readingBook = try await getReadingBookUseCase.invoke()
             self.state = .loaded(book: book)
@@ -132,7 +120,9 @@ final class BookViewModel: ObservableObject {
         } catch {
             log.e(error.localizedDescription)
             self.state = .failed
-            NotificationCenter.default.postError(message: .network)
+            // すべての書籍画面から書籍を削除した場合、画面を閉じると同時に.taskが呼ばれ、
+            // 削除済み書籍データを取得してエラーとなるので、一旦エラーを外しておく
+            // NotificationCenter.default.postError(message: .network)
         }
     }
     

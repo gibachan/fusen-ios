@@ -111,7 +111,7 @@ final class SettingTabViewModel: ObservableObject {
     func onLogOut() {
         do {
             try accountService.logOut()
-            fatalError("logged out")
+            NotificationCenter.default.postLogOut()
         } catch {
             log.e(error.localizedDescription)
         }

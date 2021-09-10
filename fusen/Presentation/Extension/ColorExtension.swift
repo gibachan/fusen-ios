@@ -32,6 +32,7 @@ extension Color {
     
     static let active = Color("active")
     static let inactive = Color(UIColor.systemGray)
+    static let alert = Color(UIColor.systemRed)
     
     init(rgb: RGB) {
         self.init(red: CGFloat(rgb.red) / 255, green: CGFloat(rgb.green) / 255, blue: CGFloat(rgb.blue) / 255)

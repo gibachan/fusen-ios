@@ -17,6 +17,9 @@ extension Notification.Name {
     static var refreshBookShelfAllCollection: Notification.Name {
         Notification.Name("refreshBookShelfAllCollection")
     }
+    static var logOut: Notification.Name {
+        Notification.Name("logOut")
+    }
     static var error: Notification.Name {
         Notification.Name("error")
     }

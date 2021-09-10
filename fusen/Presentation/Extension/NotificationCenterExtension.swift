@@ -20,6 +20,9 @@ extension NotificationCenter {
     func postRefreshBookShelfAllCollection() {
         post(name: Notification.Name.refreshBookShelfAllCollection, object: nil)
     }
+    func postLogOut() {
+        post(name: Notification.Name.logOut, object: nil)
+    }
     
     func tutorialFinishedPublisher() -> Publisher {
         publisher(for: Notification.Name.tutorialFinished)
@@ -32,5 +35,8 @@ extension NotificationCenter {
     }
     func refreshBookShelfAllCollectionPublisher() -> Publisher {
         publisher(for: Notification.Name.refreshBookShelfAllCollection)
+    }
+    func logOutPublisher() -> Publisher {
+        publisher(for: Notification.Name.logOut)
     }
 }

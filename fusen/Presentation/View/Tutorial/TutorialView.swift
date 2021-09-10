@@ -78,7 +78,7 @@ struct TutorialView: View {
                     Text("ログインせずに続ける")
                 }
                 .foregroundColor(.textPrimary)
-                .frame(height: 40)
+                .frame(height: 48)
                 .frame(maxWidth: .infinity)
                 .overlay(
                     RoundedRectangle(cornerRadius: 4)
@@ -90,7 +90,7 @@ struct TutorialView: View {
                     onRequest: viewModel.onSignInWithAppleRequest,
                     onCompletion: viewModel.onSignInWithAppleCompletion
                 ).signInWithAppleButtonStyle(.black)
-                    .frame(height: 40)
+                    .frame(height: 48)
                 
             }
         }

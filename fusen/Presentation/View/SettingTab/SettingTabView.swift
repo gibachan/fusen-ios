@@ -11,6 +11,7 @@ import AuthenticationServices
 struct SettingTabView: View {
     @StateObject private var viewModel = SettingTabViewModel()
     @State private var isUnlinkAlertPresented = false
+    @State private var isDeleteAccountPresented = false
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
@@ -160,6 +161,12 @@ struct SettingTabView: View {
                     } label: {
                         Text("ログアウト")
                     }
+                    Button {
+                        isDeleteAccountPresented = true
+                    } label: {
+                        Text("アカウントを削除")
+                            .foregroundColor(.alert)
+                    }
                 } header: {
                     SectionHeaderText("デバッグ")
                 }
@@ -199,6 +206,13 @@ struct SettingTabView: View {
                 })
             )
         }
+        .sheet(isPresented: $isDeleteAccountPresented, onDismiss: {
+            viewModel.onDeleteAccountFinished()
+        }, content: {
+            NavigationView {
+                DeleteAccountView()
+            }
+        })
     }
 }
 

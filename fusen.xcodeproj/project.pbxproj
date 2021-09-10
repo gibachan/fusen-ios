@@ -188,6 +188,8 @@
 		A0A09C9526D91B9300FF6A1E /* FavoriteBookListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A09C9426D91B9300FF6A1E /* FavoriteBookListView.swift */; };
 		A0A09C9726D91B9B00FF6A1E /* FavoriteBookListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A09C9626D91B9B00FF6A1E /* FavoriteBookListViewModel.swift */; };
 		A0A2B30826EAC8E7001798D3 /* BookShelfColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A2B30726EAC8E7001798D3 /* BookShelfColumn.swift */; };
+		A0A2B30B26EB7C21001798D3 /* DeleteAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A2B30A26EB7C20001798D3 /* DeleteAccountView.swift */; };
+		A0A2B30D26EB7C2A001798D3 /* DeleteAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A2B30C26EB7C2A001798D3 /* DeleteAccountViewModel.swift */; };
 		A0B1FECB26DEEAF600586151 /* MemoQuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B1FECA26DEEAF600586151 /* MemoQuoteView.swift */; };
 		A0B1FED026DF0AD000586151 /* MemoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B1FECF26DF0AD000586151 /* MemoImageView.swift */; };
 		A0B1FEDE26E0452F00586151 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A0B1FEDD26E0452F00586151 /* Settings.bundle */; };
@@ -425,6 +427,8 @@
 		A0A09C9426D91B9300FF6A1E /* FavoriteBookListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBookListView.swift; sourceTree = "<group>"; };
 		A0A09C9626D91B9B00FF6A1E /* FavoriteBookListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBookListViewModel.swift; sourceTree = "<group>"; };
 		A0A2B30726EAC8E7001798D3 /* BookShelfColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfColumn.swift; sourceTree = "<group>"; };
+		A0A2B30A26EB7C20001798D3 /* DeleteAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountView.swift; sourceTree = "<group>"; };
+		A0A2B30C26EB7C2A001798D3 /* DeleteAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewModel.swift; sourceTree = "<group>"; };
 		A0B1FECA26DEEAF600586151 /* MemoQuoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoQuoteView.swift; sourceTree = "<group>"; };
 		A0B1FECF26DF0AD000586151 /* MemoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoImageView.swift; sourceTree = "<group>"; };
 		A0B1FEDD26E0452F00586151 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -612,6 +616,7 @@
 				A069982326CCA59A006E74C6 /* EditMemo */,
 				7A4569F526EA33A400B7FCC0 /* PageList */,
 				7A11FCA626CB47A600F1A6BC /* SettingTab */,
+				A0A2B30926EB47BF001798D3 /* DeleteAccount */,
 				A0F97CE926E0CA4F007CACE5 /* WebPageView */,
 				7AD1611926C2A93F00334A63 /* Component */,
 			);
@@ -1063,6 +1068,15 @@
 				A0A09C9626D91B9B00FF6A1E /* FavoriteBookListViewModel.swift */,
 			);
 			path = FavoriteBookList;
+			sourceTree = "<group>";
+		};
+		A0A2B30926EB47BF001798D3 /* DeleteAccount */ = {
+			isa = PBXGroup;
+			children = (
+				A0A2B30A26EB7C20001798D3 /* DeleteAccountView.swift */,
+				A0A2B30C26EB7C2A001798D3 /* DeleteAccountViewModel.swift */,
+			);
+			path = DeleteAccount;
 			sourceTree = "<group>";
 		};
 		A0B1FECC26DEF9FA00586151 /* Button */ = {
@@ -1546,6 +1560,7 @@
 				A007C07926C7797000270671 /* TutorialViewModel.swift in Sources */,
 				A001E03126C9E62400AC92BA /* BookView.swift in Sources */,
 				A060093C26E4963400EA0BC2 /* GetBookByIdUseCase.swift in Sources */,
+				A0A2B30D26EB7C2A001798D3 /* DeleteAccountViewModel.swift in Sources */,
 				A060096626E6D67C00EA0BC2 /* GetUserActionHistoryUseCase.swift in Sources */,
 				A07CAD2926D0C6CA0012201A /* UserInfo.swift in Sources */,
 				A0B1FECB26DEEAF600586151 /* MemoQuoteView.swift in Sources */,
@@ -1625,6 +1640,7 @@
 				A069982026CCA225006E74C6 /* BookMemoItem.swift in Sources */,
 				A069981326CBE47E006E74C6 /* Memo.swift in Sources */,
 				A0BA4CB626C4E07400D99D8C /* LazyView.swift in Sources */,
+				A0A2B30B26EB7C21001798D3 /* DeleteAccountView.swift in Sources */,
 				7A9E34D826E4F1A800F4E985 /* AddMemoUseCase.swift in Sources */,
 				7A69931026DD0708006B0697 /* RakutenBooksPublicationRepositoryImpl.swift in Sources */,
 				7A11FCBD26CD3FC500F1A6BC /* BookListView.swift in Sources */,

@@ -19,6 +19,8 @@ enum AccountServiceError: Error {
     case logOut
     case unlinkWithApple
     case deleteAccount
+    case reAuthenticate
+    case notAuthenticated
 }
 
 protocol AccountServiceProtocol {
@@ -29,7 +31,7 @@ protocol AccountServiceProtocol {
     func prepareLogInWithAppleRequest(request: ASAuthorizationAppleIDRequest)
     @discardableResult func logInWithApple(authorization: ASAuthorization) async throws -> User
     @discardableResult func linkWithApple(authorization: ASAuthorization) async throws -> User
-    
+    func reAuthenticateWithApple(authorization: ASAuthorization) async throws
     func unlinkWithApple() async throws
     func delete() async throws
     
@@ -131,7 +133,7 @@ final class AccountService: AccountServiceProtocol {
     @discardableResult func linkWithApple(authorization: ASAuthorization) async throws -> User {
         guard let authUser = auth.currentUser else {
             log.e("currentUser is missing")
-            throw AccountServiceError.linkWithApple
+            throw AccountServiceError.notAuthenticated
         }
         guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential else {
             log.e("ASAuthorizationAppleIDCredential is not found")
@@ -182,11 +184,50 @@ final class AccountService: AccountServiceProtocol {
         }
     }
     
-    func delete() async throws {
-        // FIXME: ユーザー削除の前には再認証が必要 https://firebase.google.com/docs/auth/web/manage-users?hl=ja#re-authenticate_a_user
+    func reAuthenticateWithApple(authorization: ASAuthorization) async throws {
+        guard let authUser = auth.currentUser else {
+            log.e("currentUser is missing")
+            throw AccountServiceError.notAuthenticated
+        }
+        guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential else {
+            log.e("ASAuthorizationAppleIDCredential is not found")
+            throw AccountServiceError.reAuthenticate
+        }
+        guard let nonce = currentNonce else {
+            log.e("Should call prepareLogInWithAppleRequest(request:) before logInWithApple(authorization:)")
+            throw AccountServiceError.reAuthenticate
+        }
+        guard let appleIDToken = credential.identityToken else {
+            log.e("IDToken is missing")
+            throw AccountServiceError.reAuthenticate
+        }
+        guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+            log.e("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
+            throw AccountServiceError.reAuthenticate
+        }
+        
+        // Initialize a Firebase credential.
+        let providerCredential = OAuthProvider.credential(withProviderID: appleProviderId,
+                                                  idToken: idTokenString,
+                                                  rawNonce: nonce)
+        // link with Firebase.
         do {
-            try await auth.currentUser?.delete()
-            // TODO: delete firestore user document & its children
+            try await authUser.reauthenticate(with: providerCredential)
+            log.d("Successfully reauthenticated")
+            currentNonce = nil
+        } catch {
+            log.e(error.localizedDescription)
+            throw AccountServiceError.reAuthenticate
+        }
+    }
+    
+    func delete() async throws {
+        guard let user = auth.currentUser else {
+            throw AccountServiceError.notAuthenticated
+        }
+        // 匿名認証以外のユーザー削除の前には再認証が必要 https://firebase.google.com/docs/auth/web/manage-users?hl=ja#re-authenticate_a_user
+        do {
+            try await user.delete()
         } catch {
             log.e(error.localizedDescription)
             throw AccountServiceError.deleteAccount

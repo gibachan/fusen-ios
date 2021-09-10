@@ -99,6 +99,11 @@ struct MainView: View {
                 isReadingBookDescriptionPresented = true
             }
         }
+        .onReceive(NotificationCenter.default.logOutPublisher()) { _ in
+            withAnimation {
+                isTutorialPresented = true
+            }
+        }
     }
 }
 

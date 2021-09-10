@@ -87,6 +87,12 @@ final class SettingTabViewModel: ObservableObject {
         }
     }
     
+    func onDeleteAccountFinished() {
+        if !accountService.isLoggedIn {
+            NotificationCenter.default.postLogOut()
+        }
+    }
+    
     enum State {
         case initial
         case linkingWithApple

@@ -152,10 +152,11 @@ final class MemoRepositoryImpl: MemoRepository {
         case .createdAt:
             query = query.orderByCreatedAtDesc()
         case .page:
-            query = query.start(afterDocument: afterDocument)
-                .orderByPageAsc()
+            query = query.orderByPageAsc()
         }
-        query = query.limit(to: perPage)
+        query = query
+            .start(afterDocument: afterDocument)
+            .limit(to: perPage)
         
         do {
             let snapshot = try await query.getDocuments()

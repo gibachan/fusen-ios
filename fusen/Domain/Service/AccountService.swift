@@ -31,7 +31,7 @@ protocol AccountServiceProtocol {
     func prepareLogInWithAppleRequest(request: ASAuthorizationAppleIDRequest)
     @discardableResult func logInWithApple(authorization: ASAuthorization) async throws -> User
     @discardableResult func linkWithApple(authorization: ASAuthorization) async throws -> User
-    func reAuthenticateWithApple(authorization: ASAuthorization) async throws
+//    func reAuthenticateWithApple(authorization: ASAuthorization) async throws
     func unlinkWithApple() async throws
     func delete() async throws
     
@@ -184,42 +184,42 @@ final class AccountService: AccountServiceProtocol {
         }
     }
     
-    func reAuthenticateWithApple(authorization: ASAuthorization) async throws {
-        guard let authUser = auth.currentUser else {
-            log.e("currentUser is missing")
-            throw AccountServiceError.notAuthenticated
-        }
-        guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential else {
-            log.e("ASAuthorizationAppleIDCredential is not found")
-            throw AccountServiceError.reAuthenticate
-        }
-        guard let nonce = currentNonce else {
-            log.e("Should call prepareLogInWithAppleRequest(request:) before logInWithApple(authorization:)")
-            throw AccountServiceError.reAuthenticate
-        }
-        guard let appleIDToken = credential.identityToken else {
-            log.e("IDToken is missing")
-            throw AccountServiceError.reAuthenticate
-        }
-        guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
-            log.e("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
-            throw AccountServiceError.reAuthenticate
-        }
-        
-        // Initialize a Firebase credential.
-        let providerCredential = OAuthProvider.credential(withProviderID: appleProviderId,
-                                                  idToken: idTokenString,
-                                                  rawNonce: nonce)
-        // link with Firebase.
-        do {
-            try await authUser.reauthenticate(with: providerCredential)
-            log.d("Successfully reauthenticated")
-            currentNonce = nil
-        } catch {
-            log.e(error.localizedDescription)
-            throw AccountServiceError.reAuthenticate
-        }
-    }
+//    func reAuthenticateWithApple(authorization: ASAuthorization) async throws {
+//        guard let authUser = auth.currentUser else {
+//            log.e("currentUser is missing")
+//            throw AccountServiceError.notAuthenticated
+//        }
+//        guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential else {
+//            log.e("ASAuthorizationAppleIDCredential is not found")
+//            throw AccountServiceError.reAuthenticate
+//        }
+//        guard let nonce = currentNonce else {
+//            log.e("Should call prepareLogInWithAppleRequest(request:) before logInWithApple(authorization:)")
+//            throw AccountServiceError.reAuthenticate
+//        }
+//        guard let appleIDToken = credential.identityToken else {
+//            log.e("IDToken is missing")
+//            throw AccountServiceError.reAuthenticate
+//        }
+//        guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+//            log.e("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
+//            throw AccountServiceError.reAuthenticate
+//        }
+//        
+//        // Initialize a Firebase credential.
+//        let providerCredential = OAuthProvider.credential(withProviderID: appleProviderId,
+//                                                  idToken: idTokenString,
+//                                                  rawNonce: nonce)
+//        // link with Firebase.
+//        do {
+//            try await authUser.reauthenticate(with: providerCredential)
+//            log.d("Successfully reauthenticated")
+//            currentNonce = nil
+//        } catch {
+//            log.e(error.localizedDescription)
+//            throw AccountServiceError.reAuthenticate
+//        }
+//    }
     
     func delete() async throws {
         guard let user = auth.currentUser else {

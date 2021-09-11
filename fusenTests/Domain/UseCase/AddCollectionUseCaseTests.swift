@@ -5,8 +5,6 @@
 //  Created by Tatsuyuki Kobayashi on 2021/09/08.
 //
 
-import Foundation
-
 import XCTest
 @testable import fusen
 

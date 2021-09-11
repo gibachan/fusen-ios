@@ -52,6 +52,7 @@
 		7AD1611426C2A45600334A63 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AD1611326C2A45500334A63 /* Colors.xcassets */; };
 		7AD1611626C2A6CE00334A63 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1611526C2A6CE00334A63 /* FontExtension.swift */; };
 		7AD1611826C2A8BC00334A63 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1611726C2A8BC00334A63 /* UIColorExtension.swift */; };
+		7ADD9CC026ECDBB50073A043 /* RecognizeTextUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD9CBF26ECDBB50073A043 /* RecognizeTextUseCaseTests.swift */; };
 		A001E02C26C943AF00AC92BA /* FirestoreCreateBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001E02B26C943AF00AC92BA /* FirestoreCreateBook.swift */; };
 		A001E02E26C9477700AC92BA /* BookShelfItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001E02D26C9477700AC92BA /* BookShelfItem.swift */; };
 		A001E03126C9E62400AC92BA /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001E03026C9E62400AC92BA /* BookView.swift */; };
@@ -284,6 +285,7 @@
 		7AD1611326C2A45500334A63 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		7AD1611526C2A6CE00334A63 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		7AD1611726C2A8BC00334A63 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		7ADD9CBF26ECDBB50073A043 /* RecognizeTextUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizeTextUseCaseTests.swift; sourceTree = "<group>"; };
 		7B88CB3E534BCE0F944FD992 /* Pods-fusenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusenTests.release.xcconfig"; path = "Target Support Files/Pods-fusenTests/Pods-fusenTests.release.xcconfig"; sourceTree = "<group>"; };
 		92BAA3A355C64643052F4562 /* Pods_fusenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fusenTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		983232E518C4EADBE80E78A4 /* Pods-fusen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen.release.xcconfig"; path = "Target Support Files/Pods-fusen/Pods-fusen.release.xcconfig"; sourceTree = "<group>"; };
@@ -899,6 +901,7 @@
 			children = (
 				A060096126E5B5E300EA0BC2 /* SearchPublicationByBarcodeUseCaseTests.swift */,
 				A0198AD926E80A2700553CDA /* AddCollectionUseCaseTests.swift */,
+				7ADD9CBF26ECDBB50073A043 /* RecognizeTextUseCaseTests.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -1669,6 +1672,7 @@
 				A0198ADA26E80A2700553CDA /* AddCollectionUseCaseTests.swift in Sources */,
 				A082001926C1F5D100100357 /* fusenTests.swift in Sources */,
 				A060096226E5B5E300EA0BC2 /* SearchPublicationByBarcodeUseCaseTests.swift in Sources */,
+				7ADD9CC026ECDBB50073A043 /* RecognizeTextUseCaseTests.swift in Sources */,
 				A0198ADD26E80AE100553CDA /* MockAccountService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

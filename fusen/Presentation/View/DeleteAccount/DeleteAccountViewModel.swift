@@ -26,20 +26,34 @@ final class DeleteAccountViewModel: ObservableObject {
         isLinkedWithAppleId = user.isLinkedWithAppleId
     }
     
-    func onUnlinkWithAppleID() async {
-        do {
-            try await accountService.unlinkWithApple()
-            log.d("Successfully unlinked with AppleID")
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .deleted
+    func onSignInWithAppleRequest(_ resutst: ASAuthorizationAppleIDRequest) {
+        accountService.prepareLogInWithAppleRequest(request: resutst)
+    }
+    
+    func onSignInWithAppleCompletion(_ completion: Result<ASAuthorization, Error>) {
+        switch completion {
+        case .success(let authorization):
+            self.state = .loading
+            Task {
+                do {
+                    try await accountService.reAuthenticateWithApple(authorization: authorization)
+                    try await accountService.delete()
+                    log.d("Successfully deleted account")
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self = self else { return }
+                        self.state = .deleted
+                    }
+                } catch {
+                    log.e("Unknown error: \(error.localizedDescription)")
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self = self else { return }
+                        self.state = .failed
+                    }
+                }
             }
-        } catch {
-            log.e("Unknown error: \(error.localizedDescription)")
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .failed
-            }
+        case .failure(let error):
+            // Do nothing
+            log.e(error.localizedDescription)
         }
     }
     

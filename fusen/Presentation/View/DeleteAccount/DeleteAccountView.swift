@@ -18,23 +18,20 @@ struct DeleteAccountView: View {
             VStack(alignment: .center, spacing: 16) {
                 Text("アカウントを削除すると、書籍やメモなど関連する全てのデータが失われます。失われたデータは復元することはできません。")
                 
+                Text("アカウントを削除しますか？")
+                    .padding(.top, 16)
+                
                 if viewModel.isLinkedWithAppleId {
-                    VStack(alignment: .center, spacing: 16) {
-                        Divider()
-                        
-                        Text("アカウントを削除するには、あらかじめApple IDとの連携を解除する必要があります。")
-
-                        Spacer() // required to show the text expectedly
-
-                        Button {
-                            Task {
-                                await viewModel.onUnlinkWithAppleID()
-                            }
-                        } label: {
-                            Text("連携を解除")
-                                .foregroundColor(.alert)
-                        }
-                    }
+                    Divider()
+                    
+                    Text("他のアカウントと連携している場合は、アカウント削除のために再認証が必要となります。")
+                    
+                    SignInWithAppleButton(
+                        .signIn,
+                        onRequest: viewModel.onSignInWithAppleRequest,
+                        onCompletion: viewModel.onSignInWithAppleCompletion
+                    ).signInWithAppleButtonStyle(.black)
+                        .frame(width: 200, height: 32)
                 } else {
                     Button {
                         Task {
@@ -54,6 +51,7 @@ struct DeleteAccountView: View {
         }
         .listStyle(InsetGroupedListStyle())
         .navigationBarTitle("アカウントを削除", displayMode: .inline)
+        .navigationBarItems(leading: CancelButton { dismiss() })
         .task {
             await viewModel.onAppear()
         }

@@ -275,18 +275,16 @@ final class BookRepositoryImpl: BookRepository {
         typealias AddBookContinuation = CheckedContinuation<ID<Book>, Error>
         return try await withCheckedThrowingContinuation { (continuation: AddBookContinuation) in
             let create = FirestoreCreateBook.fromDomain(publication: publication, imageURL: imageURL, collection: collection)
-            var ref: DocumentReference?
-            ref = db.booksCollection(for: user)
-                .addDocument(data: create.data()) { [weak self] error in
-                    if let error = error {
-                        log.e(error.localizedDescription)
-                        continuation.resume(throwing: BookRepositoryError.network)
-                        self?.clearAllBooksCache()
-                    } else {
-                        let id = ID<Book>(value: ref!.documentID)
-                        continuation.resume(returning: id)
-                    }
+            newBookDocRef.setData(create.data(), merge: false) { [weak self] error in
+                if let error = error {
+                    log.e(error.localizedDescription)
+                    continuation.resume(throwing: BookRepositoryError.network)
+                    self?.clearAllBooksCache()
+                } else {
+                    let id = ID<Book>(value: newBookDocRef.documentID)
+                    continuation.resume(returning: id)
                 }
+            }
         }
     }
     
@@ -406,7 +404,7 @@ final class BookRepositoryImpl: BookRepository {
                     let newUserInfo = FirestoreUpdateUser(readingBookId: "")
                     transaction.setData(newUserInfo.data(), forDocument: userRef, merge: true)
                 }
-
+                
                 memoDocuments.forEach { memoDocument in
                     let memoRef = memosCollectionRef.document(memoDocument.documentID)
                     transaction.deleteDocument(memoRef)

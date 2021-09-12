@@ -93,7 +93,7 @@ iOSInjectionProject/
 vendor/
 
 ## Firebase
-GoogleService-Info.plist
+GoogleService-Info-production.plist
 GoogleService-Info-staging.plist
 GoogleService-Info-development.plist
 

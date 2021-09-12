@@ -144,9 +144,7 @@ struct SettingTabView: View {
                                 .font(.small)
                                 .foregroundColor(.textSecondary)
                         case .production:
-                            Text("production")
-                                .font(.small)
-                                .foregroundColor(.textSecondary)
+                            fatalError("Not supposed to be reached")
                         }
                     }
                     Button {

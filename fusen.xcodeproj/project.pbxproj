@@ -191,6 +191,7 @@
 		A0A2B30826EAC8E7001798D3 /* BookShelfColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A2B30726EAC8E7001798D3 /* BookShelfColumn.swift */; };
 		A0A2B30B26EB7C21001798D3 /* DeleteAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A2B30A26EB7C20001798D3 /* DeleteAccountView.swift */; };
 		A0A2B30D26EB7C2A001798D3 /* DeleteAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A2B30C26EB7C2A001798D3 /* DeleteAccountViewModel.swift */; };
+		A0A2B31426EDB495001798D3 /* GoogleService-Info-production.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0A2B31326EDB495001798D3 /* GoogleService-Info-production.plist */; };
 		A0B1FECB26DEEAF600586151 /* MemoQuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B1FECA26DEEAF600586151 /* MemoQuoteView.swift */; };
 		A0B1FED026DF0AD000586151 /* MemoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B1FECF26DF0AD000586151 /* MemoImageView.swift */; };
 		A0B1FEDE26E0452F00586151 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A0B1FEDD26E0452F00586151 /* Settings.bundle */; };
@@ -431,6 +432,7 @@
 		A0A2B30726EAC8E7001798D3 /* BookShelfColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfColumn.swift; sourceTree = "<group>"; };
 		A0A2B30A26EB7C20001798D3 /* DeleteAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountView.swift; sourceTree = "<group>"; };
 		A0A2B30C26EB7C2A001798D3 /* DeleteAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewModel.swift; sourceTree = "<group>"; };
+		A0A2B31326EDB495001798D3 /* GoogleService-Info-production.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-production.plist"; sourceTree = "<group>"; };
 		A0B1FECA26DEEAF600586151 /* MemoQuoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoQuoteView.swift; sourceTree = "<group>"; };
 		A0B1FECF26DF0AD000586151 /* MemoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoImageView.swift; sourceTree = "<group>"; };
 		A0B1FEDD26E0452F00586151 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -630,6 +632,7 @@
 			children = (
 				A07507CD26C5E2F40087AE5C /* GoogleService-Info-development.plist */,
 				A07507CC26C5E2F40087AE5C /* GoogleService-Info-staging.plist */,
+				A0A2B31326EDB495001798D3 /* GoogleService-Info-production.plist */,
 				A082000B26C1F5D100100357 /* Assets.xcassets */,
 				7AD1611326C2A45500334A63 /* Colors.xcassets */,
 				A0B1FEDD26E0452F00586151 /* Settings.bundle */,
@@ -1168,6 +1171,7 @@
 				0D502F6FD4CEAE7DA729E03E /* [CP] Embed Pods Frameworks */,
 				BB4E535C5BF40E7A5BFA3BBA /* [CP] Copy Pods Resources */,
 				A0B1FED826E0401000586151 /* LicensePlist */,
+				A0A2B31226EDB3FC001798D3 /* GoogleService-Info.plist */,
 			);
 			buildRules = (
 			);
@@ -1270,6 +1274,7 @@
 				A082000F26C1F5D100100357 /* Preview Assets.xcassets in Resources */,
 				A07507CF26C5E2F40087AE5C /* GoogleService-Info-development.plist in Resources */,
 				A07507CE26C5E2F40087AE5C /* GoogleService-Info-staging.plist in Resources */,
+				A0A2B31426EDB495001798D3 /* GoogleService-Info-production.plist in Resources */,
 				A082000C26C1F5D100100357 /* Assets.xcassets in Resources */,
 				A0B1FEDE26E0452F00586151 /* Settings.bundle in Resources */,
 			);
@@ -1426,6 +1431,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which ${PODS_ROOT}/SwiftLint/swiftlint >/dev/null; then\n  ${PODS_ROOT}/SwiftLint/swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		A0A2B31226EDB3FC001798D3 /* GoogleService-Info.plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "GoogleService-Info.plist";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"${CONFIGURATION}\" == \"Release\" ]]; then\n  \"cp\" \"-r\" \"${SRCROOT}/fusen/Presentation/Resource/GoogleService-Info-production.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\nfi\n";
 		};
 		A0B1FED826E0401000586151 /* LicensePlist */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1992,7 +2015,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D DEBUG";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D DEBUG -D DEVELOPMENT";
 				PRODUCT_BUNDLE_IDENTIFIER = app.fusen.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

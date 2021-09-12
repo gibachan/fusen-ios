@@ -13,12 +13,12 @@ enum AppEnv {
     case production
     
     static var current: AppEnv {
-        #if RELEASE
-        return .production
+        #if DEVELOPMENT
+        return .development
         #elseif STAGING
         return .staging
         #else
-        return .development
+        return .production
         #endif
     }
 }

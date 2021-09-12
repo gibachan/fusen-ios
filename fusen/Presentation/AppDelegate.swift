@@ -30,7 +30,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             let options = FirebaseOptions(contentsOfFile: filePath!)!
             FirebaseApp.configure(options: options)
         case .production:
-            // TODO: Set up for production release
+            // GoogleService-Info.plist is set at build phase script
             FirebaseApp.configure()
         }
     }

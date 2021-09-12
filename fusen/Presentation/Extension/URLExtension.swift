@@ -9,10 +9,10 @@ import Foundation
 
 extension URL {
     static var term: URL {
-        URL(string: "https://www.yahoo.co.jp/")!
+        URL(string: "https://fusen.app/term.html")!
     }
     
     static var privacy: URL {
-        URL(string: "https://www.yahoo.co.jp/")!
+        URL(string: "https://fusen.app/privacy.html")!
     }
 }

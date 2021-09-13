@@ -5,10 +5,10 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/28.
 //
 
-import UIKit
+import FirebaseFunctions
 import MLKit
 import MLKitTextRecognitionJapanese
-import FirebaseFunctions
+import UIKit
 
 protocol TextRecognizeServiceProtocol {
     func text(from image: UIImage) async -> String
@@ -52,7 +52,7 @@ final class VisionTextRecognizeService: TextRecognizeServiceProtocol {
             
             typealias Continuation = CheckedContinuation<String, Error>
             let result = try await withCheckedThrowingContinuation { (continuation: Continuation) in
-                functions.httpsCallable("annotateImage").call(json) { (result, error) in
+                functions.httpsCallable("annotateImage").call(json) { result, error in
                     if let error = error {
                         continuation.resume(throwing: error)
                         return
@@ -62,7 +62,6 @@ final class VisionTextRecognizeService: TextRecognizeServiceProtocol {
                               log.e("result data is missing")
                               continuation.resume(returning: "")
                               return
-                              
                           }
                     guard let annotation = resultData["fullTextAnnotation"] as? [String: Any] else {
                         log.e("fullTextAnnotation is missing")

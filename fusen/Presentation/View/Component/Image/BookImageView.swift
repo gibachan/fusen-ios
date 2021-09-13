@@ -5,8 +5,8 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/16.
 //
 
-import SwiftUI
 import Kingfisher
+import SwiftUI
 
 struct BookImageView: View {
     let url: URL?

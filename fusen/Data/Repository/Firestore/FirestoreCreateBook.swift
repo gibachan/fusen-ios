@@ -5,8 +5,8 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/15.
 //
 
-import Foundation
 import FirebaseFirestore
+import Foundation
 
 struct FirestoreCreateBook {
     let title: String
@@ -27,7 +27,6 @@ extension FirestoreCreateBook {
         imageURL: URL?,
         collection: Collection?
     ) -> Self {
-        
         return .init(
             title: publication.title,
             author: publication.author,

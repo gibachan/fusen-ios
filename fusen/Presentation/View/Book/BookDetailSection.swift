@@ -104,7 +104,6 @@ struct BookDetailSection: View {
                         .frame(width: 12, height: 18)
                         .rotationEffect(Angle(degrees: isDetailCollapsed ? 0 : 90))
                 }
-
             }
         }
     }

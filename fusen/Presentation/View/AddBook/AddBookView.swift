@@ -57,7 +57,6 @@ struct AddBookView: View {
                     .onChange(of: title, perform: { newValue in
                         viewModel.onTextChange(title: newValue, author: author)
                     })
-                
             } header: {
                 SectionHeaderText("タイトル（必須）")
             }
@@ -70,7 +69,6 @@ struct AddBookView: View {
                     .onChange(of: author, perform: { newValue in
                         viewModel.onTextChange(title: title, author: newValue)
                     })
-                
             } header: {
                 SectionHeaderText("著者")
             }

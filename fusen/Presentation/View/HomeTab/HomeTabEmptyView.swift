@@ -27,7 +27,6 @@ struct HomeTabEmptyView: View {
                     .opacity(0.4)
                     .frame(width: 112, height: 112)
                     .padding(.top, 8)
-
             }
             Spacer()
         }

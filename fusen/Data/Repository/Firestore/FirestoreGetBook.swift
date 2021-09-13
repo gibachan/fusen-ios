@@ -5,8 +5,8 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/15.
 //
 
-import Foundation
 import FirebaseFirestore
+import Foundation
 
 struct FirestoreGetBook: Codable {
     let id: String

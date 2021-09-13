@@ -16,7 +16,6 @@ struct SortButton: View {
             Image.sort
                 .resizable()
         }
-
     }
 }
 

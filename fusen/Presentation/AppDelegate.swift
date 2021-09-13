@@ -5,8 +5,8 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/13.
 //
 
-import UIKit
 import Firebase
+import UIKit
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     // Instanciate window for SVProgressHUD

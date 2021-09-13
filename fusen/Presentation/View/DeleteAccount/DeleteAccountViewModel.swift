@@ -5,8 +5,8 @@
 //  Created by Tatsuyuki Kobayashi on 2021/09/10.
 //
 
-import Foundation
 import AuthenticationServices
+import Foundation
 
 final class DeleteAccountViewModel: ObservableObject {
     @Published var state: State = .initial

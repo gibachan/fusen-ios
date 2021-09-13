@@ -5,8 +5,8 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/14.
 //
 
-import Foundation
 import FirebaseFirestore
+import Foundation
 
 final class BookRepositoryImpl: BookRepository {
     private let db = Firestore.firestore()
@@ -396,7 +396,7 @@ final class BookRepositoryImpl: BookRepository {
         
         typealias DeleteBookContinuation = CheckedContinuation<Void, Error>
         return try await withCheckedThrowingContinuation { (continuation: DeleteBookContinuation) in
-            db.runTransaction { (transaction, _) -> Any? in
+            db.runTransaction { transaction, _ -> Any? in
                 if let userSnapshot = try? transaction.getDocument(userRef),
                    userSnapshot.data() != nil,
                    let userInfo = FirestoreGetUserInfo.from(data: userSnapshot.data()),
@@ -411,7 +411,7 @@ final class BookRepositoryImpl: BookRepository {
                 }
                 transaction.deleteDocument(bookRef)
                 return nil
-            } completion: { (_, error) in
+            } completion: { _, error in
                 if let error = error {
                     log.e(error.localizedDescription)
                     continuation.resume(throwing: BookRepositoryError.network)

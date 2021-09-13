@@ -5,8 +5,8 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/23.
 //
 
-import Foundation
 import FirebaseStorage
+import Foundation
 
 enum ImageStorageError: Error {
     case upload
@@ -36,7 +36,7 @@ struct ImageStorage {
             let metadata = StorageMetadata()
             metadata.contentType = "image/jpeg"
             log.d("Uploading image..: \(storagePath)")
-            imageRef.putData(image.data, metadata: metadata) { (metadata, error) in
+            imageRef.putData(image.data, metadata: metadata) { metadata, error in
                 if let error = error {
                     log.e(error.localizedDescription)
                     continuation.resume(throwing: ImageStorageError.upload)
@@ -48,7 +48,7 @@ struct ImageStorage {
                     return
                 }
                 log.d("Metadata size=\(metadata.size), content-type=\(metadata.contentType ?? "")")
-                imageRef.downloadURL { (url, error) in
+                imageRef.downloadURL { url, error in
                     guard let url = url else {
                         log.e("downloadURL is missing - \(error?.localizedDescription ?? "")")
                         continuation.resume(throwing: ImageStorageError.upload)

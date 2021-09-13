@@ -5,8 +5,8 @@
 //  Created by Tatsuyuki Kobayashi on 2021/09/08.
 //
 
-import Foundation
 import AuthenticationServices
+import Foundation
 @testable import fusen
 
 final class MockAccountService: AccountServiceProtocol {
@@ -25,31 +25,35 @@ final class MockAccountService: AccountServiceProtocol {
     }
     
     func logInAnonymously() async throws -> User {
-        fatalError()
+        fatalError("Not implemented yet")
     }
     
     func prepareLogInWithAppleRequest(request: ASAuthorizationAppleIDRequest) {
-        fatalError()
+        fatalError("Not implemented yet")
     }
     
     func logInWithApple(authorization: ASAuthorization) async throws -> User {
-        fatalError()
+        fatalError("Not implemented yet")
     }
     
     func linkWithApple(authorization: ASAuthorization) async throws -> User {
-        fatalError()
+        fatalError("Not implemented yet")
+    }
+    
+    func reAuthenticateWithApple(authorization: ASAuthorization) async throws {
+        fatalError("Not implemented yet")
     }
     
     func unlinkWithApple() async throws {
-        fatalError()
+        fatalError("Not implemented yet")
     }
     
     func delete() async throws {
-        fatalError()
+        fatalError("Not implemented yet")
     }
     
     func logOut() throws {
-        fatalError()
+        fatalError("Not implemented yet")
     }
 }
 

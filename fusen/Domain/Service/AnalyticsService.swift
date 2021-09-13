@@ -5,8 +5,8 @@
 //  Created by Tatsuyuki Kobayashi on 2021/09/02.
 //
 
-import Foundation
 import FirebaseAnalytics
+import Foundation
 
 protocol AnalyticsServiceProtocol {
     func log(event: AnalyticsEvent)

@@ -5,8 +5,8 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/14.
 //
 
-import Foundation
 import AuthenticationServices
+import Foundation
 
 final class TutorialViewModel: ObservableObject {
     @Published var state: State = .initial

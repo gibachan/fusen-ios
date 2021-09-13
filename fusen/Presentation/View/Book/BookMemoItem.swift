@@ -33,7 +33,6 @@ struct BookMemoItem: View {
                         Text("\(page)ページ")
                             .font(.minimal)
                             .foregroundColor(.textSecondary)
-
                     }
                     if memo.imageURLs.isNotEmpty {
                         Image.image

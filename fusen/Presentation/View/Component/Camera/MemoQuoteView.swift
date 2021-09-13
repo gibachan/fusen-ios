@@ -5,8 +5,8 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/31.
 //
 
-import SwiftUI
 import CropViewController
+import SwiftUI
 
 struct MemoQuoteView: UIViewControllerRepresentable {
     typealias Handler = (Result<ImageData, Error>) -> Void

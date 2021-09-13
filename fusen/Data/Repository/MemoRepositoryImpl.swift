@@ -5,8 +5,8 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/17.
 //
 
-import Foundation
 import FirebaseFirestore
+import Foundation
 
 final class MemoRepositoryImpl: MemoRepository {
     private let db = Firestore.firestore()
@@ -136,7 +136,6 @@ final class MemoRepositoryImpl: MemoRepository {
     func getNextMemos(of bookId: ID<Book>, for user: User) async throws -> Pager<Memo> {
         guard let cacheOfBook = memosCache[bookId] else {
             fatalError("cacheは必ず存在する")
-            
         }
         guard let afterDocument = cacheOfBook.lastDocument else {
             fatalError("lastDocumentは必ず存在する")

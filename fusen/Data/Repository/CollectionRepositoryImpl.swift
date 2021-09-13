@@ -5,8 +5,8 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/18.
 //
 
-import Foundation
 import FirebaseFirestore
+import Foundation
 
 final class CollectionRepositoryImpl: CollectionRepository {
     private let db = Firestore.firestore()

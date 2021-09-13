@@ -5,8 +5,8 @@
 //  Created by Tatsuyuki Kobayashi on 2021/09/08.
 //
 
-import XCTest
 @testable import fusen
+import XCTest
 
 class AddCollectionUseCaseTests: XCTestCase {
     func testAddCollection() async {
@@ -79,7 +79,7 @@ private class MockCollectionRepository: CollectionRepository {
     
     func delete(collection: Collection, for user: User) async throws {
         switch deleteResult {
-        case .success():
+        case .success:
             break
         case let .failure(error):
             throw error

@@ -33,7 +33,6 @@ struct MemoListItem: View {
                     Text("\(page)ページ")
                         .font(.minimal)
                         .foregroundColor(.textSecondary)
-                    
                 }
                 if !memo.imageURLs.isEmpty {
                     Image.image

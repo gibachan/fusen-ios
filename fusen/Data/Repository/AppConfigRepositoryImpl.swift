@@ -5,8 +5,8 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/31.
 //
 
-import Foundation
 import FirebaseRemoteConfig
+import Foundation
 
 final class AppConfigRepositoryImpl: AppConfigRepository {
     private static let maintenanceKey = "maintenance"

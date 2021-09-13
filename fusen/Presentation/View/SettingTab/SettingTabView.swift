@@ -5,8 +5,8 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/17.
 //
 
-import SwiftUI
 import AuthenticationServices
+import SwiftUI
 
 struct SettingTabView: View {
     @StateObject private var viewModel = SettingTabViewModel()
@@ -71,7 +71,6 @@ struct SettingTabView: View {
                     NavigationLink {
                         WebPageView(url: URL.term)
                             .navigationBarTitle("利用規約", displayMode: .inline)
-
                     } label: {
                         HStack {
                             Text("利用規約")

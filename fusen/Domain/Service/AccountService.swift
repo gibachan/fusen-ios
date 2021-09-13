@@ -5,12 +5,12 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/14.
 //
 
-import Foundation
-import FirebaseAuth
-import FirebaseAnalytics
-import FirebaseCrashlytics
-import CryptoKit
 import AuthenticationServices
+import CryptoKit
+import FirebaseAnalytics
+import FirebaseAuth
+import FirebaseCrashlytics
+import Foundation
 
 enum AccountServiceError: Error {
     case logInAnonymously
@@ -108,9 +108,11 @@ final class AccountService: AccountServiceProtocol {
         }
         
         // Initialize a Firebase credential.
-        let providerCredential = OAuthProvider.credential(withProviderID: appleProviderId,
-                                                  idToken: idTokenString,
-                                                  rawNonce: nonce)
+        let providerCredential = OAuthProvider.credential(
+            withProviderID: appleProviderId,
+            idToken: idTokenString,
+            rawNonce: nonce
+        )
         // Sign in with Firebase.
         do {
             let result = try await auth.signIn(with: providerCredential)
@@ -153,9 +155,11 @@ final class AccountService: AccountServiceProtocol {
         }
         
         // Initialize a Firebase credential.
-        let providerCredential = OAuthProvider.credential(withProviderID: appleProviderId,
-                                                  idToken: idTokenString,
-                                                  rawNonce: nonce)
+        let providerCredential = OAuthProvider.credential(
+            withProviderID: appleProviderId,
+            idToken: idTokenString,
+            rawNonce: nonce
+        )
         // link with Firebase.
         do {
             let result = try await authUser.link(with: providerCredential)
@@ -207,9 +211,11 @@ final class AccountService: AccountServiceProtocol {
         }
         
         // Initialize a Firebase credential.
-        let providerCredential = OAuthProvider.credential(withProviderID: appleProviderId,
-                                                  idToken: idTokenString,
-                                                  rawNonce: nonce)
+        let providerCredential = OAuthProvider.credential(
+            withProviderID: appleProviderId,
+            idToken: idTokenString,
+            rawNonce: nonce
+        )
         // link with Firebase.
         do {
             try await authUser.reauthenticate(with: providerCredential)

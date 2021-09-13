@@ -5,8 +5,8 @@
 //  Created by Tatsuyuki Kobayashi on 2021/09/10.
 //
 
-import SwiftUI
 import AuthenticationServices
+import SwiftUI
 
 struct DeleteAccountView: View {
     @Environment(\.dismiss) private var dismiss

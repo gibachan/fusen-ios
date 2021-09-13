@@ -5,8 +5,8 @@
 //  Created by Tatsuyuki Kobayashi on 2021/09/01.
 //
 
-import SwiftUI
 import Kingfisher
+import SwiftUI
 
 struct MemoImageView: View {
     let url: URL?

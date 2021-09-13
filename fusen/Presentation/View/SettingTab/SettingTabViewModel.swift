@@ -5,8 +5,8 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/17.
 //
 
-import Foundation
 import AuthenticationServices
+import Foundation
 
 final class SettingTabViewModel: ObservableObject {
     private let accountService: AccountServiceProtocol
@@ -123,5 +123,4 @@ final class SettingTabViewModel: ObservableObject {
         }
     }
 #endif
-    
 }

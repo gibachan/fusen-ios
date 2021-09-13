@@ -104,7 +104,6 @@ extension CameraPreview {
 
 extension CameraPreview: AVCaptureMetadataOutputObjectsDelegate {
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-
         guard let metadataObject = metadataObjects.first,
               let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject,
               let value = readableObject.stringValue else { return }

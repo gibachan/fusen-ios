@@ -5,8 +5,8 @@
 //  Created by Tatsuyuki Kobayashi on 2021/09/06.
 //
 
-import XCTest
 @testable import fusen
+import XCTest
 
 class SearchPublicationByBarcodeUseCaseTests: XCTestCase {
     func testUseRakutenBooksPrimarily() async {

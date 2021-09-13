@@ -184,7 +184,6 @@
 		A082000826C1F5CF00100357 /* FusenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A082000726C1F5CF00100357 /* FusenApp.swift */; };
 		A082000C26C1F5D100100357 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000B26C1F5D100100357 /* Assets.xcassets */; };
 		A082000F26C1F5D100100357 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000E26C1F5D100100357 /* Preview Assets.xcassets */; };
-		A082001926C1F5D100100357 /* fusenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A082001826C1F5D100100357 /* fusenTests.swift */; };
 		A082002326C1F5D100100357 /* fusenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A082002226C1F5D100100357 /* fusenUITests.swift */; };
 		A0A09C9526D91B9300FF6A1E /* FavoriteBookListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A09C9426D91B9300FF6A1E /* FavoriteBookListView.swift */; };
 		A0A09C9726D91B9B00FF6A1E /* FavoriteBookListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A09C9626D91B9B00FF6A1E /* FavoriteBookListViewModel.swift */; };
@@ -424,7 +423,6 @@
 		A082000B26C1F5D100100357 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A082000E26C1F5D100100357 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A082001426C1F5D100100357 /* fusenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fusenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A082001826C1F5D100100357 /* fusenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fusenTests.swift; sourceTree = "<group>"; };
 		A082001E26C1F5D100100357 /* fusenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fusenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A082002226C1F5D100100357 /* fusenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fusenUITests.swift; sourceTree = "<group>"; };
 		A0A09C9426D91B9300FF6A1E /* FavoriteBookListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBookListView.swift; sourceTree = "<group>"; };
@@ -1042,7 +1040,6 @@
 			children = (
 				A0198ADB26E80AD000553CDA /* Mock */,
 				A060095F26E5B5E300EA0BC2 /* Domain */,
-				A082001826C1F5D100100357 /* fusenTests.swift */,
 			);
 			path = fusenTests;
 			sourceTree = "<group>";
@@ -1693,7 +1690,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0198ADA26E80A2700553CDA /* AddCollectionUseCaseTests.swift in Sources */,
-				A082001926C1F5D100100357 /* fusenTests.swift in Sources */,
 				A060096226E5B5E300EA0BC2 /* SearchPublicationByBarcodeUseCaseTests.swift in Sources */,
 				7ADD9CC026ECDBB50073A043 /* RecognizeTextUseCaseTests.swift in Sources */,
 				A0198ADD26E80AE100553CDA /* MockAccountService.swift in Sources */,

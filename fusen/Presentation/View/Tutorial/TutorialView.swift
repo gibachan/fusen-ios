@@ -5,8 +5,8 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/14.
 //
 
-import SwiftUI
 import AuthenticationServices
+import SwiftUI
 
 struct TutorialView: View {
     @Environment(\.dismiss) private var dismiss
@@ -91,7 +91,6 @@ struct TutorialView: View {
                     onCompletion: viewModel.onSignInWithAppleCompletion
                 ).signInWithAppleButtonStyle(.black)
                     .frame(height: 48)
-                
             }
         }
         .padding(.top, 16)

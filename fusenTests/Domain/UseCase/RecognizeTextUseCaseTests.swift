@@ -5,8 +5,8 @@
 //  Created by Tatsuyuki Kobayashi on 2021/09/11.
 //
 
-import XCTest
 @testable import fusen
+import XCTest
 
 class RecognizeTextUseCaseTests: XCTestCase {
     func testUseOnDeviceTextRecognize() async {

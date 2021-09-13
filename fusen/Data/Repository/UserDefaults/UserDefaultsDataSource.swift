@@ -51,7 +51,6 @@ extension UserDefaults {
         dictionary(forKey: key.rawValue) ?? [:]
     }
 
-    
     func set(_ value: Bool, forKey key: UserDefaultsDataSource.Key) {
         set(value, forKey: key.rawValue)
     }

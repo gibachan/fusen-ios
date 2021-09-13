@@ -5,8 +5,8 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/17.
 //
 
-import Foundation
 import FirebaseFirestore
+import Foundation
 
 struct FirestoreCreateMemo {
     let bookId: String

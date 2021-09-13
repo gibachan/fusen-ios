@@ -101,22 +101,6 @@ struct SettingTabView: View {
 //                        }
 //                    }
 
-                    NavigationLink {
-                        VStack(alignment: .center) {
-                            Text("Supported by Rakuten Developers")
-                                .font(.medium)
-                                .foregroundColor(.textPrimary)
-                            Spacer()
-                        }
-                        .navigationBarTitle("クレジット")
-                    } label: {
-                        HStack {
-                            Text("クレジット")
-                                .font(.medium)
-                                .foregroundColor(.textPrimary)
-                        }
-                    }
-                    
                     HStack {
                         Text("バージョン :")
                             .font(.medium)

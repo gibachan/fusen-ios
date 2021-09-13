@@ -52,6 +52,16 @@ name: FirebaseAnalytics, nameSpecified:
 body: Copyright 2021 Googl…
 version: 8.6.0
 
+name: FirebaseAppCheck, nameSpecified: 
+body: 
+                   …
+version: 
+
+name: FirebaseAppCheck, nameSpecified: 
+body: 
+                   …
+version: 
+
 name: FirebaseAuth, nameSpecified: 
 body: 
                    …

@@ -347,6 +347,9 @@ PODS:
   - CropViewController (2.6.0)
   - Firebase/Analytics (8.6.1):
     - Firebase/Core
+  - Firebase/AppCheck (8.6.1):
+    - Firebase/CoreOnly
+    - FirebaseAppCheck (~> 8.6.0-beta)
   - Firebase/Auth (8.6.1):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 8.6.0)
@@ -390,6 +393,10 @@ PODS:
     - GoogleUtilities/Network (~> 7.4)
     - "GoogleUtilities/NSData+zlib (~> 7.4)"
     - nanopb (~> 2.30908.0)
+  - FirebaseAppCheck (8.6.0-beta):
+    - FirebaseCore (~> 8.0)
+    - GoogleUtilities/Environment (~> 7.4)
+    - PromisesObjC (< 3.0, >= 1.2)
   - FirebaseAuth (8.6.0):
     - FirebaseCore (~> 8.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
@@ -561,6 +568,7 @@ PODS:
 DEPENDENCIES:
   - CropViewController
   - Firebase/Analytics
+  - Firebase/AppCheck
   - Firebase/Auth
   - Firebase/Crashlytics
   - Firebase/Firestore
@@ -581,6 +589,7 @@ SPEC REPOS:
     - Firebase
     - FirebaseABTesting
     - FirebaseAnalytics
+    - FirebaseAppCheck
     - FirebaseAuth
     - FirebaseCore
     - FirebaseCoreDiagnostics
@@ -620,6 +629,7 @@ SPEC CHECKSUMS:
   Firebase: e84d95f6d3a91f634abc384f0751c434cb3aecfa
   FirebaseABTesting: c3e48ebf5e7e5c674c5a131c68e941d7921d83dc
   FirebaseAnalytics: 8f32ae54ad42754f503354782575c4ddfc1425c3
+  FirebaseAppCheck: 24bd8311c6dbfd1b03b1c7a3cb7d5a64dbc0cd4f
   FirebaseAuth: 223adeeb2262b417532e89bf06a960e3a0a1e9e4
   FirebaseCore: a753c231801f04f5ccd10cc92119ad1b12a61165
   FirebaseCoreDiagnostics: 3721920bde3a9a6d5aa093c1d25e9d3e47f694af
@@ -652,6 +662,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
 
-PODFILE CHECKSUM: 69f2ec74bfb67677bd295b109c639f5e0a93469d
+PODFILE CHECKSUM: 141b3afa6c57f3314208d8f78c512ca10a8fdc99
 
 COCOAPODS: 1.11.0

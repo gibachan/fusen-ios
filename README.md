@@ -6,6 +6,7 @@ fusen is an iOS app which makes your reading habbit better. You can manage all y
     - SwiftUI
     - async/await
 - Fastlane
+    - Ruby 2.7.2
 - Firebase
     - Authentication
         - Anonymous Authentication
@@ -16,4 +17,5 @@ fusen is an iOS app which makes your reading habbit better. You can manage all y
     - Crashlytics
     - Remote Config
     - Machine Learning(Text Recognition)
+    - App Check
     

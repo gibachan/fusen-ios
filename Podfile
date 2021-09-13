@@ -14,6 +14,7 @@ target 'fusen' do
   pod 'Firebase/Storage'
   pod 'Firebase/RemoteConfig'
   pod 'Firebase/Functions'
+  pod 'Firebase/AppCheck'
   pod 'SVProgressHUD'
   pod 'SwiftLint'
   pod 'GoogleMLKit/TextRecognitionJapanese', '2.3.0'

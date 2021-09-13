@@ -19,7 +19,7 @@ struct LatestMemoItem: View {
     
     var body: some View {
         HStack {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 4) {
                 HStack(spacing: 8) {
                     Text("\(memo.updatedAt.string)")
                         .font(.minimal)
@@ -31,14 +31,15 @@ struct LatestMemoItem: View {
                             .lineLimit(1)
                     }
                 }
-                Spacer()
+                .padding(.bottom, 4)
                 
                 if memo.text.isNotEmpty {
                     Text(memo.text)
                         .font(.medium)
                         .foregroundColor(.textPrimary)
                         .lineLimit(2)
-                } else if memo.quote.isNotEmpty {
+                }
+                if memo.quote.isNotEmpty {
                     QuoteText(text: memo.quote)
                         .lineLimit(2)
                 }

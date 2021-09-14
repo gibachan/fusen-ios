@@ -633,6 +633,7 @@
 		7AD1610326C29CE000334A63 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				A082000D26C1F5D100100357 /* Preview Content */,
 				A07507CD26C5E2F40087AE5C /* GoogleService-Info-development.plist */,
 				A07507CC26C5E2F40087AE5C /* GoogleService-Info-staging.plist */,
 				A0A2B31326EDB495001798D3 /* GoogleService-Info-production.plist */,
@@ -1043,7 +1044,6 @@
 				7AD160FF26C29CA800334A63 /* Presentation */,
 				7AD1610026C29CB100334A63 /* Domain */,
 				7AD1610126C29CB700334A63 /* Data */,
-				A082000D26C1F5D100100357 /* Preview Content */,
 			);
 			path = fusen;
 			sourceTree = "<group>";
@@ -1814,7 +1814,7 @@
 				CODE_SIGN_ENTITLEMENTS = fusen/fusen.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"fusen/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"fusen/Presentation/Resource/Preview Content\"";
 				DEVELOPMENT_TEAM = MYDHT92MBT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2017,7 +2017,7 @@
 				CODE_SIGN_ENTITLEMENTS = fusen/fusen.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"fusen/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"fusen/Presentation/Resource/Preview Content\"";
 				DEVELOPMENT_TEAM = MYDHT92MBT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2053,7 +2053,7 @@
 				CODE_SIGN_ENTITLEMENTS = fusen/fusen.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"fusen/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"fusen/Presentation/Resource/Preview Content\"";
 				DEVELOPMENT_TEAM = MYDHT92MBT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

@@ -80,6 +80,7 @@
 		A0198ADD26E80AE100553CDA /* MockAccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0198ADC26E80AE100553CDA /* MockAccountService.swift */; };
 		A020544126CE88BD002FF585 /* EditMemoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A020544026CE88BD002FF585 /* EditMemoImageView.swift */; };
 		A020544526CE8CC7002FF585 /* DeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A020544426CE8CC7002FF585 /* DeleteButton.swift */; };
+		A04388C326F1295C006EB863 /* UserDefaultsDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04388C226F1295C006EB863 /* UserDefaultsDataSourceTests.swift */; };
 		A052EAC026C3D7430033CE47 /* AddBookMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EABF26C3D7430033CE47 /* AddBookMenuView.swift */; };
 		A052EAC426C3E4140033CE47 /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EAC326C3E4140033CE47 /* CancelButton.swift */; };
 		A052EAC626C3E4650033CE47 /* AddBookMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EAC526C3E4650033CE47 /* AddBookMenuItem.swift */; };
@@ -316,6 +317,7 @@
 		A0198ADC26E80AE100553CDA /* MockAccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAccountService.swift; sourceTree = "<group>"; };
 		A020544026CE88BD002FF585 /* EditMemoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMemoImageView.swift; sourceTree = "<group>"; };
 		A020544426CE8CC7002FF585 /* DeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButton.swift; sourceTree = "<group>"; };
+		A04388C226F1295C006EB863 /* UserDefaultsDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsDataSourceTests.swift; sourceTree = "<group>"; };
 		A052EABF26C3D7430033CE47 /* AddBookMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookMenuView.swift; sourceTree = "<group>"; };
 		A052EAC326C3E4140033CE47 /* CancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
 		A052EAC526C3E4650033CE47 /* AddBookMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookMenuItem.swift; sourceTree = "<group>"; };
@@ -590,6 +592,7 @@
 			children = (
 				7A69930E26DD069F006B0697 /* Resource */,
 				A052EACD26C3F7C60033CE47 /* Repository */,
+				A04388C026F1290B006EB863 /* DataSource */,
 				A069981826CC3766006E74C6 /* Extension */,
 			);
 			path = Data;
@@ -762,6 +765,31 @@
 			path = Mock;
 			sourceTree = "<group>";
 		};
+		A04388BF26F128DF006EB863 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A04388C126F1294B006EB863 /* DataSource */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		A04388C026F1290B006EB863 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				A060096E26E6DCC300EA0BC2 /* UserDefaultsDataSource.swift */,
+				A007C09326C8CA9A00270671 /* Firestore */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		A04388C126F1294B006EB863 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				A04388C226F1295C006EB863 /* UserDefaultsDataSourceTests.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
 		A052EABE26C3D71C0033CE47 /* AddBookMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -819,8 +847,6 @@
 				A069981D26CC3ECC006E74C6 /* PagerCache.swift */,
 				A07334FB26DDAFDE004C5436 /* AppConfigRepositoryImpl.swift */,
 				A052EAD126C3F8830033CE47 /* Response */,
-				A007C09326C8CA9A00270671 /* Firestore */,
-				A060096D26E6DC9100EA0BC2 /* UserDefaults */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -905,14 +931,6 @@
 				7ADD9CBF26ECDBB50073A043 /* RecognizeTextUseCaseTests.swift */,
 			);
 			path = UseCase;
-			sourceTree = "<group>";
-		};
-		A060096D26E6DC9100EA0BC2 /* UserDefaults */ = {
-			isa = PBXGroup;
-			children = (
-				A060096E26E6DCC300EA0BC2 /* UserDefaultsDataSource.swift */,
-			);
-			path = UserDefaults;
 			sourceTree = "<group>";
 		};
 		A069981826CC3766006E74C6 /* Extension */ = {
@@ -1040,6 +1058,7 @@
 			children = (
 				A0198ADB26E80AD000553CDA /* Mock */,
 				A060095F26E5B5E300EA0BC2 /* Domain */,
+				A04388BF26F128DF006EB863 /* Data */,
 			);
 			path = fusenTests;
 			sourceTree = "<group>";
@@ -1693,6 +1712,7 @@
 				A060096226E5B5E300EA0BC2 /* SearchPublicationByBarcodeUseCaseTests.swift in Sources */,
 				7ADD9CC026ECDBB50073A043 /* RecognizeTextUseCaseTests.swift in Sources */,
 				A0198ADD26E80AE100553CDA /* MockAccountService.swift in Sources */,
+				A04388C326F1295C006EB863 /* UserDefaultsDataSourceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

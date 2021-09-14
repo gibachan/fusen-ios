@@ -13,12 +13,12 @@ final class UserActionHistoryRepositoryImpl: UserActionHistoryRepository {
     func get() async -> UserActionHistory {
         let didConfirmReadingBookDescription = dataSource.didConfirmReadingBookDescription
         var readBook: [ID<Book>: Int] = [:]
-        dataSource.readBook
+        dataSource.readBookPages
             .forEach { key, value in
                 guard let page = value as? Int else { return }
                 readBook[ID<Book>(value: key)] = page
             }
-        return UserActionHistory(didConfirmReadingBookDescription: didConfirmReadingBookDescription, readBook: readBook)
+        return UserActionHistory(didConfirmReadingBookDescription: didConfirmReadingBookDescription, readBookPages: readBook)
     }
     
     func update(didConfirmReadingBookDescription: Bool) async {

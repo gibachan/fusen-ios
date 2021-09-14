@@ -100,5 +100,8 @@ GoogleService-Info-development.plist
 ## API Key
 fusen/Infra/Resource/APIKey.swift
 
+## UT
+fusenTests/**/*.plist
+
 ## Mac
 .DS_Store

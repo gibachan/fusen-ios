@@ -38,7 +38,7 @@ final class AddMemoViewModel: NSObject, ObservableObject {
     
     func onAppear() async {
         let userActionHistory = await getUserActionHistoryUseCase.invoke()
-        if let page = userActionHistory.readBook[book.id] {
+        if let page = userActionHistory.readBookPages[book.id] {
             initialPage = page
         }
     }

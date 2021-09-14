@@ -8,7 +8,11 @@
 import Foundation
 
 final class UserDefaultsDataSource {
-    let userDefaults = UserDefaults.standard // FIXME: DI
+    private let userDefaults: UserDefaults
+    
+    init(userDefaults: UserDefaults = .standard) {
+        self.userDefaults = userDefaults
+    }
     
     var didConfirmReadingBookDescription: Bool {
         get {
@@ -19,7 +23,7 @@ final class UserDefaultsDataSource {
         }
     }
     
-    var readBook: [String: Any] {
+    var readBookPages: [String: Any] {
         userDefaults.dictionary(forKey: .readBook)
     }
     

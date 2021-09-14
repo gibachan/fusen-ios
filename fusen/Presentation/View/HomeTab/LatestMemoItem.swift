@@ -30,17 +30,23 @@ struct LatestMemoItem: View {
                             .foregroundColor(.textSecondary)
                             .lineLimit(1)
                     }
+                    Spacer()
+                    if let page = memo.page {
+                        Text("\(page)ページ")
+                            .font(.minimal)
+                            .foregroundColor(.textSecondary)
+                    }
                 }
                 .padding(.bottom, 4)
                 
+                if memo.quote.isNotEmpty {
+                    QuoteText(text: memo.quote)
+                        .lineLimit(2)
+                }
                 if memo.text.isNotEmpty {
                     Text(memo.text)
                         .font(.medium)
                         .foregroundColor(.textPrimary)
-                        .lineLimit(2)
-                }
-                if memo.quote.isNotEmpty {
-                    QuoteText(text: memo.quote)
                         .lineLimit(2)
                 }
             }

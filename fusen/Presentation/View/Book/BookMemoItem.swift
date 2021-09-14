@@ -12,18 +12,6 @@ struct BookMemoItem: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 8) {
-                if memo.text.isNotEmpty {
-                    Text(memo.text)
-                        .font(.medium)
-                        .foregroundColor(.textPrimary)
-                        .lineLimit(4)
-                }
-                
-                if memo.quote.isNotEmpty {
-                    QuoteText(text: memo.quote)
-                        .lineLimit(4)
-                }
-
                 HStack(spacing: 8) {
                     Text("\(memo.updatedAt.string)")
                         .font(.minimal)
@@ -41,6 +29,16 @@ struct BookMemoItem: View {
                             .frame(width: 12, height: 12)
                             .foregroundColor(.textSecondary)
                     }
+                }
+                if memo.quote.isNotEmpty {
+                    QuoteText(text: memo.quote)
+                        .lineLimit(6)
+                }
+                if memo.text.isNotEmpty {
+                    Text(memo.text)
+                        .font(.medium)
+                        .foregroundColor(.textPrimary)
+                        .lineLimit(6)
                 }
             }
         }

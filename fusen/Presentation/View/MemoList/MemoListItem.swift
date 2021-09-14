@@ -34,7 +34,7 @@ struct MemoListItem: View {
                         .font(.minimal)
                         .foregroundColor(.textSecondary)
                 }
-                if !memo.imageURLs.isEmpty {
+                if memo.imageURLs.isNotEmpty {
                     Image.image
                         .renderingMode(.template)
                         .resizable()
@@ -44,16 +44,15 @@ struct MemoListItem: View {
             }
             .padding(.bottom, 4)
             
+            if memo.quote.isNotEmpty {
+                QuoteText(text: memo.quote)
+                    .lineLimit(5)
+            }
             if memo.text.isNotEmpty {
                 Text(memo.text)
                     .font(.medium)
                     .foregroundColor(.textPrimary)
-                    .lineLimit(4)
-            }
-            
-            if memo.quote.isNotEmpty {
-                QuoteText(text: memo.quote)
-                    .lineLimit(4)
+                    .lineLimit(5)
             }
         }
         .task {

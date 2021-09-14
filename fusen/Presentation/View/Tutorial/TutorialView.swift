@@ -30,7 +30,7 @@ struct TutorialView: View {
                             Text("書籍を登録")
                                 .font(.small.bold())
                                 .foregroundColor(.textPrimary)
-                            Text("バーコードを読み取って簡単に書籍を登録できます。マニュアル登録も可能です。書籍はコレクションで分類して整理できます。")
+                            Text("バーコードを読み取って簡単に書籍を登録できます。マニュアル登録も可能です。書籍はコレクションでお好みに合わせて分類できます。")
                                 .font(.small)
                                 .foregroundColor(.textSecondary)
                         }
@@ -60,7 +60,7 @@ struct TutorialView: View {
                             Text("データを共有")
                                 .font(.small.bold())
                                 .foregroundColor(.textPrimary)
-                            Text("Apple IDと連携することで、複数のデバイスとデータを共有してご利用いただけます。")
+                            Text("Apple IDと連携することで複数のデバイスとデータを共有してご利用いただけます。")
                                 .font(.small)
                                 .foregroundColor(.textSecondary)
                         }

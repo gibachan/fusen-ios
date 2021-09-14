@@ -11,7 +11,6 @@ extension ImageData {
     var uiImage: UIImage? { .init(data: data) }
     
     init?(type: ImageType, uiImage: UIImage) {
-        // FIXME: Determine reasonable quality
         let quality: CGFloat
         switch type {
         case .book: quality = 0.8

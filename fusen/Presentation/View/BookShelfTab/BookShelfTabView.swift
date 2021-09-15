@@ -17,15 +17,13 @@ struct BookShelfTabView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             List {
-                if case .succeeded = viewModel.state {
-                    if viewModel.isFavoriteVisible {
-                        BookShelfFavoriteSection(isNavigated: $isNavigated, navigation: $navigation)
-                    }
-                    ForEach(viewModel.collections, id: \.id.value) { collection in
-                        BookShelfCollectionSection(collection: collection, isNavigated: $isNavigated, navigation: $navigation)
-                    }
-                    BookShelfAllSection(isNavigated: $isNavigated, navigation: $navigation)
+                if viewModel.isFavoriteVisible {
+                    BookShelfFavoriteSection(isNavigated: $isNavigated, navigation: $navigation)
                 }
+                ForEach(viewModel.collections, id: \.id.value) { collection in
+                    BookShelfCollectionSection(collection: collection, isNavigated: $isNavigated, navigation: $navigation)
+                }
+                BookShelfAllSection(isNavigated: $isNavigated, navigation: $navigation)
             }
             .listStyle(PlainListStyle())
             .refreshable {

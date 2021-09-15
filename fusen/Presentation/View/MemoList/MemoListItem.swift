@@ -55,6 +55,7 @@ struct MemoListItem: View {
                     .lineLimit(5)
             }
         }
+        .padding(.vertical, 4)
         .task {
             await viewModel.onAppear()
         }

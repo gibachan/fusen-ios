@@ -132,7 +132,6 @@ extension HomeTabView {
                     navigate(to: .memo(memo: memo))
                 } label: {
                     LatestMemoItem(memo: memo)
-                        .padding(.vertical, 4)
                 }
             }
         } header: {

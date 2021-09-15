@@ -51,6 +51,7 @@ struct LatestMemoItem: View {
                 }
             }
         }
+        .padding(.vertical, 4)
         .task {
             await viewModel.onAppear()
         }

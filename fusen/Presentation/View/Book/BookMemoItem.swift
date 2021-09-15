@@ -42,6 +42,7 @@ struct BookMemoItem: View {
                 }
             }
         }
+        .padding(.vertical, 4)
     }
 }
 

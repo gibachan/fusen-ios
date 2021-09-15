@@ -8,6 +8,12 @@
 import Foundation
 
 extension NotificationCenter {
+    func postHomePopToRoot() {
+        post(name: Notification.Name.homePopToRoot, object: nil)
+    }
+    func postBookShelfPopToRoot() {
+        post(name: Notification.Name.bookShelfPopToRoot, object: nil)
+    }
     func postTutorialFinished() {
         post(name: Notification.Name.tutorialFinished, object: nil)
     }
@@ -24,6 +30,12 @@ extension NotificationCenter {
         post(name: Notification.Name.logOut, object: nil)
     }
     
+    func homePopToRootPublisher() -> Publisher {
+        publisher(for: Notification.Name.homePopToRoot)
+    }
+    func bookShelfPopToRootPublisher() -> Publisher {
+        publisher(for: Notification.Name.bookShelfPopToRoot)
+    }
     func tutorialFinishedPublisher() -> Publisher {
         publisher(for: Notification.Name.tutorialFinished)
     }

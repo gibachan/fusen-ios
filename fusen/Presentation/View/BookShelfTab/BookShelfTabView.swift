@@ -14,13 +14,15 @@ struct BookShelfTabView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             List {
-                if viewModel.isFavoriteVisible {
-                    BookShelfFavoriteSection()
+                if case .succeeded = viewModel.state {
+                    if viewModel.isFavoriteVisible {
+                        BookShelfFavoriteSection()
+                    }
+                    ForEach(viewModel.collections, id: \.id.value) { collection in
+                        BookShelfCollectionSection(collection: collection)
+                    }
+                    BookShelfAllSection()
                 }
-                ForEach(viewModel.collections, id: \.id.value) { collection in
-                    BookShelfCollectionSection(collection: collection)
-                }
-                BookShelfAllSection()
             }
             .listStyle(PlainListStyle())
             .refreshable {
@@ -76,6 +78,12 @@ struct BookShelfTabView: View {
                 LoadingHUD.dismiss()
             case .failed:
                 LoadingHUD.dismiss()
+            }
+        }
+        .onReceive(NotificationCenter.default.bookShelfPopToRootPublisher()) { _ in
+            // This is a workaround for popToRootViewController
+            Task {
+                await viewModel.onAppear()
             }
         }
     }

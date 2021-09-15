@@ -14,10 +14,28 @@ struct MainView: View {
     @State private var toastText = ""
     @State private var isToastPresented = false
     @State private var isReadingBookDescriptionPresented = false
-    
+    @State private var selectedTab = 0
+    private var tabSelection: Binding<Int> { Binding(
+        get: { self.selectedTab },
+        set: {
+            if self.selectedTab == $0 {
+                switch selectedTab {
+                case 0:
+                    NotificationCenter.default.postHomePopToRoot()
+                case 1:
+                    NotificationCenter.default.postBookShelfPopToRoot()
+                default:
+                    break
+                }
+            } else {
+                self.selectedTab = $0
+            }
+        }
+    )}
+
     var body: some View {
         ZStack {
-            TabView {
+            TabView(selection: tabSelection) {
                 NavigationView {
                     HomeTabView()
                 }
@@ -25,7 +43,8 @@ struct MainView: View {
                     Image.home
                     Text("ホーム")
                 }
-                
+                .tag(0)
+
                 NavigationView {
                     BookShelfTabView()
                 }
@@ -33,6 +52,7 @@ struct MainView: View {
                     Image.bookShelf
                     Text("本棚")
                 }
+                .tag(1)
                 
                 NavigationView {
                     SettingTabView()
@@ -41,6 +61,7 @@ struct MainView: View {
                     Image.setting
                     Text("設定")
                 }
+                .tag(2)
             }
             .zIndex(0)
             

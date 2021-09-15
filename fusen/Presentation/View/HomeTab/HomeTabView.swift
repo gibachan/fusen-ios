@@ -71,6 +71,12 @@ struct HomeTabView: View {
                 await viewModel.onRefresh()
             }
         }
+        .onReceive(NotificationCenter.default.homePopToRootPublisher()) { _ in
+            // This is a workaround for popToRootViewController
+            Task {
+                await viewModel.onAppear()
+            }
+        }
     }
 }
 

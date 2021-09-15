@@ -8,6 +8,12 @@
 import Foundation
 
 extension Notification.Name {
+    static var homePopToRoot: Notification.Name {
+        Notification.Name("homePopToRoot")
+    }
+    static var bookShelfPopToRoot: Notification.Name {
+        Notification.Name("bookShelfPopToRoot")
+    }
     static var tutorialFinished: Notification.Name {
         Notification.Name("tutorialFinished")
     }

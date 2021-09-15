@@ -179,7 +179,6 @@
 		A07CAD2926D0C6CA0012201A /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD2826D0C6CA0012201A /* UserInfo.swift */; };
 		A07CAD2B26D0C7130012201A /* FirestoreGetUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD2A26D0C7130012201A /* FirestoreGetUserInfo.swift */; };
 		A07CAD2D26D0D1150012201A /* DocumentReferenceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD2C26D0D1150012201A /* DocumentReferenceExtension.swift */; };
-		A07CAD3026D114300012201A /* HomeReadingBookItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD2F26D114300012201A /* HomeReadingBookItem.swift */; };
 		A07CAD3926D147230012201A /* BookEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD3826D147230012201A /* BookEmptyView.swift */; };
 		A07D1A8426E2E7BB00ADF384 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07D1A8326E2E7BB00ADF384 /* StringExtension.swift */; };
 		A07D1A8626E2FAE100ADF384 /* QuoteText.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07D1A8526E2FAE100ADF384 /* QuoteText.swift */; };
@@ -187,6 +186,8 @@
 		A082000C26C1F5D100100357 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000B26C1F5D100100357 /* Assets.xcassets */; };
 		A082000F26C1F5D100100357 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000E26C1F5D100100357 /* Preview Assets.xcassets */; };
 		A082002326C1F5D100100357 /* fusenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A082002226C1F5D100100357 /* fusenUITests.swift */; };
+		A084611526F1B79D009EB6E9 /* HomeNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A084611426F1B79D009EB6E9 /* HomeNavigation.swift */; };
+		A084611726F1D4A0009EB6E9 /* BookShelfNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A084611626F1D4A0009EB6E9 /* BookShelfNavigation.swift */; };
 		A0A09C9526D91B9300FF6A1E /* FavoriteBookListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A09C9426D91B9300FF6A1E /* FavoriteBookListView.swift */; };
 		A0A09C9726D91B9B00FF6A1E /* FavoriteBookListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A09C9626D91B9B00FF6A1E /* FavoriteBookListViewModel.swift */; };
 		A0A2B30826EAC8E7001798D3 /* BookShelfColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A2B30726EAC8E7001798D3 /* BookShelfColumn.swift */; };
@@ -418,7 +419,6 @@
 		A07CAD2826D0C6CA0012201A /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		A07CAD2A26D0C7130012201A /* FirestoreGetUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreGetUserInfo.swift; sourceTree = "<group>"; };
 		A07CAD2C26D0D1150012201A /* DocumentReferenceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentReferenceExtension.swift; sourceTree = "<group>"; };
-		A07CAD2F26D114300012201A /* HomeReadingBookItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReadingBookItem.swift; sourceTree = "<group>"; };
 		A07CAD3826D147230012201A /* BookEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookEmptyView.swift; sourceTree = "<group>"; };
 		A07D1A8326E2E7BB00ADF384 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		A07D1A8526E2FAE100ADF384 /* QuoteText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteText.swift; sourceTree = "<group>"; };
@@ -429,6 +429,8 @@
 		A082001426C1F5D100100357 /* fusenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fusenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A082001E26C1F5D100100357 /* fusenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fusenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A082002226C1F5D100100357 /* fusenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fusenUITests.swift; sourceTree = "<group>"; };
+		A084611426F1B79D009EB6E9 /* HomeNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigation.swift; sourceTree = "<group>"; };
+		A084611626F1D4A0009EB6E9 /* BookShelfNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfNavigation.swift; sourceTree = "<group>"; };
 		A0A09C9426D91B9300FF6A1E /* FavoriteBookListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBookListView.swift; sourceTree = "<group>"; };
 		A0A09C9626D91B9B00FF6A1E /* FavoriteBookListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBookListViewModel.swift; sourceTree = "<group>"; };
 		A0A2B30726EAC8E7001798D3 /* BookShelfColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfColumn.swift; sourceTree = "<group>"; };
@@ -689,6 +691,7 @@
 				A001E02D26C9477700AC92BA /* BookShelfItem.swift */,
 				A069983226CDD85B006E74C6 /* BookShelfEmptyItem.swift */,
 				A0A2B30726EAC8E7001798D3 /* BookShelfColumn.swift */,
+				A084611626F1D4A0009EB6E9 /* BookShelfNavigation.swift */,
 			);
 			path = BookShelfTab;
 			sourceTree = "<group>";
@@ -992,8 +995,8 @@
 				7A11FCAF26CB537500F1A6BC /* LatestBookItem.swift */,
 				A07CAD1326D051D10012201A /* LatestMemoItem.swift */,
 				A07CAD1526D051DE0012201A /* LatestMemoItemModel.swift */,
-				A07CAD2F26D114300012201A /* HomeReadingBookItem.swift */,
 				A0C3C23D26D7680E0032B2C7 /* HomeTabEmptyView.swift */,
+				A084611426F1B79D009EB6E9 /* HomeNavigation.swift */,
 			);
 			path = HomeTab;
 			sourceTree = "<group>";
@@ -1568,6 +1571,7 @@
 				7A69930D26DD05C5006B0697 /* APIKey.swift in Sources */,
 				7AA6D7AC26D386BB00781F48 /* AddBookView.swift in Sources */,
 				A07334F426DDA872004C5436 /* AddBookIcon.swift in Sources */,
+				A084611726F1D4A0009EB6E9 /* BookShelfNavigation.swift in Sources */,
 				A07CAD2D26D0D1150012201A /* DocumentReferenceExtension.swift in Sources */,
 				A07CAD2726D0C0560012201A /* ReadingMark.swift in Sources */,
 				A001E02E26C9477700AC92BA /* BookShelfItem.swift in Sources */,
@@ -1593,6 +1597,7 @@
 				A0F97CED26E0CA84007CACE5 /* WebPageView.swift in Sources */,
 				A007C09026C7EF9700270671 /* FirestoreExtension.swift in Sources */,
 				A008976A26D87296003EFD08 /* ErrorHUD.swift in Sources */,
+				A084611526F1B79D009EB6E9 /* HomeNavigation.swift in Sources */,
 				7A33118226CE518F00EB520D /* UIApplicationExtensoin.swift in Sources */,
 				A07334F826DDAF5D004C5436 /* AppConfig.swift in Sources */,
 				7A11FCA526CB467C00F1A6BC /* NotificationCenterExtension.swift in Sources */,
@@ -1658,7 +1663,6 @@
 				A007C08B26C7DACA00270671 /* BookRepositoryImpl.swift in Sources */,
 				7A11FCC326CD4BAB00F1A6BC /* BookShelfCollectionSectionModel.swift in Sources */,
 				A007C08326C78FB400270671 /* Logger.swift in Sources */,
-				A07CAD3026D114300012201A /* HomeReadingBookItem.swift in Sources */,
 				A060095226E4D4CA00EA0BC2 /* UpdateBookUseCase.swift in Sources */,
 				A07CAD1026CF95FD0012201A /* RGB.swift in Sources */,
 				A007C09526C8CAB700270671 /* FirestoreGetBook.swift in Sources */,

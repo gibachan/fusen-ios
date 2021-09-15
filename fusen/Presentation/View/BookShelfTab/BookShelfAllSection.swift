@@ -9,6 +9,8 @@ import SwiftUI
 
 struct BookShelfAllSection: View {
     @StateObject private var viewModel = BookShelfAllSectionModel()
+    @Binding var isNavigated: Bool
+    @Binding var navigation: BookShelfNavigation
     
     var body: some View {
         Section {
@@ -20,7 +22,11 @@ struct BookShelfAllSection: View {
                         ForEach(viewModel.bookColumns) { column in
                             VStack(alignment: .leading, spacing: 8) {
                                 ForEach(column.books, id: \.id) { book in
-                                    BookShelfItem(book: book)
+                                    Button {
+                                        navigate(to: .book(book: book))
+                                    } label: {
+                                        BookShelfItem(book: book)
+                                    }
                                     if book.id != column.books.last?.id {
                                         Divider()
                                     }
@@ -37,7 +43,9 @@ struct BookShelfAllSection: View {
                 SectionHeaderText("すべての書籍")
                 Spacer()
                 if viewModel.bookColumns.isNotEmpty {
-                    NavigationLink(destination: LazyView(BookListView())) {
+                    Button {
+                        navigate(to: .allBooks)
+                    } label: {
                         ShowAllText()
                     }
                 }
@@ -54,8 +62,15 @@ struct BookShelfAllSection: View {
     }
 }
 
+extension BookShelfAllSection {
+    private func navigate(to navigation: BookShelfNavigation) {
+        self.navigation = navigation
+        self.isNavigated = true
+    }
+}
+
 struct BookShelfAllSection_Previews: PreviewProvider {
     static var previews: some View {
-        BookShelfAllSection()
+        BookShelfAllSection(isNavigated: Binding<Bool>.constant(false), navigation: Binding<BookShelfNavigation>.constant(.none))
     }
 }

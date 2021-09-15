@@ -10,8 +10,6 @@ import SwiftUI
 struct BookShelfItem: View {
     let book: Book
     
-    @State private var isBookPresented = false
-    
     var body: some View {
         HStack(alignment: .top, spacing: 4) {
             BookImageView(url: book.imageURL)
@@ -28,19 +26,10 @@ struct BookShelfItem: View {
                     .lineLimit(1)
                     .foregroundColor(.textSecondary)
             }
-            
-            NavigationLink(isActive: $isBookPresented) {
-                LazyView(BookView(bookId: book.id))
-            } label: {
-                EmptyView()
-            }
-            .buttonStyle(PlainButtonStyle())
             Spacer()
         }
+        .buttonStyle(PlainButtonStyle())
         .frame(height: 72)
         .backgroundColor(.white) // Enable to tap empty space
-        .onTapGesture {
-            isBookPresented = true
-        }
     }
 }

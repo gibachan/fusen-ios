@@ -10,10 +10,14 @@ import SwiftUI
 struct BookShelfCollectionSection: View {
     @StateObject private var viewModel: BookShelfCollectionSectionModel
     private let collection: Collection
-    
-    init(collection: Collection) {
+    @Binding var isNavigated: Bool
+    @Binding var navigation: BookShelfNavigation
+
+    init(collection: Collection, isNavigated: Binding<Bool>, navigation: Binding<BookShelfNavigation>) {
         self._viewModel = StateObject(wrappedValue: BookShelfCollectionSectionModel(collection: collection))
         self.collection = collection
+        self._isNavigated = isNavigated
+        self._navigation = navigation
     }
     
     var body: some View {
@@ -26,7 +30,11 @@ struct BookShelfCollectionSection: View {
                         ForEach(viewModel.bookColumns) { column in
                             VStack(alignment: .leading, spacing: 8) {
                                 ForEach(column.books, id: \.id) { book in
-                                    BookShelfItem(book: book)
+                                    Button {
+                                        navigate(to: .book(book: book))
+                                    } label: {
+                                        BookShelfItem(book: book)
+                                    }
                                     if book.id != column.books.last?.id {
                                         Divider()
                                     }
@@ -46,7 +54,9 @@ struct BookShelfCollectionSection: View {
                     .foregroundColor(Color(rgb: viewModel.collection.color))
                 SectionHeaderText(viewModel.collection.name)
                 Spacer()
-                NavigationLink(destination: LazyView(CollectionView(collection: collection))) {
+                Button {
+                    navigate(to: .collection(collection: collection))
+                } label: {
                     ShowAllText()
                 }
             }
@@ -57,8 +67,15 @@ struct BookShelfCollectionSection: View {
     }
 }
 
+extension BookShelfCollectionSection {
+    private func navigate(to navigation: BookShelfNavigation) {
+        self.navigation = navigation
+        self.isNavigated = true
+    }
+}
+
 struct BookShelfCollectionSection_Previews: PreviewProvider {
     static var previews: some View {
-        BookShelfCollectionSection(collection: Collection.sample)
+        BookShelfCollectionSection(collection: Collection.sample, isNavigated: Binding<Bool>.constant(false), navigation: Binding<BookShelfNavigation>.constant(.none))
     }
 }

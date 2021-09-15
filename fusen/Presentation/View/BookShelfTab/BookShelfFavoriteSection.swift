@@ -9,6 +9,8 @@ import SwiftUI
 
 struct BookShelfFavoriteSection: View {
     @StateObject private var viewModel = BookShelfFavoriteSectionModel()
+    @Binding var isNavigated: Bool
+    @Binding var navigation: BookShelfNavigation
     
     var body: some View {
         Section {
@@ -20,7 +22,11 @@ struct BookShelfFavoriteSection: View {
                         ForEach(viewModel.bookColumns) { column in
                             VStack(alignment: .leading, spacing: 8) {
                                 ForEach(column.books, id: \.id) { book in
-                                    BookShelfItem(book: book)
+                                    Button {
+                                        navigate(to: .book(book: book))
+                                    } label: {
+                                        BookShelfItem(book: book)
+                                    }
                                     if book.id != column.books.last?.id {
                                         Divider()
                                     }
@@ -37,7 +43,9 @@ struct BookShelfFavoriteSection: View {
                 SectionHeaderText("お気に入り")
                 Spacer()
                 if viewModel.bookColumns.isNotEmpty {
-                    NavigationLink(destination: LazyView(FavoriteBookListView())) {
+                    Button {
+                        navigate(to: .favoriteBookList)
+                    } label: {
                         ShowAllText()
                     }
                 }
@@ -49,8 +57,15 @@ struct BookShelfFavoriteSection: View {
     }
 }
 
+extension BookShelfFavoriteSection {
+    private func navigate(to navigation: BookShelfNavigation) {
+        self.navigation = navigation
+        self.isNavigated = true
+    }
+}
+
 struct BookShelfFavoriteSection_Previews: PreviewProvider {
     static var previews: some View {
-        BookShelfFavoriteSection()
+        BookShelfFavoriteSection(isNavigated: Binding<Bool>.constant(false), navigation: Binding<BookShelfNavigation>.constant(.none))
     }
 }

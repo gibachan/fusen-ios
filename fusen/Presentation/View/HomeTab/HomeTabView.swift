@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct HomeTabView: View {
+    private let readingBookFooterHeight: CGFloat = 56
     @StateObject private var viewModel = HomeTabViewModel()
     @State private var isAddPresented = false
-    
+    @State private var isNavigated = false
+    @State private var navigation: HomeNavigation = .none
+
     var body: some View {
         ZStack(alignment: .bottomLeading) {
             List {
@@ -25,7 +28,7 @@ struct HomeTabView: View {
                 }
                 
                 Spacer()
-                    .frame(height: HomeReadingBookItem.height)
+                    .frame(height: readingBookFooterHeight)
                     .listRowSeparator(.hidden)
             }
             .listStyle(PlainListStyle())
@@ -34,11 +37,23 @@ struct HomeTabView: View {
             }
             
             if let readigBook = viewModel.readingBook {
-                HomeReadingBookItem(book: readigBook) {
-                    isAddPresented = true
-                }
+                readingBookFooter(book: readigBook)
             }
         }
+        .navigation(isActive: $isNavigated, destination: {
+            switch navigation {
+            case .none:
+                EmptyView()
+            case let .book(book: book):
+                BookView(bookId: book.id)
+            case .allBooks:
+                BookListView()
+            case let .memo(memo: memo):
+                EditMemoView(memo: memo)
+            case .allMemos:
+                MemoListView()
+            }
+        })
         .navigationBarTitle("ホーム")
         .task {
             await viewModel.onAppear()
@@ -72,19 +87,23 @@ struct HomeTabView: View {
             }
         }
         .onReceive(NotificationCenter.default.homePopToRootPublisher()) { _ in
-            // This is a workaround for popToRootViewController
-            Task {
-                await viewModel.onAppear()
-            }
+            isNavigated = false
         }
     }
 }
 
 extension HomeTabView {
+    private func navigate(to navigation: HomeNavigation) {
+        self.navigation = navigation
+        self.isNavigated = true
+    }
+    
     private func latestBooksSectin(books: [Book]) -> some View {
         Section {
             ForEach(books, id: \.id.value) { book in
-                NavigationLink(destination: LazyView(BookView(bookId: book.id))) {
+                Button {
+                    navigate(to: .book(book: book))
+                } label: {
                     LatestBookItem(book: book)
                         .padding(.vertical, 4)
                 }
@@ -93,7 +112,9 @@ extension HomeTabView {
             HStack {
                 SectionHeaderText("最近追加した書籍")
                 Spacer()
-                NavigationLink(destination: LazyView(BookListView())) {
+                Button {
+                    navigate(to: .allBooks)
+                } label: {
                     ShowAllText()
                 }
             }
@@ -107,7 +128,9 @@ extension HomeTabView {
                     .listRowSeparator(.hidden)
             }
             ForEach(memos, id: \.id.value) { memo in
-                NavigationLink(destination: LazyView(EditMemoView(memo: memo))) {
+                Button {
+                    navigate(to: .memo(memo: memo))
+                } label: {
                     LatestMemoItem(memo: memo)
                         .padding(.vertical, 4)
                 }
@@ -116,11 +139,48 @@ extension HomeTabView {
             HStack {
                 SectionHeaderText("最近追加したメモ")
                 Spacer()
-                NavigationLink(destination: MemoListView()) {
+                Button {
+                    navigate(to: .allMemos)
+                } label: {
                     ShowAllText()
                 }
             }
         }
+    }
+    
+    private func readingBookFooter(book: Book) -> some View {
+        HStack(alignment: .center) {
+            Button {
+                navigate(to: .book(book: book))
+            } label: {
+                HStack {
+                    BookImageView(url: book.imageURL)
+                        .frame(width: 30, height: 40)
+                    VStack(alignment: .leading) {
+                        Text("読書中")
+                            .font(.small)
+                            .foregroundColor(.textSecondary)
+                        Text(book.title)
+                            .font(.small)
+                            .lineLimit(1)
+                            .foregroundColor(.textPrimary)
+                    }
+                }
+            }
+            Spacer()
+            Image.memo
+                .resizable()
+                .foregroundColor(.active)
+                .frame(width: 24, height: 24)
+                .onTapGesture {
+                    isAddPresented = true
+                }
+        }
+        .padding(.vertical, 8)
+        .padding(.horizontal, 16)
+        .frame(height: readingBookFooterHeight)
+        .backgroundColor(.white.opacity(0.94))
+        .shadow(color: .backgroundGray, radius: 3)
     }
 }
 

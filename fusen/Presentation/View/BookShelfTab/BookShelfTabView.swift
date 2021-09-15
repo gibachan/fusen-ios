@@ -11,17 +11,20 @@ struct BookShelfTabView: View {
     @StateObject private var viewModel = BookShelfTabViewModel()
     @State private var isAddBookPresented = false
     @State private var isAddCollectionPresented = false
+    @State private var isNavigated = false
+    @State private var navigation: BookShelfNavigation = .none
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             List {
                 if case .succeeded = viewModel.state {
                     if viewModel.isFavoriteVisible {
-                        BookShelfFavoriteSection()
+                        BookShelfFavoriteSection(isNavigated: $isNavigated, navigation: $navigation)
                     }
                     ForEach(viewModel.collections, id: \.id.value) { collection in
-                        BookShelfCollectionSection(collection: collection)
+                        BookShelfCollectionSection(collection: collection, isNavigated: $isNavigated, navigation: $navigation)
                     }
-                    BookShelfAllSection()
+                    BookShelfAllSection(isNavigated: $isNavigated, navigation: $navigation)
                 }
             }
             .listStyle(PlainListStyle())
@@ -49,6 +52,20 @@ struct BookShelfTabView: View {
         }
         .listStyle(PlainListStyle())
         .navigationBarTitle("本棚")
+        .navigation(isActive: $isNavigated, destination: {
+            switch navigation {
+            case .none:
+                EmptyView()
+            case let .book(book: book):
+                BookView(bookId: book.id)
+            case .allBooks:
+                BookListView()
+            case .favoriteBookList:
+                FavoriteBookListView()
+            case .collection(collection: let collection):
+                CollectionView(collection: collection)
+            }
+        })
         .sheet(isPresented: $isAddCollectionPresented) {
             Task {
                 await viewModel.onRefresh()
@@ -81,10 +98,7 @@ struct BookShelfTabView: View {
             }
         }
         .onReceive(NotificationCenter.default.bookShelfPopToRootPublisher()) { _ in
-            // This is a workaround for popToRootViewController
-            Task {
-                await viewModel.onAppear()
-            }
+            isNavigated = false
         }
     }
 }

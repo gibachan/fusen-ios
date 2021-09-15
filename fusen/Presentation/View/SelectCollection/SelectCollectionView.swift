@@ -17,13 +17,17 @@ struct SelectCollectionView: View {
     
     var body: some View {
         List {
-            ForEach(viewModel.collections, id: \.name) { collection in
-                CollectionItemView(collection: collection, isSelected: viewModel.book.collectionId == collection.id)
-                    .onTapGesture {
-                        Task {
-                            await viewModel.onSelect(collection: collection)
+            if viewModel.collections.isEmpty {
+                CollectionEmptyItemView()
+            } else {
+                ForEach(viewModel.collections, id: \.name) { collection in
+                    CollectionItemView(collection: collection, isSelected: viewModel.book.collectionId == collection.id)
+                        .onTapGesture {
+                            Task {
+                                await viewModel.onSelect(collection: collection)
+                            }
                         }
-                    }
+                }
             }
         }
         .navigationTitle("コレクション")

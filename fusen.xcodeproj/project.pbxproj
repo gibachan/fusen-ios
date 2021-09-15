@@ -53,6 +53,7 @@
 		7AD1611626C2A6CE00334A63 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1611526C2A6CE00334A63 /* FontExtension.swift */; };
 		7AD1611826C2A8BC00334A63 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1611726C2A8BC00334A63 /* UIColorExtension.swift */; };
 		7ADD9CC026ECDBB50073A043 /* RecognizeTextUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD9CBF26ECDBB50073A043 /* RecognizeTextUseCaseTests.swift */; };
+		7ADD9CC226F17A880073A043 /* CollectionEmptyItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADD9CC126F17A880073A043 /* CollectionEmptyItemView.swift */; };
 		A001E02C26C943AF00AC92BA /* FirestoreCreateBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001E02B26C943AF00AC92BA /* FirestoreCreateBook.swift */; };
 		A001E02E26C9477700AC92BA /* BookShelfItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001E02D26C9477700AC92BA /* BookShelfItem.swift */; };
 		A001E03126C9E62400AC92BA /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A001E03026C9E62400AC92BA /* BookView.swift */; };
@@ -287,6 +288,7 @@
 		7AD1611526C2A6CE00334A63 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		7AD1611726C2A8BC00334A63 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		7ADD9CBF26ECDBB50073A043 /* RecognizeTextUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizeTextUseCaseTests.swift; sourceTree = "<group>"; };
+		7ADD9CC126F17A880073A043 /* CollectionEmptyItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionEmptyItemView.swift; sourceTree = "<group>"; };
 		7B88CB3E534BCE0F944FD992 /* Pods-fusenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusenTests.release.xcconfig"; path = "Target Support Files/Pods-fusenTests/Pods-fusenTests.release.xcconfig"; sourceTree = "<group>"; };
 		92BAA3A355C64643052F4562 /* Pods_fusenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fusenTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		983232E518C4EADBE80E78A4 /* Pods-fusen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen.release.xcconfig"; path = "Target Support Files/Pods-fusen/Pods-fusen.release.xcconfig"; sourceTree = "<group>"; };
@@ -1010,6 +1012,7 @@
 				A07CAD1A26D0641E0012201A /* SelectCollectionView.swift */,
 				A07CAD1C26D064290012201A /* SelectCollectionViewModel.swift */,
 				A07CAD1E26D0670A0012201A /* CollectionItemView.swift */,
+				7ADD9CC126F17A880073A043 /* CollectionEmptyItemView.swift */,
 			);
 			path = SelectCollection;
 			sourceTree = "<group>";
@@ -1669,6 +1672,7 @@
 				A05CE89826D26D23007F9CF2 /* BookShelfAllSection.swift in Sources */,
 				A060093426E48F5900EA0BC2 /* GetAppConfigUseCase.swift in Sources */,
 				A07507DE26C5E53C0087AE5C /* AppDelegate.swift in Sources */,
+				7ADD9CC226F17A880073A043 /* CollectionEmptyItemView.swift in Sources */,
 				A0B9482D26D3A32300C47204 /* ImagePicker.swift in Sources */,
 				7A11FCB326CB57FE00F1A6BC /* ControlToolbar.swift in Sources */,
 				A020544526CE8CC7002FF585 /* DeleteButton.swift in Sources */,

@@ -258,13 +258,13 @@ name: LicensePlist, nameSpecified:
 body: MIT License
 
 Copyrig…
-version: 3.13.0
+version: 3.14.2
 
 name: LicensePlist, nameSpecified: 
 body: MIT License
 
 Copyrig…
-version: 3.13.0
+version: 3.14.2
 
 name: MLImage, nameSpecified: 
 body: Copyright 2021 Googl…
@@ -326,11 +326,11 @@ version: 2.0.0
 
 name: Protobuf, nameSpecified: 
 body: Copyright 2008 Googl…
-version: 3.17.0
+version: 3.18.0
 
 name: Protobuf, nameSpecified: 
 body: Copyright 2008 Googl…
-version: 3.17.0
+version: 3.18.0
 
 name: SVProgressHUD, nameSpecified: 
 body: MIT License
@@ -354,4 +354,4 @@ version: 0.44.0
 
 add-version-numbers: false
 
-LicensePlist Version: 3.13.0
+LicensePlist Version: 3.14.2

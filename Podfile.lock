@@ -530,7 +530,7 @@ PODS:
   - GTMSessionFetcher/Core (1.7.0)
   - Kingfisher (6.3.1)
   - leveldb-library (1.22.1)
-  - LicensePlist (3.13.0)
+  - LicensePlist (3.14.2)
   - MLImage (1.0.0-beta1)
   - MLKitCommon (3.1.0):
     - GoogleDataTransport (~> 9.0)
@@ -561,7 +561,7 @@ PODS:
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - PromisesObjC (2.0.0)
-  - Protobuf (3.17.0)
+  - Protobuf (3.18.0)
   - SVProgressHUD (2.2.5)
   - SwiftLint (0.44.0)
 
@@ -650,7 +650,7 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
   Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
-  LicensePlist: 4e87d3438e03ae2d368ff5bd85344aa03ca722eb
+  LicensePlist: 41c4eec73f255bcfe2abb63c537253c388b4bcfd
   MLImage: 647f3d580c10b3c9a3f6154f5d7baead60c42a0c
   MLKitCommon: 1b5c79d52f79d9cc93ab5300e9713c4c215121ea
   MLKitTextRecognitionCommon: 923315fc744326806d1a1355899be55320182454
@@ -658,10 +658,10 @@ SPEC CHECKSUMS:
   MLKitVision: 26da299aef93291f24f5200e8372919f73abf3b5
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
-  Protobuf: 7327d4444215b5f18e560a97f879ff5503c4581c
+  Protobuf: 1a37ebea1338949e9ac35a3f06e80b3f536eec8d
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftLint: e96c0a8c770c7ebbc4d36c55baf9096bb65c4584
 
 PODFILE CHECKSUM: 141b3afa6c57f3314208d8f78c512ca10a8fdc99
 
-COCOAPODS: 1.11.0
+COCOAPODS: 1.11.2

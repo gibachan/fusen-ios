@@ -35,26 +35,29 @@ struct AddBookMenuView: View {
                         AddBookMenuItem(type: AddBookMenuType.manual)
                     }
                 }
-                Section {
-                    Picker(
-                        selection: $selectedCollection,
-                        label: Text("コレクション :")                            .foregroundColor(.textPrimary)
-                    ) {
-                        Text("指定なし")
-                            .tag(noCollectionSelectedTag)
-                            .foregroundColor(.textSecondary)
-                        ForEach(viewModel.collections, id: \.name) { collection in
-                            Text(collection.name)
-                                .tag(collection.id.value)
+                
+                if viewModel.collections.isNotEmpty {
+                    Section {
+                        Picker(
+                            selection: $selectedCollection,
+                            label: Text("コレクション :")                            .foregroundColor(.textPrimary)
+                        ) {
+                            Text("指定なし")
+                                .tag(noCollectionSelectedTag)
                                 .foregroundColor(.textSecondary)
+                            ForEach(viewModel.collections, id: \.name) { collection in
+                                Text(collection.name)
+                                    .tag(collection.id.value)
+                                    .foregroundColor(.textSecondary)
+                            }
                         }
+                        .font(.medium)
+                        .onChange(of: selectedCollection) { newValue in
+                            viewModel.onSelectCollection(id: ID<Collection>(value: newValue))
+                        }
+                    } header: {
+                        SectionHeaderText("追加するコレクション")
                     }
-                    .font(.medium)
-                    .onChange(of: selectedCollection) { newValue in
-                        viewModel.onSelectCollection(id: ID<Collection>(value: newValue))
-                    }
-                } header: {
-                    SectionHeaderText("追加するコレクション")
                 }
             }
             .fullScreenCover(isPresented: $isScanBarcodePresented, onDismiss: {

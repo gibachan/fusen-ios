@@ -14,6 +14,12 @@ struct Collection {
     var name: String { id.value }
 }
 
+extension Collection: Equatable {
+    static func == (lhs: Collection, rhs: Collection) -> Bool {
+        lhs.id == rhs.id
+    }
+}
+
 extension Collection {
     static let countLimit = 20
     

@@ -8,45 +8,77 @@
 import SwiftUI
 
 struct AddBookMenuView: View {
+    private let noCollectionSelectedTag = ""
+
     @Environment(\.dismiss) private var dismiss
+    @StateObject var viewModel: AddBookMenuViewModel
     @State private var isScanBarcodePresented = false
     @State private var isManualInputPresented = false
-    private let collection: Collection?
+    @State private var selectedCollection = ""
     
-    init(in collection: Collection? = nil) {
-        self.collection = collection
+    init(in initialCollection: Collection? = nil) {
+        self._viewModel = StateObject(wrappedValue: AddBookMenuViewModel(initialCollection: initialCollection))
     }
     
     var body: some View {
         NavigationView {
-            List {
-                Button {
-                    isScanBarcodePresented = true
-                } label: {
-                    AddBookMenuItem(type: AddBookMenuType.camera)
+            Form {
+                Section {
+                    Button {
+                        isScanBarcodePresented = true
+                    } label: {
+                        AddBookMenuItem(type: AddBookMenuType.camera)
+                    }
+                    Button {
+                        isManualInputPresented = true
+                    } label: {
+                        AddBookMenuItem(type: AddBookMenuType.manual)
+                    }
                 }
-                Button {
-                    isManualInputPresented = true
-                } label: {
-                    AddBookMenuItem(type: AddBookMenuType.manual)
+                Section {
+                    Picker(
+                        selection: $selectedCollection,
+                        label: Text("コレクション :")                            .foregroundColor(.textPrimary)
+                    ) {
+                        Text("指定なし")
+                            .tag(noCollectionSelectedTag)
+                            .foregroundColor(.textSecondary)
+                        ForEach(viewModel.collections, id: \.name) { collection in
+                            Text(collection.name)
+                                .tag(collection.id.value)
+                                .foregroundColor(.textSecondary)
+                        }
+                    }
+                    .font(.medium)
+                    .onChange(of: selectedCollection) { newValue in
+                        viewModel.onSelectCollection(id: ID<Collection>(value: newValue))
+                    }
+                } header: {
+                    SectionHeaderText("追加するコレクション")
                 }
             }
             .fullScreenCover(isPresented: $isScanBarcodePresented, onDismiss: {
                 print("dimiss")
             }, content: {
                 NavigationView {
-                    ScanBarcodeView(in: collection)
+                    ScanBarcodeView(in: viewModel.selectedCollection)
                 }
             })
             .sheet(isPresented: $isManualInputPresented, onDismiss: {
                 print("dimiss")
             }, content: {
                 NavigationView {
-                    AddBookView(in: collection)
+                    AddBookView(in: viewModel.selectedCollection)
                 }
             })
             .navigationBarTitle("書籍を追加", displayMode: .inline)
             .navigationBarItems(leading: CancelButton { dismiss() })
+            .task {
+                await viewModel.onAppear()
+            }
+            .onReceive(viewModel.$selectedCollection) { selectedCollection in
+                self.selectedCollection = selectedCollection?.id.value ?? noCollectionSelectedTag
+            }
         }
     }
 }

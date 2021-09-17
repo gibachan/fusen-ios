@@ -82,6 +82,7 @@
 		A020544126CE88BD002FF585 /* EditMemoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A020544026CE88BD002FF585 /* EditMemoImageView.swift */; };
 		A020544526CE8CC7002FF585 /* DeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A020544426CE8CC7002FF585 /* DeleteButton.swift */; };
 		A04388C326F1295C006EB863 /* UserDefaultsDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04388C226F1295C006EB863 /* UserDefaultsDataSourceTests.swift */; };
+		A043A71B26F4477E00E1A3FF /* AddBookMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A043A71A26F4477E00E1A3FF /* AddBookMenuViewModel.swift */; };
 		A052EAC026C3D7430033CE47 /* AddBookMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EABF26C3D7430033CE47 /* AddBookMenuView.swift */; };
 		A052EAC426C3E4140033CE47 /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EAC326C3E4140033CE47 /* CancelButton.swift */; };
 		A052EAC626C3E4650033CE47 /* AddBookMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EAC526C3E4650033CE47 /* AddBookMenuItem.swift */; };
@@ -321,6 +322,7 @@
 		A020544026CE88BD002FF585 /* EditMemoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMemoImageView.swift; sourceTree = "<group>"; };
 		A020544426CE8CC7002FF585 /* DeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButton.swift; sourceTree = "<group>"; };
 		A04388C226F1295C006EB863 /* UserDefaultsDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsDataSourceTests.swift; sourceTree = "<group>"; };
+		A043A71A26F4477E00E1A3FF /* AddBookMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookMenuViewModel.swift; sourceTree = "<group>"; };
 		A052EABF26C3D7430033CE47 /* AddBookMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookMenuView.swift; sourceTree = "<group>"; };
 		A052EAC326C3E4140033CE47 /* CancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
 		A052EAC526C3E4650033CE47 /* AddBookMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookMenuItem.swift; sourceTree = "<group>"; };
@@ -800,6 +802,7 @@
 			isa = PBXGroup;
 			children = (
 				A052EABF26C3D7430033CE47 /* AddBookMenuView.swift */,
+				A043A71A26F4477E00E1A3FF /* AddBookMenuViewModel.swift */,
 				A052EAC526C3E4650033CE47 /* AddBookMenuItem.swift */,
 			);
 			path = AddBookMenu;
@@ -1704,6 +1707,7 @@
 				7AD1611226C2A40000334A63 /* ColorExtension.swift in Sources */,
 				A060093826E492FF00EA0BC2 /* GetReadingBookUseCase.swift in Sources */,
 				A007C08726C7C91700270671 /* LoadingHUD.swift in Sources */,
+				A043A71B26F4477E00E1A3FF /* AddBookMenuViewModel.swift in Sources */,
 				A05CE89A26D26D2E007F9CF2 /* BookShelfAllSectionModel.swift in Sources */,
 				A069981726CBE6FE006E74C6 /* FirestoreCreateMemo.swift in Sources */,
 				A007C09226C83A7200270671 /* Pager.swift in Sources */,

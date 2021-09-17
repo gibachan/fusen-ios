@@ -32,7 +32,7 @@ struct AddCollectionView: View {
                             viewModel.onNameChange(newValue)
                         }
                 }
-                ColorPicker("カラー : ", selection: $color)
+                ColorPicker("カラー : ", selection: $color, supportsOpacity: false)
                     .disabled(viewModel.isCollectionCountOver)
             } header: {
                 SectionHeaderText("新しいコレクション")

@@ -1859,7 +1859,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D STAGING -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = app.fusen.stg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2062,7 +2062,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D DEBUG -D DEVELOPMENT";
 				PRODUCT_BUNDLE_IDENTIFIER = app.fusen.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2098,7 +2098,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = app.fusen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

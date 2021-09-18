@@ -10,6 +10,9 @@ import Foundation
 @testable import fusen
 
 final class MockAccountService: AccountServiceProtocol {
+    var isLoggedInAnonymously = false
+    var isLoggedInWithApple = false
+    
     init(isLoggedIn: Bool) {
         self.isLoggedIn = isLoggedIn
     }
@@ -25,7 +28,8 @@ final class MockAccountService: AccountServiceProtocol {
     }
     
     func logInAnonymously() async throws -> User {
-        fatalError("Not implemented yet")
+        isLoggedInAnonymously = true
+        return User.test
     }
     
     func prepareLogInWithAppleRequest(request: ASAuthorizationAppleIDRequest) {
@@ -33,11 +37,12 @@ final class MockAccountService: AccountServiceProtocol {
     }
     
     func logInWithApple(authorization: ASAuthorization) async throws -> User {
-        fatalError("Not implemented yet")
+        isLoggedInWithApple = true
+        return User.test
     }
     
     func linkWithApple(authorization: ASAuthorization) async throws -> User {
-        fatalError("Not implemented yet")
+        User.test
     }
     
     func reAuthenticateWithApple(authorization: ASAuthorization) async throws {

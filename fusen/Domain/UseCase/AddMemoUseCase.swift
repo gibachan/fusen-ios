@@ -30,7 +30,7 @@ final class AddMemoUseCaseImpl: AddMemoUseCase {
     
     func invoke(book: Book, text: String, quote: String, page: Int, image: ImageData?) async throws -> ID<Memo> {
         guard let user = accountService.currentUser else {
-            throw AddCollectionUseCaseError.notAuthenticated
+            throw AddMemoUseCaseError.notAuthenticated
         }
         
         do {

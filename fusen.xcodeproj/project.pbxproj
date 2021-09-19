@@ -84,6 +84,8 @@
 		A04388C326F1295C006EB863 /* UserDefaultsDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04388C226F1295C006EB863 /* UserDefaultsDataSourceTests.swift */; };
 		A043A71B26F4477E00E1A3FF /* AddBookMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A043A71A26F4477E00E1A3FF /* AddBookMenuViewModel.swift */; };
 		A043A71F26F6020800E1A3FF /* TutorialViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A043A71E26F6020800E1A3FF /* TutorialViewModelTests.swift */; };
+		A049C45326F7F1AE00AD5C3D /* AddMemoUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A049C45226F7F1AE00AD5C3D /* AddMemoUseCaseTests.swift */; };
+		A049C45626F7FB2E00AD5C3D /* XCTestCaseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A049C45526F7FB2E00AD5C3D /* XCTestCaseExtension.swift */; };
 		A052EAC026C3D7430033CE47 /* AddBookMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EABF26C3D7430033CE47 /* AddBookMenuView.swift */; };
 		A052EAC426C3E4140033CE47 /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EAC326C3E4140033CE47 /* CancelButton.swift */; };
 		A052EAC626C3E4650033CE47 /* AddBookMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A052EAC526C3E4650033CE47 /* AddBookMenuItem.swift */; };
@@ -327,6 +329,8 @@
 		A04388C226F1295C006EB863 /* UserDefaultsDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsDataSourceTests.swift; sourceTree = "<group>"; };
 		A043A71A26F4477E00E1A3FF /* AddBookMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookMenuViewModel.swift; sourceTree = "<group>"; };
 		A043A71E26F6020800E1A3FF /* TutorialViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewModelTests.swift; sourceTree = "<group>"; };
+		A049C45226F7F1AE00AD5C3D /* AddMemoUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoUseCaseTests.swift; sourceTree = "<group>"; };
+		A049C45526F7FB2E00AD5C3D /* XCTestCaseExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCaseExtension.swift; sourceTree = "<group>"; };
 		A052EABF26C3D7430033CE47 /* AddBookMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookMenuView.swift; sourceTree = "<group>"; };
 		A052EAC326C3E4140033CE47 /* CancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
 		A052EAC526C3E4650033CE47 /* AddBookMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookMenuItem.swift; sourceTree = "<group>"; };
@@ -822,6 +826,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		A049C45426F7FB1D00AD5C3D /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A049C45526F7FB2E00AD5C3D /* XCTestCaseExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		A052EABE26C3D71C0033CE47 /* AddBookMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -962,6 +974,7 @@
 				A060096126E5B5E300EA0BC2 /* SearchPublicationByBarcodeUseCaseTests.swift */,
 				A0198AD926E80A2700553CDA /* AddCollectionUseCaseTests.swift */,
 				7ADD9CBF26ECDBB50073A043 /* RecognizeTextUseCaseTests.swift */,
+				A049C45226F7F1AE00AD5C3D /* AddMemoUseCaseTests.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -1093,6 +1106,7 @@
 				A043A71C26F601E600E1A3FF /* Presentation */,
 				A060095F26E5B5E300EA0BC2 /* Domain */,
 				A04388BF26F128DF006EB863 /* Data */,
+				A049C45426F7FB1D00AD5C3D /* Extension */,
 			);
 			path = fusenTests;
 			sourceTree = "<group>";
@@ -1763,11 +1777,13 @@
 			files = (
 				A0198ADA26E80A2700553CDA /* AddCollectionUseCaseTests.swift in Sources */,
 				A060096226E5B5E300EA0BC2 /* SearchPublicationByBarcodeUseCaseTests.swift in Sources */,
+				A049C45326F7F1AE00AD5C3D /* AddMemoUseCaseTests.swift in Sources */,
 				A0D4549F26F6B750001668B4 /* MockGetAppConfigUseCase.swift in Sources */,
 				7ADD9CC026ECDBB50073A043 /* RecognizeTextUseCaseTests.swift in Sources */,
 				A0D4549B26F6B303001668B4 /* MainViewModelTests.swift in Sources */,
 				A0198ADD26E80AE100553CDA /* MockAccountService.swift in Sources */,
 				A043A71F26F6020800E1A3FF /* TutorialViewModelTests.swift in Sources */,
+				A049C45626F7FB2E00AD5C3D /* XCTestCaseExtension.swift in Sources */,
 				A04388C326F1295C006EB863 /* UserDefaultsDataSourceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1865,7 +1881,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = fusen/fusen.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"fusen/Presentation/Resource/Preview Content\"";
 				DEVELOPMENT_TEAM = MYDHT92MBT;
 				ENABLE_PREVIEWS = YES;
@@ -2068,7 +2084,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = fusen/fusen.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"fusen/Presentation/Resource/Preview Content\"";
 				DEVELOPMENT_TEAM = MYDHT92MBT;
 				ENABLE_PREVIEWS = YES;
@@ -2104,7 +2120,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = fusen/fusen.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"fusen/Presentation/Resource/Preview Content\"";
 				DEVELOPMENT_TEAM = MYDHT92MBT;
 				ENABLE_PREVIEWS = YES;

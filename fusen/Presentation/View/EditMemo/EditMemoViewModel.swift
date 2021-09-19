@@ -27,7 +27,7 @@ final class EditMemoViewModel: ObservableObject {
 
         self.memo = memo
         self.memoImageURL = memo.imageURLs.first
-        self.isSaveEnabled = !memo.text.isEmpty
+        self.isSaveEnabled = memo.text.isNotEmpty || memo.quote.isNotEmpty
     }
     
     func onTextChange(text: String, quote: String) {

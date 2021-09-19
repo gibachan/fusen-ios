@@ -15,7 +15,7 @@ final class MainViewModel: ObservableObject {
     private let accountService: AccountServiceProtocol
     private let getAppConfigUseCase: GetAppConfigUseCase
     
-    init(
+    nonisolated init(
         accountService: AccountServiceProtocol = AccountService.shared,
         getAppConfigUseCase: GetAppConfigUseCase = GetAppConfigUseCaseImpl()
     ) {
@@ -25,9 +25,11 @@ final class MainViewModel: ObservableObject {
     
     func onAppear() async {
         log.d("logged in user=\(accountService.currentUser?.id.value ?? "nil")")
-        showTutorial = !accountService.isLoggedIn
 
         let config = await getAppConfigUseCase.invoke()
         self.isMaintaining = config.isMaintaining
+        if !config.isMaintaining {
+            showTutorial = !accountService.isLoggedIn
+        }
     }
 }

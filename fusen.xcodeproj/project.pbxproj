@@ -212,6 +212,8 @@
 		A0C3C24426D78DB80032B2C7 /* BookMemoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C3C24326D78DB80032B2C7 /* BookMemoSection.swift */; };
 		A0C3C24626D78DC30032B2C7 /* BookMemoSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C3C24526D78DC30032B2C7 /* BookMemoSectionModel.swift */; };
 		A0C3C24826D853EF0032B2C7 /* MemoListItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C3C24726D853EF0032B2C7 /* MemoListItemModel.swift */; };
+		A0D4549B26F6B303001668B4 /* MainViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D4549A26F6B303001668B4 /* MainViewModelTests.swift */; };
+		A0D4549F26F6B750001668B4 /* MockGetAppConfigUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D4549E26F6B750001668B4 /* MockGetAppConfigUseCase.swift */; };
 		A0F97CE426E0B898007CACE5 /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F97CE326E0B898007CACE5 /* AnalyticsService.swift */; };
 		A0F97CE626E0BC12007CACE5 /* FirebaseAuthExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F97CE526E0BC12007CACE5 /* FirebaseAuthExtension.swift */; };
 		A0F97CE826E0C571007CACE5 /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F97CE726E0C571007CACE5 /* AnalyticsEvent.swift */; };
@@ -457,6 +459,8 @@
 		A0C3C24326D78DB80032B2C7 /* BookMemoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMemoSection.swift; sourceTree = "<group>"; };
 		A0C3C24526D78DC30032B2C7 /* BookMemoSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMemoSectionModel.swift; sourceTree = "<group>"; };
 		A0C3C24726D853EF0032B2C7 /* MemoListItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListItemModel.swift; sourceTree = "<group>"; };
+		A0D4549A26F6B303001668B4 /* MainViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelTests.swift; sourceTree = "<group>"; };
+		A0D4549E26F6B750001668B4 /* MockGetAppConfigUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGetAppConfigUseCase.swift; sourceTree = "<group>"; };
 		A0F97CE326E0B898007CACE5 /* AnalyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
 		A0F97CE526E0BC12007CACE5 /* FirebaseAuthExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthExtension.swift; sourceTree = "<group>"; };
 		A0F97CE726E0C571007CACE5 /* AnalyticsEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEvent.swift; sourceTree = "<group>"; };
@@ -770,7 +774,8 @@
 		A0198ADB26E80AD000553CDA /* Mock */ = {
 			isa = PBXGroup;
 			children = (
-				A0198ADC26E80AE100553CDA /* MockAccountService.swift */,
+				A0D4549C26F6B734001668B4 /* UseCase */,
+				A0D4549D26F6B739001668B4 /* Service */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -811,6 +816,7 @@
 		A043A71D26F601ED00E1A3FF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A0D4549A26F6B303001668B4 /* MainViewModelTests.swift */,
 				A043A71E26F6020800E1A3FF /* TutorialViewModelTests.swift */,
 			);
 			path = View;
@@ -1173,6 +1179,22 @@
 				A0BA4CB926C4E37E00D99D8C /* CameraPreview.swift */,
 			);
 			path = ScanBarcode;
+			sourceTree = "<group>";
+		};
+		A0D4549C26F6B734001668B4 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				A0D4549E26F6B750001668B4 /* MockGetAppConfigUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		A0D4549D26F6B739001668B4 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				A0198ADC26E80AE100553CDA /* MockAccountService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		A0F97CE926E0CA4F007CACE5 /* WebPageView */ = {
@@ -1741,7 +1763,9 @@
 			files = (
 				A0198ADA26E80A2700553CDA /* AddCollectionUseCaseTests.swift in Sources */,
 				A060096226E5B5E300EA0BC2 /* SearchPublicationByBarcodeUseCaseTests.swift in Sources */,
+				A0D4549F26F6B750001668B4 /* MockGetAppConfigUseCase.swift in Sources */,
 				7ADD9CC026ECDBB50073A043 /* RecognizeTextUseCaseTests.swift in Sources */,
+				A0D4549B26F6B303001668B4 /* MainViewModelTests.swift in Sources */,
 				A0198ADD26E80AE100553CDA /* MockAccountService.swift in Sources */,
 				A043A71F26F6020800E1A3FF /* TutorialViewModelTests.swift in Sources */,
 				A04388C326F1295C006EB863 /* UserDefaultsDataSourceTests.swift in Sources */,

@@ -152,6 +152,8 @@
 		A069983B26CDDD18006E74C6 /* MemoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069983A26CDDD18006E74C6 /* MemoListView.swift */; };
 		A069983D26CDDD21006E74C6 /* MemoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069983C26CDDD21006E74C6 /* MemoListViewModel.swift */; };
 		A069983F26CDDD7F006E74C6 /* MemoListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069983E26CDDD7F006E74C6 /* MemoListItem.swift */; };
+		A06BE24426FAFC2500D0666E /* UpdateMemoUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06BE24326FAFC2500D0666E /* UpdateMemoUseCaseTests.swift */; };
+		A06BE24726FAFCF400D0666E /* MockMemoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06BE24626FAFCF400D0666E /* MockMemoRepository.swift */; };
 		A07334F026DA420F004C5436 /* TextRecognizeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07334EF26DA420F004C5436 /* TextRecognizeService.swift */; };
 		A07334F426DDA872004C5436 /* AddBookIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07334F326DDA872004C5436 /* AddBookIcon.swift */; };
 		A07334F626DDAD35004C5436 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07334F526DDAD35004C5436 /* ViewExtension.swift */; };
@@ -398,6 +400,8 @@
 		A069983A26CDDD18006E74C6 /* MemoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListView.swift; sourceTree = "<group>"; };
 		A069983C26CDDD21006E74C6 /* MemoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListViewModel.swift; sourceTree = "<group>"; };
 		A069983E26CDDD7F006E74C6 /* MemoListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListItem.swift; sourceTree = "<group>"; };
+		A06BE24326FAFC2500D0666E /* UpdateMemoUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMemoUseCaseTests.swift; sourceTree = "<group>"; };
+		A06BE24626FAFCF400D0666E /* MockMemoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMemoRepository.swift; sourceTree = "<group>"; };
 		A07334EF26DA420F004C5436 /* TextRecognizeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognizeService.swift; sourceTree = "<group>"; };
 		A07334F326DDA872004C5436 /* AddBookIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookIcon.swift; sourceTree = "<group>"; };
 		A07334F526DDAD35004C5436 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
@@ -778,6 +782,7 @@
 		A0198ADB26E80AD000553CDA /* Mock */ = {
 			isa = PBXGroup;
 			children = (
+				A06BE24526FAFCE400D0666E /* Repository */,
 				A0D4549C26F6B734001668B4 /* UseCase */,
 				A0D4549D26F6B739001668B4 /* Service */,
 			);
@@ -975,6 +980,7 @@
 				A0198AD926E80A2700553CDA /* AddCollectionUseCaseTests.swift */,
 				7ADD9CBF26ECDBB50073A043 /* RecognizeTextUseCaseTests.swift */,
 				A049C45226F7F1AE00AD5C3D /* AddMemoUseCaseTests.swift */,
+				A06BE24326FAFC2500D0666E /* UpdateMemoUseCaseTests.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -1017,6 +1023,14 @@
 				A0C3C24726D853EF0032B2C7 /* MemoListItemModel.swift */,
 			);
 			path = MemoList;
+			sourceTree = "<group>";
+		};
+		A06BE24526FAFCE400D0666E /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				A06BE24626FAFCF400D0666E /* MockMemoRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		A07334FD26DDB1DD004C5436 /* Maintenance */ = {
@@ -1778,9 +1792,11 @@
 				A0198ADA26E80A2700553CDA /* AddCollectionUseCaseTests.swift in Sources */,
 				A060096226E5B5E300EA0BC2 /* SearchPublicationByBarcodeUseCaseTests.swift in Sources */,
 				A049C45326F7F1AE00AD5C3D /* AddMemoUseCaseTests.swift in Sources */,
+				A06BE24726FAFCF400D0666E /* MockMemoRepository.swift in Sources */,
 				A0D4549F26F6B750001668B4 /* MockGetAppConfigUseCase.swift in Sources */,
 				7ADD9CC026ECDBB50073A043 /* RecognizeTextUseCaseTests.swift in Sources */,
 				A0D4549B26F6B303001668B4 /* MainViewModelTests.swift in Sources */,
+				A06BE24426FAFC2500D0666E /* UpdateMemoUseCaseTests.swift in Sources */,
 				A0198ADD26E80AE100553CDA /* MockAccountService.swift in Sources */,
 				A043A71F26F6020800E1A3FF /* TutorialViewModelTests.swift in Sources */,
 				A049C45626F7FB2E00AD5C3D /* XCTestCaseExtension.swift in Sources */,

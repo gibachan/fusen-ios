@@ -19,6 +19,12 @@ struct Book {
     let collectionId: ID<Collection>
 }
 
+extension Book: Equatable {
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs.id == rhs.id
+    }
+}
+
 extension Book {
     static var sample: Book {
         Book(

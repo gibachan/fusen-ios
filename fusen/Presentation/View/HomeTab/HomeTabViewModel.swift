@@ -18,7 +18,7 @@ final class HomeTabViewModel: ObservableObject {
     @Published var state: State = .initial
     @Published var readingBook: Book?
     
-    init(
+    nonisolated init(
         getReadingBookUseCase: GetReadingBookUseCase = GetReadingBookUseCaseImpl(),
         getLatestDataUseCase: GetLatestDataUseCase = GetLatestDataUseCaseImpl()
     ) {
@@ -54,7 +54,7 @@ final class HomeTabViewModel: ObservableObject {
         }
     }
     
-    enum State {
+    enum State: Equatable {
         case initial
         case loading
         case loaded(latestBooks: [Book], latestMemos: [Memo])

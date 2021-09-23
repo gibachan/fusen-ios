@@ -18,6 +18,12 @@ struct Memo {
     let updatedAt: Date
 }
 
+extension Memo: Equatable {
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs.id == rhs.id
+    }
+}
+
 extension Memo {
     static var sample: Memo {
         Memo(

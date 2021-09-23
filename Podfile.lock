@@ -528,7 +528,7 @@ PODS:
     - gRPC-Core/Interface (= 1.28.2)
   - gRPC-Core/Interface (1.28.2)
   - GTMSessionFetcher/Core (1.7.0)
-  - Kingfisher (6.3.1)
+  - Kingfisher (7.0.0)
   - leveldb-library (1.22.1)
   - LicensePlist (3.14.2)
   - MLImage (1.0.0-beta1)
@@ -648,7 +648,7 @@ SPEC CHECKSUMS:
   "gRPC-C++": 13d8ccef97d5c3c441b7e3c529ef28ebee86fad2
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
-  Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
+  Kingfisher: 5efc54fec3980f92354898532e562cc17f31efb4
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   LicensePlist: 41c4eec73f255bcfe2abb63c537253c388b4bcfd
   MLImage: 647f3d580c10b3c9a3f6154f5d7baead60c42a0c

@@ -22,6 +22,7 @@
 		7A11FCBF26CD401800F1A6BC /* BookListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11FCBE26CD401800F1A6BC /* BookListViewModel.swift */; };
 		7A11FCC126CD4B9D00F1A6BC /* BookShelfCollectionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11FCC026CD4B9D00F1A6BC /* BookShelfCollectionSection.swift */; };
 		7A11FCC326CD4BAB00F1A6BC /* BookShelfCollectionSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11FCC226CD4BAB00F1A6BC /* BookShelfCollectionSectionModel.swift */; };
+		7A2DF1C526FD5377007DC3E6 /* LatestMemoItemModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2DF1C426FD5377007DC3E6 /* LatestMemoItemModelTests.swift */; };
 		7A33118026CD692E00EB520D /* BookListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33117F26CD692E00EB520D /* BookListItem.swift */; };
 		7A33118226CE518F00EB520D /* UIApplicationExtensoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33118126CE518F00EB520D /* UIApplicationExtensoin.swift */; };
 		7A33118526CFD59100EB520D /* DocumentCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33118426CFD59100EB520D /* DocumentCameraView.swift */; };
@@ -267,6 +268,7 @@
 		7A11FCBE26CD401800F1A6BC /* BookListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewModel.swift; sourceTree = "<group>"; };
 		7A11FCC026CD4B9D00F1A6BC /* BookShelfCollectionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfCollectionSection.swift; sourceTree = "<group>"; };
 		7A11FCC226CD4BAB00F1A6BC /* BookShelfCollectionSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfCollectionSectionModel.swift; sourceTree = "<group>"; };
+		7A2DF1C426FD5377007DC3E6 /* LatestMemoItemModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestMemoItemModelTests.swift; sourceTree = "<group>"; };
 		7A33117F26CD692E00EB520D /* BookListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListItem.swift; sourceTree = "<group>"; };
 		7A33118126CE518F00EB520D /* UIApplicationExtensoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtensoin.swift; sourceTree = "<group>"; };
 		7A33118426CFD59100EB520D /* DocumentCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCameraView.swift; sourceTree = "<group>"; };
@@ -830,6 +832,7 @@
 				A0D4549A26F6B303001668B4 /* MainViewModelTests.swift */,
 				A043A71E26F6020800E1A3FF /* TutorialViewModelTests.swift */,
 				A0ACBC2D26FC0D2600C3D5A7 /* HomeTabViewModelTests.swift */,
+				7A2DF1C426FD5377007DC3E6 /* LatestMemoItemModelTests.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1795,6 +1798,7 @@
 				A0198ADA26E80A2700553CDA /* AddCollectionUseCaseTests.swift in Sources */,
 				A060096226E5B5E300EA0BC2 /* SearchPublicationByBarcodeUseCaseTests.swift in Sources */,
 				A049C45326F7F1AE00AD5C3D /* AddMemoUseCaseTests.swift in Sources */,
+				7A2DF1C526FD5377007DC3E6 /* LatestMemoItemModelTests.swift in Sources */,
 				A06BE24726FAFCF400D0666E /* MockMemoRepository.swift in Sources */,
 				A0D4549F26F6B750001668B4 /* MockGetAppConfigUseCase.swift in Sources */,
 				7ADD9CC026ECDBB50073A043 /* RecognizeTextUseCaseTests.swift in Sources */,

@@ -9,19 +9,22 @@ import Foundation
 
 @MainActor
 final class CollectionViewModel: ObservableObject {
-    private let getBooksByCollectionUseCase: GetBooksByCollectionUseCase
+    private var getBooksByCollectionUseCase: GetBooksByCollectionUseCase
     private let deleteCollectionUseCase: DeleteCollectionUseCase
     
     @Published var collection: Collection
     @Published var state: State = .initial
     @Published var pager: Pager<Book> = .empty
+    @Published var sortedBy: BookSort
     
     init(
         collection: Collection,
         deleteCollectionUseCase: DeleteCollectionUseCase = DeleteCollectionUseCaseImpl()
     ) {
+        let sortedBy = BookSort.default
+        self.sortedBy = sortedBy
         self.collection = collection
-        self.getBooksByCollectionUseCase = GetBooksByCollectionUseCaseImpl(collection: collection)
+        self.getBooksByCollectionUseCase = GetBooksByCollectionUseCaseImpl(collection: collection, sortedBy: sortedBy)
         self.deleteCollectionUseCase = deleteCollectionUseCase
     }
     
@@ -42,18 +45,7 @@ final class CollectionViewModel: ObservableObject {
     }
     
     func onRefresh() async {
-        guard !state.isInProgress else { return }
-        
-        state = .refreshing
-        do {
-            let pager = try await getBooksByCollectionUseCase.invoke(forceRefresh: true)
-            log.d("finished=\(pager.finished)")
-            self.state = .succeeded
-            self.pager = pager
-        } catch {
-            log.e(error.localizedDescription)
-            self.state = .failed
-        }
+        await refresh()
     }
     
     func onItemApper(of book: Book) async {
@@ -74,6 +66,12 @@ final class CollectionViewModel: ObservableObject {
         }
     }
     
+    func onSort(_ sortedBy: BookSort) async {
+        self.sortedBy = sortedBy
+        self.getBooksByCollectionUseCase = GetBooksByCollectionUseCaseImpl(collection: collection, sortedBy: sortedBy)
+        await refresh()
+    }
+    
     func onDelete() async {
         guard !state.isInProgress else { return }
         
@@ -85,6 +83,21 @@ final class CollectionViewModel: ObservableObject {
             print(error.localizedDescription)
             state = .failed
             NotificationCenter.default.postError(message: .deleteCollection)
+        }
+    }
+    
+    private func refresh() async {
+        guard !state.isInProgress else { return }
+        
+        state = .refreshing
+        do {
+            let pager = try await getBooksByCollectionUseCase.invoke(forceRefresh: true)
+            log.d("finished=\(pager.finished)")
+            self.state = .succeeded
+            self.pager = pager
+        } catch {
+            log.e(error.localizedDescription)
+            self.state = .failed
         }
     }
     

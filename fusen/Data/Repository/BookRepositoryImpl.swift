@@ -16,7 +16,9 @@ final class BookRepositoryImpl: BookRepository {
     private var allBooksSortedBy: BookSort = .default
     private var allBooksCache: PagerCache<Book> = .empty
     private var favoriteBooksCache: PagerCache<Book> = .empty
+    
     private var collectionCache: [ID<Collection>: PagerCache<Book>] = [:]
+    private var collectionSortedBy: [ID<Collection>: BookSort] = [:]
     
     func getBook(by id: ID<Book>, for user: User) async throws -> Book {
         let ref = db.booksCollection(for: user)
@@ -191,7 +193,7 @@ final class BookRepositoryImpl: BookRepository {
         }
     }
     
-    func getBooks(by collection: Collection, for user: User, forceRefresh: Bool) async throws -> Pager<Book> {
+    func getBooks(by collection: Collection, sortedBy: BookSort, for user: User, forceRefresh: Bool) async throws -> Pager<Book> {
         if let cachedPager = collectionCache[collection.id]?.currentPager {
             let isCacheValid = cachedPager.data.count >= perPage && !forceRefresh
             if isCacheValid {
@@ -199,11 +201,22 @@ final class BookRepositoryImpl: BookRepository {
             }
         }
         
+        collectionSortedBy[collection.id] = sortedBy
         clearCollectionCache(of: collection)
-        let query = db.booksCollection(for: user)
-            .whereCollection(collection)
-            .orderByCreatedAtDesc()
-            .limit(to: perPage)
+        
+        let books = db.booksCollection(for: user)
+        var query = books.whereCollection(collection)
+        switch sortedBy {
+        case .createdAt:
+            query = query.orderByCreatedAtDesc()
+        case .title:
+            query = query.orderByTitleAsc()
+        case .author:
+            query = query.orderByAuthorAsc()
+                .orderByTitleAsc()
+        }
+        query = query.limit(to: perPage)
+        
         do {
             let snapshot = try await query.getDocuments()
             let books = snapshot.documents
@@ -233,11 +246,22 @@ final class BookRepositoryImpl: BookRepository {
             log.d("Books in \(collection.id.value) have been already fetched")
             return cache.currentPager
         }
+        guard let sortedBy = collectionSortedBy[collection.id] else {
+            fatalError("sortedBy must be stored for \(collection.id)")
+        }
         
-        let query = db.booksCollection(for: user)
-            .whereCollection(collection)
-            .orderByCreatedAtDesc()
-            .start(afterDocument: afterDocument)
+        let books = db.booksCollection(for: user)
+        var query = books.whereCollection(collection)
+        switch sortedBy {
+        case .createdAt:
+            query = query.orderByCreatedAtDesc()
+        case .title:
+            query = query.orderByTitleAsc()
+        case .author:
+            query = query.orderByAuthorAsc()
+                .orderByTitleAsc()
+        }
+        query = query.start(afterDocument: afterDocument)
             .limit(to: perPage)
         
         do {

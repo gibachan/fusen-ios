@@ -11,6 +11,7 @@ struct CollectionView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel: CollectionViewModel
     @State private var isAddPresented = false
+    @State private var isSortPresented = false
     @State private var isDeleteAlertPresented = false
     
     init(collection: Collection) {
@@ -57,6 +58,9 @@ struct CollectionView: View {
         }
         .listStyle(PlainListStyle())
         .navigationBarTitle(viewModel.collection.name, displayMode: .inline)
+        .navigationBarItems(trailing: SortButton {
+            isSortPresented = true
+        })
         .sheet(isPresented: $isAddPresented) {
             Task {
                 await viewModel.onRefresh()
@@ -74,6 +78,29 @@ struct CollectionView: View {
                         await viewModel.onDelete()
                     }
                 })
+            )
+        }
+        .actionSheet(isPresented: $isSortPresented) {
+            ActionSheet(
+                title: Text("書籍をソート"),
+                buttons: [
+                    .default(Text("作成日時でソート")) {
+                        Task {
+                            await viewModel.onSort(.createdAt)
+                        }
+                    },
+                    .default(Text("タイトルでソート")) {
+                        Task {
+                            await viewModel.onSort(.title)
+                        }
+                    },
+                    .default(Text("著者でソート")) {
+                        Task {
+                            await viewModel.onSort(.author)
+                        }
+                    },
+                    .cancel()
+                ]
             )
         }
         .task {

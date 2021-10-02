@@ -19,15 +19,18 @@ protocol GetBooksByCollectionUseCase {
 
 final class GetBooksByCollectionUseCaseImpl: GetBooksByCollectionUseCase {
     private let collection: Collection
+    private let sortedBy: BookSort
     private let accountService: AccountServiceProtocol
     private let bookRepository: BookRepository
     
     init(
         collection: Collection,
+        sortedBy: BookSort,
         accountService: AccountServiceProtocol = AccountService.shared,
         bookRepository: BookRepository = BookRepositoryImpl()
     ) {
         self.collection = collection
+        self.sortedBy = sortedBy
         self.accountService = accountService
         self.bookRepository = bookRepository
     }
@@ -38,7 +41,7 @@ final class GetBooksByCollectionUseCaseImpl: GetBooksByCollectionUseCase {
         }
        
         do {
-            let pager = try await bookRepository.getBooks(by: collection, for: user, forceRefresh: forceRefresh)
+            let pager = try await bookRepository.getBooks(by: collection, sortedBy: sortedBy, for: user, forceRefresh: forceRefresh)
             return pager
         } catch {
             throw GetBooksByCollectionUseCaseError.badNetwork

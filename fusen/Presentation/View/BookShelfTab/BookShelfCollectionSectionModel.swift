@@ -20,7 +20,7 @@ final class BookShelfCollectionSectionModel: ObservableObject {
         collection: Collection
     ) {
         self.collection = collection
-        self.getBooksByCollectionUseCase = GetBooksByCollectionUseCaseImpl(collection: collection)
+        self.getBooksByCollectionUseCase = GetBooksByCollectionUseCaseImpl(collection: collection, sortedBy: .default)
     }
     
     func onAppear() async {

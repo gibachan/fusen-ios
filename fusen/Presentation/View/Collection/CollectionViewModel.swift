@@ -9,10 +9,10 @@ import Foundation
 
 @MainActor
 final class CollectionViewModel: ObservableObject {
-    private let collection: Collection
     private let getBooksByCollectionUseCase: GetBooksByCollectionUseCase
     private let deleteCollectionUseCase: DeleteCollectionUseCase
     
+    @Published var collection: Collection
     @Published var state: State = .initial
     @Published var pager: Pager<Book> = .empty
     

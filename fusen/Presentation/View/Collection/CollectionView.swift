@@ -12,11 +12,9 @@ struct CollectionView: View {
     @StateObject private var viewModel: CollectionViewModel
     @State private var isAddPresented = false
     @State private var isDeleteAlertPresented = false
-    private let collection: Collection
     
     init(collection: Collection) {
         self._viewModel = StateObject(wrappedValue: CollectionViewModel(collection: collection))
-        self.collection = collection
     }
     
     var body: some View {
@@ -58,13 +56,13 @@ struct CollectionView: View {
             )
         }
         .listStyle(PlainListStyle())
-        .navigationBarTitle(collection.name, displayMode: .inline)
+        .navigationBarTitle(viewModel.collection.name, displayMode: .inline)
         .sheet(isPresented: $isAddPresented) {
             Task {
                 await viewModel.onRefresh()
             }
         } content: {
-            AddBookMenuView(in: collection)
+            AddBookMenuView(in: viewModel.collection)
         }
         .alert(isPresented: $isDeleteAlertPresented) {
             Alert(

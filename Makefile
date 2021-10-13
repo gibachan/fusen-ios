@@ -1,0 +1,35 @@
+.PHONY: setup
+setup:
+	$(MAKE) install-bundler
+	$(MAKE) install-cocoapods
+	$(MAKE) add-missing-files-if-need
+
+.PHONY: install-bundler
+install-bundler:
+	bundle config path vendor/bundle
+	bundle install --without=documentation --jobs 4 --retry 3
+
+.PHONY: update-bundler
+update-bundler:
+	bundle config path vendor/bundle
+	bundle update --jobs 4 --retry 3
+
+.PHONY: install-cocoapods
+install-cocoapods:
+	bundle exec pod install
+
+.PHONY: add-missing-files-if-need
+add-missing-files-if-need:
+	-@cp -n ./fusen/Presentation/Resource/GoogleService-Info-dummy.plist ./fusen/Presentation/Resource/GoogleService-Info-development.plist
+	-@cp -n ./fusen/Presentation/Resource/GoogleService-Info-dummy.plist ./fusen/Presentation/Resource/GoogleService-Info-staging.plist
+	-@cp -n ./fusen/Presentation/Resource/GoogleService-Info-dummy.plist ./fusen/Presentation/Resource/GoogleService-Info-production.plist
+
+.PHONY: test
+test:
+	bundle exec fastlane test
+
+.PHONY: clean
+clean:
+	@rm -rf ./vendor/bundle
+	@rm -rf ./Pods
+	@xcodebuild clean -alltargets

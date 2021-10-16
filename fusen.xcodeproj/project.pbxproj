@@ -272,6 +272,7 @@
 		7A33117F26CD692E00EB520D /* BookListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListItem.swift; sourceTree = "<group>"; };
 		7A33118126CE518F00EB520D /* UIApplicationExtensoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtensoin.swift; sourceTree = "<group>"; };
 		7A33118426CFD59100EB520D /* DocumentCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCameraView.swift; sourceTree = "<group>"; };
+		7A3E5581271AA809002CE696 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7A4569F326EA2DE100B7FCC0 /* ReadBookUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadBookUseCase.swift; sourceTree = "<group>"; };
 		7A4569F626EA33C500B7FCC0 /* PageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageListView.swift; sourceTree = "<group>"; };
 		7A69930626D7FC8B006B0697 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
@@ -1103,6 +1104,7 @@
 		A082000626C1F5CF00100357 /* fusen */ = {
 			isa = PBXGroup;
 			children = (
+				7A3E5581271AA809002CE696 /* Info.plist */,
 				A05CE89626D1E735007F9CF2 /* fusen.entitlements */,
 				7AD160FF26C29CA800334A63 /* Presentation */,
 				7AD1610026C29CB100334A63 /* Domain */,
@@ -1910,6 +1912,7 @@
 				DEVELOPMENT_TEAM = MYDHT92MBT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = fusen/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "バーコードの読み取りや写真撮影でカメラを利用します。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -2113,6 +2116,7 @@
 				DEVELOPMENT_TEAM = MYDHT92MBT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = fusen/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "バーコードの読み取りや写真撮影でカメラを利用します。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -2149,6 +2153,7 @@
 				DEVELOPMENT_TEAM = MYDHT92MBT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = fusen/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "バーコードの読み取りや写真撮影でカメラを利用します。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

@@ -98,7 +98,7 @@ GoogleService-Info-staging.plist
 GoogleService-Info-development.plist
 
 ## API Key
-fusen/Infra/Resource/APIKey.swift
+fusen/Data/Resource/APIKey.swift
 
 ## UT
 fusenTests/**/*.plist

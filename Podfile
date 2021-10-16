@@ -17,6 +17,7 @@ target 'fusen' do
   pod 'Firebase/AppCheck'
   pod 'SVProgressHUD'
   pod 'SwiftLint'
+  pod 'GoogleSignIn'
   pod 'GoogleMLKit/TextRecognitionJapanese', '2.3.0'
   pod 'CropViewController'
   pod 'Kingfisher'

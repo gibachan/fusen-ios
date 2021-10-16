@@ -240,11 +240,11 @@ version: 1.7.0
 
 name: Kingfisher, nameSpecified: 
 body: The MIT License (MIT…
-version: 7.0.0
+version: 7.1.1
 
 name: Kingfisher, nameSpecified: 
 body: The MIT License (MIT…
-version: 7.0.0
+version: 7.1.1
 
 name: leveldb-library, nameSpecified: 
 body: Copyright (c) 2011 T…
@@ -326,11 +326,11 @@ version: 2.0.0
 
 name: Protobuf, nameSpecified: 
 body: Copyright 2008 Googl…
-version: 3.18.0
+version: 3.18.1
 
 name: Protobuf, nameSpecified: 
 body: Copyright 2008 Googl…
-version: 3.18.0
+version: 3.18.1
 
 name: SVProgressHUD, nameSpecified: 
 body: MIT License

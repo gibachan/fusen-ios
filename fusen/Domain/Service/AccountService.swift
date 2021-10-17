@@ -64,12 +64,7 @@ final class AccountService: AccountServiceProtocol {
     
     var currentUser: User? {
         guard let authUser = auth.currentUser else { return nil }
-        return User(
-            id: ID<User>(value: authUser.uid),
-            isAnonymous: authUser.isAnonymous,
-            isLinkedWithAppleId: authUser.isLinkedWithAppleId,
-            isLinkedWithGoogle: authUser.isLinkedWithGoogle
-        )
+        return authUser.user
     }
     
     @discardableResult func logInAnonymously() async throws -> User {
@@ -77,12 +72,7 @@ final class AccountService: AccountServiceProtocol {
             let result = try await auth.signInAnonymously()
             let authUser = result.user
             log.d("logInAnonymously: uid=\(authUser.uid)")
-            let user = User(
-                id: ID<User>(value: authUser.uid),
-                isAnonymous: authUser.isAnonymous,
-                isLinkedWithAppleId: authUser.isLinkedWithAppleId,
-                isLinkedWithGoogle: authUser.isLinkedWithGoogle
-            )
+            let user = authUser.user
             setUserProperty(user: user)
             return user
         } catch {
@@ -128,12 +118,7 @@ final class AccountService: AccountServiceProtocol {
             let authUser = result.user
             log.d("logInWithApple: uid=\(authUser.uid)")
             currentNonce = nil
-            let user = User(
-                id: ID<User>(value: authUser.uid),
-                isAnonymous: authUser.isAnonymous,
-                isLinkedWithAppleId: authUser.isLinkedWithAppleId,
-                isLinkedWithGoogle: authUser.isLinkedWithGoogle
-            )
+            let user = authUser.user
             setUserProperty(user: user)
             return user
         } catch {
@@ -176,12 +161,7 @@ final class AccountService: AccountServiceProtocol {
             let linkedAuthUser = result.user
             log.d("linkWithApple: uid=\(linkedAuthUser.uid)")
             currentNonce = nil
-            let user = User(
-                id: ID<User>(value: linkedAuthUser.uid),
-                isAnonymous: linkedAuthUser.isAnonymous,
-                isLinkedWithAppleId: linkedAuthUser.isLinkedWithAppleId,
-                isLinkedWithGoogle: linkedAuthUser.isLinkedWithGoogle
-            )
+            let user = linkedAuthUser.user
             setUserProperty(user: user)
             return user
         } catch {
@@ -280,12 +260,7 @@ final class AccountService: AccountServiceProtocol {
             let result = try await authUser.link(with: credential)
             let linkedAuthUser = result.user
             log.d("linkWithGoogle: uid=\(linkedAuthUser.uid)")
-            let user = User(
-                id: ID<User>(value: linkedAuthUser.uid),
-                isAnonymous: linkedAuthUser.isAnonymous,
-                isLinkedWithAppleId: linkedAuthUser.isLinkedWithAppleId,
-                isLinkedWithGoogle: linkedAuthUser.isLinkedWithGoogle
-            )
+            let user = linkedAuthUser.user
             setUserProperty(user: user)
             return user
         } catch {

@@ -6,8 +6,11 @@
 //
 
 import AuthenticationServices
+import Firebase
 import Foundation
 @testable import fusen
+
+typealias User = fusen.User
 
 final class MockAccountService: AccountServiceProtocol {
     var isLoggedInAnonymously = false
@@ -53,6 +56,18 @@ final class MockAccountService: AccountServiceProtocol {
         fatalError("Not implemented yet")
     }
     
+    func logInWithGoogle() async throws -> User {
+        fatalError("Not implemented yet")
+    }
+    
+    func linkWithGoogle(credential: AuthCredential) async throws -> User {
+        fatalError("Not implemented yet")
+    }
+    
+    func unlinkWithGoogle() async throws {
+        fatalError("Not implemented yet")
+    }
+    
     func delete() async throws {
         fatalError("Not implemented yet")
     }
@@ -64,6 +79,6 @@ final class MockAccountService: AccountServiceProtocol {
 
 extension User {
     static var test: User {
-        User(id: ID<User>(value: "123"), isAnonymous: true, isLinkedWithAppleId: false)
+        User(id: ID<User>(value: "123"), isAnonymous: true, isLinkedWithAppleId: false, isLinkedWithGoogle: false)
     }
 }

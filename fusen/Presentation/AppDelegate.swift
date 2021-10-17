@@ -6,6 +6,7 @@
 //
 
 import Firebase
+import GoogleSignIn
 import UIKit
 
 class AppDelegate: NSObject, UIApplicationDelegate {
@@ -20,6 +21,10 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         return .portrait
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        return GIDSignIn.sharedInstance.handle(url)
     }
     
     private func setupFirebase() {

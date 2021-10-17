@@ -26,6 +26,7 @@
 		7A33118026CD692E00EB520D /* BookListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33117F26CD692E00EB520D /* BookListItem.swift */; };
 		7A33118226CE518F00EB520D /* UIApplicationExtensoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33118126CE518F00EB520D /* UIApplicationExtensoin.swift */; };
 		7A33118526CFD59100EB520D /* DocumentCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33118426CFD59100EB520D /* DocumentCameraView.swift */; };
+		7A3E5586271B9D2D002CE696 /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3E5585271B9D2D002CE696 /* GoogleSignInButton.swift */; };
 		7A4569F426EA2DE100B7FCC0 /* ReadBookUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4569F326EA2DE100B7FCC0 /* ReadBookUseCase.swift */; };
 		7A4569F726EA33C500B7FCC0 /* PageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4569F626EA33C500B7FCC0 /* PageListView.swift */; };
 		7A69930726D7FC8B006B0697 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69930626D7FC8B006B0697 /* ErrorMessage.swift */; };
@@ -273,6 +274,7 @@
 		7A33118126CE518F00EB520D /* UIApplicationExtensoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtensoin.swift; sourceTree = "<group>"; };
 		7A33118426CFD59100EB520D /* DocumentCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCameraView.swift; sourceTree = "<group>"; };
 		7A3E5581271AA809002CE696 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		7A3E5585271B9D2D002CE696 /* GoogleSignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInButton.swift; sourceTree = "<group>"; };
 		7A4569F326EA2DE100B7FCC0 /* ReadBookUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadBookUseCase.swift; sourceTree = "<group>"; };
 		7A4569F626EA33C500B7FCC0 /* PageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageListView.swift; sourceTree = "<group>"; };
 		7A69930626D7FC8B006B0697 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
@@ -1178,6 +1180,7 @@
 				A052EAC326C3E4140033CE47 /* CancelButton.swift */,
 				A020544426CE8CC7002FF585 /* DeleteButton.swift */,
 				A060092726E365B100EA0BC2 /* SortButton.swift */,
+				7A3E5585271B9D2D002CE696 /* GoogleSignInButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -1616,6 +1619,7 @@
 				A069983326CDD85B006E74C6 /* BookShelfEmptyItem.swift in Sources */,
 				A05CE89526D1A6C6007F9CF2 /* GestureImageView.swift in Sources */,
 				A0B9482F26D3BF4C00C47204 /* ImageStorage.swift in Sources */,
+				7A3E5586271B9D2D002CE696 /* GoogleSignInButton.swift in Sources */,
 				A060094426E49EB500EA0BC2 /* DeleteCollectionUseCase.swift in Sources */,
 				7A9E34DC26E4F44300F4E985 /* UpdateMemoUseCase.swift in Sources */,
 				A07CAD1F26D0670A0012201A /* CollectionItemView.swift in Sources */,

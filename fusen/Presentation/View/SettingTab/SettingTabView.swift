@@ -29,26 +29,21 @@ struct SettingTabView: View {
                     }
                     
                     VStack(alignment: .leading, spacing: 8) {
-                        HStack {
-                            Text("Apple IDと連携 :")
-                                .font(.medium)
-                                .foregroundColor(.textPrimary)
-                            Spacer()
-                            
-                            if viewModel.isLinkedAppleId {
-                                Text("連携済み")
-                                    .font(.small)
-                                    .foregroundColor(.textSecondary)
-                                    .onTapGesture {
-                                        isUnlinkAlertPresented = true
-                                    }
-                            }
-                        }
-                        if !viewModel.isLinkedAppleId {
-                            Text("※ 連携すると、複数のデバイスとデータを共有してご利用いただけます。")
+                        Text("アカウントを連携 :")
+                            .font(.medium)
+                            .foregroundColor(.textPrimary)
+                        Text("※ 連携すると、複数のデバイスとデータを共有してご利用いただけます。")
+                            .font(.small)
+                            .foregroundColor(.textSecondary)
+                        
+                        if viewModel.isLinkedAppleId {
+                            Text("Apple IDと連携済み")
                                 .font(.small)
                                 .foregroundColor(.textSecondary)
-                        
+                                .onTapGesture {
+                                    isUnlinkAlertPresented = true
+                                }
+                        } else {
                             HStack {
                                 Spacer()
                                 SignInWithAppleButton(
@@ -59,10 +54,25 @@ struct SettingTabView: View {
                                     .frame(width: 200, height: 32)
                                 Spacer()
                             }
-                            .padding(.top, 8)
+                        }
+                        if viewModel.isLinkedWithGoogle {
+                            Text("Googleアカウントと連携済み")
+                                .font(.small)
+                                .foregroundColor(.textSecondary)
+                                .onTapGesture {
+                                    isUnlinkAlertPresented = true
+                                }
+                        } else {
+                            HStack {
+                                Spacer()
+                                GoogleSignInButton { result in
+                                    viewModel.onSignInWithGoogle(result)
+                                }
+                                .frame(width: 200, height: 32)
+                                Spacer()
+                            }
                         }
                     }
-                    .padding(.vertical, 8)
                 } header: {
                     SectionHeaderText("アカウント")
                 }

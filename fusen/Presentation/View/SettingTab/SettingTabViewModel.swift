@@ -6,6 +6,7 @@
 //
 
 import AuthenticationServices
+import Firebase
 import Foundation
 
 final class SettingTabViewModel: ObservableObject {
@@ -16,6 +17,7 @@ final class SettingTabViewModel: ObservableObject {
     @Published var userId: String = ""
     @Published var version: String = ""
     @Published var isLinkedAppleId = false
+    @Published var isLinkedWithGoogle = false
     
     init(
         accountService: AccountServiceProtocol = AccountService.shared,
@@ -63,6 +65,16 @@ final class SettingTabViewModel: ObservableObject {
                     }
                 }
             }
+        case .failure(let error):
+            // Do nothing
+            log.e(error.localizedDescription)
+        }
+    }
+    
+    func onSignInWithGoogle(_ result: Result<AuthCredential, GoogleSignInError>) {
+        switch result {
+        case .success(let credential):
+            log.d("Success: \(credential)")
         case .failure(let error):
             // Do nothing
             log.e(error.localizedDescription)

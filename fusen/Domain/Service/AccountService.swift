@@ -7,15 +7,18 @@
 
 import AuthenticationServices
 import CryptoKit
+import Firebase
 import FirebaseAnalytics
 import FirebaseAuth
 import FirebaseCrashlytics
 import Foundation
+import GoogleSignIn
 
 enum AccountServiceError: Error {
     case logInAnonymously
     case logInApple
     case linkWithApple
+    case logInWithGoogle
     case logOut
     case unlinkWithApple
     case deleteAccount
@@ -31,8 +34,9 @@ protocol AccountServiceProtocol {
     func prepareLogInWithAppleRequest(request: ASAuthorizationAppleIDRequest)
     @discardableResult func logInWithApple(authorization: ASAuthorization) async throws -> User
     @discardableResult func linkWithApple(authorization: ASAuthorization) async throws -> User
-    func reAuthenticateWithApple(authorization: ASAuthorization) async throws
     func unlinkWithApple() async throws
+    func reAuthenticateWithApple(authorization: ASAuthorization) async throws
+    func logInWithGoogle() async throws -> User
     func delete() async throws
     
 #if DEBUG
@@ -225,6 +229,37 @@ final class AccountService: AccountServiceProtocol {
             log.e(error.localizedDescription)
             throw AccountServiceError.reAuthenticate
         }
+    }
+    
+    func logInWithGoogle() async throws -> User {
+        guard let clientID = FirebaseApp.app()?.options.clientID else {
+            throw AccountServiceError.logInWithGoogle
+        }
+
+        // Create Google Sign In configuration object.
+        let config = GIDConfiguration(clientID: clientID)
+        fatalError()
+
+        // Start the sign in flow!
+//        GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { [unowned self] user, error in
+//
+//          if let error = error {
+//            // ...
+//            return
+//          }
+//
+//          guard
+//            let authentication = user?.authentication,
+//            let idToken = authentication.idToken
+//          else {
+//            return
+//          }
+//
+//          let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+//                                                         accessToken: authentication.accessToken)
+//
+//          // ...
+//        }
     }
     
     func delete() async throws {

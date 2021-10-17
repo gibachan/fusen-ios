@@ -24,6 +24,7 @@ enum ErrorMessage {
     case editMemo
     case deleteMemo
     case linkWithAppleId
+    case linkWithGoogle
     case deleteAccount
     case unexpected
 }
@@ -63,6 +64,8 @@ extension ErrorMessage {
             return "メモを削除できませんでした。"
         case .linkWithAppleId:
             return "Apple IDとの連携ができませんでした。\n既に連携済みであった場合は、アプリを再インストールしてからログインをお試しください。"
+        case .linkWithGoogle:
+            return "Googleアカウントとの連携ができませんでした。\n既に連携済みであった場合は、アプリを再インストールしてからログインをお試しください。"
         case .deleteAccount:
             return "アカウントを削除できませんでした。\nネットワーク環境を確認してみてください。"
         case .unexpected:

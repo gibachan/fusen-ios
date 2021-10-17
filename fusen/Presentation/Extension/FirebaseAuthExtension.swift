@@ -12,4 +12,8 @@ extension FirebaseAuth.User {
         let appleProviderId = "apple.com"
         return providerData.contains(where: { $0.providerID == appleProviderId })
     }
+    var isLinkedWithGoogle: Bool {
+        let providerId = "google.com"
+        return providerData.contains(where: { $0.providerID == providerId })
+    }
 }

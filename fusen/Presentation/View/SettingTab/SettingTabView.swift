@@ -173,7 +173,7 @@ struct SettingTabView: View {
             switch state {
             case .initial:
                 break
-            case .linkingWithApple:
+            case .linkingWithApple, .linkingWithGoogle:
                 LoadingHUD.show()
             case .succeeded:
                 LoadingHUD.dismiss()
@@ -181,6 +181,9 @@ struct SettingTabView: View {
                 LoadingHUD.dismiss()
                 ErrorHUD.show(message: .network)
             case .failedlinkingWithApple:
+                LoadingHUD.dismiss()
+                ErrorHUD.show(message: .linkWithAppleId)
+            case .failedlinkingWithGoogle:
                 LoadingHUD.dismiss()
                 ErrorHUD.show(message: .linkWithAppleId)
             }

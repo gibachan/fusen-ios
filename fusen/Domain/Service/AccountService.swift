@@ -18,9 +18,11 @@ enum AccountServiceError: Error {
     case logInAnonymously
     case logInApple
     case linkWithApple
+    case linkWithGoogle
     case logInWithGoogle
     case logOut
     case unlinkWithApple
+    case unlinkWithGoogle
     case deleteAccount
     case reAuthenticate
     case notAuthenticated
@@ -37,6 +39,8 @@ protocol AccountServiceProtocol {
     func unlinkWithApple() async throws
     func reAuthenticateWithApple(authorization: ASAuthorization) async throws
     func logInWithGoogle() async throws -> User
+    func linkWithGoogle(credential: AuthCredential) async throws -> User
+    func unlinkWithGoogle() async throws
     func delete() async throws
     
 #if DEBUG
@@ -49,6 +53,7 @@ final class AccountService: AccountServiceProtocol {
     
     private let auth = Auth.auth()
     private let appleProviderId = "apple.com"
+    private let googleProviderId = "google.com"
     
     // Unhashed nonce.
     private var currentNonce: String?
@@ -64,7 +69,8 @@ final class AccountService: AccountServiceProtocol {
         return User(
             id: ID<User>(value: authUser.uid),
             isAnonymous: authUser.isAnonymous,
-            isLinkedWithAppleId: authUser.isLinkedWithAppleId
+            isLinkedWithAppleId: authUser.isLinkedWithAppleId,
+            isLinkedWithGoogle: authUser.isLinkedWithGoogle
         )
     }
     
@@ -76,7 +82,8 @@ final class AccountService: AccountServiceProtocol {
             let user = User(
                 id: ID<User>(value: authUser.uid),
                 isAnonymous: authUser.isAnonymous,
-                isLinkedWithAppleId: authUser.isLinkedWithAppleId
+                isLinkedWithAppleId: authUser.isLinkedWithAppleId,
+                isLinkedWithGoogle: authUser.isLinkedWithGoogle
             )
             setUserProperty(user: user)
             return user
@@ -126,7 +133,8 @@ final class AccountService: AccountServiceProtocol {
             let user = User(
                 id: ID<User>(value: authUser.uid),
                 isAnonymous: authUser.isAnonymous,
-                isLinkedWithAppleId: authUser.isLinkedWithAppleId
+                isLinkedWithAppleId: authUser.isLinkedWithAppleId,
+                isLinkedWithGoogle: authUser.isLinkedWithGoogle
             )
             setUserProperty(user: user)
             return user
@@ -173,7 +181,8 @@ final class AccountService: AccountServiceProtocol {
             let user = User(
                 id: ID<User>(value: linkedAuthUser.uid),
                 isAnonymous: linkedAuthUser.isAnonymous,
-                isLinkedWithAppleId: linkedAuthUser.isLinkedWithAppleId
+                isLinkedWithAppleId: linkedAuthUser.isLinkedWithAppleId,
+                isLinkedWithGoogle: linkedAuthUser.isLinkedWithGoogle
             )
             setUserProperty(user: user)
             return user
@@ -262,6 +271,40 @@ final class AccountService: AccountServiceProtocol {
 //        }
     }
     
+    @discardableResult func linkWithGoogle(credential: AuthCredential) async throws -> User {
+        guard let authUser = auth.currentUser else {
+            log.e("currentUser is missing")
+            throw AccountServiceError.notAuthenticated
+        }
+
+        // link with Firebase.
+        do {
+            let result = try await authUser.link(with: credential)
+            let linkedAuthUser = result.user
+            log.d("linkWithGoogle: uid=\(linkedAuthUser.uid)")
+            let user = User(
+                id: ID<User>(value: linkedAuthUser.uid),
+                isAnonymous: linkedAuthUser.isAnonymous,
+                isLinkedWithAppleId: linkedAuthUser.isLinkedWithAppleId,
+                isLinkedWithGoogle: linkedAuthUser.isLinkedWithGoogle
+            )
+            setUserProperty(user: user)
+            return user
+        } catch {
+            log.e(error.localizedDescription)
+            throw AccountServiceError.linkWithGoogle
+        }
+    }
+    
+    func unlinkWithGoogle() async throws {
+        do {
+            try await auth.currentUser?.unlink(fromProvider: googleProviderId)
+        } catch {
+            log.e(error.localizedDescription)
+            throw AccountServiceError.unlinkWithGoogle
+        }
+    }
+    
     func delete() async throws {
         guard let user = auth.currentUser else {
             throw AccountServiceError.notAuthenticated
@@ -290,12 +333,14 @@ final class AccountService: AccountServiceProtocol {
     private func setUserProperty(user: User) {
         Analytics.setUserID(user.id.value)
         Analytics.setUserProperty(user.isLinkedWithAppleId ? "true" : "false", forName: "linked_with_apple_id")
+        Analytics.setUserProperty(user.isLinkedWithGoogle ? "true" : "false", forName: "linked_with_google")
         Crashlytics.crashlytics().setUserID(user.id.value)
     }
     
     private func resetsetUserProperty() {
         Analytics.setUserID(nil)
         Analytics.setUserProperty(nil, forName: "linked_with_apple_id")
+        Analytics.setUserProperty(nil, forName: "linked_with_google")
         Crashlytics.crashlytics().setUserID("")
     }
 }

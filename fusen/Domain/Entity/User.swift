@@ -11,4 +11,5 @@ struct User {
     let id: ID<User>
     let isAnonymous: Bool
     let isLinkedWithAppleId: Bool
+    let isLinkedWithGoogle: Bool
 }

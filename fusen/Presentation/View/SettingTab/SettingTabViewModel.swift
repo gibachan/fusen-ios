@@ -31,6 +31,7 @@ final class SettingTabViewModel: ObservableObject {
         let user = accountService.currentUser
         userId = user?.id.value ?? ""
         isLinkedAppleId = user?.isLinkedWithAppleId ?? false
+        isLinkedWithGoogle = user?.isLinkedWithGoogle ?? false
         version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
     }
     
@@ -74,7 +75,30 @@ final class SettingTabViewModel: ObservableObject {
     func onSignInWithGoogle(_ result: Result<AuthCredential, GoogleSignInError>) {
         switch result {
         case .success(let credential):
-            log.d("Success: \(credential)")
+            Task {
+                do {
+                    let user = try await accountService.linkWithGoogle(credential: credential)
+                    log.d("Successfully linked with Google: user=\(user.id)")
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self = self else { return }
+                        self.state = .succeeded
+                        self.isLinkedWithGoogle = true
+                    }
+                } catch AccountServiceError.linkWithApple {
+                    // すでにlinkされている場合はエラーとなる(This credential is already associated with a different user account.)
+                    log.e("AccountServiceError.linkWithApple")
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self = self else { return }
+                        self.state = .failedlinkingWithApple
+                    }
+                } catch {
+                    log.e("Unknown error: \(error.localizedDescription)")
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self = self else { return }
+                        self.state = .failedlinkingWithApple
+                    }
+                }
+            }
         case .failure(let error):
             // Do nothing
             log.e(error.localizedDescription)
@@ -108,17 +132,11 @@ final class SettingTabViewModel: ObservableObject {
     enum State {
         case initial
         case linkingWithApple
+        case linkingWithGoogle
         case succeeded
         case failed
         case failedlinkingWithApple
-        
-        var isInProgress: Bool {
-            if case .linkingWithApple = self {
-                return true
-            } else {
-                return false
-            }
-        }
+        case failedlinkingWithGoogle
     }
     
 #if DEBUG

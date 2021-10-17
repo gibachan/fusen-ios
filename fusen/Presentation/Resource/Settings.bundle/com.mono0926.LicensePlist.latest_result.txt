@@ -8,6 +8,16 @@ body:
                    …
 version: 0.20200225.0
 
+name: AppAuth, nameSpecified: 
+body: 
+                   …
+version: 1.4.0
+
+name: AppAuth, nameSpecified: 
+body: 
+                   …
+version: 1.4.0
+
 name: BoringSSL-GRPC, nameSpecified: 
 body: BoringSSL is a fork …
 version: 0.0.7
@@ -178,6 +188,16 @@ name: GoogleMLKit, nameSpecified:
 body: Copyright 2021 Googl…
 version: 2.3.0
 
+name: GoogleSignIn, nameSpecified: 
+body: 
+                   …
+version: 6.0.2
+
+name: GoogleSignIn, nameSpecified: 
+body: 
+                   …
+version: 6.0.2
+
 name: GoogleToolboxForMac, nameSpecified: 
 body: 
                    …
@@ -227,6 +247,16 @@ name: gRPC-Core, nameSpecified:
 body: 
                    …
 version: 1.28.2
+
+name: GTMAppAuth, nameSpecified: 
+body: 
+                   …
+version: 1.2.2
+
+name: GTMAppAuth, nameSpecified: 
+body: 
+                   …
+version: 1.2.2
 
 name: GTMSessionFetcher, nameSpecified: 
 body: 

@@ -52,8 +52,6 @@ final class AccountService: AccountServiceProtocol {
     static let shared: AccountServiceProtocol = AccountService()
     
     private let auth = Auth.auth()
-    private let appleProviderId = "apple.com"
-    private let googleProviderId = "google.com"
     
     // Unhashed nonce.
     private var currentNonce: String?

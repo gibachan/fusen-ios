@@ -7,13 +7,14 @@
 
 import FirebaseAuth
 
+let appleProviderId = "apple.com"
+let googleProviderId = "google.com"
+
 extension FirebaseAuth.User {
     var isLinkedWithAppleId: Bool {
-        let appleProviderId = "apple.com"
-        return providerData.contains(where: { $0.providerID == appleProviderId })
+        providerData.contains(where: { $0.providerID == appleProviderId })
     }
     var isLinkedWithGoogle: Bool {
-        let providerId = "google.com"
-        return providerData.contains(where: { $0.providerID == providerId })
+        providerData.contains(where: { $0.providerID == googleProviderId })
     }
 }

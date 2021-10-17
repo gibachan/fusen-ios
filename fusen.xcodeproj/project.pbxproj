@@ -554,6 +554,14 @@
 			path = BookList;
 			sourceTree = "<group>";
 		};
+		7A3E5587271BAD70002CE696 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A0F97CE526E0BC12007CACE5 /* FirebaseAuthExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		7A4569F526EA33A400B7FCC0 /* PageList */ = {
 			isa = PBXGroup;
 			children = (
@@ -610,6 +618,7 @@
 				A052EAC826C3F4C90033CE47 /* Repository */,
 				A060093026E489EA00EA0BC2 /* UseCase */,
 				A060095926E4E55C00EA0BC2 /* Service */,
+				7A3E5587271BAD70002CE696 /* Extension */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -693,7 +702,6 @@
 				A07CAD0226CED9A20012201A /* ImageDataExtension.swift */,
 				A07CAD1726D055C90012201A /* DateExtension.swift */,
 				A07334F526DDAD35004C5436 /* ViewExtension.swift */,
-				A0F97CE526E0BC12007CACE5 /* FirebaseAuthExtension.swift */,
 				A0F97CEE26E0CD55007CACE5 /* URLExtension.swift */,
 				A07D1A8326E2E7BB00ADF384 /* StringExtension.swift */,
 			);

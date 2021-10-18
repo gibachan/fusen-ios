@@ -24,6 +24,7 @@ struct GoogleSignInButton: UIViewRepresentable {
     
     func makeUIView(context: Context) -> GIDSignInButton {
         let button = GIDSignInButton()
+        button.style = .wide
         button.addAction(.init(handler: { _ in
             guard let presentingVC = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.rootViewController else {
                 handler(.failure(.missingPresenting))

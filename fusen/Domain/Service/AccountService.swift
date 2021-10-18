@@ -64,7 +64,7 @@ final class AccountService: AccountServiceProtocol {
     
     var currentUser: User? {
         guard let authUser = auth.currentUser else { return nil }
-        return authUser.user
+        return User.from(authUser)
     }
     
     @discardableResult func logInAnonymously() async throws -> User {
@@ -72,7 +72,7 @@ final class AccountService: AccountServiceProtocol {
             let result = try await auth.signInAnonymously()
             let authUser = result.user
             log.d("logInAnonymously: uid=\(authUser.uid)")
-            let user = authUser.user
+            let user = User.from(authUser)
             setUserProperty(user: user)
             return user
         } catch {
@@ -118,7 +118,7 @@ final class AccountService: AccountServiceProtocol {
             let authUser = result.user
             log.d("logInWithApple: uid=\(authUser.uid)")
             currentNonce = nil
-            let user = authUser.user
+            let user = User.from(authUser)
             setUserProperty(user: user)
             return user
         } catch {
@@ -161,7 +161,7 @@ final class AccountService: AccountServiceProtocol {
             let linkedAuthUser = result.user
             log.d("linkWithApple: uid=\(linkedAuthUser.uid)")
             currentNonce = nil
-            let user = linkedAuthUser.user
+            let user = User.from(linkedAuthUser)
             setUserProperty(user: user)
             return user
         } catch {
@@ -260,7 +260,7 @@ final class AccountService: AccountServiceProtocol {
             let result = try await authUser.link(with: credential)
             let linkedAuthUser = result.user
             log.d("linkWithGoogle: uid=\(linkedAuthUser.uid)")
-            let user = linkedAuthUser.user
+            let user = User.from(linkedAuthUser)
             setUserProperty(user: user)
             return user
         } catch {

@@ -123,6 +123,24 @@ final class SettingTabViewModel: ObservableObject {
         }
     }
     
+    func onUnlinkWithGoogle() async {
+        do {
+            try await accountService.unlinkWithGoogle() 
+            log.d("Successfully unlinked with Google")
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.state = .succeeded
+                self.isLinkedWithGoogle = false
+            }
+        } catch {
+            log.e("Unknown error: \(error.localizedDescription)")
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.state = .failed
+            }
+        }
+    }
+    
     func onDeleteAccountFinished() {
         if !accountService.isLoggedIn {
             NotificationCenter.default.postLogOut()

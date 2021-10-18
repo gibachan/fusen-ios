@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SettingTabView: View {
     @StateObject private var viewModel = SettingTabViewModel()
-    @State private var isUnlinkAlertPresented = false
+    @State private var alertType: AlertType?
     @State private var isDeleteAccountPresented = false
     
     var body: some View {
@@ -41,7 +41,7 @@ struct SettingTabView: View {
                                 .font(.small)
                                 .foregroundColor(.textSecondary)
                                 .onTapGesture {
-                                    isUnlinkAlertPresented = true
+                                    alertType = .unlinkWithApple
                                 }
                         } else {
                             HStack {
@@ -60,7 +60,7 @@ struct SettingTabView: View {
                                 .font(.small)
                                 .foregroundColor(.textSecondary)
                                 .onTapGesture {
-                                    isUnlinkAlertPresented = true
+                                    alertType = .unlinkWithGoogle
                                 }
                         } else {
                             HStack {
@@ -188,8 +188,33 @@ struct SettingTabView: View {
                 ErrorHUD.show(message: .linkWithAppleId)
             }
         }
-        .alert(isPresented: $isUnlinkAlertPresented) {
-            Alert(
+        .alert(item: $alertType, content: { type in
+            alert(of: type)
+        })
+        .sheet(isPresented: $isDeleteAccountPresented, onDismiss: {
+            viewModel.onDeleteAccountFinished()
+        }, content: {
+            NavigationView {
+                DeleteAccountView()
+            }
+        })
+    }
+}
+
+private extension SettingTabView {
+    enum AlertType: String, Identifiable {
+        case unlinkWithApple
+        case unlinkWithGoogle
+        
+        var id: String {
+            self.rawValue
+        }
+    }
+    
+    func alert(of type: AlertType) -> Alert {
+        switch type {
+        case .unlinkWithApple:
+            return Alert(
                 title: Text("アカウント連携を解除"),
                 message: Text("Apple IDとの連携を解除しますか？"),
                 primaryButton: .cancel(Text("キャンセル")),
@@ -199,14 +224,18 @@ struct SettingTabView: View {
                     }
                 })
             )
+        case .unlinkWithGoogle:
+            return Alert(
+                title: Text("アカウント連携を解除"),
+                message: Text("Googleアカウントとの連携を解除しますか？"),
+                primaryButton: .cancel(Text("キャンセル")),
+                secondaryButton: .destructive(Text("連携を解除"), action: {
+                    Task {
+                        await viewModel.onUnlinkWithGoogle()
+                    }
+                })
+            )
         }
-        .sheet(isPresented: $isDeleteAccountPresented, onDismiss: {
-            viewModel.onDeleteAccountFinished()
-        }, content: {
-            NavigationView {
-                DeleteAccountView()
-            }
-        })
     }
 }
 

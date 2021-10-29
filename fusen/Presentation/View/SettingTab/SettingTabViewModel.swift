@@ -40,6 +40,7 @@ final class SettingTabViewModel: ObservableObject {
     }
     
     func onSignInWithAppleCompletion(_ completion: Result<ASAuthorization, Error>) {
+        self.state = .linkingWithApple
         switch completion {
         case .success(let authorization):
             Task {
@@ -73,6 +74,7 @@ final class SettingTabViewModel: ObservableObject {
     }
     
     func onSignInWithGoogle(_ result: Result<AuthCredential, GoogleSignInError>) {
+        self.state = .linkingWithGoogle
         switch result {
         case .success(let credential):
             Task {

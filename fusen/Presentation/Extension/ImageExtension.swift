@@ -30,4 +30,5 @@ extension Image {
     static let info = Image(systemName: "info.circle")
     static let warning = Image(systemName: "exclamationmark.triangle")
     static let error = Image(systemName: "xmark.octagon.fill")
+    static let googleLogo = Image("logo_googleg_48dp")
 }

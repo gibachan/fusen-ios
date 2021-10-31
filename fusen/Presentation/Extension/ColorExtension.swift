@@ -14,6 +14,7 @@ extension Color {
     // Text
     static let textPrimary = Color("textPrimary")
     static let textSecondary = Color("textSecondary")
+    static let textGoogleSignIn = Color("textGoogleSignIn")
 
     // Button
     static let button = Color("textPrimary")

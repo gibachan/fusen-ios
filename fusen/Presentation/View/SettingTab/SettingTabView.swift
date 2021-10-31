@@ -28,13 +28,10 @@ struct SettingTabView: View {
                             .foregroundColor(.textSecondary)
                     }
                     
-                    VStack(alignment: .leading, spacing: 8) {
+                    VStack(alignment: .leading, spacing: 16) {
                         Text("アカウントを連携 :")
                             .font(.medium)
                             .foregroundColor(.textPrimary)
-                        Text("※ 連携すると、複数のデバイスとデータを共有してご利用いただけます。")
-                            .font(.small)
-                            .foregroundColor(.textSecondary)
                         
                         if viewModel.isLinkedAppleId {
                             Text("Apple IDと連携済み")
@@ -51,7 +48,7 @@ struct SettingTabView: View {
                                     onRequest: viewModel.onSignInWithAppleRequest,
                                     onCompletion: viewModel.onSignInWithAppleCompletion
                                 ).signInWithAppleButtonStyle(.black)
-                                    .frame(width: 200, height: 32)
+                                    .frame(width: 240, height: 36)
                                 Spacer()
                             }
                         }
@@ -68,10 +65,17 @@ struct SettingTabView: View {
                                 GoogleSignInButton { result in
                                     viewModel.onSignInWithGoogle(result)
                                 }
-                                .frame(width: 200, height: 32)
+                                .backgroundColor(.red)
+                                .frame(width: 240, height: 36)
                                 Spacer()
                             }
                         }
+                        
+                        Text("※ 連携すると、複数のデバイスとデータを共有してご利用いただけます。")
+                            .font(.small)
+                            .foregroundColor(.textSecondary)
+                        
+                        Spacer(minLength: 8)
                     }
                 } header: {
                     SectionHeaderText("アカウント")
@@ -100,16 +104,16 @@ struct SettingTabView: View {
                         }
                     }
                     
-//                    NavigationLink {
-//                        Text("Not implemented yet")
-//                    } label: {
-//                        HStack {
-//                            Text("アプリを評価")
-//                                .font(.medium)
-//                                .foregroundColor(.textPrimary)
-//                        }
-//                    }
-
+                    //                    NavigationLink {
+                    //                        Text("Not implemented yet")
+                    //                    } label: {
+                    //                        HStack {
+                    //                            Text("アプリを評価")
+                    //                                .font(.medium)
+                    //                                .foregroundColor(.textPrimary)
+                    //                        }
+                    //                    }
+                    
                     HStack {
                         Text("バージョン :")
                             .font(.medium)
@@ -164,6 +168,7 @@ struct SettingTabView: View {
 #endif
             }
             .listStyle(InsetGroupedListStyle())
+            .buttonStyle(PlainButtonStyle())
         }
         .navigationBarTitle("設定")
         .onAppear {

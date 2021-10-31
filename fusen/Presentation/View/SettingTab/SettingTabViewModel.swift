@@ -70,6 +70,8 @@ final class SettingTabViewModel: ObservableObject {
         case .failure(let error):
             // Do nothing
             log.e(error.localizedDescription)
+            // FIXME: Change state depending on error type  
+            self.state = .succeeded
         }
     }
     
@@ -104,6 +106,11 @@ final class SettingTabViewModel: ObservableObject {
         case .failure(let error):
             // Do nothing
             log.e(error.localizedDescription)
+            if case .canceled = error {
+                self.state = .succeeded
+            } else {
+                self.state = .failedlinkingWithGoogle
+            }
         }
     }
     

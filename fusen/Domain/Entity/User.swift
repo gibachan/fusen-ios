@@ -5,8 +5,8 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/14.
 //
 
-import Foundation
 import FirebaseAuth
+import Foundation
 
 struct User {
     let id: ID<User>

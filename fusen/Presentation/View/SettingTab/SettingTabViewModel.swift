@@ -93,13 +93,13 @@ final class SettingTabViewModel: ObservableObject {
                     log.e("AccountServiceError.linkWithApple")
                     DispatchQueue.main.async { [weak self] in
                         guard let self = self else { return }
-                        self.state = .failedlinkingWithApple
+                        self.state = .failedlinkingWithGoogle
                     }
                 } catch {
                     log.e("Unknown error: \(error.localizedDescription)")
                     DispatchQueue.main.async { [weak self] in
                         guard let self = self else { return }
-                        self.state = .failedlinkingWithApple
+                        self.state = .failedlinkingWithGoogle
                     }
                 }
             }

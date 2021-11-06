@@ -60,7 +60,7 @@ struct TutorialView: View {
                             Text("データを共有")
                                 .font(.small.bold())
                                 .foregroundColor(.textPrimary)
-                            Text("Apple IDと連携することで複数のデバイスとデータを共有してご利用いただけます。")
+                            Text("Apple IDやGoogleアカウントと連携することで複数のデバイスとデータを共有してご利用いただけます。")
                                 .font(.small)
                                 .foregroundColor(.textSecondary)
                         }
@@ -76,13 +76,14 @@ struct TutorialView: View {
                     }
                 } label: {
                     Text("ログインせずに続ける")
+                        .font(.small)
                 }
                 .foregroundColor(.textPrimary)
-                .frame(height: 48)
+                .frame(height: 36)
                 .frame(maxWidth: .infinity)
                 .overlay(
                     RoundedRectangle(cornerRadius: 4)
-                        .stroke(Color.textPrimary, lineWidth: 1)
+                        .stroke(Color.border, lineWidth: 0.5)
                 )
 
                 SignInWithAppleButton(
@@ -90,7 +91,12 @@ struct TutorialView: View {
                     onRequest: viewModel.onSignInWithAppleRequest,
                     onCompletion: viewModel.onSignInWithAppleCompletion
                 ).signInWithAppleButtonStyle(.black)
-                    .frame(height: 48)
+                    .frame(height: 42)
+                
+                GoogleSignInButton { result in
+                    viewModel.onSignInWithGoogle(result)
+                }
+                .frame(height: 36)
             }
         }
         .padding(.top, 16)
@@ -108,9 +114,12 @@ struct TutorialView: View {
             case .failed:
                 LoadingHUD.dismiss()
                 ErrorHUD.show(message: .network)
-            case .failedlinkingWithApple:
+            case .failedSigningWithApple:
                 LoadingHUD.dismiss()
                 ErrorHUD.show(message: .linkWithAppleId)
+            case .failedSigningWithGoogle:
+                LoadingHUD.dismiss()
+                ErrorHUD.show(message: .linkWithGoogle)
             }
         }
     }

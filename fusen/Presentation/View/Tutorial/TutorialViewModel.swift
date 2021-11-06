@@ -6,6 +6,7 @@
 //
 
 import AuthenticationServices
+import Firebase
 import Foundation
 
 final class TutorialViewModel: ObservableObject {
@@ -36,13 +37,47 @@ final class TutorialViewModel: ObservableObject {
                     log.e("AccountServiceError.logInApple")
                     DispatchQueue.main.async { [weak self] in
                         guard let self = self else { return }
-                        self.state = .failedlinkingWithApple
+                        self.state = .failedSigningWithApple
                     }
                 } catch {
                     log.e("Unknown error: \(error.localizedDescription)")
                     DispatchQueue.main.async { [weak self] in
                         guard let self = self else { return }
-                        self.state = .failedlinkingWithApple
+                        self.state = .failedSigningWithApple
+                    }
+                }
+            }
+        case .failure(let error):
+            // Do nothing
+            log.e(error.localizedDescription)
+        }
+    }
+    
+    func onSignInWithGoogle(_ result: Result<AuthCredential, GoogleSignInError>) {
+        self.state = .loading
+        switch result {
+        case .success(let credential):
+            Task {
+                do {
+                    let user = try await accountService.logInWithGoogle(credential: credential)
+                    log.d("Successfully logged in with Google: user=\(user.id)")
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self = self else { return }
+                        self.state = .succeeded
+                        NotificationCenter.default.postTutorialFinished()
+                    }
+                } catch AccountServiceError.logInWithGoogle {
+                    // すでにlinkされている場合はエラーとなる(This credential is already associated with a different user account.)
+                    log.e("AccountServiceError.logInWithGoogle")
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self = self else { return }
+                        self.state = .failedSigningWithGoogle
+                    }
+                } catch {
+                    log.e("Unknown error: \(error.localizedDescription)")
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self = self else { return }
+                        self.state = .failedSigningWithGoogle
                     }
                 }
             }
@@ -74,6 +109,7 @@ final class TutorialViewModel: ObservableObject {
         case loading
         case succeeded
         case failed
-        case failedlinkingWithApple
+        case failedSigningWithApple
+        case failedSigningWithGoogle
     }
 }

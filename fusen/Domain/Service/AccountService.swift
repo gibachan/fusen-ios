@@ -38,7 +38,7 @@ protocol AccountServiceProtocol {
     @discardableResult func linkWithApple(authorization: ASAuthorization) async throws -> User
     func unlinkWithApple() async throws
     func reAuthenticateWithApple(authorization: ASAuthorization) async throws
-    func logInWithGoogle() async throws -> User
+    func logInWithGoogle(credential: AuthCredential) async throws -> User
     func linkWithGoogle(credential: AuthCredential) async throws -> User
     func unlinkWithGoogle() async throws
     func delete() async throws
@@ -218,35 +218,18 @@ final class AccountService: AccountServiceProtocol {
         }
     }
     
-    func logInWithGoogle() async throws -> User {
-        guard let clientID = FirebaseApp.app()?.options.clientID else {
+    func logInWithGoogle(credential: AuthCredential) async throws -> User {
+        do {
+            let result = try await auth.signIn(with: credential)
+            let authUser = result.user
+            log.d("logInWithGoogle: uid=\(authUser.uid)")
+            let user = User.from(authUser)
+            setUserProperty(user: user)
+            return user
+        } catch {
+            log.e(error.localizedDescription)
             throw AccountServiceError.logInWithGoogle
         }
-
-        // Create Google Sign In configuration object.
-        let config = GIDConfiguration(clientID: clientID)
-        fatalError()
-
-        // Start the sign in flow!
-//        GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { [unowned self] user, error in
-//
-//          if let error = error {
-//            // ...
-//            return
-//          }
-//
-//          guard
-//            let authentication = user?.authentication,
-//            let idToken = authentication.idToken
-//          else {
-//            return
-//          }
-//
-//          let credential = GoogleAuthProvider.credential(withIDToken: idToken,
-//                                                         accessToken: authentication.accessToken)
-//
-//          // ...
-//        }
     }
     
     @discardableResult func linkWithGoogle(credential: AuthCredential) async throws -> User {

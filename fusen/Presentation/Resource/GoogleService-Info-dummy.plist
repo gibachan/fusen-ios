@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>dummy</string>
+	<string>387935621078-s3qvdjkn9o3rn2tg8c1hgik66l42u6vn.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>dummy</string>
+	<string>com.googleusercontent.apps.387935621078-s3qvdjkn9o3rn2tg8c1hgik66l42u6vn</string>
 	<key>API_KEY</key>
-	<string>dummy</string>
+	<string>AIzaSyAvLZqovn5wqCPBqHEQHYCA83ChfDMr_Xo</string>
 	<key>GCM_SENDER_ID</key>
-	<string>dummy</string>
+	<string>387935621078</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>dummy</string>
+	<string>mock</string>
 	<key>PROJECT_ID</key>
-	<string>dummy</string>
+	<string>fusen-mock</string>
 	<key>STORAGE_BUCKET</key>
-	<string>dummy</string>
+	<string>fusen-mock.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>dummy</string>
+	<string>1:387935621078:ios:a620413dd30442ec46de77</string>
 </dict>
 </plist>

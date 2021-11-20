@@ -23,6 +23,7 @@ add-missing-files-if-need:
 	-@cp -n ./fusen/Presentation/Resource/GoogleService-Info-dummy.plist ./fusen/Presentation/Resource/GoogleService-Info-development.plist
 	-@cp -n ./fusen/Presentation/Resource/GoogleService-Info-dummy.plist ./fusen/Presentation/Resource/GoogleService-Info-staging.plist
 	-@cp -n ./fusen/Presentation/Resource/GoogleService-Info-dummy.plist ./fusen/Presentation/Resource/GoogleService-Info-production.plist
+	-@cp -n ./fusen/Data/Resource/APIKey-dummy.swift ./fusen/Data/Resource/APIKey.swift
 
 .PHONY: test
 test:

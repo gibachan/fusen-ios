@@ -1,3 +1,5 @@
+![run_test workflow](https://github.com/gibachan/fusen-ios/actions/workflows/run_test.yml/badge.svg)
+
 # fusen-ios
 
 fusen is an iOS app which makes your reading experience better. You can manage all your books and reading memos in your hand.

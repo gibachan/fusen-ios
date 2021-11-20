@@ -37,12 +37,12 @@ version: 2.6.0
 name: Firebase, nameSpecified: 
 body: 
                    …
-version: 8.9.0
+version: 8.9.1
 
 name: Firebase, nameSpecified: 
 body: 
                    …
-version: 8.9.0
+version: 8.9.1
 
 name: FirebaseABTesting, nameSpecified: 
 body: 
@@ -56,11 +56,11 @@ version: 8.9.0
 
 name: FirebaseAnalytics, nameSpecified: 
 body: Copyright 2021 Googl…
-version: 8.9.0
+version: 8.9.1
 
 name: FirebaseAnalytics, nameSpecified: 
 body: Copyright 2021 Googl…
-version: 8.9.0
+version: 8.9.1
 
 name: FirebaseAppCheck, nameSpecified: 
 body: 
@@ -85,12 +85,12 @@ version: 8.9.0
 name: FirebaseCore, nameSpecified: 
 body: 
                    …
-version: 8.9.0
+version: 8.9.1
 
 name: FirebaseCore, nameSpecified: 
 body: 
                    …
-version: 8.9.0
+version: 8.9.1
 
 name: FirebaseCoreDiagnostics, nameSpecified: 
 body: 
@@ -115,12 +115,12 @@ version: 8.9.0
 name: FirebaseFirestore, nameSpecified: 
 body: 
                    …
-version: 8.9.0
+version: 8.9.1
 
 name: FirebaseFirestore, nameSpecified: 
 body: 
                    …
-version: 8.9.0
+version: 8.9.1
 
 name: FirebaseFunctions, nameSpecified: 
 body: 
@@ -164,11 +164,11 @@ version: 8.9.0
 
 name: GoogleAppMeasurement, nameSpecified: 
 body: Copyright 2021 Googl…
-version: 8.9.0
+version: 8.9.1
 
 name: GoogleAppMeasurement, nameSpecified: 
 body: Copyright 2021 Googl…
-version: 8.9.0
+version: 8.9.1
 
 name: GoogleDataTransport, nameSpecified: 
 body: 

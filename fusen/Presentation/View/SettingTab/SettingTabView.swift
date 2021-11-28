@@ -33,44 +33,41 @@ struct SettingTabView: View {
                             .font(.medium)
                             .foregroundColor(.textPrimary)
                         
-                        if viewModel.isLinkedAppleId {
-                            Text("Apple IDと連携済み")
-                                .font(.small)
-                                .foregroundColor(.textSecondary)
-                                .onTapGesture {
-                                    alertType = .unlinkWithApple
-                                }
-                        } else {
-                            HStack {
-                                Spacer()
+                        VStack(alignment: .center) {
+                            if viewModel.isLinkedAppleId {
+                                Text("Apple IDと連携済み")
+                                    .font(.small)
+                                    .foregroundColor(.textSecondary)
+                                    .padding(.vertical, 8)
+                                    .onTapGesture {
+                                        alertType = .unlinkWithApple
+                                    }
+                            } else {
                                 SignInWithAppleButton(
                                     .signIn,
                                     onRequest: viewModel.onSignInWithAppleRequest,
                                     onCompletion: viewModel.onSignInWithAppleCompletion
                                 ).signInWithAppleButtonStyle(.black)
                                     .frame(width: 240, height: 36)
-                                Spacer()
                             }
-                        }
-                        if viewModel.isLinkedWithGoogle {
-                            Text("Googleアカウントと連携済み")
-                                .font(.small)
-                                .foregroundColor(.textSecondary)
-                                .onTapGesture {
-                                    alertType = .unlinkWithGoogle
-                                }
-                        } else {
-                            HStack {
-                                Spacer()
+                            if viewModel.isLinkedWithGoogle {
+                                Text("Googleアカウントと連携済み")
+                                    .font(.small)
+                                    .foregroundColor(.textSecondary)
+                                    .padding(.vertical, 8)
+                                    .onTapGesture {
+                                        alertType = .unlinkWithGoogle
+                                    }
+                            } else {
                                 GoogleSignInButton { result in
                                     viewModel.onSignInWithGoogle(result)
                                 }
                                 .backgroundColor(.red)
                                 .frame(width: 240, height: 36)
-                                Spacer()
                             }
                         }
-                        
+                        .frame(maxWidth: .infinity)
+
                         Text("※ 連携すると、複数のデバイスとデータを共有してご利用いただけます。")
                             .font(.small)
                             .foregroundColor(.textSecondary)

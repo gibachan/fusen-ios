@@ -120,19 +120,18 @@ struct AddMemoView: View {
             }
                 .disabled(!viewModel.isSaveEnabled)
         )
-        .actionSheet(isPresented: $isImagePickerSelectionPresented) {
-            ActionSheet(
-                title: Text("画像を添付"),
-                buttons: [
-                    .default(Text("カメラで撮影")) {
-                        isCameraPickerPresented = true
-                    },
-                    .default(Text("フォトライブラリから選択")) {
-                        isPhotoLibraryPresented = true
-                    },
-                    .cancel()
-                ]
-            )
+        .confirmationDialog("画像を添付", isPresented: $isImagePickerSelectionPresented, titleVisibility: .visible) {
+            Button {
+                isCameraPickerPresented = true
+            } label: {
+                Text("カメラで撮影")
+            }
+            Button {
+                isPhotoLibraryPresented = true
+            } label: {
+                Text("フォトライブラリから選択")
+            }
+            Button("キャンセル", role: .cancel, action: {})
         }
         .sheet(isPresented: $isEditMemoImage, onDismiss: {
         }, content: {

@@ -53,28 +53,29 @@ struct BookListView: View {
         } content: {
             AddBookMenuView()
         }
-        .actionSheet(isPresented: $isSortPresented) {
-            ActionSheet(
-                title: Text("書籍をソート"),
-                buttons: [
-                    .default(Text("作成日時でソート")) {
-                        Task {
-                            await viewModel.onSort(.createdAt)
-                        }
-                    },
-                    .default(Text("タイトルでソート")) {
-                        Task {
-                            await viewModel.onSort(.title)
-                        }
-                    },
-                    .default(Text("著者でソート")) {
-                        Task {
-                            await viewModel.onSort(.author)
-                        }
-                    },
-                    .cancel()
-                ]
-            )
+        .confirmationDialog("書籍をソート", isPresented: $isSortPresented, titleVisibility: .visible) {
+            Button {
+                Task {
+                    await viewModel.onSort(.createdAt)
+                }
+            } label: {
+                Text("作成日時でソート")
+            }
+            Button {
+                Task {
+                    await viewModel.onSort(.title)
+                }
+            } label: {
+                Text("タイトルでソート")
+            }
+            Button {
+                Task {
+                    await viewModel.onSort(.author)
+                }
+            } label: {
+                Text("著者でソート")
+            }
+            Button("キャンセル", role: .cancel, action: {})
         }
         .task {
             await viewModel.onAppear()

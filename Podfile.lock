@@ -547,7 +547,7 @@ PODS:
     - AppAuth/Core (~> 1.4)
     - GTMSessionFetcher/Core (~> 1.5)
   - GTMSessionFetcher/Core (1.7.0)
-  - Kingfisher (7.1.1)
+  - Kingfisher (7.1.2)
   - leveldb-library (1.22.1)
   - LicensePlist (3.15.0)
   - MLImage (1.0.0-beta1)
@@ -674,7 +674,7 @@ SPEC CHECKSUMS:
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   GTMAppAuth: ad5c2b70b9a8689e1a04033c9369c4915bfcbe89
   GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
-  Kingfisher: f738f9c4a3415823b8e2985d10aa2d6a9f37bc4d
+  Kingfisher: 44ed6a8504763f27bab46163adfac83f5deb240c
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   LicensePlist: bd3175ce3a27978e7b98c0c16a034b71cc14a7fc
   MLImage: 647f3d580c10b3c9a3f6154f5d7baead60c42a0c

@@ -482,7 +482,7 @@ PODS:
   - GoogleMLKit/TextRecognitionJapanese (2.3.0):
     - GoogleMLKit/MLKitCore
     - MLKitTextRecognitionJapanese (~> 1.0.0-beta1)
-  - GoogleSignIn (6.0.2):
+  - GoogleSignIn (6.1.0):
     - AppAuth (~> 1.4)
     - GTMAppAuth (~> 1.0)
     - GTMSessionFetcher/Core (~> 1.1)
@@ -549,7 +549,7 @@ PODS:
   - GTMSessionFetcher/Core (1.7.0)
   - Kingfisher (7.1.2)
   - leveldb-library (1.22.1)
-  - LicensePlist (3.15.0)
+  - LicensePlist (3.16.0)
   - MLImage (1.0.0-beta1)
   - MLKitCommon (3.1.0):
     - GoogleDataTransport (~> 9.0)
@@ -666,7 +666,7 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: a3311dbcf3ea651e5a070fe8559b57c174ada081
   GoogleDataTransport: 629c20a4d363167143f30ea78320d5a7eb8bd940
   GoogleMLKit: 53d5adbee0fe5a701e970f1387d2cfececd5bc50
-  GoogleSignIn: fd381840dbe7c1137aa6dc30849a5c3e070c034a
+  GoogleSignIn: c90b5bec45e780f54c6a8e1e3c182a86e3dda69d
   GoogleToolboxForMac: 8bef7c7c5cf7291c687cf5354f39f9db6399ad34
   GoogleUtilities: 684ee790a24f73ebb2d1d966e9711c203f2a4237
   GoogleUtilitiesComponents: 679b2c881db3b615a2777504623df6122dd20afe
@@ -676,7 +676,7 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
   Kingfisher: 44ed6a8504763f27bab46163adfac83f5deb240c
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
-  LicensePlist: bd3175ce3a27978e7b98c0c16a034b71cc14a7fc
+  LicensePlist: f91b2c4bd3379379cdfc0541693c3af031b9bcb3
   MLImage: 647f3d580c10b3c9a3f6154f5d7baead60c42a0c
   MLKitCommon: 1b5c79d52f79d9cc93ab5300e9713c4c215121ea
   MLKitTextRecognitionCommon: 923315fc744326806d1a1355899be55320182454

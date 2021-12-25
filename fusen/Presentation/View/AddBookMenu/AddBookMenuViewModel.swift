@@ -7,7 +7,6 @@
 
 import Foundation
 
-@MainActor
 final class AddBookMenuViewModel: ObservableObject {
     private let initialCollection: Collection?
     private let getCollectionsUseCase: GetCollectionsUseCase
@@ -24,6 +23,7 @@ final class AddBookMenuViewModel: ObservableObject {
         self.getCollectionsUseCase = getCollectionsUseCase
     }
     
+    @MainActor
     func onAppear() async {
         guard !isGetCollectionFinished else { return }
         do {
@@ -38,6 +38,7 @@ final class AddBookMenuViewModel: ObservableObject {
         }
     }
     
+    @MainActor
     func onSelectCollection(id: ID<Collection>) {
         selectedCollection = collections.first(where: { $0.id == id })
     }

@@ -7,7 +7,6 @@
 
 import Foundation
 
-@MainActor
 final class BookShelfAllSectionModel: ObservableObject {
     private static let maxDiplayBookCount = 6
     private let getAllBooksUseCase: GetAllBooksUseCase
@@ -29,6 +28,7 @@ final class BookShelfAllSectionModel: ObservableObject {
         await getBooks()
     }
     
+    @MainActor
     private func getBooks() async {
         guard !state.isInProgress else { return }
         

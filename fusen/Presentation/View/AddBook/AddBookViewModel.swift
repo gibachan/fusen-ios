@@ -7,7 +7,6 @@
 
 import Foundation
 
-@MainActor
 final class AddBookViewModel: ObservableObject {
     private let analyticsService: AnalyticsServiceProtocol
     private let addBookByManualUseCase: AddBookByManualUseCase
@@ -23,10 +22,12 @@ final class AddBookViewModel: ObservableObject {
         self.addBookByManualUseCase = addBookByManualUseCase
     }
     
+    @MainActor
     func onTextChange(title: String, author: String) {
         isSaveEnabled = title.isNotEmpty
     }
     
+    @MainActor
     func onSave(title: String, author: String, thumbnailImage: ImageData?, collection: Collection?) async {
         guard !state.isInProgress else { return }
 

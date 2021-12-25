@@ -7,7 +7,6 @@
 
 import Foundation
 
-@MainActor
 final class BookViewModel: ObservableObject {
     private let bookId: ID<Book>
     private let getBookByIdUseCase: GetBookByIdUseCase
@@ -53,6 +52,7 @@ final class BookViewModel: ObservableObject {
         await load()
     }
     
+    @MainActor
     func onReadingToggle() async {
         guard case let .loaded(book) = state else { return }
         guard !readingBookState.isInProgress else { return }
@@ -77,6 +77,7 @@ final class BookViewModel: ObservableObject {
         }
     }
     
+    @MainActor
     func onFavoriteChange(isFavorite: Bool) async {
         guard case let .loaded(book) = state else { return }
         guard !favoriteState.isInProgress else { return }
@@ -93,6 +94,7 @@ final class BookViewModel: ObservableObject {
         }
     }
     
+    @MainActor
     func onDelete() async {
         guard case let .loaded(book) = state else { return }
         
@@ -107,6 +109,7 @@ final class BookViewModel: ObservableObject {
         }
     }
     
+    @MainActor
     private func load() async {
         guard !state.isInProgress else { return }
         

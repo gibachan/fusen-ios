@@ -13,23 +13,23 @@ import XCTest
 class LatestMemoItemModelTests: XCTestCase {
     func testOnAppear() async {
         let getBookByIdUseCase = MockGetBookByIdUseCase(withResult: Book.sample)
-        let viewModel = await LatestMemoItemModel(memo: Memo.sample, getBookByIdUseCase: getBookByIdUseCase)
+        let viewModel = LatestMemoItemModel(memo: Memo.sample, getBookByIdUseCase: getBookByIdUseCase)
         
         var states: [LatestMemoItemModel.State] = []
         var memos: [Memo] = []
         var books: [Book?] = []
         var cancellables = Set<AnyCancellable>()
-        await viewModel.$state
+        viewModel.$state
             .sink(receiveValue: { state in
                 states.append(state)
             })
             .store(in: &cancellables)
-        await viewModel.$memo
+        viewModel.$memo
             .sink(receiveValue: { memo in
                 memos.append(memo)
             })
             .store(in: &cancellables)
-        await viewModel.$book
+        viewModel.$book
             .sink(receiveValue: { book in
                 books.append(book)
             })
@@ -53,23 +53,23 @@ class LatestMemoItemModelTests: XCTestCase {
     
     func testOnAppearWhenCorrespondingBookIsNotFound() async {
         let getBookByIdUseCase = MockGetBookByIdUseCase(withError: .notFound)
-        let viewModel = await LatestMemoItemModel(memo: Memo.sample, getBookByIdUseCase: getBookByIdUseCase)
+        let viewModel = LatestMemoItemModel(memo: Memo.sample, getBookByIdUseCase: getBookByIdUseCase)
         
         var states: [LatestMemoItemModel.State] = []
         var memos: [Memo] = []
         var books: [Book?] = []
         var cancellables = Set<AnyCancellable>()
-        await viewModel.$state
+        viewModel.$state
             .sink(receiveValue: { state in
                 states.append(state)
             })
             .store(in: &cancellables)
-        await viewModel.$memo
+        viewModel.$memo
             .sink(receiveValue: { memo in
                 memos.append(memo)
             })
             .store(in: &cancellables)
-        await viewModel.$book
+        viewModel.$book
             .sink(receiveValue: { book in
                 books.append(book)
             })

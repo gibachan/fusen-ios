@@ -7,7 +7,6 @@
 
 import Foundation
 
-@MainActor
 final class CollectionViewModel: ObservableObject {
     private var getBooksByCollectionUseCase: GetBooksByCollectionUseCase
     private let deleteCollectionUseCase: DeleteCollectionUseCase
@@ -28,6 +27,7 @@ final class CollectionViewModel: ObservableObject {
         self.deleteCollectionUseCase = deleteCollectionUseCase
     }
     
+    @MainActor
     func onAppear() async {
         guard !state.isInProgress else { return }
         
@@ -48,6 +48,7 @@ final class CollectionViewModel: ObservableObject {
         await refresh()
     }
     
+    @MainActor
     func onItemApper(of book: Book) async {
         guard case .succeeded = state, !pager.finished else { return }
         guard let lastBook = pager.data.last else { return }
@@ -72,6 +73,7 @@ final class CollectionViewModel: ObservableObject {
         await refresh()
     }
     
+    @MainActor
     func onDelete() async {
         guard !state.isInProgress else { return }
         
@@ -86,6 +88,7 @@ final class CollectionViewModel: ObservableObject {
         }
     }
     
+    @MainActor
     private func refresh() async {
         guard !state.isInProgress else { return }
         

@@ -7,7 +7,6 @@
 
 import Foundation
 
-@MainActor
 final class BookListViewModel: ObservableObject {
     private var getAllBooksUseCase: GetAllBooksUseCase
 
@@ -21,6 +20,7 @@ final class BookListViewModel: ObservableObject {
         getAllBooksUseCase = GetAllBooksUseCaseImpl(sortedBy: sortedBy)
     }
 
+    @MainActor
     func onAppear() async {
         guard !state.isInProgress else { return }
         
@@ -41,6 +41,7 @@ final class BookListViewModel: ObservableObject {
         await refresh()
     }
     
+    @MainActor
     func onItemApper(of book: Book) async {
         guard case .succeeded = state, !pager.finished else { return }
         guard let lastBook = pager.data.last else { return }
@@ -66,6 +67,7 @@ final class BookListViewModel: ObservableObject {
         await refresh()
     }
     
+    @MainActor
     private func refresh() async {
         guard !state.isInProgress else { return }
         

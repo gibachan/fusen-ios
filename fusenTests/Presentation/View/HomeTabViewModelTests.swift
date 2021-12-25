@@ -19,12 +19,12 @@ class HomeTabViewModelTests: XCTestCase {
         var states: [HomeTabViewModel.State] = []
         var readingBooks: [Book?] = []
         var cancellables = Set<AnyCancellable>()
-        await viewModel.$state
+        viewModel.$state
             .sink(receiveValue: { state in
                 states.append(state)
             })
             .store(in: &cancellables)
-        await viewModel.$readingBook
+        viewModel.$readingBook
             .sink(receiveValue: { readingBook in
                 readingBooks.append(readingBook)
             })
@@ -50,12 +50,12 @@ class HomeTabViewModelTests: XCTestCase {
         var states: [HomeTabViewModel.State] = []
         var readingBooks: [Book?] = []
         var cancellables = Set<AnyCancellable>()
-        await viewModel.$state
+        viewModel.$state
             .sink(receiveValue: { state in
                 states.append(state)
             })
             .store(in: &cancellables)
-        await viewModel.$readingBook
+        viewModel.$readingBook
             .sink(receiveValue: { readingBook in
                 readingBooks.append(readingBook)
             })

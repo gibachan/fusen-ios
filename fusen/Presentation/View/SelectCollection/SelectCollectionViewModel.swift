@@ -7,7 +7,6 @@
 
 import Foundation
 
-@MainActor
 final class SelectCollectionViewModel: ObservableObject {
     private let getCollectionsUseCase: GetCollectionsUseCase
     private let updateBookCollectionUseCase: UpdateBookCollectionUseCase
@@ -26,6 +25,7 @@ final class SelectCollectionViewModel: ObservableObject {
         self.updateBookCollectionUseCase = updateBookCollectionUseCase
     }
     
+    @MainActor
     func onAppear() async {
         guard !state.isInProgress else { return }
         
@@ -41,6 +41,7 @@ final class SelectCollectionViewModel: ObservableObject {
         }
     }
     
+    @MainActor
     func onSelect(collection: Collection) async {
         guard !state.isInProgress else { return }
         

@@ -18,6 +18,7 @@ final class DeleteAccountViewModel: ObservableObject {
         self.accountService = accountService
     }
     
+    @MainActor
     func onAppear() async {
         guard let user = accountService.currentUser else {
             return
@@ -57,6 +58,7 @@ final class DeleteAccountViewModel: ObservableObject {
         }
     }
     
+    @MainActor
     func onDeleteAccount() async {
         guard !state.isInProgress else { return }
         guard let user = accountService.currentUser else {

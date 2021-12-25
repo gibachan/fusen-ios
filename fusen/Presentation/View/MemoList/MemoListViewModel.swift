@@ -7,7 +7,6 @@
 
 import Foundation
 
-@MainActor
 final class MemoListViewModel: ObservableObject {
     private let getAllMemosUseCase: GetAllMemosUseCase
 
@@ -20,6 +19,7 @@ final class MemoListViewModel: ObservableObject {
         self.getAllMemosUseCase = getAllMemosUseCase
     }
 
+    @MainActor
     func onAppear() async {
         guard !state.isInProgress else { return }
         
@@ -36,6 +36,7 @@ final class MemoListViewModel: ObservableObject {
         }
     }
     
+    @MainActor
     func onRefresh() async {
         guard !state.isInProgress else { return }
         
@@ -52,6 +53,7 @@ final class MemoListViewModel: ObservableObject {
         }
     }
     
+    @MainActor
     func onItemApper(of memo: Memo) async {
         guard case .succeeded = state, !pager.finished else { return }
         guard let lastMemo = pager.data.last else { return }

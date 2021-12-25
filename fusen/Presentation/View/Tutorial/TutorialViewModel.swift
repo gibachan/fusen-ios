@@ -87,20 +87,15 @@ final class TutorialViewModel: ObservableObject {
         }
     }
 
+    @MainActor
     func onSkip() async {
         state = .loading
         do {
             try await accountService.logInAnonymously()
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .succeeded
-                NotificationCenter.default.postTutorialFinished()
-            }
+            state = .succeeded
+            NotificationCenter.default.postTutorialFinished()
         } catch {
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.state = .failed
-            }
+            state = .failed
         }
     }
     

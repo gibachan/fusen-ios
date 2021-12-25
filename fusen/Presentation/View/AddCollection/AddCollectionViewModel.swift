@@ -7,7 +7,6 @@
 
 import Foundation
 
-@MainActor
 final class AddCollectionViewModel: ObservableObject {
     private let getCollectionsUseCase: GetCollectionsUseCase
     private let addCollectionUseCase: AddCollectionUseCase
@@ -24,6 +23,7 @@ final class AddCollectionViewModel: ObservableObject {
         self.addCollectionUseCase = addCollectionUseCase
     }
     
+    @MainActor
     func onAppear() async {
         guard !state.isInProgress else { return }
         
@@ -38,10 +38,12 @@ final class AddCollectionViewModel: ObservableObject {
         }
     }
     
+    @MainActor
     func onNameChange(_ name: String) {
         isSaveEnabled = !isCollectionCountOver && !name.isEmpty
     }
     
+    @MainActor
     func onSave(
         name: String,
         color: RGB

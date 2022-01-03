@@ -11,25 +11,15 @@ struct BookListView: View {
     @StateObject private var viewModel = BookListViewModel()
     @State private var isAddPresented = false
     @State private var isSortPresented = false
-    
+    @State private var displayStyle: DisplayStyle = .list
+
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            List {
-                ForEach(viewModel.pager.data, id: \.id.value) { book in
-                    NavigationLink(destination: LazyView(BookView(bookId: book.id))) {
-                        BookListItem(book: book)
-                            .task {
-                                await viewModel.onItemApper(of: book)
-                            }
-                    }
-                }
-                if viewModel.pager.data.isEmpty {
-                    BookShelfEmptyItem()
-                        .listRowSeparator(.hidden)
-                }
-            }
-            .refreshable {
-                await viewModel.onRefresh()
+            switch displayStyle {
+            case .list:
+                listStyleView
+            case .grid:
+                gridStyleView
             }
             
             TrailingControlToolbar(
@@ -43,8 +33,15 @@ struct BookListView: View {
         }
         .listStyle(PlainListStyle())
         .navigationBarTitle("すべての書籍", displayMode: .inline)
-        .navigationBarItems(trailing: SortButton {
-            isSortPresented = true
+        .navigationBarItems(trailing: HStack {
+            DisplyStyleButton {
+                withAnimation {
+                    displayStyle = displayStyle.next()
+                }
+            }
+            SortButton {
+                isSortPresented = true
+            }
         })
         .sheet(isPresented: $isAddPresented) {
             Task {
@@ -91,6 +88,55 @@ struct BookListView: View {
             case .failed:
                 LoadingHUD.dismiss()
             }
+        }
+    }
+}
+
+private extension BookListView {
+    enum DisplayStyle {
+        case list, grid
+        
+        func next() -> DisplayStyle {
+            switch self {
+            case .list: return .grid
+            case .grid: return .list
+            }
+        }
+    }
+
+    var listStyleView: some View {
+        List {
+            ForEach(viewModel.pager.data, id: \.id.value) { book in
+                NavigationLink(destination: LazyView(BookView(bookId: book.id))) {
+                    BookListItem(book: book)
+                        .task {
+                            await viewModel.onItemApper(of: book)
+                        }
+                }
+            }
+            if viewModel.pager.data.isEmpty {
+                BookShelfEmptyItem()
+                    .listRowSeparator(.hidden)
+            }
+        }
+        .refreshable {
+            await viewModel.onRefresh()
+        }
+    }
+    
+    var gridStyleView: some View {
+        ScrollView(.vertical) {
+            LazyVGrid(columns: Array(repeating: GridItem(.flexible(minimum: 48), spacing: 16), count: 3), alignment: .leading, spacing: 16) {
+                ForEach(viewModel.pager.data, id: \.id.value) { book in
+                    NavigationLink(destination: LazyView(BookView(bookId: book.id))) {
+                        BookGridItem(book: book)
+                            .task {
+                                await viewModel.onItemApper(of: book)
+                            }
+                    }
+                }
+            }
+            .padding(16)
         }
     }
 }

@@ -157,6 +157,14 @@ final class SettingTabViewModel: ObservableObject {
         }
     }
     
+    func onAppReview() {
+        let urlString = "https://itunes.apple.com/jp/app/id1585547803?mt=8&action=write-review"
+        guard let url = URL(string: urlString),
+              UIApplication.shared.canOpenURL(url) else { return }
+        
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+    
     enum State {
         case initial
         case linkingWithApple

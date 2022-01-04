@@ -14,5 +14,7 @@ protocol UserActionHistoryRepository {
     
     func update(readBook: Book, page: Int) async
     
+    func update(reviewedVersion: String) async
+    
     func clearAll() async
 }

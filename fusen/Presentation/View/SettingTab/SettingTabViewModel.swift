@@ -33,7 +33,7 @@ final class SettingTabViewModel: ObservableObject {
         userId = user?.id.value ?? ""
         isLinkedAppleId = user?.isLinkedWithAppleId ?? false
         isLinkedWithGoogle = user?.isLinkedWithGoogle ?? false
-        version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
+        version = Bundle.main.shortVersion
     }
     
     func onSignInWithAppleRequest(_ resutst: ASAuthorizationAppleIDRequest) {

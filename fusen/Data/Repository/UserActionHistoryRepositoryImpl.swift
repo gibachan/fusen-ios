@@ -18,7 +18,12 @@ final class UserActionHistoryRepositoryImpl: UserActionHistoryRepository {
                 guard let page = value as? Int else { return }
                 readBook[ID<Book>(value: key)] = page
             }
-        return UserActionHistory(didConfirmReadingBookDescription: didConfirmReadingBookDescription, readBookPages: readBook)
+        let reviewedVersion = dataSource.reviewedVersion
+        return UserActionHistory(
+            didConfirmReadingBookDescription: didConfirmReadingBookDescription,
+            readBookPages: readBook,
+            reviewedVersion: reviewedVersion
+        )
     }
     
     func update(didConfirmReadingBookDescription: Bool) async {
@@ -29,7 +34,12 @@ final class UserActionHistoryRepositoryImpl: UserActionHistoryRepository {
         dataSource.setReadPage(for: readBook, page: page)
     }
     
+    func update(reviewedVersion: String) async {
+        dataSource.reviewedVersion = reviewedVersion
+    }
+    
     func clearAll() async {
         dataSource.didConfirmReadingBookDescription = false
+        dataSource.reviewedVersion = ""
     }
 }

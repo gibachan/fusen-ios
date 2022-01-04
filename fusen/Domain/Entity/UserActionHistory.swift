@@ -10,10 +10,11 @@ import Foundation
 struct UserActionHistory {
     let didConfirmReadingBookDescription: Bool
     let readBookPages: [ID<Book>: Int]
+    let reviewedVersion: String?
 }
 
 extension UserActionHistory {
     static var `default`: UserActionHistory {
-        UserActionHistory(didConfirmReadingBookDescription: false, readBookPages: [:])
+        UserActionHistory(didConfirmReadingBookDescription: false, readBookPages: [:], reviewedVersion: nil)
     }
 }

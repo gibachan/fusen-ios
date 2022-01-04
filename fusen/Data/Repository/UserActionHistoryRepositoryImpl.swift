@@ -28,4 +28,8 @@ final class UserActionHistoryRepositoryImpl: UserActionHistoryRepository {
     func update(readBook: Book, page: Int) async {
         dataSource.setReadPage(for: readBook, page: page)
     }
+    
+    func clearAll() async {
+        dataSource.didConfirmReadingBookDescription = false
+    }
 }

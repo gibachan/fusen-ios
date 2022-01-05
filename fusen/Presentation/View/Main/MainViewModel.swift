@@ -7,7 +7,6 @@
 
 import Foundation
 
-@MainActor
 final class MainViewModel: ObservableObject {
     @Published var showTutorial = false
     @Published var isMaintaining = false
@@ -23,6 +22,7 @@ final class MainViewModel: ObservableObject {
         self.getAppConfigUseCase = getAppConfigUseCase
     }
     
+    @MainActor
     func onAppear() async {
         log.d("logged in user=\(accountService.currentUser?.id.value ?? "nil")")
 

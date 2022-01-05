@@ -7,7 +7,6 @@
 
 import Foundation
 
-@MainActor
 final class BookShelfFavoriteSectionModel: ObservableObject {
     private static let maxDiplayBookCount = 6
     private let getFavoriteBooksUseCase: GetFavoriteBooksUseCase
@@ -21,6 +20,7 @@ final class BookShelfFavoriteSectionModel: ObservableObject {
         self.getFavoriteBooksUseCase = getFavoriteBooksUseCase
     }
     
+    @MainActor
     func onAppear() async {
         guard !state.isInProgress else { return }
         

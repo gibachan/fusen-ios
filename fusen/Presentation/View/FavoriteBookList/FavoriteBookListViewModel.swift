@@ -7,7 +7,6 @@
 
 import Foundation
 
-@MainActor
 final class FavoriteBookListViewModel: ObservableObject {
     private let getFavoriteBooksUseCase: GetFavoriteBooksUseCase
 
@@ -20,6 +19,7 @@ final class FavoriteBookListViewModel: ObservableObject {
         self.getFavoriteBooksUseCase = getFavoriteBooksUseCase
     }
 
+    @MainActor
     func onAppear() async {
         guard !state.isInProgress else { return }
         
@@ -36,6 +36,7 @@ final class FavoriteBookListViewModel: ObservableObject {
         }
     }
     
+    @MainActor
     func onRefresh() async {
         guard !state.isInProgress else { return }
         
@@ -52,6 +53,7 @@ final class FavoriteBookListViewModel: ObservableObject {
         }
     }
     
+    @MainActor
     func onItemApper(of book: Book) async {
         guard case .succeeded = state, !pager.finished else { return }
         guard let lastBook = pager.data.last else { return }

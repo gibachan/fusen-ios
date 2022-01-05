@@ -7,7 +7,6 @@
 
 import Foundation
 
-@MainActor
 final class BookShelfTabViewModel: ObservableObject {
     private let getFavoriteBooksUseCase: GetFavoriteBooksUseCase
     private let getCollectionsUseCase: GetCollectionsUseCase
@@ -32,6 +31,7 @@ final class BookShelfTabViewModel: ObservableObject {
         await getCollections()
     }
     
+    @MainActor
     private func getCollections() async {
         guard !state.isInProgress else { return }
         

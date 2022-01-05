@@ -7,7 +7,6 @@
 
 import Foundation
 
-@MainActor
 final class AddMemoViewModel: NSObject, ObservableObject {
     private let imageCountLimit = 1
     private let getUserActionHistoryUseCase: GetUserActionHistoryUseCase
@@ -36,6 +35,7 @@ final class AddMemoViewModel: NSObject, ObservableObject {
         self.recognizeTextUseCase = recognizeTextUseCase
     }
     
+    @MainActor
     func onAppear() async {
         let userActionHistory = await getUserActionHistoryUseCase.invoke()
         if let page = userActionHistory.readBookPages[book.id] {
@@ -43,10 +43,12 @@ final class AddMemoViewModel: NSObject, ObservableObject {
         }
     }
     
+    @MainActor
     func onTextChange(text: String, quote: String) {
         isSaveEnabled = text.isNotEmpty || quote.isNotEmpty
     }
     
+    @MainActor
     func onQuoteImageTaken(imageData: ImageData) async {
         guard !state.isInProgress else { return }
         
@@ -57,6 +59,7 @@ final class AddMemoViewModel: NSObject, ObservableObject {
         recognizedQuote = text
     }
     
+    @MainActor
     func onSave(
         text: String,
         quote: String,

@@ -90,19 +90,18 @@ struct AddBookView: View {
             }
                 .disabled(!viewModel.isSaveEnabled)
         )
-        .actionSheet(isPresented: $isThumbnailPickerPresented) {
-            ActionSheet(
-                title: Text("書籍画像を変更"),
-                buttons: [
-                    .default(Text("カメラで撮影")) {
-                        isCameraPickerPresented = true
-                    },
-                    .default(Text("フォトライブラリから選択")) {
-                        isPhotoLibraryPresented = true
-                    },
-                    .cancel()
-                ]
-            )
+        .confirmationDialog("書籍画像を変更", isPresented: $isThumbnailPickerPresented, titleVisibility: .visible) {
+            Button {
+                isCameraPickerPresented = true
+            } label: {
+                Text("カメラで撮影")
+            }
+            Button {
+                isPhotoLibraryPresented = true
+            } label: {
+                Text("フォトライブラリから選択")
+            }
+            Button("キャンセル", role: .cancel, action: {})
         }
         .fullScreenCover(isPresented: $isCameraPickerPresented) {
             ImagePickerView(imageType: .book, pickerType: .camera) { result in

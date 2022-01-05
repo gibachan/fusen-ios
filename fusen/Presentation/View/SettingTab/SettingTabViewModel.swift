@@ -27,6 +27,7 @@ final class SettingTabViewModel: ObservableObject {
         self.resetUserActionHistoryUseCase = resetUserActionHistoryUseCase
     }
     
+    @MainActor
     func onApper() {
         let user = accountService.currentUser
         userId = user?.id.value ?? ""

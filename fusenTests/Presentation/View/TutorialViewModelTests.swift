@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/09/18.
 //
 
+import Combine
 import XCTest
 
 @testable import fusen
@@ -14,21 +15,15 @@ class TutorialViewModelTests: XCTestCase {
         let accountService = MockAccountService(isLoggedIn: false)
         let viewModel = TutorialViewModel(accountService: accountService)
         var states: [TutorialViewModel.State] = []
-        let cancellable = viewModel.$state
+        var cancellables = Set<AnyCancellable>()
+        viewModel.$state
             .sink(receiveValue: { state in
                 states.append(state)
             })
+            .store(in: &cancellables)
         
         await viewModel.onSkip()
-        
-        // Wait for main loop proceeds
-        let expectation = self.expectation(description: #file)
-        DispatchQueue.main.async {
-            expectation.fulfill()
-        }
-        await self.waitForExpectations(timeout: 1, handler: nil)
-
-        cancellable.cancel()
+        cancellables.removeAll()
 
         XCTAssertEqual(states.count, 3)
         XCTAssertEqual(states[0], .initial)

@@ -7,7 +7,6 @@
 
 import Foundation
 
-@MainActor
 final class LatestMemoItemModel: ObservableObject {
     private let getBookByIdUseCase: GetBookByIdUseCase
     
@@ -23,6 +22,7 @@ final class LatestMemoItemModel: ObservableObject {
         self.getBookByIdUseCase = getBookByIdUseCase
     }
     
+    @MainActor
     func onAppear() async {
         guard !state.isInProgress else { return }
         

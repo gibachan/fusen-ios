@@ -7,7 +7,6 @@
 
 import Foundation
 
-@MainActor
 final class EditViewModel: ObservableObject {
     private let updateBookUseCase: UpdateBookUseCase
 
@@ -24,14 +23,17 @@ final class EditViewModel: ObservableObject {
         self.updateBookUseCase = updateBookUseCase
     }
     
+    @MainActor
     func onAppear() {
         imageURL = book.imageURL
     }
     
+    @MainActor
     func onTextChange(title: String, author: String, description: String) {
         isSaveEnabled = book.title != title || book.author != author || book.description != description
     }
     
+    @MainActor
     func onSave(title: String, author: String, description: String) async {
         guard !state.isInProgress else { return }
 

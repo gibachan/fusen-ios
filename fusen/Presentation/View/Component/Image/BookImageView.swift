@@ -23,7 +23,7 @@ struct BookImageView: View {
             .retry(maxCount: 3, interval: .seconds(5))
             .cancelOnDisappear(true)
             .resizable()
-            .scaledToFit()
+            .aspectRatio(48 / 64, contentMode: .fill)
             .shadow(color: .backgroundGray, radius: 1, x: 2, y: 2)
     }
 }

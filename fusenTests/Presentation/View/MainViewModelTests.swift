@@ -26,12 +26,12 @@ class MainViewModelTests: XCTestCase {
         var showTutorials: [Bool] = []
         var isMaintainings: [Bool] = []
         var cancellables = Set<AnyCancellable>()
-        await viewModel.$showTutorial
+        viewModel.$showTutorial
             .sink(receiveValue: { showTutorial in
                 showTutorials.append(showTutorial)
             })
             .store(in: &cancellables)
-        await viewModel.$isMaintaining
+        viewModel.$isMaintaining
             .sink(receiveValue: { isMaintaining in
                 isMaintainings.append(isMaintaining)
             })
@@ -63,12 +63,12 @@ class MainViewModelTests: XCTestCase {
         var showTutorials: [Bool] = []
         var isMaintainings: [Bool] = []
         var cancellables = Set<AnyCancellable>()
-        await viewModel.$showTutorial
+        viewModel.$showTutorial
             .sink(receiveValue: { showTutorial in
                 showTutorials.append(showTutorial)
             })
             .store(in: &cancellables)
-        await viewModel.$isMaintaining
+        viewModel.$isMaintaining
             .sink(receiveValue: { isMaintaining in
                 isMaintainings.append(isMaintaining)
             })
@@ -100,12 +100,12 @@ class MainViewModelTests: XCTestCase {
         var showTutorials: [Bool] = []
         var isMaintainings: [Bool] = []
         var cancellables = Set<AnyCancellable>()
-        await viewModel.$showTutorial
+        viewModel.$showTutorial
             .sink(receiveValue: { showTutorial in
                 showTutorials.append(showTutorial)
             })
             .store(in: &cancellables)
-        await viewModel.$isMaintaining
+        viewModel.$isMaintaining
             .sink(receiveValue: { isMaintaining in
                 isMaintainings.append(isMaintaining)
             })

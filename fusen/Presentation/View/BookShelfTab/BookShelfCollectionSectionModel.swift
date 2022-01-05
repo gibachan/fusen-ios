@@ -7,7 +7,6 @@
 
 import Foundation
 
-@MainActor
 final class BookShelfCollectionSectionModel: ObservableObject {
     private static let maxDiplayBookCount = 6
     private let getBooksByCollectionUseCase: GetBooksByCollectionUseCase
@@ -23,6 +22,7 @@ final class BookShelfCollectionSectionModel: ObservableObject {
         self.getBooksByCollectionUseCase = GetBooksByCollectionUseCaseImpl(collection: collection, sortedBy: .default)
     }
     
+    @MainActor
     func onAppear() async {
         guard !state.isInProgress else { return }
         

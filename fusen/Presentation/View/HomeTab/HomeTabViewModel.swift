@@ -7,7 +7,6 @@
 
 import Foundation
 
-@MainActor
 final class HomeTabViewModel: ObservableObject {
     private let latestBooksCount = 4
     private let latestMemosCount = 4
@@ -34,6 +33,7 @@ final class HomeTabViewModel: ObservableObject {
         await loadAll()
     }
     
+    @MainActor
     private func loadAll() async {
         guard !state.isInProgress else { return }
         

@@ -7,7 +7,6 @@
 
 import Foundation
 
-@MainActor
 final class BookMemoSectionModel: ObservableObject {
     private let bookId: ID<Book>
     private var getMemosUseCase: GetMemosUseCase
@@ -33,6 +32,7 @@ final class BookMemoSectionModel: ObservableObject {
         await load()
     }
     
+    @MainActor
     func onItemApper(of memo: Memo) async {
         guard case .loaded = state, !memoPager.finished else { return }
         guard let lastMemo = memoPager.data.last else { return }
@@ -50,12 +50,14 @@ final class BookMemoSectionModel: ObservableObject {
         }
     }
     
+    @MainActor
     func onSort(_ sortedBy: MemoSort) async {
         self.sortedBy = sortedBy
         self.getMemosUseCase = GetMemosUseCaseImpl(bookId: bookId, sortedBy: sortedBy)
         await load()
     }
     
+    @MainActor
     private func load() async {
         guard !state.isInProgress else { return }
         

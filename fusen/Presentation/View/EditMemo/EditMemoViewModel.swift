@@ -7,7 +7,6 @@
 
 import Foundation
 
-@MainActor
 final class EditMemoViewModel: ObservableObject {
     private let updateMemoUseCase: UpdateMemoUseCase
     private let deleteMemoUseCase: DeleteMemoUseCase
@@ -30,10 +29,12 @@ final class EditMemoViewModel: ObservableObject {
         self.isSaveEnabled = memo.text.isNotEmpty || memo.quote.isNotEmpty
     }
     
+    @MainActor
     func onTextChange(text: String, quote: String) {
         isSaveEnabled = text.isNotEmpty || quote.isNotEmpty
     }
     
+    @MainActor
     func onSave(
         text: String,
         quote: String,
@@ -52,6 +53,7 @@ final class EditMemoViewModel: ObservableObject {
         }
     }
     
+    @MainActor
     func onDelete() async {
         guard !state.isInProgress else { return }
         

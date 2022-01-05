@@ -8,7 +8,6 @@
 import AVFoundation
 import Foundation
 
-@MainActor
 final class ScanBarcodeViewModel: ObservableObject {
     private let scanInterval: Double = 1.0
     private var isScanning = false
@@ -34,6 +33,7 @@ final class ScanBarcodeViewModel: ObservableObject {
         self.isTorchOn = currentTorch()
     }
     
+    @MainActor
     func onTorchToggled() {
         guard let backCamera = AVCaptureDevice.default(for: AVMediaType.video),
             backCamera.hasTorch else { return }
@@ -44,6 +44,7 @@ final class ScanBarcodeViewModel: ObservableObject {
         isTorchOn = currentTorch()
     }
 
+    @MainActor
     func onBarcodeScanned(code: String) async {
         guard !isScanning else { return }
         guard !scannedCode.contains(code) else {
@@ -77,6 +78,7 @@ final class ScanBarcodeViewModel: ObservableObject {
         }
     }
     
+    @MainActor
     func onAcceptSuggestedBook(collection: Collection?) async {
         guard isScanning else { return }
         guard let publication = suggestedBook else { return }
@@ -102,6 +104,7 @@ final class ScanBarcodeViewModel: ObservableObject {
         }
     }
     
+    @MainActor
     func onDeclinSuggestedBook() async {
         scanningCode = nil
         suggestedBook = nil

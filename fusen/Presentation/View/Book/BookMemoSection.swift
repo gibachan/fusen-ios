@@ -45,23 +45,22 @@ struct BookMemoSection: View {
         .task {
             await viewModel.onAppear()
         }
-        .actionSheet(isPresented: $isSortPresented) {
-            ActionSheet(
-                title: Text("メモをソート"),
-                buttons: [
-                    .default(Text("作成日時でソート")) {
-                        Task {
-                            await viewModel.onSort(.createdAt)
-                        }
-                    },
-                    .default(Text("ページでソート")) {
-                        Task {
-                            await viewModel.onSort(.page)
-                        }
-                    },
-                    .cancel()
-                ]
-            )
+        .confirmationDialog("メモをソート", isPresented: $isSortPresented, titleVisibility: .visible) {
+            Button {
+                Task {
+                    await viewModel.onSort(.createdAt)
+                }
+            } label: {
+                Text("作成日時でソート")
+            }
+            Button {
+                Task {
+                    await viewModel.onSort(.page)
+                }
+            } label: {
+                Text("ページでソート")
+            }
+            Button("キャンセル", role: .cancel, action: {})
         }
     }
 }

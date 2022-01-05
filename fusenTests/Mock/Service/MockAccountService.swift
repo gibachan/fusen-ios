@@ -73,7 +73,7 @@ final class MockAccountService: AccountServiceProtocol {
     }
     
     func logOut() throws {
-        fatalError("Not implemented yet")
+        isLoggedIn = false
     }
 }
 

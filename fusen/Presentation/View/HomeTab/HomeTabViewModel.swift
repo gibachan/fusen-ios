@@ -18,7 +18,7 @@ final class HomeTabViewModel: ObservableObject {
     @Published var state: State = .initial
     @Published var readingBook: Book?
     
-    nonisolated init(
+    init(
         accountService: AccountServiceProtocol = AccountService.shared,
         getReadingBookUseCase: GetReadingBookUseCase = GetReadingBookUseCaseImpl(),
         getLatestDataUseCase: GetLatestDataUseCase = GetLatestDataUseCaseImpl()

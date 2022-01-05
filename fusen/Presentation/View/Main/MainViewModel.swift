@@ -16,7 +16,7 @@ final class MainViewModel: ObservableObject {
     private let getUserActionHistoryUseCase: GetUserActionHistoryUseCase
     private let launchAppUseCase: LaunchAppUseCase
     
-    nonisolated init(
+    init(
         accountService: AccountServiceProtocol = AccountService.shared,
         getAppConfigUseCase: GetAppConfigUseCase = GetAppConfigUseCaseImpl(),
         getUserActionHistoryUseCase: GetUserActionHistoryUseCase = GetUserActionHistoryUseCaseImpl(),

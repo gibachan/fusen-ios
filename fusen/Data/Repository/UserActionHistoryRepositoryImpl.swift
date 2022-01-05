@@ -11,18 +11,17 @@ final class UserActionHistoryRepositoryImpl: UserActionHistoryRepository {
     let dataSource = UserDefaultsDataSource()
     
     func get() async -> UserActionHistory {
-        let didConfirmReadingBookDescription = dataSource.didConfirmReadingBookDescription
         var readBook: [ID<Book>: Int] = [:]
         dataSource.readBookPages
             .forEach { key, value in
                 guard let page = value as? Int else { return }
                 readBook[ID<Book>(value: key)] = page
             }
-        let reviewedVersion = dataSource.reviewedVersion
         return UserActionHistory(
-            didConfirmReadingBookDescription: didConfirmReadingBookDescription,
+            launchedAppBefore: dataSource.launchedAppBefore,
+            didConfirmReadingBookDescription: dataSource.didConfirmReadingBookDescription,
             readBookPages: readBook,
-            reviewedVersion: reviewedVersion
+            reviewedVersion: dataSource.reviewedVersion
         )
     }
     
@@ -36,6 +35,10 @@ final class UserActionHistoryRepositoryImpl: UserActionHistoryRepository {
     
     func update(reviewedVersion: String) async {
         dataSource.reviewedVersion = reviewedVersion
+    }
+    
+    func update(launchedAppBefore: Bool) async {
+        dataSource.launchedAppBefore = launchedAppBefore
     }
     
     func clearAll() async {

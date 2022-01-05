@@ -13,23 +13,39 @@ final class MainViewModel: ObservableObject {
     
     private let accountService: AccountServiceProtocol
     private let getAppConfigUseCase: GetAppConfigUseCase
+    private let getUserActionHistoryUseCase: GetUserActionHistoryUseCase
+    private let launchAppUseCase: LaunchAppUseCase
     
     nonisolated init(
         accountService: AccountServiceProtocol = AccountService.shared,
-        getAppConfigUseCase: GetAppConfigUseCase = GetAppConfigUseCaseImpl()
+        getAppConfigUseCase: GetAppConfigUseCase = GetAppConfigUseCaseImpl(),
+        getUserActionHistoryUseCase: GetUserActionHistoryUseCase = GetUserActionHistoryUseCaseImpl(),
+        launchAppUseCase: LaunchAppUseCase = LaunchAppUseCaseImpl()
     ) {
         self.accountService = accountService
         self.getAppConfigUseCase = getAppConfigUseCase
+        self.getUserActionHistoryUseCase = getUserActionHistoryUseCase
+        self.launchAppUseCase = launchAppUseCase
     }
     
     @MainActor
     func onAppear() async {
         log.d("logged in user=\(accountService.currentUser?.id.value ?? "nil")")
+        
+        await logoutIfNeed()
+        await launchAppUseCase.invoke()
 
         let config = await getAppConfigUseCase.invoke()
         self.isMaintaining = config.isMaintaining
         if !config.isMaintaining {
             showTutorial = !accountService.isLoggedIn
+        }
+    }
+    
+    private func logoutIfNeed() async {
+        let history = await getUserActionHistoryUseCase.invoke()
+        if !history.launchedAppBefore {
+            try? accountService.logOut()
         }
     }
 }

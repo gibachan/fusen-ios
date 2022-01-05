@@ -16,5 +16,7 @@ protocol UserActionHistoryRepository {
     
     func update(reviewedVersion: String) async
     
+    func update(launchedAppBefore: Bool) async
+    
     func clearAll() async
 }

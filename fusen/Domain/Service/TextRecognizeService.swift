@@ -32,9 +32,10 @@ final class OnDeviceTextRecognizeService: TextRecognizeServiceProtocol {
 }
 
 final class VisionTextRecognizeService: TextRecognizeServiceProtocol {
-    private lazy var functions = Functions.functions()
+    private lazy var functions = Functions.functions(region: "asia-northeast1")
+    // swiftlint:disable:next cyclomatic_complexity
     func text(from image: UIImage) async -> String {
-        guard let imageData = image.jpegData(compressionQuality: 0.5) else { return "" }
+        guard let imageData = image.jpegData(compressionQuality: 0.4) else { return "" }
         let base64encodedImage = imageData.base64EncodedString()
         
         let requestData: [String: Any] = [
@@ -68,8 +69,31 @@ final class VisionTextRecognizeService: TextRecognizeServiceProtocol {
                         continuation.resume(returning: "")
                         return
                     }
-                    let text = annotation["text"] as? String ?? ""
-                    continuation.resume(returning: text)
+                    guard let pages = annotation["pages"] as? [[String: Any]] else { return }
+                    var resultText = ""
+                    for page in pages {
+                        guard let blocks = page["blocks"] as? [[String: Any]] else { continue }
+                        for block in blocks {
+                            var blockText = ""
+                            guard let paragraphs = block["paragraphs"] as? [[String: Any]] else { continue }
+                            for paragraph in paragraphs {
+                                var paragraphText = ""
+                                guard let words = paragraph["words"] as? [[String: Any]] else { continue }
+                                for word in words {
+                                    var wordText = ""
+                                    guard let symbols = word["symbols"] as? [[String: Any]] else { continue }
+                                    for symbol in symbols {
+                                        let text = symbol["text"] as? String ?? ""
+                                        wordText += text
+                                    }
+                                    paragraphText += wordText
+                                }
+                                blockText += paragraphText
+                            }
+                            resultText += blockText
+                        }
+                    }
+                    continuation.resume(returning: resultText)
                 }
             }
             return result

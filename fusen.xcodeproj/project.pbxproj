@@ -1375,10 +1375,10 @@
 			};
 			buildConfigurationList = A082FFFF26C1F5CF00100357 /* Build configuration list for PBXProject "fusen" */;
 			compatibilityVersion = "Xcode 13.0";
-			developmentRegion = en;
+			developmentRegion = ja;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
+				ja,
 				Base,
 			);
 			mainGroup = A082FFFB26C1F5CF00100357;

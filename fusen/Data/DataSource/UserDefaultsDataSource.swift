@@ -14,6 +14,15 @@ final class UserDefaultsDataSource {
         self.userDefaults = userDefaults
     }
     
+    var launchedAppBefore: Bool {
+        get {
+            userDefaults.bool(forKey: .launchedAppBefore)
+        }
+        set {
+            userDefaults.set(newValue, forKey: .launchedAppBefore)
+        }
+    }
+    
     var didConfirmReadingBookDescription: Bool {
         get {
             userDefaults.bool(forKey: .didConfirmReadingBookDescription)
@@ -50,6 +59,7 @@ final class UserDefaultsDataSource {
 
 extension UserDefaultsDataSource {
     enum Key: String {
+        case launchedAppBefore = "launched_app_before"
         case didConfirmReadingBookDescription = "did_confirm_reading_book_description"
         case readBook = "read_book"
         case reviewedVersion = "reviewed_version"

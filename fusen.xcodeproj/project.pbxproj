@@ -33,6 +33,7 @@
 		7A6303CA2782938D0004737B /* DisplyStyleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6303C92782938D0004737B /* DisplyStyleButton.swift */; };
 		7A6303CC27847F140004737B /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6303CB27847F140004737B /* BundleExtension.swift */; };
 		7A6303CE278481C20004737B /* ReviewAppUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6303CD278481C20004737B /* ReviewAppUseCase.swift */; };
+		7A6303D0278522B20004737B /* LaunchAppUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6303CF278522B20004737B /* LaunchAppUseCase.swift */; };
 		7A69930726D7FC8B006B0697 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69930626D7FC8B006B0697 /* ErrorMessage.swift */; };
 		7A69930B26DA75A1006B0697 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69930A26DA75A1006B0697 /* ArrayExtension.swift */; };
 		7A69930D26DD05C5006B0697 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69930C26DD05C5006B0697 /* APIKey.swift */; };
@@ -285,6 +286,7 @@
 		7A6303C92782938D0004737B /* DisplyStyleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplyStyleButton.swift; sourceTree = "<group>"; };
 		7A6303CB27847F140004737B /* BundleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
 		7A6303CD278481C20004737B /* ReviewAppUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewAppUseCase.swift; sourceTree = "<group>"; };
+		7A6303CF278522B20004737B /* LaunchAppUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAppUseCase.swift; sourceTree = "<group>"; };
 		7A69930626D7FC8B006B0697 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		7A69930A26DA75A1006B0697 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		7A69930C26DD05C5006B0697 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
@@ -978,6 +980,7 @@
 				7A6303CD278481C20004737B /* ReviewAppUseCase.swift */,
 				A060096B26E6D87B00EA0BC2 /* ConfirmReadingBookDescriptionUseCase.swift */,
 				7A4569F326EA2DE100B7FCC0 /* ReadBookUseCase.swift */,
+				7A6303CF278522B20004737B /* LaunchAppUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -1655,6 +1658,7 @@
 				7A6303CE278481C20004737B /* ReviewAppUseCase.swift in Sources */,
 				A0C3C23E26D7680E0032B2C7 /* HomeTabEmptyView.swift in Sources */,
 				A07CAD1226CFBB160012201A /* FirestoreCreateCollection.swift in Sources */,
+				7A6303D0278522B20004737B /* LaunchAppUseCase.swift in Sources */,
 				A07D1A8626E2FAE100ADF384 /* QuoteText.swift in Sources */,
 				A060094C26E4ADF300EA0BC2 /* DeleteBookUseCase.swift in Sources */,
 				A0C3C24826D853EF0032B2C7 /* MemoListItemModel.swift in Sources */,

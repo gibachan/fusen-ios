@@ -32,12 +32,10 @@ final class AppConfigRepositoryImpl: AppConfigRepository {
         do {
             let result = try await Self.remoteConfig.fetch()
             if case .success = result {
-                let changed = try await Self.remoteConfig.activate()
-                if changed {
-                    let maintenanceValue = Self.remoteConfig.configValue(forKey: Self.maintenanceKey)
-                    let visionApiUseValue = Self.remoteConfig.configValue(forKey: Self.visionApiUseKey)
-                    return AppConfig(isMaintaining: maintenanceValue.boolValue, isVisionAPIUse: visionApiUseValue.boolValue)
-                }
+                try await Self.remoteConfig.activate()
+                let maintenanceValue = Self.remoteConfig.configValue(forKey: Self.maintenanceKey)
+                let visionApiUseValue = Self.remoteConfig.configValue(forKey: Self.visionApiUseKey)
+                return AppConfig(isMaintaining: maintenanceValue.boolValue, isVisionAPIUse: visionApiUseValue.boolValue)
             }
             return .default
         } catch {

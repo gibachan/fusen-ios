@@ -11,6 +11,7 @@ final class HomeTabViewModel: ObservableObject {
     private let latestBooksCount = 4
     private let latestMemosCount = 4
     
+    private let accountService: AccountServiceProtocol
     private let getReadingBookUseCase: GetReadingBookUseCase
     private let getLatestDataUseCase: GetLatestDataUseCase
     
@@ -18,14 +19,17 @@ final class HomeTabViewModel: ObservableObject {
     @Published var readingBook: Book?
     
     nonisolated init(
+        accountService: AccountServiceProtocol = AccountService.shared,
         getReadingBookUseCase: GetReadingBookUseCase = GetReadingBookUseCaseImpl(),
         getLatestDataUseCase: GetLatestDataUseCase = GetLatestDataUseCaseImpl()
     ) {
+        self.accountService = accountService
         self.getReadingBookUseCase = getReadingBookUseCase
         self.getLatestDataUseCase = getLatestDataUseCase
     }
     
     func onAppear() async {
+        guard accountService.isLoggedIn else { return }
         await loadAll()
     }
     

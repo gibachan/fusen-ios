@@ -32,14 +32,18 @@ final class RecognizeTextUseCaseImpl: RecognizeTextUseCase {
             return ""
         }
         let config = await appConfigRepository.get()
-        let textRecognizeService: TextRecognizeServiceProtocol
+        var result = ""
         if config.isVisionAPIUse {
             log.d("Use VisionTextRecognizeService")
-            textRecognizeService = visionTextRecognizeService
+            result = await visionTextRecognizeService.text(from: image)
+            if result.isEmpty {
+                log.d("Fallback to OnDeviceTextRecognizeService")
+                result = await onDeviceTextRecognizeService.text(from: image)
+            }
         } else {
             log.d("Use OnDeviceTextRecognizeService")
-            textRecognizeService = onDeviceTextRecognizeService
+            result = await onDeviceTextRecognizeService.text(from: image)
         }
-        return await textRecognizeService.text(from: image)
+        return result
     }
 }

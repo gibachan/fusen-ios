@@ -17,6 +17,7 @@ class RecognizeTextUseCaseTests: XCTestCase {
         let useCase = RecognizeTextUseCaseImpl(appConfigRepository: appConfigRepository, onDeviceTextRecognizeService: onDeviceTextRecognizeService, visionTextRecognizeService: visionTextRecognizeService)
         
         let text = await useCase.invoke(imageData: .sample)
+        XCTAssertTrue(onDeviceTextRecognizeService.consumed)
         XCTAssertEqual(text, "hoge")
     }
     func testUseVisionTextRecognizeService() async {
@@ -27,7 +28,19 @@ class RecognizeTextUseCaseTests: XCTestCase {
         let useCase = RecognizeTextUseCaseImpl(appConfigRepository: appConfigRepository, onDeviceTextRecognizeService: onDeviceTextRecognizeService, visionTextRecognizeService: visionTextRecognizeService)
         
         let text = await useCase.invoke(imageData: .sample)
+        XCTAssertTrue(visionTextRecognizeService.consumed)
         XCTAssertEqual(text, "piyo")
+    }
+    func testFallbackOnDeviceTextRecognitionWhenVisionTextRecognitionFails() async {
+        let appConfigRepository = MockAppConfigRepository(result: AppConfig(isMaintaining: false, isVisionAPIUse: true))
+        let onDeviceTextRecognizeService = MockTextRecognizeService(result: "hoge")
+        let visionTextRecognizeService = MockTextRecognizeService(result: "")
+        let useCase = RecognizeTextUseCaseImpl(appConfigRepository: appConfigRepository, onDeviceTextRecognizeService: onDeviceTextRecognizeService, visionTextRecognizeService: visionTextRecognizeService)
+
+        let text = await useCase.invoke(imageData: .sample)
+        XCTAssertTrue(visionTextRecognizeService.consumed)
+        XCTAssertTrue(onDeviceTextRecognizeService.consumed)
+        XCTAssertEqual(text, "hoge")
     }
 }
 
@@ -46,9 +59,13 @@ private class MockAppConfigRepository: AppConfigRepository {
 }
 
 private class MockTextRecognizeService: TextRecognizeServiceProtocol {
-    let result: String
+    private let result: String
+    var consumed = false
     init(result: String) {
         self.result = result
     }
-    func text(from image: UIImage) async -> String { result }
+    func text(from image: UIImage) async -> String {
+        consumed = true
+        return result
+    }
 }

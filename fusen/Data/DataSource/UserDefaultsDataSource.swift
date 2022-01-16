@@ -14,6 +14,15 @@ final class UserDefaultsDataSource {
         self.userDefaults = userDefaults
     }
     
+    var launchedAppBefore: Bool {
+        get {
+            userDefaults.bool(forKey: .launchedAppBefore)
+        }
+        set {
+            userDefaults.set(newValue, forKey: .launchedAppBefore)
+        }
+    }
+    
     var didConfirmReadingBookDescription: Bool {
         get {
             userDefaults.bool(forKey: .didConfirmReadingBookDescription)
@@ -37,12 +46,23 @@ final class UserDefaultsDataSource {
         readBook[book.id.value] = page
         userDefaults.set(readBook, forKey: .readBook)
     }
+    
+    var reviewedVersion: String? {
+        get {
+            userDefaults.string(forKey: .reviewedVersion)
+        }
+        set {
+            userDefaults.set(newValue, forKey: .reviewedVersion)
+        }
+    }
 }
 
 extension UserDefaultsDataSource {
     enum Key: String {
+        case launchedAppBefore = "launched_app_before"
         case didConfirmReadingBookDescription = "did_confirm_reading_book_description"
         case readBook = "read_book"
+        case reviewedVersion = "reviewed_version"
     }
 }
 
@@ -50,12 +70,28 @@ extension UserDefaults {
     func bool(forKey key: UserDefaultsDataSource.Key) -> Bool {
         bool(forKey: key.rawValue)
     }
+    
+    func integer(forKey key: UserDefaultsDataSource.Key) -> Int {
+        integer(forKey: key.rawValue)
+    }
+    
+    func string(forKey key: UserDefaultsDataSource.Key) -> String? {
+        string(forKey: key.rawValue)
+    }
 
     func dictionary(forKey key: UserDefaultsDataSource.Key) -> [String: Any] {
         dictionary(forKey: key.rawValue) ?? [:]
     }
 
     func set(_ value: Bool, forKey key: UserDefaultsDataSource.Key) {
+        set(value, forKey: key.rawValue)
+    }
+    
+    func set(_ value: Int, forKey key: UserDefaultsDataSource.Key) {
+        set(value, forKey: key.rawValue)
+    }
+    
+    func set(_ value: String?, forKey key: UserDefaultsDataSource.Key) {
         set(value, forKey: key.rawValue)
     }
     

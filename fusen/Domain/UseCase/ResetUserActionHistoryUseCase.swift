@@ -19,6 +19,6 @@ final class ResetUserActionHistoryUseCaseImpl: ResetUserActionHistoryUseCase {
     }
     
     func invoke() async {
-        await userActionHistoryRepository.update(didConfirmReadingBookDescription: false)
+        await userActionHistoryRepository.clearAll()
     }
 }

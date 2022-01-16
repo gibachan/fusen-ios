@@ -42,10 +42,7 @@ protocol AccountServiceProtocol {
     func linkWithGoogle(credential: AuthCredential) async throws -> User
     func unlinkWithGoogle() async throws
     func delete() async throws
-    
-#if DEBUG
     func logOut() throws
-#endif
 }
 
 final class AccountService: AccountServiceProtocol {

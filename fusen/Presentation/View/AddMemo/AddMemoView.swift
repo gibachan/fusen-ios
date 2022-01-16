@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/17.
 //
 
+import StoreKit
 import SwiftUI
 
 struct AddMemoView: View {
@@ -191,8 +192,13 @@ struct AddMemoView: View {
                 break
             case .loading:
                 LoadingHUD.show()
-            case .succeeded:
+            case let .succeeded(showAppReview):
                 LoadingHUD.dismiss()
+                if showAppReview {
+                    if let windowScene = UIApplication.shared.currentKeyWindow?.windowScene {
+                        SKStoreReviewController.requestReview(in: windowScene)
+                    }
+                }
                 dismiss()
             case .recognizedQuote:
                 LoadingHUD.dismiss()

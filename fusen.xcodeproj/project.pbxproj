@@ -31,6 +31,9 @@
 		7A4569F726EA33C500B7FCC0 /* PageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4569F626EA33C500B7FCC0 /* PageListView.swift */; };
 		7A6303C827828FAF0004737B /* BookGridItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6303C727828FAF0004737B /* BookGridItem.swift */; };
 		7A6303CA2782938D0004737B /* DisplyStyleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6303C92782938D0004737B /* DisplyStyleButton.swift */; };
+		7A6303CC27847F140004737B /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6303CB27847F140004737B /* BundleExtension.swift */; };
+		7A6303CE278481C20004737B /* ReviewAppUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6303CD278481C20004737B /* ReviewAppUseCase.swift */; };
+		7A6303D0278522B20004737B /* LaunchAppUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6303CF278522B20004737B /* LaunchAppUseCase.swift */; };
 		7A69930726D7FC8B006B0697 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69930626D7FC8B006B0697 /* ErrorMessage.swift */; };
 		7A69930B26DA75A1006B0697 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69930A26DA75A1006B0697 /* ArrayExtension.swift */; };
 		7A69930D26DD05C5006B0697 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69930C26DD05C5006B0697 /* APIKey.swift */; };
@@ -281,6 +284,9 @@
 		7A4569F626EA33C500B7FCC0 /* PageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageListView.swift; sourceTree = "<group>"; };
 		7A6303C727828FAF0004737B /* BookGridItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookGridItem.swift; sourceTree = "<group>"; };
 		7A6303C92782938D0004737B /* DisplyStyleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplyStyleButton.swift; sourceTree = "<group>"; };
+		7A6303CB27847F140004737B /* BundleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
+		7A6303CD278481C20004737B /* ReviewAppUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewAppUseCase.swift; sourceTree = "<group>"; };
+		7A6303CF278522B20004737B /* LaunchAppUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAppUseCase.swift; sourceTree = "<group>"; };
 		7A69930626D7FC8B006B0697 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		7A69930A26DA75A1006B0697 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		7A69930C26DD05C5006B0697 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
@@ -697,6 +703,7 @@
 			isa = PBXGroup;
 			children = (
 				7A69930A26DA75A1006B0697 /* ArrayExtension.swift */,
+				7A6303CB27847F140004737B /* BundleExtension.swift */,
 				7AD1611126C2A40000334A63 /* ColorExtension.swift */,
 				7AD1611526C2A6CE00334A63 /* FontExtension.swift */,
 				7AD1610A26C29FE400334A63 /* ImageExtension.swift */,
@@ -970,8 +977,10 @@
 				7A9E34D926E4F2BB00F4E985 /* RecognizeTextUseCase.swift */,
 				A060096526E6D67C00EA0BC2 /* GetUserActionHistoryUseCase.swift */,
 				A060097026E6E06A00EA0BC2 /* ResetUserActionHistoryUseCase.swift */,
+				7A6303CD278481C20004737B /* ReviewAppUseCase.swift */,
 				A060096B26E6D87B00EA0BC2 /* ConfirmReadingBookDescriptionUseCase.swift */,
 				7A4569F326EA2DE100B7FCC0 /* ReadBookUseCase.swift */,
+				7A6303CF278522B20004737B /* LaunchAppUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -1366,10 +1375,10 @@
 			};
 			buildConfigurationList = A082FFFF26C1F5CF00100357 /* Build configuration list for PBXProject "fusen" */;
 			compatibilityVersion = "Xcode 13.0";
-			developmentRegion = en;
+			developmentRegion = ja;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
+				ja,
 				Base,
 			);
 			mainGroup = A082FFFB26C1F5CF00100357;
@@ -1646,8 +1655,10 @@
 				7A6303C827828FAF0004737B /* BookGridItem.swift in Sources */,
 				7A11FCB626CB5DD400F1A6BC /* AddMemoView.swift in Sources */,
 				A069983826CDD9D6006E74C6 /* CollectionViewModel.swift in Sources */,
+				7A6303CE278481C20004737B /* ReviewAppUseCase.swift in Sources */,
 				A0C3C23E26D7680E0032B2C7 /* HomeTabEmptyView.swift in Sources */,
 				A07CAD1226CFBB160012201A /* FirestoreCreateCollection.swift in Sources */,
+				7A6303D0278522B20004737B /* LaunchAppUseCase.swift in Sources */,
 				A07D1A8626E2FAE100ADF384 /* QuoteText.swift in Sources */,
 				A060094C26E4ADF300EA0BC2 /* DeleteBookUseCase.swift in Sources */,
 				A0C3C24826D853EF0032B2C7 /* MemoListItemModel.swift in Sources */,
@@ -1666,6 +1677,7 @@
 				A0A2B30826EAC8E7001798D3 /* BookShelfColumn.swift in Sources */,
 				7AD1611626C2A6CE00334A63 /* FontExtension.swift in Sources */,
 				A052EAC426C3E4140033CE47 /* CancelButton.swift in Sources */,
+				7A6303CC27847F140004737B /* BundleExtension.swift in Sources */,
 				A07CAD0126CED80E0012201A /* ImageData.swift in Sources */,
 				A069981126CBE449006E74C6 /* MemoRepository.swift in Sources */,
 				7A69930D26DD05C5006B0697 /* APIKey.swift in Sources */,
@@ -1927,7 +1939,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = fusen/fusen.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"fusen/Presentation/Resource/Preview Content\"";
 				DEVELOPMENT_TEAM = MYDHT92MBT;
 				ENABLE_PREVIEWS = YES;
@@ -1946,7 +1958,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.3.1;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D STAGING -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = app.fusen.stg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2131,7 +2143,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = fusen/fusen.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"fusen/Presentation/Resource/Preview Content\"";
 				DEVELOPMENT_TEAM = MYDHT92MBT;
 				ENABLE_PREVIEWS = YES;
@@ -2150,7 +2162,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.3.1;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D DEBUG -D DEVELOPMENT";
 				PRODUCT_BUNDLE_IDENTIFIER = app.fusen.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2168,7 +2180,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = fusen/fusen.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"fusen/Presentation/Resource/Preview Content\"";
 				DEVELOPMENT_TEAM = MYDHT92MBT;
 				ENABLE_PREVIEWS = YES;
@@ -2187,7 +2199,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = app.fusen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

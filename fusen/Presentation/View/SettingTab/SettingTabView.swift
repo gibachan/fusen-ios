@@ -101,15 +101,13 @@ struct SettingTabView: View {
                         }
                     }
                     
-                    //                    NavigationLink {
-                    //                        Text("Not implemented yet")
-                    //                    } label: {
-                    //                        HStack {
-                    //                            Text("アプリを評価")
-                    //                                .font(.medium)
-                    //                                .foregroundColor(.textPrimary)
-                    //                        }
-                    //                    }
+                    Button {
+                        viewModel.onAppReview()
+                    } label: {
+                        Text("アプリを評価する")
+                            .font(.medium)
+                            .foregroundColor(.active)
+                    }
                     
                     HStack {
                         Text("バージョン :")

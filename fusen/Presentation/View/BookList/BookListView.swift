@@ -138,6 +138,17 @@ private extension BookListView {
             }
             .padding(16)
         }
+        .overlay(
+            Group {
+                if viewModel.pager.data.isEmpty {
+                    ZStack(alignment: .center) {
+                        Text("書籍が登録されていません。")
+                            .font(.medium)
+                            .foregroundColor(.placeholder)
+                    }
+                }
+            }
+        )
     }
 }
 

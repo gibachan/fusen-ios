@@ -33,7 +33,7 @@ final class SettingTabViewModel: ObservableObject {
         userId = user?.id.value ?? ""
         isLinkedAppleId = user?.isLinkedWithAppleId ?? false
         isLinkedWithGoogle = user?.isLinkedWithGoogle ?? false
-        version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
+        version = Bundle.main.shortVersion
     }
     
     func onSignInWithAppleRequest(_ resutst: ASAuthorizationAppleIDRequest) {
@@ -155,6 +155,14 @@ final class SettingTabViewModel: ObservableObject {
         if !accountService.isLoggedIn {
             NotificationCenter.default.postLogOut()
         }
+    }
+    
+    func onAppReview() {
+        let urlString = "https://itunes.apple.com/jp/app/id1585547803?mt=8&action=write-review"
+        guard let url = URL(string: urlString),
+              UIApplication.shared.canOpenURL(url) else { return }
+        
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     enum State {

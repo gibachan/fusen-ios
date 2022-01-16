@@ -120,4 +120,87 @@ class MainViewModelTests: XCTestCase {
         XCTAssertFalse(isMaintainings[0])
         XCTAssertTrue(isMaintainings[1])
     }
+    
+    func testLogoutWhenAppIsLaunchedAtFirstTime() async {
+        let accountService = MockAccountService(isLoggedIn: true)
+        let getAppConfigUseCase = MockGetAppConfigUseCase(
+            AppConfig(
+                isMaintaining: false,
+                isVisionAPIUse: false
+            )
+        )
+        let getUserActionHistoryUseCase = MockGetUserActionHistoryUseCase(
+            UserActionHistory(
+                launchedAppBefore: false,
+                didConfirmReadingBookDescription: false,
+                readBookPages: [:],
+                reviewedVersion: nil
+            )
+        )
+        let launchAppUseCase = MockLaunchAppUseCase()
+        var cancellables = Set<AnyCancellable>()
+        let viewModel = MainViewModel(
+            accountService: accountService,
+            getAppConfigUseCase: getAppConfigUseCase,
+            getUserActionHistoryUseCase: getUserActionHistoryUseCase,
+            launchAppUseCase: launchAppUseCase
+        )
+        
+        await viewModel.onAppear()
+        cancellables.removeAll()
+        
+        XCTAssertTrue(launchAppUseCase.invoked)
+        XCTAssertFalse(accountService.isLoggedIn)
+    }
+    
+    func testDoNotLogoutWhenAppIsLaunchedAtFirstTime() async {
+        let accountService = MockAccountService(isLoggedIn: true)
+        let getAppConfigUseCase = MockGetAppConfigUseCase(
+            AppConfig(
+                isMaintaining: false,
+                isVisionAPIUse: false
+            )
+        )
+        let getUserActionHistoryUseCase = MockGetUserActionHistoryUseCase(
+            UserActionHistory(
+                launchedAppBefore: true,
+                didConfirmReadingBookDescription: false,
+                readBookPages: [:],
+                reviewedVersion: nil
+            )
+        )
+        let launchAppUseCase = MockLaunchAppUseCase()
+        var cancellables = Set<AnyCancellable>()
+        let viewModel = MainViewModel(
+            accountService: accountService,
+            getAppConfigUseCase: getAppConfigUseCase,
+            getUserActionHistoryUseCase: getUserActionHistoryUseCase,
+            launchAppUseCase: launchAppUseCase
+        )
+        
+        await viewModel.onAppear()
+        cancellables.removeAll()
+        
+        XCTAssertTrue(launchAppUseCase.invoked)
+        XCTAssertTrue(accountService.isLoggedIn)
+    }
+}
+
+private final class MockGetUserActionHistoryUseCase: GetUserActionHistoryUseCase {
+    private let history: UserActionHistory
+    
+    init(_ history: UserActionHistory) {
+        self.history = history
+    }
+    
+    func invoke() async -> UserActionHistory {
+        history
+    }
+}
+
+private final class MockLaunchAppUseCase: LaunchAppUseCase {
+    var invoked = false
+    func invoke() async {
+        invoked = true
+    }
 }

@@ -13,6 +13,7 @@ final class AddMemoViewModel: NSObject, ObservableObject {
     private let addMemoUseCase: AddMemoUseCase
     private let readBookUseCase: ReadBookUseCase
     private let recognizeTextUseCase: RecognizeTextUseCase
+    private let reviewAppUseCase: ReviewAppUseCase
     
     @Published var book: Book
     @Published var initialPage: Int = 0
@@ -26,13 +27,15 @@ final class AddMemoViewModel: NSObject, ObservableObject {
         getUserActionHistoryUseCase: GetUserActionHistoryUseCase = GetUserActionHistoryUseCaseImpl(),
         addMemoUseCase: AddMemoUseCase = AddMemoUseCaseImpl(),
         readBookUseCase: ReadBookUseCase = ReadBookUseCaseImpl(),
-        recognizeTextUseCase: RecognizeTextUseCase = RecognizeTextUseCaseImpl()
+        recognizeTextUseCase: RecognizeTextUseCase = RecognizeTextUseCaseImpl(),
+        reviewAppUseCase: ReviewAppUseCase = ReviewAppUseCaseImpl()
     ) {
         self.book = book
         self.getUserActionHistoryUseCase = getUserActionHistoryUseCase
         self.addMemoUseCase = addMemoUseCase
         self.readBookUseCase = readBookUseCase
         self.recognizeTextUseCase = recognizeTextUseCase
+        self.reviewAppUseCase = reviewAppUseCase
     }
     
     @MainActor
@@ -73,7 +76,15 @@ final class AddMemoViewModel: NSObject, ObservableObject {
             let id = try await addMemoUseCase.invoke(book: book, text: text, quote: quote, page: page, image: image)
             await readBookUseCase.invoke(book: book, page: page)
             log.d("Memo is added for id: \(id.value)")
-            state = .succeeded
+            
+            // Request app review
+            var showAppReview = false
+            let userActionHistory = await getUserActionHistoryUseCase.invoke()
+            if userActionHistory.reviewedVersion == nil {
+                showAppReview = true
+                await reviewAppUseCase.invoke(version: Bundle.main.shortVersion)
+            }
+            state = .succeeded(showAppReview: showAppReview)
         } catch {
             log.e(error.localizedDescription)
             state = .failed
@@ -83,7 +94,7 @@ final class AddMemoViewModel: NSObject, ObservableObject {
     enum State {
         case initial
         case loading
-        case succeeded
+        case succeeded(showAppReview: Bool)
         case recognizedQuote
         case failed
         

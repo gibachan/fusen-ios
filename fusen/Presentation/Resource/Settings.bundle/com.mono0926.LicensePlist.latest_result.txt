@@ -376,11 +376,11 @@ version: 2.2.5
 
 name: SwiftLint, nameSpecified: 
 body: The MIT License (MIT…
-version: 0.45.1
+version: 0.46.1
 
 name: SwiftLint, nameSpecified: 
 body: The MIT License (MIT…
-version: 0.45.1
+version: 0.46.1
 
 add-version-numbers: false
 

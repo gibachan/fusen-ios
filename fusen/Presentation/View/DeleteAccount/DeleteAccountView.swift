@@ -17,7 +17,7 @@ struct DeleteAccountView: View {
         List {
             VStack(alignment: .center, spacing: 16) {
                 Text("アカウントを削除すると、書籍やメモなど関連する全てのデータが失われます。失われたデータは復元することはできません。")
-                
+
                 Text("アカウントを削除しますか？")
                     .padding(.top, 16)
                 
@@ -43,8 +43,8 @@ struct DeleteAccountView: View {
                     }
                 }
             }
-            .font(.medium)
-            .foregroundColor(.textSecondary)
+            .font(.small)
+            .foregroundColor(.textPrimary)
             .padding(.vertical, 16)
             .listSectionSeparator(.hidden)
             .buttonStyle(PlainButtonStyle())

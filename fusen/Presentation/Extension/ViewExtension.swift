@@ -23,4 +23,12 @@ extension View {
         block()
         return self
     }
+    
+    func centerHorizontally() -> some View {
+        HStack {
+            Spacer()
+            self
+            Spacer()
+        }
+    }
 }

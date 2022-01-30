@@ -28,11 +28,11 @@ version: 0.0.7
 
 name: CropViewController, nameSpecified: 
 body: The MIT License (MIT…
-version: 2.6.0
+version: 2.6.1
 
 name: CropViewController, nameSpecified: 
 body: The MIT License (MIT…
-version: 2.6.0
+version: 2.6.1
 
 name: Firebase, nameSpecified: 
 body: 
@@ -356,11 +356,11 @@ version: 2.0.0
 
 name: Protobuf, nameSpecified: 
 body: Copyright 2008 Googl…
-version: 3.19.1
+version: 3.19.4
 
 name: Protobuf, nameSpecified: 
 body: Copyright 2008 Googl…
-version: 3.19.1
+version: 3.19.4
 
 name: SVProgressHUD, nameSpecified: 
 body: MIT License
@@ -376,11 +376,11 @@ version: 2.2.5
 
 name: SwiftLint, nameSpecified: 
 body: The MIT License (MIT…
-version: 0.46.1
+version: 0.46.2
 
 name: SwiftLint, nameSpecified: 
 body: The MIT License (MIT…
-version: 0.46.1
+version: 0.46.2
 
 add-version-numbers: false
 

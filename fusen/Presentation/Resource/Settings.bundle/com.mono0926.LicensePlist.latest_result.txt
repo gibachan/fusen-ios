@@ -288,13 +288,13 @@ name: LicensePlist, nameSpecified:
 body: MIT License
 
 Copyrig…
-version: 3.16.0
+version: 3.17.0
 
 name: LicensePlist, nameSpecified: 
 body: MIT License
 
 Copyrig…
-version: 3.16.0
+version: 3.17.0
 
 name: MLImage, nameSpecified: 
 body: Copyright 2021 Googl…
@@ -384,4 +384,4 @@ version: 0.46.2
 
 add-version-numbers: false
 
-LicensePlist Version: 3.16.0
+LicensePlist Version: 3.17.0

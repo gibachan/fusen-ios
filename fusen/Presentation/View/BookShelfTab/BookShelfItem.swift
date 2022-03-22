@@ -11,7 +11,7 @@ struct BookShelfItem: View {
     let book: Book
     
     var body: some View {
-        HStack(alignment: .top, spacing: 4) {
+        HStack(alignment: .top, spacing: 8) {
             BookImageView(url: book.imageURL)
                 .frame(width: 48)
             VStack(alignment: .leading) {

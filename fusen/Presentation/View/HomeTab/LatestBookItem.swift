@@ -10,7 +10,7 @@ import SwiftUI
 struct LatestBookItem: View {
     let book: Book
     var body: some View {
-        HStack {
+        HStack(spacing: 8) {
             BookImageView(url: book.imageURL)
                 .frame(width: 48, height: 64)
             VStack(alignment: .leading, spacing: 0) {

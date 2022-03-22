@@ -37,30 +37,30 @@ version: 2.6.1
 name: Firebase, nameSpecified: 
 body: 
                    …
-version: 8.12.1
+version: 8.13.0
 
 name: Firebase, nameSpecified: 
 body: 
                    …
-version: 8.12.1
+version: 8.13.0
 
 name: FirebaseABTesting, nameSpecified: 
 body: 
                    …
-version: 8.12.0
+version: 8.13.0
 
 name: FirebaseABTesting, nameSpecified: 
 body: 
                    …
-version: 8.12.0
+version: 8.13.0
 
 name: FirebaseAnalytics, nameSpecified: 
 body: Copyright 2021 Googl…
-version: 8.12.0
+version: 8.13.0
 
 name: FirebaseAnalytics, nameSpecified: 
 body: Copyright 2021 Googl…
-version: 8.12.0
+version: 8.13.0
 
 name: FirebaseAppCheck, nameSpecified: 
 body: 
@@ -75,100 +75,100 @@ version:
 name: FirebaseAuth, nameSpecified: 
 body: 
                    …
-version: 8.12.0
+version: 8.13.0
 
 name: FirebaseAuth, nameSpecified: 
 body: 
                    …
-version: 8.12.0
+version: 8.13.0
 
 name: FirebaseCore, nameSpecified: 
 body: 
                    …
-version: 8.12.1
+version: 8.13.0
 
 name: FirebaseCore, nameSpecified: 
 body: 
                    …
-version: 8.12.1
+version: 8.13.0
 
 name: FirebaseCoreDiagnostics, nameSpecified: 
 body: 
                    …
-version: 8.12.0
+version: 8.13.0
 
 name: FirebaseCoreDiagnostics, nameSpecified: 
 body: 
                    …
-version: 8.12.0
+version: 8.13.0
 
 name: FirebaseCrashlytics, nameSpecified: 
 body: 
                    …
-version: 8.12.0
+version: 8.13.0
 
 name: FirebaseCrashlytics, nameSpecified: 
 body: 
                    …
-version: 8.12.0
+version: 8.13.0
 
 name: FirebaseFirestore, nameSpecified: 
 body: 
                    …
-version: 8.12.1
+version: 8.13.0
 
 name: FirebaseFirestore, nameSpecified: 
 body: 
                    …
-version: 8.12.1
+version: 8.13.0
 
 name: FirebaseFunctions, nameSpecified: 
 body: 
                    …
-version: 8.12.0
+version: 8.13.0
 
 name: FirebaseFunctions, nameSpecified: 
 body: 
                    …
-version: 8.12.0
+version: 8.13.0
 
 name: FirebaseInstallations, nameSpecified: 
 body: 
                    …
-version: 8.12.0
+version: 8.13.0
 
 name: FirebaseInstallations, nameSpecified: 
 body: 
                    …
-version: 8.12.0
+version: 8.13.0
 
 name: FirebaseRemoteConfig, nameSpecified: 
 body: 
                    …
-version: 8.12.0
+version: 8.13.0
 
 name: FirebaseRemoteConfig, nameSpecified: 
 body: 
                    …
-version: 8.12.0
+version: 8.13.0
 
 name: FirebaseStorage, nameSpecified: 
 body: 
                    …
-version: 8.12.0
+version: 8.13.0
 
 name: FirebaseStorage, nameSpecified: 
 body: 
                    …
-version: 8.12.0
+version: 8.13.0
 
 name: GoogleAppMeasurement, nameSpecified: 
 body: Copyright 2021 Googl…
-version: 8.12.0
+version: 8.13.0
 
 name: GoogleAppMeasurement, nameSpecified: 
 body: Copyright 2021 Googl…
-version: 8.12.0
+version: 8.13.0
 
 name: GoogleDataTransport, nameSpecified: 
 body: 

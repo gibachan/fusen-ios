@@ -18,7 +18,7 @@ final class AppConfigRepositoryImpl: AppConfigRepository {
         #if DEBUG
         settings.minimumFetchInterval = 0
         #else
-        settings.minimumFetchInterval = 1 * 60 * 60 // 1 houer
+        settings.minimumFetchInterval = 1 * 60 * 60 // 1 hour
         #endif
         config.configSettings = settings
         config.setDefaults([

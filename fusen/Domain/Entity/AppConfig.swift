@@ -17,3 +17,9 @@ extension AppConfig {
         AppConfig(isMaintaining: false, isVisionAPIUse: false)
     }
 }
+
+extension AppConfig: CustomStringConvertible {
+    var description: String {
+        "AppConfig: isMaintaining=\(isMaintaining), isVisionAPIUse=\(isVisionAPIUse)"
+    }
+}

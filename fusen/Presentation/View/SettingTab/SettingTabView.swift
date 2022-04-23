@@ -122,15 +122,6 @@ struct SettingTabView: View {
                 
                 Section {
                     Button {
-                        viewModel.onLogOut()
-                    } label: {
-                        Text("ログアウト")
-                            .centerHorizontally()
-                    }
-                }
-                
-                Section {
-                    Button {
                         isDeleteAccountPresented = true
                     } label: {
                         Text("アカウントを削除")
@@ -140,6 +131,15 @@ struct SettingTabView: View {
                 }
 
 #if DEBUG
+                Section {
+                    Button {
+                        viewModel.onLogOut()
+                    } label: {
+                        Text("ログアウト")
+                            .centerHorizontally()
+                    }
+                }
+                
                 Section {
                     HStack {
                         Text("環境 :")

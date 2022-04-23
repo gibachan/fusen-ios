@@ -68,6 +68,10 @@ final class MockAccountService: AccountServiceProtocol {
         fatalError("Not implemented yet")
     }
     
+    func reAuthenticateWithGoogle(credential: AuthCredential) async throws {
+        fatalError("Not implemented yet")
+    }
+    
     func delete() async throws {
         fatalError("Not implemented yet")
     }

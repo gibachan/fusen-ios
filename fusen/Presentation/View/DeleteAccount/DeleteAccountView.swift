@@ -14,25 +14,38 @@ struct DeleteAccountView: View {
     @State private var isDeleteAlertPresented = false
     
     var body: some View {
-        List {
+        ScrollView {
             VStack(alignment: .center, spacing: 16) {
                 Text("アカウントを削除すると、書籍やメモなど関連する全てのデータが失われます。失われたデータは復元することはできません。")
 
-                Text("アカウントを削除しますか？")
-                    .padding(.top, 16)
-                
+                Divider()
+
                 if viewModel.isLinkedWithAppleId {
-                    Divider()
-                    
-                    Text("他のアカウントと連携している場合は、アカウント削除のために再認証が必要となります。")
-                    
+                    Text("Appleアカウントと連携している場合は、アカウント削除のために再認証が必要となります。")
+
+                    Text("アカウントを削除しますか？")
+                        .padding(.top, 16)
+
                     SignInWithAppleButton(
                         .signIn,
                         onRequest: viewModel.onSignInWithAppleRequest,
                         onCompletion: viewModel.onSignInWithAppleCompletion
                     ).signInWithAppleButtonStyle(.black)
                         .frame(width: 200, height: 32)
+                } else if viewModel.isLinkedWithGoogle {
+                    Text("Googleアカウントと連携している場合は、アカウント削除のために再認証が必要となります。")
+
+                    Text("アカウントを削除しますか？")
+                        .padding(.top, 16)
+
+                    GoogleSignInButton { result in
+                        viewModel.onSignInWithGoogle(result)
+                    }
+                    .frame(height: 36)
                 } else {
+                    Text("アカウントを削除しますか？")
+                        .padding(.top, 16)
+
                     Button {
                         Task {
                             await viewModel.onDeleteAccount()
@@ -45,7 +58,7 @@ struct DeleteAccountView: View {
             }
             .font(.small)
             .foregroundColor(.textPrimary)
-            .padding(.vertical, 16)
+            .padding(16)
             .listSectionSeparator(.hidden)
             .buttonStyle(PlainButtonStyle())
         }
@@ -58,7 +71,7 @@ struct DeleteAccountView: View {
         .onReceive(viewModel.$state) { state in
             switch state {
             case .initial:
-                break
+                LoadingHUD.dismiss()
             case .loading:
                 LoadingHUD.show()
             case .deleted:

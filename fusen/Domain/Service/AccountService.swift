@@ -41,6 +41,7 @@ protocol AccountServiceProtocol {
     func logInWithGoogle(credential: AuthCredential) async throws -> User
     func linkWithGoogle(credential: AuthCredential) async throws -> User
     func unlinkWithGoogle() async throws
+    func reAuthenticateWithGoogle(credential: AuthCredential) async throws
     func delete() async throws
     func logOut() throws
 }
@@ -255,6 +256,22 @@ final class AccountService: AccountServiceProtocol {
         } catch {
             log.e(error.localizedDescription)
             throw AccountServiceError.unlinkWithGoogle
+        }
+    }
+    
+    func reAuthenticateWithGoogle(credential: AuthCredential) async throws {
+        guard auth.currentUser != nil else {
+            log.e("currentUser is missing")
+            throw AccountServiceError.notAuthenticated
+        }
+        
+        do {
+            let result = try await auth.signIn(with: credential)
+            let authUser = result.user
+            log.d("reAuthenticateWithGoogle: uid=\(authUser.uid)")
+        } catch {
+            log.e(error.localizedDescription)
+            throw AccountServiceError.reAuthenticate
         }
     }
     

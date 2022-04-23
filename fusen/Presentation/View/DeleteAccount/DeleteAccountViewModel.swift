@@ -6,11 +6,13 @@
 //
 
 import AuthenticationServices
+import Firebase
 import Foundation
 
 final class DeleteAccountViewModel: ObservableObject {
     @Published var state: State = .initial
     @Published var isLinkedWithAppleId = false
+    @Published var isLinkedWithGoogle = false
     
     private let accountService: AccountServiceProtocol
     
@@ -25,6 +27,7 @@ final class DeleteAccountViewModel: ObservableObject {
         }
         
         isLinkedWithAppleId = user.isLinkedWithAppleId
+        isLinkedWithGoogle = user.isLinkedWithGoogle
     }
     
     func onSignInWithAppleRequest(_ resutst: ASAuthorizationAppleIDRequest) {
@@ -53,8 +56,37 @@ final class DeleteAccountViewModel: ObservableObject {
                 }
             }
         case .failure(let error):
-            // Do nothing
+            // Do nothing since it would be canceled
             log.e(error.localizedDescription)
+            self.state = .initial
+        }
+    }
+    
+    func onSignInWithGoogle(_ result: Result<AuthCredential, GoogleSignInError>) {
+        self.state = .loading
+        switch result {
+        case .success(let credential):
+            Task {
+                do {
+                    try await accountService.reAuthenticateWithGoogle(credential: credential)
+                    try await accountService.delete()
+                    log.d("Successfully deleted account")
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self = self else { return }
+                        self.state = .deleted
+                    }
+                } catch {
+                    log.e("Unknown error: \(error.localizedDescription)")
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self = self else { return }
+                        self.state = .failed
+                    }
+                }
+            }
+        case .failure(let error):
+            // Do nothing since it would be canceled
+            log.e(error.localizedDescription)
+            self.state = .initial
         }
     }
     

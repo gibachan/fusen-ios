@@ -119,6 +119,26 @@ struct SettingTabView: View {
                             .foregroundColor(.textSecondary)
                     }
                 }
+                
+                Section {
+                    Button {
+                        viewModel.onLogOut()
+                    } label: {
+                        Text("ログアウト")
+                            .centerHorizontally()
+                    }
+                }
+                
+                Section {
+                    Button {
+                        isDeleteAccountPresented = true
+                    } label: {
+                        Text("アカウントを削除")
+                            .foregroundColor(.alert)
+                            .centerHorizontally()
+                    }
+                }
+
 #if DEBUG
                 Section {
                     HStack {
@@ -145,17 +165,6 @@ struct SettingTabView: View {
                         }
                     } label: {
                         Text("ユーザー行動履歴をリセット")
-                    }
-                    Button {
-                        viewModel.onLogOut()
-                    } label: {
-                        Text("ログアウト")
-                    }
-                    Button {
-                        isDeleteAccountPresented = true
-                    } label: {
-                        Text("アカウントを削除")
-                            .foregroundColor(.alert)
                     }
                 } header: {
                     SectionHeaderText("デバッグ")

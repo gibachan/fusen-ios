@@ -26,7 +26,6 @@ struct BookShelfItem: View {
                     .lineLimit(1)
                     .foregroundColor(.textSecondary)
             }
-            Spacer()
         }
         .buttonStyle(PlainButtonStyle())
         .frame(height: 72)

@@ -18,7 +18,7 @@ target 'fusen' do
   pod 'SVProgressHUD'
   pod 'SwiftLint'
   pod 'GoogleSignIn'
-  pod 'GoogleMLKit/TextRecognitionJapanese', '2.3.0'
+  pod 'GoogleMLKit/TextRecognitionJapanese'
   pod 'CropViewController'
   pod 'Kingfisher'
   pod 'LicensePlist'

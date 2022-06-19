@@ -76,9 +76,25 @@
 		</dict>
 		<dict>
 			<key>File</key>
+			<string>com.mono0926.LicensePlist/FirebaseAppCheckInterop</string>
+			<key>Title</key>
+			<string>FirebaseAppCheckInterop</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+		</dict>
+		<dict>
+			<key>File</key>
 			<string>com.mono0926.LicensePlist/FirebaseAuth</string>
 			<key>Title</key>
 			<string>FirebaseAuth</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+		</dict>
+		<dict>
+			<key>File</key>
+			<string>com.mono0926.LicensePlist/FirebaseAuthInterop</string>
+			<key>Title</key>
+			<string>FirebaseAuthInterop</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -95,6 +111,22 @@
 			<string>com.mono0926.LicensePlist/FirebaseCoreDiagnostics</string>
 			<key>Title</key>
 			<string>FirebaseCoreDiagnostics</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+		</dict>
+		<dict>
+			<key>File</key>
+			<string>com.mono0926.LicensePlist/FirebaseCoreExtension</string>
+			<key>Title</key>
+			<string>FirebaseCoreExtension</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+		</dict>
+		<dict>
+			<key>File</key>
+			<string>com.mono0926.LicensePlist/FirebaseCoreInternal</string>
+			<key>Title</key>
+			<string>FirebaseCoreInternal</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -132,6 +164,14 @@
 		</dict>
 		<dict>
 			<key>File</key>
+			<string>com.mono0926.LicensePlist/FirebaseMessagingInterop</string>
+			<key>Title</key>
+			<string>FirebaseMessagingInterop</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+		</dict>
+		<dict>
+			<key>File</key>
 			<string>com.mono0926.LicensePlist/FirebaseRemoteConfig</string>
 			<key>Title</key>
 			<string>FirebaseRemoteConfig</string>
@@ -140,9 +180,25 @@
 		</dict>
 		<dict>
 			<key>File</key>
+			<string>com.mono0926.LicensePlist/FirebaseSharedSwift</string>
+			<key>Title</key>
+			<string>FirebaseSharedSwift</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+		</dict>
+		<dict>
+			<key>File</key>
 			<string>com.mono0926.LicensePlist/FirebaseStorage</string>
 			<key>Title</key>
 			<string>FirebaseStorage</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+		</dict>
+		<dict>
+			<key>File</key>
+			<string>com.mono0926.LicensePlist/FirebaseStorageInternal</string>
+			<key>Title</key>
+			<string>FirebaseStorageInternal</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>

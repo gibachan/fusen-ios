@@ -6,6 +6,7 @@
 //
 
 import FirebaseFirestore
+import FirebaseFirestoreSwift
 import Foundation
 
 final class BookRepositoryImpl: BookRepository {
@@ -24,13 +25,10 @@ final class BookRepositoryImpl: BookRepository {
         let ref = db.booksCollection(for: user)
             .document(id.value)
         do {
-            let snapshot = try await ref.getDocument()
-            if let getBook = FirestoreGetBook.from(id: snapshot.documentID, data: snapshot.data()) {
-                return getBook.toDomain()
-            }
-            throw  BookRepositoryError.decodeError
+            let getBook = try await ref.getDocument(as: FirestoreGetBook.self)
+            return getBook.toDomain(id: id.value)
         } catch {
-            log.e(error.localizedDescription)
+            log.e((error as NSError).description)
             throw  BookRepositoryError.network
         }
     }
@@ -39,16 +37,23 @@ final class BookRepositoryImpl: BookRepository {
         let query = db.booksCollection(for: user)
             .orderByCreatedAtDesc()
             .limit(to: count)
+        
+        let snapshot: QuerySnapshot
         do {
-            let snapshot = try await query.getDocuments()
-            let books = snapshot.documents
-                .compactMap { FirestoreGetBook.from(id: $0.documentID, data: $0.data()) }
-                .compactMap { $0.toDomain() }
-            return books
+            snapshot = try await query.getDocuments()
         } catch {
-            log.e(error.localizedDescription)
+            log.e((error as NSError).description)
             throw  BookRepositoryError.network
         }
+
+        return snapshot.documents
+            .compactMap { document in
+                guard let getBook = try? document.data(as: FirestoreGetBook.self) else {
+                    log.e("\(document) could not be decoded.")
+                    return nil
+                }
+                return getBook.toDomain(id: document.documentID)
+            }
     }
     
     func getAllBooks(sortedBy: BookSort, for user: User, forceRefresh: Bool = false) async throws -> Pager<Book> {
@@ -60,35 +65,42 @@ final class BookRepositoryImpl: BookRepository {
         allBooksSortedBy = sortedBy
         clearAllBooksCache()
         
-        let books = db.booksCollection(for: user)
+        let booksCollection = db.booksCollection(for: user)
         var query: Query
         switch allBooksSortedBy {
         case .createdAt:
-            query = books.orderByCreatedAtDesc()
+            query = booksCollection.orderByCreatedAtDesc()
         case .title:
-            query = books.orderByTitleAsc()
+            query = booksCollection.orderByTitleAsc()
         case .author:
-            query = books.orderByAuthorAsc()
+            query = booksCollection.orderByAuthorAsc()
                 .orderByTitleAsc()
         }
         query = query.limit(to: perPage)
         
+        let snapshot: QuerySnapshot
         do {
-            let snapshot = try await query.getDocuments()
-            let books = snapshot.documents
-                .compactMap { FirestoreGetBook.from(id: $0.documentID, data: $0.data()) }
-                .compactMap { $0.toDomain() }
-            let finished = books.count < perPage
-            let cachedPager = allBooksCache.currentPager
-            let newPager = Pager<Book>(currentPage: cachedPager.currentPage + 1,
-                                       finished: finished,
-                                       data: cachedPager.data + books)
-            allBooksCache = PagerCache(pager: newPager, lastDocument: snapshot.documents.last)
-            return newPager
+            snapshot = try await query.getDocuments()
         } catch {
-            log.e(error.localizedDescription)
+            log.e((error as NSError).description)
             throw  BookRepositoryError.network
         }
+
+        let books = snapshot.documents
+            .compactMap { document -> Book? in
+                guard let getBook = try? document.data(as: FirestoreGetBook.self) else {
+                    log.e("\(document) could not be decoded.")
+                    return nil
+                }
+                return getBook.toDomain(id: document.documentID)
+            }
+        let finished = books.count < perPage
+        let cachedPager = allBooksCache.currentPager
+        let newPager = Pager<Book>(currentPage: cachedPager.currentPage + 1,
+                                   finished: finished,
+                                   data: cachedPager.data + books)
+        allBooksCache = PagerCache(pager: newPager, lastDocument: snapshot.documents.last)
+        return newPager
     }
     
     func getAllBooksNext(for user: User) async throws -> Pager<Book> {
@@ -100,35 +112,42 @@ final class BookRepositoryImpl: BookRepository {
             return allBooksCache.currentPager
         }
         
-        let books = db.booksCollection(for: user)
+        let booksCollection = db.booksCollection(for: user)
         var query: Query
         switch allBooksSortedBy {
         case .createdAt:
-            query = books.orderByCreatedAtDesc()
+            query = booksCollection.orderByCreatedAtDesc()
         case .title:
-            query = books.orderByTitleAsc()
+            query = booksCollection.orderByTitleAsc()
         case .author:
-            query = books.orderByAuthorAsc()
+            query = booksCollection.orderByAuthorAsc()
         }
         query = query.start(afterDocument: afterDocument)
             .limit(to: perPage)
         
+        let snapshot: QuerySnapshot
         do {
-            let snapshot = try await query.getDocuments()
-            let books = snapshot.documents
-                .compactMap { FirestoreGetBook.from(id: $0.documentID, data: $0.data()) }
-                .compactMap { $0.toDomain() }
-            let finished = books.count < perPage
-            let cachedPager = allBooksCache.currentPager
-            let newPager = Pager<Book>(currentPage: cachedPager.currentPage + 1,
-                                       finished: finished,
-                                       data: cachedPager.data + books)
-            allBooksCache = PagerCache(pager: newPager, lastDocument: snapshot.documents.last)
-            return newPager
+            snapshot = try await query.getDocuments()
         } catch {
-            log.e(error.localizedDescription)
+            log.e((error as NSError).description)
             throw  BookRepositoryError.network
         }
+
+        let books = snapshot.documents
+            .compactMap { document -> Book? in
+                guard let getBook = try? document.data(as: FirestoreGetBook.self) else {
+                    log.e("\(document) could not be decoded.")
+                    return nil
+                }
+                return getBook.toDomain(id: document.documentID)
+            }
+        let finished = books.count < perPage
+        let cachedPager = allBooksCache.currentPager
+        let newPager = Pager<Book>(currentPage: cachedPager.currentPage + 1,
+                                   finished: finished,
+                                   data: cachedPager.data + books)
+        allBooksCache = PagerCache(pager: newPager, lastDocument: snapshot.documents.last)
+        return newPager
     }
     
     func getFavoriteBooks(for user: User, forceRefresh: Bool) async throws -> Pager<Book> {
@@ -142,22 +161,30 @@ final class BookRepositoryImpl: BookRepository {
             .whereIsFavorite(true)
             .orderByCreatedAtDesc()
             .limit(to: perPage)
+        
+        let snapshot: QuerySnapshot
         do {
-            let snapshot = try await query.getDocuments()
-            let books = snapshot.documents
-                .compactMap { FirestoreGetBook.from(id: $0.documentID, data: $0.data()) }
-                .compactMap { $0.toDomain() }
-            let finished = books.count < perPage
-            let cachedPager = favoriteBooksCache.currentPager
-            let newPager = Pager<Book>(currentPage: cachedPager.currentPage + 1,
-                                       finished: finished,
-                                       data: cachedPager.data + books)
-            favoriteBooksCache = PagerCache(pager: newPager, lastDocument: snapshot.documents.last)
-            return newPager
+            snapshot = try await query.getDocuments()
         } catch {
-            log.e(error.localizedDescription)
+            log.e((error as NSError).description)
             throw  BookRepositoryError.network
         }
+
+        let books = snapshot.documents
+            .compactMap { document -> Book? in
+                guard let getBook = try? document.data(as: FirestoreGetBook.self) else {
+                    log.e("\(document) could not be decoded.")
+                    return nil
+                }
+                return getBook.toDomain(id: document.documentID)
+            }
+        let finished = books.count < perPage
+        let cachedPager = favoriteBooksCache.currentPager
+        let newPager = Pager<Book>(currentPage: cachedPager.currentPage + 1,
+                                   finished: finished,
+                                   data: cachedPager.data + books)
+        favoriteBooksCache = PagerCache(pager: newPager, lastDocument: snapshot.documents.last)
+        return newPager
     }
     
     func getFavoriteBooksNext(for user: User) async throws -> Pager<Book> {
@@ -175,22 +202,29 @@ final class BookRepositoryImpl: BookRepository {
             .start(afterDocument: afterDocument)
             .limit(to: perPage)
         
+        let snapshot: QuerySnapshot
         do {
-            let snapshot = try await query.getDocuments()
-            let books = snapshot.documents
-                .compactMap { FirestoreGetBook.from(id: $0.documentID, data: $0.data()) }
-                .compactMap { $0.toDomain() }
-            let finished = books.count < perPage
-            let cachedPager = favoriteBooksCache.currentPager
-            let newPager = Pager<Book>(currentPage: cachedPager.currentPage + 1,
-                                       finished: finished,
-                                       data: cachedPager.data + books)
-            favoriteBooksCache = PagerCache(pager: newPager, lastDocument: snapshot.documents.last)
-            return newPager
+            snapshot = try await query.getDocuments()
         } catch {
-            log.e(error.localizedDescription)
+            log.e((error as NSError).description)
             throw  BookRepositoryError.network
         }
+
+        let books = snapshot.documents
+            .compactMap { document -> Book? in
+                guard let getBook = try? document.data(as: FirestoreGetBook.self) else {
+                    log.e("\(document) could not be decoded.")
+                    return nil
+                }
+                return getBook.toDomain(id: document.documentID)
+            }
+        let finished = books.count < perPage
+        let cachedPager = favoriteBooksCache.currentPager
+        let newPager = Pager<Book>(currentPage: cachedPager.currentPage + 1,
+                                   finished: finished,
+                                   data: cachedPager.data + books)
+        favoriteBooksCache = PagerCache(pager: newPager, lastDocument: snapshot.documents.last)
+        return newPager
     }
     
     func getBooks(by collection: Collection, sortedBy: BookSort, for user: User, forceRefresh: Bool) async throws -> Pager<Book> {
@@ -204,8 +238,8 @@ final class BookRepositoryImpl: BookRepository {
         collectionSortedBy[collection.id] = sortedBy
         clearCollectionCache(of: collection)
         
-        let books = db.booksCollection(for: user)
-        var query = books.whereCollection(collection)
+        let booksCollection = db.booksCollection(for: user)
+        var query = booksCollection.whereCollection(collection)
         switch sortedBy {
         case .createdAt:
             query = query.orderByCreatedAtDesc()
@@ -217,22 +251,29 @@ final class BookRepositoryImpl: BookRepository {
         }
         query = query.limit(to: perPage)
         
+        let snapshot: QuerySnapshot
         do {
-            let snapshot = try await query.getDocuments()
-            let books = snapshot.documents
-                .compactMap { FirestoreGetBook.from(id: $0.documentID, data: $0.data()) }
-                .compactMap { $0.toDomain() }
-            let finished = books.count < perPage
-            let cachedPager = allBooksCache.currentPager
-            let newPager = Pager<Book>(currentPage: cachedPager.currentPage + 1,
-                                       finished: finished,
-                                       data: cachedPager.data + books)
-            collectionCache[collection.id] = PagerCache(pager: newPager, lastDocument: snapshot.documents.last)
-            return newPager
+            snapshot = try await query.getDocuments()
         } catch {
-            log.e(error.localizedDescription)
+            log.e((error as NSError).description)
             throw  BookRepositoryError.network
         }
+
+        let books = snapshot.documents
+            .compactMap { document -> Book? in
+                guard let getBook = try? document.data(as: FirestoreGetBook.self) else {
+                    log.e("\(document) could not be decoded.")
+                    return nil
+                }
+                return getBook.toDomain(id: document.documentID)
+            }
+        let finished = books.count < perPage
+        let cachedPager = allBooksCache.currentPager
+        let newPager = Pager<Book>(currentPage: cachedPager.currentPage + 1,
+                                   finished: finished,
+                                   data: cachedPager.data + books)
+        collectionCache[collection.id] = PagerCache(pager: newPager, lastDocument: snapshot.documents.last)
+        return newPager
     }
     
     func getBooksNext(by collection: Collection, for user: User) async throws -> Pager<Book> {
@@ -250,8 +291,8 @@ final class BookRepositoryImpl: BookRepository {
             fatalError("sortedBy must be stored for \(collection.id)")
         }
         
-        let books = db.booksCollection(for: user)
-        var query = books.whereCollection(collection)
+        let booksCollection = db.booksCollection(for: user)
+        var query = booksCollection.whereCollection(collection)
         switch sortedBy {
         case .createdAt:
             query = query.orderByCreatedAtDesc()
@@ -264,22 +305,29 @@ final class BookRepositoryImpl: BookRepository {
         query = query.start(afterDocument: afterDocument)
             .limit(to: perPage)
         
+        let snapshot: QuerySnapshot
         do {
-            let snapshot = try await query.getDocuments()
-            let books = snapshot.documents
-                .compactMap { FirestoreGetBook.from(id: $0.documentID, data: $0.data()) }
-                .compactMap { $0.toDomain() }
-            let finished = books.count < perPage
-            let cachedPager = cache.currentPager
-            let newPager = Pager<Book>(currentPage: cachedPager.currentPage + 1,
-                                       finished: finished,
-                                       data: cachedPager.data + books)
-            collectionCache[collection.id] = PagerCache(pager: newPager, lastDocument: snapshot.documents.last)
-            return newPager
+            snapshot = try await query.getDocuments()
         } catch {
-            log.e(error.localizedDescription)
+            log.e((error as NSError).description)
             throw  BookRepositoryError.network
         }
+
+        let books = snapshot.documents
+            .compactMap { document -> Book? in
+                guard let getBook = try? document.data(as: FirestoreGetBook.self) else {
+                    log.e("\(document) could not be decoded.")
+                    return nil
+                }
+                return getBook.toDomain(id: document.documentID)
+            }
+        let finished = books.count < perPage
+        let cachedPager = cache.currentPager
+        let newPager = Pager<Book>(currentPage: cachedPager.currentPage + 1,
+                                   finished: finished,
+                                   data: cachedPager.data + books)
+        collectionCache[collection.id] = PagerCache(pager: newPager, lastDocument: snapshot.documents.last)
+        return newPager
     }
     
     func addBook(of publication: Publication, in collection: Collection?, image: ImageData?, for user: User) async throws -> ID<Book> {
@@ -423,7 +471,7 @@ final class BookRepositoryImpl: BookRepository {
             db.runTransaction { transaction, _ -> Any? in
                 if let userSnapshot = try? transaction.getDocument(userRef),
                    userSnapshot.data() != nil,
-                   let userInfo = FirestoreGetUserInfo.from(data: userSnapshot.data()),
+                   let userInfo = try? userSnapshot.data(as: FirestoreGetUserInfo.self),
                    userInfo.readingBookId == book.id.value {
                     let newUserInfo = FirestoreUpdateUser(readingBookId: "")
                     transaction.setData(newUserInfo.data(), forDocument: userRef, merge: true)

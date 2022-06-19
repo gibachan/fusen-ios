@@ -702,6 +702,8 @@ PODS:
     - "gRPC-C++ (~> 1.44.0)"
     - leveldb-library (~> 1.22)
     - nanopb (< 2.30910.0, >= 2.30908.0)
+  - FirebaseFirestoreSwift (9.1.0):
+    - FirebaseFirestore (~> 9.0)
   - FirebaseFunctions (9.1.0):
     - FirebaseAppCheckInterop (~> 9.0)
     - FirebaseAuthInterop (~> 9.0)
@@ -906,6 +908,7 @@ DEPENDENCIES:
   - Firebase/Functions
   - Firebase/RemoteConfig
   - Firebase/Storage
+  - FirebaseFirestoreSwift
   - GoogleMLKit/TextRecognitionJapanese
   - GoogleSignIn
   - Kingfisher
@@ -932,6 +935,7 @@ SPEC REPOS:
     - FirebaseCoreInternal
     - FirebaseCrashlytics
     - FirebaseFirestore
+    - FirebaseFirestoreSwift
     - FirebaseFunctions
     - FirebaseInstallations
     - FirebaseMessagingInterop
@@ -983,6 +987,7 @@ SPEC CHECKSUMS:
   FirebaseCoreInternal: f3c838ae0b41cd840bbf34f90debfede78d352e5
   FirebaseCrashlytics: 8e21736dcf15d814b79229eb7e79ba3a5eec5f30
   FirebaseFirestore: 20b1df7d65058b038745ecebb60f741a10e40a6f
+  FirebaseFirestoreSwift: 5d57539cec470bf3c9a752db009ff7e9d1a77d09
   FirebaseFunctions: 709f13ce67c1df045831b85d38fbe18357003e04
   FirebaseInstallations: a91c74276b544524ce144c8315d8cdbce2dbe30b
   FirebaseMessagingInterop: ddd5154a72c1551f1ce38c81f64ac1ba491316d6
@@ -1016,6 +1021,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftLint: f80f1be7fa96d30e0aa68e58d45d4ea1ccaac519
 
-PODFILE CHECKSUM: 96278dbf5b03b5f60ecdfcada00b9022e2c4b713
+PODFILE CHECKSUM: 5c66b42da90abc92683e2c5f46e965600f39f8e7
 
 COCOAPODS: 1.11.2

@@ -162,6 +162,16 @@ body:
                    …
 version: 9.1.0
 
+name: FirebaseFirestoreSwift, nameSpecified: 
+body: 
+                   …
+version: 9.1.0
+
+name: FirebaseFirestoreSwift, nameSpecified: 
+body: 
+                   …
+version: 9.1.0
+
 name: FirebaseFunctions, nameSpecified: 
 body: 
                    …

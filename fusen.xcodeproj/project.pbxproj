@@ -15,6 +15,8 @@
 		7A003E78286735D4002B8BAC /* fusenWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 7A003E74286735D3002B8BAC /* fusenWidget.intentdefinition */; };
 		7A003E79286735D4002B8BAC /* fusenWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 7A003E74286735D3002B8BAC /* fusenWidget.intentdefinition */; };
 		7A003E7C286735D4002B8BAC /* fusenWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7A003E6C286735D3002B8BAC /* fusenWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7A003E8428673BC7002B8BAC /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A003E8228673B8F002B8BAC /* Provider.swift */; };
+		7A003E8728673C01002B8BAC /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A003E8528673BE8002B8BAC /* Entry.swift */; };
 		7A11FCA326CB45DF00F1A6BC /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11FCA226CB45DF00F1A6BC /* NotificationExtension.swift */; };
 		7A11FCA526CB467C00F1A6BC /* NotificationCenterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11FCA426CB467C00F1A6BC /* NotificationCenterExtension.swift */; };
 		7A11FCA826CB47E200F1A6BC /* SettingTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11FCA726CB47E200F1A6BC /* SettingTabViewModel.swift */; };
@@ -295,6 +297,8 @@
 		7A003E74286735D3002B8BAC /* fusenWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = fusenWidget.intentdefinition; sourceTree = "<group>"; };
 		7A003E75286735D4002B8BAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A003E77286735D4002B8BAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A003E8228673B8F002B8BAC /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
+		7A003E8528673BE8002B8BAC /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		7A11FCA226CB45DF00F1A6BC /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
 		7A11FCA426CB467C00F1A6BC /* NotificationCenterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterExtension.swift; sourceTree = "<group>"; };
 		7A11FCA726CB47E200F1A6BC /* SettingTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTabViewModel.swift; sourceTree = "<group>"; };
@@ -585,6 +589,8 @@
 			isa = PBXGroup;
 			children = (
 				7A003E72286735D3002B8BAC /* FusenWidget.swift */,
+				7A003E8228673B8F002B8BAC /* Provider.swift */,
+				7A003E8528673BE8002B8BAC /* Entry.swift */,
 				7A003E74286735D3002B8BAC /* fusenWidget.intentdefinition */,
 				7A003E75286735D4002B8BAC /* Assets.xcassets */,
 				7A003E77286735D4002B8BAC /* Info.plist */,
@@ -1710,7 +1716,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A003E8728673C01002B8BAC /* Entry.swift in Sources */,
 				7A003E78286735D4002B8BAC /* fusenWidget.intentdefinition in Sources */,
+				7A003E8428673BC7002B8BAC /* Provider.swift in Sources */,
 				7A003E73286735D3002B8BAC /* FusenWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

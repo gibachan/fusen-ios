@@ -10,7 +10,7 @@
 		6BD46DC1001EA7C1A9342435 /* Pods_fusen_fusenUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DED65B63C22476AE8B5011AE /* Pods_fusen_fusenUITests.framework */; };
 		7A003E6E286735D3002B8BAC /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A003E6D286735D3002B8BAC /* WidgetKit.framework */; };
 		7A003E70286735D3002B8BAC /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A003E6F286735D3002B8BAC /* SwiftUI.framework */; };
-		7A003E73286735D3002B8BAC /* fusenWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A003E72286735D3002B8BAC /* fusenWidget.swift */; };
+		7A003E73286735D3002B8BAC /* FusenWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A003E72286735D3002B8BAC /* FusenWidget.swift */; };
 		7A003E76286735D4002B8BAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A003E75286735D4002B8BAC /* Assets.xcassets */; };
 		7A003E78286735D4002B8BAC /* fusenWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 7A003E74286735D3002B8BAC /* fusenWidget.intentdefinition */; };
 		7A003E79286735D4002B8BAC /* fusenWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 7A003E74286735D3002B8BAC /* fusenWidget.intentdefinition */; };
@@ -291,7 +291,7 @@
 		7A003E6C286735D3002B8BAC /* fusenWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = fusenWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A003E6D286735D3002B8BAC /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		7A003E6F286735D3002B8BAC /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		7A003E72286735D3002B8BAC /* fusenWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fusenWidget.swift; sourceTree = "<group>"; };
+		7A003E72286735D3002B8BAC /* FusenWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FusenWidget.swift; sourceTree = "<group>"; };
 		7A003E74286735D3002B8BAC /* fusenWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = fusenWidget.intentdefinition; sourceTree = "<group>"; };
 		7A003E75286735D4002B8BAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A003E77286735D4002B8BAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -584,7 +584,7 @@
 		7A003E71286735D3002B8BAC /* fusenWidget */ = {
 			isa = PBXGroup;
 			children = (
-				7A003E72286735D3002B8BAC /* fusenWidget.swift */,
+				7A003E72286735D3002B8BAC /* FusenWidget.swift */,
 				7A003E74286735D3002B8BAC /* fusenWidget.intentdefinition */,
 				7A003E75286735D4002B8BAC /* Assets.xcassets */,
 				7A003E77286735D4002B8BAC /* Info.plist */,
@@ -1711,7 +1711,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A003E78286735D4002B8BAC /* fusenWidget.intentdefinition in Sources */,
-				7A003E73286735D3002B8BAC /* fusenWidget.swift in Sources */,
+				7A003E73286735D3002B8BAC /* FusenWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1994,7 +1994,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = app.fusen.fusenWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = app.fusen.dev.fusenWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -2022,7 +2022,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = app.fusen.fusenWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = app.fusen.stg.fusenWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -13,7 +13,10 @@ struct FusenWidgetEntryView: View {
     var entry: Provider.Entry
 
     var body: some View {
-        Text(entry.date, style: .time)
+        VStack {
+            Text(entry.date, style: .time)
+            Text(entry.book?.title ?? "Not found")
+        }
     }
 }
 
@@ -36,6 +39,7 @@ struct FusenWidget: Widget {
 struct FusenWidget_Previews: PreviewProvider {
     static var previews: some View {
         FusenWidgetEntryView(entry: SimpleEntry(date: Date(),
+                                                book: .init(id: .init(value: "1"), title: "A", author: "B", imageURL: nil),
                                                 configuration: ConfigurationIntent()))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }

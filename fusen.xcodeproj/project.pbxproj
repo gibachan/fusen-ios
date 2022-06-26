@@ -17,6 +17,15 @@
 		7A003E7C286735D4002B8BAC /* fusenWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7A003E6C286735D3002B8BAC /* fusenWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7A003E8428673BC7002B8BAC /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A003E8228673B8F002B8BAC /* Provider.swift */; };
 		7A003E8728673C01002B8BAC /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A003E8528673BE8002B8BAC /* Entry.swift */; };
+		7A003E89286748D2002B8BAC /* CachedBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A003E88286748D2002B8BAC /* CachedBook.swift */; };
+		7A003E8C28674DE1002B8BAC /* UserRepositoryImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A003E8B28674DE1002B8BAC /* UserRepositoryImplTests.swift */; };
+		7A003E8F28674E21002B8BAC /* MockUserDefaultsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A003E8E28674E21002B8BAC /* MockUserDefaultsDataSource.swift */; };
+		7A003E9028674FAA002B8BAC /* UserDefaultsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060096E26E6DCC300EA0BC2 /* UserDefaultsDataSource.swift */; };
+		7A003E9128674FB9002B8BAC /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C08C26C7DB0E00270671 /* Book.swift */; };
+		7A003E9228674FBD002B8BAC /* CachedBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A003E88286748D2002B8BAC /* CachedBook.swift */; };
+		7A003E9328674FC0002B8BAC /* ID.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C07F26C78E8500270671 /* ID.swift */; };
+		7A003E9428674FE7002B8BAC /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069982A26CD0492006E74C6 /* Collection.swift */; };
+		7A003E9528674FF4002B8BAC /* RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD0F26CF95FD0012201A /* RGB.swift */; };
 		7A11FCA326CB45DF00F1A6BC /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11FCA226CB45DF00F1A6BC /* NotificationExtension.swift */; };
 		7A11FCA526CB467C00F1A6BC /* NotificationCenterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11FCA426CB467C00F1A6BC /* NotificationCenterExtension.swift */; };
 		7A11FCA826CB47E200F1A6BC /* SettingTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11FCA726CB47E200F1A6BC /* SettingTabViewModel.swift */; };
@@ -299,6 +308,9 @@
 		7A003E77286735D4002B8BAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A003E8228673B8F002B8BAC /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		7A003E8528673BE8002B8BAC /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		7A003E88286748D2002B8BAC /* CachedBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedBook.swift; sourceTree = "<group>"; };
+		7A003E8B28674DE1002B8BAC /* UserRepositoryImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryImplTests.swift; sourceTree = "<group>"; };
+		7A003E8E28674E21002B8BAC /* MockUserDefaultsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserDefaultsDataSource.swift; sourceTree = "<group>"; };
 		7A11FCA226CB45DF00F1A6BC /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
 		7A11FCA426CB467C00F1A6BC /* NotificationCenterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterExtension.swift; sourceTree = "<group>"; };
 		7A11FCA726CB47E200F1A6BC /* SettingTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTabViewModel.swift; sourceTree = "<group>"; };
@@ -600,6 +612,22 @@
 			path = fusenWidget;
 			sourceTree = "<group>";
 		};
+		7A003E8A28674DBD002B8BAC /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				7A003E8B28674DE1002B8BAC /* UserRepositoryImplTests.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		7A003E8D28674E11002B8BAC /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				7A003E8E28674E21002B8BAC /* MockUserDefaultsDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
 		7A11FCA626CB47A600F1A6BC /* SettingTab */ = {
 			isa = PBXGroup;
 			children = (
@@ -874,6 +902,7 @@
 		A0198ADB26E80AD000553CDA /* Mock */ = {
 			isa = PBXGroup;
 			children = (
+				7A003E8D28674E11002B8BAC /* DataSource */,
 				A06BE24526FAFCE400D0666E /* Repository */,
 				A0D4549C26F6B734001668B4 /* UseCase */,
 				A0D4549D26F6B739001668B4 /* Service */,
@@ -885,6 +914,7 @@
 			isa = PBXGroup;
 			children = (
 				A04388C126F1294B006EB863 /* DataSource */,
+				7A003E8A28674DBD002B8BAC /* Repository */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -947,6 +977,7 @@
 			isa = PBXGroup;
 			children = (
 				A007C07F26C78E8500270671 /* ID.swift */,
+				7A003E88286748D2002B8BAC /* CachedBook.swift */,
 				A007C07D26C78E5700270671 /* User.swift */,
 				A07CAD2826D0C6CA0012201A /* UserInfo.swift */,
 				A060096326E6D59C00EA0BC2 /* UserActionHistory.swift */,
@@ -1718,8 +1749,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A003E9428674FE7002B8BAC /* Collection.swift in Sources */,
+				7A003E9328674FC0002B8BAC /* ID.swift in Sources */,
 				7A003E8728673C01002B8BAC /* Entry.swift in Sources */,
 				7A003E78286735D4002B8BAC /* fusenWidget.intentdefinition in Sources */,
+				7A003E9228674FBD002B8BAC /* CachedBook.swift in Sources */,
+				7A003E9528674FF4002B8BAC /* RGB.swift in Sources */,
+				7A003E9128674FB9002B8BAC /* Book.swift in Sources */,
+				7A003E9028674FAA002B8BAC /* UserDefaultsDataSource.swift in Sources */,
 				7A003E8428673BC7002B8BAC /* Provider.swift in Sources */,
 				7A003E73286735D3002B8BAC /* FusenWidget.swift in Sources */,
 			);
@@ -1870,6 +1907,7 @@
 				A07CAD0E26CF7F010012201A /* AddCollectionViewModel.swift in Sources */,
 				A060097326E6E24500EA0BC2 /* ReadingBookDescriptionView.swift in Sources */,
 				A060094E26E4B92A00EA0BC2 /* GetMemosUseCase.swift in Sources */,
+				7A003E89286748D2002B8BAC /* CachedBook.swift in Sources */,
 				A060094826E4A79E00EA0BC2 /* UpdateReadingBookUseCase.swift in Sources */,
 				7A9E34D626E4F00C00F4E985 /* GetAllMemosUseCase.swift in Sources */,
 				A069983626CDD9CB006E74C6 /* CollectionView.swift in Sources */,
@@ -1950,8 +1988,10 @@
 				A06BE24426FAFC2500D0666E /* UpdateMemoUseCaseTests.swift in Sources */,
 				A0198ADD26E80AE100553CDA /* MockAccountService.swift in Sources */,
 				A043A71F26F6020800E1A3FF /* TutorialViewModelTests.swift in Sources */,
+				7A003E8C28674DE1002B8BAC /* UserRepositoryImplTests.swift in Sources */,
 				A049C45626F7FB2E00AD5C3D /* XCTestCaseExtension.swift in Sources */,
 				A04388C326F1295C006EB863 /* UserDefaultsDataSourceTests.swift in Sources */,
+				7A003E8F28674E21002B8BAC /* MockUserDefaultsDataSource.swift in Sources */,
 				A0ACBC2E26FC0D2600C3D5A7 /* HomeTabViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1990,7 +2030,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = fusenWidgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = fusenWidget/fusenWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MYDHT92MBT;
@@ -2019,7 +2059,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = fusenWidgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = fusenWidget/fusenWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MYDHT92MBT;
@@ -2048,7 +2088,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = fusenWidgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = fusenWidget/fusenWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MYDHT92MBT;

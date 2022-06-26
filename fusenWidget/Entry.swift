@@ -9,5 +9,6 @@ import WidgetKit
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
+    let book: CachedBook?
     let configuration: ConfigurationIntent
 }

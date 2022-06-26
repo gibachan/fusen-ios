@@ -8,7 +8,11 @@
 import Foundation
 
 final class UserActionHistoryRepositoryImpl: UserActionHistoryRepository {
-    let dataSource = UserDefaultsDataSource()
+    private let dataSource: UserDefaultsDataSource
+    
+    init(dataSource: UserDefaultsDataSource = UserDefaultsDataSourceImpl()) {
+        self.dataSource = dataSource
+    }
     
     func get() async -> UserActionHistory {
         var readBook: [ID<Book>: Int] = [:]

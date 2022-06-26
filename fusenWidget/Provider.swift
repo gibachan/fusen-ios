@@ -8,14 +8,20 @@
 import WidgetKit
 
 struct Provider: IntentTimelineProvider {
+    private let dataSource: UserDefaultsDataSource = UserDefaultsDataSourceImpl()
+    
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationIntent())
+        SimpleEntry(date: Date(),
+                    book: dataSource.readingBook, // TODO: Placeholder
+                    configuration: ConfigurationIntent())
     }
 
     func getSnapshot(for configuration: ConfigurationIntent,
                      in context: Context,
                      completion: @escaping (SimpleEntry) -> Void) {
-        let entry = SimpleEntry(date: Date(), configuration: configuration)
+        let entry = SimpleEntry(date: Date(),
+                                book: dataSource.readingBook,
+                                configuration: configuration)
         completion(entry)
     }
 
@@ -28,7 +34,9 @@ struct Provider: IntentTimelineProvider {
         let currentDate = Date()
         for hourOffset in 0 ..< 5 {
             let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, configuration: configuration)
+            let entry = SimpleEntry(date: entryDate,
+                                    book: dataSource.readingBook,
+                                    configuration: configuration)
             entries.append(entry)
         }
 

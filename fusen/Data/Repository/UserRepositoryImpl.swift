@@ -11,6 +11,11 @@ import Foundation
 
 final class UserRepositoryImpl: UserRepository {
     private let db = Firestore.firestore()
+    private let dataSource: UserDefaultsDataSource
+    
+    init(dataSource: UserDefaultsDataSource = UserDefaultsDataSourceImpl()) {
+        self.dataSource = dataSource
+    }
     
     func getInfo(for user: User) async throws -> UserInfo {
         let ref = db.userDocument(of: user)
@@ -37,9 +42,21 @@ final class UserRepositoryImpl: UserRepository {
         let ref = db.userDocument(of: user)
         do {
             try await ref.setData(update.data(), merge: true)
+            cacheReadingBook(book: book)
         } catch {
             log.e(error.localizedDescription)
             throw UserRepositoryError.network
+        }
+    }
+    
+    private func cacheReadingBook(book: Book?) {
+        if let book = book {
+            dataSource.readingBook = CachedBook(id: book.id,
+                                                title: book.title,
+                                                author: book.author,
+                                                imageURL: book.imageURL)
+        } else {
+            dataSource.readingBook = nil
         }
     }
 }

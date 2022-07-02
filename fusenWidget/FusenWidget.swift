@@ -16,6 +16,7 @@ struct FusenWidgetEntryView: View {
     
     private var bookPlaceholder: some View {
         Image("App")
+            .resizable()
             .frame(width: 48, height: 48)
             .offset(x: -4, y: -4)
     }

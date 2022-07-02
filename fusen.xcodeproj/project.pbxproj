@@ -47,6 +47,11 @@
 		7A3E5586271B9D2D002CE696 /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3E5585271B9D2D002CE696 /* GoogleSignInButton.swift */; };
 		7A4569F426EA2DE100B7FCC0 /* ReadBookUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4569F326EA2DE100B7FCC0 /* ReadBookUseCase.swift */; };
 		7A4569F726EA33C500B7FCC0 /* PageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4569F626EA33C500B7FCC0 /* PageListView.swift */; };
+		7A4EF058286C7741001D32EF /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1611126C2A40000334A63 /* ColorExtension.swift */; };
+		7A4EF059286C77A7001D32EF /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AD1611326C2A45500334A63 /* Colors.xcassets */; };
+		7A4EF05B286D138F001D32EF /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1611526C2A6CE00334A63 /* FontExtension.swift */; };
+		7A4EF05E28702C69001D32EF /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1610A26C29FE400334A63 /* ImageExtension.swift */; };
+		7A4EF05F28703117001D32EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000B26C1F5D100100357 /* Assets.xcassets */; };
 		7A6303C827828FAF0004737B /* BookGridItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6303C727828FAF0004737B /* BookGridItem.swift */; };
 		7A6303CA2782938D0004737B /* DisplyStyleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6303C92782938D0004737B /* DisplyStyleButton.swift */; };
 		7A6303CC27847F140004737B /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6303CB27847F140004737B /* BundleExtension.swift */; };
@@ -1520,6 +1525,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A003E76286735D4002B8BAC /* Assets.xcassets in Resources */,
+				7A4EF05F28703117001D32EF /* Assets.xcassets in Resources */,
+				7A4EF059286C77A7001D32EF /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1751,13 +1758,16 @@
 			files = (
 				7A003E9428674FE7002B8BAC /* Collection.swift in Sources */,
 				7A003E9328674FC0002B8BAC /* ID.swift in Sources */,
+				7A4EF05E28702C69001D32EF /* ImageExtension.swift in Sources */,
 				7A003E8728673C01002B8BAC /* Entry.swift in Sources */,
 				7A003E78286735D4002B8BAC /* fusenWidget.intentdefinition in Sources */,
 				7A003E9228674FBD002B8BAC /* CachedBook.swift in Sources */,
 				7A003E9528674FF4002B8BAC /* RGB.swift in Sources */,
+				7A4EF05B286D138F001D32EF /* FontExtension.swift in Sources */,
 				7A003E9128674FB9002B8BAC /* Book.swift in Sources */,
 				7A003E9028674FAA002B8BAC /* UserDefaultsDataSource.swift in Sources */,
 				7A003E8428673BC7002B8BAC /* Provider.swift in Sources */,
+				7A4EF058286C7741001D32EF /* ColorExtension.swift in Sources */,
 				7A003E73286735D3002B8BAC /* FusenWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

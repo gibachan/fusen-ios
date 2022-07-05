@@ -8,7 +8,6 @@
 import Foundation
 
 enum BookRepositoryError: Error {
-    case decodeError
     case uploadImage
     case network
 }

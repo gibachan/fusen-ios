@@ -22,4 +22,4 @@ extension ID: CustomStringConvertible {
     var description: String { value }
 }
 
-extension ID: Codable where T: Codable {}
+extension ID: Codable {}

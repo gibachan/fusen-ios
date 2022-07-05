@@ -38,6 +38,7 @@ final class GetReadingBookUseCaseImpl: GetReadingBookUseCase {
         
         do {
             let userInfo = try await userRepository.getInfo(for: user)
+            // TODO: Cache reading book
             if let bookId = userInfo.readingBookId {
                 return try await bookRepository.getBook(by: bookId, for: user)
             } else {

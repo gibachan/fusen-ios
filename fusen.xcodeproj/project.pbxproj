@@ -8,6 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		6BD46DC1001EA7C1A9342435 /* Pods_fusen_fusenUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DED65B63C22476AE8B5011AE /* Pods_fusen_fusenUITests.framework */; };
+		7A003E6E286735D3002B8BAC /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A003E6D286735D3002B8BAC /* WidgetKit.framework */; };
+		7A003E70286735D3002B8BAC /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A003E6F286735D3002B8BAC /* SwiftUI.framework */; };
+		7A003E73286735D3002B8BAC /* FusenWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A003E72286735D3002B8BAC /* FusenWidget.swift */; };
+		7A003E76286735D4002B8BAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A003E75286735D4002B8BAC /* Assets.xcassets */; };
+		7A003E78286735D4002B8BAC /* fusenWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 7A003E74286735D3002B8BAC /* fusenWidget.intentdefinition */; };
+		7A003E79286735D4002B8BAC /* fusenWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 7A003E74286735D3002B8BAC /* fusenWidget.intentdefinition */; };
+		7A003E7C286735D4002B8BAC /* fusenWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7A003E6C286735D3002B8BAC /* fusenWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7A003E8428673BC7002B8BAC /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A003E8228673B8F002B8BAC /* Provider.swift */; };
+		7A003E8728673C01002B8BAC /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A003E8528673BE8002B8BAC /* Entry.swift */; };
+		7A003E89286748D2002B8BAC /* CachedBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A003E88286748D2002B8BAC /* CachedBook.swift */; };
+		7A003E8C28674DE1002B8BAC /* UserRepositoryImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A003E8B28674DE1002B8BAC /* UserRepositoryImplTests.swift */; };
+		7A003E8F28674E21002B8BAC /* MockUserDefaultsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A003E8E28674E21002B8BAC /* MockUserDefaultsDataSource.swift */; };
+		7A003E9028674FAA002B8BAC /* UserDefaultsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060096E26E6DCC300EA0BC2 /* UserDefaultsDataSource.swift */; };
+		7A003E9128674FB9002B8BAC /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C08C26C7DB0E00270671 /* Book.swift */; };
+		7A003E9228674FBD002B8BAC /* CachedBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A003E88286748D2002B8BAC /* CachedBook.swift */; };
+		7A003E9328674FC0002B8BAC /* ID.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C07F26C78E8500270671 /* ID.swift */; };
+		7A003E9428674FE7002B8BAC /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069982A26CD0492006E74C6 /* Collection.swift */; };
+		7A003E9528674FF4002B8BAC /* RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD0F26CF95FD0012201A /* RGB.swift */; };
 		7A11FCA326CB45DF00F1A6BC /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11FCA226CB45DF00F1A6BC /* NotificationExtension.swift */; };
 		7A11FCA526CB467C00F1A6BC /* NotificationCenterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11FCA426CB467C00F1A6BC /* NotificationCenterExtension.swift */; };
 		7A11FCA826CB47E200F1A6BC /* SettingTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11FCA726CB47E200F1A6BC /* SettingTabViewModel.swift */; };
@@ -29,6 +47,11 @@
 		7A3E5586271B9D2D002CE696 /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3E5585271B9D2D002CE696 /* GoogleSignInButton.swift */; };
 		7A4569F426EA2DE100B7FCC0 /* ReadBookUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4569F326EA2DE100B7FCC0 /* ReadBookUseCase.swift */; };
 		7A4569F726EA33C500B7FCC0 /* PageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4569F626EA33C500B7FCC0 /* PageListView.swift */; };
+		7A4EF058286C7741001D32EF /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1611126C2A40000334A63 /* ColorExtension.swift */; };
+		7A4EF059286C77A7001D32EF /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AD1611326C2A45500334A63 /* Colors.xcassets */; };
+		7A4EF05B286D138F001D32EF /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1611526C2A6CE00334A63 /* FontExtension.swift */; };
+		7A4EF05E28702C69001D32EF /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1610A26C29FE400334A63 /* ImageExtension.swift */; };
+		7A4EF05F28703117001D32EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000B26C1F5D100100357 /* Assets.xcassets */; };
 		7A6303C827828FAF0004737B /* BookGridItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6303C727828FAF0004737B /* BookGridItem.swift */; };
 		7A6303CA2782938D0004737B /* DisplyStyleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6303C92782938D0004737B /* DisplyStyleButton.swift */; };
 		7A6303CC27847F140004737B /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6303CB27847F140004737B /* BundleExtension.swift */; };
@@ -237,6 +260,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		7A003E7A286735D4002B8BAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A082FFFC26C1F5CF00100357 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A003E6B286735D3002B8BAC;
+			remoteInfo = fusenWidgetExtension;
+		};
 		A082001526C1F5D100100357 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A082FFFC26C1F5CF00100357 /* Project object */;
@@ -253,6 +283,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		7A003E7D286735D4002B8BAC /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				7A003E7C286735D4002B8BAC /* fusenWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0A120C1BA338A419E1C4AC1E /* Pods_fusen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fusen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C3DED94C319492FE223FE79 /* Pods-fusen-fusenUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen-fusenUITests.release.xcconfig"; path = "Target Support Files/Pods-fusen-fusenUITests/Pods-fusen-fusenUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -260,6 +304,18 @@
 		5B37FD8BE420D6FBA3462CCB /* Pods-fusenTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusenTests.staging.xcconfig"; path = "Target Support Files/Pods-fusenTests/Pods-fusenTests.staging.xcconfig"; sourceTree = "<group>"; };
 		68C9A2BDADA81FF3A49EEF8A /* Pods-fusen-fusenUITests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen-fusenUITests.staging.xcconfig"; path = "Target Support Files/Pods-fusen-fusenUITests/Pods-fusen-fusenUITests.staging.xcconfig"; sourceTree = "<group>"; };
 		6F5CBB77B19B6F9B80D8238A /* Pods-fusen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen.debug.xcconfig"; path = "Target Support Files/Pods-fusen/Pods-fusen.debug.xcconfig"; sourceTree = "<group>"; };
+		7A003E6C286735D3002B8BAC /* fusenWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = fusenWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A003E6D286735D3002B8BAC /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		7A003E6F286735D3002B8BAC /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		7A003E72286735D3002B8BAC /* FusenWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FusenWidget.swift; sourceTree = "<group>"; };
+		7A003E74286735D3002B8BAC /* fusenWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = fusenWidget.intentdefinition; sourceTree = "<group>"; };
+		7A003E75286735D4002B8BAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7A003E77286735D4002B8BAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A003E8228673B8F002B8BAC /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
+		7A003E8528673BE8002B8BAC /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		7A003E88286748D2002B8BAC /* CachedBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedBook.swift; sourceTree = "<group>"; };
+		7A003E8B28674DE1002B8BAC /* UserRepositoryImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryImplTests.swift; sourceTree = "<group>"; };
+		7A003E8E28674E21002B8BAC /* MockUserDefaultsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserDefaultsDataSource.swift; sourceTree = "<group>"; };
 		7A11FCA226CB45DF00F1A6BC /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
 		7A11FCA426CB467C00F1A6BC /* NotificationCenterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterExtension.swift; sourceTree = "<group>"; };
 		7A11FCA726CB47E200F1A6BC /* SettingTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTabViewModel.swift; sourceTree = "<group>"; };
@@ -297,6 +353,7 @@
 		7A9E34D926E4F2BB00F4E985 /* RecognizeTextUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizeTextUseCase.swift; sourceTree = "<group>"; };
 		7A9E34DB26E4F44300F4E985 /* UpdateMemoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMemoUseCase.swift; sourceTree = "<group>"; };
 		7A9E34DD26E4F54F00F4E985 /* DeleteMemoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteMemoUseCase.swift; sourceTree = "<group>"; };
+		7AA4EEEE2867E1540099ED1E /* fusenWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = fusenWidgetExtension.entitlements; sourceTree = "<group>"; };
 		7AA6D7A126D2830200781F48 /* BookShelfFavoriteSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfFavoriteSection.swift; sourceTree = "<group>"; };
 		7AA6D7A326D2831000781F48 /* BookShelfFavoriteSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfFavoriteSectionModel.swift; sourceTree = "<group>"; };
 		7AA6D7A626D3427500781F48 /* EditBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookView.swift; sourceTree = "<group>"; };
@@ -498,6 +555,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		7A003E69286735D3002B8BAC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A003E70286735D3002B8BAC /* SwiftUI.framework in Frameworks */,
+				7A003E6E286735D3002B8BAC /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A082000126C1F5CF00100357 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -531,8 +597,40 @@
 				0A120C1BA338A419E1C4AC1E /* Pods_fusen.framework */,
 				DED65B63C22476AE8B5011AE /* Pods_fusen_fusenUITests.framework */,
 				92BAA3A355C64643052F4562 /* Pods_fusenTests.framework */,
+				7A003E6D286735D3002B8BAC /* WidgetKit.framework */,
+				7A003E6F286735D3002B8BAC /* SwiftUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7A003E71286735D3002B8BAC /* fusenWidget */ = {
+			isa = PBXGroup;
+			children = (
+				7A003E72286735D3002B8BAC /* FusenWidget.swift */,
+				7A003E8228673B8F002B8BAC /* Provider.swift */,
+				7A003E8528673BE8002B8BAC /* Entry.swift */,
+				7A003E74286735D3002B8BAC /* fusenWidget.intentdefinition */,
+				7A003E75286735D4002B8BAC /* Assets.xcassets */,
+				7AA4EEEE2867E1540099ED1E /* fusenWidgetExtension.entitlements */,
+				7A003E77286735D4002B8BAC /* Info.plist */,
+			);
+			path = fusenWidget;
+			sourceTree = "<group>";
+		};
+		7A003E8A28674DBD002B8BAC /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				7A003E8B28674DE1002B8BAC /* UserRepositoryImplTests.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		7A003E8D28674E11002B8BAC /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				7A003E8E28674E21002B8BAC /* MockUserDefaultsDataSource.swift */,
+			);
+			path = DataSource;
 			sourceTree = "<group>";
 		};
 		7A11FCA626CB47A600F1A6BC /* SettingTab */ = {
@@ -809,6 +907,7 @@
 		A0198ADB26E80AD000553CDA /* Mock */ = {
 			isa = PBXGroup;
 			children = (
+				7A003E8D28674E11002B8BAC /* DataSource */,
 				A06BE24526FAFCE400D0666E /* Repository */,
 				A0D4549C26F6B734001668B4 /* UseCase */,
 				A0D4549D26F6B739001668B4 /* Service */,
@@ -820,6 +919,7 @@
 			isa = PBXGroup;
 			children = (
 				A04388C126F1294B006EB863 /* DataSource */,
+				7A003E8A28674DBD002B8BAC /* Repository */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -882,6 +982,7 @@
 			isa = PBXGroup;
 			children = (
 				A007C07F26C78E8500270671 /* ID.swift */,
+				7A003E88286748D2002B8BAC /* CachedBook.swift */,
 				A007C07D26C78E5700270671 /* User.swift */,
 				A07CAD2826D0C6CA0012201A /* UserInfo.swift */,
 				A060096326E6D59C00EA0BC2 /* UserActionHistory.swift */,
@@ -1121,6 +1222,7 @@
 				A082000426C1F5CF00100357 /* fusen.app */,
 				A082001426C1F5D100100357 /* fusenTests.xctest */,
 				A082001E26C1F5D100100357 /* fusenUITests.xctest */,
+				7A003E6C286735D3002B8BAC /* fusenWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1171,6 +1273,7 @@
 				A082000626C1F5CF00100357 /* fusen */,
 				A082001726C1F5D100100357 /* fusenTests */,
 				A082002126C1F5D100100357 /* fusenUITests */,
+				7A003E71286735D3002B8BAC /* fusenWidget */,
 				A082000526C1F5CF00100357 /* Products */,
 				E9F15947474F72C9A1C5E49C /* Pods */,
 				1DC5271D3387DA61FAF6D795 /* Frameworks */,
@@ -1287,6 +1390,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		7A003E6B286735D3002B8BAC /* fusenWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A003E81286735D4002B8BAC /* Build configuration list for PBXNativeTarget "fusenWidgetExtension" */;
+			buildPhases = (
+				7A003E68286735D3002B8BAC /* Sources */,
+				7A003E69286735D3002B8BAC /* Frameworks */,
+				7A003E6A286735D3002B8BAC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = fusenWidgetExtension;
+			productName = fusenWidgetExtension;
+			productReference = 7A003E6C286735D3002B8BAC /* fusenWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		A082000326C1F5CF00100357 /* fusen */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A082002626C1F5D100100357 /* Build configuration list for PBXNativeTarget "fusen" */;
@@ -1300,10 +1420,12 @@
 				BB4E535C5BF40E7A5BFA3BBA /* [CP] Copy Pods Resources */,
 				A0B1FED826E0401000586151 /* LicensePlist */,
 				A0A2B31226EDB3FC001798D3 /* GoogleService-Info.plist */,
+				7A003E7D286735D4002B8BAC /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7A003E7B286735D4002B8BAC /* PBXTargetDependency */,
 			);
 			name = fusen;
 			productName = fusen;
@@ -1357,9 +1479,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1300;
+				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
+					7A003E6B286735D3002B8BAC = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
 					A082000326C1F5CF00100357 = {
 						CreatedOnToolsVersion = 13.0;
 					};
@@ -1389,11 +1514,22 @@
 				A082000326C1F5CF00100357 /* fusen */,
 				A082001326C1F5D100100357 /* fusenTests */,
 				A082001D26C1F5D100100357 /* fusenUITests */,
+				7A003E6B286735D3002B8BAC /* fusenWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		7A003E6A286735D3002B8BAC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A003E76286735D4002B8BAC /* Assets.xcassets in Resources */,
+				7A4EF05F28703117001D32EF /* Assets.xcassets in Resources */,
+				7A4EF059286C77A7001D32EF /* Colors.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A082000226C1F5CF00100357 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1616,6 +1752,26 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		7A003E68286735D3002B8BAC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A003E9428674FE7002B8BAC /* Collection.swift in Sources */,
+				7A003E9328674FC0002B8BAC /* ID.swift in Sources */,
+				7A4EF05E28702C69001D32EF /* ImageExtension.swift in Sources */,
+				7A003E8728673C01002B8BAC /* Entry.swift in Sources */,
+				7A003E78286735D4002B8BAC /* fusenWidget.intentdefinition in Sources */,
+				7A003E9228674FBD002B8BAC /* CachedBook.swift in Sources */,
+				7A003E9528674FF4002B8BAC /* RGB.swift in Sources */,
+				7A4EF05B286D138F001D32EF /* FontExtension.swift in Sources */,
+				7A003E9128674FB9002B8BAC /* Book.swift in Sources */,
+				7A003E9028674FAA002B8BAC /* UserDefaultsDataSource.swift in Sources */,
+				7A003E8428673BC7002B8BAC /* Provider.swift in Sources */,
+				7A4EF058286C7741001D32EF /* ColorExtension.swift in Sources */,
+				7A003E73286735D3002B8BAC /* FusenWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A082000026C1F5CF00100357 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1697,6 +1853,7 @@
 				A07CAD3926D147230012201A /* BookEmptyView.swift in Sources */,
 				7A69931226DD0836006B0697 /* RakutenBooksResponse.swift in Sources */,
 				A0BA4CB226C4DDF100D99D8C /* ScanBarcodeView.swift in Sources */,
+				7A003E79286735D4002B8BAC /* fusenWidget.intentdefinition in Sources */,
 				A060094026E499F300EA0BC2 /* GetCollectionsUseCase.swift in Sources */,
 				A0BA4CBA26C4E37E00D99D8C /* CameraPreview.swift in Sources */,
 				A069983F26CDDD7F006E74C6 /* MemoListItem.swift in Sources */,
@@ -1760,6 +1917,7 @@
 				A07CAD0E26CF7F010012201A /* AddCollectionViewModel.swift in Sources */,
 				A060097326E6E24500EA0BC2 /* ReadingBookDescriptionView.swift in Sources */,
 				A060094E26E4B92A00EA0BC2 /* GetMemosUseCase.swift in Sources */,
+				7A003E89286748D2002B8BAC /* CachedBook.swift in Sources */,
 				A060094826E4A79E00EA0BC2 /* UpdateReadingBookUseCase.swift in Sources */,
 				7A9E34D626E4F00C00F4E985 /* GetAllMemosUseCase.swift in Sources */,
 				A069983626CDD9CB006E74C6 /* CollectionView.swift in Sources */,
@@ -1840,8 +1998,10 @@
 				A06BE24426FAFC2500D0666E /* UpdateMemoUseCaseTests.swift in Sources */,
 				A0198ADD26E80AE100553CDA /* MockAccountService.swift in Sources */,
 				A043A71F26F6020800E1A3FF /* TutorialViewModelTests.swift in Sources */,
+				7A003E8C28674DE1002B8BAC /* UserRepositoryImplTests.swift in Sources */,
 				A049C45626F7FB2E00AD5C3D /* XCTestCaseExtension.swift in Sources */,
 				A04388C326F1295C006EB863 /* UserDefaultsDataSourceTests.swift in Sources */,
+				7A003E8F28674E21002B8BAC /* MockUserDefaultsDataSource.swift in Sources */,
 				A0ACBC2E26FC0D2600C3D5A7 /* HomeTabViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1857,6 +2017,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		7A003E7B286735D4002B8BAC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A003E6B286735D3002B8BAC /* fusenWidgetExtension */;
+			targetProxy = 7A003E7A286735D4002B8BAC /* PBXContainerItemProxy */;
+		};
 		A082001626C1F5D100100357 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A082000326C1F5CF00100357 /* fusen */;
@@ -1870,6 +2035,93 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		7A003E7E286735D4002B8BAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = fusenWidget/fusenWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MYDHT92MBT;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = fusenWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = fusenWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.fusen.dev.fusenWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7A003E7F286735D4002B8BAC /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = fusenWidget/fusenWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MYDHT92MBT;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = fusenWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = fusenWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.fusen.stg.fusenWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Staging;
+		};
+		7A003E80286735D4002B8BAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = fusenWidget/fusenWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MYDHT92MBT;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = fusenWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = fusenWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.fusen.fusenWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		A07507DF26C5E79F0087AE5C /* Staging */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1935,16 +2187,18 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1DE0D1B8A96CA3FFE09EAAEA /* Pods-fusen.staging.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = fusen/fusen.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "\"fusen/Presentation/Resource/Preview Content\"";
 				DEVELOPMENT_TEAM = MYDHT92MBT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = fusen/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "読書メモ";
 				INFOPLIST_KEY_NSCameraUsageDescription = "バーコードの読み取りや写真撮影でカメラを利用します。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1958,7 +2212,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4.0;
+				MARKETING_VERSION = 1.5.0;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D STAGING -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = app.fusen.stg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2139,16 +2393,18 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6F5CBB77B19B6F9B80D8238A /* Pods-fusen.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = fusen/fusen.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "\"fusen/Presentation/Resource/Preview Content\"";
 				DEVELOPMENT_TEAM = MYDHT92MBT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = fusen/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "読書メモ";
 				INFOPLIST_KEY_NSCameraUsageDescription = "バーコードの読み取りや写真撮影でカメラを利用します。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -2162,7 +2418,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4.0;
+				MARKETING_VERSION = 1.5.0;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D DEBUG -D DEVELOPMENT";
 				PRODUCT_BUNDLE_IDENTIFIER = app.fusen.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2176,16 +2432,18 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 983232E518C4EADBE80E78A4 /* Pods-fusen.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = fusen/fusen.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "\"fusen/Presentation/Resource/Preview Content\"";
 				DEVELOPMENT_TEAM = MYDHT92MBT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = fusen/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "読書メモ";
 				INFOPLIST_KEY_NSCameraUsageDescription = "バーコードの読み取りや写真撮影でカメラを利用します。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -2199,7 +2457,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4.0;
+				MARKETING_VERSION = 1.5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = app.fusen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -2311,6 +2569,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7A003E81286735D4002B8BAC /* Build configuration list for PBXNativeTarget "fusenWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A003E7E286735D4002B8BAC /* Debug */,
+				7A003E7F286735D4002B8BAC /* Staging */,
+				7A003E80286735D4002B8BAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A082002626C1F5D100100357 /* Build configuration list for PBXNativeTarget "fusen" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

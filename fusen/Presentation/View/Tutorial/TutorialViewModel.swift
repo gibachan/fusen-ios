@@ -6,7 +6,7 @@
 //
 
 import AuthenticationServices
-import Firebase
+import FirebaseAuth
 import Foundation
 
 final class TutorialViewModel: ObservableObject {

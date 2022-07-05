@@ -10,7 +10,7 @@ target 'fusen' do
   pod 'Firebase/Auth'
   pod 'Firebase/Crashlytics'
   pod 'Firebase/Firestore'
-  # pod 'FirebaseFirestoreSwift' # Unavaiable since it conflicts with GoogleMLKit/TextRecognition for nanopb
+  pod 'FirebaseFirestoreSwift'
   pod 'Firebase/Storage'
   pod 'Firebase/RemoteConfig'
   pod 'Firebase/Functions'
@@ -18,7 +18,7 @@ target 'fusen' do
   pod 'SVProgressHUD'
   pod 'SwiftLint'
   pod 'GoogleSignIn'
-  pod 'GoogleMLKit/TextRecognitionJapanese', '2.3.0'
+  pod 'GoogleMLKit/TextRecognitionJapanese'
   pod 'CropViewController'
   pod 'Kingfisher'
   pod 'LicensePlist'

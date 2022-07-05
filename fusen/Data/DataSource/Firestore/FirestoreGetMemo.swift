@@ -9,7 +9,6 @@ import FirebaseFirestore
 import Foundation
 
 struct FirestoreGetMemo: Codable {
-    let id: String
     let bookId: String
     let text: String
     let quote: String
@@ -20,31 +19,7 @@ struct FirestoreGetMemo: Codable {
 }
 
 extension FirestoreGetMemo {
-    static func from(id: String, data: [String: Any]?) -> Self? {
-        guard let data = data else { return nil }
-        guard let bookId = data["bookId"] as? String,
-              let text = data["text"] as? String,
-              let quote = data["quote"] as? String,
-              let imageURLs = data["imageURLs"] as? [String],
-              let createdAt = data["createdAt"] as? Timestamp,
-              let updatedAt = data["updatedAt"] as? Timestamp else {
-                  return nil
-              }
-        
-        let page = data["page"] as? Int
-        return FirestoreGetMemo(
-            id: id,
-            bookId: bookId,
-            text: text,
-            quote: quote,
-            page: page,
-            imageURLs: imageURLs.compactMap { URL(string: $0) },
-            createdAt: createdAt.dateValue(),
-            updatedAt: updatedAt.dateValue()
-        )
-    }
-    
-    func toDomain() -> Memo {
+    func toDomain(id: String) -> Memo {
         return Memo(
             id: ID<Memo>(value: id),
             bookId: ID<Book>(value: bookId),

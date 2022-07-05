@@ -5,7 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/13.
 //
 
-import Firebase
+import FirebaseCore
 import GoogleSignIn
 import UIKit
 

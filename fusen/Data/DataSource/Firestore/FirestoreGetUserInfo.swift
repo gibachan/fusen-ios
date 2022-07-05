@@ -13,12 +13,6 @@ struct FirestoreGetUserInfo: Codable {
 }
 
 extension FirestoreGetUserInfo {
-    static func from(data: [String: Any]?) -> Self? {
-        guard let data = data else { return nil }
-        let readingBookId = data["readingBookId"] as? String
-        return FirestoreGetUserInfo(readingBookId: readingBookId)
-    }
-    
     func toDomain() -> UserInfo {
         if let readingBookId = readingBookId, !readingBookId.isEmpty {
             return UserInfo(

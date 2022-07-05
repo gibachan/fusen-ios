@@ -5,8 +5,6 @@
 //  Created by Tatsuyuki Kobayashi on 2021/09/15.
 //
 
-import Foundation
-
 @testable import fusen
 import XCTest
 
@@ -18,7 +16,7 @@ class UserDefaultsDataSourceTests: XCTestCase {
         super.setUp()
         userDefaults = UserDefaults(suiteName: #file)
         userDefaults!.removePersistentDomain(forName: #file)
-        dataSource = UserDefaultsDataSource(userDefaults: userDefaults!)
+        dataSource = UserDefaultsDataSourceImpl(userDefaults: userDefaults!)
     }
     
     override func tearDown() {
@@ -39,5 +37,15 @@ class UserDefaultsDataSourceTests: XCTestCase {
         dataSource.setReadPage(for: book, page: 10)
         XCTAssertEqual(dataSource.readBookPages.count, 1)
         XCTAssertEqual(dataSource.getReadPage(for: book), 10)
+    }
+    
+    func testReadingBook() {
+        XCTAssertNil(dataSource.readingBook)
+        dataSource.readingBook = CachedBook(id: .init(value: "1"), title: "A", author: "B", imageURL: URL(string: "https://example.com")!)
+        let cachedBook = dataSource.readingBook
+        XCTAssertEqual(cachedBook?.id, ID<Book>(value: "1"))
+        XCTAssertEqual(cachedBook?.title, "A")
+        XCTAssertEqual(cachedBook?.author, "B")
+        XCTAssertEqual(cachedBook?.imageURL, URL(string: "https://example.com"))
     }
 }

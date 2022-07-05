@@ -6,6 +6,7 @@
 //
 
 import FirebaseFirestore
+import FirebaseFirestoreSwift
 import Foundation
 
 final class CollectionRepositoryImpl: CollectionRepository {
@@ -14,16 +15,21 @@ final class CollectionRepositoryImpl: CollectionRepository {
     func getlCollections(for user: User) async throws -> [Collection] {
         let query = db.collectionCollection(for: user)
             .orderByCreatedAtDesc()
+        let snapshot: QuerySnapshot
         do {
-            let snapshot = try await query.getDocuments()
-            let collections = snapshot.documents
-                .compactMap { FirestoreGetCollection.from(id: $0.documentID, data: $0.data()) }
-                .compactMap { $0.toDomain() }
-            return collections
+            snapshot = try await query.getDocuments()
         } catch {
             log.e(error.localizedDescription)
             throw  CollectionRepositoryError.network
         }
+        return snapshot.documents
+            .compactMap { document in
+                guard let getCollection = try? document.data(as: FirestoreGetCollection.self) else {
+                    log.e("\(document) could not be decoded.")
+                    return nil
+                }
+                return getCollection.toDomain(id: document.documentID)
+            }
     }
     
     func addCollection(name: String, color: RGB, for user: User) async throws -> ID<Collection> {

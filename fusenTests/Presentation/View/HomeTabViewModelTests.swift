@@ -11,10 +11,14 @@ import XCTest
 @testable import fusen
 
 class HomeTabViewModelTests: XCTestCase {
+    private let accountService = MockAccountService(isLoggedIn: true)
+    
     func testOnAppear() async {
         let getReadingBookUseCase = MockGetReadingBookUseCase(withResult: Book.sample)
         let getLatestDataUseCase = MockGetLatestDataUseCase(withResult: LatestData(books: [Book.sample], memos: [Memo.sample]))
-        let viewModel = HomeTabViewModel(getReadingBookUseCase: getReadingBookUseCase, getLatestDataUseCase: getLatestDataUseCase)
+        let viewModel = HomeTabViewModel(accountService: accountService,
+                                         getReadingBookUseCase: getReadingBookUseCase,
+                                         getLatestDataUseCase: getLatestDataUseCase)
         
         var states: [HomeTabViewModel.State] = []
         var readingBooks: [Book?] = []
@@ -45,7 +49,9 @@ class HomeTabViewModelTests: XCTestCase {
     func testOnRefresh() async {
         let getReadingBookUseCase = MockGetReadingBookUseCase(withResult: Book.sample)
         let getLatestDataUseCase = MockGetLatestDataUseCase(withResult: LatestData(books: [Book.sample], memos: [Memo.sample]))
-        let viewModel = HomeTabViewModel(getReadingBookUseCase: getReadingBookUseCase, getLatestDataUseCase: getLatestDataUseCase)
+        let viewModel = HomeTabViewModel(accountService: accountService,
+                                         getReadingBookUseCase: getReadingBookUseCase,
+                                         getLatestDataUseCase: getLatestDataUseCase)
         
         var states: [HomeTabViewModel.State] = []
         var readingBooks: [Book?] = []

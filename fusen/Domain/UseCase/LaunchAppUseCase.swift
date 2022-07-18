@@ -8,7 +8,7 @@
 import Foundation
 
 protocol LaunchAppUseCase {
-    func invoke() async
+    func invoke()
 }
 
 final class LaunchAppUseCaseImpl: LaunchAppUseCase {
@@ -20,7 +20,7 @@ final class LaunchAppUseCaseImpl: LaunchAppUseCase {
         self.userActionHistoryRepository = userActionHistoryRepository
     }
     
-    func invoke() async {
-        await userActionHistoryRepository.update(launchedAppBefore: true)
+    func invoke() {
+        userActionHistoryRepository.update(launchedAppBefore: true)
     }
 }

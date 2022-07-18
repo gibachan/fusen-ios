@@ -40,7 +40,7 @@ final class AddMemoViewModel: NSObject, ObservableObject {
     
     @MainActor
     func onAppear() async {
-        let userActionHistory = await getUserActionHistoryUseCase.invoke()
+        let userActionHistory = getUserActionHistoryUseCase.invoke()
         if let page = userActionHistory.readBookPages[book.id] {
             initialPage = page
         }
@@ -74,15 +74,15 @@ final class AddMemoViewModel: NSObject, ObservableObject {
         state = .loading
         do {
             let id = try await addMemoUseCase.invoke(book: book, text: text, quote: quote, page: page, image: image)
-            await readBookUseCase.invoke(book: book, page: page)
+            readBookUseCase.invoke(book: book, page: page)
             log.d("Memo is added for id: \(id.value)")
             
             // Request app review
             var showAppReview = false
-            let userActionHistory = await getUserActionHistoryUseCase.invoke()
+            let userActionHistory = getUserActionHistoryUseCase.invoke()
             if userActionHistory.reviewedVersion == nil {
                 showAppReview = true
-                await reviewAppUseCase.invoke(version: Bundle.main.shortVersion)
+                reviewAppUseCase.invoke(version: Bundle.main.shortVersion)
             }
             state = .succeeded(showAppReview: showAppReview)
         } catch {

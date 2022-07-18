@@ -33,7 +33,7 @@ final class MainViewModel: ObservableObject {
         log.d("logged in user=\(accountService.currentUser?.id.value ?? "nil")")
         
         await logoutIfNeed()
-        await launchAppUseCase.invoke()
+        launchAppUseCase.invoke()
 
         let config = await getAppConfigUseCase.invoke()
         self.isMaintaining = config.isMaintaining
@@ -43,7 +43,7 @@ final class MainViewModel: ObservableObject {
     }
     
     private func logoutIfNeed() async {
-        let history = await getUserActionHistoryUseCase.invoke()
+        let history = getUserActionHistoryUseCase.invoke()
         if !history.launchedAppBefore {
             try? accountService.logOut()
         }

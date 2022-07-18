@@ -8,15 +8,15 @@
 import Foundation
 
 protocol UserActionHistoryRepository {
-    func get() async -> UserActionHistory
+    func get() -> UserActionHistory
     
-    func update(didConfirmReadingBookDescription: Bool) async
+    func update(didConfirmReadingBookDescription: Bool)
     
-    func update(readBook: Book, page: Int) async
+    func update(readBook: Book, page: Int)
     
-    func update(reviewedVersion: String) async
+    func update(reviewedVersion: String)
     
-    func update(launchedAppBefore: Bool) async
+    func update(launchedAppBefore: Bool)
     
-    func clearAll() async
+    func clearAll()
 }

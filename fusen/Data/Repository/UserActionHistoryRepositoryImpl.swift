@@ -14,7 +14,7 @@ final class UserActionHistoryRepositoryImpl: UserActionHistoryRepository {
         self.dataSource = dataSource
     }
     
-    func get() async -> UserActionHistory {
+    func get() -> UserActionHistory {
         var readBook: [ID<Book>: Int] = [:]
         dataSource.readBookPages
             .forEach { key, value in
@@ -25,27 +25,28 @@ final class UserActionHistoryRepositoryImpl: UserActionHistoryRepository {
             launchedAppBefore: dataSource.launchedAppBefore,
             didConfirmReadingBookDescription: dataSource.didConfirmReadingBookDescription,
             readBookPages: readBook,
-            reviewedVersion: dataSource.reviewedVersion
+            reviewedVersion: dataSource.reviewedVersion,
+            memoSort: dataSource.memoSort
         )
     }
     
-    func update(didConfirmReadingBookDescription: Bool) async {
+    func update(didConfirmReadingBookDescription: Bool) {
         dataSource.didConfirmReadingBookDescription = didConfirmReadingBookDescription
     }
     
-    func update(readBook: Book, page: Int) async {
+    func update(readBook: Book, page: Int) {
         dataSource.setReadPage(for: readBook, page: page)
     }
     
-    func update(reviewedVersion: String) async {
+    func update(reviewedVersion: String) {
         dataSource.reviewedVersion = reviewedVersion
     }
     
-    func update(launchedAppBefore: Bool) async {
+    func update(launchedAppBefore: Bool) {
         dataSource.launchedAppBefore = launchedAppBefore
     }
     
-    func clearAll() async {
+    func clearAll() {
         dataSource.didConfirmReadingBookDescription = false
         dataSource.reviewedVersion = ""
     }

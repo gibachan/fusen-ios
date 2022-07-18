@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ConfirmReadingBookDescriptionUseCase {
-    func invoke() async
+    func invoke()
 }
 
 final class ConfirmReadingBookDescriptionUseCaseImpl: ConfirmReadingBookDescriptionUseCase {
@@ -18,7 +18,7 @@ final class ConfirmReadingBookDescriptionUseCaseImpl: ConfirmReadingBookDescript
         self.userActionHistoryRepository = userActionHistoryRepository
     }
     
-    func invoke() async {
-        await userActionHistoryRepository.update(didConfirmReadingBookDescription: true)
+    func invoke() {
+        userActionHistoryRepository.update(didConfirmReadingBookDescription: true)
     }
 }

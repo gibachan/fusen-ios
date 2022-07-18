@@ -177,7 +177,7 @@ final class SettingTabViewModel: ObservableObject {
     
 #if DEBUG
     func onResetUserActionHstory() async {
-        await resetUserActionHistoryUseCase.invoke()
+        resetUserActionHistoryUseCase.invoke()
     }
     
     func onLogOut() {

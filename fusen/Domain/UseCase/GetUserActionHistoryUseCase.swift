@@ -8,7 +8,7 @@
 import Foundation
 
 protocol GetUserActionHistoryUseCase {
-    func invoke() async -> UserActionHistory
+    func invoke() -> UserActionHistory
 }
 
 final class GetUserActionHistoryUseCaseImpl: GetUserActionHistoryUseCase {
@@ -18,7 +18,7 @@ final class GetUserActionHistoryUseCaseImpl: GetUserActionHistoryUseCase {
         self.userActionHistoryRepository = userActionHistoryRepository
     }
     
-    func invoke() async -> UserActionHistory {
-        return await userActionHistoryRepository.get()
+    func invoke() -> UserActionHistory {
+        return userActionHistoryRepository.get()
     }
 }

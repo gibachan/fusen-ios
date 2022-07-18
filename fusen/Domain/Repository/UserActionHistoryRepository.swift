@@ -18,6 +18,8 @@ protocol UserActionHistoryRepository {
     
     func update(launchedAppBefore: Bool)
     
+    func update(currentBookSort: BookSort)
+    
     func update(currentMemoSort: MemoSort)
     
     func clearAll()

@@ -7,8 +7,8 @@
 
 import Foundation
 
-enum BookSort {
-    case createdAt
+enum BookSort: String {
+    case createdAt = "created_at"
     case title
     case author
 }

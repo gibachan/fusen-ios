@@ -25,11 +25,21 @@ final class MockUserActionHistoryRepository: UserActionHistoryRepository {
     
     func update(launchedAppBefore: Bool) {}
     
+    func update(currentBookSort: BookSort) {
+        userActionHistory = .init(launchedAppBefore: userActionHistory.launchedAppBefore,
+                                  didConfirmReadingBookDescription: userActionHistory.didConfirmReadingBookDescription,
+                                  readBookPages: userActionHistory.readBookPages,
+                                  reviewedVersion: userActionHistory.reviewedVersion,
+                                  currentBookSort: currentBookSort,
+                                  currentMemoSort: userActionHistory.currentMemoSort)
+    }
+    
     func update(currentMemoSort: MemoSort) {
         userActionHistory = .init(launchedAppBefore: userActionHistory.launchedAppBefore,
                                   didConfirmReadingBookDescription: userActionHistory.didConfirmReadingBookDescription,
                                   readBookPages: userActionHistory.readBookPages,
                                   reviewedVersion: userActionHistory.reviewedVersion,
+                                  currentBookSort: userActionHistory.currentBookSort,
                                   currentMemoSort: currentMemoSort)
     }
     

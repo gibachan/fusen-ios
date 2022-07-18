@@ -13,6 +13,7 @@ protocol UserDefaultsDataSource: AnyObject {
     var readBookPages: [String: Any] { get }
     var readingBook: CachedBook? { get set }
     var reviewedVersion: String? { get set }
+    var currentBookSort: BookSort? { get set }
     var currentMemoSort: MemoSort? { get set }
 
     func getReadPage(for book: Book) -> Int?
@@ -77,6 +78,16 @@ final class UserDefaultsDataSourceImpl: UserDefaultsDataSource {
         }
     }
     
+    var currentBookSort: BookSort? {
+        get {
+            guard let value = userDefaults.string(forKey: .bookSort) else { return nil }
+            return BookSort(rawValue: value)
+        }
+        set {
+            userDefaults.set(newValue?.rawValue, forKey: .bookSort)
+        }
+    }
+    
     var currentMemoSort: MemoSort? {
         get {
             guard let value = userDefaults.string(forKey: .memoSort) else { return nil }
@@ -95,6 +106,7 @@ private extension UserDefaultsDataSourceImpl {
         case readBook = "read_book"
         case readingBook = "reading_book"
         case reviewedVersion = "reviewed_version"
+        case bookSort = "current_book_sort"
         case memoSort = "current_memo_sort"
     }
 }

@@ -135,6 +135,7 @@ class MainViewModelTests: XCTestCase {
                 didConfirmReadingBookDescription: false,
                 readBookPages: [:],
                 reviewedVersion: nil,
+                currentBookSort: nil,
                 currentMemoSort: nil
             )
         )
@@ -168,6 +169,7 @@ class MainViewModelTests: XCTestCase {
                 didConfirmReadingBookDescription: false,
                 readBookPages: [:],
                 reviewedVersion: nil,
+                currentBookSort: nil,
                 currentMemoSort: nil
             )
         )

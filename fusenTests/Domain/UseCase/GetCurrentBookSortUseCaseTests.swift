@@ -1,14 +1,14 @@
 //
-//  GetCurrentMemoSortUseCaseTests.swift
+//  GetCurrentBookSortUseCaseTests.swift
 //  fusenTests
 //
-//  Created by Tatsuyuki Kobayashi on 2022/07/18.
+//  Created by Tatsuyuki Kobayashi on 2022/07/19.
 //
 
 @testable import fusen
 import XCTest
 
-class GetCurrentMemoSortUseCaseTests: XCTestCase {
+class GetCurrentBookSortUseCaseTests: XCTestCase {
     func testReturnsDefaultSortWhenItIsNotSavedYet() {
         let actionHistory = UserActionHistory(launchedAppBefore: false,
                                               didConfirmReadingBookDescription: false,
@@ -17,7 +17,7 @@ class GetCurrentMemoSortUseCaseTests: XCTestCase {
                                               currentBookSort: nil,
                                               currentMemoSort: nil)
         let repository = MockUserActionHistoryRepository(userActionHistory: actionHistory)
-        let useCase = GetCurrentMemoSortUseCaseImpl(userActionHistoryRepository: repository)
+        let useCase = GetCurrentBookSortUseCaseImpl(userActionHistoryRepository: repository)
         
         XCTAssertEqual(useCase.invoke(), .default)
     }
@@ -27,11 +27,11 @@ class GetCurrentMemoSortUseCaseTests: XCTestCase {
                                               didConfirmReadingBookDescription: false,
                                               readBookPages: [:],
                                               reviewedVersion: nil,
-                                              currentBookSort: nil,
-                                              currentMemoSort: .page)
+                                              currentBookSort: .title,
+                                              currentMemoSort: nil)
         let repository = MockUserActionHistoryRepository(userActionHistory: actionHistory)
-        let useCase = GetCurrentMemoSortUseCaseImpl(userActionHistoryRepository: repository)
+        let useCase = GetCurrentBookSortUseCaseImpl(userActionHistoryRepository: repository)
         
-        XCTAssertEqual(useCase.invoke(), .page)
+        XCTAssertEqual(useCase.invoke(), .title)
     }
 }

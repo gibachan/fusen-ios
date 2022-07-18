@@ -14,6 +14,7 @@ final class MockUserDefaultsDataSource: UserDefaultsDataSource {
     private var _readBookPages: [String: Any]
     private var _readingBook: CachedBook?
     private var _reviewedVersion: String?
+    private var _currentBookSort: BookSort?
     private var _currentMemoSort: MemoSort?
 
     init(launchedAppBefore: Bool = false,
@@ -21,12 +22,14 @@ final class MockUserDefaultsDataSource: UserDefaultsDataSource {
          readBookPages: [String: Any] = [:],
          readingBook: CachedBook? = nil,
          reviewedVersion: String? = nil,
+         currentBookSort: BookSort? = nil,
          currentMemoSort: MemoSort? = nil) {
         self._launchedAppBefore = launchedAppBefore
         self._didConfirmReadingBookDescription = didConfirmReadingBookDescription
         self._readBookPages = readBookPages
         self._readingBook = readingBook
         self._reviewedVersion = reviewedVersion
+        self._currentBookSort = nil
         self._currentMemoSort = nil
     }
     
@@ -58,6 +61,11 @@ final class MockUserDefaultsDataSource: UserDefaultsDataSource {
     var currentMemoSort: MemoSort? {
         get { _currentMemoSort }
         set { _currentMemoSort = newValue }
+    }
+    
+    var currentBookSort: BookSort? {
+        get { _currentBookSort }
+        set { _currentBookSort = newValue }
     }
     
     func getReadPage(for book: Book) -> Int? { nil }

@@ -1,14 +1,14 @@
 //
-//  UpdateCurrentMemoSortUseCaseTests.swift
+//  UpdateCurrentBookSortUseCaseTests.swift
 //  fusenTests
 //
-//  Created by Tatsuyuki Kobayashi on 2022/07/18.
+//  Created by Tatsuyuki Kobayashi on 2022/07/19.
 //
 
 @testable import fusen
 import XCTest
 
-class UpdateCurrentMemoSortUseCaseTests: XCTestCase {
+class UpdateCurrentBookSortUseCaseTests: XCTestCase {
     func testItUpdatesCurrentMemoSort() {
         let actionHistory = UserActionHistory(launchedAppBefore: false,
                                               didConfirmReadingBookDescription: false,
@@ -17,11 +17,11 @@ class UpdateCurrentMemoSortUseCaseTests: XCTestCase {
                                               currentBookSort: nil,
                                               currentMemoSort: nil)
         let repository = MockUserActionHistoryRepository(userActionHistory: actionHistory)
-        let useCase = UpdateCurrentMemoSortUseCaseImpl(userActionHistoryRepository: repository)
+        let useCase = UpdateCurrentBookSortUseCaseImpl(userActionHistoryRepository: repository)
         
-        useCase.invoke(memoSort: .page)
+        useCase.invoke(bookSort: .title)
         
         let result = repository.get()
-        XCTAssertEqual(result.currentMemoSort, .page)
+        XCTAssertEqual(result.currentBookSort, .title)
     }
 }

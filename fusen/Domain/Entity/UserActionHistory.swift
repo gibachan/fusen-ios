@@ -12,6 +12,7 @@ struct UserActionHistory {
     let didConfirmReadingBookDescription: Bool
     let readBookPages: [ID<Book>: Int]
     let reviewedVersion: String?
+    let currentBookSort: BookSort?
     let currentMemoSort: MemoSort?
 }
 
@@ -22,6 +23,7 @@ extension UserActionHistory {
             didConfirmReadingBookDescription: false,
             readBookPages: [:],
             reviewedVersion: nil,
+            currentBookSort: nil,
             currentMemoSort: nil
         )
     }

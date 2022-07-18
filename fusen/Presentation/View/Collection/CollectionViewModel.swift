@@ -8,6 +8,8 @@
 import Foundation
 
 final class CollectionViewModel: ObservableObject {
+    private let getCurrentBookSortUseCase: GetCurrentBookSortUseCase
+    private let updateCurrentBookSortUseCase: UpdateCurrentBookSortUseCase
     private var getBooksByCollectionUseCase: GetBooksByCollectionUseCase
     private let deleteCollectionUseCase: DeleteCollectionUseCase
     
@@ -18,12 +20,17 @@ final class CollectionViewModel: ObservableObject {
     
     init(
         collection: Collection,
+        getCurrentBookSortUseCase: GetCurrentBookSortUseCase = GetCurrentBookSortUseCaseImpl(),
+        updateCurrentBookSortUseCase: UpdateCurrentBookSortUseCase = UpdateCurrentBookSortUseCaseImpl(),
         deleteCollectionUseCase: DeleteCollectionUseCase = DeleteCollectionUseCaseImpl()
     ) {
-        let sortedBy = BookSort.default
+        self.getCurrentBookSortUseCase = getCurrentBookSortUseCase
+        self.updateCurrentBookSortUseCase = updateCurrentBookSortUseCase
+        let bookSort = getCurrentBookSortUseCase.invoke()
+        let sortedBy = bookSort
         self.sortedBy = sortedBy
         self.collection = collection
-        self.getBooksByCollectionUseCase = GetBooksByCollectionUseCaseImpl(collection: collection, sortedBy: sortedBy)
+        self.getBooksByCollectionUseCase = GetBooksByCollectionUseCaseImpl(collection: collection, sortedBy: bookSort)
         self.deleteCollectionUseCase = deleteCollectionUseCase
     }
     
@@ -68,6 +75,7 @@ final class CollectionViewModel: ObservableObject {
     }
     
     func onSort(_ sortedBy: BookSort) async {
+        updateCurrentBookSortUseCase.invoke(bookSort: sortedBy)
         self.sortedBy = sortedBy
         self.getBooksByCollectionUseCase = GetBooksByCollectionUseCaseImpl(collection: collection, sortedBy: sortedBy)
         await refresh()

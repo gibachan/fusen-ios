@@ -725,6 +725,133 @@
 			path = AddBook;
 			sourceTree = "<group>";
 		};
+		7AC2CACB2886232800325C0B /* Book */ = {
+			isa = PBXGroup;
+			children = (
+				A060094F26E4D37200EA0BC2 /* AddBookByManualUseCase.swift */,
+				A060095726E4E39B00EA0BC2 /* AddBookByPublicationUseCase.swift */,
+				A060093126E48A0700EA0BC2 /* GetAllBooksUseCase.swift */,
+				A060093B26E4963400EA0BC2 /* GetBookByIdUseCase.swift */,
+				A060093D26E498E600EA0BC2 /* GetFavoriteBooksUseCase.swift */,
+				A060093726E492FF00EA0BC2 /* GetReadingBookUseCase.swift */,
+				A060094B26E4ADF300EA0BC2 /* DeleteBookUseCase.swift */,
+				7A4569F326EA2DE100B7FCC0 /* ReadBookUseCase.swift */,
+				A060094726E4A79E00EA0BC2 /* UpdateReadingBookUseCase.swift */,
+				A060095126E4D4CA00EA0BC2 /* UpdateBookUseCase.swift */,
+				A060094926E4AAEA00EA0BC2 /* UpdateFavoriteBookUseCase.swift */,
+			);
+			path = Book;
+			sourceTree = "<group>";
+		};
+		7AC2CACC2886232D00325C0B /* Memo */ = {
+			isa = PBXGroup;
+			children = (
+				7A9E34D726E4F1A800F4E985 /* AddMemoUseCase.swift */,
+				7A9E34D526E4F00C00F4E985 /* GetAllMemosUseCase.swift */,
+				7AC2CABA2885809700325C0B /* GetCurrentMemoSortUseCase.swift */,
+				A060094D26E4B92A00EA0BC2 /* GetMemosUseCase.swift */,
+				7A9E34DD26E4F54F00F4E985 /* DeleteMemoUseCase.swift */,
+				7A9E34D926E4F2BB00F4E985 /* RecognizeTextUseCase.swift */,
+				7A9E34DB26E4F44300F4E985 /* UpdateMemoUseCase.swift */,
+				7AC2CAB728857CEA00325C0B /* UpdateCurrentMemoSortUseCase.swift */,
+			);
+			path = Memo;
+			sourceTree = "<group>";
+		};
+		7AC2CACD2886233100325C0B /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A060096B26E6D87B00EA0BC2 /* ConfirmReadingBookDescriptionUseCase.swift */,
+				A060093326E48F5900EA0BC2 /* GetAppConfigUseCase.swift */,
+				A060093526E490BB00EA0BC2 /* GetLatestDataUseCase.swift */,
+				7A6303CF278522B20004737B /* LaunchAppUseCase.swift */,
+				7A6303CD278481C20004737B /* ReviewAppUseCase.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		7AC2CACE2886233500325C0B /* User */ = {
+			isa = PBXGroup;
+			children = (
+				A060096526E6D67C00EA0BC2 /* GetUserActionHistoryUseCase.swift */,
+				A060097026E6E06A00EA0BC2 /* ResetUserActionHistoryUseCase.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		7AC2CACF2886238700325C0B /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				A060094526E4A01600EA0BC2 /* AddCollectionUseCase.swift */,
+				A060093F26E499F300EA0BC2 /* GetCollectionsUseCase.swift */,
+				7AC2CAC328861F0900325C0B /* GetCurrentBookSortUseCase.swift */,
+				A060094126E49C4900EA0BC2 /* GetBooksByCollectionUseCase.swift */,
+				A060094326E49EB500EA0BC2 /* DeleteCollectionUseCase.swift */,
+				A060095326E4DDBA00EA0BC2 /* UpdateBookCollectionUseCase.swift */,
+				7AC2CAC528861FD700325C0B /* UpdateCurrentBookSortUseCase.swift */,
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
+		7AC2CAD0288623B000325C0B /* Publication */ = {
+			isa = PBXGroup;
+			children = (
+				A060095526E4DF2900EA0BC2 /* SearchPublicationByBarcodeUseCase.swift */,
+			);
+			path = Publication;
+			sourceTree = "<group>";
+		};
+		7AC2CAD12886242900325C0B /* Publication */ = {
+			isa = PBXGroup;
+			children = (
+				A060096126E5B5E300EA0BC2 /* SearchPublicationByBarcodeUseCaseTests.swift */,
+			);
+			path = Publication;
+			sourceTree = "<group>";
+		};
+		7AC2CAD22886243100325C0B /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				A0198AD926E80A2700553CDA /* AddCollectionUseCaseTests.swift */,
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
+		7AC2CAD32886243500325C0B /* Memo */ = {
+			isa = PBXGroup;
+			children = (
+				A049C45226F7F1AE00AD5C3D /* AddMemoUseCaseTests.swift */,
+				7AC2CABC2885877400325C0B /* GetCurrentMemoSortUseCaseTests.swift */,
+				7ADD9CBF26ECDBB50073A043 /* RecognizeTextUseCaseTests.swift */,
+				7AC2CAC02885897300325C0B /* UpdateCurrentMemoSortUseCaseTests.swift */,
+				A06BE24326FAFC2500D0666E /* UpdateMemoUseCaseTests.swift */,
+			);
+			path = Memo;
+			sourceTree = "<group>";
+		};
+		7AC2CAD42886243D00325C0B /* Book */ = {
+			isa = PBXGroup;
+			children = (
+				7AC2CAC72886211400325C0B /* GetCurrentBookSortUseCaseTests.swift */,
+				7AC2CAC92886211C00325C0B /* UpdateCurrentBookSortUseCaseTests.swift */,
+			);
+			path = Book;
+			sourceTree = "<group>";
+		};
+		7AC2CAD52886244500325C0B /* User */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		7AC2CAD72886245200325C0B /* App */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		7AD160FF26C29CA800334A63 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -1072,40 +1199,12 @@
 		A060093026E489EA00EA0BC2 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				A060093326E48F5900EA0BC2 /* GetAppConfigUseCase.swift */,
-				A060093526E490BB00EA0BC2 /* GetLatestDataUseCase.swift */,
-				A060093726E492FF00EA0BC2 /* GetReadingBookUseCase.swift */,
-				A060094726E4A79E00EA0BC2 /* UpdateReadingBookUseCase.swift */,
-				A060093B26E4963400EA0BC2 /* GetBookByIdUseCase.swift */,
-				A060093126E48A0700EA0BC2 /* GetAllBooksUseCase.swift */,
-				A060093D26E498E600EA0BC2 /* GetFavoriteBooksUseCase.swift */,
-				A060094126E49C4900EA0BC2 /* GetBooksByCollectionUseCase.swift */,
-				A060094F26E4D37200EA0BC2 /* AddBookByManualUseCase.swift */,
-				A060095726E4E39B00EA0BC2 /* AddBookByPublicationUseCase.swift */,
-				A060095126E4D4CA00EA0BC2 /* UpdateBookUseCase.swift */,
-				A060094926E4AAEA00EA0BC2 /* UpdateFavoriteBookUseCase.swift */,
-				A060095326E4DDBA00EA0BC2 /* UpdateBookCollectionUseCase.swift */,
-				A060094B26E4ADF300EA0BC2 /* DeleteBookUseCase.swift */,
-				A060093F26E499F300EA0BC2 /* GetCollectionsUseCase.swift */,
-				A060094526E4A01600EA0BC2 /* AddCollectionUseCase.swift */,
-				A060094326E49EB500EA0BC2 /* DeleteCollectionUseCase.swift */,
-				7A9E34D526E4F00C00F4E985 /* GetAllMemosUseCase.swift */,
-				A060094D26E4B92A00EA0BC2 /* GetMemosUseCase.swift */,
-				7A9E34D726E4F1A800F4E985 /* AddMemoUseCase.swift */,
-				7A9E34DB26E4F44300F4E985 /* UpdateMemoUseCase.swift */,
-				7AC2CABA2885809700325C0B /* GetCurrentMemoSortUseCase.swift */,
-				7AC2CAB728857CEA00325C0B /* UpdateCurrentMemoSortUseCase.swift */,
-				7AC2CAC328861F0900325C0B /* GetCurrentBookSortUseCase.swift */,
-				7AC2CAC528861FD700325C0B /* UpdateCurrentBookSortUseCase.swift */,
-				7A9E34DD26E4F54F00F4E985 /* DeleteMemoUseCase.swift */,
-				A060095526E4DF2900EA0BC2 /* SearchPublicationByBarcodeUseCase.swift */,
-				7A9E34D926E4F2BB00F4E985 /* RecognizeTextUseCase.swift */,
-				A060096526E6D67C00EA0BC2 /* GetUserActionHistoryUseCase.swift */,
-				A060097026E6E06A00EA0BC2 /* ResetUserActionHistoryUseCase.swift */,
-				7A6303CD278481C20004737B /* ReviewAppUseCase.swift */,
-				A060096B26E6D87B00EA0BC2 /* ConfirmReadingBookDescriptionUseCase.swift */,
-				7A4569F326EA2DE100B7FCC0 /* ReadBookUseCase.swift */,
-				7A6303CF278522B20004737B /* LaunchAppUseCase.swift */,
+				7AC2CACD2886233100325C0B /* App */,
+				7AC2CAD0288623B000325C0B /* Publication */,
+				7AC2CACB2886232800325C0B /* Book */,
+				7AC2CACF2886238700325C0B /* Collection */,
+				7AC2CACC2886232D00325C0B /* Memo */,
+				7AC2CACE2886233500325C0B /* User */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -1132,15 +1231,12 @@
 		A060096026E5B5E300EA0BC2 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				A060096126E5B5E300EA0BC2 /* SearchPublicationByBarcodeUseCaseTests.swift */,
-				A0198AD926E80A2700553CDA /* AddCollectionUseCaseTests.swift */,
-				7ADD9CBF26ECDBB50073A043 /* RecognizeTextUseCaseTests.swift */,
-				A049C45226F7F1AE00AD5C3D /* AddMemoUseCaseTests.swift */,
-				A06BE24326FAFC2500D0666E /* UpdateMemoUseCaseTests.swift */,
-				7AC2CABC2885877400325C0B /* GetCurrentMemoSortUseCaseTests.swift */,
-				7AC2CAC02885897300325C0B /* UpdateCurrentMemoSortUseCaseTests.swift */,
-				7AC2CAC72886211400325C0B /* GetCurrentBookSortUseCaseTests.swift */,
-				7AC2CAC92886211C00325C0B /* UpdateCurrentBookSortUseCaseTests.swift */,
+				7AC2CAD72886245200325C0B /* App */,
+				7AC2CAD52886244500325C0B /* User */,
+				7AC2CAD42886243D00325C0B /* Book */,
+				7AC2CAD32886243500325C0B /* Memo */,
+				7AC2CAD22886243100325C0B /* Collection */,
+				7AC2CAD12886242900325C0B /* Publication */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";

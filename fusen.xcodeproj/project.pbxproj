@@ -73,6 +73,12 @@
 		7AA6D7A926D3427E00781F48 /* EditBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6D7A826D3427E00781F48 /* EditBookViewModel.swift */; };
 		7AA6D7AC26D386BB00781F48 /* AddBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6D7AB26D386BB00781F48 /* AddBookView.swift */; };
 		7AA6D7AE26D386C700781F48 /* AddBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6D7AD26D386C700781F48 /* AddBookViewModel.swift */; };
+		7AC2CAB828857CEA00325C0B /* UpdateCurrentMemoSortUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2CAB728857CEA00325C0B /* UpdateCurrentMemoSortUseCase.swift */; };
+		7AC2CAB928857F7800325C0B /* MemoSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060092D26E43B4400EA0BC2 /* MemoSort.swift */; };
+		7AC2CABB2885809700325C0B /* GetCurrentMemoSortUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2CABA2885809700325C0B /* GetCurrentMemoSortUseCase.swift */; };
+		7AC2CABD2885877400325C0B /* GetCurrentMemoSortUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2CABC2885877400325C0B /* GetCurrentMemoSortUseCaseTests.swift */; };
+		7AC2CABF288587B900325C0B /* MockUserActionHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2CABE288587B900325C0B /* MockUserActionHistoryRepository.swift */; };
+		7AC2CAC12885897300325C0B /* UpdateCurrentMemoSortUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2CAC02885897300325C0B /* UpdateCurrentMemoSortUseCaseTests.swift */; };
 		7AD1610526C29EB500334A63 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1610426C29EB500334A63 /* MainView.swift */; };
 		7AD1610826C29ED300334A63 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1610726C29ED300334A63 /* MainViewModel.swift */; };
 		7AD1610B26C29FE400334A63 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1610A26C29FE400334A63 /* ImageExtension.swift */; };
@@ -360,6 +366,11 @@
 		7AA6D7A826D3427E00781F48 /* EditBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookViewModel.swift; sourceTree = "<group>"; };
 		7AA6D7AB26D386BB00781F48 /* AddBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookView.swift; sourceTree = "<group>"; };
 		7AA6D7AD26D386C700781F48 /* AddBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewModel.swift; sourceTree = "<group>"; };
+		7AC2CAB728857CEA00325C0B /* UpdateCurrentMemoSortUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCurrentMemoSortUseCase.swift; sourceTree = "<group>"; };
+		7AC2CABA2885809700325C0B /* GetCurrentMemoSortUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentMemoSortUseCase.swift; sourceTree = "<group>"; };
+		7AC2CABC2885877400325C0B /* GetCurrentMemoSortUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentMemoSortUseCaseTests.swift; sourceTree = "<group>"; };
+		7AC2CABE288587B900325C0B /* MockUserActionHistoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserActionHistoryRepository.swift; sourceTree = "<group>"; };
+		7AC2CAC02885897300325C0B /* UpdateCurrentMemoSortUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCurrentMemoSortUseCaseTests.swift; sourceTree = "<group>"; };
 		7AD1610426C29EB500334A63 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		7AD1610726C29ED300334A63 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		7AD1610A26C29FE400334A63 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
@@ -723,7 +734,7 @@
 			isa = PBXGroup;
 			children = (
 				A052EAC726C3F4C00033CE47 /* Entity */,
-				A060092A26E3685D00EA0BC2 /* Logic */,
+				A060092A26E3685D00EA0BC2 /* Model */,
 				A052EAC826C3F4C90033CE47 /* Repository */,
 				A060093026E489EA00EA0BC2 /* UseCase */,
 				A060095926E4E55C00EA0BC2 /* Service */,
@@ -1040,13 +1051,13 @@
 			path = Response;
 			sourceTree = "<group>";
 		};
-		A060092A26E3685D00EA0BC2 /* Logic */ = {
+		A060092A26E3685D00EA0BC2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				A060092B26E3686D00EA0BC2 /* BookSort.swift */,
 				A060092D26E43B4400EA0BC2 /* MemoSort.swift */,
 			);
-			path = Logic;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		A060093026E489EA00EA0BC2 /* UseCase */ = {
@@ -1073,6 +1084,8 @@
 				A060094D26E4B92A00EA0BC2 /* GetMemosUseCase.swift */,
 				7A9E34D726E4F1A800F4E985 /* AddMemoUseCase.swift */,
 				7A9E34DB26E4F44300F4E985 /* UpdateMemoUseCase.swift */,
+				7AC2CABA2885809700325C0B /* GetCurrentMemoSortUseCase.swift */,
+				7AC2CAB728857CEA00325C0B /* UpdateCurrentMemoSortUseCase.swift */,
 				7A9E34DD26E4F54F00F4E985 /* DeleteMemoUseCase.swift */,
 				A060095526E4DF2900EA0BC2 /* SearchPublicationByBarcodeUseCase.swift */,
 				7A9E34D926E4F2BB00F4E985 /* RecognizeTextUseCase.swift */,
@@ -1113,6 +1126,8 @@
 				7ADD9CBF26ECDBB50073A043 /* RecognizeTextUseCaseTests.swift */,
 				A049C45226F7F1AE00AD5C3D /* AddMemoUseCaseTests.swift */,
 				A06BE24326FAFC2500D0666E /* UpdateMemoUseCaseTests.swift */,
+				7AC2CABC2885877400325C0B /* GetCurrentMemoSortUseCaseTests.swift */,
+				7AC2CAC02885897300325C0B /* UpdateCurrentMemoSortUseCaseTests.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -1161,6 +1176,7 @@
 			isa = PBXGroup;
 			children = (
 				A06BE24626FAFCF400D0666E /* MockMemoRepository.swift */,
+				7AC2CABE288587B900325C0B /* MockUserActionHistoryRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -1769,6 +1785,7 @@
 				7A003E8428673BC7002B8BAC /* Provider.swift in Sources */,
 				7A4EF058286C7741001D32EF /* ColorExtension.swift in Sources */,
 				7A003E73286735D3002B8BAC /* FusenWidget.swift in Sources */,
+				7AC2CAB928857F7800325C0B /* MemoSort.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1836,6 +1853,7 @@
 				7A6303CC27847F140004737B /* BundleExtension.swift in Sources */,
 				A07CAD0126CED80E0012201A /* ImageData.swift in Sources */,
 				A069981126CBE449006E74C6 /* MemoRepository.swift in Sources */,
+				7AC2CABB2885809700325C0B /* GetCurrentMemoSortUseCase.swift in Sources */,
 				7A69930D26DD05C5006B0697 /* APIKey.swift in Sources */,
 				7AA6D7AC26D386BB00781F48 /* AddBookView.swift in Sources */,
 				A07334F426DDA872004C5436 /* AddBookIcon.swift in Sources */,
@@ -1888,6 +1906,7 @@
 				A07D1A8426E2E7BB00ADF384 /* StringExtension.swift in Sources */,
 				A069982D26CD050D006E74C6 /* CollectionRepository.swift in Sources */,
 				A07CAD2326D095520012201A /* UserRepositoryImpl.swift in Sources */,
+				7AC2CAB828857CEA00325C0B /* UpdateCurrentMemoSortUseCase.swift in Sources */,
 				7A33118526CFD59100EB520D /* DocumentCameraView.swift in Sources */,
 				A060093A26E4932F00EA0BC2 /* LatestData.swift in Sources */,
 				A052EAD326C3F89E0033CE47 /* GoogleBooksResponse.swift in Sources */,
@@ -1987,6 +2006,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AC2CABD2885877400325C0B /* GetCurrentMemoSortUseCaseTests.swift in Sources */,
 				A0198ADA26E80A2700553CDA /* AddCollectionUseCaseTests.swift in Sources */,
 				A060096226E5B5E300EA0BC2 /* SearchPublicationByBarcodeUseCaseTests.swift in Sources */,
 				A049C45326F7F1AE00AD5C3D /* AddMemoUseCaseTests.swift in Sources */,
@@ -2003,6 +2023,8 @@
 				A04388C326F1295C006EB863 /* UserDefaultsDataSourceTests.swift in Sources */,
 				7A003E8F28674E21002B8BAC /* MockUserDefaultsDataSource.swift in Sources */,
 				A0ACBC2E26FC0D2600C3D5A7 /* HomeTabViewModelTests.swift in Sources */,
+				7AC2CABF288587B900325C0B /* MockUserActionHistoryRepository.swift in Sources */,
+				7AC2CAC12885897300325C0B /* UpdateCurrentMemoSortUseCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

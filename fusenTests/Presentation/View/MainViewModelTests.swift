@@ -134,7 +134,8 @@ class MainViewModelTests: XCTestCase {
                 launchedAppBefore: false,
                 didConfirmReadingBookDescription: false,
                 readBookPages: [:],
-                reviewedVersion: nil
+                reviewedVersion: nil,
+                currentMemoSort: nil
             )
         )
         let launchAppUseCase = MockLaunchAppUseCase()
@@ -166,7 +167,8 @@ class MainViewModelTests: XCTestCase {
                 launchedAppBefore: true,
                 didConfirmReadingBookDescription: false,
                 readBookPages: [:],
-                reviewedVersion: nil
+                reviewedVersion: nil,
+                currentMemoSort: nil
             )
         )
         let launchAppUseCase = MockLaunchAppUseCase()
@@ -193,14 +195,14 @@ private final class MockGetUserActionHistoryUseCase: GetUserActionHistoryUseCase
         self.history = history
     }
     
-    func invoke() async -> UserActionHistory {
+    func invoke() -> UserActionHistory {
         history
     }
 }
 
 private final class MockLaunchAppUseCase: LaunchAppUseCase {
     var invoked = false
-    func invoke() async {
+    func invoke() {
         invoked = true
     }
 }

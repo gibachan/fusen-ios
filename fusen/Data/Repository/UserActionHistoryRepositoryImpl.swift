@@ -26,7 +26,7 @@ final class UserActionHistoryRepositoryImpl: UserActionHistoryRepository {
             didConfirmReadingBookDescription: dataSource.didConfirmReadingBookDescription,
             readBookPages: readBook,
             reviewedVersion: dataSource.reviewedVersion,
-            memoSort: dataSource.memoSort
+            currentMemoSort: dataSource.currentMemoSort
         )
     }
     
@@ -46,8 +46,13 @@ final class UserActionHistoryRepositoryImpl: UserActionHistoryRepository {
         dataSource.launchedAppBefore = launchedAppBefore
     }
     
+    func update(currentMemoSort: MemoSort) {
+        dataSource.currentMemoSort = currentMemoSort
+    }
+    
     func clearAll() {
         dataSource.didConfirmReadingBookDescription = false
         dataSource.reviewedVersion = ""
+        dataSource.currentMemoSort = nil
     }
 }

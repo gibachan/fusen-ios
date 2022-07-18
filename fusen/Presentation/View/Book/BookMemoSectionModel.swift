@@ -9,6 +9,8 @@ import Foundation
 
 final class BookMemoSectionModel: ObservableObject {
     private let bookId: ID<Book>
+    private let getCurrentMemoSortUseCase: GetCurrentMemoSortUseCase
+    private let updateCurrentMemoSortUseCase: UpdateCurrentMemoSortUseCase
     private var getMemosUseCase: GetMemosUseCase
     
     @Published var state: State = .initial
@@ -19,9 +21,11 @@ final class BookMemoSectionModel: ObservableObject {
         bookId: ID<Book>
     ) {
         self.bookId = bookId
-        let sortedBy = MemoSort.default
-        self.sortedBy = sortedBy
-        self.getMemosUseCase = GetMemosUseCaseImpl(bookId: bookId, sortedBy: sortedBy)
+        self.getCurrentMemoSortUseCase = GetCurrentMemoSortUseCaseImpl()
+        self.updateCurrentMemoSortUseCase = UpdateCurrentMemoSortUseCaseImpl()
+        let memoSort = getCurrentMemoSortUseCase.invoke()
+        self.sortedBy = memoSort
+        self.getMemosUseCase = GetMemosUseCaseImpl(bookId: bookId, sortedBy: memoSort)
     }
     
     func onAppear() async {
@@ -52,6 +56,7 @@ final class BookMemoSectionModel: ObservableObject {
     
     @MainActor
     func onSort(_ sortedBy: MemoSort) async {
+        updateCurrentMemoSortUseCase.invoke(memoSort: sortedBy)
         self.sortedBy = sortedBy
         self.getMemosUseCase = GetMemosUseCaseImpl(bookId: bookId, sortedBy: sortedBy)
         await load()

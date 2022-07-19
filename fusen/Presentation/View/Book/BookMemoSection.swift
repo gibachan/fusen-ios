@@ -51,14 +51,22 @@ struct BookMemoSection: View {
                     await viewModel.onSort(.createdAt)
                 }
             } label: {
-                Text("作成日時でソート")
+                if viewModel.sortedBy == .createdAt {
+                    Text("\(String.checkMark)作成日時でソート")
+                } else {
+                    Text("作成日時でソート")
+                }
             }
             Button {
                 Task {
                     await viewModel.onSort(.page)
                 }
             } label: {
-                Text("ページでソート")
+                if viewModel.sortedBy == .page {
+                    Text("\(String.checkMark)ページでソート")
+                } else {
+                    Text("ページでソート")
+                }
             }
             Button("キャンセル", role: .cancel, action: {})
         }

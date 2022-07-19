@@ -8,14 +8,20 @@
 import Foundation
 
 final class BookListViewModel: ObservableObject {
+    private let getCurrentBookSortUseCase: GetCurrentBookSortUseCase
+    private let updateCurrentBookSortUseCase: UpdateCurrentBookSortUseCase
     private var getAllBooksUseCase: GetAllBooksUseCase
 
     @Published var state: State = .initial
     @Published var pager: Pager<Book> = .empty
     @Published var sortedBy: BookSort
     
-    init() {
-        let sortedBy = BookSort.default
+    init(getCurrentBookSortUseCase: GetCurrentBookSortUseCase = GetCurrentBookSortUseCaseImpl(),
+         updateCurrentBookSortUseCase: UpdateCurrentBookSortUseCase = UpdateCurrentBookSortUseCaseImpl()) {
+        self.getCurrentBookSortUseCase = getCurrentBookSortUseCase
+        self.updateCurrentBookSortUseCase = updateCurrentBookSortUseCase
+        let bookSort = getCurrentBookSortUseCase.invoke()
+        let sortedBy = bookSort
         self.sortedBy = sortedBy
         getAllBooksUseCase = GetAllBooksUseCaseImpl(sortedBy: sortedBy)
     }
@@ -62,6 +68,7 @@ final class BookListViewModel: ObservableObject {
     }
     
     func onSort(_ sortedBy: BookSort) async {
+        updateCurrentBookSortUseCase.invoke(bookSort: sortedBy)
         self.sortedBy = sortedBy
         self.getAllBooksUseCase = GetAllBooksUseCaseImpl(sortedBy: sortedBy)
         await refresh()

@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ReviewAppUseCase {
-    func invoke(version: String) async
+    func invoke(version: String)
 }
 
 final class ReviewAppUseCaseImpl: ReviewAppUseCase {
@@ -18,7 +18,7 @@ final class ReviewAppUseCaseImpl: ReviewAppUseCase {
         self.userActionHistoryRepository = userActionHistoryRepository
     }
     
-    func invoke(version: String) async {
-        await userActionHistoryRepository.update(reviewedVersion: version)
+    func invoke(version: String) {
+        userActionHistoryRepository.update(reviewedVersion: version)
     }
 }

@@ -65,11 +65,11 @@ final class BookViewModel: ObservableObject {
             isReadingBook = readingBook != nil
             
             // Confirt reading book description
-            let userActionHistory = await getUserActionHistoryUseCase.invoke()
+            let userActionHistory = getUserActionHistoryUseCase.invoke()
             if !userActionHistory.didConfirmReadingBookDescription {
                 NotificationCenter.default.postShowReadingBookDescription()
             }
-            await confirmReadingBookDescriptionUseCase.invoke()
+            confirmReadingBookDescriptionUseCase.invoke()
         } catch {
             log.e(error.localizedDescription)
             readingBookState = .failed

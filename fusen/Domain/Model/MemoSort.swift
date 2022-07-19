@@ -7,8 +7,8 @@
 
 import Foundation
 
-enum MemoSort {
-    case createdAt
+enum MemoSort: String {
+    case createdAt = "created_at"
     case page
 }
 

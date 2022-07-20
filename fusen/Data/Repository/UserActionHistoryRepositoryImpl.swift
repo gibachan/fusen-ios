@@ -14,7 +14,7 @@ final class UserActionHistoryRepositoryImpl: UserActionHistoryRepository {
         self.dataSource = dataSource
     }
     
-    func get() async -> UserActionHistory {
+    func get() -> UserActionHistory {
         var readBook: [ID<Book>: Int] = [:]
         dataSource.readBookPages
             .forEach { key, value in
@@ -25,28 +25,40 @@ final class UserActionHistoryRepositoryImpl: UserActionHistoryRepository {
             launchedAppBefore: dataSource.launchedAppBefore,
             didConfirmReadingBookDescription: dataSource.didConfirmReadingBookDescription,
             readBookPages: readBook,
-            reviewedVersion: dataSource.reviewedVersion
+            reviewedVersion: dataSource.reviewedVersion,
+            currentBookSort: dataSource.currentBookSort,
+            currentMemoSort: dataSource.currentMemoSort
         )
     }
     
-    func update(didConfirmReadingBookDescription: Bool) async {
+    func update(didConfirmReadingBookDescription: Bool) {
         dataSource.didConfirmReadingBookDescription = didConfirmReadingBookDescription
     }
     
-    func update(readBook: Book, page: Int) async {
+    func update(readBook: Book, page: Int) {
         dataSource.setReadPage(for: readBook, page: page)
     }
     
-    func update(reviewedVersion: String) async {
+    func update(reviewedVersion: String) {
         dataSource.reviewedVersion = reviewedVersion
     }
     
-    func update(launchedAppBefore: Bool) async {
+    func update(launchedAppBefore: Bool) {
         dataSource.launchedAppBefore = launchedAppBefore
     }
     
-    func clearAll() async {
+    func update(currentBookSort: BookSort) {
+        dataSource.currentBookSort = currentBookSort
+    }
+    
+    func update(currentMemoSort: MemoSort) {
+        dataSource.currentMemoSort = currentMemoSort
+    }
+    
+    func clearAll() {
         dataSource.didConfirmReadingBookDescription = false
         dataSource.reviewedVersion = ""
+        dataSource.currentBookSort = nil
+        dataSource.currentMemoSort = nil
     }
 }

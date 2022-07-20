@@ -83,21 +83,33 @@ struct CollectionView: View {
                     await viewModel.onSort(.createdAt)
                 }
             }, label: {
-                Text("作成日時でソート")
+                if viewModel.sortedBy == .createdAt {
+                    Text("\(String.checkMark)作成日時でソート")
+                } else {
+                    Text("作成日時でソート")
+                }
             })
             Button(action: {
                 Task {
                     await viewModel.onSort(.title)
                 }
             }, label: {
-                Text("タイトルでソート")
+                if viewModel.sortedBy == .title {
+                    Text("\(String.checkMark)タイトルでソート")
+                } else {
+                    Text("タイトルでソート")
+                }
             })
             Button(action: {
                 Task {
                     await viewModel.onSort(.author)
                 }
             }, label: {
-                Text("著者でソート")
+                if viewModel.sortedBy == .author {
+                    Text("\(String.checkMark)著者でソート")
+                } else {
+                    Text("著者でソート")
+                }
             })
             Button("キャンセル", role: .cancel, action: {})
         }

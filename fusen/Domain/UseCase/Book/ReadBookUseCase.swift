@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ReadBookUseCase {
-    func invoke(book: Book, page: Int) async
+    func invoke(book: Book, page: Int)
 }
 
 final class ReadBookUseCaseImpl: ReadBookUseCase {
@@ -20,7 +20,7 @@ final class ReadBookUseCaseImpl: ReadBookUseCase {
         self.userActionHistoryRepository = userActionHistoryRepository
     }
     
-    func invoke(book: Book, page: Int) async {
-        await userActionHistoryRepository.update(readBook: book, page: page)
+    func invoke(book: Book, page: Int) {
+        userActionHistoryRepository.update(readBook: book, page: page)
     }
 }

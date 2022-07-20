@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ResetUserActionHistoryUseCase {
-    func invoke() async
+    func invoke()
 }
 
 final class ResetUserActionHistoryUseCaseImpl: ResetUserActionHistoryUseCase {
@@ -18,7 +18,7 @@ final class ResetUserActionHistoryUseCaseImpl: ResetUserActionHistoryUseCase {
         self.userActionHistoryRepository = userActionHistoryRepository
     }
     
-    func invoke() async {
-        await userActionHistoryRepository.clearAll()
+    func invoke() {
+        userActionHistoryRepository.clearAll()
     }
 }

@@ -220,6 +220,14 @@ GEM
     optparse (0.1.1)
     os (1.1.4)
     plist (3.6.0)
+    pod-builder (4.4.5)
+      CFPropertyList
+      cocoapods (~> 1.6)
+      cocoapods-core (~> 1.6)
+      colored
+      highline
+      json
+      xcodeproj
     public_suffix (4.0.7)
     rake (13.0.6)
     representable (3.2.0)
@@ -279,6 +287,7 @@ PLATFORMS
 DEPENDENCIES
   cocoapods
   fastlane
+  pod-builder
 
 BUNDLED WITH
    2.1.4

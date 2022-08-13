@@ -1,0 +1,10 @@
+{
+  "entry": "pod 'leveldb-library', '=1.22.1'",
+  "is_prebuilt": false,
+  "specs": [
+    "leveldb-library"
+  ],
+  "is_static": false,
+  "original_compile_path": "/private/tmp/pod_builder",
+  "build_folder_hash": "fbd5607cf2a94774881aaf10671491543e95d1ed"
+}

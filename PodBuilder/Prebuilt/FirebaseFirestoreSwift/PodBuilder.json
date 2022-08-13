@@ -1,0 +1,10 @@
+{
+  "entry": "pod 'FirebaseFirestoreSwift', '=9.4.0'",
+  "is_prebuilt": false,
+  "specs": [
+    "FirebaseFirestoreSwift"
+  ],
+  "is_static": false,
+  "original_compile_path": "/private/tmp/pod_builder",
+  "build_folder_hash": "a5a94bff05ada7f7813b5ce10c5350568605c48b"
+}

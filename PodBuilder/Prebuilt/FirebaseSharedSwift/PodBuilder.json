@@ -1,0 +1,10 @@
+{
+  "entry": "pod 'FirebaseSharedSwift', '=9.4.0'",
+  "is_prebuilt": false,
+  "specs": [
+    "FirebaseSharedSwift"
+  ],
+  "is_static": false,
+  "original_compile_path": "/private/tmp/pod_builder",
+  "build_folder_hash": "9f74f256c81133921ef5dc95b4078516e2b94dba"
+}

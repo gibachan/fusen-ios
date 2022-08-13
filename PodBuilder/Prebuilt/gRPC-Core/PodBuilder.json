@@ -1,0 +1,12 @@
+{
+  "entry": "pod 'gRPC-Core', '=1.44.0'",
+  "is_prebuilt": true,
+  "specs": [
+    "gRPC-Core",
+    "gRPC-Core/Interface",
+    "gRPC-Core/Implementation"
+  ],
+  "is_static": false,
+  "original_compile_path": "/private/tmp/pod_builder",
+  "build_folder_hash": "1e040377210cce094731a205422bdf1c7e9d1462"
+}

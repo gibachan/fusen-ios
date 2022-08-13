@@ -1,0 +1,10 @@
+{
+  "entry": "pod 'CropViewController', '=2.6.1'",
+  "is_prebuilt": false,
+  "specs": [
+    "CropViewController"
+  ],
+  "is_static": false,
+  "original_compile_path": "/private/tmp/pod_builder",
+  "build_folder_hash": "68ce04aeb5901a486c8327d5400f9980392c406f"
+}

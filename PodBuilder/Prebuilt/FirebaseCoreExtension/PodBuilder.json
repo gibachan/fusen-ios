@@ -1,0 +1,10 @@
+{
+  "entry": "pod 'FirebaseCoreExtension', '=9.4.0'",
+  "is_prebuilt": false,
+  "specs": [
+    "FirebaseCoreExtension"
+  ],
+  "is_static": false,
+  "original_compile_path": "/private/tmp/pod_builder",
+  "build_folder_hash": "a3443a364d5184a9f064ec48a62c32293bb689c3"
+}

@@ -1,0 +1,10 @@
+{
+  "entry": "pod 'FirebaseAuth', '=9.4.0'",
+  "is_prebuilt": false,
+  "specs": [
+    "FirebaseAuth"
+  ],
+  "is_static": false,
+  "original_compile_path": "/private/tmp/pod_builder",
+  "build_folder_hash": "c76e79f6d9f34d3cd0c2f802806ea7586c0463c0"
+}

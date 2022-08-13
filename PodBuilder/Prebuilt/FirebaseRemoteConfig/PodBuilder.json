@@ -1,0 +1,10 @@
+{
+  "entry": "pod 'FirebaseRemoteConfig', '=9.4.0'",
+  "is_prebuilt": false,
+  "specs": [
+    "FirebaseRemoteConfig"
+  ],
+  "is_static": false,
+  "original_compile_path": "/private/tmp/pod_builder",
+  "build_folder_hash": "3a458640ab948b5feb8d73fc66559a43c3ab117a"
+}

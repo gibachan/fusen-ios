@@ -1,0 +1,10 @@
+{
+  "entry": "pod 'FirebaseABTesting', '=9.4.0'",
+  "is_prebuilt": false,
+  "specs": [
+    "FirebaseABTesting"
+  ],
+  "is_static": false,
+  "original_compile_path": "/private/tmp/pod_builder",
+  "build_folder_hash": "d3cecee0ab742dc9dd2855e8d45cb2728beb04d9"
+}

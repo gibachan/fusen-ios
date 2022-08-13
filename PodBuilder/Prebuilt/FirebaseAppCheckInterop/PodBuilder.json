@@ -1,0 +1,10 @@
+{
+  "entry": "pod 'FirebaseAppCheckInterop', '=9.4.0'",
+  "is_prebuilt": false,
+  "specs": [
+    "FirebaseAppCheckInterop"
+  ],
+  "is_static": false,
+  "original_compile_path": "/private/tmp/pod_builder",
+  "build_folder_hash": "b00cd8582517e253f0f98e10f120a693ce7b859b"
+}

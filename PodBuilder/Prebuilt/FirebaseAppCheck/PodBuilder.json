@@ -1,0 +1,10 @@
+{
+  "entry": "pod 'FirebaseAppCheck', '=9.4.0'",
+  "is_prebuilt": false,
+  "specs": [
+    "FirebaseAppCheck"
+  ],
+  "is_static": false,
+  "original_compile_path": "/private/tmp/pod_builder",
+  "build_folder_hash": "ad4a3c2f281066f9ebeef13e810fe5b1de0128a0"
+}

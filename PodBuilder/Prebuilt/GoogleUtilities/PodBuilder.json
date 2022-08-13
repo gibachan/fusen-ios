@@ -1,0 +1,17 @@
+{
+  "entry": "pod 'GoogleUtilities/Environment', '=7.7.0'",
+  "is_prebuilt": false,
+  "specs": [
+    "GoogleUtilities/Environment",
+    "GoogleUtilities/Logger",
+    "GoogleUtilities/NSData+zlib",
+    "GoogleUtilities/AppDelegateSwizzler",
+    "GoogleUtilities/MethodSwizzler",
+    "GoogleUtilities/Network",
+    "GoogleUtilities/Reachability",
+    "GoogleUtilities/UserDefaults"
+  ],
+  "is_static": false,
+  "original_compile_path": "/private/tmp/pod_builder",
+  "build_folder_hash": "0770c949ecba87a6b9beef6bb5ce2c2ca71af0a3"
+}

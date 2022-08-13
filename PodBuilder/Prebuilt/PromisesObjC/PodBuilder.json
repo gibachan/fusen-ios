@@ -1,0 +1,10 @@
+{
+  "entry": "pod 'PromisesObjC', '=2.1.1'",
+  "is_prebuilt": false,
+  "specs": [
+    "PromisesObjC"
+  ],
+  "is_static": false,
+  "original_compile_path": "/private/tmp/pod_builder",
+  "build_folder_hash": "fc4c7f8c32db7bd5492bba11eca84fa14ef08fcc"
+}

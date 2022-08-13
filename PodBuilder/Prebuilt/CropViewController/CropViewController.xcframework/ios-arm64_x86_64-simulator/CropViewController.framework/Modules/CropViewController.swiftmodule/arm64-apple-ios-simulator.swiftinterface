@@ -1,0 +1,184 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
+// swift-module-flags: -target arm64-apple-ios15.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Osize -module-name CropViewController
+@_exported import CropViewController
+import Swift
+import _Concurrency
+public typealias CropViewControllerAspectRatioPreset = CropViewController.TOCropViewControllerAspectRatioPreset
+public typealias CropViewControllerToolbarPosition = CropViewController.TOCropViewControllerToolbarPosition
+public typealias CropViewCroppingStyle = CropViewController.TOCropViewCroppingStyle
+@objc public protocol CropViewControllerDelegate : ObjectiveC.NSObjectProtocol {
+  @objc optional func cropViewController(_ cropViewController: CropViewController.CropViewController, didCropImageToRect cropRect: CoreGraphics.CGRect, angle: Swift.Int)
+  @objc optional func cropViewController(_ cropViewController: CropViewController.CropViewController, didCropToImage image: UIKit.UIImage, withRect cropRect: CoreGraphics.CGRect, angle: Swift.Int)
+  @objc optional func cropViewController(_ cropViewController: CropViewController.CropViewController, didCropToCircularImage image: UIKit.UIImage, withRect cropRect: CoreGraphics.CGRect, angle: Swift.Int)
+  @objc optional func cropViewController(_ cropViewController: CropViewController.CropViewController, didFinishCancelled cancelled: Swift.Bool)
+}
+@objc @_Concurrency.MainActor(unsafe) open class CropViewController : UIKit.UIViewController, CropViewController.TOCropViewControllerDelegate {
+  @_Concurrency.MainActor(unsafe) public var image: UIKit.UIImage {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) weak public var delegate: CropViewController.CropViewControllerDelegate? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var title: Swift.String? {
+    @_Concurrency.MainActor(unsafe) @objc get
+    @_Concurrency.MainActor(unsafe) @objc set
+  }
+  @_Concurrency.MainActor(unsafe) public var showActivitySheetOnDone: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var imageCropFrame: CoreGraphics.CGRect {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var angle: Swift.Int {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var croppingStyle: CropViewController.CropViewCroppingStyle {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var aspectRatioPreset: CropViewController.CropViewControllerAspectRatioPreset {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var customAspectRatio: CoreGraphics.CGSize {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var titleLabel: UIKit.UILabel? {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var aspectRatioLockEnabled: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var aspectRatioLockDimensionSwapEnabled: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var resetAspectRatioEnabled: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var toolbarPosition: CropViewController.CropViewControllerToolbarPosition {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var rotateClockwiseButtonHidden: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var rotateButtonsHidden: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var resetButtonHidden: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var aspectRatioPickerButtonHidden: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var doneButtonHidden: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var cancelButtonHidden: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var activityItems: [Any]? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var applicationActivities: [UIKit.UIActivity]? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var excludedActivityTypes: [UIKit.UIActivity.ActivityType]? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var allowedAspectRatios: [CropViewController.CropViewControllerAspectRatioPreset]? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var onDidFinishCancelled: ((Swift.Bool) -> (Swift.Void))? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var onDidCropImageToRect: ((CoreGraphics.CGRect, Swift.Int) -> (Swift.Void))? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var onDidCropToRect: ((UIKit.UIImage, CoreGraphics.CGRect, ObjectiveC.NSInteger) -> (Swift.Void))? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var onDidCropToCircleImage: ((UIKit.UIImage, CoreGraphics.CGRect, ObjectiveC.NSInteger) -> (Swift.Void))? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var cropView: CropViewController.TOCropView {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var toolbar: CropViewController.TOCropToolbar {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var hidesNavigationBar: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var doneButtonTitle: Swift.String! {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var cancelButtonTitle: Swift.String! {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var showOnlyIcons: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var doneButtonColor: UIKit.UIColor? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var cancelButtonColor: UIKit.UIColor? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var childForStatusBarStyle: UIKit.UIViewController? {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var childForStatusBarHidden: UIKit.UIViewController? {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var prefersStatusBarHidden: Swift.Bool {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var preferredStatusBarStyle: UIKit.UIStatusBarStyle {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var preferredScreenEdgesDeferringSystemGestures: UIKit.UIRectEdge {
+    @_Concurrency.MainActor(unsafe) @objc get
+  }
+  @_Concurrency.MainActor(unsafe) public init(image: UIKit.UIImage)
+  @_Concurrency.MainActor(unsafe) public init(croppingStyle: CropViewController.CropViewCroppingStyle, image: UIKit.UIImage)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLayoutSubviews()
+  @_Concurrency.MainActor(unsafe) public func commitCurrentCrop()
+  @_Concurrency.MainActor(unsafe) public func resetCropViewLayout()
+  @_Concurrency.MainActor(unsafe) public func setAspectRatioPreset(_ aspectRatio: CropViewController.CropViewControllerAspectRatioPreset, animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) public func presentAnimatedFrom(_ viewController: UIKit.UIViewController, fromView view: UIKit.UIView?, fromFrame frame: CoreGraphics.CGRect, setup: (() -> (Swift.Void))?, completion: (() -> (Swift.Void))?)
+  @_Concurrency.MainActor(unsafe) public func presentAnimatedFrom(_ viewController: UIKit.UIViewController, fromImage image: UIKit.UIImage?, fromView: UIKit.UIView?, fromFrame: CoreGraphics.CGRect, angle: Swift.Int, toImageFrame toFrame: CoreGraphics.CGRect, setup: (() -> (Swift.Void))?, completion: (() -> (Swift.Void))?)
+  @_Concurrency.MainActor(unsafe) public func dismissAnimatedFrom(_ viewController: UIKit.UIViewController, toView: UIKit.UIView?, toFrame: CoreGraphics.CGRect, setup: (() -> (Swift.Void))?, completion: (() -> (Swift.Void))?)
+  @_Concurrency.MainActor(unsafe) public func dismissAnimatedFrom(_ viewController: UIKit.UIViewController, withCroppedImage croppedImage: UIKit.UIImage?, toView: UIKit.UIView?, toFrame: CoreGraphics.CGRect, setup: (() -> (Swift.Void))?, completion: (() -> (Swift.Void))?)
+  @objc deinit
+}

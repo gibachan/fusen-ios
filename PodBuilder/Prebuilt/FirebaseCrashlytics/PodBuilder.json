@@ -1,0 +1,10 @@
+{
+  "entry": "pod 'FirebaseCrashlytics', '=9.4.0'",
+  "is_prebuilt": false,
+  "specs": [
+    "FirebaseCrashlytics"
+  ],
+  "is_static": false,
+  "original_compile_path": "/private/tmp/pod_builder",
+  "build_folder_hash": "044b0e55d36b57a5a5e5f3aedad8db1415fc6bbe"
+}

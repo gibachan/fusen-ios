@@ -1,0 +1,10 @@
+{
+  "entry": "pod 'FirebaseInstallations', '=9.4.0'",
+  "is_prebuilt": false,
+  "specs": [
+    "FirebaseInstallations"
+  ],
+  "is_static": false,
+  "original_compile_path": "/private/tmp/pod_builder",
+  "build_folder_hash": "7885eaaada29ac6fa0e6da1eefe0452c045c2bde"
+}

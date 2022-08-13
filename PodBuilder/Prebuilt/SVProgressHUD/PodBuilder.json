@@ -1,0 +1,10 @@
+{
+  "entry": "pod 'SVProgressHUD', '=2.2.5'",
+  "is_prebuilt": false,
+  "specs": [
+    "SVProgressHUD"
+  ],
+  "is_static": false,
+  "original_compile_path": "/private/tmp/pod_builder",
+  "build_folder_hash": "3f4a6812bab4175e87e21825c4be3aedaf0721a3"
+}

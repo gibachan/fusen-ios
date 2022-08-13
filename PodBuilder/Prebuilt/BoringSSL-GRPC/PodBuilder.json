@@ -1,0 +1,12 @@
+{
+  "entry": "pod 'BoringSSL-GRPC', '=0.0.24'",
+  "is_prebuilt": true,
+  "specs": [
+    "BoringSSL-GRPC/Implementation",
+    "BoringSSL-GRPC/Interface",
+    "BoringSSL-GRPC"
+  ],
+  "is_static": false,
+  "original_compile_path": "/private/tmp/pod_builder",
+  "build_folder_hash": "79951ac469546f834664ba13f1b71b7bfe9c48b3"
+}

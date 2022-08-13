@@ -1,0 +1,10 @@
+{
+  "entry": "pod 'FirebaseFirestore', '=9.4.0'",
+  "is_prebuilt": false,
+  "specs": [
+    "FirebaseFirestore"
+  ],
+  "is_static": false,
+  "original_compile_path": "/private/tmp/pod_builder",
+  "build_folder_hash": "7bd55778fb002e9e613a6e7765f33a8ba6021902"
+}

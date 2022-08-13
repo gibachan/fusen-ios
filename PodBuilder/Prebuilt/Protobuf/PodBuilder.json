@@ -1,0 +1,10 @@
+{
+  "entry": "pod 'Protobuf', '=3.21.5'",
+  "is_prebuilt": false,
+  "specs": [
+    "Protobuf"
+  ],
+  "is_static": false,
+  "original_compile_path": "/private/tmp/pod_builder",
+  "build_folder_hash": "12ea908a2d9a5956cee9e3ff4e10caf7cb54bfd2"
+}

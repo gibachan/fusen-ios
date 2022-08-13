@@ -1,0 +1,10 @@
+{
+  "entry": "pod 'FirebaseCoreDiagnostics', '=9.4.0'",
+  "is_prebuilt": false,
+  "specs": [
+    "FirebaseCoreDiagnostics"
+  ],
+  "is_static": false,
+  "original_compile_path": "/private/tmp/pod_builder",
+  "build_folder_hash": "c83754a9e650d4b7fcec7938c10b239f2c583cd0"
+}

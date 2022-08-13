@@ -1,0 +1,10 @@
+{
+  "entry": "pod 'GTMAppAuth', '=1.3.0'",
+  "is_prebuilt": false,
+  "specs": [
+    "GTMAppAuth"
+  ],
+  "is_static": false,
+  "original_compile_path": "/private/tmp/pod_builder",
+  "build_folder_hash": "3ab0c473b243b9dd5cfcefdb79343260f6059bb9"
+}

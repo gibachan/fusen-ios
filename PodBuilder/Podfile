@@ -1,0 +1,51 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '15.0'
+
+# Comment the next line if you don't want to use dynamic frameworks
+use_frameworks!
+
+target 'fusen' do
+
+  # Pods for fusen
+  pod 'FirebaseAnalytics'
+  pod 'FirebaseAuth'
+  pod 'FirebaseCrashlytics'
+  pod 'FirebaseFirestore'
+  pod 'FirebaseFirestoreSwift'
+  pod 'FirebaseStorage'
+  pod 'FirebaseRemoteConfig'
+  pod 'FirebaseFunctions'
+  pod 'FirebaseAppCheck'
+  pod 'SVProgressHUD'
+  pod 'SwiftLint'
+  pod 'GoogleSignIn'
+  pod 'GoogleMLKit/TextRecognitionJapanese'
+  pod 'CropViewController'
+  pod 'Kingfisher'
+  pod 'LicensePlist'
+
+  target 'fusenTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'fusenUITests' do
+    # Pods for testing
+  end
+
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
+      if `uname -m`.strip == 'arm64'
+        config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
+      end
+    end
+  end
+end
+
+pre_install do |installer|
+  raise "\n🚨  Do not launch 'pod install' manually, use `pod_builder` instead!\n" if !File.exist?('pod_builder.lock')
+end

@@ -1,0 +1,10 @@
+{
+  "entry": "pod 'GoogleSignIn', '=6.2.2'",
+  "is_prebuilt": false,
+  "specs": [
+    "GoogleSignIn"
+  ],
+  "is_static": false,
+  "original_compile_path": "/private/tmp/pod_builder",
+  "build_folder_hash": "15e2edd5d5db5673aa70680fcccdc2841cccbb98"
+}

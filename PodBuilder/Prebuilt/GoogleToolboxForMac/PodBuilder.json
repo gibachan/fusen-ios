@@ -1,0 +1,15 @@
+{
+  "entry": "pod 'GoogleToolboxForMac/Logger', '=2.3.2'",
+  "is_prebuilt": false,
+  "specs": [
+    "GoogleToolboxForMac/Logger",
+    "GoogleToolboxForMac/NSData+zlib",
+    "GoogleToolboxForMac/NSDictionary+URLArguments",
+    "GoogleToolboxForMac/Defines",
+    "GoogleToolboxForMac/DebugUtils",
+    "GoogleToolboxForMac/NSString+URLArguments"
+  ],
+  "is_static": false,
+  "original_compile_path": "/private/tmp/pod_builder",
+  "build_folder_hash": "035d244748f8ffdca2df6f06c61127a75ac5f29f"
+}

@@ -1,0 +1,10 @@
+{
+  "entry": "pod 'Kingfisher', '=7.3.2'",
+  "is_prebuilt": false,
+  "specs": [
+    "Kingfisher"
+  ],
+  "is_static": false,
+  "original_compile_path": "/private/tmp/pod_builder",
+  "build_folder_hash": "01b9a3d496456e4b688a1507130e7e2924e8e2b8"
+}

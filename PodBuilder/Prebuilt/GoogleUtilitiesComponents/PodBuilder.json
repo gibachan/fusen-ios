@@ -1,0 +1,10 @@
+{
+  "entry": "pod 'GoogleUtilitiesComponents', '=1.1.0'",
+  "is_prebuilt": false,
+  "specs": [
+    "GoogleUtilitiesComponents"
+  ],
+  "is_static": true,
+  "original_compile_path": "/private/tmp/pod_builder",
+  "build_folder_hash": "a90d02898cb826685f1bbb8cc39582b4066cae52"
+}

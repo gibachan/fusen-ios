@@ -1,0 +1,12 @@
+{
+  "entry": "pod 'Libuv-gRPC', '=0.0.10'",
+  "is_prebuilt": true,
+  "specs": [
+    "Libuv-gRPC",
+    "Libuv-gRPC/Implementation",
+    "Libuv-gRPC/Interface"
+  ],
+  "is_static": false,
+  "original_compile_path": "/private/tmp/pod_builder",
+  "build_folder_hash": "b6eda45fbafb99eb476619529d973c63269bb744"
+}

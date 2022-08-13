@@ -1,0 +1,10 @@
+{
+  "entry": "pod 'FirebaseMessagingInterop', '=9.4.0'",
+  "is_prebuilt": false,
+  "specs": [
+    "FirebaseMessagingInterop"
+  ],
+  "is_static": false,
+  "original_compile_path": "/private/tmp/pod_builder",
+  "build_folder_hash": "ede6453fb30c2d77bdad445b4d21687712cf3edf"
+}

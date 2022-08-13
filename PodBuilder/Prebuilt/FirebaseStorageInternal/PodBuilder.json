@@ -1,0 +1,10 @@
+{
+  "entry": "pod 'FirebaseStorageInternal', '=9.4.0'",
+  "is_prebuilt": false,
+  "specs": [
+    "FirebaseStorageInternal"
+  ],
+  "is_static": false,
+  "original_compile_path": "/private/tmp/pod_builder",
+  "build_folder_hash": "e89bb77f5171941fc40b0b3944fbcae5e2504b24"
+}

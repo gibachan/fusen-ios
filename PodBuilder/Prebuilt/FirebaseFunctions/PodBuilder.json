@@ -1,0 +1,10 @@
+{
+  "entry": "pod 'FirebaseFunctions', '=9.4.0'",
+  "is_prebuilt": false,
+  "specs": [
+    "FirebaseFunctions"
+  ],
+  "is_static": false,
+  "original_compile_path": "/private/tmp/pod_builder",
+  "build_folder_hash": "14249c4a25fc0d8a137331745268af9558aa7aba"
+}

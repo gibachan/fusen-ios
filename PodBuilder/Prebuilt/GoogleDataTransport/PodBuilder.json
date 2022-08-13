@@ -1,0 +1,10 @@
+{
+  "entry": "pod 'GoogleDataTransport', '=9.2.0'",
+  "is_prebuilt": false,
+  "specs": [
+    "GoogleDataTransport"
+  ],
+  "is_static": false,
+  "original_compile_path": "/private/tmp/pod_builder",
+  "build_folder_hash": "423a1f2371d38d6eaab67374fe31b2c5691a45d1"
+}

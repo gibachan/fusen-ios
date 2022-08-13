@@ -1,0 +1,12 @@
+{
+  "entry": "pod 'gRPC-C++', '=1.44.0'",
+  "is_prebuilt": true,
+  "specs": [
+    "gRPC-C++",
+    "gRPC-C++/Interface",
+    "gRPC-C++/Implementation"
+  ],
+  "is_static": false,
+  "original_compile_path": "/private/tmp/pod_builder",
+  "build_folder_hash": "ad3d956ca85a125b58ac5b68dbf4498fda9712e1"
+}

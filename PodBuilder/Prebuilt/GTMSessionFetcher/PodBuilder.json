@@ -1,0 +1,10 @@
+{
+  "entry": "pod 'GTMSessionFetcher/Core', '=1.7.2'",
+  "is_prebuilt": false,
+  "specs": [
+    "GTMSessionFetcher/Core"
+  ],
+  "is_static": false,
+  "original_compile_path": "/private/tmp/pod_builder",
+  "build_folder_hash": "1985842b3258031943c6bf8d5d83956eedee37cf"
+}

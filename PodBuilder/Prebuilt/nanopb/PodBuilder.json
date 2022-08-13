@@ -1,0 +1,12 @@
+{
+  "entry": "pod 'nanopb', '=2.30909.0'",
+  "is_prebuilt": false,
+  "specs": [
+    "nanopb",
+    "nanopb/decode",
+    "nanopb/encode"
+  ],
+  "is_static": false,
+  "original_compile_path": "/private/tmp/pod_builder",
+  "build_folder_hash": "3d2aeb326bcad081cb8f02350f1929d1d975d251"
+}

@@ -45,6 +45,8 @@
 		7A33118226CE518F00EB520D /* UIApplicationExtensoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33118126CE518F00EB520D /* UIApplicationExtensoin.swift */; };
 		7A33118526CFD59100EB520D /* DocumentCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33118426CFD59100EB520D /* DocumentCameraView.swift */; };
 		7A3E5586271B9D2D002CE696 /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3E5585271B9D2D002CE696 /* GoogleSignInButton.swift */; };
+		7A423B6528A9B7B0002ECAAB /* ActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A423B6428A9B7B0002ECAAB /* ActionView.swift */; };
+		7A423B6728A9B7B9002ECAAB /* ActionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A423B6628A9B7B9002ECAAB /* ActionPresenter.swift */; };
 		7A4569F426EA2DE100B7FCC0 /* ReadBookUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4569F326EA2DE100B7FCC0 /* ReadBookUseCase.swift */; };
 		7A4569F726EA33C500B7FCC0 /* PageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4569F626EA33C500B7FCC0 /* PageListView.swift */; };
 		7A4EF058286C7741001D32EF /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1611126C2A40000334A63 /* ColorExtension.swift */; };
@@ -360,6 +362,8 @@
 		7A33118426CFD59100EB520D /* DocumentCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCameraView.swift; sourceTree = "<group>"; };
 		7A3E5581271AA809002CE696 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7A3E5585271B9D2D002CE696 /* GoogleSignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInButton.swift; sourceTree = "<group>"; };
+		7A423B6428A9B7B0002ECAAB /* ActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionView.swift; sourceTree = "<group>"; };
+		7A423B6628A9B7B9002ECAAB /* ActionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionPresenter.swift; sourceTree = "<group>"; };
 		7A4569F326EA2DE100B7FCC0 /* ReadBookUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadBookUseCase.swift; sourceTree = "<group>"; };
 		7A4569F626EA33C500B7FCC0 /* PageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageListView.swift; sourceTree = "<group>"; };
 		7A6303C727828FAF0004737B /* BookGridItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookGridItem.swift; sourceTree = "<group>"; };
@@ -740,6 +744,8 @@
 			children = (
 				7A9675FB28A9263200445D83 /* Media.xcassets */,
 				7A9675FD28A9263200445D83 /* ActionViewController.swift */,
+				7A423B6428A9B7B0002ECAAB /* ActionView.swift */,
+				7A423B6628A9B7B9002ECAAB /* ActionPresenter.swift */,
 				7A9675FF28A9263200445D83 /* MainInterface.storyboard */,
 				7A96760228A9263200445D83 /* Info.plist */,
 			);
@@ -1975,7 +1981,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A423B6528A9B7B0002ECAAB /* ActionView.swift in Sources */,
 				7A9675FE28A9263200445D83 /* ActionViewController.swift in Sources */,
+				7A423B6728A9B7B9002ECAAB /* ActionPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

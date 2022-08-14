@@ -62,6 +62,11 @@
 		7A69930D26DD05C5006B0697 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69930C26DD05C5006B0697 /* APIKey.swift */; };
 		7A69931026DD0708006B0697 /* RakutenBooksPublicationRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69930F26DD0708006B0697 /* RakutenBooksPublicationRepositoryImpl.swift */; };
 		7A69931226DD0836006B0697 /* RakutenBooksResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A69931126DD0836006B0697 /* RakutenBooksResponse.swift */; };
+		7A9675F928A9263200445D83 /* UniformTypeIdentifiers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9675F828A9263200445D83 /* UniformTypeIdentifiers.framework */; };
+		7A9675FC28A9263200445D83 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A9675FB28A9263200445D83 /* Media.xcassets */; };
+		7A9675FE28A9263200445D83 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9675FD28A9263200445D83 /* ActionViewController.swift */; };
+		7A96760128A9263200445D83 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A9675FF28A9263200445D83 /* MainInterface.storyboard */; };
+		7A96760528A9263200445D83 /* fusenActionExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7A9675F728A9263200445D83 /* fusenActionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7A9E34D626E4F00C00F4E985 /* GetAllMemosUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E34D526E4F00C00F4E985 /* GetAllMemosUseCase.swift */; };
 		7A9E34D826E4F1A800F4E985 /* AddMemoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E34D726E4F1A800F4E985 /* AddMemoUseCase.swift */; };
 		7A9E34DA26E4F2BB00F4E985 /* RecognizeTextUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E34D926E4F2BB00F4E985 /* RecognizeTextUseCase.swift */; };
@@ -278,6 +283,13 @@
 			remoteGlobalIDString = 7A003E6B286735D3002B8BAC;
 			remoteInfo = fusenWidgetExtension;
 		};
+		7A96760328A9263200445D83 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A082FFFC26C1F5CF00100357 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A9675F628A9263200445D83;
+			remoteInfo = fusenActionExtension;
+		};
 		A082001526C1F5D100100357 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A082FFFC26C1F5CF00100357 /* Project object */;
@@ -301,6 +313,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				7A96760528A9263200445D83 /* fusenActionExtension.appex in Embed App Extensions */,
 				7A003E7C286735D4002B8BAC /* fusenWidgetExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -359,6 +372,12 @@
 		7A69930C26DD05C5006B0697 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		7A69930F26DD0708006B0697 /* RakutenBooksPublicationRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakutenBooksPublicationRepositoryImpl.swift; sourceTree = "<group>"; };
 		7A69931126DD0836006B0697 /* RakutenBooksResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakutenBooksResponse.swift; sourceTree = "<group>"; };
+		7A9675F728A9263200445D83 /* fusenActionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = fusenActionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A9675F828A9263200445D83 /* UniformTypeIdentifiers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UniformTypeIdentifiers.framework; path = System/Library/Frameworks/UniformTypeIdentifiers.framework; sourceTree = SDKROOT; };
+		7A9675FB28A9263200445D83 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		7A9675FD28A9263200445D83 /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
+		7A96760028A9263200445D83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		7A96760228A9263200445D83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A9E34D526E4F00C00F4E985 /* GetAllMemosUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllMemosUseCase.swift; sourceTree = "<group>"; };
 		7A9E34D726E4F1A800F4E985 /* AddMemoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoUseCase.swift; sourceTree = "<group>"; };
 		7A9E34D926E4F2BB00F4E985 /* RecognizeTextUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizeTextUseCase.swift; sourceTree = "<group>"; };
@@ -584,6 +603,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7A9675F428A9263200445D83 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A9675F928A9263200445D83 /* UniformTypeIdentifiers.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A082000126C1F5CF00100357 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -619,6 +646,7 @@
 				92BAA3A355C64643052F4562 /* Pods_fusenTests.framework */,
 				7A003E6D286735D3002B8BAC /* WidgetKit.framework */,
 				7A003E6F286735D3002B8BAC /* SwiftUI.framework */,
+				7A9675F828A9263200445D83 /* UniformTypeIdentifiers.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -705,6 +733,17 @@
 				7A69930C26DD05C5006B0697 /* APIKey.swift */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		7A9675FA28A9263200445D83 /* fusenActionExtension */ = {
+			isa = PBXGroup;
+			children = (
+				7A9675FB28A9263200445D83 /* Media.xcassets */,
+				7A9675FD28A9263200445D83 /* ActionViewController.swift */,
+				7A9675FF28A9263200445D83 /* MainInterface.storyboard */,
+				7A96760228A9263200445D83 /* Info.plist */,
+			);
+			path = fusenActionExtension;
 			sourceTree = "<group>";
 		};
 		7AA6D7A526D3426000781F48 /* EditBook */ = {
@@ -1348,6 +1387,7 @@
 				A082001426C1F5D100100357 /* fusenTests.xctest */,
 				A082001E26C1F5D100100357 /* fusenUITests.xctest */,
 				7A003E6C286735D3002B8BAC /* fusenWidgetExtension.appex */,
+				7A9675F728A9263200445D83 /* fusenActionExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1399,6 +1439,7 @@
 				A082001726C1F5D100100357 /* fusenTests */,
 				A082002126C1F5D100100357 /* fusenUITests */,
 				7A003E71286735D3002B8BAC /* fusenWidget */,
+				7A9675FA28A9263200445D83 /* fusenActionExtension */,
 				A082000526C1F5CF00100357 /* Products */,
 				E9F15947474F72C9A1C5E49C /* Pods */,
 				1DC5271D3387DA61FAF6D795 /* Frameworks */,
@@ -1532,6 +1573,23 @@
 			productReference = 7A003E6C286735D3002B8BAC /* fusenWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		7A9675F628A9263200445D83 /* fusenActionExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A96760928A9263200445D83 /* Build configuration list for PBXNativeTarget "fusenActionExtension" */;
+			buildPhases = (
+				7A9675F328A9263200445D83 /* Sources */,
+				7A9675F428A9263200445D83 /* Frameworks */,
+				7A9675F528A9263200445D83 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = fusenActionExtension;
+			productName = fusenActionExtension;
+			productReference = 7A9675F728A9263200445D83 /* fusenActionExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		A082000326C1F5CF00100357 /* fusen */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A082002626C1F5D100100357 /* Build configuration list for PBXNativeTarget "fusen" */;
@@ -1551,6 +1609,7 @@
 			);
 			dependencies = (
 				7A003E7B286735D4002B8BAC /* PBXTargetDependency */,
+				7A96760428A9263200445D83 /* PBXTargetDependency */,
 			);
 			name = fusen;
 			productName = fusen;
@@ -1610,6 +1669,9 @@
 					7A003E6B286735D3002B8BAC = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
+					7A9675F628A9263200445D83 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
 					A082000326C1F5CF00100357 = {
 						CreatedOnToolsVersion = 13.0;
 					};
@@ -1640,6 +1702,7 @@
 				A082001326C1F5D100100357 /* fusenTests */,
 				A082001D26C1F5D100100357 /* fusenUITests */,
 				7A003E6B286735D3002B8BAC /* fusenWidgetExtension */,
+				7A9675F628A9263200445D83 /* fusenActionExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -1652,6 +1715,15 @@
 				7A003E76286735D4002B8BAC /* Assets.xcassets in Resources */,
 				7A4EF05F28703117001D32EF /* Assets.xcassets in Resources */,
 				7A4EF059286C77A7001D32EF /* Colors.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A9675F528A9263200445D83 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A9675FC28A9263200445D83 /* Media.xcassets in Resources */,
+				7A96760128A9263200445D83 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1896,6 +1968,14 @@
 				7A4EF058286C7741001D32EF /* ColorExtension.swift in Sources */,
 				7A003E73286735D3002B8BAC /* FusenWidget.swift in Sources */,
 				7AC2CAB928857F7800325C0B /* MemoSort.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A9675F328A9263200445D83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A9675FE28A9263200445D83 /* ActionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2158,6 +2238,11 @@
 			target = 7A003E6B286735D3002B8BAC /* fusenWidgetExtension */;
 			targetProxy = 7A003E7A286735D4002B8BAC /* PBXContainerItemProxy */;
 		};
+		7A96760428A9263200445D83 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A9675F628A9263200445D83 /* fusenActionExtension */;
+			targetProxy = 7A96760328A9263200445D83 /* PBXContainerItemProxy */;
+		};
 		A082001626C1F5D100100357 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A082000326C1F5CF00100357 /* fusen */;
@@ -2169,6 +2254,17 @@
 			targetProxy = A082001F26C1F5D100100357 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7A9675FF28A9263200445D83 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A96760028A9263200445D83 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		7A003E7E286735D4002B8BAC /* Debug */ = {
@@ -2250,6 +2346,84 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = app.fusen.fusenWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7A96760628A9263200445D83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MYDHT92MBT;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = fusenActionExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = fusenActionExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.fusen.fusenActionExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7A96760728A9263200445D83 /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MYDHT92MBT;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = fusenActionExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = fusenActionExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.fusen.fusenActionExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Staging;
+		};
+		7A96760828A9263200445D83 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MYDHT92MBT;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = fusenActionExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = fusenActionExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.fusen.fusenActionExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -2711,6 +2885,16 @@
 				7A003E7E286735D4002B8BAC /* Debug */,
 				7A003E7F286735D4002B8BAC /* Staging */,
 				7A003E80286735D4002B8BAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A96760928A9263200445D83 /* Build configuration list for PBXNativeTarget "fusenActionExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A96760628A9263200445D83 /* Debug */,
+				7A96760728A9263200445D83 /* Staging */,
+				7A96760828A9263200445D83 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

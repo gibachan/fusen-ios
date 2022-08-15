@@ -9,40 +9,108 @@ import Foundation
 import MobileCoreServices
 import UniformTypeIdentifiers
 
-
 protocol ActionPresenter: AnyObject {
     func action(withContext context: NSExtensionContext?)
+    func inputText(_ text: String)
+    func inputQuote(_ text: String)
+    func inputPage(_ text: String)
     func save()
     func cancel()
+    func openApp()
 }
 
 final class ActionPresenterImpl: ActionPresenter {
+    private let dataSource: UserDefaultsDataSource
+
+    private var text: String = "" {
+        didSet {
+            onChange()
+        }
+    }
+    private var quote: String = "" {
+        didSet {
+            onChange()
+        }
+    }
+    private var page: String = ""
+
     private weak var view: ActionView!
     
-    init(withView view: ActionView) {
+    init(withView view: ActionView,
+         dataSource: UserDefaultsDataSource = UserDefaultsDataSourceImpl()) {
         self.view = view
+        self.dataSource = dataSource
     }
     
     func action(withContext context: NSExtensionContext?) {
+        // Initialize view
+        view.setSaveButtonEnabled(false)
+        view.showDescription()
+
+        // Check if the reading book has been already set
+        guard dataSource.readingBook != nil else {
+            return
+        }
+        
         guard let items = context?.inputItems as? [NSExtensionItem] else { return }
         for item in items {
             guard let attachments = item.attachments else { continue }
             for provider in attachments {
                 guard provider.hasItemConformingToTypeIdentifier(UTType.text.identifier) else { continue }
-                provider.loadItem(forTypeIdentifier: UTType.text.identifier, options: nil) { text, _ in
-
-                    // TODO: save text
+                provider.loadItem(forTypeIdentifier: UTType.text.identifier, options: nil) { [weak self] text, _ in
+                    guard let self = self else { return }
+                    self.view.showInput()
+                    self.quote = text as? String ?? ""
+                    self.view.setQuote(self.quote)
                 }
             }
         }
     }
     
+    func inputText(_ text: String) {
+        self.text = text
+    }
+    
+    func inputQuote(_ text: String) {
+        self.quote = text
+    }
+    
+    func inputPage(_ text: String) {
+        self.page = text
+    }
+    
     func save() {
-        print("TODO: Save")
+        guard let readingBook = dataSource.readingBook else {
+            view.close()
+            return
+        }
+
+        let draft = MemoDraft(bookId: readingBook.id,
+                              text: text.trimmingCharacters(in: .whitespaces),
+                              quote: quote.trimmingCharacters(in: .whitespaces),
+                              page: Int(page))
+        var drafts = dataSource.readingBookMemoDrafts
+        drafts.append(draft)
+        dataSource.readingBookMemoDrafts = drafts
+        
         view.close()
     }
     
     func cancel() {
         view.close()
+    }
+    
+    func openApp() {
+        view.openApp()
+    }
+}
+
+private extension ActionPresenterImpl {
+    func onChange() {
+        if !text.isEmpty || !quote.isEmpty {
+            view.setSaveButtonEnabled(true)
+        } else {
+            view.setSaveButtonEnabled(false)
+        }
     }
 }

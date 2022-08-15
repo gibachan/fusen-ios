@@ -7,6 +7,16 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>app.fusen</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fusen</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.googleusercontent.apps.890432524283-7cqt9vf1u5vns3libl9r67sce6m7j6hs</string>

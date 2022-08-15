@@ -74,6 +74,18 @@
 		7A9E34DA26E4F2BB00F4E985 /* RecognizeTextUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E34D926E4F2BB00F4E985 /* RecognizeTextUseCase.swift */; };
 		7A9E34DC26E4F44300F4E985 /* UpdateMemoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E34DB26E4F44300F4E985 /* UpdateMemoUseCase.swift */; };
 		7A9E34DE26E4F54F00F4E985 /* DeleteMemoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E34DD26E4F54F00F4E985 /* DeleteMemoUseCase.swift */; };
+		7A9F69F928AA348400753210 /* UserDefaultsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060096E26E6DCC300EA0BC2 /* UserDefaultsDataSource.swift */; };
+		7A9F69FA28AA349300753210 /* CachedBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A003E88286748D2002B8BAC /* CachedBook.swift */; };
+		7A9F69FB28AA349900753210 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C08C26C7DB0E00270671 /* Book.swift */; };
+		7A9F69FC28AA349C00753210 /* BookSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060092B26E3686D00EA0BC2 /* BookSort.swift */; };
+		7A9F69FD28AA349F00753210 /* MemoSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060092D26E43B4400EA0BC2 /* MemoSort.swift */; };
+		7A9F69FE28AA34AD00753210 /* ID.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C07F26C78E8500270671 /* ID.swift */; };
+		7A9F69FF28AA34BF00753210 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A069982A26CD0492006E74C6 /* Collection.swift */; };
+		7A9F6A0028AA34CA00753210 /* RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07CAD0F26CF95FD0012201A /* RGB.swift */; };
+		7A9F6A0228AA35D500753210 /* MemoDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9F6A0128AA35D500753210 /* MemoDraft.swift */; };
+		7A9F6A0328AA361E00753210 /* MemoDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9F6A0128AA35D500753210 /* MemoDraft.swift */; };
+		7A9F6A0428AA362100753210 /* MemoDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9F6A0128AA35D500753210 /* MemoDraft.swift */; };
+		7A9F6A0528AA3AFE00753210 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AD1611326C2A45500334A63 /* Colors.xcassets */; };
 		7AA6D7A226D2830200781F48 /* BookShelfFavoriteSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6D7A126D2830200781F48 /* BookShelfFavoriteSection.swift */; };
 		7AA6D7A426D2831000781F48 /* BookShelfFavoriteSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6D7A326D2831000781F48 /* BookShelfFavoriteSectionModel.swift */; };
 		7AA6D7A726D3427500781F48 /* EditBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6D7A626D3427500781F48 /* EditBookView.swift */; };
@@ -387,6 +399,8 @@
 		7A9E34D926E4F2BB00F4E985 /* RecognizeTextUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizeTextUseCase.swift; sourceTree = "<group>"; };
 		7A9E34DB26E4F44300F4E985 /* UpdateMemoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMemoUseCase.swift; sourceTree = "<group>"; };
 		7A9E34DD26E4F54F00F4E985 /* DeleteMemoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteMemoUseCase.swift; sourceTree = "<group>"; };
+		7A9F6A0128AA35D500753210 /* MemoDraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoDraft.swift; sourceTree = "<group>"; };
+		7A9F6A0628AA449200753210 /* fusenActionExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = fusenActionExtension.entitlements; sourceTree = "<group>"; };
 		7AA4EEEE2867E1540099ED1E /* fusenWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = fusenWidgetExtension.entitlements; sourceTree = "<group>"; };
 		7AA6D7A126D2830200781F48 /* BookShelfFavoriteSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfFavoriteSection.swift; sourceTree = "<group>"; };
 		7AA6D7A326D2831000781F48 /* BookShelfFavoriteSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfFavoriteSectionModel.swift; sourceTree = "<group>"; };
@@ -742,6 +756,7 @@
 		7A9675FA28A9263200445D83 /* fusenActionExtension */ = {
 			isa = PBXGroup;
 			children = (
+				7A9F6A0628AA449200753210 /* fusenActionExtension.entitlements */,
 				7A9675FB28A9263200445D83 /* Media.xcassets */,
 				7A9675FD28A9263200445D83 /* ActionViewController.swift */,
 				7A423B6428A9B7B0002ECAAB /* ActionView.swift */,
@@ -1183,6 +1198,7 @@
 				A007C08C26C7DB0E00270671 /* Book.swift */,
 				A007C09126C83A7200270671 /* Pager.swift */,
 				A069981226CBE47E006E74C6 /* Memo.swift */,
+				7A9F6A0128AA35D500753210 /* MemoDraft.swift */,
 				A069982A26CD0492006E74C6 /* Collection.swift */,
 				A07CAD0026CED80E0012201A /* ImageData.swift */,
 				A07CAD0F26CF95FD0012201A /* RGB.swift */,
@@ -1728,6 +1744,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A9F6A0528AA3AFE00753210 /* Colors.xcassets in Resources */,
 				7A9675FC28A9263200445D83 /* Media.xcassets in Resources */,
 				7A96760128A9263200445D83 /* MainInterface.storyboard in Resources */,
 			);
@@ -1968,6 +1985,7 @@
 				7A003E9528674FF4002B8BAC /* RGB.swift in Sources */,
 				7A4EF05B286D138F001D32EF /* FontExtension.swift in Sources */,
 				7A003E9128674FB9002B8BAC /* Book.swift in Sources */,
+				7A9F6A0428AA362100753210 /* MemoDraft.swift in Sources */,
 				7AC2CAC228861EAE00325C0B /* BookSort.swift in Sources */,
 				7A003E9028674FAA002B8BAC /* UserDefaultsDataSource.swift in Sources */,
 				7A003E8428673BC7002B8BAC /* Provider.swift in Sources */,
@@ -1982,8 +2000,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A423B6528A9B7B0002ECAAB /* ActionView.swift in Sources */,
+				7A9F69FF28AA34BF00753210 /* Collection.swift in Sources */,
+				7A9F6A0028AA34CA00753210 /* RGB.swift in Sources */,
+				7A9F69FA28AA349300753210 /* CachedBook.swift in Sources */,
+				7A9F69FE28AA34AD00753210 /* ID.swift in Sources */,
+				7A9F6A0328AA361E00753210 /* MemoDraft.swift in Sources */,
+				7A9F69FC28AA349C00753210 /* BookSort.swift in Sources */,
+				7A9F69FB28AA349900753210 /* Book.swift in Sources */,
+				7A9F69F928AA348400753210 /* UserDefaultsDataSource.swift in Sources */,
 				7A9675FE28A9263200445D83 /* ActionViewController.swift in Sources */,
 				7A423B6728A9B7B9002ECAAB /* ActionPresenter.swift in Sources */,
+				7A9F69FD28AA349F00753210 /* MemoSort.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2018,6 +2045,7 @@
 				A060094426E49EB500EA0BC2 /* DeleteCollectionUseCase.swift in Sources */,
 				7A9E34DC26E4F44300F4E985 /* UpdateMemoUseCase.swift in Sources */,
 				A07CAD1F26D0670A0012201A /* CollectionItemView.swift in Sources */,
+				7A9F6A0228AA35D500753210 /* MemoDraft.swift in Sources */,
 				A07334F626DDAD35004C5436 /* ViewExtension.swift in Sources */,
 				7A4569F426EA2DE100B7FCC0 /* ReadBookUseCase.swift in Sources */,
 				A060096A26E6D77800EA0BC2 /* UserActionHistoryRepositoryImpl.swift in Sources */,
@@ -2365,6 +2393,7 @@
 		7A96760628A9263200445D83 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = fusenActionExtension/fusenActionExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MYDHT92MBT;
@@ -2391,6 +2420,7 @@
 		7A96760728A9263200445D83 /* Staging */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = fusenActionExtension/fusenActionExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MYDHT92MBT;
@@ -2417,6 +2447,7 @@
 		7A96760828A9263200445D83 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = fusenActionExtension/fusenActionExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MYDHT92MBT;

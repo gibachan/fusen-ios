@@ -12,6 +12,7 @@ protocol UserDefaultsDataSource: AnyObject {
     var didConfirmReadingBookDescription: Bool { get set }
     var readBookPages: [String: Any] { get }
     var readingBook: CachedBook? { get set }
+    var readingBookMemoDrafts: [MemoDraft] { get set }
     var reviewedVersion: String? { get set }
     var currentBookSort: BookSort? { get set }
     var currentMemoSort: MemoSort? { get set }
@@ -55,6 +56,15 @@ final class UserDefaultsDataSourceImpl: UserDefaultsDataSource {
         }
         set {
             userDefaults.setEncodable(newValue, forKey: .readingBook)
+        }
+    }
+    
+    var readingBookMemoDrafts: [MemoDraft] {
+        get {
+            return userDefaults.array(forKey: .readingBookMemoDrafts)
+        }
+        set {
+            userDefaults.set(newValue, forKey: Key.readingBookMemoDrafts.rawValue)
         }
     }
     
@@ -105,6 +115,7 @@ private extension UserDefaultsDataSourceImpl {
         case didConfirmReadingBookDescription = "did_confirm_reading_book_description"
         case readBook = "read_book"
         case readingBook = "reading_book"
+        case readingBookMemoDrafts = "reading_book_memo_drafts"
         case reviewedVersion = "reviewed_version"
         case bookSort = "current_book_sort"
         case memoSort = "current_memo_sort"
@@ -122,6 +133,10 @@ private extension UserDefaults {
     
     func string(forKey key: UserDefaultsDataSourceImpl.Key) -> String? {
         string(forKey: key.rawValue)
+    }
+
+    func array<T>(forKey key: UserDefaultsDataSourceImpl.Key) -> [T] {
+        array(forKey: key.rawValue) as? [T] ?? []
     }
 
     func dictionary(forKey key: UserDefaultsDataSourceImpl.Key) -> [String: Any] {
@@ -145,6 +160,10 @@ private extension UserDefaults {
         set(value, forKey: key.rawValue)
     }
     
+    func set(_ value: [Any], forKey key: UserDefaultsDataSourceImpl.Key) {
+        set(value, forKey: key.rawValue)
+    }
+
     func set(_ value: [String: Any], forKey key: UserDefaultsDataSourceImpl.Key) {
         set(value, forKey: key.rawValue)
     }

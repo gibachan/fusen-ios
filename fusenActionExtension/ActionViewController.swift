@@ -8,6 +8,8 @@
 import UIKit
 
 class ActionViewController: UIViewController {
+    @IBOutlet private var imageView: UIImageView!
+    @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var scrollView: UIScrollView!
     @IBOutlet private var descriptionView: UIView!
     @IBOutlet private var readingBookView: UIView! {
@@ -106,6 +108,11 @@ extension ActionViewController: ActionView {
         saveButton.isEnabled = isEnabled
     }
 
+    func showBook(title: String, image: UIImage) {
+        titleLabel.text = title
+        imageView.image = image
+    }
+    
     func showDescription() {
         descriptionView.isHidden = false
         inputStackView.isHidden = true

@@ -8,6 +8,7 @@
 import Foundation
 import MobileCoreServices
 import UniformTypeIdentifiers
+import UIKit
 
 protocol ActionPresenter: AnyObject {
     func action(withContext context: NSExtensionContext?)
@@ -49,8 +50,21 @@ final class ActionPresenterImpl: ActionPresenter {
         view.showDescription()
 
         // Check if the reading book has been already set
-        guard dataSource.readingBook != nil else {
+        guard let book = dataSource.readingBook else {
             return
+        }
+        
+        // Show book information
+        let placeholderImage = UIImage(systemName: "book")!
+        view.showBook(title: book.title, image: placeholderImage)
+        if let url = book.imageURL {
+           URLSession.shared.dataTask(with: url, completionHandler: { [weak self] data, _, _ in
+               guard let data = data,
+                     let image = UIImage(data: data) else { return }
+               DispatchQueue.main.async { [weak self] in
+                   self?.view.showBook(title: book.title, image: image)
+               }
+           }).resume()
         }
         
         guard let items = context?.inputItems as? [NSExtensionItem] else { return }
@@ -81,12 +95,12 @@ final class ActionPresenterImpl: ActionPresenter {
     }
     
     func save() {
-        guard let readingBook = dataSource.readingBook else {
+        guard let book = dataSource.readingBook else {
             view.close()
             return
         }
 
-        let draft = MemoDraft(bookId: readingBook.id,
+        let draft = MemoDraft(bookId: book.id,
                               text: text.trimmingCharacters(in: .whitespaces),
                               quote: quote.trimmingCharacters(in: .whitespaces),
                               page: Int(page))

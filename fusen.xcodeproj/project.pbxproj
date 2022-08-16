@@ -93,6 +93,7 @@
 		7AA6D7A926D3427E00781F48 /* EditBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6D7A826D3427E00781F48 /* EditBookViewModel.swift */; };
 		7AA6D7AC26D386BB00781F48 /* AddBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6D7AB26D386BB00781F48 /* AddBookView.swift */; };
 		7AA6D7AE26D386C700781F48 /* AddBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6D7AD26D386C700781F48 /* AddBookViewModel.swift */; };
+		7AB3898228AB7E3A000B5961 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000B26C1F5D100100357 /* Assets.xcassets */; };
 		7AC2CAB828857CEA00325C0B /* UpdateCurrentMemoSortUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2CAB728857CEA00325C0B /* UpdateCurrentMemoSortUseCase.swift */; };
 		7AC2CAB928857F7800325C0B /* MemoSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060092D26E43B4400EA0BC2 /* MemoSort.swift */; };
 		7AC2CABB2885809700325C0B /* GetCurrentMemoSortUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2CABA2885809700325C0B /* GetCurrentMemoSortUseCase.swift */; };
@@ -1749,6 +1750,7 @@
 			files = (
 				7A9F6A0528AA3AFE00753210 /* Colors.xcassets in Resources */,
 				7A9675FC28A9263200445D83 /* Media.xcassets in Resources */,
+				7AB3898228AB7E3A000B5961 /* Assets.xcassets in Resources */,
 				7A96760128A9263200445D83 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

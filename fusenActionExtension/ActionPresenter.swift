@@ -7,8 +7,8 @@
 
 import Foundation
 import MobileCoreServices
-import UniformTypeIdentifiers
 import UIKit
+import UniformTypeIdentifiers
 
 protocol ActionPresenter: AnyObject {
     func action(withContext context: NSExtensionContext?)

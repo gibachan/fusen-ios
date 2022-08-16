@@ -12,7 +12,7 @@ protocol UserDefaultsDataSource: AnyObject {
     var didConfirmReadingBookDescription: Bool { get set }
     var readBookPages: [String: Any] { get }
     var readingBook: CachedBook? { get set }
-    var readingBookMemoDrafts: [MemoDraft] { get set }
+    var readingBookMemoDraft: MemoDraft? { get set }
     var reviewedVersion: String? { get set }
     var currentBookSort: BookSort? { get set }
     var currentMemoSort: MemoSort? { get set }
@@ -59,12 +59,12 @@ final class UserDefaultsDataSourceImpl: UserDefaultsDataSource {
         }
     }
     
-    var readingBookMemoDrafts: [MemoDraft] {
+    var readingBookMemoDraft: MemoDraft? {
         get {
-            return userDefaults.array(forKey: .readingBookMemoDrafts)
+            return userDefaults.decodableObject(forKey: .readingBookMemoDrafts)
         }
         set {
-            userDefaults.set(newValue, forKey: Key.readingBookMemoDrafts.rawValue)
+            userDefaults.setEncodable(newValue, forKey: .readingBookMemoDrafts)
         }
     }
     

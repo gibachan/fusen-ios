@@ -89,9 +89,7 @@ final class ActionPresenterImpl: ActionPresenter {
                               text: text.trimmingCharacters(in: .whitespaces),
                               quote: quote.trimmingCharacters(in: .whitespaces),
                               page: Int(page))
-        var drafts = dataSource.readingBookMemoDrafts
-        drafts.append(draft)
-        dataSource.readingBookMemoDrafts = drafts
+        dataSource.readingBookMemoDraft = draft
         
         view.close()
     }

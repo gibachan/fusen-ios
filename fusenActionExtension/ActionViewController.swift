@@ -10,7 +10,11 @@ import UIKit
 class ActionViewController: UIViewController {
     @IBOutlet private var imageView: UIImageView!
     @IBOutlet private var titleLabel: UILabel!
-    @IBOutlet private var scrollView: UIScrollView!
+    @IBOutlet private var scrollView: UIScrollView! {
+        didSet {
+            scrollView.contentInset.bottom = 300
+        }
+    }
     @IBOutlet private var descriptionView: UIView!
     @IBOutlet private var readingBookView: UIView! {
         didSet {
@@ -46,8 +50,6 @@ class ActionViewController: UIViewController {
         super.viewDidLoad()
         presenter = ActionPresenterImpl(withView: self)
         presenter.action(withContext: extensionContext)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIControl.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIControl.keyboardWillHideNotification, object: nil)
     }
     
     override func viewDidLayoutSubviews() {
@@ -76,17 +78,6 @@ private extension ActionViewController {
 
     @IBAction private func onOpenApp() {
         presenter.openApp()
-    }
-    
-    @objc func keyboardWillShow(_ notification: Notification) {
-        guard let userInfo = notification.userInfo,
-              let value = userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue else { return }
-        let keyboardFrame = view.convert(value.cgRectValue, from: nil)
-        scrollView.contentOffset = CGPoint(x: 0, y: keyboardFrame.size.height)
-    }
-    
-    @objc func keyboardWillHide(_ notification: Notification) {
-        scrollView.contentOffset = .zero
     }
 }
 

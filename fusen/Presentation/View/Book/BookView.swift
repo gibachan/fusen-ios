@@ -117,6 +117,11 @@ struct BookView: View {
                 await viewModel.onRefresh()
             }
         }
+        .onReceive(NotificationCenter.default.newMemoAddedViaDeepLinkPublisher()) { _ in
+            Task {
+                await viewModel.onRefresh()
+            }
+        }
     }
 }
 

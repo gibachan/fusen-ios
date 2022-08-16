@@ -22,12 +22,12 @@
                                 <color key="backgroundColor" name="backgroundLightGray"/>
                                 <items>
                                     <navigationItem id="3HJ-uW-3hn">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="WYi-yp-eM6">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="WYi-yp-eM6">
                                             <connections>
                                                 <action selector="onCancel" destination="ObA-dk-sSI" id="7ea-ns-E0c"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="UMH-2F-vJZ">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="UMH-2F-vJZ">
                                             <connections>
                                                 <action selector="onSave" destination="ObA-dk-sSI" id="HPW-MP-x7i"/>
                                             </connections>

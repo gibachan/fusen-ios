@@ -80,6 +80,16 @@ struct SettingTabView: View {
                 
                 Section {
                     NavigationLink {
+                        AboutAppView()
+                    } label: {
+                        HStack {
+                            Text("アプリの便利な使い方")
+                                .font(.medium)
+                                .foregroundColor(.textPrimary)
+                        }
+                    }
+                    
+                    NavigationLink {
                         WebPageView(url: URL.term)
                             .navigationBarTitle("利用規約", displayMode: .inline)
                     } label: {

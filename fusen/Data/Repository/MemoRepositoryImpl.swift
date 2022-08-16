@@ -11,13 +11,26 @@ import Foundation
 
 final class MemoRepositoryImpl: MemoRepository {
     private let db = Firestore.firestore()
-    
+    private let dataSource: UserDefaultsDataSource
+
     // Pagination
     private let perPage = 100
     private var allMemosCache: PagerCache<Memo> = .empty
     
     private var memosSortedBy: MemoSort = .default
     private var memosCache: [ID<Book>: PagerCache<Memo>] = [:]
+    
+    init(dataSource: UserDefaultsDataSource = UserDefaultsDataSourceImpl()) {
+        self.dataSource = dataSource
+    }
+
+    func getDraft() async -> MemoDraft? {
+        dataSource.readingBookMemoDraft
+    }
+    
+    func setDraft(_ draft: MemoDraft?) async {
+        dataSource.readingBookMemoDraft = draft
+    }
     
     func getLatestMemos(count: Int, for user: User) async throws -> [Memo] {
         let query = db.memosCollection(for: user)
@@ -210,14 +223,14 @@ final class MemoRepositoryImpl: MemoRepository {
         return newPager
     }
     
-    func addMemo(of book: Book, text: String, quote: String, page: Int?, image: ImageData?, for user: User) async throws -> ID<Memo> {
+    func addMemo(bookId: ID<Book>, text: String, quote: String, page: Int?, image: ImageData?, for user: User) async throws -> ID<Memo> {
         let newMemoDocRef = db.memosCollection(for: user).document()
 
         var imageURL: URL?
         if let image = image {
             do {
                 let storage = ImageStorage()
-                imageURL = try await storage.uploadMemo(image: image, memoId: ID<Memo>(value: newMemoDocRef.documentID), bookId: book.id, for: user)
+                imageURL = try await storage.uploadMemo(image: image, memoId: ID<Memo>(value: newMemoDocRef.documentID), bookId: bookId, for: user)
             } catch {
                 throw MemoRepositoryError.uploadImage
             }
@@ -226,7 +239,7 @@ final class MemoRepositoryImpl: MemoRepository {
         typealias AddMemoContinuation = CheckedContinuation<ID<Memo>, Error>
         return try await withCheckedThrowingContinuation { (continuation: AddMemoContinuation) in
             let create = FirestoreCreateMemo(
-                bookId: book.id.value,
+                bookId: bookId.value,
                 text: text,
                 quote: quote,
                 page: page,

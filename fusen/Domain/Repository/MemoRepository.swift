@@ -13,6 +13,9 @@ enum MemoRepositoryError: Error {
 }
 
 protocol MemoRepository {
+    func getDraft() async -> MemoDraft?
+    func setDraft(_ draft: MemoDraft?) async
+
     func getLatestMemos(count: Int, for user: User) async throws -> [Memo]
 
     func getAllMemos(for user: User, forceRefresh: Bool) async throws -> Pager<Memo>
@@ -21,7 +24,7 @@ protocol MemoRepository {
     func getMemos(of bookId: ID<Book>, sortedBy: MemoSort, for user: User, forceRefresh: Bool) async throws -> Pager<Memo>
     func getNextMemos(of bookId: ID<Book>, for user: User) async throws -> Pager<Memo>
 
-    func addMemo(of book: Book, text: String, quote: String, page: Int?, image: ImageData?, for user: User) async throws -> ID<Memo>
+    func addMemo(bookId: ID<Book>, text: String, quote: String, page: Int?, image: ImageData?, for user: User) async throws -> ID<Memo>
     func update(memo: Memo, text: String, quote: String, page: Int?, imageURLs: [URL], for user: User) async throws
     func delete(memo: Memo, for user: User) async throws
 }

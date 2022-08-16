@@ -86,6 +86,11 @@ struct HomeTabView: View {
                 await viewModel.onRefresh()
             }
         }
+        .onReceive(NotificationCenter.default.newMemoAddedViaDeepLinkPublisher()) { _ in
+            Task {
+                await viewModel.onRefresh()
+            }
+        }
         .onReceive(NotificationCenter.default.homePopToRootPublisher()) { _ in
             isNavigated = false
         }

@@ -125,6 +125,11 @@ struct MainView: View {
                 isTutorialPresented = true
             }
         }
+        .onOpenURL { url in
+            Task {
+                await viewModel.onDeepLink(url: url)
+            }
+        }
     }
 }
 

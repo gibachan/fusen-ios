@@ -20,6 +20,7 @@ protocol ActionPresenter: AnyObject {
 }
 
 final class ActionPresenterImpl: ActionPresenter {
+    // TODO: Should replace with repository
     private let dataSource: UserDefaultsDataSource
 
     private var text: String = "" {
@@ -92,6 +93,7 @@ final class ActionPresenterImpl: ActionPresenter {
         dataSource.readingBookMemoDraft = draft
         
         view.close()
+        view.openApp()
     }
     
     func cancel() {

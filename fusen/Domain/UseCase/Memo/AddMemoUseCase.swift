@@ -35,7 +35,7 @@ final class AddMemoUseCaseImpl: AddMemoUseCase {
         
         do {
             let memoPage: Int? = page == 0 ? nil : page
-            return try await memoRepository.addMemo(of: book, text: text, quote: quote, page: memoPage, image: image, for: user)
+            return try await memoRepository.addMemo(bookId: book.id, text: text, quote: quote, page: memoPage, image: image, for: user)
         } catch {
             throw AddMemoUseCaseError.badNetwork
         }

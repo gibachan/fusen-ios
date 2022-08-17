@@ -14,4 +14,5 @@ enum PublicationRepositoryError: Error {
 
 protocol PublicationRepository {
     func findBy(isbn: ISBN) async throws -> Publication
+    func findBy(title: String) async throws -> [Publication]
 }

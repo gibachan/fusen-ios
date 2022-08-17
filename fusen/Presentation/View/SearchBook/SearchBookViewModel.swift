@@ -58,7 +58,7 @@ final class SearchBookViewModel: ObservableObject {
         }
     }
     
-    enum State {
+    enum State: Equatable {
         case initial
         case loading
         case loaded(publications: [Publication])

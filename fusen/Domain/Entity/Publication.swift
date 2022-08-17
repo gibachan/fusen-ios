@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Publication {
+struct Publication: Equatable {
     let title: String
     let author: String
     let thumbnailURL: URL?

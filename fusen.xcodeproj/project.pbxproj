@@ -100,6 +100,9 @@
 		7AB6FFE928AC7E3300815F33 /* SearchBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6FFE828AC7E3300815F33 /* SearchBookViewModel.swift */; };
 		7AB6FFED28AC854600815F33 /* SearchBookItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6FFEC28AC854600815F33 /* SearchBookItemView.swift */; };
 		7AB6FFF028ACBFF900815F33 /* AppEnv.swift in Sources */ = {isa = PBXBuildFile; fileRef = A062C18826C5F33500C56E2A /* AppEnv.swift */; };
+		7AB6FFF628ACC1F500815F33 /* SearchBookViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6FFF528ACC1F500815F33 /* SearchBookViewModelTests.swift */; };
+		7AB6FFF828ACC25100815F33 /* MockSearchPublicationsByTitleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6FFF728ACC25100815F33 /* MockSearchPublicationsByTitleUseCase.swift */; };
+		7AB6FFFA28ACC30600815F33 /* MockAddBookByPublicationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6FFF928ACC30600815F33 /* MockAddBookByPublicationUseCase.swift */; };
 		7AC2CAB828857CEA00325C0B /* UpdateCurrentMemoSortUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2CAB728857CEA00325C0B /* UpdateCurrentMemoSortUseCase.swift */; };
 		7AC2CAB928857F7800325C0B /* MemoSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060092D26E43B4400EA0BC2 /* MemoSort.swift */; };
 		7AC2CABB2885809700325C0B /* GetCurrentMemoSortUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2CABA2885809700325C0B /* GetCurrentMemoSortUseCase.swift */; };
@@ -422,6 +425,9 @@
 		7AB6FFE628AC7E2A00815F33 /* SearchBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookView.swift; sourceTree = "<group>"; };
 		7AB6FFE828AC7E3300815F33 /* SearchBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookViewModel.swift; sourceTree = "<group>"; };
 		7AB6FFEC28AC854600815F33 /* SearchBookItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookItemView.swift; sourceTree = "<group>"; };
+		7AB6FFF528ACC1F500815F33 /* SearchBookViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookViewModelTests.swift; sourceTree = "<group>"; };
+		7AB6FFF728ACC25100815F33 /* MockSearchPublicationsByTitleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchPublicationsByTitleUseCase.swift; sourceTree = "<group>"; };
+		7AB6FFF928ACC30600815F33 /* MockAddBookByPublicationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAddBookByPublicationUseCase.swift; sourceTree = "<group>"; };
 		7AC2CAB728857CEA00325C0B /* UpdateCurrentMemoSortUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCurrentMemoSortUseCase.swift; sourceTree = "<group>"; };
 		7AC2CABA2885809700325C0B /* GetCurrentMemoSortUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentMemoSortUseCase.swift; sourceTree = "<group>"; };
 		7AC2CABC2885877400325C0B /* GetCurrentMemoSortUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentMemoSortUseCaseTests.swift; sourceTree = "<group>"; };
@@ -842,6 +848,14 @@
 			path = Tutorial;
 			sourceTree = "<group>";
 		};
+		7AB6FFF428ACC1DF00815F33 /* SearchBook */ = {
+			isa = PBXGroup;
+			children = (
+				7AB6FFF528ACC1F500815F33 /* SearchBookViewModelTests.swift */,
+			);
+			path = SearchBook;
+			sourceTree = "<group>";
+		};
 		7AC2CACB2886232800325C0B /* Book */ = {
 			isa = PBXGroup;
 			children = (
@@ -1222,6 +1236,7 @@
 			children = (
 				7AB6FFF228ACC1BA00815F33 /* Home */,
 				7AB6FFF128ACC1B400815F33 /* Main */,
+				7AB6FFF428ACC1DF00815F33 /* SearchBook */,
 				7AB6FFF328ACC1C200815F33 /* Tutorial */,
 			);
 			path = View;
@@ -1598,6 +1613,8 @@
 			isa = PBXGroup;
 			children = (
 				A0D4549E26F6B750001668B4 /* MockGetAppConfigUseCase.swift */,
+				7AB6FFF728ACC25100815F33 /* MockSearchPublicationsByTitleUseCase.swift */,
+				7AB6FFF928ACC30600815F33 /* MockAddBookByPublicationUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -2303,6 +2320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AC2CABD2885877400325C0B /* GetCurrentMemoSortUseCaseTests.swift in Sources */,
+				7AB6FFF828ACC25100815F33 /* MockSearchPublicationsByTitleUseCase.swift in Sources */,
 				A0198ADA26E80A2700553CDA /* AddCollectionUseCaseTests.swift in Sources */,
 				A060096226E5B5E300EA0BC2 /* SearchPublicationByBarcodeUseCaseTests.swift in Sources */,
 				A049C45326F7F1AE00AD5C3D /* AddMemoUseCaseTests.swift in Sources */,
@@ -2317,9 +2335,11 @@
 				A043A71F26F6020800E1A3FF /* TutorialViewModelTests.swift in Sources */,
 				7AC2CACA2886211C00325C0B /* UpdateCurrentBookSortUseCaseTests.swift in Sources */,
 				7A003E8C28674DE1002B8BAC /* UserRepositoryImplTests.swift in Sources */,
+				7AB6FFF628ACC1F500815F33 /* SearchBookViewModelTests.swift in Sources */,
 				A049C45626F7FB2E00AD5C3D /* XCTestCaseExtension.swift in Sources */,
 				A04388C326F1295C006EB863 /* UserDefaultsDataSourceTests.swift in Sources */,
 				7A003E8F28674E21002B8BAC /* MockUserDefaultsDataSource.swift in Sources */,
+				7AB6FFFA28ACC30600815F33 /* MockAddBookByPublicationUseCase.swift in Sources */,
 				A0ACBC2E26FC0D2600C3D5A7 /* HomeTabViewModelTests.swift in Sources */,
 				7AC2CABF288587B900325C0B /* MockUserActionHistoryRepository.swift in Sources */,
 				7AC2CAC12885897300325C0B /* UpdateCurrentMemoSortUseCaseTests.swift in Sources */,

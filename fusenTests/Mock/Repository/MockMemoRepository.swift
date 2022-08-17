@@ -20,7 +20,15 @@ class MockMemoRepository: MemoRepository {
     init(withError error: MemoRepositoryError) {
         self.error = error
     }
+
+    func getDraft() async -> MemoDraft? {
+        fatalError("Not implemented yet")
+    }
     
+    func setDraft(_ draft: MemoDraft?) async {
+        fatalError("Not implemented yet")
+    }
+
     func getLatestMemos(count: Int, for user: User) async throws -> [Memo] {
         fatalError("Not implemented yet")
     }
@@ -41,12 +49,12 @@ class MockMemoRepository: MemoRepository {
         fatalError("Not implemented yet")
     }
     
-    func addMemo(of book: Book, text: String, quote: String, page: Int?, image: ImageData?, for user: User) async throws -> ID<Memo> {
+    func addMemo(bookId: ID<Book>, text: String, quote: String, page: Int?, image: ImageData?, for user: User) async throws -> ID<Memo> {
         if let error = error {
             throw error
         }
         
-        let newMemo = Memo(id: ID<Memo>(value: UUID().uuidString), bookId: book.id, text: text, quote: quote, page: page, imageURLs: [], createdAt: Date(), updatedAt: Date())
+        let newMemo = Memo(id: ID<Memo>(value: UUID().uuidString), bookId: bookId, text: text, quote: quote, page: page, imageURLs: [], createdAt: Date(), updatedAt: Date())
         addedMemo = newMemo
         return newMemo.id
     }

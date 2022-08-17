@@ -13,6 +13,7 @@ final class MockUserDefaultsDataSource: UserDefaultsDataSource {
     private var _didConfirmReadingBookDescription: Bool
     private var _readBookPages: [String: Any]
     private var _readingBook: CachedBook?
+    private var _readingBookMemoDraft: MemoDraft?
     private var _reviewedVersion: String?
     private var _currentBookSort: BookSort?
     private var _currentMemoSort: MemoSort?
@@ -21,6 +22,7 @@ final class MockUserDefaultsDataSource: UserDefaultsDataSource {
          didConfirmReadingBookDescription: Bool = false,
          readBookPages: [String: Any] = [:],
          readingBook: CachedBook? = nil,
+         readingBookMemoDraft: MemoDraft? = nil,
          reviewedVersion: String? = nil,
          currentBookSort: BookSort? = nil,
          currentMemoSort: MemoSort? = nil) {
@@ -28,6 +30,7 @@ final class MockUserDefaultsDataSource: UserDefaultsDataSource {
         self._didConfirmReadingBookDescription = didConfirmReadingBookDescription
         self._readBookPages = readBookPages
         self._readingBook = readingBook
+        self._readingBookMemoDraft = readingBookMemoDraft
         self._reviewedVersion = reviewedVersion
         self._currentBookSort = nil
         self._currentMemoSort = nil
@@ -51,6 +54,11 @@ final class MockUserDefaultsDataSource: UserDefaultsDataSource {
     var readingBook: CachedBook? {
         get { _readingBook }
         set { _readingBook = newValue }
+    }
+    
+    var readingBookMemoDraft: MemoDraft? {
+        get { _readingBookMemoDraft }
+        set { _readingBookMemoDraft = newValue }
     }
     
     var reviewedVersion: String? {

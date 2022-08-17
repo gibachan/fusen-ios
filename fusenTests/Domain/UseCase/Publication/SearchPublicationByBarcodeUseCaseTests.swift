@@ -95,6 +95,7 @@ private extension Publication {
 
 private struct MockPublicationRepository: PublicationRepository {
     let result: Result<Publication, PublicationRepositoryError>
+
     func findBy(isbn: ISBN) async throws -> Publication {
         switch result {
         case let .success(publication):
@@ -102,5 +103,9 @@ private struct MockPublicationRepository: PublicationRepository {
         case let .failure(error):
             throw error
         }
+    }
+    
+    func findBy(title: String) async throws -> [Publication] {
+        fatalError("Not implemented yet")
     }
 }

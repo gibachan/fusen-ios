@@ -26,8 +26,8 @@ struct RakutenBooksPublicationRepositoryImpl: PublicationRepository {
         }
         do {
             let bookResponse = try decoder.decode(RakutenBooksResponse.self, from: data)
-            if let book = bookResponse.toDomain() {
-                return book
+            if let publication = bookResponse.Items.first?.toPublication() {
+                return publication
             } else {
                 throw PublicationRepositoryError.notFound
             }
@@ -46,9 +46,8 @@ struct RakutenBooksPublicationRepositoryImpl: PublicationRepository {
             throw PublicationRepositoryError.notFound
         }
         do {
-            let bookResponse = try decoder.decode([RakutenBooksResponse].self, from: data)
-            let books = bookResponse.compactMap({ $0.toDomain() })
-            return books
+            let response = try decoder.decode(RakutenBooksResponse.self, from: data)
+            return response.Items.map { $0.toPublication() }
         } catch {
             throw PublicationRepositoryError.notFound
         }

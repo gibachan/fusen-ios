@@ -32,4 +32,5 @@ extension Image {
     static let error = Image(systemName: "xmark.octagon.fill")
     static let googleLogo = Image("logo_googleg_48dp")
     static let displayStyle = Image(systemName: "square.grid.2x2")
+    static let search = Image(systemName: "magnifyingglass")
 }

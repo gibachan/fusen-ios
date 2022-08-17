@@ -88,6 +88,7 @@ struct AddBookMenuView: View {
 
 enum AddBookMenuType: Identifiable, CaseIterable {
     case camera
+    case search
     case manual
 
     var id: String { title }
@@ -95,6 +96,7 @@ enum AddBookMenuType: Identifiable, CaseIterable {
     var title: String {
         switch self {
         case .camera: return "バーコードを読み取る"
+        case .search: return "タイトルで検索"
         case .manual: return "マニュアル入力する"
         }
     }
@@ -102,6 +104,7 @@ enum AddBookMenuType: Identifiable, CaseIterable {
     var icon: Image {
         switch self {
         case .camera: return .camera
+        case .search: return .search
         case .manual: return .manual
         }
     }

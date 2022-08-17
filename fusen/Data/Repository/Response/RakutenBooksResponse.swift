@@ -20,10 +20,8 @@ extension RakutenBooksResponse {
     }
 }
 
-extension RakutenBooksResponse {
-    func toDomain() -> Publication? {
-        guard let item = Items.first else { return nil }
-        
-        return Publication(title: item.title, author: item.author, thumbnailURL: URL(string: item.largeImageUrl))
+extension RakutenBooksResponse.Item {
+    func toPublication() -> Publication {
+        return Publication(title: title, author: author, thumbnailURL: URL(string: largeImageUrl))
     }
 }

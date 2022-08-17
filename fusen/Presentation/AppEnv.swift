@@ -21,4 +21,15 @@ enum AppEnv {
         return .production
         #endif
     }
+    
+    var memoURLScheme: URL {
+        switch self {
+        case .development:
+            return URL(string: "fusen-dev://memo")!
+        case .staging:
+            return URL(string: "fusen-stg://memo")!
+        case .production:
+            return URL(string: "fusen://memo")!
+        }
+    }
 }

@@ -99,6 +99,7 @@
 		7AB6FFE728AC7E2A00815F33 /* SearchBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6FFE628AC7E2A00815F33 /* SearchBookView.swift */; };
 		7AB6FFE928AC7E3300815F33 /* SearchBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6FFE828AC7E3300815F33 /* SearchBookViewModel.swift */; };
 		7AB6FFED28AC854600815F33 /* SearchBookItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6FFEC28AC854600815F33 /* SearchBookItemView.swift */; };
+		7AB6FFF028ACBFF900815F33 /* AppEnv.swift in Sources */ = {isa = PBXBuildFile; fileRef = A062C18826C5F33500C56E2A /* AppEnv.swift */; };
 		7AC2CAB828857CEA00325C0B /* UpdateCurrentMemoSortUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2CAB728857CEA00325C0B /* UpdateCurrentMemoSortUseCase.swift */; };
 		7AC2CAB928857F7800325C0B /* MemoSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060092D26E43B4400EA0BC2 /* MemoSort.swift */; };
 		7AC2CABB2885809700325C0B /* GetCurrentMemoSortUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2CABA2885809700325C0B /* GetCurrentMemoSortUseCase.swift */; };
@@ -2041,6 +2042,7 @@
 				7A9F69FA28AA349300753210 /* CachedBook.swift in Sources */,
 				7A9F69FE28AA34AD00753210 /* ID.swift in Sources */,
 				7A9F6A0328AA361E00753210 /* MemoDraft.swift in Sources */,
+				7AB6FFF028ACBFF900815F33 /* AppEnv.swift in Sources */,
 				7A9F69FC28AA349C00753210 /* BookSort.swift in Sources */,
 				7A9F69FB28AA349900753210 /* Book.swift in Sources */,
 				7A9F69F928AA348400753210 /* UserDefaultsDataSource.swift in Sources */,
@@ -2582,6 +2584,7 @@
 			baseConfigurationReference = 1DE0D1B8A96CA3FFE09EAAEA /* Pods-fusen.staging.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				APP_URL_SCHEME = "fusen-stg";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = fusen/fusen.entitlements;
@@ -2788,6 +2791,7 @@
 			baseConfigurationReference = 6F5CBB77B19B6F9B80D8238A /* Pods-fusen.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				APP_URL_SCHEME = "fusen-dev";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = fusen/fusen.entitlements;
@@ -2827,6 +2831,7 @@
 			baseConfigurationReference = 983232E518C4EADBE80E78A4 /* Pods-fusen.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				APP_URL_SCHEME = fusen;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = fusen/fusen.entitlements;

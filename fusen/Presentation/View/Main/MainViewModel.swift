@@ -47,7 +47,7 @@ final class MainViewModel: ObservableObject {
     
     @MainActor
     func onDeepLink(url: URL) async {
-        guard url.absoluteString == "fusen://memo" else { return }
+        guard url == AppEnv.current.memoURLScheme else { return }
         
         do {
             _ = try await addDraftMemoUseCase.invoke()

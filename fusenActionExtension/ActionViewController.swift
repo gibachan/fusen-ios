@@ -127,7 +127,7 @@ extension ActionViewController: ActionView {
     }
     
     func openApp() {
-        openUrl(url: URL(string: "fusen://memo")!)
+        openUrl(url: AppEnv.current.memoURLScheme)
     }
 }
 

@@ -13,6 +13,7 @@ struct AddBookMenuView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject var viewModel: AddBookMenuViewModel
     @State private var isScanBarcodePresented = false
+    @State private var isSearchPresented = false
     @State private var isManualInputPresented = false
     @State private var selectedCollection = ""
     
@@ -28,6 +29,11 @@ struct AddBookMenuView: View {
                         isScanBarcodePresented = true
                     } label: {
                         AddBookMenuItem(type: AddBookMenuType.camera)
+                    }
+                    Button {
+                        isSearchPresented = true
+                    } label: {
+                        AddBookMenuItem(type: AddBookMenuType.search)
                     }
                     Button {
                         isManualInputPresented = true
@@ -65,6 +71,13 @@ struct AddBookMenuView: View {
             }, content: {
                 NavigationView {
                     ScanBarcodeView(in: viewModel.selectedCollection)
+                }
+            })
+            .sheet(isPresented: $isSearchPresented, onDismiss: {
+                print("dimiss")
+            }, content: {
+                NavigationView {
+                    SearchBookView(in: viewModel.selectedCollection)
                 }
             })
             .sheet(isPresented: $isManualInputPresented, onDismiss: {

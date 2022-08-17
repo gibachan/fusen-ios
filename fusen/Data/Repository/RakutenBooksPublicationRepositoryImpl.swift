@@ -38,7 +38,10 @@ struct RakutenBooksPublicationRepositoryImpl: PublicationRepository {
     
     func findBy(title: String) async throws -> [Publication] {
         let urlString = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?applicationId=\(rakutenApplicationId)&formatVersion=2&title=\(title)&hits=30&page=1"
-        let url = URL(string: urlString)!
+        guard let encodedUrlString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+              let url = URL(string: encodedUrlString) else {
+            throw PublicationRepositoryError.notFound
+        }
         log.d("request: \(url.absoluteURL)")
         let request = URLRequest(url: url)
         let (data, response) = try await session.data(for: request)

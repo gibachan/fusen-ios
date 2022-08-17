@@ -144,9 +144,10 @@ private extension AboutAppView {
                     }
                     PageItem("共有したメモは読書中の書籍のメモに追加されます")
                     Spacer()
-                    HStack {
+                    HStack(spacing: 8) {
                         Spacer()
                         PageImage("img_about_app_3")
+                        PageImage("img_about_app_4")
                         Spacer()
                     }
                 }

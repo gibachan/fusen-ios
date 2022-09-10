@@ -13,6 +13,7 @@ struct AddBookMenuView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject var viewModel: AddBookMenuViewModel
     @State private var isScanBarcodePresented = false
+    @State private var isSearchPresented = false
     @State private var isManualInputPresented = false
     @State private var selectedCollection = ""
     
@@ -28,6 +29,11 @@ struct AddBookMenuView: View {
                         isScanBarcodePresented = true
                     } label: {
                         AddBookMenuItem(type: AddBookMenuType.camera)
+                    }
+                    Button {
+                        isSearchPresented = true
+                    } label: {
+                        AddBookMenuItem(type: AddBookMenuType.search)
                     }
                     Button {
                         isManualInputPresented = true
@@ -67,6 +73,13 @@ struct AddBookMenuView: View {
                     ScanBarcodeView(in: viewModel.selectedCollection)
                 }
             })
+            .sheet(isPresented: $isSearchPresented, onDismiss: {
+                print("dimiss")
+            }, content: {
+                NavigationView {
+                    SearchBookView(in: viewModel.selectedCollection)
+                }
+            })
             .sheet(isPresented: $isManualInputPresented, onDismiss: {
                 print("dimiss")
             }, content: {
@@ -88,6 +101,7 @@ struct AddBookMenuView: View {
 
 enum AddBookMenuType: Identifiable, CaseIterable {
     case camera
+    case search
     case manual
 
     var id: String { title }
@@ -95,6 +109,7 @@ enum AddBookMenuType: Identifiable, CaseIterable {
     var title: String {
         switch self {
         case .camera: return "バーコードを読み取る"
+        case .search: return "タイトルで検索"
         case .manual: return "マニュアル入力する"
         }
     }
@@ -102,6 +117,7 @@ enum AddBookMenuType: Identifiable, CaseIterable {
     var icon: Image {
         switch self {
         case .camera: return .camera
+        case .search: return .search
         case .manual: return .manual
         }
     }

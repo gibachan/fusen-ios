@@ -15,17 +15,20 @@ final class MainViewModel: ObservableObject {
     private let getAppConfigUseCase: GetAppConfigUseCase
     private let getUserActionHistoryUseCase: GetUserActionHistoryUseCase
     private let launchAppUseCase: LaunchAppUseCase
+    private let addDraftMemoUseCase: AddDraftMemoUseCase
     
     init(
         accountService: AccountServiceProtocol = AccountService.shared,
         getAppConfigUseCase: GetAppConfigUseCase = GetAppConfigUseCaseImpl(),
         getUserActionHistoryUseCase: GetUserActionHistoryUseCase = GetUserActionHistoryUseCaseImpl(),
-        launchAppUseCase: LaunchAppUseCase = LaunchAppUseCaseImpl()
+        launchAppUseCase: LaunchAppUseCase = LaunchAppUseCaseImpl(),
+        addDraftMemoUseCase: AddDraftMemoUseCase = AddDraftMemoUseCaseImpl()
     ) {
         self.accountService = accountService
         self.getAppConfigUseCase = getAppConfigUseCase
         self.getUserActionHistoryUseCase = getUserActionHistoryUseCase
         self.launchAppUseCase = launchAppUseCase
+        self.addDraftMemoUseCase = addDraftMemoUseCase
     }
     
     @MainActor
@@ -39,6 +42,18 @@ final class MainViewModel: ObservableObject {
         self.isMaintaining = config.isMaintaining
         if !config.isMaintaining {
             showTutorial = !accountService.isLoggedIn
+        }
+    }
+    
+    @MainActor
+    func onDeepLink(url: URL) async {
+        guard url == AppEnv.current.memoURLScheme else { return }
+        
+        do {
+            _ = try await addDraftMemoUseCase.invoke()
+            NotificationCenter.default.postNewMemoAddedViaDeepLink()
+        } catch {
+            log.e(error.localizedDescription)
         }
     }
     

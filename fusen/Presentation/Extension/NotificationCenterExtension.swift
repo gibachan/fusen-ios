@@ -29,6 +29,9 @@ extension NotificationCenter {
     func postLogOut() {
         post(name: Notification.Name.logOut, object: nil)
     }
+    func postNewMemoAddedViaDeepLink() {
+        post(name: Notification.Name.newMemoAddedViaDeepLink, object: nil)
+    }
     
     func homePopToRootPublisher() -> Publisher {
         publisher(for: Notification.Name.homePopToRoot)
@@ -50,5 +53,8 @@ extension NotificationCenter {
     }
     func logOutPublisher() -> Publisher {
         publisher(for: Notification.Name.logOut)
+    }
+    func newMemoAddedViaDeepLinkPublisher() -> Publisher {
+        publisher(for: Notification.Name.newMemoAddedViaDeepLink)
     }
 }

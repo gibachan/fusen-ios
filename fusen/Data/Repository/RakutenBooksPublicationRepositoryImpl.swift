@@ -26,13 +26,33 @@ struct RakutenBooksPublicationRepositoryImpl: PublicationRepository {
         }
         do {
             let bookResponse = try decoder.decode(RakutenBooksResponse.self, from: data)
-            if let book = bookResponse.toDomain() {
-                return book
+            if let publication = bookResponse.Items.first?.toPublication() {
+                return publication
             } else {
                 throw PublicationRepositoryError.notFound
             }
         } catch {
             throw PublicationRepositoryError.invalidJSON
+        }
+    }
+    
+    func findBy(title: String) async throws -> [Publication] {
+        let urlString = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?applicationId=\(rakutenApplicationId)&formatVersion=2&title=\(title)&hits=30&page=1"
+        guard let encodedUrlString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+              let url = URL(string: encodedUrlString) else {
+            throw PublicationRepositoryError.notFound
+        }
+        log.d("request: \(url.absoluteURL)")
+        let request = URLRequest(url: url)
+        let (data, response) = try await session.data(for: request)
+        guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+            throw PublicationRepositoryError.notFound
+        }
+        do {
+            let response = try decoder.decode(RakutenBooksResponse.self, from: data)
+            return response.Items.map { $0.toPublication() }
+        } catch {
+            throw PublicationRepositoryError.notFound
         }
     }
 }

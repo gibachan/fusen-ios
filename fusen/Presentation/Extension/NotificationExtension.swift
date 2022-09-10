@@ -29,6 +29,9 @@ extension Notification.Name {
     static var error: Notification.Name {
         Notification.Name("error")
     }
+    static var newMemoAddedViaDeepLink: Notification.Name {
+        Notification.Name("newMemoAddedViaDeepLink")
+    }
 }
 
 extension Notification {

@@ -1978,6 +1978,7 @@
 		};
 		A082002F26C1F74300100357 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -1996,6 +1997,7 @@
 		};
 		A0A2B31226EDB3FC001798D3 /* GoogleService-Info.plist */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -2014,6 +2016,7 @@
 		};
 		A0B1FED826E0401000586151 /* LicensePlist */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);

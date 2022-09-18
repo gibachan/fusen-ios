@@ -16,6 +16,7 @@ struct AddBookView: View {
     @State private var isThumbnailPickerPresented = false
     @State private var isCameraPickerPresented = false
     @State private var isPhotoLibraryPresented = false
+    @FocusState private var focus: Bool
     private let collection: Collection?
     
     init(in collection: Collection? = nil) {
@@ -57,6 +58,7 @@ struct AddBookView: View {
                     .onChange(of: title, perform: { newValue in
                         viewModel.onTextChange(title: newValue, author: author)
                     })
+                    .focused($focus)
             } header: {
                 SectionHeaderText("タイトル（必須）")
             }
@@ -121,6 +123,11 @@ struct AddBookView: View {
                 case .failure(let error):
                     log.e(error.localizedDescription)
                 }
+            }
+        }
+        .onAppear {
+            if title.isEmpty {
+                focus = true
             }
         }
         .onReceive(viewModel.$state) { state in

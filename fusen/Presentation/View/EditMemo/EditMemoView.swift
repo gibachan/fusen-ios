@@ -15,6 +15,7 @@ struct EditMemoView: View {
     @State private var page: Int
     @State private var isMemoImagePresented = false
     @State private var isDeleteAlertPresented = false
+    @FocusState private var focus: Bool
     
     init(memo: Memo) {
         self._viewModel = StateObject(wrappedValue: EditMemoViewModel(memo: memo))
@@ -32,6 +33,7 @@ struct EditMemoView: View {
                         .onChange(of: text) { newValue in
                             viewModel.onTextChange(text: newValue, quote: quote)
                         }
+                        .focused($focus)
                 } header: {
                     SectionHeaderText("メモ")
                 }
@@ -115,6 +117,11 @@ struct EditMemoView: View {
                     }
                 })
             )
+        }
+        .onAppear {
+            if text.isEmpty {
+                focus = true
+            }
         }
         .onReceive(viewModel.$state) { state in
             switch state {

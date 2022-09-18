@@ -13,6 +13,7 @@ struct EditBookView: View {
     @State var title: String
     @State var author: String
     @State var description: String
+    @FocusState private var focus: Bool
     
     init(book: Book) {
         self._viewModel = StateObject(wrappedValue: EditViewModel(book: book))
@@ -39,6 +40,7 @@ struct EditBookView: View {
                     .onChange(of: title, perform: { newValue in
                         viewModel.onTextChange(title: newValue, author: author, description: description)
                     })
+                    .focused($focus)
             } header: {
                 SectionHeaderText("タイトル（必須）")
             }
@@ -93,6 +95,11 @@ struct EditBookView: View {
         )
         .task {
             viewModel.onAppear()
+        }
+        .onAppear {
+            if title.isEmpty {
+                focus = true
+            }
         }
         .onReceive(viewModel.$state) { state in
             switch state {

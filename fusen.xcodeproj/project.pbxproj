@@ -44,6 +44,8 @@
 		7A33118026CD692E00EB520D /* BookListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33117F26CD692E00EB520D /* BookListItem.swift */; };
 		7A33118226CE518F00EB520D /* UIApplicationExtensoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33118126CE518F00EB520D /* UIApplicationExtensoin.swift */; };
 		7A33118526CFD59100EB520D /* DocumentCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33118426CFD59100EB520D /* DocumentCameraView.swift */; };
+		7A3442782927B2E700F9C5EF /* UpdateBookUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3442772927B2E700F9C5EF /* UpdateBookUseCaseTests.swift */; };
+		7A34427A2927B38100F9C5EF /* MockBookRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3442792927B38100F9C5EF /* MockBookRepository.swift */; };
 		7A3E5586271B9D2D002CE696 /* GoogleSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3E5585271B9D2D002CE696 /* GoogleSignInButton.swift */; };
 		7A423B6528A9B7B0002ECAAB /* ActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A423B6428A9B7B0002ECAAB /* ActionView.swift */; };
 		7A423B6728A9B7B9002ECAAB /* ActionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A423B6628A9B7B9002ECAAB /* ActionPresenter.swift */; };
@@ -383,6 +385,8 @@
 		7A33117F26CD692E00EB520D /* BookListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListItem.swift; sourceTree = "<group>"; };
 		7A33118126CE518F00EB520D /* UIApplicationExtensoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtensoin.swift; sourceTree = "<group>"; };
 		7A33118426CFD59100EB520D /* DocumentCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCameraView.swift; sourceTree = "<group>"; };
+		7A3442772927B2E700F9C5EF /* UpdateBookUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateBookUseCaseTests.swift; sourceTree = "<group>"; };
+		7A3442792927B38100F9C5EF /* MockBookRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBookRepository.swift; sourceTree = "<group>"; };
 		7A3E5581271AA809002CE696 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7A3E5585271B9D2D002CE696 /* GoogleSignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInButton.swift; sourceTree = "<group>"; };
 		7A423B6428A9B7B0002ECAAB /* ActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionView.swift; sourceTree = "<group>"; };
@@ -967,22 +971,9 @@
 			children = (
 				7AC2CAC72886211400325C0B /* GetCurrentBookSortUseCaseTests.swift */,
 				7AC2CAC92886211C00325C0B /* UpdateCurrentBookSortUseCaseTests.swift */,
+				7A3442772927B2E700F9C5EF /* UpdateBookUseCaseTests.swift */,
 			);
 			path = Book;
-			sourceTree = "<group>";
-		};
-		7AC2CAD52886244500325C0B /* User */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = User;
-			sourceTree = "<group>";
-		};
-		7AC2CAD72886245200325C0B /* App */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = App;
 			sourceTree = "<group>";
 		};
 		7AD160FF26C29CA800334A63 /* Presentation */ = {
@@ -1367,8 +1358,6 @@
 		A060096026E5B5E300EA0BC2 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				7AC2CAD72886245200325C0B /* App */,
-				7AC2CAD52886244500325C0B /* User */,
 				7AC2CAD42886243D00325C0B /* Book */,
 				7AC2CAD32886243500325C0B /* Memo */,
 				7AC2CAD22886243100325C0B /* Collection */,
@@ -1422,6 +1411,7 @@
 			children = (
 				A06BE24626FAFCF400D0666E /* MockMemoRepository.swift */,
 				7AC2CABE288587B900325C0B /* MockUserActionHistoryRepository.swift */,
+				7A3442792927B38100F9C5EF /* MockBookRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -2324,10 +2314,12 @@
 			files = (
 				7AC2CABD2885877400325C0B /* GetCurrentMemoSortUseCaseTests.swift in Sources */,
 				7AB6FFF828ACC25100815F33 /* MockSearchPublicationsByTitleUseCase.swift in Sources */,
+				7A34427A2927B38100F9C5EF /* MockBookRepository.swift in Sources */,
 				A0198ADA26E80A2700553CDA /* AddCollectionUseCaseTests.swift in Sources */,
 				A060096226E5B5E300EA0BC2 /* SearchPublicationByBarcodeUseCaseTests.swift in Sources */,
 				A049C45326F7F1AE00AD5C3D /* AddMemoUseCaseTests.swift in Sources */,
 				7A2DF1C526FD5377007DC3E6 /* LatestMemoItemModelTests.swift in Sources */,
+				7A3442782927B2E700F9C5EF /* UpdateBookUseCaseTests.swift in Sources */,
 				7AC2CAC82886211400325C0B /* GetCurrentBookSortUseCaseTests.swift in Sources */,
 				A06BE24726FAFCF400D0666E /* MockMemoRepository.swift in Sources */,
 				A0D4549F26F6B750001668B4 /* MockGetAppConfigUseCase.swift in Sources */,

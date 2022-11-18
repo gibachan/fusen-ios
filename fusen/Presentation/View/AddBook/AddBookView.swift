@@ -34,7 +34,7 @@ struct AddBookView: View {
                            let uiImage = image.uiImage {
                             Image(uiImage: uiImage)
                                 .resizable()
-                                .scaledToFit()
+                                .scaledToFill()
                                 .frame(width: 64, height: 80)
                         } else {
                             BookImageView(url: nil)

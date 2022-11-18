@@ -427,7 +427,7 @@ final class BookRepositoryImpl: BookRepository {
     }
     
     func update(book: Book, image: ImageData, for user: User) async throws {
-        var imageURL: URL?
+        let imageURL: URL
         do {
             let storage = ImageStorage()
             imageURL = try await storage.upload(image: image, bookId: book.id, for: user)
@@ -438,7 +438,7 @@ final class BookRepositoryImpl: BookRepository {
         let update = FirestoreUpdateBook(
             title: book.title,
             author: book.author,
-            imageURL: imageURL?.absoluteString ?? "",
+            imageURL: imageURL.absoluteString,
             description: book.description,
             impression: book.impression,
             isFavorite: book.isFavorite,

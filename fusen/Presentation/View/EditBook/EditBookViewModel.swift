@@ -29,17 +29,22 @@ final class EditViewModel: ObservableObject {
     }
     
     @MainActor
+    func onThumbnailImageChange() {
+        isSaveEnabled = true
+    }
+    
+    @MainActor
     func onTextChange(title: String, author: String, description: String) {
         isSaveEnabled = book.title != title || book.author != author || book.description != description
     }
     
     @MainActor
-    func onSave(title: String, author: String, description: String) async {
+    func onSave(image: ImageData?, title: String, author: String, description: String) async {
         guard !state.isInProgress else { return }
 
         state = .loading
         do {
-            try await updateBookUseCase.invoke(book: book, title: title, author: author, description: description)
+            try await updateBookUseCase.invoke(book: book, image: image, title: title, author: author, description: description)
             self.state = .succeeded
         } catch {
             log.e(error.localizedDescription)

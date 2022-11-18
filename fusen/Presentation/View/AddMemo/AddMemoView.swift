@@ -20,6 +20,7 @@ struct AddMemoView: View {
     @State private var isCameraPickerPresented = false
     @State private var isPhotoLibraryPresented = false
     @State private var isQuoteCameraPresented = false
+    @FocusState private var focus: Bool
     private let memoImageWidth: CGFloat = 72
     private let memoImageHeight: CGFloat = 96
     private let isImageAvailable = false
@@ -36,6 +37,7 @@ struct AddMemoView: View {
                     .onChange(of: text) { newValue in
                         viewModel.onTextChange(text: newValue, quote: quote)
                     }
+                    .focused($focus)
             } header: {
                 SectionHeaderText("メモ")
             }
@@ -182,6 +184,11 @@ struct AddMemoView: View {
         }
         .task {
             await viewModel.onAppear()
+        }
+        .onAppear {
+            if text.isEmpty {
+                focus = true
+            }
         }
         .onReceive(viewModel.$recognizedQuote) { recognizedQuote in
             quote = recognizedQuote

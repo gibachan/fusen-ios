@@ -54,38 +54,39 @@ struct GoogleSignInButton: View {
             handler(.failure(.missingPresenting))
             return
         }
+        
+        // FIXME: Set configuration at right place which might be at app launch.
         guard let clientID = FirebaseApp.app()?.options.clientID else {
             handler(.failure(.missingClientId))
             return
         }
-        
         let config = GIDConfiguration(clientID: clientID)
-        GIDSignIn.sharedInstance.signIn(
-            with: config,
-            presenting: presentingVC,
-            callback: { user, error in
-                if let error = error {
-                    log.e(error.localizedDescription)
-                    if (error as NSError).code == -5 {
-                        handler(.failure(.canceled))
-                    } else {
-                        handler(.failure(.unknown))
-                    }
-                    return
+        GIDSignIn.sharedInstance.configuration = config
+        
+        GIDSignIn.sharedInstance.signIn(withPresenting: presentingVC, completion: { signInResult, error in
+            if let error = error {
+                log.e(error.localizedDescription)
+                if (error as NSError).code == -5 {
+                    handler(.failure(.canceled))
+                } else {
+                    handler(.failure(.unknown))
                 }
-                
-                guard let authentication = user?.authentication,
-                      let idToken = authentication.idToken else {
-                          handler(.failure(.missingIdToken))
-                          return
-                      }
-                
-                let credential = GoogleAuthProvider.credential(
-                    withIDToken: idToken,
-                    accessToken: authentication.accessToken
-                )
-                handler(.success(credential))
-            })
+                return
+            }
+            
+            guard let result = signInResult,
+                  let idToken = result.user.idToken?.tokenString else {
+                handler(.failure(.missingIdToken))
+                return
+            }
+            let accessToken = result.user.accessToken.tokenString
+            
+            let credential = GoogleAuthProvider.credential(
+                withIDToken: idToken,
+                accessToken: accessToken
+            )
+            handler(.success(credential))
+        })
     }
 }
 

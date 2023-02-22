@@ -105,7 +105,7 @@ struct TutorialView: View {
         .onReceive(viewModel.$state) { state in
             switch state {
             case .initial:
-                break
+                LoadingHUD.dismiss()
             case .loading:
                 LoadingHUD.show()
             case .succeeded:

@@ -49,6 +49,7 @@ final class TutorialViewModel: ObservableObject {
             }
         case .failure(let error):
             // Do nothing
+            state = .initial
             log.e(error.localizedDescription)
         }
     }
@@ -82,8 +83,14 @@ final class TutorialViewModel: ObservableObject {
                 }
             }
         case .failure(let error):
-            // Do nothing
-            log.e(error.localizedDescription)
+            switch error {
+            case .canceled:
+                // Do nothing
+                state = .initial
+            case .missingPresenting, .missingClientId, .missingIdToken, .unknown:
+                log.e(error.localizedDescription)
+                state = .failedSigningWithGoogle
+            }
         }
     }
 

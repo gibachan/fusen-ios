@@ -25,9 +25,9 @@ struct BookListView: View {
             TrailingControlToolbar(
                 trailingView: {
                     AddBookIcon()
-                },
-                trailingAction: {
-                    isAddPresented = true
+                        .onTapGesture {
+                            isAddPresented = true
+                        }
                 }
             )
         }

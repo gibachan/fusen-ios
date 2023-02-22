@@ -13,7 +13,7 @@ enum UpdateBookUseCaseError: Error {
 }
 
 protocol UpdateBookUseCase {
-    func invoke(book: Book, title: String, author: String, description: String) async throws
+    func invoke(book: Book, image: ImageData?, title: String, author: String, description: String) async throws
 }
 
 final class UpdateBookUseCaseImpl: UpdateBookUseCase {
@@ -28,13 +28,19 @@ final class UpdateBookUseCaseImpl: UpdateBookUseCase {
         self.bookRepository = bookRepository
     }
     
-    func invoke(book: Book, title: String, author: String, description: String) async throws {
+    func invoke(book: Book, image: ImageData?, title: String, author: String, description: String) async throws {
         guard let user = accountService.currentUser else {
             throw UpdateBookUseCaseError.notAuthenticated
         }
         
         do {
-            try await bookRepository.update(book: book, title: title, author: author, description: description, for: user)
+            if let image {
+                try await bookRepository.update(book: book, image: image, for: user)
+                let updatedBook = try await bookRepository.getBook(by: book.id, for: user)
+                try await bookRepository.update(book: updatedBook, title: title, author: author, description: description, for: user)
+            } else {
+                try await bookRepository.update(book: book, title: title, author: author, description: description, for: user)
+            }
         } catch {
             throw UpdateBookUseCaseError.badNetwork
         }

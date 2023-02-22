@@ -53,18 +53,18 @@ struct BookView: View {
                                 .resizable()
                                 .frame(width: 24, height: 24)
                                 .foregroundColor(.red)
-                        },
-                        leadingAction: {
-                            isDeleteAlertPresented = true
+                                .onTapGesture {
+                                    isDeleteAlertPresented = true
+                                }
                         },
                         trailingView: {
                             Image.memo
                                 .resizable()
                                 .frame(width: 24, height: 24)
                                 .foregroundColor(.active)
-                        },
-                        trailingAction: {
-                            isAddPresented = true
+                                .onTapGesture {
+                                    isAddPresented = true
+                                }
                         }
                     )
                 }

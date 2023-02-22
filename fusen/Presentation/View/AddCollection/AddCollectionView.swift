@@ -12,6 +12,7 @@ struct AddCollectionView: View {
     @StateObject private var viewModel = AddCollectionViewModel()
     @State private var name = ""
     @State private var color = Color.blue
+    @FocusState private var focus: Bool
     
     var body: some View {
         Form {
@@ -28,6 +29,7 @@ struct AddCollectionView: View {
                     TextField("名前を入力する", text: $name)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .disabled(viewModel.isCollectionCountOver)
+                        .focused($focus)
                         .onChange(of: name) { newValue in
                             viewModel.onNameChange(newValue)
                         }
@@ -53,6 +55,11 @@ struct AddCollectionView: View {
         )
         .task {
             await viewModel.onAppear()
+        }
+        .onAppear {
+            if name.isEmpty {
+                focus = true
+            }
         }
         .onReceive(viewModel.$state) { state in
             switch state {

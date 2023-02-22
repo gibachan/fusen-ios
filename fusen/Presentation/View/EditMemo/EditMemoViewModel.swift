@@ -8,9 +8,11 @@
 import Foundation
 
 final class EditMemoViewModel: ObservableObject {
+    private let getBookByIdUseCase: GetBookByIdUseCase
     private let updateMemoUseCase: UpdateMemoUseCase
     private let deleteMemoUseCase: DeleteMemoUseCase
-    
+
+    @Published var book: Book?
     @Published var isSaveEnabled = false
     @Published var state: State = .initial
     @Published var memo: Memo
@@ -18,15 +20,29 @@ final class EditMemoViewModel: ObservableObject {
     
     init(
         memo: Memo,
+        getBookByIdUseCase: GetBookByIdUseCase = GetBookByIdUseCaseImpl(),
         updateMemoUseCase: UpdateMemoUseCase = UpdateMemoUseCaseImpl(),
         deleteMemoUseCase: DeleteMemoUseCase = DeleteMemoUseCaseImpl()
     ) {
+        self.getBookByIdUseCase = getBookByIdUseCase
         self.updateMemoUseCase = updateMemoUseCase
         self.deleteMemoUseCase = deleteMemoUseCase
 
         self.memo = memo
         self.memoImageURL = memo.imageURLs.first
         self.isSaveEnabled = memo.text.isNotEmpty || memo.quote.isNotEmpty
+    }
+
+    @MainActor
+    func onAppear() async {
+        guard !state.isInProgress else { return }
+
+        do {
+            let book = try await getBookByIdUseCase.invoke(id: memo.bookId)
+            self.book = book
+        } catch {
+            log.e(error.localizedDescription)
+        }
     }
     
     @MainActor

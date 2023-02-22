@@ -31,4 +31,15 @@ extension View {
             Spacer()
         }
     }
+
+    func share(text: String) {
+        let scenes = UIApplication.shared.connectedScenes
+        let windowScene = scenes.first as? UIWindowScene
+        let window = windowScene?.windows.first
+
+        let activityItems = [text] as [Any]
+        let activityVC = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+        let viewController = window?.rootViewController
+        viewController?.present(activityVC, animated: true)
+    }
 }

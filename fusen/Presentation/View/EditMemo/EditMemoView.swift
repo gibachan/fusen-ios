@@ -35,7 +35,11 @@ struct EditMemoView: View {
                         }
                         .focused($focus)
                 } header: {
-                    SectionHeaderText("メモ")
+                    HStack {
+                        SectionHeaderText("メモ")
+                        Spacer()
+                        share(text: text)
+                    }
                 }
                 Section {
                     PlaceholderTextEditor(placeholder: "引用する文を入力する", text: $quote)
@@ -69,7 +73,11 @@ struct EditMemoView: View {
                         }
                     }
                 } header: {
-                    SectionHeaderText("書籍から引用")
+                    HStack {
+                        SectionHeaderText("書籍から引用")
+                        Spacer()
+                        share(text: quote)
+                    }
                 }
                 .foregroundColor(.textSecondary)
                 .listRowBackground(Color.backgroundLightGray)
@@ -82,12 +90,11 @@ struct EditMemoView: View {
                         .resizable()
                         .frame(width: 24, height: 24)
                         .foregroundColor(.red)
+                        .onTapGesture {
+                            isDeleteAlertPresented = true
+                        }
                 },
-                leadingAction: {
-                    isDeleteAlertPresented = true
-                },
-                trailingView: { EmptyView() },
-                trailingAction: {}
+                trailingView: { EmptyView() }
             )
                 .backgroundColor(.backgroundSystemGroup)
         }
@@ -118,10 +125,11 @@ struct EditMemoView: View {
                 })
             )
         }
-        .onAppear {
+        .task {
             if text.isEmpty {
                 focus = true
             }
+            await viewModel.onAppear()
         }
         .onReceive(viewModel.$state) { state in
             switch state {
@@ -137,6 +145,27 @@ struct EditMemoView: View {
                 dismiss()
             case .failed:
                 LoadingHUD.dismiss()
+            }
+        }
+    }
+}
+
+extension EditMemoView {
+    func share(text: String) -> some View {
+        Group {
+            if let book = viewModel.book, text.isNotEmpty {
+                Image.share
+                    .resizable()
+                    .frame(width: 16, height: 20)
+                    .foregroundColor(.textPrimary)
+                    .onTapGesture {
+                        share(text: "\(text) （『\(book.title)』より）")
+                    }
+            } else {
+                Image.share
+                    .resizable()
+                    .frame(width: 16, height: 20)
+                    .foregroundColor(.inactive)
             }
         }
     }

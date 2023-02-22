@@ -33,4 +33,5 @@ extension Image {
     static let googleLogo = Image("logo_googleg_48dp")
     static let displayStyle = Image(systemName: "square.grid.2x2")
     static let search = Image(systemName: "magnifyingglass")
+    static let share = Image(systemName: "square.and.arrow.up")
 }

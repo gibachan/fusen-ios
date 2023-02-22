@@ -253,12 +253,12 @@ version: 9.6.0
 name: GoogleDataTransport, nameSpecified: 
 body: 
                    …
-version: 9.2.0
+version: 9.2.1
 
 name: GoogleDataTransport, nameSpecified: 
 body: 
                    …
-version: 9.2.0
+version: 9.2.1
 
 name: GoogleMLKit, nameSpecified: 
 body: Copyright 2022 Googl…
@@ -291,12 +291,12 @@ version: 2.3.2
 name: GoogleUtilities, nameSpecified: 
 body: 
                    …
-version: 7.10.0
+version: 7.11.0
 
 name: GoogleUtilities, nameSpecified: 
 body: 
                    …
-version: 7.10.0
+version: 7.11.0
 
 name: GoogleUtilitiesComponents, nameSpecified: 
 body: 
@@ -350,11 +350,11 @@ version: 1.7.2
 
 name: Kingfisher, nameSpecified: 
 body: The MIT License (MIT…
-version: 7.5.0
+version: 7.6.1
 
 name: Kingfisher, nameSpecified: 
 body: The MIT License (MIT…
-version: 7.5.0
+version: 7.6.1
 
 name: leveldb-library, nameSpecified: 
 body: Copyright (c) 2011 T…
@@ -376,13 +376,13 @@ name: LicensePlist, nameSpecified:
 body: MIT License
 
 Copyrig…
-version: 3.23.4
+version: 3.24.1
 
 name: LicensePlist, nameSpecified: 
 body: MIT License
 
 Copyrig…
-version: 3.23.4
+version: 3.24.1
 
 name: MLImage, nameSpecified: 
 body: Copyright 2022 Googl…
@@ -435,20 +435,20 @@ version: 2.30909.0
 name: PromisesObjC, nameSpecified: 
 body: 
                    …
-version: 2.1.1
+version: 2.2.0
 
 name: PromisesObjC, nameSpecified: 
 body: 
                    …
-version: 2.1.1
+version: 2.2.0
 
 name: Protobuf, nameSpecified: 
 body: Copyright 2008 Googl…
-version: 3.21.12
+version: 3.22.0
 
 name: Protobuf, nameSpecified: 
 body: Copyright 2008 Googl…
-version: 3.21.12
+version: 3.22.0
 
 name: SVProgressHUD, nameSpecified: 
 body: MIT License
@@ -472,4 +472,4 @@ version: 0.50.3
 
 add-version-numbers: false
 
-LicensePlist Version: 3.23.4
+LicensePlist Version: 3.24.1

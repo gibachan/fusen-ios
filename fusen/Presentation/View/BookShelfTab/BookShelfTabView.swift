@@ -36,15 +36,15 @@ struct BookShelfTabView: View {
                         .resizable()
                         .frame(width: 28, height: 22)
                         .foregroundColor(.active)
-                },
-                leadingAction: {
-                    isAddCollectionPresented = true
+                        .onTapGesture {
+                            isAddCollectionPresented = true
+                        }
                 },
                 trailingView: {
                     AddBookIcon()
-                },
-                trailingAction: {
-                    isAddBookPresented = true
+                        .onTapGesture {
+                            isAddBookPresented = true
+                        }
                 }
             )
         }

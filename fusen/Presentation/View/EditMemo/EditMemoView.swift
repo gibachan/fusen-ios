@@ -82,12 +82,11 @@ struct EditMemoView: View {
                         .resizable()
                         .frame(width: 24, height: 24)
                         .foregroundColor(.red)
+                        .onTapGesture {
+                            isDeleteAlertPresented = true
+                        }
                 },
-                leadingAction: {
-                    isDeleteAlertPresented = true
-                },
-                trailingView: { EmptyView() },
-                trailingAction: {}
+                trailingView: { EmptyView() }
             )
                 .backgroundColor(.backgroundSystemGroup)
         }

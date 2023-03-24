@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6BD46DC1001EA7C1A9342435 /* Pods_fusen_fusenUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DED65B63C22476AE8B5011AE /* Pods_fusen_fusenUITests.framework */; };
 		7A003E6E286735D3002B8BAC /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A003E6D286735D3002B8BAC /* WidgetKit.framework */; };
 		7A003E70286735D3002B8BAC /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A003E6F286735D3002B8BAC /* SwiftUI.framework */; };
 		7A003E73286735D3002B8BAC /* FusenWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A003E72286735D3002B8BAC /* FusenWidget.swift */; };
@@ -268,7 +267,6 @@
 		A082000826C1F5CF00100357 /* FusenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A082000726C1F5CF00100357 /* FusenApp.swift */; };
 		A082000C26C1F5D100100357 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000B26C1F5D100100357 /* Assets.xcassets */; };
 		A082000F26C1F5D100100357 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000E26C1F5D100100357 /* Preview Assets.xcassets */; };
-		A082002326C1F5D100100357 /* fusenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A082002226C1F5D100100357 /* fusenUITests.swift */; };
 		A084611526F1B79D009EB6E9 /* HomeNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A084611426F1B79D009EB6E9 /* HomeNavigation.swift */; };
 		A084611726F1D4A0009EB6E9 /* BookShelfNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A084611626F1D4A0009EB6E9 /* BookShelfNavigation.swift */; };
 		A0A09C9526D91B9300FF6A1E /* FavoriteBookListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A09C9426D91B9300FF6A1E /* FavoriteBookListView.swift */; };
@@ -322,13 +320,6 @@
 			remoteInfo = fusenActionExtension;
 		};
 		A082001526C1F5D100100357 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A082FFFC26C1F5CF00100357 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A082000326C1F5CF00100357;
-			remoteInfo = fusen;
-		};
-		A082001F26C1F5D100100357 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A082FFFC26C1F5CF00100357 /* Project object */;
 			proxyType = 1;
@@ -603,8 +594,6 @@
 		A082000B26C1F5D100100357 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A082000E26C1F5D100100357 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A082001426C1F5D100100357 /* fusenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fusenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A082001E26C1F5D100100357 /* fusenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fusenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A082002226C1F5D100100357 /* fusenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fusenUITests.swift; sourceTree = "<group>"; };
 		A084611426F1B79D009EB6E9 /* HomeNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigation.swift; sourceTree = "<group>"; };
 		A084611626F1D4A0009EB6E9 /* BookShelfNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfNavigation.swift; sourceTree = "<group>"; };
 		A0A09C9426D91B9300FF6A1E /* FavoriteBookListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBookListView.swift; sourceTree = "<group>"; };
@@ -674,14 +663,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7BDF62C75CD8279F9805768 /* Pods_fusenTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A082001B26C1F5D100100357 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6BD46DC1001EA7C1A9342435 /* Pods_fusen_fusenUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1484,7 +1465,6 @@
 			children = (
 				A082000426C1F5CF00100357 /* fusen.app */,
 				A082001426C1F5D100100357 /* fusenTests.xctest */,
-				A082001E26C1F5D100100357 /* fusenUITests.xctest */,
 				7A003E6C286735D3002B8BAC /* fusenWidgetExtension.appex */,
 				7A9675F728A9263200445D83 /* fusenActionExtension.appex */,
 			);
@@ -1523,20 +1503,11 @@
 			path = fusenTests;
 			sourceTree = "<group>";
 		};
-		A082002126C1F5D100100357 /* fusenUITests */ = {
-			isa = PBXGroup;
-			children = (
-				A082002226C1F5D100100357 /* fusenUITests.swift */,
-			);
-			path = fusenUITests;
-			sourceTree = "<group>";
-		};
 		A082FFFB26C1F5CF00100357 = {
 			isa = PBXGroup;
 			children = (
 				A082000626C1F5CF00100357 /* fusen */,
 				A082001726C1F5D100100357 /* fusenTests */,
-				A082002126C1F5D100100357 /* fusenUITests */,
 				7A003E71286735D3002B8BAC /* fusenWidget */,
 				7A9675FA28A9263200445D83 /* fusenActionExtension */,
 				A082000526C1F5CF00100357 /* Products */,
@@ -1736,27 +1707,6 @@
 			productReference = A082001426C1F5D100100357 /* fusenTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A082001D26C1F5D100100357 /* fusenUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A082002C26C1F5D100100357 /* Build configuration list for PBXNativeTarget "fusenUITests" */;
-			buildPhases = (
-				884C6163C5C3AF802E659C8A /* [CP] Check Pods Manifest.lock */,
-				A082001A26C1F5D100100357 /* Sources */,
-				A082001B26C1F5D100100357 /* Frameworks */,
-				A082001C26C1F5D100100357 /* Resources */,
-				5F8A750192022CB9C53CA88F /* [CP] Embed Pods Frameworks */,
-				8C26B85F46A8D5BA5E0F49B6 /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A082002026C1F5D100100357 /* PBXTargetDependency */,
-			);
-			name = fusenUITests;
-			productName = fusenUITests;
-			productReference = A082001E26C1F5D100100357 /* fusenUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1780,10 +1730,6 @@
 						CreatedOnToolsVersion = 13.0;
 						TestTargetID = A082000326C1F5CF00100357;
 					};
-					A082001D26C1F5D100100357 = {
-						CreatedOnToolsVersion = 13.0;
-						TestTargetID = A082000326C1F5CF00100357;
-					};
 				};
 			};
 			buildConfigurationList = A082FFFF26C1F5CF00100357 /* Build configuration list for PBXProject "fusen" */;
@@ -1801,7 +1747,6 @@
 			targets = (
 				A082000326C1F5CF00100357 /* fusen */,
 				A082001326C1F5D100100357 /* fusenTests */,
-				A082001D26C1F5D100100357 /* fusenUITests */,
 				7A003E6B286735D3002B8BAC /* fusenWidgetExtension */,
 				7A9675F628A9263200445D83 /* fusenActionExtension */,
 			);
@@ -1845,13 +1790,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A082001226C1F5D100100357 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A082001C26C1F5D100100357 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1920,62 +1858,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5F8A750192022CB9C53CA88F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-fusen-fusenUITests/Pods-fusen-fusenUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-fusen-fusenUITests/Pods-fusen-fusenUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-fusen-fusenUITests/Pods-fusen-fusenUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		884C6163C5C3AF802E659C8A /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-fusen-fusenUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8C26B85F46A8D5BA5E0F49B6 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-fusen-fusenUITests/Pods-fusen-fusenUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-fusen-fusenUITests/Pods-fusen-fusenUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-fusen-fusenUITests/Pods-fusen-fusenUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A082002F26C1F74300100357 /* SwiftLint */ = {
@@ -2357,14 +2239,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A082001A26C1F5D100100357 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A082002326C1F5D100100357 /* fusenUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -2382,11 +2256,6 @@
 			isa = PBXTargetDependency;
 			target = A082000326C1F5CF00100357 /* fusen */;
 			targetProxy = A082001526C1F5D100100357 /* PBXContainerItemProxy */;
-		};
-		A082002026C1F5D100100357 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A082000326C1F5CF00100357 /* fusen */;
-			targetProxy = A082001F26C1F5D100100357 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2701,30 +2570,6 @@
 			};
 			name = Staging;
 		};
-		A07507E226C5E79F0087AE5C /* Staging */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 68C9A2BDADA81FF3A49EEF8A /* Pods-fusen-fusenUITests.staging.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MYDHT92MBT;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.fusenUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = fusen;
-			};
-			name = Staging;
-		};
 		A082002426C1F5D100100357 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2972,54 +2817,6 @@
 			};
 			name = Release;
 		};
-		A082002D26C1F5D100100357 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B9CE5958189153717B673230 /* Pods-fusen-fusenUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MYDHT92MBT;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.fusenUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = fusen;
-			};
-			name = Debug;
-		};
-		A082002E26C1F5D100100357 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0C3DED94C319492FE223FE79 /* Pods-fusen-fusenUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MYDHT92MBT;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.fusenUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = fusen;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -3059,16 +2856,6 @@
 				A082002A26C1F5D100100357 /* Debug */,
 				A07507E126C5E79F0087AE5C /* Staging */,
 				A082002B26C1F5D100100357 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A082002C26C1F5D100100357 /* Build configuration list for PBXNativeTarget "fusenUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A082002D26C1F5D100100357 /* Debug */,
-				A07507E226C5E79F0087AE5C /* Staging */,
-				A082002E26C1F5D100100357 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

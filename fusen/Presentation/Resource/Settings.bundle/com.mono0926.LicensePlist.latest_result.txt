@@ -3,16 +3,6 @@ body:
                    …
 version: 1.20211102.0
 
-name: abseil, nameSpecified: 
-body: 
-                   …
-version: 1.20211102.0
-
-name: AppAuth, nameSpecified: 
-body: 
-                   …
-version: 1.6.0
-
 name: AppAuth, nameSpecified: 
 body: 
                    …
@@ -22,29 +12,11 @@ name: BoringSSL-GRPC, nameSpecified:
 body: BoringSSL is a fork …
 version: 0.0.24
 
-name: BoringSSL-GRPC, nameSpecified: 
-body: BoringSSL is a fork …
-version: 0.0.24
-
-name: CropViewController, nameSpecified: 
-body: The MIT License (MIT…
-version: 2.6.1
-
 name: CropViewController, nameSpecified: 
 body: The MIT License (MIT…
 version: 2.6.1
 
 name: Firebase, nameSpecified: 
-body: 
-                   …
-version: 10.7.0
-
-name: Firebase, nameSpecified: 
-body: 
-                   …
-version: 10.7.0
-
-name: FirebaseABTesting, nameSpecified: 
 body: 
                    …
 version: 10.7.0
@@ -58,21 +30,7 @@ name: FirebaseAnalytics, nameSpecified:
 body: Copyright 2022 Googl…
 version: 10.7.0
 
-name: FirebaseAnalytics, nameSpecified: 
-body: Copyright 2022 Googl…
-version: 10.7.0
-
 name: FirebaseAppCheck, nameSpecified: 
-body: 
-                   …
-version: 10.7.0
-
-name: FirebaseAppCheck, nameSpecified: 
-body: 
-                   …
-version: 10.7.0
-
-name: FirebaseAppCheckInterop, nameSpecified: 
 body: 
                    …
 version: 10.7.0
@@ -87,22 +45,7 @@ body:
                    …
 version: 10.7.0
 
-name: FirebaseAuth, nameSpecified: 
-body: 
-                   …
-version: 10.7.0
-
 name: FirebaseAuthInterop, nameSpecified: 
-body: 
-                   …
-version: 10.7.0
-
-name: FirebaseAuthInterop, nameSpecified: 
-body: 
-                   …
-version: 10.7.0
-
-name: FirebaseCore, nameSpecified: 
 body: 
                    …
 version: 10.7.0
@@ -117,22 +60,7 @@ body:
                    …
 version: 10.7.0
 
-name: FirebaseCoreExtension, nameSpecified: 
-body: 
-                   …
-version: 10.7.0
-
 name: FirebaseCoreInternal, nameSpecified: 
-body: 
-                   …
-version: 10.7.0
-
-name: FirebaseCoreInternal, nameSpecified: 
-body: 
-                   …
-version: 10.7.0
-
-name: FirebaseCrashlytics, nameSpecified: 
 body: 
                    …
 version: 10.7.0
@@ -147,22 +75,7 @@ body:
                    …
 version: 10.7.0
 
-name: FirebaseFirestore, nameSpecified: 
-body: 
-                   …
-version: 10.7.0
-
 name: FirebaseFirestoreSwift, nameSpecified: 
-body: 
-                   …
-version: 10.7.0
-
-name: FirebaseFirestoreSwift, nameSpecified: 
-body: 
-                   …
-version: 10.7.0
-
-name: FirebaseFunctions, nameSpecified: 
 body: 
                    …
 version: 10.7.0
@@ -177,22 +90,7 @@ body:
                    …
 version: 10.7.0
 
-name: FirebaseInstallations, nameSpecified: 
-body: 
-                   …
-version: 10.7.0
-
 name: FirebaseMessagingInterop, nameSpecified: 
-body: 
-                   …
-version: 10.7.0
-
-name: FirebaseMessagingInterop, nameSpecified: 
-body: 
-                   …
-version: 10.7.0
-
-name: FirebaseRemoteConfig, nameSpecified: 
 body: 
                    …
 version: 10.7.0
@@ -207,22 +105,7 @@ body:
                    …
 version: 10.7.0
 
-name: FirebaseSessions, nameSpecified: 
-body: 
-                   …
-version: 10.7.0
-
 name: FirebaseSharedSwift, nameSpecified: 
-body: 
-                   …
-version: 10.7.0
-
-name: FirebaseSharedSwift, nameSpecified: 
-body: 
-                   …
-version: 10.7.0
-
-name: FirebaseStorage, nameSpecified: 
 body: 
                    …
 version: 10.7.0
@@ -236,15 +119,6 @@ name: GoogleAppMeasurement, nameSpecified:
 body: Copyright 2022 Googl…
 version: 10.7.0
 
-name: GoogleAppMeasurement, nameSpecified: 
-body: Copyright 2022 Googl…
-version: 10.7.0
-
-name: GoogleDataTransport, nameSpecified: 
-body: 
-                   …
-version: 9.2.1
-
 name: GoogleDataTransport, nameSpecified: 
 body: 
                    …
@@ -253,15 +127,6 @@ version: 9.2.1
 name: GoogleMLKit, nameSpecified: 
 body: Copyright 2023 Googl…
 version: 4.0.0
-
-name: GoogleMLKit, nameSpecified: 
-body: Copyright 2023 Googl…
-version: 4.0.0
-
-name: GoogleSignIn, nameSpecified: 
-body: 
-                   …
-version: 7.0.0
 
 name: GoogleSignIn, nameSpecified: 
 body: 
@@ -273,25 +138,10 @@ body:
                    …
 version: 2.3.2
 
-name: GoogleToolboxForMac, nameSpecified: 
-body: 
-                   …
-version: 2.3.2
-
 name: GoogleUtilities, nameSpecified: 
 body: 
                    …
 version: 7.11.0
-
-name: GoogleUtilities, nameSpecified: 
-body: 
-                   …
-version: 7.11.0
-
-name: GoogleUtilitiesComponents, nameSpecified: 
-body: 
-                   …
-version: 1.1.0
 
 name: GoogleUtilitiesComponents, nameSpecified: 
 body: 
@@ -303,25 +153,10 @@ body:
                    …
 version: 
 
-name: gRPC-C++, nameSpecified: 
-body: 
-                   …
-version: 
-
 name: gRPC-Core, nameSpecified: 
 body: 
                    …
 version: 1.44.0
-
-name: gRPC-Core, nameSpecified: 
-body: 
-                   …
-version: 1.44.0
-
-name: GTMAppAuth, nameSpecified: 
-body: 
-                   …
-version: 2.0.0
 
 name: GTMAppAuth, nameSpecified: 
 body: 
@@ -333,15 +168,6 @@ body:
                    …
 version: 2.3.0
 
-name: GTMSessionFetcher, nameSpecified: 
-body: 
-                   …
-version: 2.3.0
-
-name: Kingfisher, nameSpecified: 
-body: The MIT License (MIT…
-version: 7.6.2
-
 name: Kingfisher, nameSpecified: 
 body: The MIT License (MIT…
 version: 7.6.2
@@ -349,14 +175,6 @@ version: 7.6.2
 name: leveldb-library, nameSpecified: 
 body: Copyright (c) 2011 T…
 version: 1.22.1
-
-name: leveldb-library, nameSpecified: 
-body: Copyright (c) 2011 T…
-version: 1.22.1
-
-name: Libuv-gRPC, nameSpecified: 
-body: libuv is licensed fo…
-version: 0.0.10
 
 name: Libuv-gRPC, nameSpecified: 
 body: libuv is licensed fo…
@@ -368,16 +186,6 @@ body: MIT License
 Copyrig…
 version: 3.24.5
 
-name: LicensePlist, nameSpecified: 
-body: MIT License
-
-Copyrig…
-version: 3.24.5
-
-name: MLImage, nameSpecified: 
-body: Copyright 2023 Googl…
-version: 
-
 name: MLImage, nameSpecified: 
 body: Copyright 2023 Googl…
 version: 
@@ -386,19 +194,7 @@ name: MLKitCommon, nameSpecified:
 body: Copyright 2023 Googl…
 version: 9.0.0
 
-name: MLKitCommon, nameSpecified: 
-body: Copyright 2023 Googl…
-version: 9.0.0
-
 name: MLKitTextRecognitionCommon, nameSpecified: 
-body: Copyright 2023 Googl…
-version: 1.0.0
-
-name: MLKitTextRecognitionCommon, nameSpecified: 
-body: Copyright 2023 Googl…
-version: 1.0.0
-
-name: MLKitTextRecognitionJapanese, nameSpecified: 
 body: Copyright 2023 Googl…
 version: 1.0.0
 
@@ -410,29 +206,11 @@ name: MLKitVision, nameSpecified:
 body: Copyright 2023 Googl…
 version: 5.0.0
 
-name: MLKitVision, nameSpecified: 
-body: Copyright 2023 Googl…
-version: 5.0.0
-
-name: nanopb, nameSpecified: 
-body: Copyright (c) 2011 P…
-version: 2.30909.0
-
 name: nanopb, nameSpecified: 
 body: Copyright (c) 2011 P…
 version: 2.30909.0
 
 name: PromisesObjC, nameSpecified: 
-body: 
-                   …
-version: 2.2.0
-
-name: PromisesObjC, nameSpecified: 
-body: 
-                   …
-version: 2.2.0
-
-name: PromisesSwift, nameSpecified: 
 body: 
                    …
 version: 2.2.0
@@ -447,16 +225,6 @@ body: MIT License
 
 Copyrig…
 version: 2.2.5
-
-name: SVProgressHUD, nameSpecified: 
-body: MIT License
-
-Copyrig…
-version: 2.2.5
-
-name: SwiftLint, nameSpecified: 
-body: The MIT License (MIT…
-version: 0.50.3
 
 name: SwiftLint, nameSpecified: 
 body: The MIT License (MIT…

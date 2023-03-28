@@ -10,38 +10,44 @@ import Foundation
 final class BookShelfTabViewModel: ObservableObject {
     private let getFavoriteBooksUseCase: GetFavoriteBooksUseCase
     private let getCollectionsUseCase: GetCollectionsUseCase
+    private let getBooksCountUseCase: GetBooksCountUseCase
     
     @Published var state: State = .initial
     @Published var isFavoriteVisible = false
     @Published var collections: [Collection] = []
+    @Published var booksCount = ""
     
     init(
         getFavoriteBooksUseCase: GetFavoriteBooksUseCase = GetFavoriteBooksUseCaseImpl(),
-        getCollectionsUseCase: GetCollectionsUseCase = GetCollectionsUseCaseImpl()
+        getCollectionsUseCase: GetCollectionsUseCase = GetCollectionsUseCaseImpl(),
+        getBooksCountUseCase: GetBooksCountUseCase = GetBooksCountUseCaseImpl()
     ) {
         self.getFavoriteBooksUseCase = getFavoriteBooksUseCase
         self.getCollectionsUseCase = getCollectionsUseCase
+        self.getBooksCountUseCase = getBooksCountUseCase
     }
     
     func onAppear() async {
-        await getCollections()
+        await refresh()
     }
     
     func onRefresh() async {
-        await getCollections()
+        await refresh()
     }
     
     @MainActor
-    private func getCollections() async {
+    private func refresh() async {
         guard !state.isInProgress else { return }
         
         state = .loading
         do {
             let favoriteBooks = try await getFavoriteBooksUseCase.invoke(forceRefresh: true)
             let collections = try await getCollectionsUseCase.invoke()
+            let booksCount = try await getBooksCountUseCase.invoke()
             self.state = .succeeded
             self.isFavoriteVisible = !favoriteBooks.data.isEmpty
             self.collections = collections
+            self.booksCount = booksCount > 0 ? "書籍 \(booksCount.localizedString)冊" : ""
         } catch {
             log.e(error.localizedDescription)
             state = .failed

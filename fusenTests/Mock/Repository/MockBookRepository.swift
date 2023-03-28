@@ -9,8 +9,15 @@ import Foundation
 @testable import fusen
 
 final class MockBookRepository: BookRepository {
+    private let getAllBooksCountResult: Int
     private(set) var isBookDataUpdated = false
     private(set) var isBookImageUpdated = false
+
+    init(
+        getAllBooksCountResult: Int = 0
+    ) {
+        self.getAllBooksCountResult = getAllBooksCountResult
+    }
     
     func getBook(by id: ID<Book>, for user: User) async throws -> Book {
         Book.sample
@@ -66,5 +73,9 @@ final class MockBookRepository: BookRepository {
     
     func delete(book: Book, for user: User) async throws {
         fatalError("Not implemented yet")
+    }
+
+    func getAllBooksCount(for user: fusen.User) async throws -> Int {
+        return getAllBooksCountResult
     }
 }

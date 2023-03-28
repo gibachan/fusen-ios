@@ -55,6 +55,17 @@ final class BookRepositoryImpl: BookRepository {
                 return getBook.toDomain(id: document.documentID)
             }
     }
+
+    func getAllBooksCount(for user: User) async throws -> Int {
+        do {
+            let booksCollection = db.booksCollection(for: user)
+            let snapshot = try await booksCollection.count.getAggregation(source: .server)
+            return snapshot.count.intValue
+        } catch {
+            log.e((error as NSError).description)
+            throw  BookRepositoryError.network
+        }
+    }
     
     func getAllBooks(sortedBy: BookSort, for user: User, forceRefresh: Bool = false) async throws -> Pager<Book> {
         let isCacheValid = allBooksCache.currentPager.data.count >= perPage && !forceRefresh

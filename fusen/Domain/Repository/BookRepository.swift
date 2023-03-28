@@ -16,6 +16,7 @@ protocol BookRepository {
     func getBook(by id: ID<Book>, for user: User) async throws -> Book
     func getLatestBooks(count: Int, for user: User) async throws -> [Book]
 
+    func getAllBooksCount(for user: User) async throws -> Int
     func getAllBooks(sortedBy: BookSort, for user: User, forceRefresh: Bool) async throws -> Pager<Book>
     func getAllBooksNext(for user: User) async throws -> Pager<Book>
     

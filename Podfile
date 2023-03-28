@@ -27,11 +27,6 @@ target 'fusen' do
     inherit! :search_paths
     # Pods for testing
   end
-
-  target 'fusenUITests' do
-    # Pods for testing
-  end
-
 end
 
 post_install do |installer|

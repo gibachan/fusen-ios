@@ -30,23 +30,7 @@ struct BookShelfTabView: View {
                 await viewModel.onRefresh()
             }
             
-            ControlToolbar(
-                leadingView: {
-                    Image.addCollection
-                        .resizable()
-                        .frame(width: 28, height: 22)
-                        .foregroundColor(.active)
-                        .onTapGesture {
-                            isAddCollectionPresented = true
-                        }
-                },
-                trailingView: {
-                    AddBookIcon()
-                        .onTapGesture {
-                            isAddBookPresented = true
-                        }
-                }
-            )
+            toolbarView
         }
         .listStyle(PlainListStyle())
         .navigationBarTitle("本棚")
@@ -98,6 +82,32 @@ struct BookShelfTabView: View {
         .onReceive(NotificationCenter.default.bookShelfPopToRootPublisher()) { _ in
             isNavigated = false
         }
+    }
+}
+
+private extension BookShelfTabView {
+    var toolbarView: some View {
+        HStack(alignment: .center) {
+            Image.addCollection
+                .resizable()
+                .frame(width: 28, height: 22)
+                .foregroundColor(.active)
+                .onTapGesture {
+                    isAddCollectionPresented = true
+                }
+            Spacer()
+            Text(viewModel.booksCount)
+                .font(.medium)
+                .foregroundColor(.textSecondary)
+            Spacer()
+            AddBookIcon()
+                .onTapGesture {
+                    isAddBookPresented = true
+                }
+        }
+        .padding(.horizontal, 24)
+        .frame(height: 48)
+        .border(Color.backgroundGray, width: 0.5)
     }
 }
 

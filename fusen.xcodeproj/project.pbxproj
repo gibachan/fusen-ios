@@ -13,7 +13,7 @@
 		7A003E76286735D4002B8BAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A003E75286735D4002B8BAC /* Assets.xcassets */; };
 		7A003E78286735D4002B8BAC /* fusenWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 7A003E74286735D3002B8BAC /* fusenWidget.intentdefinition */; };
 		7A003E79286735D4002B8BAC /* fusenWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 7A003E74286735D3002B8BAC /* fusenWidget.intentdefinition */; };
-		7A003E7C286735D4002B8BAC /* fusenWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7A003E6C286735D3002B8BAC /* fusenWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7A003E7C286735D4002B8BAC /* fusenWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7A003E6C286735D3002B8BAC /* fusenWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7A003E8428673BC7002B8BAC /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A003E8228673B8F002B8BAC /* Provider.swift */; };
 		7A003E8728673C01002B8BAC /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A003E8528673BE8002B8BAC /* Entry.swift */; };
 		7A003E89286748D2002B8BAC /* CachedBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A003E88286748D2002B8BAC /* CachedBook.swift */; };
@@ -71,7 +71,7 @@
 		7A9675FC28A9263200445D83 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A9675FB28A9263200445D83 /* Media.xcassets */; };
 		7A9675FE28A9263200445D83 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9675FD28A9263200445D83 /* ActionViewController.swift */; };
 		7A96760128A9263200445D83 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A9675FF28A9263200445D83 /* MainInterface.storyboard */; };
-		7A96760528A9263200445D83 /* fusenActionExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7A9675F728A9263200445D83 /* fusenActionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7A96760528A9263200445D83 /* fusenActionExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7A9675F728A9263200445D83 /* fusenActionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7A9E34D626E4F00C00F4E985 /* GetAllMemosUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E34D526E4F00C00F4E985 /* GetAllMemosUseCase.swift */; };
 		7A9E34D826E4F1A800F4E985 /* AddMemoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E34D726E4F1A800F4E985 /* AddMemoUseCase.swift */; };
 		7A9E34DA26E4F2BB00F4E985 /* RecognizeTextUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E34D926E4F2BB00F4E985 /* RecognizeTextUseCase.swift */; };
@@ -329,16 +329,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		7A003E7D286735D4002B8BAC /* Embed App Extensions */ = {
+		7A003E7D286735D4002B8BAC /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				7A96760528A9263200445D83 /* fusenActionExtension.appex in Embed App Extensions */,
-				7A003E7C286735D4002B8BAC /* fusenWidgetExtension.appex in Embed App Extensions */,
+				7A96760528A9263200445D83 /* fusenActionExtension.appex in Embed Foundation Extensions */,
+				7A003E7C286735D4002B8BAC /* fusenWidgetExtension.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -1675,7 +1675,7 @@
 				BB4E535C5BF40E7A5BFA3BBA /* [CP] Copy Pods Resources */,
 				A0B1FED826E0401000586151 /* LicensePlist */,
 				A0A2B31226EDB3FC001798D3 /* GoogleService-Info.plist */,
-				7A003E7D286735D4002B8BAC /* Embed App Extensions */,
+				7A003E7D286735D4002B8BAC /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -1715,7 +1715,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
-				LastUpgradeCheck = 1300;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					7A003E6B286735D3002B8BAC = {
 						CreatedOnToolsVersion = 13.4.1;

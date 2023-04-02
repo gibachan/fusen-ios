@@ -898,7 +898,7 @@ PODS:
   - PromisesSwift (2.2.0):
     - PromisesObjC (= 2.2.0)
   - SVProgressHUD (2.2.5)
-  - SwiftLint (0.50.3)
+  - SwiftLint (0.51.0)
 
 DEPENDENCIES:
   - CropViewController
@@ -1019,8 +1019,8 @@ SPEC CHECKSUMS:
   PromisesObjC: 09985d6d70fbe7878040aa746d78236e6946d2ef
   PromisesSwift: cf9eb58666a43bbe007302226e510b16c1e10959
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  SwiftLint: 77f7cb2b9bb81ab4a12fcc86448ba3f11afa50c6
+  SwiftLint: 1b7561918a19e23bfed960e40759086e70f4dba5
 
 PODFILE CHECKSUM: 3de0fac02b843ca2851e9974ada71a8de33e4ae1
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.0

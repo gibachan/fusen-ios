@@ -104,6 +104,7 @@
 		7AB6FFF628ACC1F500815F33 /* SearchBookViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6FFF528ACC1F500815F33 /* SearchBookViewModelTests.swift */; };
 		7AB6FFF828ACC25100815F33 /* MockSearchPublicationsByTitleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6FFF728ACC25100815F33 /* MockSearchPublicationsByTitleUseCase.swift */; };
 		7AB6FFFA28ACC30600815F33 /* MockAddBookByPublicationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6FFF928ACC30600815F33 /* MockAddBookByPublicationUseCase.swift */; };
+		7ABFF5AB29F4049B0089A589 /* SearchTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABFF5AA29F4049B0089A589 /* SearchTabView.swift */; };
 		7AC2CAB828857CEA00325C0B /* UpdateCurrentMemoSortUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2CAB728857CEA00325C0B /* UpdateCurrentMemoSortUseCase.swift */; };
 		7AC2CAB928857F7800325C0B /* MemoSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060092D26E43B4400EA0BC2 /* MemoSort.swift */; };
 		7AC2CABB2885809700325C0B /* GetCurrentMemoSortUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2CABA2885809700325C0B /* GetCurrentMemoSortUseCase.swift */; };
@@ -427,6 +428,7 @@
 		7AB6FFF528ACC1F500815F33 /* SearchBookViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookViewModelTests.swift; sourceTree = "<group>"; };
 		7AB6FFF728ACC25100815F33 /* MockSearchPublicationsByTitleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchPublicationsByTitleUseCase.swift; sourceTree = "<group>"; };
 		7AB6FFF928ACC30600815F33 /* MockAddBookByPublicationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAddBookByPublicationUseCase.swift; sourceTree = "<group>"; };
+		7ABFF5AA29F4049B0089A589 /* SearchTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTabView.swift; sourceTree = "<group>"; };
 		7AC2CAB728857CEA00325C0B /* UpdateCurrentMemoSortUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCurrentMemoSortUseCase.swift; sourceTree = "<group>"; };
 		7AC2CABA2885809700325C0B /* GetCurrentMemoSortUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentMemoSortUseCase.swift; sourceTree = "<group>"; };
 		7AC2CABC2885877400325C0B /* GetCurrentMemoSortUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentMemoSortUseCaseTests.swift; sourceTree = "<group>"; };
@@ -849,6 +851,32 @@
 			path = SearchBook;
 			sourceTree = "<group>";
 		};
+		7ABFF5A729F403740089A589 /* SearchMemo */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SearchMemo;
+			sourceTree = "<group>";
+		};
+		7ABFF5A829F403CE0089A589 /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				A07507C726C546120087AE5C /* HomeTab */,
+				7AD1610C26C2A1E900334A63 /* BookShelfTab */,
+				7ABFF5A929F404810089A589 /* SearchTab */,
+				7A11FCA626CB47A600F1A6BC /* SettingTab */,
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
+		7ABFF5A929F404810089A589 /* SearchTab */ = {
+			isa = PBXGroup;
+			children = (
+				7ABFF5AA29F4049B0089A589 /* SearchTabView.swift */,
+			);
+			path = SearchTab;
+			sourceTree = "<group>";
+		};
 		7AC2CACB2886232800325C0B /* Book */ = {
 			isa = PBXGroup;
 			children = (
@@ -1008,12 +1036,11 @@
 		7AD1610226C29CCF00334A63 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7ABFF5A829F403CE0089A589 /* Tab */,
+				7AD1610626C29EC600334A63 /* Main */,
 				7A62D0B628ABC7CD000B1026 /* AboutApp */,
 				A07334FD26DDB1DD004C5436 /* Maintenance */,
-				7AD1610626C29EC600334A63 /* Main */,
 				A007C07526C7795800270671 /* Tutorial */,
-				A07507C726C546120087AE5C /* HomeTab */,
-				7AD1610C26C2A1E900334A63 /* BookShelfTab */,
 				A069983426CDD9AA006E74C6 /* Collection */,
 				A07CAD0A26CF7ED40012201A /* AddCollection */,
 				7A11FCBB26CD3FB400F1A6BC /* BookList */,
@@ -1023,13 +1050,13 @@
 				7AA6D7AA26D386A900781F48 /* AddBook */,
 				7AA6D7A526D3426000781F48 /* EditBook */,
 				7AB6FFE528AC759900815F33 /* SearchBook */,
+				7ABFF5A729F403740089A589 /* SearchMemo */,
 				A07CAD1926D064090012201A /* SelectCollection */,
 				A0BA4CB026C4DC2000D99D8C /* ScanBarcode */,
 				A069983926CDDD0A006E74C6 /* MemoList */,
 				7A11FCB426CB5DC500F1A6BC /* AddMemo */,
 				A069982326CCA59A006E74C6 /* EditMemo */,
 				7A4569F526EA33A400B7FCC0 /* PageList */,
-				7A11FCA626CB47A600F1A6BC /* SettingTab */,
 				A0A2B30926EB47BF001798D3 /* DeleteAccount */,
 				A0F97CE926E0CA4F007CACE5 /* WebPageView */,
 				7AD1611926C2A93F00334A63 /* Component */,
@@ -2028,6 +2055,7 @@
 				A07D1A8626E2FAE100ADF384 /* QuoteText.swift in Sources */,
 				A060094C26E4ADF300EA0BC2 /* DeleteBookUseCase.swift in Sources */,
 				A0C3C24826D853EF0032B2C7 /* MemoListItemModel.swift in Sources */,
+				7ABFF5AB29F4049B0089A589 /* SearchTabView.swift in Sources */,
 				A0C3C24426D78DB80032B2C7 /* BookMemoSection.swift in Sources */,
 				A069983D26CDDD21006E74C6 /* MemoListViewModel.swift in Sources */,
 				A069982726CCA5BD006E74C6 /* EditMemoViewModel.swift in Sources */,

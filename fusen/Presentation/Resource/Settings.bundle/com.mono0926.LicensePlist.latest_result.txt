@@ -6,7 +6,7 @@ version: 1.20211102.0
 name: AppAuth, nameSpecified: 
 body: 
                    …
-version: 1.6.0
+version: 1.6.1
 
 name: BoringSSL-GRPC, nameSpecified: 
 body: BoringSSL is a fork …
@@ -19,21 +19,21 @@ version: 2.6.1
 name: Firebase, nameSpecified: 
 body: 
                    …
-version: 10.7.0
+version: 10.8.0
 
 name: FirebaseABTesting, nameSpecified: 
 body: 
                    …
-version: 10.7.0
+version: 10.8.0
 
 name: FirebaseAnalytics, nameSpecified: 
 body: Copyright 2022 Googl…
-version: 10.7.0
+version: 10.8.0
 
 name: FirebaseAppCheck, nameSpecified: 
 body: 
                    …
-version: 10.7.0
+version: 10.8.0
 
 name: FirebaseAppCheckInterop, nameSpecified: 
 body: 
@@ -43,86 +43,86 @@ version: 10.7.0
 name: FirebaseAuth, nameSpecified: 
 body: 
                    …
-version: 10.7.0
+version: 10.8.0
 
 name: FirebaseAuthInterop, nameSpecified: 
 body: 
                    …
-version: 10.7.0
+version: 10.8.0
 
 name: FirebaseCore, nameSpecified: 
 body: 
                    …
-version: 10.7.0
+version: 10.8.0
 
 name: FirebaseCoreExtension, nameSpecified: 
 body: 
                    …
-version: 10.7.0
+version: 10.8.0
 
 name: FirebaseCoreInternal, nameSpecified: 
 body: 
                    …
-version: 10.7.0
+version: 10.8.0
 
 name: FirebaseCrashlytics, nameSpecified: 
 body: 
                    …
-version: 10.7.0
+version: 10.8.0
 
 name: FirebaseFirestore, nameSpecified: 
 body: 
                    …
-version: 10.7.0
+version: 10.8.0
 
 name: FirebaseFirestoreSwift, nameSpecified: 
 body: 
                    …
-version: 10.7.0
+version: 10.8.0
 
 name: FirebaseFunctions, nameSpecified: 
 body: 
                    …
-version: 10.7.0
+version: 10.8.0
 
 name: FirebaseInstallations, nameSpecified: 
 body: 
                    …
-version: 10.7.0
+version: 10.8.0
 
 name: FirebaseMessagingInterop, nameSpecified: 
 body: 
                    …
-version: 10.7.0
+version: 10.8.0
 
 name: FirebaseRemoteConfig, nameSpecified: 
 body: 
                    …
-version: 10.7.0
+version: 10.8.0
 
 name: FirebaseSessions, nameSpecified: 
 body: 
                    …
-version: 10.7.0
+version: 10.8.0
 
 name: FirebaseSharedSwift, nameSpecified: 
 body: 
                    …
-version: 10.7.0
+version: 10.8.0
 
 name: FirebaseStorage, nameSpecified: 
 body: 
                    …
-version: 10.7.0
+version: 10.8.0
 
 name: GoogleAppMeasurement, nameSpecified: 
 body: Copyright 2022 Googl…
-version: 10.7.0
+version: 10.8.0
 
 name: GoogleDataTransport, nameSpecified: 
 body: 
                    …
-version: 9.2.1
+version: 9.2.2
 
 name: GoogleMLKit, nameSpecified: 
 body: Copyright 2023 Googl…
@@ -141,7 +141,7 @@ version: 2.3.2
 name: GoogleUtilities, nameSpecified: 
 body: 
                    …
-version: 7.11.0
+version: 7.11.1
 
 name: GoogleUtilitiesComponents, nameSpecified: 
 body: 
@@ -174,7 +174,7 @@ version: 7.6.2
 
 name: leveldb-library, nameSpecified: 
 body: Copyright (c) 2011 T…
-version: 1.22.1
+version: 1.22.2
 
 name: Libuv-gRPC, nameSpecified: 
 body: libuv is licensed fo…
@@ -184,7 +184,7 @@ name: LicensePlist, nameSpecified:
 body: MIT License
 
 Copyrig…
-version: 3.24.5
+version: 3.24.9
 
 name: MLImage, nameSpecified: 
 body: Copyright 2023 Googl…
@@ -232,4 +232,4 @@ version: 0.51.0
 
 add-version-numbers: false
 
-LicensePlist Version: 3.24.5
+LicensePlist Version: 3.24.9

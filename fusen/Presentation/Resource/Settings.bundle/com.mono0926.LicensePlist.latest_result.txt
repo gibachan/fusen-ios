@@ -3,6 +3,12 @@ body:
                    …
 version: 1.20211102.0
 
+name: AlgoliaSearchClient, nameSpecified: 
+body: MIT License
+
+Copyrig…
+version: 8.18.0
+
 name: AppAuth, nameSpecified: 
 body: 
                    …
@@ -185,6 +191,11 @@ body: MIT License
 
 Copyrig…
 version: 3.24.9
+
+name: Logging, nameSpecified: 
+body: 
+                   …
+version: 1.4.0
 
 name: MLImage, nameSpecified: 
 body: Copyright 2023 Googl…

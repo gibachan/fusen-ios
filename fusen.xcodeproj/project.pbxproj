@@ -855,13 +855,6 @@
 			path = SearchBook;
 			sourceTree = "<group>";
 		};
-		7ABFF5A729F403740089A589 /* SearchMemo */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SearchMemo;
-			sourceTree = "<group>";
-		};
 		7ABFF5A829F403CE0089A589 /* Tab */ = {
 			isa = PBXGroup;
 			children = (
@@ -1062,7 +1055,6 @@
 				7AA6D7AA26D386A900781F48 /* AddBook */,
 				7AA6D7A526D3426000781F48 /* EditBook */,
 				7AB6FFE528AC759900815F33 /* SearchBook */,
-				7ABFF5A729F403740089A589 /* SearchMemo */,
 				A07CAD1926D064090012201A /* SelectCollection */,
 				A0BA4CB026C4DC2000D99D8C /* ScanBarcode */,
 				A069983926CDDD0A006E74C6 /* MemoList */,

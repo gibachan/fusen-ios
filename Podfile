@@ -6,6 +6,7 @@ target 'fusen' do
   use_frameworks!
 
   # Pods for fusen
+  pod 'AlgoliaSearchClient'
   pod 'Firebase/Analytics'
   pod 'Firebase/Auth'
   pod 'Firebase/Crashlytics'

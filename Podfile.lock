@@ -596,6 +596,8 @@ PODS:
     - abseil/base/base_internal
     - abseil/base/config
     - abseil/meta/type_traits
+  - AlgoliaSearchClient (8.18.0):
+    - Logging
   - AppAuth (1.6.1):
     - AppAuth/Core (= 1.6.1)
     - AppAuth/ExternalUserAgent (= 1.6.1)
@@ -868,6 +870,7 @@ PODS:
     - Libuv-gRPC/Interface (= 0.0.10)
   - Libuv-gRPC/Interface (0.0.10)
   - LicensePlist (3.24.9)
+  - Logging (1.4.0)
   - MLImage (1.0.0-beta4)
   - MLKitCommon (9.0.0):
     - GoogleDataTransport (~> 9.0)
@@ -902,6 +905,7 @@ PODS:
   - SwiftLint (0.51.0)
 
 DEPENDENCIES:
+  - AlgoliaSearchClient
   - CropViewController
   - Firebase/Analytics
   - Firebase/AppCheck
@@ -922,6 +926,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - abseil
+    - AlgoliaSearchClient
     - AppAuth
     - BoringSSL-GRPC
     - CropViewController
@@ -960,6 +965,7 @@ SPEC REPOS:
     - leveldb-library
     - Libuv-gRPC
     - LicensePlist
+    - Logging
     - MLImage
     - MLKitCommon
     - MLKitTextRecognitionCommon
@@ -973,6 +979,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   abseil: ebe5b5529fb05d93a8bdb7951607be08b7fa71bc
+  AlgoliaSearchClient: c9a8b6d14222a7e77e3c0561edd3ebe1f4d1bbad
   AppAuth: e48b432bb4ba88b10cb2bcc50d7f3af21e78b9c2
   BoringSSL-GRPC: 3175b25143e648463a56daeaaa499c6cb86dad33
   CropViewController: 58fb440f30dac788b129d2a1f24cffdcb102669c
@@ -1011,6 +1018,7 @@ SPEC CHECKSUMS:
   leveldb-library: f03246171cce0484482ec291f88b6d563699ee06
   Libuv-gRPC: 55e51798e14ef436ad9bc45d12d43b77b49df378
   LicensePlist: a16d02dc0aae63fe22c516a775ea6f51459dc3f8
+  Logging: beeb016c9c80cf77042d62e83495816847ef108b
   MLImage: 7bb7c4264164ade9bf64f679b40fb29c8f33ee9b
   MLKitCommon: c1b791c3e667091918d91bda4bba69a91011e390
   MLKitTextRecognitionCommon: 0d48930fee25cce9d52d0ba217490d4797061aa2
@@ -1022,6 +1030,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftLint: 1b7561918a19e23bfed960e40759086e70f4dba5
 
-PODFILE CHECKSUM: 3de0fac02b843ca2851e9974ada71a8de33e4ae1
+PODFILE CHECKSUM: f12284dd5b0ce83757a9d17097e550f8562d1b1e
 
 COCOAPODS: 1.12.1

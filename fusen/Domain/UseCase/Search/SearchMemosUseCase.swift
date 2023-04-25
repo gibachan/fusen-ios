@@ -5,7 +5,6 @@
 //  Created by Tatsuyuki Kobayashi on 2023/04/22.
 //
 
-import AlgoliaSearchClient
 import Foundation
 
 enum SearchMemosUseCaseError: Error {
@@ -19,13 +18,16 @@ protocol SearchMemosUseCase {
 
 final class SearchMemosUseCaseImpl: SearchMemosUseCase {
     private let accountService: AccountServiceProtocol
+    private let searchAPIKeyRepository: SearchAPIKeyRepository
     private let searchRepository: SearchRepository
 
     init(
         accountService: AccountServiceProtocol = AccountService.shared,
-        searchRepository: SearchRepository = MockSearchRepository()
+        searchAPIKeyRepository: SearchAPIKeyRepository = SearchAPIKeyRepositoryImpl(),
+        searchRepository: SearchRepository = SearchRepositoryImpl()
     ) {
         self.accountService = accountService
+        self.searchAPIKeyRepository = searchAPIKeyRepository
         self.searchRepository = searchRepository
     }
 
@@ -34,16 +36,17 @@ final class SearchMemosUseCaseImpl: SearchMemosUseCase {
             throw SearchMemosUseCaseError.notAuthenticated
         }
 
+        let searchAPIKey: SearchAPIKey
         do {
-            // TODO: Move to searchRepository
-            let client = SearchClient(appID: "YourApplicationID", apiKey: "YourAdminAPIKey")
-            let index = client.index(withName: "your_index_name")
-            let results = try index.search(query: "test_record")
-            print(results.hits[0])
-
-            return try await searchRepository.memos(for: searchText)
+            searchAPIKey = try await searchAPIKeyRepository.get(for: user)
         } catch {
-            throw AddBookByManualUseCaseError.badNetwork
+            throw SearchMemosUseCaseError.badNetwork
+        }
+
+        do {
+            return try await searchRepository.memos(withAPIKey: searchAPIKey, for: searchText)
+        } catch {
+            throw SearchMemosUseCaseError.badNetwork
         }
     }
 }

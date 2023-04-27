@@ -50,11 +50,14 @@ final class AccountService: AccountServiceProtocol {
     static let shared: AccountServiceProtocol = AccountService()
     
     private let auth = Auth.auth()
+    private let dataSource: UserDefaultsDataSource
     
     // Unhashed nonce.
     private var currentNonce: String?
     
-    private init() {}
+    private init(dataSource: UserDefaultsDataSource = UserDefaultsDataSourceImpl()) {
+        self.dataSource = dataSource
+    }
     
     var isLoggedIn: Bool {
         auth.currentUser != nil
@@ -291,7 +294,8 @@ final class AccountService: AccountServiceProtocol {
     func logOut() throws {
         do {
             try auth.signOut()
-            resetsetUserProperty()
+            resettUserProperty()
+            resetUserDefaults()
         } catch let signOutError as NSError {
             log.e("Error signing out: \(signOutError)")
             throw AccountServiceError.logOut
@@ -307,11 +311,19 @@ final class AccountService: AccountServiceProtocol {
         Crashlytics.crashlytics().setUserID(user.id.value)
     }
     
-    private func resetsetUserProperty() {
+    private func resettUserProperty() {
         Analytics.setUserID(nil)
         Analytics.setUserProperty(nil, forName: "linked_with_apple_id")
         Analytics.setUserProperty(nil, forName: "linked_with_google")
         Crashlytics.crashlytics().setUserID("")
+    }
+
+    private func resetUserDefaults() {
+        dataSource.readingBook = nil
+        dataSource.readingBookMemoDraft = nil
+        dataSource.currentBookSort = nil
+        dataSource.currentMemoSort = nil
+        dataSource.searchAPIKey = nil
     }
 }
 

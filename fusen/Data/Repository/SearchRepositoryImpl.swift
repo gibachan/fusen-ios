@@ -15,9 +15,13 @@ final class SearchRepositoryImpl: SearchRepository {
 
         do {
             let response = try index.search(query: Query(text))
-            // TODO: Failable initialization
-            let hits: [SearchMemoResponse] = try response.extractHits()
-            return hits.map { $0.toMemo() }
+
+            // Convert response object into an array of SearchMemoResponse ignoring inaccurate element.
+            // ref: https://stackoverflow.com/questions/46344963/swift-jsondecode-decoding-arrays-fails-if-single-element-decoding-fails
+            let hitsData = try JSONEncoder().encode(response.hits.map(\.object))
+            let throwables = try JSONDecoder().decode([Throwable<SearchMemoResponse>].self, from: hitsData)
+            let results = throwables.compactMap { try? $0.result.get() }
+            return results.map { $0.toMemo() }
         } catch {
             if let transportError = error as? AlgoliaSearchClient.TransportError {
                 print(transportError.localizedDescription)
@@ -41,5 +45,13 @@ final class SearchRepositoryImpl: SearchRepository {
                 throw SearchRepositoryError.badNetwork
             }
         }
+    }
+}
+
+private struct Throwable<T: Decodable>: Decodable {
+    let result: Result<T, Error>
+
+    init(from decoder: Decoder) throws {
+        result = Result(catching: { try T(from: decoder) })
     }
 }

@@ -54,7 +54,7 @@ struct MainView: View {
                 }
                 .tag(1)
 
-                NavigationView {
+                NavigationStack {
                     SearchTabView()
                 }
                 .tabItem {

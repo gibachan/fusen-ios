@@ -18,7 +18,9 @@ struct SearchMemoView: View {
             VStack(alignment: .leading, spacing: 0) {
                 List {
                     ForEach(viewStore.searchedMemos, id: \.id) { memo in
-                        MemoListItem(memo: memo)
+                        NavigationLink(destination: LazyView(EditMemoView(memo: memo))) {
+                            MemoListItem(memo: memo)
+                        }
                     }
 
                     if viewStore.isEmptyResult {
@@ -39,7 +41,7 @@ struct SearchMemoView: View {
                 viewStore.send(.executeSearching)
             }
             .listStyle(PlainListStyle())
-            .navigationBarTitle("検索")
+            .navigationBarTitle("メモを検索")
         }
     }
 }

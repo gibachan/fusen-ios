@@ -22,7 +22,7 @@ struct SearchTabView: View {
 
 private struct SearchTabView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
+        NavigationStack {
             SearchTabView()
         }
     }

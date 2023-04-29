@@ -79,7 +79,6 @@
 		7A96760528A9263200445D83 /* fusenActionExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7A9675F728A9263200445D83 /* fusenActionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7A9AD5FF29FCB8640018C9A1 /* SearchMemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AD5FE29FCB8640018C9A1 /* SearchMemo.swift */; };
 		7A9AD60129FCF2830018C9A1 /* SearchMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AD60029FCF2830018C9A1 /* SearchMemoView.swift */; };
-		7A9AD60329FCF6AA0018C9A1 /* NotFoundItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AD60229FCF6AA0018C9A1 /* NotFoundItem.swift */; };
 		7A9AD60529FCF8530018C9A1 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AD60429FCF8530018C9A1 /* LoadingView.swift */; };
 		7A9E34D626E4F00C00F4E985 /* GetAllMemosUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E34D526E4F00C00F4E985 /* GetAllMemosUseCase.swift */; };
 		7A9E34D826E4F1A800F4E985 /* AddMemoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E34D726E4F1A800F4E985 /* AddMemoUseCase.swift */; };
@@ -426,7 +425,6 @@
 		7A96760228A9263200445D83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A9AD5FE29FCB8640018C9A1 /* SearchMemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMemo.swift; sourceTree = "<group>"; };
 		7A9AD60029FCF2830018C9A1 /* SearchMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMemoView.swift; sourceTree = "<group>"; };
-		7A9AD60229FCF6AA0018C9A1 /* NotFoundItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotFoundItem.swift; sourceTree = "<group>"; };
 		7A9AD60429FCF8530018C9A1 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		7A9E34D526E4F00C00F4E985 /* GetAllMemosUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllMemosUseCase.swift; sourceTree = "<group>"; };
 		7A9E34D726E4F1A800F4E985 /* AddMemoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoUseCase.swift; sourceTree = "<group>"; };
@@ -831,7 +829,6 @@
 			children = (
 				7A9AD5FE29FCB8640018C9A1 /* SearchMemo.swift */,
 				7A9AD60029FCF2830018C9A1 /* SearchMemoView.swift */,
-				7A9AD60229FCF6AA0018C9A1 /* NotFoundItem.swift */,
 			);
 			path = SearchMemo;
 			sourceTree = "<group>";
@@ -2090,7 +2087,6 @@
 				7A9F6A0228AA35D500753210 /* MemoDraft.swift in Sources */,
 				A07334F626DDAD35004C5436 /* ViewExtension.swift in Sources */,
 				7A4569F426EA2DE100B7FCC0 /* ReadBookUseCase.swift in Sources */,
-				7A9AD60329FCF6AA0018C9A1 /* NotFoundItem.swift in Sources */,
 				A060096A26E6D77800EA0BC2 /* UserActionHistoryRepositoryImpl.swift in Sources */,
 				A060092826E365B100EA0BC2 /* SortButton.swift in Sources */,
 				7A11FCA826CB47E200F1A6BC /* SettingTabViewModel.swift in Sources */,

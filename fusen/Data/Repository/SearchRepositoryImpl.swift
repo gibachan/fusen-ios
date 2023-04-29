@@ -14,7 +14,9 @@ final class SearchRepositoryImpl: SearchRepository {
         let index = client.index(withName: IndexName(rawValue: Algolia.indexName))
 
         do {
-            let response = try index.search(query: Query(text))
+            var query = Query(text)
+            query.hitsPerPage = 20
+            let response = try index.search(query: query)
 
             // Convert response object into an array of SearchMemoResponse ignoring inaccurate element.
             // ref: https://stackoverflow.com/questions/46344963/swift-jsondecode-decoding-arrays-fails-if-single-element-decoding-fails

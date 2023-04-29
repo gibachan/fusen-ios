@@ -16,15 +16,17 @@ struct SearchMemoView: View {
     var body: some View {
         WithViewStore(self.store) { $0 } content: { viewStore in
             VStack(alignment: .leading, spacing: 0) {
-                List {
-                    ForEach(viewStore.searchedMemos, id: \.id) { memo in
-                        NavigationLink(destination: LazyView(EditMemoView(memo: memo))) {
-                            MemoListItem(memo: memo)
+                if viewStore.isEmptyResult {
+                    notFoundView()
+                } else if viewStore.searchedMemos.isEmpty {
+                    descriptionView()
+                } else {
+                    List {
+                        ForEach(viewStore.searchedMemos, id: \.id) { memo in
+                            NavigationLink(destination: LazyView(EditMemoView(memo: memo))) {
+                                MemoListItem(memo: memo)
+                            }
                         }
-                    }
-
-                    if viewStore.isEmptyResult {
-                        NotFoundItem()
                     }
                 }
             }
@@ -43,6 +45,24 @@ struct SearchMemoView: View {
             .listStyle(PlainListStyle())
             .navigationBarTitle("メモを検索")
         }
+    }
+}
+
+private extension SearchMemoView {
+    func descriptionView() -> some View {
+        Text("メモの内容から最大20件を検索できます。")
+            .font(.medium)
+            .foregroundColor(.textPrimary)
+            .frame(maxWidth: .infinity, alignment: .center)
+            .padding(16)
+    }
+
+    func notFoundView() -> some View {
+        Text("メモは見つかりませんでした")
+            .font(.medium)
+            .foregroundColor(.textPrimary)
+            .frame(maxWidth: .infinity, alignment: .center)
+            .padding(16)
     }
 }
 

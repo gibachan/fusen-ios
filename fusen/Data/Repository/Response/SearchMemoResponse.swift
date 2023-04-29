@@ -15,8 +15,8 @@ struct SearchMemoResponse: Decodable {
     let bookId: String
     let page: Int?
     let imageURLs: [URL]
-    let createdAt: Date
-    let updatedAt: Date
+    let createdAt: Int
+    let updatedAt: Int
     let tags: [String]
 }
 
@@ -29,8 +29,8 @@ extension SearchMemoResponse {
             quote: quote,
             page: page,
             imageURLs: imageURLs,
-            createdAt: createdAt,
-            updatedAt: updatedAt
+            createdAt: Date(timeIntervalSince1970: TimeInterval(createdAt / 1_000)),
+            updatedAt: Date(timeIntervalSince1970: TimeInterval(updatedAt / 1_000))
         )
     }
 }

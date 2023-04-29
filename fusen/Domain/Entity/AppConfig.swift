@@ -9,17 +9,16 @@ import Foundation
 
 struct AppConfig {
     let isMaintaining: Bool
-    let isVisionAPIUse: Bool
 }
 
 extension AppConfig {
     static var `default`: AppConfig {
-        AppConfig(isMaintaining: false, isVisionAPIUse: false)
+        AppConfig(isMaintaining: false)
     }
 }
 
 extension AppConfig: CustomStringConvertible {
     var description: String {
-        "AppConfig: isMaintaining=\(isMaintaining), isVisionAPIUse=\(isVisionAPIUse)"
+        "AppConfig: isMaintaining=\(isMaintaining)"
     }
 }

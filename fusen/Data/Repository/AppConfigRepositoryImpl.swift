@@ -10,7 +10,6 @@ import Foundation
 
 final class AppConfigRepositoryImpl: AppConfigRepository {
     private static let maintenanceKey = "maintenance"
-    private static let visionApiUseKey = "vision_api_use"
 
     private static let remoteConfig: RemoteConfig = {
         let config = RemoteConfig.remoteConfig()
@@ -23,7 +22,6 @@ final class AppConfigRepositoryImpl: AppConfigRepository {
         config.configSettings = settings
         config.setDefaults([
             maintenanceKey: false as NSObject,
-            visionApiUseKey: false as NSObject
         ])
         return config
     }()
@@ -34,8 +32,7 @@ final class AppConfigRepositoryImpl: AppConfigRepository {
             if case .success = result {
                 try await Self.remoteConfig.activate()
                 let maintenanceValue = Self.remoteConfig.configValue(forKey: Self.maintenanceKey)
-                let visionApiUseValue = Self.remoteConfig.configValue(forKey: Self.visionApiUseKey)
-                return AppConfig(isMaintaining: maintenanceValue.boolValue, isVisionAPIUse: visionApiUseValue.boolValue)
+                return AppConfig(isMaintaining: maintenanceValue.boolValue)
             }
             return .default
         } catch {

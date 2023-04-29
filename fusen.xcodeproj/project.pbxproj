@@ -1724,7 +1724,6 @@
 				A082000226C1F5CF00100357 /* Resources */,
 				A082002F26C1F74300100357 /* SwiftLint */,
 				0D502F6FD4CEAE7DA729E03E /* [CP] Embed Pods Frameworks */,
-				BB4E535C5BF40E7A5BFA3BBA /* [CP] Copy Pods Resources */,
 				A0B1FED826E0401000586151 /* LicensePlist */,
 				A0A2B31226EDB3FC001798D3 /* GoogleService-Info.plist */,
 				7A003E7D286735D4002B8BAC /* Embed Foundation Extensions */,
@@ -1974,23 +1973,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if [ $CONFIGURATION = \"Debug\" ]; then\n    ${PODS_ROOT}/LicensePlist/license-plist --output-path fusen/Presentation/Resource/Settings.bundle --suppress-opening-directory\nfi\n";
-		};
-		BB4E535C5BF40E7A5BFA3BBA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-fusen/Pods-fusen-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-fusen/Pods-fusen-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-fusen/Pods-fusen-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 

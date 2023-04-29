@@ -236,14 +236,6 @@
 		</dict>
 		<dict>
 			<key>File</key>
-			<string>com.mono0926.LicensePlist/GoogleMLKit</string>
-			<key>Title</key>
-			<string>GoogleMLKit</string>
-			<key>Type</key>
-			<string>PSChildPaneSpecifier</string>
-		</dict>
-		<dict>
-			<key>File</key>
 			<string>com.mono0926.LicensePlist/GoogleSignIn</string>
 			<key>Title</key>
 			<string>GoogleSignIn</string>
@@ -252,25 +244,9 @@
 		</dict>
 		<dict>
 			<key>File</key>
-			<string>com.mono0926.LicensePlist/GoogleToolboxForMac</string>
-			<key>Title</key>
-			<string>GoogleToolboxForMac</string>
-			<key>Type</key>
-			<string>PSChildPaneSpecifier</string>
-		</dict>
-		<dict>
-			<key>File</key>
 			<string>com.mono0926.LicensePlist/GoogleUtilities</string>
 			<key>Title</key>
 			<string>GoogleUtilities</string>
-			<key>Type</key>
-			<string>PSChildPaneSpecifier</string>
-		</dict>
-		<dict>
-			<key>File</key>
-			<string>com.mono0926.LicensePlist/GoogleUtilitiesComponents</string>
-			<key>Title</key>
-			<string>GoogleUtilitiesComponents</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -343,46 +319,6 @@
 			<string>com.mono0926.LicensePlist/Logging</string>
 			<key>Title</key>
 			<string>Logging</string>
-			<key>Type</key>
-			<string>PSChildPaneSpecifier</string>
-		</dict>
-		<dict>
-			<key>File</key>
-			<string>com.mono0926.LicensePlist/MLImage</string>
-			<key>Title</key>
-			<string>MLImage</string>
-			<key>Type</key>
-			<string>PSChildPaneSpecifier</string>
-		</dict>
-		<dict>
-			<key>File</key>
-			<string>com.mono0926.LicensePlist/MLKitCommon</string>
-			<key>Title</key>
-			<string>MLKitCommon</string>
-			<key>Type</key>
-			<string>PSChildPaneSpecifier</string>
-		</dict>
-		<dict>
-			<key>File</key>
-			<string>com.mono0926.LicensePlist/MLKitTextRecognitionCommon</string>
-			<key>Title</key>
-			<string>MLKitTextRecognitionCommon</string>
-			<key>Type</key>
-			<string>PSChildPaneSpecifier</string>
-		</dict>
-		<dict>
-			<key>File</key>
-			<string>com.mono0926.LicensePlist/MLKitTextRecognitionJapanese</string>
-			<key>Title</key>
-			<string>MLKitTextRecognitionJapanese</string>
-			<key>Type</key>
-			<string>PSChildPaneSpecifier</string>
-		</dict>
-		<dict>
-			<key>File</key>
-			<string>com.mono0926.LicensePlist/MLKitVision</string>
-			<key>Title</key>
-			<string>MLKitVision</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>

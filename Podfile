@@ -19,7 +19,6 @@ target 'fusen' do
   pod 'SVProgressHUD'
   pod 'SwiftLint'
   pod 'GoogleSignIn'
-  pod 'GoogleMLKit/TextRecognitionJapanese'
   pod 'CropViewController'
   pod 'Kingfisher'
   pod 'LicensePlist'
@@ -35,9 +34,6 @@ post_install do |installer|
     target.build_configurations.each do |config|
       config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
       config.build_settings["DEVELOPMENT_TEAM"] = "MYDHT92MBT"
-      if `uname -m`.strip == 'arm64'
-        config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
-      end
     end
   end
 end

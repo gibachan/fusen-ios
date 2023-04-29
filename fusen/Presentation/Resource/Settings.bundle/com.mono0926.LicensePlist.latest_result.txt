@@ -130,29 +130,15 @@ body:
                    …
 version: 9.2.2
 
-name: GoogleMLKit, nameSpecified: 
-body: Copyright 2023 Googl…
-version: 4.0.0
-
 name: GoogleSignIn, nameSpecified: 
 body: 
                    …
 version: 7.0.0
 
-name: GoogleToolboxForMac, nameSpecified: 
-body: 
-                   …
-version: 2.3.2
-
 name: GoogleUtilities, nameSpecified: 
 body: 
                    …
 version: 7.11.1
-
-name: GoogleUtilitiesComponents, nameSpecified: 
-body: 
-                   …
-version: 1.1.0
 
 name: gRPC-C++, nameSpecified: 
 body: 
@@ -196,26 +182,6 @@ name: Logging, nameSpecified:
 body: 
                    …
 version: 1.4.0
-
-name: MLImage, nameSpecified: 
-body: Copyright 2023 Googl…
-version: 
-
-name: MLKitCommon, nameSpecified: 
-body: Copyright 2023 Googl…
-version: 9.0.0
-
-name: MLKitTextRecognitionCommon, nameSpecified: 
-body: Copyright 2023 Googl…
-version: 1.0.0
-
-name: MLKitTextRecognitionJapanese, nameSpecified: 
-body: Copyright 2023 Googl…
-version: 1.0.0
-
-name: MLKitVision, nameSpecified: 
-body: Copyright 2023 Googl…
-version: 5.0.0
 
 name: nanopb, nameSpecified: 
 body: Copyright (c) 2011 P…

@@ -27,6 +27,10 @@ struct SearchMemoView: View {
                 }
             }
             .loading(viewStore.isLoading)
+            .alert(
+                store.scope(state: \.alert),
+                dismiss: .alertDismissed
+            )
             .searchable(text: $searchText)
             .onChange(of: searchText, perform: { newValue in
                 viewStore.send(.typeSearchText(newValue))

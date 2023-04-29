@@ -16,12 +16,14 @@ struct SearchMemo: ReducerProtocol {
         var isLoading = false
         var searchedMemos: [Memo] = []
         var isEmptyResult = false
+        var alert: AlertState<Action>?
     }
 
     enum Action: Equatable {
         case typeSearchText(String)
         case executeSearching
         case searched(TaskResult<[Memo]>)
+        case alertDismissed
     }
 
     private enum SearchMemoID {}
@@ -44,11 +46,21 @@ struct SearchMemo: ReducerProtocol {
             return .task { [searchText = state.searchText] in
                 await .searched(TaskResult { try await self.searchMemosUseCase.invoke(searchText: searchText) })
             }
+            return .none
 
         case .searched(.failure):
             state.isLoading = false
             state.searchedMemos = []
             state.isEmptyResult = false
+            state.alert = AlertState {
+              TextState("通信エラー")
+            } actions: {
+              ButtonState(role: .cancel) {
+                TextState("閉じる")
+              }
+            } message: {
+              TextState("エラーが発生しました。ネットワーク環境を確認してみてください。")
+            }
             return .none
 
         case let .searched(.success(response)):
@@ -56,6 +68,10 @@ struct SearchMemo: ReducerProtocol {
             state.searchedMemos = response
             state.isEmptyResult = response.isEmpty
             return .none
+
+        case .alertDismissed:
+          state.alert = nil
+          return .none
         }
     }
 }

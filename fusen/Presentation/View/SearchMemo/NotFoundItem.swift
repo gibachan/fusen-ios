@@ -9,12 +9,12 @@ import SwiftUI
 
 struct NotFoundItem: View {
     var body: some View {
-        VStack(alignment: .center) {
-            Text("メモが見つかりませんでした")
-                .font(.medium)
-                .foregroundColor(.textPrimary)
-                .padding(8)
-        }
+        Text("メモは見つかりませんでした")
+            .font(.medium)
+            .foregroundColor(.textPrimary)
+            .frame(maxWidth: .infinity, alignment: .center)
+            .padding(16)
+            .alignmentGuide(.listRowSeparatorLeading) { _ in 0 }
     }
 }
 

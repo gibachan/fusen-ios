@@ -10,6 +10,26 @@ import Foundation
 
 // MARK: - Search memo feature domain
 
+struct SearchMemoClient {
+  var invoke: (String) async throws -> [Memo]
+}
+
+extension SearchMemoClient: DependencyKey {
+  static let liveValue = Self(
+    invoke: { searchText in
+        let useCase = SearchMemosUseCaseImpl()
+        return try await useCase.invoke(searchText: searchText)
+    }
+  )
+}
+
+extension DependencyValues {
+  var searchMemoClient: SearchMemoClient {
+    get { self[SearchMemoClient.self] }
+    set { self[SearchMemoClient.self] = newValue }
+  }
+}
+
 struct SearchMemo: ReducerProtocol {
     struct State: Equatable {
         var searchText = ""
@@ -27,8 +47,8 @@ struct SearchMemo: ReducerProtocol {
     }
 
     private enum SearchMemoID {}
-    // TODO: DI
-    private let searchMemosUseCase: SearchMemosUseCase = SearchMemosUseCaseImpl()
+
+    @Dependency(\.searchMemoClient) var searchMemoClient: SearchMemoClient
 
     func reduce(into state: inout State, action: Action) -> ComposableArchitecture.EffectTask<Action> {
         switch action {
@@ -44,9 +64,8 @@ struct SearchMemo: ReducerProtocol {
         case .executeSearching:
             state.isLoading = true
             return .task { [searchText = state.searchText] in
-                await .searched(TaskResult { try await self.searchMemosUseCase.invoke(searchText: searchText) })
+                await .searched(TaskResult { try await self.searchMemoClient.invoke(searchText) })
             }
-            return .none
 
         case .searched(.failure):
             state.isLoading = false

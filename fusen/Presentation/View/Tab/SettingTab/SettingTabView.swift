@@ -68,9 +68,7 @@ struct SettingTabView: View {
                         }
                         .frame(maxWidth: .infinity)
 
-                        Text("※ 連携すると、複数のデバイスとデータを共有してご利用いただけます。")
-                            .font(.small)
-                            .foregroundColor(.textSecondary)
+                        linkAccountDescription()
                         
                         Spacer(minLength: 8)
                     }
@@ -212,7 +210,7 @@ struct SettingTabView: View {
                 ErrorHUD.show(message: .linkWithAppleId)
             case .failedlinkingWithGoogle:
                 LoadingHUD.dismiss()
-                ErrorHUD.show(message: .linkWithAppleId)
+                ErrorHUD.show(message: .linkWithGoogle)
             }
         }
         .alert(item: $alertType, content: { type in
@@ -262,6 +260,18 @@ private extension SettingTabView {
                     }
                 })
             )
+        }
+    }
+
+    func linkAccountDescription() -> some View {
+        if viewModel.isLinkedAppleId || viewModel.isLinkedWithGoogle {
+            return Text("※ PCのブラウザや他のデバイスとデータを共有するには連携が必要です。")
+                .font(.small)
+                .foregroundColor(.textSecondary)
+        } else {
+            return Text("※ PCのブラウザや他のデバイスとデータを共有するには連携が必要です。")
+                .font(.small)
+                .foregroundColor(.alert)
         }
     }
 }

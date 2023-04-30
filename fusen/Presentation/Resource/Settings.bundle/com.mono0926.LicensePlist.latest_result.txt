@@ -25,105 +25,105 @@ version: 2.6.1
 name: Firebase, nameSpecified: 
 body: 
                    …
-version: 10.8.0
+version: 10.9.0
 
 name: FirebaseABTesting, nameSpecified: 
 body: 
                    …
-version: 10.8.0
+version: 10.9.0
 
 name: FirebaseAnalytics, nameSpecified: 
 body: Copyright 2022 Googl…
-version: 10.8.0
+version: 10.9.0
 
 name: FirebaseAppCheck, nameSpecified: 
 body: 
                    …
-version: 10.8.0
+version: 10.9.0
 
 name: FirebaseAppCheckInterop, nameSpecified: 
 body: 
                    …
-version: 10.7.0
+version: 10.9.0
 
 name: FirebaseAuth, nameSpecified: 
 body: 
                    …
-version: 10.8.0
+version: 10.9.0
 
 name: FirebaseAuthInterop, nameSpecified: 
 body: 
                    …
-version: 10.8.0
+version: 10.9.0
 
 name: FirebaseCore, nameSpecified: 
 body: 
                    …
-version: 10.8.0
+version: 10.9.0
 
 name: FirebaseCoreExtension, nameSpecified: 
 body: 
                    …
-version: 10.8.0
+version: 10.9.0
 
 name: FirebaseCoreInternal, nameSpecified: 
 body: 
                    …
-version: 10.8.0
+version: 10.9.0
 
 name: FirebaseCrashlytics, nameSpecified: 
 body: 
                    …
-version: 10.8.0
+version: 10.9.0
 
 name: FirebaseFirestore, nameSpecified: 
 body: 
                    …
-version: 10.8.0
+version: 10.9.0
 
 name: FirebaseFirestoreSwift, nameSpecified: 
 body: 
                    …
-version: 10.8.0
+version: 10.9.0
 
 name: FirebaseFunctions, nameSpecified: 
 body: 
                    …
-version: 10.8.0
+version: 10.9.0
 
 name: FirebaseInstallations, nameSpecified: 
 body: 
                    …
-version: 10.8.0
+version: 10.9.0
 
 name: FirebaseMessagingInterop, nameSpecified: 
 body: 
                    …
-version: 10.8.0
+version: 10.9.0
 
 name: FirebaseRemoteConfig, nameSpecified: 
 body: 
                    …
-version: 10.8.0
+version: 10.9.0
 
 name: FirebaseSessions, nameSpecified: 
 body: 
                    …
-version: 10.8.0
+version: 10.9.0
 
 name: FirebaseSharedSwift, nameSpecified: 
 body: 
                    …
-version: 10.8.0
+version: 10.9.0
 
 name: FirebaseStorage, nameSpecified: 
 body: 
                    …
-version: 10.8.0
+version: 10.9.0
 
 name: GoogleAppMeasurement, nameSpecified: 
 body: Copyright 2022 Googl…
-version: 10.8.0
+version: 10.9.0
 
 name: GoogleDataTransport, nameSpecified: 
 body: 
@@ -158,7 +158,7 @@ version: 2.0.0
 name: GTMSessionFetcher, nameSpecified: 
 body: 
                    …
-version: 2.3.0
+version: 3.1.1
 
 name: Kingfisher, nameSpecified: 
 body: The MIT License (MIT…

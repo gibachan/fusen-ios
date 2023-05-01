@@ -9,7 +9,7 @@ import AlgoliaSearchClient
 import Foundation
 
 final class SearchRepositoryImpl: SearchRepository {
-    func memos(withAPIKey key: SearchAPIKey, for text: String) async throws -> [Memo] {
+    func memos(withAPIKey key: SearchAPIKey, for text: String) async throws -> [ID<Memo>] {
         let client = SearchClient(appID: ApplicationID(rawValue: Algolia.appID), apiKey: APIKey(rawValue: key))
         let index = client.index(withName: IndexName(rawValue: Algolia.indexName))
 
@@ -23,7 +23,7 @@ final class SearchRepositoryImpl: SearchRepository {
             let hitsData = try JSONEncoder().encode(response.hits.map(\.object))
             let throwables = try JSONDecoder().decode([Throwable<SearchMemoResponse>].self, from: hitsData)
             let results = throwables.compactMap { try? $0.result.get() }
-            return results.map { $0.toMemo() }
+            return results.map { .init(value: $0.objectID) }
         } catch {
             if let transportError = error as? AlgoliaSearchClient.TransportError {
                 print(transportError.localizedDescription)

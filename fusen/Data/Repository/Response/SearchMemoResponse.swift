@@ -12,25 +12,5 @@ struct SearchMemoResponse: Decodable {
     let objectID: String
     let text: String
     let quote: String
-    let bookId: String
-    let page: Int?
-    let imageURLs: [URL]
-    let createdAt: Int
     let updatedAt: Int
-    let tags: [String]
-}
-
-extension SearchMemoResponse {
-    func toMemo() -> Memo {
-        Memo(
-            id: .init(value: objectID),
-            bookId: .init(value: bookId),
-            text: text,
-            quote: quote,
-            page: page,
-            imageURLs: imageURLs,
-            createdAt: Date(timeIntervalSince1970: TimeInterval(createdAt / 1_000)),
-            updatedAt: Date(timeIntervalSince1970: TimeInterval(updatedAt / 1_000))
-        )
-    }
 }

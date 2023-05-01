@@ -13,5 +13,5 @@ enum SearchRepositoryError: Error {
 }
 
 protocol SearchRepository {
-    func memos(withAPIKey key: SearchAPIKey, for text: String) async throws -> [Memo]
+    func memos(withAPIKey key: SearchAPIKey, for text: String) async throws -> [ID<Memo>]
 }

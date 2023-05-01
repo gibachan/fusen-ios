@@ -20,15 +20,18 @@ final class SearchMemosUseCaseImpl: SearchMemosUseCase {
     private let accountService: AccountServiceProtocol
     private let searchAPIKeyRepository: SearchAPIKeyRepository
     private let searchRepository: SearchRepository
+    private let memoRepository: MemoRepository
 
     init(
         accountService: AccountServiceProtocol = AccountService.shared,
         searchAPIKeyRepository: SearchAPIKeyRepository = SearchAPIKeyRepositoryImpl(),
-        searchRepository: SearchRepository = SearchRepositoryImpl()
+        searchRepository: SearchRepository = SearchRepositoryImpl(),
+        memoRepository: MemoRepository = MemoRepositoryImpl()
     ) {
         self.accountService = accountService
         self.searchAPIKeyRepository = searchAPIKeyRepository
         self.searchRepository = searchRepository
+        self.memoRepository = memoRepository
     }
 
     func invoke(searchText: String) async throws -> [Memo] {
@@ -44,7 +47,19 @@ final class SearchMemosUseCaseImpl: SearchMemosUseCase {
         }
 
         do {
-            return try await searchRepository.memos(withAPIKey: searchAPIKey, for: searchText)
+            let searchedMemoIDs = try await searchRepository.memos(withAPIKey: searchAPIKey, for: searchText)
+
+            return try await withThrowingTaskGroup(of: Memo.self) { group in
+                for memoID in searchedMemoIDs {
+                    group.addTask {
+                        try await self.memoRepository.getMemo(by: memoID, for: user)
+                    }
+                }
+
+                return try await group.reduce(into: [Memo]()) { results, memo in
+                    results.append(memo)
+                }
+            }
         } catch {
             throw SearchMemosUseCaseError.badNetwork
         }

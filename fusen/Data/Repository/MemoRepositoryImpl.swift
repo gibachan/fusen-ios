@@ -31,6 +31,18 @@ final class MemoRepositoryImpl: MemoRepository {
     func setDraft(_ draft: MemoDraft?) async {
         dataSource.readingBookMemoDraft = draft
     }
+
+    func getMemo(by id: ID<Memo>, for user: User) async throws -> Memo {
+        let ref = db.memosCollection(for: user)
+            .document(id.value)
+        do {
+            let getMemo = try await ref.getDocument(as: FirestoreGetMemo.self)
+            return getMemo.toDomain(id: id.value)
+        } catch {
+            log.e((error as NSError).description)
+            throw  MemoRepositoryError.network
+        }
+    }
     
     func getLatestMemos(count: Int, for user: User) async throws -> [Memo] {
         let query = db.memosCollection(for: user)

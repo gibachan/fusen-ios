@@ -10,7 +10,5 @@ import Foundation
 
 struct SearchMemoResponse: Decodable {
     let objectID: String
-    let text: String
-    let quote: String
     let updatedAt: Int
 }

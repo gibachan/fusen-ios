@@ -9,9 +9,20 @@ import AlgoliaSearchClient
 import Foundation
 
 final class SearchRepositoryImpl: SearchRepository {
-    func memos(withAPIKey key: SearchAPIKey, for text: String) async throws -> [ID<Memo>] {
+    func memos(
+        withAPIKey key: SearchAPIKey,
+        for text: String,
+        by type: SearchMemoType
+    ) async throws -> [ID<Memo>] {
         let client = SearchClient(appID: ApplicationID(rawValue: Algolia.appID), apiKey: APIKey(rawValue: key))
-        let index = client.index(withName: IndexName(rawValue: Algolia.indexName))
+        let indexName: String
+        switch type {
+        case .text:
+            indexName = Algolia.indexNameForMemoByText
+        case .quote:
+            indexName = Algolia.indexNameForMemoByQuote
+        }
+        let index = client.index(withName: IndexName(rawValue: indexName))
 
         do {
             var query = Query(text)

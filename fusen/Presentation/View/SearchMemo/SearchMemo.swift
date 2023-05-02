@@ -11,14 +11,17 @@ import Foundation
 // MARK: - Search memo feature domain
 
 struct SearchMemoClient {
-  var invoke: (String) async throws -> [Memo]
+    var invoke: (String, SearchMemoType) async throws -> [Memo]
 }
 
 extension SearchMemoClient: DependencyKey {
   static let liveValue = Self(
-    invoke: { searchText in
+    invoke: { searchText, searchType in
         let useCase = SearchMemosUseCaseImpl()
-        return try await useCase.invoke(searchText: searchText)
+        return try await useCase.invoke(
+            searchText: searchText,
+            searchType: searchType
+        )
     }
   )
 }
@@ -30,9 +33,21 @@ extension DependencyValues {
   }
 }
 
+extension SearchMemoType: CustomStringConvertible {
+    var description: String {
+        switch self {
+        case .text:
+            return "メモで検索"
+        case .quote:
+            return "書籍からの引用で検索"
+        }
+    }
+}
+
 struct SearchMemo: ReducerProtocol {
     struct State: Equatable {
         var searchText = ""
+        var searchType = SearchMemoType.text
         var isLoading = false
         var searchedMemos: [Memo] = []
         var isEmptyResult = false
@@ -41,6 +56,7 @@ struct SearchMemo: ReducerProtocol {
 
     enum Action: Equatable {
         case typeSearchText(String)
+        case selectType(SearchMemoType)
         case executeSearching
         case searched(TaskResult<[Memo]>)
         case alertDismissed
@@ -61,10 +77,17 @@ struct SearchMemo: ReducerProtocol {
             } else {
                 return .none
             }
+            
+        case let .selectType(searchMemoType):
+            state.searchType = searchMemoType
+            state.searchedMemos = []
+            state.isEmptyResult = false
+            return .none
+
         case .executeSearching:
             state.isLoading = true
-            return .task { [searchText = state.searchText] in
-                await .searched(TaskResult { try await self.searchMemoClient.invoke(searchText) })
+            return .task { [searchText = state.searchText, searchType = state.searchType] in
+                await .searched(TaskResult { try await self.searchMemoClient.invoke(searchText, searchType) })
             }
 
         case .searched(.failure):

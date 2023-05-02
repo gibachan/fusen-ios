@@ -13,7 +13,7 @@ enum SearchMemosUseCaseError: Error {
 }
 
 protocol SearchMemosUseCase {
-    func invoke(searchText: String) async throws -> [Memo]
+    func invoke(searchText: String, searchType: SearchMemoType) async throws -> [Memo]
 }
 
 final class SearchMemosUseCaseImpl: SearchMemosUseCase {
@@ -34,7 +34,7 @@ final class SearchMemosUseCaseImpl: SearchMemosUseCase {
         self.memoRepository = memoRepository
     }
 
-    func invoke(searchText: String) async throws -> [Memo] {
+    func invoke(searchText: String, searchType: SearchMemoType) async throws -> [Memo] {
         guard let user = accountService.currentUser else {
             throw SearchMemosUseCaseError.notAuthenticated
         }
@@ -47,7 +47,11 @@ final class SearchMemosUseCaseImpl: SearchMemosUseCase {
         }
 
         do {
-            let searchedMemoIDs = try await searchRepository.memos(withAPIKey: searchAPIKey, for: searchText)
+            let searchedMemoIDs = try await searchRepository.memos(
+                withAPIKey: searchAPIKey,
+                for: searchText,
+                by: searchType
+            )
 
             return try await withThrowingTaskGroup(of: Memo.self) { group in
                 for memoID in searchedMemoIDs {

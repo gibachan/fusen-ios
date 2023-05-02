@@ -31,7 +31,11 @@ struct SearchMemoView: View {
                 if viewStore.isEmptyResult {
                     notFoundView()
                 } else if viewStore.searchedMemos.isEmpty {
-                    descriptionView()
+                    Text("\(viewStore.searchType == .text ? "メモ" : "書籍の引用")の内容から最大20件を検索できます。\n\n※大きすぎるメモは検索できないことがあります。")
+                        .font(.small)
+                        .foregroundColor(.textSecondary)
+                        .multilineTextAlignment(.center)
+                        .padding(16)
                 } else {
                     List {
                         ForEach(viewStore.searchedMemos, id: \.id) { memo in
@@ -62,14 +66,6 @@ struct SearchMemoView: View {
 }
 
 private extension SearchMemoView {
-    func descriptionView() -> some View {
-        Text("メモの内容から最大20件を検索できます。\n※大きすぎるメモは検索できないことがあります。")
-            .font(.medium)
-            .foregroundColor(.textPrimary)
-            .frame(maxWidth: .infinity, alignment: .center)
-            .padding(16)
-    }
-
     func notFoundView() -> some View {
         Text("メモは見つかりませんでした")
             .font(.medium)

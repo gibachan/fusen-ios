@@ -22,11 +22,19 @@ final class BookRepositoryImpl: BookRepository {
     private var collectionSortedBy: [ID<Collection>: BookSort] = [:]
     
     func getBook(by id: ID<Book>, for user: User) async throws -> Book {
+        if let cached = await bookCache.get(by: id) {
+            return cached
+        }
+
         let ref = db.booksCollection(for: user)
             .document(id.value)
         do {
             let getBook = try await ref.getDocument(as: FirestoreGetBook.self)
-            return getBook.toDomain(id: id.value)
+            let book = getBook.toDomain(id: id.value)
+
+            await bookCache.set(by: book.id, value: book)
+
+            return book
         } catch {
             log.e((error as NSError).description)
             throw  BookRepositoryError.network
@@ -387,6 +395,7 @@ final class BookRepositoryImpl: BookRepository {
         do {
             try await ref.setData(update.data(), merge: true)
             clearAllBooksCache()
+            await bookCache.set(by: book.id, value: nil)
         } catch {
             log.e(error.localizedDescription)
             throw BookRepositoryError.network
@@ -409,6 +418,7 @@ final class BookRepositoryImpl: BookRepository {
         do {
             try await ref.setData(update.data(), merge: true)
             clearAllBooksCache()
+            await bookCache.set(by: book.id, value: nil)
         } catch {
             log.e(error.localizedDescription)
             throw BookRepositoryError.network
@@ -431,6 +441,7 @@ final class BookRepositoryImpl: BookRepository {
         do {
             try await ref.setData(update.data(), merge: true)
             clearAllBooksCache()
+            await bookCache.set(by: book.id, value: nil)
         } catch {
             log.e(error.localizedDescription)
             throw BookRepositoryError.network
@@ -461,6 +472,7 @@ final class BookRepositoryImpl: BookRepository {
         do {
             try await ref.setData(update.data(), merge: true)
             clearAllBooksCache()
+            await bookCache.set(by: book.id, value: nil)
         } catch {
             log.e(error.localizedDescription)
             throw BookRepositoryError.network
@@ -476,7 +488,9 @@ final class BookRepositoryImpl: BookRepository {
         let userRef = db.userDocument(of: user)
         let bookRef = db.booksCollection(for: user)
             .document(book.id.value)
-        
+
+        await bookCache.set(by: book.id, value: nil)
+
         typealias DeleteBookContinuation = CheckedContinuation<Void, Error>
         return try await withCheckedThrowingContinuation { (continuation: DeleteBookContinuation) in
             db.runTransaction { transaction, _ -> Any? in

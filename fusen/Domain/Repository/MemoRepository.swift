@@ -16,6 +16,8 @@ protocol MemoRepository {
     func getDraft() async -> MemoDraft?
     func setDraft(_ draft: MemoDraft?) async
 
+    func getMemo(by id: ID<Memo>, for user: User) async throws -> Memo
+
     func getLatestMemos(count: Int, for user: User) async throws -> [Memo]
 
     func getAllMemos(for user: User, forceRefresh: Bool) async throws -> Pager<Memo>

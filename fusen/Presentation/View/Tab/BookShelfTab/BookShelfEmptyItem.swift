@@ -17,6 +17,7 @@ struct BookShelfEmptyItem: View {
             Spacer()
         }
         .frame(minHeight: 64)
+        .alignmentGuide(.listRowSeparatorLeading) { _ in 0 }
     }
 }
 

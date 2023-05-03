@@ -45,25 +45,25 @@ final class DeleteAccountViewModel: ObservableObject {
                     log.d("Successfully deleted account")
                     DispatchQueue.main.async { [weak self] in
                         guard let self = self else { return }
-                        self.state = .deleted
+                        state = .deleted
                     }
                 } catch {
                     log.e("Unknown error: \(error.localizedDescription)")
                     DispatchQueue.main.async { [weak self] in
                         guard let self = self else { return }
-                        self.state = .failed
+                        state = .failed
                     }
                 }
             }
         case .failure(let error):
             // Do nothing since it would be canceled
             log.e(error.localizedDescription)
-            self.state = .initial
+            state = .initial
         }
     }
     
     func onSignInWithGoogle(_ result: Result<AuthCredential, GoogleSignInError>) {
-        self.state = .loading
+        state = .loading
         switch result {
         case .success(let credential):
             Task {
@@ -73,20 +73,20 @@ final class DeleteAccountViewModel: ObservableObject {
                     log.d("Successfully deleted account")
                     DispatchQueue.main.async { [weak self] in
                         guard let self = self else { return }
-                        self.state = .deleted
+                        state = .deleted
                     }
                 } catch {
                     log.e("Unknown error: \(error.localizedDescription)")
                     DispatchQueue.main.async { [weak self] in
                         guard let self = self else { return }
-                        self.state = .failed
+                        state = .failed
                     }
                 }
             }
         case .failure(let error):
             // Do nothing since it would be canceled
             log.e(error.localizedDescription)
-            self.state = .initial
+            state = .initial
         }
     }
     
@@ -106,13 +106,13 @@ final class DeleteAccountViewModel: ObservableObject {
             try await accountService.delete()
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                self.state = .deleted
+                state = .deleted
             }
         } catch {
             log.e("Failed to delete account: \(error.localizedDescription)")
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                self.state = .failed
+                state = .failed
             }
         }
     }

@@ -31,6 +31,26 @@ final class MemoRepositoryImpl: MemoRepository {
     func setDraft(_ draft: MemoDraft?) async {
         dataSource.readingBookMemoDraft = draft
     }
+
+    func getMemo(by id: ID<Memo>, for user: User) async throws -> Memo {
+        if let cached = await memoCache.get(by: id) {
+            return cached
+        }
+
+        let ref = db.memosCollection(for: user)
+            .document(id.value)
+        do {
+            let getMemo = try await ref.getDocument(as: FirestoreGetMemo.self)
+            let memo = getMemo.toDomain(id: id.value)
+
+            await memoCache.set(by: memo.id, value: memo)
+
+            return memo
+        } catch {
+            log.e((error as NSError).description)
+            throw  MemoRepositoryError.network
+        }
+    }
     
     func getLatestMemos(count: Int, for user: User) async throws -> [Memo] {
         let query = db.memosCollection(for: user)
@@ -269,6 +289,7 @@ final class MemoRepositoryImpl: MemoRepository {
         do {
             try await ref.setData(update.data(), merge: true)
             clearCache(of: memo.bookId)
+            await memoCache.set(by: memo.id, value: nil)
         } catch {
             log.e(error.localizedDescription)
             throw MemoRepositoryError.network
@@ -286,6 +307,7 @@ final class MemoRepositoryImpl: MemoRepository {
 
             try await ref.delete()
             clearCache(of: memo.bookId)
+            await memoCache.set(by: memo.id, value: nil)
         } catch {
             log.e(error.localizedDescription)
             throw MemoRepositoryError.network

@@ -74,9 +74,9 @@ final class ActionPresenterImpl: ActionPresenter {
                 guard provider.hasItemConformingToTypeIdentifier(UTType.text.identifier) else { continue }
                 provider.loadItem(forTypeIdentifier: UTType.text.identifier, options: nil) { [weak self] text, _ in
                     guard let self = self else { return }
-                    self.view.showInput()
-                    self.quote = text as? String ?? ""
-                    self.view.setQuote(self.quote)
+                    view.showInput()
+                    quote = text as? String ?? ""
+                    view.setQuote(self.quote)
                 }
             }
         }

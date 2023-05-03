@@ -15,8 +15,7 @@ class MainViewModelTests: XCTestCase {
         let accountService = MockAccountService(isLoggedIn: false)
         let getAppConfigUseCase = MockGetAppConfigUseCase(
             AppConfig(
-                isMaintaining: false,
-                isVisionAPIUse: false
+                isMaintaining: false
             )
         )
         let viewModel = MainViewModel(
@@ -52,8 +51,7 @@ class MainViewModelTests: XCTestCase {
         let accountService = MockAccountService(isLoggedIn: true)
         let getAppConfigUseCase = MockGetAppConfigUseCase(
             AppConfig(
-                isMaintaining: false,
-                isVisionAPIUse: false
+                isMaintaining: false
             )
         )
         let viewModel = MainViewModel(
@@ -89,8 +87,7 @@ class MainViewModelTests: XCTestCase {
         let accountService = MockAccountService(isLoggedIn: false)
         let getAppConfigUseCase = MockGetAppConfigUseCase(
             AppConfig(
-                isMaintaining: true,
-                isVisionAPIUse: false
+                isMaintaining: true
             )
         )
         let viewModel = MainViewModel(
@@ -125,8 +122,7 @@ class MainViewModelTests: XCTestCase {
         let accountService = MockAccountService(isLoggedIn: true)
         let getAppConfigUseCase = MockGetAppConfigUseCase(
             AppConfig(
-                isMaintaining: false,
-                isVisionAPIUse: false
+                isMaintaining: false
             )
         )
         let getUserActionHistoryUseCase = MockGetUserActionHistoryUseCase(
@@ -159,8 +155,7 @@ class MainViewModelTests: XCTestCase {
         let accountService = MockAccountService(isLoggedIn: true)
         let getAppConfigUseCase = MockGetAppConfigUseCase(
             AppConfig(
-                isMaintaining: false,
-                isVisionAPIUse: false
+                isMaintaining: false
             )
         )
         let getUserActionHistoryUseCase = MockGetUserActionHistoryUseCase(

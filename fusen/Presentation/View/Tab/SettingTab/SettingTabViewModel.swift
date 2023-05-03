@@ -50,21 +50,21 @@ final class SettingTabViewModel: ObservableObject {
                     log.d("Successfully linked with Apple: user=\(accountService.currentUser?.id ?? "")")
                     DispatchQueue.main.async { [weak self] in
                         guard let self = self else { return }
-                        self.state = .succeeded
-                        self.isLinkedAppleId = true
+                        state = .succeeded
+                        isLinkedAppleId = true
                     }
                 } catch AccountServiceError.linkWithApple {
                     // すでにlinkされている場合はエラーとなる(This credential is already associated with a different user account.)
                     log.e("AccountServiceError.linkWithApple")
                     DispatchQueue.main.async { [weak self] in
                         guard let self = self else { return }
-                        self.state = .failedlinkingWithApple
+                        state = .failedlinkingWithApple
                     }
                 } catch {
                     log.e("Unknown error: \(error.localizedDescription)")
                     DispatchQueue.main.async { [weak self] in
                         guard let self = self else { return }
-                        self.state = .failedlinkingWithApple
+                        state = .failedlinkingWithApple
                     }
                 }
             }
@@ -72,7 +72,7 @@ final class SettingTabViewModel: ObservableObject {
             // Do nothing
             log.e(error.localizedDescription)
             // FIXME: Change state depending on error type  
-            self.state = .succeeded
+            state = .succeeded
         }
     }
     
@@ -86,21 +86,21 @@ final class SettingTabViewModel: ObservableObject {
                     log.d("Successfully linked with Google: user=\(user.id)")
                     DispatchQueue.main.async { [weak self] in
                         guard let self = self else { return }
-                        self.state = .succeeded
-                        self.isLinkedWithGoogle = true
+                        state = .succeeded
+                        isLinkedWithGoogle = true
                     }
                 } catch AccountServiceError.linkWithApple {
                     // すでにlinkされている場合はエラーとなる(This credential is already associated with a different user account.)
                     log.e("AccountServiceError.linkWithApple")
                     DispatchQueue.main.async { [weak self] in
                         guard let self = self else { return }
-                        self.state = .failedlinkingWithGoogle
+                        state = .failedlinkingWithGoogle
                     }
                 } catch {
                     log.e("Unknown error: \(error.localizedDescription)")
                     DispatchQueue.main.async { [weak self] in
                         guard let self = self else { return }
-                        self.state = .failedlinkingWithGoogle
+                        state = .failedlinkingWithGoogle
                     }
                 }
             }
@@ -121,14 +121,14 @@ final class SettingTabViewModel: ObservableObject {
             log.d("Successfully unlinked with AppleID")
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                self.state = .succeeded
-                self.isLinkedAppleId = false
+                state = .succeeded
+                isLinkedAppleId = false
             }
         } catch {
             log.e("Unknown error: \(error.localizedDescription)")
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                self.state = .failed
+                state = .failed
             }
         }
     }
@@ -139,14 +139,14 @@ final class SettingTabViewModel: ObservableObject {
             log.d("Successfully unlinked with Google")
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                self.state = .succeeded
-                self.isLinkedWithGoogle = false
+                state = .succeeded
+                isLinkedWithGoogle = false
             }
         } catch {
             log.e("Unknown error: \(error.localizedDescription)")
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                self.state = .failed
+                state = .failed
             }
         }
     }
@@ -158,13 +158,17 @@ final class SettingTabViewModel: ObservableObject {
     }
     
     func onAppReview() {
-        let urlString = "https://itunes.apple.com/jp/app/id1585547803?mt=8&action=write-review"
-        guard let url = URL(string: urlString),
-              UIApplication.shared.canOpenURL(url) else { return }
-        
+        let url = URL(string: "https://itunes.apple.com/jp/app/id1585547803?mt=8&action=write-review")!
+        guard UIApplication.shared.canOpenURL(url) else { return }
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
-    
+
+    func onTwitter() {
+        let url = URL(string: "https://twitter.com/fusen__app")!
+        guard UIApplication.shared.canOpenURL(url) else { return }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+
     enum State {
         case initial
         case linkingWithApple

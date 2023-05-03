@@ -6,30 +6,30 @@
 //
 
 import FirebaseFunctions
-import MLKit
-import MLKitTextRecognitionJapanese
+//import MLKit
+//import MLKitTextRecognitionJapanese
 import UIKit
 
 protocol TextRecognizeServiceProtocol {
     func text(from image: UIImage) async -> String
 }
 
-final class OnDeviceTextRecognizeService: TextRecognizeServiceProtocol {
-    func text(from image: UIImage) async -> String {
-        let options = JapaneseTextRecognizerOptions()
-        let textRecognizer = TextRecognizer.textRecognizer(options: options)
-        let visionImage = VisionImage(image: image)
-        visionImage.orientation = image.imageOrientation
-        
-        do {
-            let result = try await textRecognizer.process(visionImage)
-            return result.text
-        } catch {
-            log.e(error.localizedDescription)
-            return ""
-        }
-    }
-}
+//final class OnDeviceTextRecognizeService: TextRecognizeServiceProtocol {
+//    func text(from image: UIImage) async -> String {
+//        let options = JapaneseTextRecognizerOptions()
+//        let textRecognizer = TextRecognizer.textRecognizer(options: options)
+//        let visionImage = VisionImage(image: image)
+//        visionImage.orientation = image.imageOrientation
+//
+//        do {
+//            let result = try await textRecognizer.process(visionImage)
+//            return result.text
+//        } catch {
+//            log.e(error.localizedDescription)
+//            return ""
+//        }
+//    }
+//}
 
 final class VisionTextRecognizeService: TextRecognizeServiceProtocol {
     private lazy var functions = Functions.functions(region: "asia-northeast1")

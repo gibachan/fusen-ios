@@ -53,7 +53,16 @@ struct MainView: View {
                     Text("本棚")
                 }
                 .tag(1)
-                
+
+                NavigationStack {
+                    SearchTabView()
+                }
+                .tabItem {
+                    Image.search
+                    Text("検索")
+                }
+                .tag(2)
+
                 NavigationView {
                     SettingTabView()
                 }
@@ -61,7 +70,7 @@ struct MainView: View {
                     Image.setting
                     Text("設定")
                 }
-                .tag(2)
+                .tag(3)
             }
             .zIndex(0)
             

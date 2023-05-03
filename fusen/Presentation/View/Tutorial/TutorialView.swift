@@ -60,7 +60,7 @@ struct TutorialView: View {
                             Text("データを共有")
                                 .font(.small.bold())
                                 .foregroundColor(.textPrimary)
-                            Text("Apple IDやGoogleアカウントと連携することで複数のデバイスとデータを共有してご利用いただけます。")
+                            Text("Apple IDやGoogleアカウントと連携することで、PCなど他のデバイスとデータを共有してご利用いただけます。")
                                 .font(.small)
                                 .foregroundColor(.textSecondary)
                         }

@@ -23,6 +23,10 @@ struct AboutAppView: View {
                     .tabItem {
                         Image(systemName: "circle.fill")
                     }
+                PageViewFour()
+                    .tabItem {
+                        Image(systemName: "circle.fill")
+                    }
             }
             .tabViewStyle(.page)
             .indexViewStyle(.page(backgroundDisplayMode: .always))
@@ -108,8 +112,31 @@ private extension AboutAppView {
             .padding(.init(top: 12, leading: 24, bottom: 60, trailing: 24))
         }
     }
-    
+
     struct PageViewTwo: View {
+        var body: some View {
+            VStack(alignment: .leading, spacing: 24) {
+                PageHeader(title: "PCと共有")
+                VStack(alignment: .leading, spacing: 12) {
+                    PageItem("https://fusen.app/ へアクセスすると、PCなどのブラウザでもメモを確認できます。")
+                    PageItem("アプリと書籍やメモを共有するにはログインが必要です。")
+                    Link("ブラウザで開く", destination: URL(string: "https://fusen.app/")!)
+                        .font(.medium)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .padding(16)
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        PageImage("img_about_app_5")
+                        Spacer()
+                    }
+                }
+            }
+            .padding(.init(top: 12, leading: 24, bottom: 60, trailing: 24))
+        }
+    }
+
+    struct PageViewThree: View {
         var body: some View {
             VStack(alignment: .leading, spacing: 24) {
                 PageHeader(title: "ウィジェット表示")
@@ -128,7 +155,7 @@ private extension AboutAppView {
         }
     }
     
-    struct PageViewThree: View {
+    struct PageViewFour: View {
         var body: some View {
             VStack(alignment: .leading, spacing: 24) {
                 PageHeader(title: "他のアプリからメモを作成")

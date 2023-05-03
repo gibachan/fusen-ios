@@ -16,6 +16,7 @@ protocol UserDefaultsDataSource: AnyObject {
     var reviewedVersion: String? { get set }
     var currentBookSort: BookSort? { get set }
     var currentMemoSort: MemoSort? { get set }
+    var searchAPIKey: SearchAPIKey? { get set }
 
     func getReadPage(for book: Book) -> Int?
     func setReadPage(for book: Book, page: Int)
@@ -107,6 +108,15 @@ final class UserDefaultsDataSourceImpl: UserDefaultsDataSource {
             userDefaults.set(newValue?.rawValue, forKey: .memoSort)
         }
     }
+
+    var searchAPIKey: SearchAPIKey? {
+        get {
+            userDefaults.string(forKey: .searchAPIKey)
+        }
+        set {
+            userDefaults.set(newValue, forKey: .searchAPIKey)
+        }
+    }
 }
 
 private extension UserDefaultsDataSourceImpl {
@@ -119,6 +129,7 @@ private extension UserDefaultsDataSourceImpl {
         case reviewedVersion = "reviewed_version"
         case bookSort = "current_book_sort"
         case memoSort = "current_memo_sort"
+        case searchAPIKey = "search_api_key"
     }
 }
 

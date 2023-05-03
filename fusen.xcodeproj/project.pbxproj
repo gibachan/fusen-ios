@@ -39,6 +39,13 @@
 		7A11FCBF26CD401800F1A6BC /* BookListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11FCBE26CD401800F1A6BC /* BookListViewModel.swift */; };
 		7A11FCC126CD4B9D00F1A6BC /* BookShelfCollectionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11FCC026CD4B9D00F1A6BC /* BookShelfCollectionSection.swift */; };
 		7A11FCC326CD4BAB00F1A6BC /* BookShelfCollectionSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11FCC226CD4BAB00F1A6BC /* BookShelfCollectionSectionModel.swift */; };
+		7A21CD8029F89FB3003E4F7C /* SearchAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABFF5B329F873820089A589 /* SearchAPIKey.swift */; };
+		7A21CD8129F89FB3003E4F7C /* SearchAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABFF5B329F873820089A589 /* SearchAPIKey.swift */; };
+		7A21CD8329FA991D003E4F7C /* SearchMemoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A21CD8229FA991D003E4F7C /* SearchMemoResponse.swift */; };
+		7A21CD8629FB413B003E4F7C /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 7A21CD8529FB413B003E4F7C /* ComposableArchitecture */; };
+		7A21CD8929FD42BE003E4F7C /* SearchMemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A21CD8829FD42BE003E4F7C /* SearchMemoTests.swift */; };
+		7A21CD8B2A006170003E4F7C /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A21CD8A2A006170003E4F7C /* Cache.swift */; };
+		7A21CD8D2A0144D8003E4F7C /* SearchMemoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A21CD8C2A0144D8003E4F7C /* SearchMemoType.swift */; };
 		7A2DF1C526FD5377007DC3E6 /* LatestMemoItemModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2DF1C426FD5377007DC3E6 /* LatestMemoItemModelTests.swift */; };
 		7A33118026CD692E00EB520D /* BookListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33117F26CD692E00EB520D /* BookListItem.swift */; };
 		7A33118226CE518F00EB520D /* UIApplicationExtensoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33118126CE518F00EB520D /* UIApplicationExtensoin.swift */; };
@@ -72,6 +79,9 @@
 		7A9675FE28A9263200445D83 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9675FD28A9263200445D83 /* ActionViewController.swift */; };
 		7A96760128A9263200445D83 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A9675FF28A9263200445D83 /* MainInterface.storyboard */; };
 		7A96760528A9263200445D83 /* fusenActionExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7A9675F728A9263200445D83 /* fusenActionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7A9AD5FF29FCB8640018C9A1 /* SearchMemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AD5FE29FCB8640018C9A1 /* SearchMemo.swift */; };
+		7A9AD60129FCF2830018C9A1 /* SearchMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AD60029FCF2830018C9A1 /* SearchMemoView.swift */; };
+		7A9AD60529FCF8530018C9A1 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AD60429FCF8530018C9A1 /* LoadingView.swift */; };
 		7A9E34D626E4F00C00F4E985 /* GetAllMemosUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E34D526E4F00C00F4E985 /* GetAllMemosUseCase.swift */; };
 		7A9E34D826E4F1A800F4E985 /* AddMemoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E34D726E4F1A800F4E985 /* AddMemoUseCase.swift */; };
 		7A9E34DA26E4F2BB00F4E985 /* RecognizeTextUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9E34D926E4F2BB00F4E985 /* RecognizeTextUseCase.swift */; };
@@ -104,6 +114,13 @@
 		7AB6FFF628ACC1F500815F33 /* SearchBookViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6FFF528ACC1F500815F33 /* SearchBookViewModelTests.swift */; };
 		7AB6FFF828ACC25100815F33 /* MockSearchPublicationsByTitleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6FFF728ACC25100815F33 /* MockSearchPublicationsByTitleUseCase.swift */; };
 		7AB6FFFA28ACC30600815F33 /* MockAddBookByPublicationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6FFF928ACC30600815F33 /* MockAddBookByPublicationUseCase.swift */; };
+		7ABFF5AB29F4049B0089A589 /* SearchTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABFF5AA29F4049B0089A589 /* SearchTabView.swift */; };
+		7ABFF5AD29F40E370089A589 /* SearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABFF5AC29F40E370089A589 /* SearchRepository.swift */; };
+		7ABFF5B029F410390089A589 /* SearchMemosUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABFF5AF29F410390089A589 /* SearchMemosUseCase.swift */; };
+		7ABFF5B229F873230089A589 /* SearchAPIKeyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABFF5B129F873230089A589 /* SearchAPIKeyRepository.swift */; };
+		7ABFF5B429F873820089A589 /* SearchAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABFF5B329F873820089A589 /* SearchAPIKey.swift */; };
+		7ABFF5B629F875360089A589 /* SearchAPIKeyRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABFF5B529F875360089A589 /* SearchAPIKeyRepositoryImpl.swift */; };
+		7ABFF5B829F875490089A589 /* SearchRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABFF5B729F875490089A589 /* SearchRepositoryImpl.swift */; };
 		7AC2CAB828857CEA00325C0B /* UpdateCurrentMemoSortUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2CAB728857CEA00325C0B /* UpdateCurrentMemoSortUseCase.swift */; };
 		7AC2CAB928857F7800325C0B /* MemoSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060092D26E43B4400EA0BC2 /* MemoSort.swift */; };
 		7AC2CABB2885809700325C0B /* GetCurrentMemoSortUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2CABA2885809700325C0B /* GetCurrentMemoSortUseCase.swift */; };
@@ -376,6 +393,10 @@
 		7A11FCBE26CD401800F1A6BC /* BookListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewModel.swift; sourceTree = "<group>"; };
 		7A11FCC026CD4B9D00F1A6BC /* BookShelfCollectionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfCollectionSection.swift; sourceTree = "<group>"; };
 		7A11FCC226CD4BAB00F1A6BC /* BookShelfCollectionSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfCollectionSectionModel.swift; sourceTree = "<group>"; };
+		7A21CD8229FA991D003E4F7C /* SearchMemoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMemoResponse.swift; sourceTree = "<group>"; };
+		7A21CD8829FD42BE003E4F7C /* SearchMemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMemoTests.swift; sourceTree = "<group>"; };
+		7A21CD8A2A006170003E4F7C /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		7A21CD8C2A0144D8003E4F7C /* SearchMemoType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMemoType.swift; sourceTree = "<group>"; };
 		7A2DF1C426FD5377007DC3E6 /* LatestMemoItemModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestMemoItemModelTests.swift; sourceTree = "<group>"; };
 		7A33117F26CD692E00EB520D /* BookListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListItem.swift; sourceTree = "<group>"; };
 		7A33118126CE518F00EB520D /* UIApplicationExtensoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtensoin.swift; sourceTree = "<group>"; };
@@ -406,6 +427,9 @@
 		7A9675FD28A9263200445D83 /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
 		7A96760028A9263200445D83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		7A96760228A9263200445D83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A9AD5FE29FCB8640018C9A1 /* SearchMemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMemo.swift; sourceTree = "<group>"; };
+		7A9AD60029FCF2830018C9A1 /* SearchMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMemoView.swift; sourceTree = "<group>"; };
+		7A9AD60429FCF8530018C9A1 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		7A9E34D526E4F00C00F4E985 /* GetAllMemosUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllMemosUseCase.swift; sourceTree = "<group>"; };
 		7A9E34D726E4F1A800F4E985 /* AddMemoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoUseCase.swift; sourceTree = "<group>"; };
 		7A9E34D926E4F2BB00F4E985 /* RecognizeTextUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizeTextUseCase.swift; sourceTree = "<group>"; };
@@ -427,6 +451,13 @@
 		7AB6FFF528ACC1F500815F33 /* SearchBookViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookViewModelTests.swift; sourceTree = "<group>"; };
 		7AB6FFF728ACC25100815F33 /* MockSearchPublicationsByTitleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchPublicationsByTitleUseCase.swift; sourceTree = "<group>"; };
 		7AB6FFF928ACC30600815F33 /* MockAddBookByPublicationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAddBookByPublicationUseCase.swift; sourceTree = "<group>"; };
+		7ABFF5AA29F4049B0089A589 /* SearchTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTabView.swift; sourceTree = "<group>"; };
+		7ABFF5AC29F40E370089A589 /* SearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepository.swift; sourceTree = "<group>"; };
+		7ABFF5AF29F410390089A589 /* SearchMemosUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMemosUseCase.swift; sourceTree = "<group>"; };
+		7ABFF5B129F873230089A589 /* SearchAPIKeyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAPIKeyRepository.swift; sourceTree = "<group>"; };
+		7ABFF5B329F873820089A589 /* SearchAPIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAPIKey.swift; sourceTree = "<group>"; };
+		7ABFF5B529F875360089A589 /* SearchAPIKeyRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAPIKeyRepositoryImpl.swift; sourceTree = "<group>"; };
+		7ABFF5B729F875490089A589 /* SearchRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoryImpl.swift; sourceTree = "<group>"; };
 		7AC2CAB728857CEA00325C0B /* UpdateCurrentMemoSortUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCurrentMemoSortUseCase.swift; sourceTree = "<group>"; };
 		7AC2CABA2885809700325C0B /* GetCurrentMemoSortUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentMemoSortUseCase.swift; sourceTree = "<group>"; };
 		7AC2CABC2885877400325C0B /* GetCurrentMemoSortUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentMemoSortUseCaseTests.swift; sourceTree = "<group>"; };
@@ -654,6 +685,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A21CD8629FB413B003E4F7C /* ComposableArchitecture in Frameworks */,
 				FAFA9C3195C337A6656292D4 /* Pods_fusen.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -742,6 +774,14 @@
 			path = BookList;
 			sourceTree = "<group>";
 		};
+		7A21CD8729FD42B0003E4F7C /* SearchMemo */ = {
+			isa = PBXGroup;
+			children = (
+				7A21CD8829FD42BE003E4F7C /* SearchMemoTests.swift */,
+			);
+			path = SearchMemo;
+			sourceTree = "<group>";
+		};
 		7A3E5587271BAD70002CE696 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -786,6 +826,15 @@
 				7A96760228A9263200445D83 /* Info.plist */,
 			);
 			path = fusenActionExtension;
+			sourceTree = "<group>";
+		};
+		7A9AD5FD29FCB85A0018C9A1 /* SearchMemo */ = {
+			isa = PBXGroup;
+			children = (
+				7A9AD5FE29FCB8640018C9A1 /* SearchMemo.swift */,
+				7A9AD60029FCF2830018C9A1 /* SearchMemoView.swift */,
+			);
+			path = SearchMemo;
 			sourceTree = "<group>";
 		};
 		7AA6D7A526D3426000781F48 /* EditBook */ = {
@@ -847,6 +896,33 @@
 				7AB6FFF528ACC1F500815F33 /* SearchBookViewModelTests.swift */,
 			);
 			path = SearchBook;
+			sourceTree = "<group>";
+		};
+		7ABFF5A829F403CE0089A589 /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				A07507C726C546120087AE5C /* HomeTab */,
+				7AD1610C26C2A1E900334A63 /* BookShelfTab */,
+				7ABFF5A929F404810089A589 /* SearchTab */,
+				7A11FCA626CB47A600F1A6BC /* SettingTab */,
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
+		7ABFF5A929F404810089A589 /* SearchTab */ = {
+			isa = PBXGroup;
+			children = (
+				7ABFF5AA29F4049B0089A589 /* SearchTabView.swift */,
+			);
+			path = SearchTab;
+			sourceTree = "<group>";
+		};
+		7ABFF5AE29F410210089A589 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				7ABFF5AF29F410390089A589 /* SearchMemosUseCase.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		7AC2CACB2886232800325C0B /* Book */ = {
@@ -1008,12 +1084,11 @@
 		7AD1610226C29CCF00334A63 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7ABFF5A829F403CE0089A589 /* Tab */,
+				7AD1610626C29EC600334A63 /* Main */,
 				7A62D0B628ABC7CD000B1026 /* AboutApp */,
 				A07334FD26DDB1DD004C5436 /* Maintenance */,
-				7AD1610626C29EC600334A63 /* Main */,
 				A007C07526C7795800270671 /* Tutorial */,
-				A07507C726C546120087AE5C /* HomeTab */,
-				7AD1610C26C2A1E900334A63 /* BookShelfTab */,
 				A069983426CDD9AA006E74C6 /* Collection */,
 				A07CAD0A26CF7ED40012201A /* AddCollection */,
 				7A11FCBB26CD3FB400F1A6BC /* BookList */,
@@ -1023,13 +1098,13 @@
 				7AA6D7AA26D386A900781F48 /* AddBook */,
 				7AA6D7A526D3426000781F48 /* EditBook */,
 				7AB6FFE528AC759900815F33 /* SearchBook */,
+				7A9AD5FD29FCB85A0018C9A1 /* SearchMemo */,
 				A07CAD1926D064090012201A /* SelectCollection */,
 				A0BA4CB026C4DC2000D99D8C /* ScanBarcode */,
 				A069983926CDDD0A006E74C6 /* MemoList */,
 				7A11FCB426CB5DC500F1A6BC /* AddMemo */,
 				A069982326CCA59A006E74C6 /* EditMemo */,
 				7A4569F526EA33A400B7FCC0 /* PageList */,
-				7A11FCA626CB47A600F1A6BC /* SettingTab */,
 				A0A2B30926EB47BF001798D3 /* DeleteAccount */,
 				A0F97CE926E0CA4F007CACE5 /* WebPageView */,
 				7AD1611926C2A93F00334A63 /* Component */,
@@ -1113,6 +1188,7 @@
 				A007C08426C7AD9200270671 /* ToastView.swift */,
 				7A11FCB226CB57FE00F1A6BC /* ControlToolbar.swift */,
 				A060097226E6E24500EA0BC2 /* ReadingBookDescriptionView.swift */,
+				7A9AD60429FCF8530018C9A1 /* LoadingView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1220,6 +1296,7 @@
 				7AB6FFF228ACC1BA00815F33 /* Home */,
 				7AB6FFF128ACC1B400815F33 /* Main */,
 				7AB6FFF428ACC1DF00815F33 /* SearchBook */,
+				7A21CD8729FD42B0003E4F7C /* SearchMemo */,
 				7AB6FFF328ACC1C200815F33 /* Tutorial */,
 			);
 			path = View;
@@ -1263,6 +1340,7 @@
 				A07CAD0F26CF95FD0012201A /* RGB.swift */,
 				A07334F726DDAF5D004C5436 /* AppConfig.swift */,
 				A060093926E4932F00EA0BC2 /* LatestData.swift */,
+				7ABFF5B329F873820089A589 /* SearchAPIKey.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1277,6 +1355,8 @@
 				A069981026CBE449006E74C6 /* MemoRepository.swift */,
 				A069982C26CD050D006E74C6 /* CollectionRepository.swift */,
 				A07334F926DDAF98004C5436 /* AppConfigRepository.swift */,
+				7ABFF5B129F873230089A589 /* SearchAPIKeyRepository.swift */,
+				7ABFF5AC29F40E370089A589 /* SearchRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -1293,6 +1373,8 @@
 				A069982E26CD052C006E74C6 /* CollectionRepositoryImpl.swift */,
 				A069981D26CC3ECC006E74C6 /* PagerCache.swift */,
 				A07334FB26DDAFDE004C5436 /* AppConfigRepositoryImpl.swift */,
+				7ABFF5B529F875360089A589 /* SearchAPIKeyRepositoryImpl.swift */,
+				7ABFF5B729F875490089A589 /* SearchRepositoryImpl.swift */,
 				A052EAD126C3F8830033CE47 /* Response */,
 			);
 			path = Repository;
@@ -1303,6 +1385,7 @@
 			children = (
 				A052EAD226C3F89E0033CE47 /* GoogleBooksResponse.swift */,
 				7A69931126DD0836006B0697 /* RakutenBooksResponse.swift */,
+				7A21CD8229FA991D003E4F7C /* SearchMemoResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1312,6 +1395,8 @@
 			children = (
 				A060092B26E3686D00EA0BC2 /* BookSort.swift */,
 				A060092D26E43B4400EA0BC2 /* MemoSort.swift */,
+				7A21CD8A2A006170003E4F7C /* Cache.swift */,
+				7A21CD8C2A0144D8003E4F7C /* SearchMemoType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1325,6 +1410,7 @@
 				7AC2CACF2886238700325C0B /* Collection */,
 				7AC2CACC2886232D00325C0B /* Memo */,
 				7AC2CACE2886233500325C0B /* User */,
+				7ABFF5AE29F410210089A589 /* Search */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -1672,7 +1758,6 @@
 				A082000226C1F5CF00100357 /* Resources */,
 				A082002F26C1F74300100357 /* SwiftLint */,
 				0D502F6FD4CEAE7DA729E03E /* [CP] Embed Pods Frameworks */,
-				BB4E535C5BF40E7A5BFA3BBA /* [CP] Copy Pods Resources */,
 				A0B1FED826E0401000586151 /* LicensePlist */,
 				A0A2B31226EDB3FC001798D3 /* GoogleService-Info.plist */,
 				7A003E7D286735D4002B8BAC /* Embed Foundation Extensions */,
@@ -1684,6 +1769,9 @@
 				7A96760428A9263200445D83 /* PBXTargetDependency */,
 			);
 			name = fusen;
+			packageProductDependencies = (
+				7A21CD8529FB413B003E4F7C /* ComposableArchitecture */,
+			);
 			productName = fusen;
 			productReference = A082000426C1F5CF00100357 /* fusen.app */;
 			productType = "com.apple.product-type.application";
@@ -1741,6 +1829,9 @@
 				Base,
 			);
 			mainGroup = A082FFFB26C1F5CF00100357;
+			packageReferences = (
+				7A21CD8429FB413B003E4F7C /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			productRefGroup = A082000526C1F5CF00100357 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1917,23 +2008,6 @@
 			shellPath = /bin/sh;
 			shellScript = "if [ $CONFIGURATION = \"Debug\" ]; then\n    ${PODS_ROOT}/LicensePlist/license-plist --output-path fusen/Presentation/Resource/Settings.bundle --suppress-opening-directory\nfi\n";
 		};
-		BB4E535C5BF40E7A5BFA3BBA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-fusen/Pods-fusen-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-fusen/Pods-fusen-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-fusen/Pods-fusen-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1942,6 +2016,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A003E9428674FE7002B8BAC /* Collection.swift in Sources */,
+				7A21CD8129F89FB3003E4F7C /* SearchAPIKey.swift in Sources */,
 				7A003E9328674FC0002B8BAC /* ID.swift in Sources */,
 				7A4EF05E28702C69001D32EF /* ImageExtension.swift in Sources */,
 				7A003E8728673C01002B8BAC /* Entry.swift in Sources */,
@@ -1972,6 +2047,7 @@
 				7A9F6A0328AA361E00753210 /* MemoDraft.swift in Sources */,
 				7AB6FFF028ACBFF900815F33 /* AppEnv.swift in Sources */,
 				7A9F69FC28AA349C00753210 /* BookSort.swift in Sources */,
+				7A21CD8029F89FB3003E4F7C /* SearchAPIKey.swift in Sources */,
 				7A9F69FB28AA349900753210 /* Book.swift in Sources */,
 				7A9F69F928AA348400753210 /* UserDefaultsDataSource.swift in Sources */,
 				7A9675FE28A9263200445D83 /* ActionViewController.swift in Sources */,
@@ -1986,12 +2062,14 @@
 			files = (
 				7A9E34DE26E4F54F00F4E985 /* DeleteMemoUseCase.swift in Sources */,
 				7AB6FFE928AC7E3300815F33 /* SearchBookViewModel.swift in Sources */,
+				7ABFF5B629F875360089A589 /* SearchAPIKeyRepositoryImpl.swift in Sources */,
 				A052EACC26C3F79B0033CE47 /* PublicationRepository.swift in Sources */,
 				A060094A26E4AAEA00EA0BC2 /* UpdateFavoriteBookUseCase.swift in Sources */,
 				A05CE89326D17FD3007F9CF2 /* AddMemoImageView.swift in Sources */,
 				A060095626E4DF2900EA0BC2 /* SearchPublicationByBarcodeUseCase.swift in Sources */,
 				7A4569F726EA33C500B7FCC0 /* PageListView.swift in Sources */,
 				A060094226E49C4900EA0BC2 /* GetBooksByCollectionUseCase.swift in Sources */,
+				7A9AD5FF29FCB8640018C9A1 /* SearchMemo.swift in Sources */,
 				A07CAD2526D096020012201A /* FirestoreUpdateUser.swift in Sources */,
 				A07334FC26DDAFDE004C5436 /* AppConfigRepositoryImpl.swift in Sources */,
 				A07CAD0326CED9A20012201A /* ImageDataExtension.swift in Sources */,
@@ -2028,6 +2106,7 @@
 				A07D1A8626E2FAE100ADF384 /* QuoteText.swift in Sources */,
 				A060094C26E4ADF300EA0BC2 /* DeleteBookUseCase.swift in Sources */,
 				A0C3C24826D853EF0032B2C7 /* MemoListItemModel.swift in Sources */,
+				7ABFF5AB29F4049B0089A589 /* SearchTabView.swift in Sources */,
 				A0C3C24426D78DB80032B2C7 /* BookMemoSection.swift in Sources */,
 				A069983D26CDDD21006E74C6 /* MemoListViewModel.swift in Sources */,
 				A069982726CCA5BD006E74C6 /* EditMemoViewModel.swift in Sources */,
@@ -2052,6 +2131,7 @@
 				7A69930D26DD05C5006B0697 /* APIKey.swift in Sources */,
 				7AA6D7AC26D386BB00781F48 /* AddBookView.swift in Sources */,
 				A07334F426DDA872004C5436 /* AddBookIcon.swift in Sources */,
+				7A21CD8B2A006170003E4F7C /* Cache.swift in Sources */,
 				7A62D0B828ABC7E4000B1026 /* AboutAppView.swift in Sources */,
 				A084611726F1D4A0009EB6E9 /* BookShelfNavigation.swift in Sources */,
 				A07CAD2D26D0D1150012201A /* DocumentReferenceExtension.swift in Sources */,
@@ -2063,6 +2143,7 @@
 				A001E03926CA2CDE00AC92BA /* FirestoreUpdateBook.swift in Sources */,
 				7AB6FFE428AC742500815F33 /* SearchPublicationsByTitleUseCase.swift in Sources */,
 				A052EACA26C3F4E90033CE47 /* Publication.swift in Sources */,
+				7ABFF5B229F873230089A589 /* SearchAPIKeyRepository.swift in Sources */,
 				A007C08D26C7DB0E00270671 /* Book.swift in Sources */,
 				7A11FCBF26CD401800F1A6BC /* BookListViewModel.swift in Sources */,
 				A07CAD3926D147230012201A /* BookEmptyView.swift in Sources */,
@@ -2086,6 +2167,7 @@
 				7A33118226CE518F00EB520D /* UIApplicationExtensoin.swift in Sources */,
 				A07334F826DDAF5D004C5436 /* AppConfig.swift in Sources */,
 				7A11FCA526CB467C00F1A6BC /* NotificationCenterExtension.swift in Sources */,
+				7ABFF5B029F410390089A589 /* SearchMemosUseCase.swift in Sources */,
 				7A11FCC126CD4B9D00F1A6BC /* BookShelfCollectionSection.swift in Sources */,
 				A060097126E6E06A00EA0BC2 /* ResetUserActionHistoryUseCase.swift in Sources */,
 				A001E03726CA061B00AC92BA /* PlaceholderTextEditor.swift in Sources */,
@@ -2110,10 +2192,13 @@
 				A052EAD326C3F89E0033CE47 /* GoogleBooksResponse.swift in Sources */,
 				7A11FCB026CB537500F1A6BC /* LatestBookItem.swift in Sources */,
 				A0BA4CB826C4E34200D99D8C /* BarcodeCameraView.swift in Sources */,
+				7A21CD8329FA991D003E4F7C /* SearchMemoResponse.swift in Sources */,
 				A0F97CE626E0BC12007CACE5 /* FirebaseAuthExtension.swift in Sources */,
 				A07CAD1426D051D10012201A /* LatestMemoItem.swift in Sources */,
+				7A21CD8D2A0144D8003E4F7C /* SearchMemoType.swift in Sources */,
 				A069982F26CD052C006E74C6 /* CollectionRepositoryImpl.swift in Sources */,
 				A0F97CE826E0C571007CACE5 /* AnalyticsEvent.swift in Sources */,
+				7A9AD60129FCF2830018C9A1 /* SearchMemoView.swift in Sources */,
 				7AA6D7A426D2831000781F48 /* BookShelfFavoriteSectionModel.swift in Sources */,
 				A062C18926C5F33500C56E2A /* AppEnv.swift in Sources */,
 				A060095026E4D37200EA0BC2 /* AddBookByManualUseCase.swift in Sources */,
@@ -2137,11 +2222,13 @@
 				7A003E89286748D2002B8BAC /* CachedBook.swift in Sources */,
 				A060094826E4A79E00EA0BC2 /* UpdateReadingBookUseCase.swift in Sources */,
 				7A9E34D626E4F00C00F4E985 /* GetAllMemosUseCase.swift in Sources */,
+				7ABFF5B829F875490089A589 /* SearchRepositoryImpl.swift in Sources */,
 				A069983626CDD9CB006E74C6 /* CollectionView.swift in Sources */,
 				7AA6D7A926D3427E00781F48 /* EditBookViewModel.swift in Sources */,
 				A0C3C24626D78DC30032B2C7 /* BookMemoSectionModel.swift in Sources */,
 				A007C08926C7DABE00270671 /* BookRepository.swift in Sources */,
 				A060092E26E43B4400EA0BC2 /* MemoSort.swift in Sources */,
+				7A9AD60529FCF8530018C9A1 /* LoadingView.swift in Sources */,
 				A07CAD2B26D0C7130012201A /* FirestoreGetUserInfo.swift in Sources */,
 				A0C3C24026D77D780032B2C7 /* BookDetailSection.swift in Sources */,
 				7A11FCAE26CB532700F1A6BC /* ShowAllText.swift in Sources */,
@@ -2178,6 +2265,7 @@
 				7AC532E229CD46140014EE1D /* IntExtension.swift in Sources */,
 				A069982026CCA225006E74C6 /* BookMemoItem.swift in Sources */,
 				A069981326CBE47E006E74C6 /* Memo.swift in Sources */,
+				7ABFF5AD29F40E370089A589 /* SearchRepository.swift in Sources */,
 				A0BA4CB626C4E07400D99D8C /* LazyView.swift in Sources */,
 				A0A2B30B26EB7C21001798D3 /* DeleteAccountView.swift in Sources */,
 				7A9E34D826E4F1A800F4E985 /* AddMemoUseCase.swift in Sources */,
@@ -2186,6 +2274,7 @@
 				A060094626E4A01600EA0BC2 /* AddCollectionUseCase.swift in Sources */,
 				A07CAD0C26CF7EF60012201A /* AddCollectionView.swift in Sources */,
 				A069983B26CDDD18006E74C6 /* MemoListView.swift in Sources */,
+				7ABFF5B429F873820089A589 /* SearchAPIKey.swift in Sources */,
 				A069982B26CD0492006E74C6 /* Collection.swift in Sources */,
 				7AD1610E26C2A25A00334A63 /* BookShelfTabView.swift in Sources */,
 				A07507CB26C546330087AE5C /* HomeTabViewModel.swift in Sources */,
@@ -2234,6 +2323,7 @@
 				7AB6FFFA28ACC30600815F33 /* MockAddBookByPublicationUseCase.swift in Sources */,
 				7AC532E629CD48AC0014EE1D /* XCTestExtension.swift in Sources */,
 				A0ACBC2E26FC0D2600C3D5A7 /* HomeTabViewModelTests.swift in Sources */,
+				7A21CD8929FD42BE003E4F7C /* SearchMemoTests.swift in Sources */,
 				7AC2CABF288587B900325C0B /* MockUserActionHistoryRepository.swift in Sources */,
 				7AC2CAC12885897300325C0B /* UpdateCurrentMemoSortUseCaseTests.swift in Sources */,
 			);
@@ -2278,7 +2368,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = fusenWidget/fusenWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 26;
 				DEVELOPMENT_TEAM = MYDHT92MBT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = fusenWidget/Info.plist;
@@ -2290,7 +2380,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.7.3;
+				MARKETING_VERSION = 1.8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = app.fusen.dev.fusenWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2307,7 +2397,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = fusenWidget/fusenWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 26;
 				DEVELOPMENT_TEAM = MYDHT92MBT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = fusenWidget/Info.plist;
@@ -2319,7 +2409,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.7.3;
+				MARKETING_VERSION = 1.8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = app.fusen.stg.fusenWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2336,7 +2426,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = fusenWidget/fusenWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 26;
 				DEVELOPMENT_TEAM = MYDHT92MBT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = fusenWidget/Info.plist;
@@ -2348,7 +2438,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.7.3;
+				MARKETING_VERSION = 1.8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = app.fusen.fusenWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2364,7 +2454,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconExtension;
 				CODE_SIGN_ENTITLEMENTS = fusenActionExtension/fusenActionExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 26;
 				DEVELOPMENT_TEAM = MYDHT92MBT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = fusenActionExtension/Info.plist;
@@ -2376,7 +2466,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.7.3;
+				MARKETING_VERSION = 1.8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = app.fusen.dev.fusenActionExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2392,7 +2482,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconExtension;
 				CODE_SIGN_ENTITLEMENTS = fusenActionExtension/fusenActionExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 26;
 				DEVELOPMENT_TEAM = MYDHT92MBT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = fusenActionExtension/Info.plist;
@@ -2404,7 +2494,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.7.3;
+				MARKETING_VERSION = 1.8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = app.fusen.stg.fusenActionExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2420,7 +2510,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconExtension;
 				CODE_SIGN_ENTITLEMENTS = fusenActionExtension/fusenActionExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 26;
 				DEVELOPMENT_TEAM = MYDHT92MBT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = fusenActionExtension/Info.plist;
@@ -2432,7 +2522,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.7.3;
+				MARKETING_VERSION = 1.8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = app.fusen.fusenActionExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2513,7 +2603,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = fusen/fusen.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 26;
 				DEVELOPMENT_ASSET_PATHS = "\"fusen/Presentation/Resource/Preview Content\"";
 				DEVELOPMENT_TEAM = MYDHT92MBT;
 				ENABLE_PREVIEWS = YES;
@@ -2533,7 +2623,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.7.3;
+				MARKETING_VERSION = 1.8.0;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D STAGING -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = app.fusen.stg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2696,7 +2786,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = fusen/fusen.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 26;
 				DEVELOPMENT_ASSET_PATHS = "\"fusen/Presentation/Resource/Preview Content\"";
 				DEVELOPMENT_TEAM = MYDHT92MBT;
 				ENABLE_PREVIEWS = YES;
@@ -2716,7 +2806,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.7.3;
+				MARKETING_VERSION = 1.8.0;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D DEBUG -D DEVELOPMENT";
 				PRODUCT_BUNDLE_IDENTIFIER = app.fusen.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2736,7 +2826,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = fusen/fusen.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 26;
 				DEVELOPMENT_ASSET_PATHS = "\"fusen/Presentation/Resource/Preview Content\"";
 				DEVELOPMENT_TEAM = MYDHT92MBT;
 				ENABLE_PREVIEWS = YES;
@@ -2756,7 +2846,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.7.3;
+				MARKETING_VERSION = 1.8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = app.fusen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -2871,6 +2961,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7A21CD8429FB413B003E4F7C /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = exactVersion;
+				version = 0.52.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7A21CD8529FB413B003E4F7C /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7A21CD8429FB413B003E4F7C /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A082FFFC26C1F5CF00100357 /* Project object */;
 }

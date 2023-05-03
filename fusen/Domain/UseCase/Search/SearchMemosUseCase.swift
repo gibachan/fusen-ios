@@ -65,6 +65,9 @@ final class SearchMemosUseCaseImpl: SearchMemosUseCase {
                 }
             }
         } catch {
+            // TODO: Remove key if it was invalid key
+            // searchAPIKeyRepository.clear()
+
             throw SearchMemosUseCaseError.badNetwork
         }
     }

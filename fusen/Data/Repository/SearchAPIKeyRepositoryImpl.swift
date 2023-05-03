@@ -32,4 +32,8 @@ final class SearchAPIKeyRepositoryImpl: SearchAPIKeyRepository {
             throw SearchAPIKeyRepositoryError.badNetwork
         }
     }
+
+    func clear() {
+        dataSource.searchAPIKey = nil
+    }
 }

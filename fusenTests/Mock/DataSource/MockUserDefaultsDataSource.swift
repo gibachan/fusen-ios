@@ -17,7 +17,7 @@ final class MockUserDefaultsDataSource: UserDefaultsDataSource {
     private var _reviewedVersion: String?
     private var _currentBookSort: BookSort?
     private var _currentMemoSort: MemoSort?
-    private var _searchAPIKey: SearchAPIKey?
+    private var _searchAPIKey: String?
 
     init(launchedAppBefore: Bool = false,
          didConfirmReadingBookDescription: Bool = false,
@@ -27,7 +27,7 @@ final class MockUserDefaultsDataSource: UserDefaultsDataSource {
          reviewedVersion: String? = nil,
          currentBookSort: BookSort? = nil,
          currentMemoSort: MemoSort? = nil,
-         searchAPIKey: SearchAPIKey? = nil) {
+         searchAPIKey: String? = nil) {
         self._launchedAppBefore = launchedAppBefore
         self._didConfirmReadingBookDescription = didConfirmReadingBookDescription
         self._readBookPages = readBookPages
@@ -83,7 +83,7 @@ final class MockUserDefaultsDataSource: UserDefaultsDataSource {
     
     func setReadPage(for book: Book, page: Int) {}
 
-    var searchAPIKey: SearchAPIKey? {
+    var searchAPIKey: String? {
         get { _searchAPIKey }
         set { _searchAPIKey = newValue }
     }

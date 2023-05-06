@@ -10,11 +10,11 @@ import Foundation
 
 final class SearchRepositoryImpl: SearchRepository {
     func memos(
-        withAPIKey key: SearchAPIKey,
+        withAPIKey key: SearchAPI.Key,
         for text: String,
         by type: SearchMemoType
     ) async throws -> [ID<Memo>] {
-        let client = SearchClient(appID: ApplicationID(rawValue: Algolia.appID), apiKey: APIKey(rawValue: key))
+        let client = SearchClient(appID: ApplicationID(rawValue: Algolia.appID), apiKey: APIKey(rawValue: key.rawValue))
         let indexName: String
         switch type {
         case .text:

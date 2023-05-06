@@ -16,16 +16,16 @@ final class SearchAPIKeyRepositoryImpl: SearchAPIKeyRepository {
         self.dataSource = dataSource
     }
     
-    func get(for user: User) async throws -> SearchAPIKey {
+    func get(for user: User) async throws -> SearchAPI.Key {
         if let key = dataSource.searchAPIKey {
-            return key
+            return SearchAPI.Key(rawValue: key)
         }
 
         do {
             let result = try await functions.httpsCallable("generateSearchKey").call()
             if let key = result.data as? String {
                 dataSource.searchAPIKey = key
-                return key
+                return SearchAPI.Key(rawValue: key)
             }
             throw SearchAPIKeyRepositoryError.notFound
         } catch {

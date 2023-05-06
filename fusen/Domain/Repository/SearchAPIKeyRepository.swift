@@ -13,7 +13,7 @@ enum SearchAPIKeyRepositoryError: Error {
 }
 
 protocol SearchAPIKeyRepository {
-    func get(for user: User) async throws -> SearchAPIKey
+    func get(for user: User) async throws -> SearchAPI.Key
 
     func clear()
 }

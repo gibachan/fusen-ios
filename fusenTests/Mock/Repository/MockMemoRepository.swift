@@ -29,6 +29,10 @@ class MockMemoRepository: MemoRepository {
         fatalError("Not implemented yet")
     }
 
+    func getMemo(by id: fusen.ID<fusen.Memo>, for user: fusen.User) async throws -> fusen.Memo {
+        fatalError("Not implemented yet")
+    }
+
     func getLatestMemos(count: Int, for user: User) async throws -> [Memo] {
         fatalError("Not implemented yet")
     }

@@ -16,7 +16,7 @@ protocol UserDefaultsDataSource: AnyObject {
     var reviewedVersion: String? { get set }
     var currentBookSort: BookSort? { get set }
     var currentMemoSort: MemoSort? { get set }
-    var searchAPIKey: SearchAPIKey? { get set }
+    var searchAPIKey: String? { get set }
 
     func getReadPage(for book: Book) -> Int?
     func setReadPage(for book: Book, page: Int)
@@ -109,7 +109,7 @@ final class UserDefaultsDataSourceImpl: UserDefaultsDataSource {
         }
     }
 
-    var searchAPIKey: SearchAPIKey? {
+    var searchAPIKey: String? {
         get {
             userDefaults.string(forKey: .searchAPIKey)
         }

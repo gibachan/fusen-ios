@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import Tagged
 
-// TODO: Use Tagged
-typealias SearchAPIKey = String
+enum SearchAPI {
+    typealias Key = Tagged<SearchAPI, String>
+}

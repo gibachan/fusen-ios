@@ -223,6 +223,8 @@ name: swift-dependencies, nameSpecified: swift-dependencies, owner: pointfreeco,
 
 name: swift-identified-collections, nameSpecified: swift-identified-collections, owner: pointfreeco, version: 0.7.1, source: https://github.com/pointfreeco/swift-identified-collections
 
+name: swift-tagged, nameSpecified: swift-tagged, owner: pointfreeco, version: 0.10.0, source: https://github.com/pointfreeco/swift-tagged
+
 name: swiftui-navigation, nameSpecified: swiftui-navigation, owner: pointfreeco, version: 0.7.1, source: https://github.com/pointfreeco/swiftui-navigation
 
 name: xctest-dynamic-overlay, nameSpecified: xctest-dynamic-overlay, owner: pointfreeco, version: 0.8.5, source: https://github.com/pointfreeco/xctest-dynamic-overlay

@@ -39,7 +39,7 @@ final class SearchMemosUseCaseImpl: SearchMemosUseCase {
             throw SearchMemosUseCaseError.notAuthenticated
         }
 
-        let searchAPIKey: SearchAPIKey
+        let searchAPIKey: SearchAPI.Key
         do {
             searchAPIKey = try await searchAPIKeyRepository.get(for: user)
         } catch {

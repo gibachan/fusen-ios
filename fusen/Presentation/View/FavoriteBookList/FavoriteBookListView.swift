@@ -42,6 +42,7 @@ struct FavoriteBookListView: View {
         }
         .listStyle(PlainListStyle())
         .navigationBarTitle("お気に入りの書籍", displayMode: .inline)
+        .loading(viewModel.state == .loading)
         .sheet(isPresented: $isAddPresented) {
             Task {
                 await viewModel.onRefresh()
@@ -51,18 +52,6 @@ struct FavoriteBookListView: View {
         }
         .task {
             await viewModel.onAppear()
-        }
-        .onReceive(viewModel.$state) { state in
-            switch state {
-            case .initial, .loadingNext, .refreshing:
-                break
-            case .loading:
-                LoadingHUD.show()
-            case .succeeded:
-                LoadingHUD.dismiss()
-            case .failed:
-                LoadingHUD.dismiss()
-            }
         }
     }
 }

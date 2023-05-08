@@ -100,6 +100,7 @@ struct EditBookView: View {
             }
                 .disabled(!viewModel.isSaveEnabled)
         )
+        .loading(viewModel.state == .loading)
         .confirmationDialog("書籍画像を変更", isPresented: $isThumbnailPickerPresented, titleVisibility: .visible) {
             Button {
                 isCameraPickerPresented = true
@@ -145,15 +146,10 @@ struct EditBookView: View {
         }
         .onReceive(viewModel.$state) { state in
             switch state {
-            case .initial:
+            case .initial, .loading, .failed:
                 break
-            case .loading:
-                LoadingHUD.show()
             case .succeeded:
-                LoadingHUD.dismiss()
                 dismiss()
-            case .failed:
-                LoadingHUD.dismiss()
             }
         }
     }

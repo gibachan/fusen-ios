@@ -33,6 +33,7 @@ struct MemoListView: View {
         }
         .listStyle(PlainListStyle())
         .navigationBarTitle("すべてのメモ", displayMode: .inline)
+        .loading(viewModel.state == .loading)
         .sheet(isPresented: $isAddPresented) {
             print("dismissed")
         } content: {
@@ -40,18 +41,6 @@ struct MemoListView: View {
         }
         .task {
             await viewModel.onAppear()
-        }
-        .onReceive(viewModel.$state) { state in
-            switch state {
-            case .initial, .loadingNext, .refreshing:
-                break
-            case .loading:
-                LoadingHUD.show()
-            case .succeeded:
-                LoadingHUD.dismiss()
-            case .failed:
-                LoadingHUD.dismiss()
-            }
         }
     }
 }

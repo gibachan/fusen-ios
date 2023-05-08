@@ -31,22 +31,16 @@ struct SelectCollectionView: View {
             }
         }
         .navigationTitle("コレクション")
+        .loading(viewModel.state == .loading)
         .task {
             await viewModel.onAppear()
         }
         .onReceive(viewModel.$state) { state in
             switch state {
-            case .initial:
+            case .initial, .loading, .loaded, .failed:
                 break
-            case .loading:
-                LoadingHUD.show()
-            case .loaded:
-                LoadingHUD.dismiss()
             case .updated:
-                LoadingHUD.dismiss()
                 dismiss()
-            case .failed:
-                LoadingHUD.dismiss()
             }
         }
     }

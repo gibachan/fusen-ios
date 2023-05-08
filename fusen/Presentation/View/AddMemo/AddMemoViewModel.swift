@@ -21,6 +21,15 @@ final class AddMemoViewModel: NSObject, ObservableObject {
     @Published var state: State = .initial
     @Published private var memoImage: ImageData?
     @Published var recognizedQuote = ""
+
+    var isLoading: Bool {
+        switch state {
+        case .loading:
+            return true
+        default:
+            return false
+        }
+    }
     
     init(
         book: Book,

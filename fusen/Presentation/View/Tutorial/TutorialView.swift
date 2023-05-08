@@ -102,23 +102,18 @@ struct TutorialView: View {
         .padding(.top, 16)
         .padding(.bottom, 32)
         .padding(.horizontal, 32)
+        .loading(viewModel.state == .loading)
         .onReceive(viewModel.$state) { state in
             switch state {
-            case .initial:
-                LoadingHUD.dismiss()
-            case .loading:
-                LoadingHUD.show()
+            case .initial, .loading:
+                break
             case .succeeded:
-                LoadingHUD.dismiss()
                 dismiss()
             case .failed:
-                LoadingHUD.dismiss()
                 ErrorHUD.show(message: .network)
             case .failedSigningWithApple:
-                LoadingHUD.dismiss()
                 ErrorHUD.show(message: .linkWithAppleId)
             case .failedSigningWithGoogle:
-                LoadingHUD.dismiss()
                 ErrorHUD.show(message: .linkWithGoogle)
             }
         }

@@ -23,6 +23,24 @@ final class BookViewModel: ObservableObject {
     @Published var isFavorite = false
     @Published var isReadingBook = false
     @Published var state: State = .initial
+
+    var isLoading: Bool {
+        switch state {
+        case .loading:
+            return true
+        default:
+            return false
+        }
+    }
+
+    var isEmpty: Bool {
+        switch state {
+        case .failed:
+            return true
+        default:
+            return false
+        }
+    }
     
     init(
         bookId: ID<Book>,

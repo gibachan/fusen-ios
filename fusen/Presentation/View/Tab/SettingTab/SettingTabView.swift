@@ -191,25 +191,19 @@ struct SettingTabView: View {
             .buttonStyle(PlainButtonStyle())
         }
         .navigationBarTitle("設定")
+        .loading(viewModel.state == .linkingWithApple || viewModel.state == .linkingWithGoogle)
         .onAppear {
             viewModel.onApper()
         }
         .onReceive(viewModel.$state) { state in
             switch state {
-            case .initial:
+            case .initial, .linkingWithApple, .linkingWithGoogle, .succeeded:
                 break
-            case .linkingWithApple, .linkingWithGoogle:
-                LoadingHUD.show()
-            case .succeeded:
-                LoadingHUD.dismiss()
             case .failed:
-                LoadingHUD.dismiss()
                 ErrorHUD.show(message: .network)
             case .failedlinkingWithApple:
-                LoadingHUD.dismiss()
                 ErrorHUD.show(message: .linkWithAppleId)
             case .failedlinkingWithGoogle:
-                LoadingHUD.dismiss()
                 ErrorHUD.show(message: .linkWithGoogle)
             }
         }

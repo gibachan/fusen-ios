@@ -6,14 +6,13 @@
 //
 
 import Foundation
-import SVProgressHUD
 
 final class LoadingHUD {
     static func show() {
-        SVProgressHUD.show()
+        log.d("LoadingHUD.show()")
     }
     
     static func dismiss() {
-        SVProgressHUD.dismiss()
+        log.d("LoadingHUD.dismiss()")
     }
 }

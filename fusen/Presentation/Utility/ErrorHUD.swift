@@ -6,14 +6,13 @@
 //
 
 import Foundation
-import SVProgressHUD
 
 final class ErrorHUD {
     static func show(message: ErrorMessage) {
-        SVProgressHUD.showError(withStatus: message.string)
+        log.d("LoadingHUD.show(message: \(message.string)")
     }
     
     static func dismiss() {
-        SVProgressHUD.dismiss()
+        log.d("LoadingHUD.dismiss()")
     }
 }

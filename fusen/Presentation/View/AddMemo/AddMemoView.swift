@@ -123,6 +123,7 @@ struct AddMemoView: View {
             }
                 .disabled(!viewModel.isSaveEnabled)
         )
+        .loading(viewModel.isLoading)
         .confirmationDialog("画像を添付", isPresented: $isImagePickerSelectionPresented, titleVisibility: .visible) {
             Button {
                 isCameraPickerPresented = true
@@ -195,22 +196,16 @@ struct AddMemoView: View {
         }
         .onReceive(viewModel.$state) { state in
             switch state {
-            case .initial:
+            case .initial, .loading, .recognizedQuote:
                 break
-            case .loading:
-                LoadingHUD.show()
             case let .succeeded(showAppReview):
-                LoadingHUD.dismiss()
                 if showAppReview {
                     if let windowScene = UIApplication.shared.currentKeyWindow?.windowScene {
                         SKStoreReviewController.requestReview(in: windowScene)
                     }
                 }
                 dismiss()
-            case .recognizedQuote:
-                LoadingHUD.dismiss()
             case .failed:
-                LoadingHUD.dismiss()
                 ErrorHUD.show(message: .addMemo)
             }
         }

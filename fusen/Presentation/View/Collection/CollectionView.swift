@@ -113,23 +113,9 @@ struct CollectionView: View {
             })
             Button("キャンセル", role: .cancel, action: {})
         }
+        .loading(viewModel.state == .loading)
         .task {
             await viewModel.onAppear()
-        }
-        .onReceive(viewModel.$state) { state in
-            switch state {
-            case .initial, .loadingNext, .refreshing:
-                break
-            case .loading:
-                LoadingHUD.show()
-            case .succeeded:
-                LoadingHUD.dismiss()
-            case .deleted:
-                LoadingHUD.dismiss()
-                dismiss()
-            case .failed:
-                LoadingHUD.dismiss()
-            }
         }
     }
 }

@@ -1,24 +1,20 @@
 PODS:
   - LicensePlist (3.24.9)
-  - SVProgressHUD (2.2.5)
   - SwiftLint (0.51.0)
 
 DEPENDENCIES:
   - LicensePlist
-  - SVProgressHUD
   - SwiftLint
 
 SPEC REPOS:
   trunk:
     - LicensePlist
-    - SVProgressHUD
     - SwiftLint
 
 SPEC CHECKSUMS:
   LicensePlist: a16d02dc0aae63fe22c516a775ea6f51459dc3f8
-  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftLint: 1b7561918a19e23bfed960e40759086e70f4dba5
 
-PODFILE CHECKSUM: dbab4a42975213d889c8849b63731f09ff6886ee
+PODFILE CHECKSUM: 92c4595835758f2815147af25b279ee0a7a3d8ee
 
 COCOAPODS: 1.12.1

@@ -1,201 +1,8 @@
-name: abseil, nameSpecified: 
-body: 
-                   …
-version: 1.20211102.0
-
-name: AlgoliaSearchClient, nameSpecified: 
-body: MIT License
-
-Copyrig…
-version: 8.18.0
-
-name: AppAuth, nameSpecified: 
-body: 
-                   …
-version: 1.6.1
-
-name: BoringSSL-GRPC, nameSpecified: 
-body: BoringSSL is a fork …
-version: 0.0.24
-
-name: CropViewController, nameSpecified: 
-body: The MIT License (MIT…
-version: 2.6.1
-
-name: Firebase, nameSpecified: 
-body: 
-                   …
-version: 10.9.0
-
-name: FirebaseABTesting, nameSpecified: 
-body: 
-                   …
-version: 10.9.0
-
-name: FirebaseAnalytics, nameSpecified: 
-body: Copyright 2022 Googl…
-version: 10.9.0
-
-name: FirebaseAppCheck, nameSpecified: 
-body: 
-                   …
-version: 10.9.0
-
-name: FirebaseAppCheckInterop, nameSpecified: 
-body: 
-                   …
-version: 10.9.0
-
-name: FirebaseAuth, nameSpecified: 
-body: 
-                   …
-version: 10.9.0
-
-name: FirebaseAuthInterop, nameSpecified: 
-body: 
-                   …
-version: 10.9.0
-
-name: FirebaseCore, nameSpecified: 
-body: 
-                   …
-version: 10.9.0
-
-name: FirebaseCoreExtension, nameSpecified: 
-body: 
-                   …
-version: 10.9.0
-
-name: FirebaseCoreInternal, nameSpecified: 
-body: 
-                   …
-version: 10.9.0
-
-name: FirebaseCrashlytics, nameSpecified: 
-body: 
-                   …
-version: 10.9.0
-
-name: FirebaseFirestore, nameSpecified: 
-body: 
-                   …
-version: 10.9.0
-
-name: FirebaseFirestoreSwift, nameSpecified: 
-body: 
-                   …
-version: 10.9.0
-
-name: FirebaseFunctions, nameSpecified: 
-body: 
-                   …
-version: 10.9.0
-
-name: FirebaseInstallations, nameSpecified: 
-body: 
-                   …
-version: 10.9.0
-
-name: FirebaseMessagingInterop, nameSpecified: 
-body: 
-                   …
-version: 10.9.0
-
-name: FirebaseRemoteConfig, nameSpecified: 
-body: 
-                   …
-version: 10.9.0
-
-name: FirebaseSessions, nameSpecified: 
-body: 
-                   …
-version: 10.9.0
-
-name: FirebaseSharedSwift, nameSpecified: 
-body: 
-                   …
-version: 10.9.0
-
-name: FirebaseStorage, nameSpecified: 
-body: 
-                   …
-version: 10.9.0
-
-name: GoogleAppMeasurement, nameSpecified: 
-body: Copyright 2022 Googl…
-version: 10.9.0
-
-name: GoogleDataTransport, nameSpecified: 
-body: 
-                   …
-version: 9.2.2
-
-name: GoogleSignIn, nameSpecified: 
-body: 
-                   …
-version: 7.0.0
-
-name: GoogleUtilities, nameSpecified: 
-body: 
-                   …
-version: 7.11.1
-
-name: gRPC-C++, nameSpecified: 
-body: 
-                   …
-version: 
-
-name: gRPC-Core, nameSpecified: 
-body: 
-                   …
-version: 1.44.0
-
-name: GTMAppAuth, nameSpecified: 
-body: 
-                   …
-version: 2.0.0
-
-name: GTMSessionFetcher, nameSpecified: 
-body: 
-                   …
-version: 3.1.1
-
-name: Kingfisher, nameSpecified: 
-body: The MIT License (MIT…
-version: 7.6.2
-
-name: leveldb-library, nameSpecified: 
-body: Copyright (c) 2011 T…
-version: 1.22.2
-
-name: Libuv-gRPC, nameSpecified: 
-body: libuv is licensed fo…
-version: 0.0.10
-
 name: LicensePlist, nameSpecified: 
 body: MIT License
 
 Copyrig…
 version: 3.24.9
-
-name: Logging, nameSpecified: 
-body: 
-                   …
-version: 1.4.0
-
-name: nanopb, nameSpecified: 
-body: Copyright (c) 2011 P…
-version: 2.30909.0
-
-name: PromisesObjC, nameSpecified: 
-body: 
-                   …
-version: 2.2.0
-
-name: PromisesSwift, nameSpecified: 
-body: 
-                   …
-version: 2.2.0
 
 name: SVProgressHUD, nameSpecified: 
 body: MIT License
@@ -207,7 +14,37 @@ name: SwiftLint, nameSpecified:
 body: The MIT License (MIT…
 version: 0.51.0
 
+name: abseil-cpp-binary, nameSpecified: abseil, owner: google, version: 1.2021110200.0, source: https://github.com/google/abseil-cpp-binary
+
+name: algoliasearch-client-swift, nameSpecified: AlgoliaSearchClient, owner: algolia, version: 8.18.0, source: https://github.com/algolia/algoliasearch-client-swift
+
+name: AppAuth-iOS, nameSpecified: AppAuth, owner: openid, version: 1.6.2, source: https://github.com/openid/AppAuth-iOS
+
 name: combine-schedulers, nameSpecified: combine-schedulers, owner: pointfreeco, version: 0.10.0, source: https://github.com/pointfreeco/combine-schedulers
+
+name: firebase-ios-sdk, nameSpecified: Firebase, owner: firebase, version: 10.9.0, source: https://github.com/firebase/firebase-ios-sdk
+
+name: GoogleAppMeasurement, nameSpecified: GoogleAppMeasurement, owner: google, version: 10.9.0, source: https://github.com/google/GoogleAppMeasurement
+
+name: GoogleDataTransport, nameSpecified: GoogleDataTransport, owner: google, version: 9.2.3, source: https://github.com/google/GoogleDataTransport
+
+name: GoogleSignIn-iOS, nameSpecified: GoogleSignIn, owner: google, version: 7.0.0, source: https://github.com/google/GoogleSignIn-iOS
+
+name: GoogleUtilities, nameSpecified: GoogleUtilities, owner: google, version: 7.11.1, source: https://github.com/google/GoogleUtilities
+
+name: grpc-binary, nameSpecified: gRPC, owner: google, version: 1.44.0, source: https://github.com/google/grpc-binary
+
+name: gtm-session-fetcher, nameSpecified: gtm-session-fetcher, owner: google, version: 3.1.1, source: https://github.com/google/gtm-session-fetcher
+
+name: GTMAppAuth, nameSpecified: GTMAppAuth, owner: google, version: 2.0.0, source: https://github.com/google/GTMAppAuth
+
+name: Kingfisher, nameSpecified: Kingfisher, owner: onevcat, version: 7.6.2, source: https://github.com/onevcat/Kingfisher
+
+name: leveldb, nameSpecified: leveldb, owner: firebase, version: 1.22.2, source: https://github.com/firebase/leveldb
+
+name: nanopb, nameSpecified: nanopb, owner: firebase, version: 2.30909.0, source: https://github.com/firebase/nanopb
+
+name: promises, nameSpecified: Promises, owner: google, version: 2.2.0, source: https://github.com/google/promises
 
 name: swift-case-paths, nameSpecified: swift-case-paths, owner: pointfreeco, version: 0.14.1, source: https://github.com/pointfreeco/swift-case-paths
 
@@ -223,9 +60,15 @@ name: swift-dependencies, nameSpecified: swift-dependencies, owner: pointfreeco,
 
 name: swift-identified-collections, nameSpecified: swift-identified-collections, owner: pointfreeco, version: 0.7.1, source: https://github.com/pointfreeco/swift-identified-collections
 
+name: swift-log, nameSpecified: swift-log, owner: apple, version: 1.5.2, source: https://github.com/apple/swift-log
+
+name: swift-protobuf, nameSpecified: SwiftProtobuf, owner: apple, version: 1.21.0, source: https://github.com/apple/swift-protobuf
+
 name: swift-tagged, nameSpecified: swift-tagged, owner: pointfreeco, version: 0.10.0, source: https://github.com/pointfreeco/swift-tagged
 
 name: swiftui-navigation, nameSpecified: swiftui-navigation, owner: pointfreeco, version: 0.7.1, source: https://github.com/pointfreeco/swiftui-navigation
+
+name: TOCropViewController, nameSpecified: TOCropViewController, owner: TimOliver, version: 2.6.1, source: https://github.com/TimOliver/TOCropViewController
 
 name: xctest-dynamic-overlay, nameSpecified: xctest-dynamic-overlay, owner: pointfreeco, version: 0.8.5, source: https://github.com/pointfreeco/xctest-dynamic-overlay
 

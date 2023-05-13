@@ -73,7 +73,7 @@ final class ScanBarcodeViewModel: ObservableObject {
             } catch {
                 log.e("Not Found Book for \(isbn): \(error.localizedDescription)")
                 isScanning = false
-                ErrorHUD.show(message: .scanBarcode)
+                ErrorSnackbar.show(message: .scanBarcode)
             }
         }
     }
@@ -100,7 +100,7 @@ final class ScanBarcodeViewModel: ObservableObject {
             }
         } catch {
             log.e(error.localizedDescription)
-            ErrorHUD.show(message: .addBook)
+            ErrorSnackbar.show(message: .addBook)
         }
     }
     

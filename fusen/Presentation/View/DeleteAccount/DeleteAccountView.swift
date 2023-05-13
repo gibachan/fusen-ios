@@ -76,7 +76,7 @@ struct DeleteAccountView: View {
             case .deleted:
                 dismiss()
             case .failed:
-                ErrorHUD.show(message: .deleteAccount)
+                ErrorSnackbar.show(message: .deleteAccount)
             }
         }
         .alert(isPresented: $isDeleteAlertPresented) {

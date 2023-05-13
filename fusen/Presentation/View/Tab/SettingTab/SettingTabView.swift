@@ -200,11 +200,11 @@ struct SettingTabView: View {
             case .initial, .linkingWithApple, .linkingWithGoogle, .succeeded:
                 break
             case .failed:
-                ErrorHUD.show(message: .network)
+                ErrorSnackbar.show(message: .network)
             case .failedlinkingWithApple:
-                ErrorHUD.show(message: .linkWithAppleId)
+                ErrorSnackbar.show(message: .linkWithAppleId)
             case .failedlinkingWithGoogle:
-                ErrorHUD.show(message: .linkWithGoogle)
+                ErrorSnackbar.show(message: .linkWithGoogle)
             }
         }
         .alert(item: $alertType, content: { type in

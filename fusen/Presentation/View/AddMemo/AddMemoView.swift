@@ -159,7 +159,7 @@ struct AddMemoView: View {
                     }
                 case .failure(let error):
                     log.e(error.localizedDescription)
-                    ErrorHUD.show(message: .unexpected)
+                    ErrorSnackbar.show(message: .unexpected)
                 }
             }
         })
@@ -206,7 +206,7 @@ struct AddMemoView: View {
                 }
                 dismiss()
             case .failed:
-                ErrorHUD.show(message: .addMemo)
+                ErrorSnackbar.show(message: .addMemo)
             }
         }
     }

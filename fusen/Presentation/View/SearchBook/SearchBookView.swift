@@ -70,9 +70,9 @@ struct SearchBookView: View {
             case .added:
                 dismiss()
             case .loadFailed:
-                ErrorHUD.show(message: .network)
+                ErrorSnackbar.show(message: .network)
             case .addFailed:
-                ErrorHUD.show(message: .addBook)
+                ErrorSnackbar.show(message: .addBook)
             }
         }
     }

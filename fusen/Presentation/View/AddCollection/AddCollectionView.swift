@@ -69,9 +69,9 @@ struct AddCollectionView: View {
             case .collectionAdded:
                 dismiss()
             case .failed:
-                ErrorHUD.show(message: .addCollection)
+                ErrorSnackbar.show(message: .addCollection)
             case .collectionCountOver:
-                ErrorHUD.show(message: .collectionCountOver)
+                ErrorSnackbar.show(message: .collectionCountOver)
             }
         }
     }

@@ -186,7 +186,7 @@
 		A007C09026C7EF9700270671 /* FirestoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C08F26C7EF9700270671 /* FirestoreExtension.swift */; };
 		A007C09226C83A7200270671 /* Pager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C09126C83A7200270671 /* Pager.swift */; };
 		A007C09526C8CAB700270671 /* FirestoreGetBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = A007C09426C8CAB600270671 /* FirestoreGetBook.swift */; };
-		A008976A26D87296003EFD08 /* ErrorHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = A008976926D87296003EFD08 /* ErrorHUD.swift */; };
+		A008976A26D87296003EFD08 /* ErrorSnackbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A008976926D87296003EFD08 /* ErrorSnackbar.swift */; };
 		A0198ADA26E80A2700553CDA /* AddCollectionUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0198AD926E80A2700553CDA /* AddCollectionUseCaseTests.swift */; };
 		A0198ADD26E80AE100553CDA /* MockAccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0198ADC26E80AE100553CDA /* MockAccountService.swift */; };
 		A020544126CE88BD002FF585 /* EditMemoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A020544026CE88BD002FF585 /* EditMemoImageView.swift */; };
@@ -524,7 +524,7 @@
 		A007C08F26C7EF9700270671 /* FirestoreExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreExtension.swift; sourceTree = "<group>"; };
 		A007C09126C83A7200270671 /* Pager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pager.swift; sourceTree = "<group>"; };
 		A007C09426C8CAB600270671 /* FirestoreGetBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreGetBook.swift; sourceTree = "<group>"; };
-		A008976926D87296003EFD08 /* ErrorHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHUD.swift; sourceTree = "<group>"; };
+		A008976926D87296003EFD08 /* ErrorSnackbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorSnackbar.swift; sourceTree = "<group>"; };
 		A0198AD926E80A2700553CDA /* AddCollectionUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCollectionUseCaseTests.swift; sourceTree = "<group>"; };
 		A0198ADC26E80AE100553CDA /* MockAccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAccountService.swift; sourceTree = "<group>"; };
 		A020544026CE88BD002FF585 /* EditMemoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMemoImageView.swift; sourceTree = "<group>"; };
@@ -1256,7 +1256,7 @@
 			children = (
 				A007C08226C78FB400270671 /* Logger.swift */,
 				A007C08626C7C91700270671 /* LoadingHUD.swift */,
-				A008976926D87296003EFD08 /* ErrorHUD.swift */,
+				A008976926D87296003EFD08 /* ErrorSnackbar.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -2200,7 +2200,7 @@
 				7AD1611826C2A8BC00334A63 /* UIColorExtension.swift in Sources */,
 				A0F97CED26E0CA84007CACE5 /* WebPageView.swift in Sources */,
 				A007C09026C7EF9700270671 /* FirestoreExtension.swift in Sources */,
-				A008976A26D87296003EFD08 /* ErrorHUD.swift in Sources */,
+				A008976A26D87296003EFD08 /* ErrorSnackbar.swift in Sources */,
 				7AC2CAC628861FD700325C0B /* UpdateCurrentBookSortUseCase.swift in Sources */,
 				A084611526F1B79D009EB6E9 /* HomeNavigation.swift in Sources */,
 				7A33118226CE518F00EB520D /* UIApplicationExtensoin.swift in Sources */,

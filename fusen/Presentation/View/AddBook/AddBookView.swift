@@ -138,7 +138,7 @@ struct AddBookView: View {
             case .succeeded:
                 dismiss()
             case .failed:
-                ErrorHUD.show(message: .addBook)
+                ErrorSnackbar.show(message: .addBook)
             }
         }
     }

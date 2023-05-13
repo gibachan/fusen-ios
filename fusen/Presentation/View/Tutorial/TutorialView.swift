@@ -110,11 +110,11 @@ struct TutorialView: View {
             case .succeeded:
                 dismiss()
             case .failed:
-                ErrorHUD.show(message: .network)
+                ErrorSnackbar.show(message: .network)
             case .failedSigningWithApple:
-                ErrorHUD.show(message: .linkWithAppleId)
+                ErrorSnackbar.show(message: .linkWithAppleId)
             case .failedSigningWithGoogle:
-                ErrorHUD.show(message: .linkWithGoogle)
+                ErrorSnackbar.show(message: .linkWithGoogle)
             }
         }
     }

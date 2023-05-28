@@ -6,7 +6,7 @@ version: 3.24.9
 
 name: SwiftLint, nameSpecified: 
 body: The MIT License (MIT…
-version: 0.51.0
+version: 0.52.2
 
 name: abseil-cpp-binary, nameSpecified: abseil, owner: google, version: 1.2021110200.0, source: https://github.com/google/abseil-cpp-binary
 

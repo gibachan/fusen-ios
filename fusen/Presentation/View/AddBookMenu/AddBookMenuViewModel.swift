@@ -5,19 +5,20 @@
 //  Created by Tatsuyuki Kobayashi on 2021/09/17.
 //
 
+import Domain
 import Foundation
 
 final class AddBookMenuViewModel: ObservableObject {
-    private let initialCollection: Collection?
+    private let initialCollection: Domain.Collection?
     private let getCollectionsUseCase: GetCollectionsUseCase
     private var isGetCollectionFinished = false
     
-    @Published var collections: [Collection] = []
-    @Published var selectedCollection: Collection?
+    @Published var collections: [Domain.Collection] = []
+    @Published var selectedCollection: Domain.Collection?
     
     init(
-        initialCollection: Collection?,
-        getCollectionsUseCase: GetCollectionsUseCase = GetCollectionsUseCaseImpl()
+        initialCollection: Domain.Collection?,
+        getCollectionsUseCase: GetCollectionsUseCase = GetCollectionsUseCaseImpl(accountService: AccountService.shared, collectionRepository: CollectionRepositoryImpl())
     ) {
         self.initialCollection = initialCollection
         self.getCollectionsUseCase = getCollectionsUseCase
@@ -39,7 +40,7 @@ final class AddBookMenuViewModel: ObservableObject {
     }
     
     @MainActor
-    func onSelectCollection(id: ID<Collection>) {
+    func onSelectCollection(id: ID<Domain.Collection>) {
         selectedCollection = collections.first(where: { $0.id == id })
     }
 }

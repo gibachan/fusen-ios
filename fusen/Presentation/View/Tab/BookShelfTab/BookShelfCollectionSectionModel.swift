@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/18.
 //
 
+import Domain
 import Foundation
 
 final class BookShelfCollectionSectionModel: ObservableObject {
@@ -12,14 +13,14 @@ final class BookShelfCollectionSectionModel: ObservableObject {
     private let getBooksByCollectionUseCase: GetBooksByCollectionUseCase
     
     @Published var state: State = .initial
-    @Published var collection: Collection
+    @Published var collection: Domain.Collection
     @Published var bookColumns: [BookShelfColumn] = []
     
     init(
-        collection: Collection
+        collection: Domain.Collection
     ) {
         self.collection = collection
-        self.getBooksByCollectionUseCase = GetBooksByCollectionUseCaseImpl(collection: collection, sortedBy: .default)
+        self.getBooksByCollectionUseCase = GetBooksByCollectionUseCaseImpl(collection: collection, sortedBy: .default, accountService: AccountService.shared, bookRepository: BookRepositoryImpl())
     }
     
     @MainActor

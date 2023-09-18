@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/23.
 //
 
+import Domain
 import Foundation
 
 final class EditViewModel: ObservableObject {
@@ -17,7 +18,7 @@ final class EditViewModel: ObservableObject {
 
     init(
         book: Book,
-        updateBookUseCase: UpdateBookUseCase = UpdateBookUseCaseImpl()
+        updateBookUseCase: UpdateBookUseCase = UpdateBookUseCaseImpl(accountService: AccountService.shared, bookRepository: BookRepositoryImpl())
     ) {
         self.book = book
         self.updateBookUseCase = updateBookUseCase

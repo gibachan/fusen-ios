@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/10.
 //
 
+import Domain
 import Foundation
 
 final class BookShelfTabViewModel: ObservableObject {
@@ -14,13 +15,13 @@ final class BookShelfTabViewModel: ObservableObject {
     
     @Published var state: State = .initial
     @Published var isFavoriteVisible = false
-    @Published var collections: [Collection] = []
+    @Published var collections: [Domain.Collection] = []
     @Published var booksCount = ""
     
     init(
-        getFavoriteBooksUseCase: GetFavoriteBooksUseCase = GetFavoriteBooksUseCaseImpl(),
-        getCollectionsUseCase: GetCollectionsUseCase = GetCollectionsUseCaseImpl(),
-        getBooksCountUseCase: GetBooksCountUseCase = GetBooksCountUseCaseImpl()
+        getFavoriteBooksUseCase: GetFavoriteBooksUseCase = GetFavoriteBooksUseCaseImpl(accountService: AccountService.shared, bookRepository: BookRepositoryImpl()),
+        getCollectionsUseCase: GetCollectionsUseCase = GetCollectionsUseCaseImpl(accountService: AccountService.shared, collectionRepository: CollectionRepositoryImpl()),
+        getBooksCountUseCase: GetBooksCountUseCase = GetBooksCountUseCaseImpl(accountService: AccountService.shared, bookRepository: BookRepositoryImpl())
     ) {
         self.getFavoriteBooksUseCase = getFavoriteBooksUseCase
         self.getCollectionsUseCase = getCollectionsUseCase

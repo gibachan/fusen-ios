@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/09/07.
 //
 
+import Domain
 import Foundation
 
 protocol UserDefaultsDataSource: AnyObject {

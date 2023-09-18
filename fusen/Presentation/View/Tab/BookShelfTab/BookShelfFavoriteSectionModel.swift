@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/22.
 //
 
+import Domain
 import Foundation
 
 final class BookShelfFavoriteSectionModel: ObservableObject {
@@ -15,7 +16,7 @@ final class BookShelfFavoriteSectionModel: ObservableObject {
     @Published var bookColumns: [BookShelfColumn] = []
     
     init(
-        getFavoriteBooksUseCase: GetFavoriteBooksUseCase = GetFavoriteBooksUseCaseImpl()
+        getFavoriteBooksUseCase: GetFavoriteBooksUseCase = GetFavoriteBooksUseCaseImpl(            accountService: AccountService.shared, bookRepository: BookRepositoryImpl())
     ) {
         self.getFavoriteBooksUseCase = getFavoriteBooksUseCase
     }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Domain
 @testable import fusen
 
 final class MockAddBookByPublicationUseCase: AddBookByPublicationUseCase {

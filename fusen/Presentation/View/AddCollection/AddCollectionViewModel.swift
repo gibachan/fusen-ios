@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/20.
 //
 
+import Domain
 import Foundation
 
 final class AddCollectionViewModel: ObservableObject {
@@ -16,8 +17,8 @@ final class AddCollectionViewModel: ObservableObject {
     @Published var state: State = .initial
     
     init(
-        getCollectionsUseCase: GetCollectionsUseCase = GetCollectionsUseCaseImpl(),
-        addCollectionUseCase: AddCollectionUseCase = AddCollectionUseCaseImpl()
+        getCollectionsUseCase: GetCollectionsUseCase = GetCollectionsUseCaseImpl(accountService: AccountService.shared, collectionRepository: CollectionRepositoryImpl()),
+        addCollectionUseCase: AddCollectionUseCase = AddCollectionUseCaseImpl(accountService: AccountService.shared, collectionRepository: CollectionRepositoryImpl())
     ) {
         self.getCollectionsUseCase = getCollectionsUseCase
         self.addCollectionUseCase = addCollectionUseCase

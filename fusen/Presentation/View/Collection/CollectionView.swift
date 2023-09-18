@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/19.
 //
 
+import Domain
 import SwiftUI
 
 struct CollectionView: View {
@@ -15,7 +16,7 @@ struct CollectionView: View {
     @State private var isDeleteAlertPresented = false
     @State private var displayStyle: DisplayStyle = .list
 
-    init(collection: Collection) {
+    init(collection: Domain.Collection) {
         self._viewModel = StateObject(wrappedValue: CollectionViewModel(collection: collection))
     }
     

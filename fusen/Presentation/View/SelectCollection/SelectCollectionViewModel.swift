@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/21.
 //
 
+import Domain
 import Foundation
 
 final class SelectCollectionViewModel: ObservableObject {
@@ -13,12 +14,12 @@ final class SelectCollectionViewModel: ObservableObject {
     
     @Published var state: State = .initial
     @Published var book: Book
-    @Published var collections: [Collection] = []
+    @Published var collections: [Domain.Collection] = []
     
     init(
         book: Book,
-        getCollectionsUseCase: GetCollectionsUseCase = GetCollectionsUseCaseImpl(),
-        updateBookCollectionUseCase: UpdateBookCollectionUseCase = UpdateBookCollectionUseCaseImpl()
+        getCollectionsUseCase: GetCollectionsUseCase = GetCollectionsUseCaseImpl(accountService: AccountService.shared, collectionRepository: CollectionRepositoryImpl()),
+        updateBookCollectionUseCase: UpdateBookCollectionUseCase = UpdateBookCollectionUseCaseImpl(accountService: AccountService.shared, bookRepository: BookRepositoryImpl())
     ) {
         self.book = book
         self.getCollectionsUseCase = getCollectionsUseCase
@@ -42,7 +43,7 @@ final class SelectCollectionViewModel: ObservableObject {
     }
     
     @MainActor
-    func onSelect(collection: Collection) async {
+    func onSelect(collection: Domain.Collection) async {
         guard !state.isInProgress else { return }
         
         state = .loading

@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/09/07.
 //
 
+import Domain
 import Foundation
 
 final class UserActionHistoryRepositoryImpl: UserActionHistoryRepository {
@@ -19,7 +20,7 @@ final class UserActionHistoryRepositoryImpl: UserActionHistoryRepository {
         dataSource.readBookPages
             .forEach { key, value in
                 guard let page = value as? Int else { return }
-                readBook[ID<Book>(value: key)] = page
+                readBook[ID<Book>(stringLiteral: key)] = page
             }
         return UserActionHistory(
             launchedAppBefore: dataSource.launchedAppBefore,

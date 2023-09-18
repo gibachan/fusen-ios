@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/18.
 //
 
+import Domain
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 import Foundation
@@ -46,7 +47,7 @@ final class CollectionRepositoryImpl: CollectionRepository {
                     log.e(error.localizedDescription)
                     continuation.resume(throwing: CollectionRepositoryError.network)
                 } else {
-                    let id = ID<Collection>(value: ref!.documentID)
+                    let id = ID<Collection>(stringLiteral: ref!.documentID)
                     continuation.resume(returning: id)
                 }
             }

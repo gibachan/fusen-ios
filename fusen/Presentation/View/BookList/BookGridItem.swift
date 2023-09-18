@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2022/01/03.
 //
 
+import Domain
 import SwiftUI
 
 struct BookGridItem: View {

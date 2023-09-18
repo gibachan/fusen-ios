@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/18.
 //
 
+import Domain
 import FirebaseFirestore
 import Foundation
 
@@ -21,8 +22,8 @@ struct FirestoreGetMemo: Codable {
 extension FirestoreGetMemo {
     func toDomain(id: String) -> Memo {
         return Memo(
-            id: ID<Memo>(value: id),
-            bookId: ID<Book>(value: bookId),
+            id: ID<Memo>(stringLiteral: id),
+            bookId: ID<Book>(stringLiteral: bookId),
             text: text,
             quote: quote,
             page: page,

@@ -6,6 +6,7 @@
 //
 
 import AuthenticationServices
+import Domain
 import Firebase
 import Foundation
 @testable import fusen
@@ -13,15 +14,14 @@ import Foundation
 typealias User = fusen.User
 
 final class MockAccountService: AccountServiceProtocol {
+    var isLoggedIn: Bool
     var isLoggedInAnonymously = false
     var isLoggedInWithApple = false
     
     init(isLoggedIn: Bool) {
         self.isLoggedIn = isLoggedIn
     }
-    
-    var isLoggedIn: Bool
-    
+
     var currentUser: User? {
         if isLoggedIn {
             return User.test
@@ -83,6 +83,6 @@ final class MockAccountService: AccountServiceProtocol {
 
 extension User {
     static var test: User {
-        User(id: ID<User>(value: "123"), isAnonymous: true, isLinkedWithAppleId: false, isLinkedWithGoogle: false)
+        User(id: ID<User>(stringLiteral: "123"), isAnonymous: true, isLinkedWithAppleId: false, isLinkedWithGoogle: false)
     }
 }

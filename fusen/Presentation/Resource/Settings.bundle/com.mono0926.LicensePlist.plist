@@ -36,9 +36,25 @@
 		</dict>
 		<dict>
 			<key>File</key>
+			<string>com.mono0926.LicensePlist/CollectionConcurrencyKit</string>
+			<key>Title</key>
+			<string>CollectionConcurrencyKit</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+		</dict>
+		<dict>
+			<key>File</key>
 			<string>com.mono0926.LicensePlist/combine-schedulers</string>
 			<key>Title</key>
 			<string>combine-schedulers</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+		</dict>
+		<dict>
+			<key>File</key>
+			<string>com.mono0926.LicensePlist/CryptoSwift</string>
+			<key>Title</key>
+			<string>CryptoSwift</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -108,6 +124,14 @@
 		</dict>
 		<dict>
 			<key>File</key>
+			<string>com.mono0926.LicensePlist/interop-ios-for-google-sdks</string>
+			<key>Title</key>
+			<string>InteropForGoogle</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+		</dict>
+		<dict>
+			<key>File</key>
 			<string>com.mono0926.LicensePlist/Kingfisher</string>
 			<key>Title</key>
 			<string>Kingfisher</string>
@@ -143,6 +167,22 @@
 			<string>com.mono0926.LicensePlist/promises</string>
 			<key>Title</key>
 			<string>Promises</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+		</dict>
+		<dict>
+			<key>File</key>
+			<string>com.mono0926.LicensePlist/SourceKitten</string>
+			<key>Title</key>
+			<string>SourceKitten</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+		</dict>
+		<dict>
+			<key>File</key>
+			<string>com.mono0926.LicensePlist/swift-argument-parser</string>
+			<key>Title</key>
+			<string>swift-argument-parser</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -220,6 +260,14 @@
 		</dict>
 		<dict>
 			<key>File</key>
+			<string>com.mono0926.LicensePlist/swift-syntax</string>
+			<key>Title</key>
+			<string>swift-syntax</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+		</dict>
+		<dict>
+			<key>File</key>
 			<string>com.mono0926.LicensePlist/swift-tagged</string>
 			<key>Title</key>
 			<string>swift-tagged</string>
@@ -244,6 +292,22 @@
 		</dict>
 		<dict>
 			<key>File</key>
+			<string>com.mono0926.LicensePlist/SwiftyTextTable</string>
+			<key>Title</key>
+			<string>SwiftyTextTable</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+		</dict>
+		<dict>
+			<key>File</key>
+			<string>com.mono0926.LicensePlist/SWXMLHash</string>
+			<key>Title</key>
+			<string>SWXMLHash</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+		</dict>
+		<dict>
+			<key>File</key>
 			<string>com.mono0926.LicensePlist/TOCropViewController</string>
 			<key>Title</key>
 			<string>TOCropViewController</string>
@@ -255,6 +319,14 @@
 			<string>com.mono0926.LicensePlist/xctest-dynamic-overlay</string>
 			<key>Title</key>
 			<string>xctest-dynamic-overlay</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+		</dict>
+		<dict>
+			<key>File</key>
+			<string>com.mono0926.LicensePlist/Yams</string>
+			<key>Title</key>
+			<string>Yams</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>

@@ -6,6 +6,7 @@
 //
 
 import AlgoliaSearchClient
+import Domain
 import Foundation
 
 final class SearchRepositoryImpl: SearchRepository {
@@ -34,7 +35,7 @@ final class SearchRepositoryImpl: SearchRepository {
             let hitsData = try JSONEncoder().encode(response.hits.map(\.object))
             let throwables = try JSONDecoder().decode([Throwable<SearchMemoResponse>].self, from: hitsData)
             let results = throwables.compactMap { try? $0.result.get() }
-            return results.map { .init(value: $0.objectID) }
+            return results.map { .init(stringLiteral: $0.objectID) }
         } catch {
             if let transportError = error as? AlgoliaSearchClient.TransportError {
                 print(transportError.localizedDescription)

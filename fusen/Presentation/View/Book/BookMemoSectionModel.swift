@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/26.
 //
 
+import Domain
 import Foundation
 
 final class BookMemoSectionModel: ObservableObject {
@@ -21,11 +22,11 @@ final class BookMemoSectionModel: ObservableObject {
         bookId: ID<Book>
     ) {
         self.bookId = bookId
-        self.getCurrentMemoSortUseCase = GetCurrentMemoSortUseCaseImpl()
-        self.updateCurrentMemoSortUseCase = UpdateCurrentMemoSortUseCaseImpl()
+        self.getCurrentMemoSortUseCase = GetCurrentMemoSortUseCaseImpl(userActionHistoryRepository: UserActionHistoryRepositoryImpl())
+        self.updateCurrentMemoSortUseCase = UpdateCurrentMemoSortUseCaseImpl(userActionHistoryRepository: UserActionHistoryRepositoryImpl())
         let memoSort = getCurrentMemoSortUseCase.invoke()
         self.sortedBy = memoSort
-        self.getMemosUseCase = GetMemosUseCaseImpl(bookId: bookId, sortedBy: memoSort)
+        self.getMemosUseCase = GetMemosUseCaseImpl(bookId: bookId, sortedBy: memoSort, accountService: AccountService.shared, memoRepository: MemoRepositoryImpl())
     }
     
     func onAppear() async {
@@ -58,7 +59,7 @@ final class BookMemoSectionModel: ObservableObject {
     func onSort(_ sortedBy: MemoSort) async {
         updateCurrentMemoSortUseCase.invoke(memoSort: sortedBy)
         self.sortedBy = sortedBy
-        self.getMemosUseCase = GetMemosUseCaseImpl(bookId: bookId, sortedBy: sortedBy)
+        self.getMemosUseCase = GetMemosUseCaseImpl(bookId: bookId, sortedBy: sortedBy, accountService: AccountService.shared, memoRepository: MemoRepositoryImpl())
         await load()
     }
     

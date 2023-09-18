@@ -6,6 +6,7 @@
 //
 
 import ComposableArchitecture
+import Domain
 import Foundation
 
 // MARK: - Search memo feature domain
@@ -17,7 +18,7 @@ struct SearchMemoClient {
 extension SearchMemoClient: DependencyKey {
   static let liveValue = Self(
     invoke: { searchText, searchType in
-        let useCase = SearchMemosUseCaseImpl()
+        let useCase = SearchMemosUseCaseImpl(accountService: AccountService.shared, searchAPIKeyRepository: SearchAPIKeyRepositoryImpl(), searchRepository: SearchRepositoryImpl(), memoRepository: MemoRepositoryImpl())
         return try await useCase.invoke(
             searchText: searchText,
             searchType: searchType
@@ -34,7 +35,7 @@ extension DependencyValues {
 }
 
 extension SearchMemoType: CustomStringConvertible {
-    var description: String {
+    public var description: String {
         switch self {
         case .text:
             return "メモで検索"

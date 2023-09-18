@@ -12,6 +12,8 @@ struct SettingTabView: View {
     @StateObject private var viewModel = SettingTabViewModel()
     @State private var alertType: AlertType?
     @State private var isDeleteAccountPresented = false
+
+
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {

@@ -6,6 +6,7 @@
 //
 
 import Combine
+import Domain
 import XCTest
 
 @testable import fusen
@@ -13,7 +14,7 @@ import XCTest
 class SearchBookViewModelTests: XCTestCase {
     func testAddBookFromPublicationWhichSearchedByTitle() async {
         let searchPublicationsByTitleUseCase = MockSearchPublicationsByTitleUseCase(success: [Publication.sample])
-        let addBookByPublicationUseCase = MockAddBookByPublicationUseCase(success: .init(value: "hoge"))
+        let addBookByPublicationUseCase = MockAddBookByPublicationUseCase(success: .init(stringLiteral: "hoge"))
         let viewModel = SearchBookViewModel(collection: nil,
                                             searchPublicationsByTitleUseCase: searchPublicationsByTitleUseCase,
                                             addBookByPublicationUseCase: addBookByPublicationUseCase)
@@ -42,7 +43,7 @@ class SearchBookViewModelTests: XCTestCase {
     
     func testSearchErrorWhenItSearchesPublicationsByTitle() async {
         let searchPublicationsByTitleUseCase = MockSearchPublicationsByTitleUseCase(failure: .notFound)
-        let addBookByPublicationUseCase = MockAddBookByPublicationUseCase(success: .init(value: "hoge"))
+        let addBookByPublicationUseCase = MockAddBookByPublicationUseCase(success: .init(stringLiteral: "hoge"))
         let viewModel = SearchBookViewModel(collection: nil,
                                             searchPublicationsByTitleUseCase: searchPublicationsByTitleUseCase,
                                             addBookByPublicationUseCase: addBookByPublicationUseCase)

@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2022/06/25.
 //
 
+import Domain
 import SwiftUI
 import WidgetKit
 
@@ -91,7 +92,7 @@ struct FusenWidget: Widget {
 
 struct FusenWidget_Previews: PreviewProvider {
     private static let entry = SimpleEntry(date: Date(),
-                                           book: .init(id: .init(value: "1"),
+                                           book: .init(id: .init(stringLiteral: "1"),
                                                        title: "星の王子さま",
                                                        author: "アントアーヌ・ド・サン・テグジュペリ/河野万里子",
                                                        imageURL: URL(string: "https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2044/9784102122044.jpg?_ex=200x200")!), isPreview: true)

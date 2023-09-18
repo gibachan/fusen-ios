@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/23.
 //
 
+import Domain
 import FirebaseStorage
 import Foundation
 

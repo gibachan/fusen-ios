@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/18.
 //
 
+import Domain
 import Foundation
 
 final class EditMemoViewModel: ObservableObject {
@@ -20,9 +21,9 @@ final class EditMemoViewModel: ObservableObject {
     
     init(
         memo: Memo,
-        getBookByIdUseCase: GetBookByIdUseCase = GetBookByIdUseCaseImpl(),
-        updateMemoUseCase: UpdateMemoUseCase = UpdateMemoUseCaseImpl(),
-        deleteMemoUseCase: DeleteMemoUseCase = DeleteMemoUseCaseImpl()
+        getBookByIdUseCase: GetBookByIdUseCase = GetBookByIdUseCaseImpl(accountService: AccountService.shared, bookRepository: BookRepositoryImpl()),
+        updateMemoUseCase: UpdateMemoUseCase = UpdateMemoUseCaseImpl(accountService: AccountService.shared, memoRepository: MemoRepositoryImpl()),
+        deleteMemoUseCase: DeleteMemoUseCase = DeleteMemoUseCaseImpl(accountService: AccountService.shared, memoRepository: MemoRepositoryImpl())
     ) {
         self.getBookByIdUseCase = getBookByIdUseCase
         self.updateMemoUseCase = updateMemoUseCase

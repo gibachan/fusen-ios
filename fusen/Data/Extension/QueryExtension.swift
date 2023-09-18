@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/18.
 //
 
+import Domain
 import FirebaseFirestore
 import Foundation
 
@@ -17,7 +18,7 @@ extension Query {
         whereField("isFavorite", isEqualTo: true)
     }
 
-    func whereCollection(_ collection: Collection) -> Query {
+    func whereCollection(_ collection: Domain.Collection) -> Query {
         whereField("collectionId", isEqualTo: collection.id.value)
     }
     

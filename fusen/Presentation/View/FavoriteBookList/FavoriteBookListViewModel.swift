@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/27.
 //
 
+import Domain
 import Foundation
 
 final class FavoriteBookListViewModel: ObservableObject {
@@ -14,7 +15,7 @@ final class FavoriteBookListViewModel: ObservableObject {
     @Published var pager: Pager<Book> = .empty
     
     init(
-        getFavoriteBooksUseCase: GetFavoriteBooksUseCase = GetFavoriteBooksUseCaseImpl()
+        getFavoriteBooksUseCase: GetFavoriteBooksUseCase = GetFavoriteBooksUseCaseImpl(accountService: AccountService.shared, bookRepository: BookRepositoryImpl())
     ) {
         self.getFavoriteBooksUseCase = getFavoriteBooksUseCase
     }

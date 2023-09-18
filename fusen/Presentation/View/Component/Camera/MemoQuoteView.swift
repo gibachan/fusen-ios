@@ -6,6 +6,7 @@
 //
 
 import CropViewController
+import Domain
 import SwiftUI
 
 struct MemoQuoteView: UIViewControllerRepresentable {

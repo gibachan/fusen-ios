@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/17.
 //
 
+import Domain
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 import Foundation
@@ -250,7 +251,7 @@ final class MemoRepositoryImpl: MemoRepository {
         if let image = image {
             do {
                 let storage = ImageStorage()
-                imageURL = try await storage.uploadMemo(image: image, memoId: ID<Memo>(value: newMemoDocRef.documentID), bookId: bookId, for: user)
+                imageURL = try await storage.uploadMemo(image: image, memoId: ID<Memo>(stringLiteral: newMemoDocRef.documentID), bookId: bookId, for: user)
             } catch {
                 throw MemoRepositoryError.uploadImage
             }
@@ -270,7 +271,7 @@ final class MemoRepositoryImpl: MemoRepository {
                     log.e(error.localizedDescription)
                     continuation.resume(throwing: MemoRepositoryError.network)
                 } else {
-                    let id = ID<Memo>(value: newMemoDocRef.documentID)
+                    let id = ID<Memo>(stringLiteral: newMemoDocRef.documentID)
                     continuation.resume(returning: id)
                 }
             }

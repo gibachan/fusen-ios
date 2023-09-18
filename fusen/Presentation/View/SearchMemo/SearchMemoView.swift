@@ -6,6 +6,7 @@
 //
 
 import ComposableArchitecture
+import Domain
 import SwiftUI
 
 struct SearchMemoView: View {

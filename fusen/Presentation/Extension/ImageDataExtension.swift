@@ -5,9 +5,10 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/20.
 //
 
+import Domain
 import UIKit
 
-extension ImageData {
+public extension ImageData {
     var uiImage: UIImage? { .init(data: data) }
     
     init?(type: ImageType, uiImage: UIImage) {
@@ -21,8 +22,7 @@ extension ImageData {
         guard let data = uiImage.jpegData(compressionQuality: quality) else {
             return nil
         }
-        
-        self.type = type
-        self.data = data
+
+        self.init(type: type, data: data)
     }
 }

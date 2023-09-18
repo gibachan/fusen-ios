@@ -6,6 +6,7 @@
 //
 
 import AuthenticationServices
+import Domain
 import FirebaseAuth
 import Foundation
 

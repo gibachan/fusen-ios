@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/12.
 //
 
+import Domain
 import Foundation
 
 final class HomeTabViewModel: ObservableObject {
@@ -20,8 +21,8 @@ final class HomeTabViewModel: ObservableObject {
     
     init(
         accountService: AccountServiceProtocol = AccountService.shared,
-        getReadingBookUseCase: GetReadingBookUseCase = GetReadingBookUseCaseImpl(),
-        getLatestDataUseCase: GetLatestDataUseCase = GetLatestDataUseCaseImpl()
+        getReadingBookUseCase: GetReadingBookUseCase = GetReadingBookUseCaseImpl(accountService: AccountService.shared, userRepository: UserRepositoryImpl(), bookRepository: BookRepositoryImpl()),
+        getLatestDataUseCase: GetLatestDataUseCase = GetLatestDataUseCaseImpl(accountService: AccountService.shared, bookRepository: BookRepositoryImpl(), memoRpository: MemoRepositoryImpl())
     ) {
         self.accountService = accountService
         self.getReadingBookUseCase = getReadingBookUseCase

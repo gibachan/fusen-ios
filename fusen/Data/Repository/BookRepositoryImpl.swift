@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/14.
 //
 
+import Domain
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 import Foundation
@@ -18,8 +19,8 @@ final class BookRepositoryImpl: BookRepository {
     private var allBooksCache: PagerCache<Book> = .empty
     private var favoriteBooksCache: PagerCache<Book> = .empty
     
-    private var collectionCache: [ID<Collection>: PagerCache<Book>] = [:]
-    private var collectionSortedBy: [ID<Collection>: BookSort] = [:]
+    private var collectionCache: [ID<Domain.Collection>: PagerCache<Book>] = [:]
+    private var collectionSortedBy: [ID<Domain.Collection>: BookSort] = [:]
     
     func getBook(by id: ID<Book>, for user: User) async throws -> Book {
         if let cached = await bookCache.get(by: id) {
@@ -55,7 +56,7 @@ final class BookRepositoryImpl: BookRepository {
         }
 
         return snapshot.documents
-            .compactMap { document in
+            .compactMap { document -> Book? in
                 guard let getBook = try? document.data(as: FirestoreGetBook.self) else {
                     log.e("\(document) could not be decoded.")
                     return nil
@@ -246,7 +247,7 @@ final class BookRepositoryImpl: BookRepository {
         return newPager
     }
     
-    func getBooks(by collection: Collection, sortedBy: BookSort, for user: User, forceRefresh: Bool) async throws -> Pager<Book> {
+    func getBooks(by collection: Domain.Collection, sortedBy: BookSort, for user: User, forceRefresh: Bool) async throws -> Pager<Book> {
         if let cachedPager = collectionCache[collection.id]?.currentPager {
             let isCacheValid = cachedPager.data.count >= perPage && !forceRefresh
             if isCacheValid {
@@ -295,7 +296,7 @@ final class BookRepositoryImpl: BookRepository {
         return newPager
     }
     
-    func getBooksNext(by collection: Collection, for user: User) async throws -> Pager<Book> {
+    func getBooksNext(by collection: Domain.Collection, for user: User) async throws -> Pager<Book> {
         guard let cache = collectionCache[collection.id] else {
             fatalError("cacheは必ず存在する")
         }
@@ -349,9 +350,9 @@ final class BookRepositoryImpl: BookRepository {
         return newPager
     }
     
-    func addBook(of publication: Publication, in collection: Collection?, image: ImageData?, for user: User) async throws -> ID<Book> {
+    func addBook(of publication: Publication, in collection: Domain.Collection?, image: ImageData?, for user: User) async throws -> ID<Book> {
         let newBookDocRef = db.booksCollection(for: user).document()
-        let newBookId = ID<Book>(value: newBookDocRef.documentID)
+        let newBookId = ID<Book>(stringLiteral: newBookDocRef.documentID)
         
         var imageURL: URL?
         if let image = image {
@@ -372,7 +373,7 @@ final class BookRepositoryImpl: BookRepository {
                     continuation.resume(throwing: BookRepositoryError.network)
                     self?.clearAllBooksCache()
                 } else {
-                    let id = ID<Book>(value: newBookDocRef.documentID)
+                    let id = ID<Book>(stringLiteral: newBookDocRef.documentID)
                     continuation.resume(returning: id)
                 }
             }
@@ -425,7 +426,7 @@ final class BookRepositoryImpl: BookRepository {
         }
     }
     
-    func update(book: Book, collection: Collection, for user: User) async throws {
+    func update(book: Book, collection: Domain.Collection, for user: User) async throws {
         let update = FirestoreUpdateBook(
             title: book.title,
             author: book.author,
@@ -528,7 +529,7 @@ final class BookRepositoryImpl: BookRepository {
         favoriteBooksCache = .empty
     }
     
-    private func clearCollectionCache(of collection: Collection) {
+    private func clearCollectionCache(of collection: Domain.Collection) {
         collectionCache[collection.id] = .empty
     }
 }

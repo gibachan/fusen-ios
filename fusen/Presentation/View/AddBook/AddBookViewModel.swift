@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/23.
 //
 
+import Domain
 import Foundation
 
 final class AddBookViewModel: ObservableObject {
@@ -16,7 +17,7 @@ final class AddBookViewModel: ObservableObject {
 
     init(
         analyticsService: AnalyticsServiceProtocol = AnalyticsService.shared,
-        addBookByManualUseCase: AddBookByManualUseCase = AddBookByManualUseCaseImpl()
+        addBookByManualUseCase: AddBookByManualUseCase = AddBookByManualUseCaseImpl(accountService: AccountService.shared, bookRepository: BookRepositoryImpl())
     ) {
         self.analyticsService = analyticsService
         self.addBookByManualUseCase = addBookByManualUseCase

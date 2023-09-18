@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2023/04/26.
 //
 
+import Domain
 import FirebaseFunctions
 import Foundation
 

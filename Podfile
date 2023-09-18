@@ -6,7 +6,6 @@ target 'fusen' do
   use_frameworks!
 
   # Pods for fusen
-  pod 'SwiftLint'
   pod 'LicensePlist'
 
   target 'fusenTests' do

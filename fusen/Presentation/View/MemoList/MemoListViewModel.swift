@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/19.
 //
 
+import Domain
 import Foundation
 
 final class MemoListViewModel: ObservableObject {
@@ -14,7 +15,7 @@ final class MemoListViewModel: ObservableObject {
     @Published var pager: Pager<Memo> = .empty
     
     init(
-        getAllMemosUseCase: GetAllMemosUseCase = GetAllMemosUseCaseImpl()
+        getAllMemosUseCase: GetAllMemosUseCase = GetAllMemosUseCaseImpl(accountService: AccountService.shared, memoRepository: MemoRepositoryImpl())
     ) {
         self.getAllMemosUseCase = getAllMemosUseCase
     }

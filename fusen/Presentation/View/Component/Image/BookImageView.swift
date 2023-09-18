@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/16.
 //
 
+import Domain
 import Kingfisher
 import SwiftUI
 

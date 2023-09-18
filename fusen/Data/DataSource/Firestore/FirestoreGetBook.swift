@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/15.
 //
 
+import Domain
 import FirebaseFirestore
 import Foundation
 
@@ -24,7 +25,7 @@ struct FirestoreGetBook: Codable {
 extension FirestoreGetBook {
     func toDomain(id: String) -> Book {
         return Book(
-            id: ID<Book>(value: id),
+            id: ID<Book>(stringLiteral: id),
             title: title,
             author: author,
             imageURL: URL(string: imageURL),
@@ -32,7 +33,7 @@ extension FirestoreGetBook {
             impression: impression,
             isFavorite: isFavorite,
             valuation: valuation,
-            collectionId: ID<Collection>(value: collectionId)
+            collectionId: ID<Collection>(stringLiteral: collectionId)
         )
     }
 }

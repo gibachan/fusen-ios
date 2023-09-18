@@ -6,6 +6,7 @@
 //
 
 import AuthenticationServices
+import Domain
 import FirebaseAuth
 import Foundation
 
@@ -21,7 +22,7 @@ final class SettingTabViewModel: ObservableObject {
     
     init(
         accountService: AccountServiceProtocol = AccountService.shared,
-        resetUserActionHistoryUseCase: ResetUserActionHistoryUseCase = ResetUserActionHistoryUseCaseImpl()
+        resetUserActionHistoryUseCase: ResetUserActionHistoryUseCase = ResetUserActionHistoryUseCaseImpl(userActionHistoryRepository: UserActionHistoryRepositoryImpl())
     ) {
         self.accountService = accountService
         self.resetUserActionHistoryUseCase = resetUserActionHistoryUseCase

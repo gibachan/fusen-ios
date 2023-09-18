@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/30.
 //
 
+import Domain
 import Foundation
 
 struct RakutenBooksPublicationRepositoryImpl: PublicationRepository {

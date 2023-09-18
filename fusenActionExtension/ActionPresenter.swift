@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2022/08/15.
 //
 
+import Domain
 import Foundation
 import MobileCoreServices
 import UIKit

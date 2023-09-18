@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/16.
 //
 
+import Domain
 import Foundation
 
 final class BookViewModel: ObservableObject {
@@ -44,13 +45,13 @@ final class BookViewModel: ObservableObject {
     
     init(
         bookId: ID<Book>,
-        getBookByIdUseCase: GetBookByIdUseCase = GetBookByIdUseCaseImpl(),
-        getReadingBookUseCase: GetReadingBookUseCase = GetReadingBookUseCaseImpl(),
-        updateReadingBookUseCase: UpdateReadingBookUseCase = UpdateReadingBookUseCaseImpl(),
-        updateFavoriteBookUseCase: UpdateFavoriteBookUseCase = UpdateFavoriteBookUseCaseImpl(),
-        deleteBookUseCase: DeleteBookUseCase = DeleteBookUseCaseImpl(),
-        getUserActionHistoryUseCase: GetUserActionHistoryUseCase = GetUserActionHistoryUseCaseImpl(),
-        confirmReadingBookDescriptionUseCase: ConfirmReadingBookDescriptionUseCase = ConfirmReadingBookDescriptionUseCaseImpl()
+        getBookByIdUseCase: GetBookByIdUseCase = GetBookByIdUseCaseImpl(accountService: AccountService.shared, bookRepository: BookRepositoryImpl()),
+        getReadingBookUseCase: GetReadingBookUseCase = GetReadingBookUseCaseImpl(accountService: AccountService.shared, userRepository: UserRepositoryImpl(), bookRepository: BookRepositoryImpl()),
+        updateReadingBookUseCase: UpdateReadingBookUseCase = UpdateReadingBookUseCaseImpl(accountService: AccountService.shared, userRepository: UserRepositoryImpl()),
+        updateFavoriteBookUseCase: UpdateFavoriteBookUseCase = UpdateFavoriteBookUseCaseImpl(accountService: AccountService.shared, bookRepository: BookRepositoryImpl()),
+        deleteBookUseCase: DeleteBookUseCase = DeleteBookUseCaseImpl(accountService: AccountService.shared, bookRepository: BookRepositoryImpl()),
+        getUserActionHistoryUseCase: GetUserActionHistoryUseCase = GetUserActionHistoryUseCaseImpl(userActionHistoryRepository: UserActionHistoryRepositoryImpl()),
+        confirmReadingBookDescriptionUseCase: ConfirmReadingBookDescriptionUseCase = ConfirmReadingBookDescriptionUseCaseImpl(userActionHistoryRepository: UserActionHistoryRepositoryImpl())
     ) {
         self.bookId = bookId
         self.getBookByIdUseCase = getBookByIdUseCase

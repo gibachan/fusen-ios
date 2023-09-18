@@ -6,6 +6,7 @@
 //
 
 import AVFoundation
+import Domain
 import Foundation
 
 final class ScanBarcodeViewModel: ObservableObject {
@@ -24,8 +25,8 @@ final class ScanBarcodeViewModel: ObservableObject {
     
     init(
         analyticsService: AnalyticsServiceProtocol = AnalyticsService.shared,
-        searchPublicationByBarcodeUseCase: SearchPublicationByBarcodeUseCase = SearchPublicationByBarcodeUseCaseImpl(),
-        addBookByPublicationUseCase: AddBookByPublicationUseCase = AddBookByPublicationUseCaseImpl()
+        searchPublicationByBarcodeUseCase: SearchPublicationByBarcodeUseCase = SearchPublicationByBarcodeUseCaseImpl(analyticsService: AnalyticsService.shared, rakutenBooksPublicationRepository: RakutenBooksPublicationRepositoryImpl(), googleBooksPublicationRepository: GoogleBooksPublicationRepositoryImpl()),
+        addBookByPublicationUseCase: AddBookByPublicationUseCase = AddBookByPublicationUseCaseImpl(accountService: AccountService.shared, bookRepository: BookRepositoryImpl())
     ) {
         self.analyticsService = analyticsService
         self.searchPublicationByBarcodeUseCase = searchPublicationByBarcodeUseCase

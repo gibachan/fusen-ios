@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/27.
 //
 
+import Domain
 import Foundation
 
 final class MemoListItemModel: ObservableObject {
@@ -16,7 +17,7 @@ final class MemoListItemModel: ObservableObject {
     
     init(
         memo: Memo,
-        getBookByIdUseCase: GetBookByIdUseCase = GetBookByIdUseCaseImpl()
+        getBookByIdUseCase: GetBookByIdUseCase = GetBookByIdUseCaseImpl(accountService: AccountService.shared, bookRepository: BookRepositoryImpl())
     ) {
         self.memo = memo
         self.getBookByIdUseCase = getBookByIdUseCase

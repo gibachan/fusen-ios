@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/09/15.
 //
 
+import Domain
 import Foundation
 
 enum BookShelfNavigation {
@@ -12,5 +13,5 @@ enum BookShelfNavigation {
     case book(book: Book)
     case allBooks
     case favoriteBookList
-    case collection(collection: Collection)
+    case collection(collection: Domain.Collection)
 }

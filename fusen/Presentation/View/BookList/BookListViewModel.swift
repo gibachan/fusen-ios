@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/18.
 //
 
+import Domain
 import Foundation
 
 final class BookListViewModel: ObservableObject {
@@ -16,14 +17,14 @@ final class BookListViewModel: ObservableObject {
     @Published var pager: Pager<Book> = .empty
     @Published var sortedBy: BookSort
     
-    init(getCurrentBookSortUseCase: GetCurrentBookSortUseCase = GetCurrentBookSortUseCaseImpl(),
-         updateCurrentBookSortUseCase: UpdateCurrentBookSortUseCase = UpdateCurrentBookSortUseCaseImpl()) {
+    init(getCurrentBookSortUseCase: GetCurrentBookSortUseCase = GetCurrentBookSortUseCaseImpl(userActionHistoryRepository: UserActionHistoryRepositoryImpl()),
+         updateCurrentBookSortUseCase: UpdateCurrentBookSortUseCase = UpdateCurrentBookSortUseCaseImpl(userActionHistoryRepository: UserActionHistoryRepositoryImpl())) {
         self.getCurrentBookSortUseCase = getCurrentBookSortUseCase
         self.updateCurrentBookSortUseCase = updateCurrentBookSortUseCase
         let bookSort = getCurrentBookSortUseCase.invoke()
         let sortedBy = bookSort
         self.sortedBy = sortedBy
-        getAllBooksUseCase = GetAllBooksUseCaseImpl(sortedBy: sortedBy)
+        getAllBooksUseCase = GetAllBooksUseCaseImpl(sortedBy: sortedBy, accountService: AccountService.shared, bookRepository: BookRepositoryImpl())
     }
 
     @MainActor
@@ -70,7 +71,7 @@ final class BookListViewModel: ObservableObject {
     func onSort(_ sortedBy: BookSort) async {
         updateCurrentBookSortUseCase.invoke(bookSort: sortedBy)
         self.sortedBy = sortedBy
-        self.getAllBooksUseCase = GetAllBooksUseCaseImpl(sortedBy: sortedBy)
+        self.getAllBooksUseCase = GetAllBooksUseCaseImpl(sortedBy: sortedBy, accountService: AccountService.shared, bookRepository: BookRepositoryImpl())
         await refresh()
     }
     

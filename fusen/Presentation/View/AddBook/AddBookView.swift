@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/23.
 //
 
+import Domain
 import SwiftUI
 
 struct AddBookView: View {
@@ -17,9 +18,9 @@ struct AddBookView: View {
     @State private var isCameraPickerPresented = false
     @State private var isPhotoLibraryPresented = false
     @FocusState private var focus: Bool
-    private let collection: Collection?
+    private let collection: Domain.Collection?
     
-    init(in collection: Collection? = nil) {
+    init(in collection: Domain.Collection? = nil) {
         self.collection = collection
     }
     

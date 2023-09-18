@@ -5,20 +5,21 @@
 //  Created by Tatsuyuki Kobayashi on 2022/08/17.
 //
 
+import Domain
 import Foundation
 
 @MainActor
 final class SearchBookViewModel: ObservableObject {
-    private let collection: Collection?
+    private let collection: Domain.Collection?
     private let searchPublicationsByTitleUseCase: SearchPublicationsByTitleUseCase
     private let addBookByPublicationUseCase: AddBookByPublicationUseCase
 
     @Published var state: State = .initial
     @Published var selectedPublication: Publication?
     
-    nonisolated init(collection: Collection?,
-                     searchPublicationsByTitleUseCase: SearchPublicationsByTitleUseCase = SearchPublicationsByTitleUseCaseImpl(),
-                     addBookByPublicationUseCase: AddBookByPublicationUseCase = AddBookByPublicationUseCaseImpl()) {
+    nonisolated init(collection: Domain.Collection?,
+                     searchPublicationsByTitleUseCase: SearchPublicationsByTitleUseCase = SearchPublicationsByTitleUseCaseImpl(rakutenBooksPublicationRepository: RakutenBooksPublicationRepositoryImpl()),
+                     addBookByPublicationUseCase: AddBookByPublicationUseCase = AddBookByPublicationUseCaseImpl(accountService: AccountService.shared, bookRepository: BookRepositoryImpl())) {
         self.collection = collection
         self.searchPublicationsByTitleUseCase = searchPublicationsByTitleUseCase
         self.addBookByPublicationUseCase = addBookByPublicationUseCase

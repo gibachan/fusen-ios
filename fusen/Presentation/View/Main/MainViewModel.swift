@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/10.
 //
 
+import Domain
 import Foundation
 
 final class MainViewModel: ObservableObject {
@@ -19,10 +20,10 @@ final class MainViewModel: ObservableObject {
     
     init(
         accountService: AccountServiceProtocol = AccountService.shared,
-        getAppConfigUseCase: GetAppConfigUseCase = GetAppConfigUseCaseImpl(),
-        getUserActionHistoryUseCase: GetUserActionHistoryUseCase = GetUserActionHistoryUseCaseImpl(),
-        launchAppUseCase: LaunchAppUseCase = LaunchAppUseCaseImpl(),
-        addDraftMemoUseCase: AddDraftMemoUseCase = AddDraftMemoUseCaseImpl()
+        getAppConfigUseCase: GetAppConfigUseCase = GetAppConfigUseCaseImpl(appConfigRepository: AppConfigRepositoryImpl()),
+        getUserActionHistoryUseCase: GetUserActionHistoryUseCase = GetUserActionHistoryUseCaseImpl(userActionHistoryRepository: UserActionHistoryRepositoryImpl()),
+        launchAppUseCase: LaunchAppUseCase = LaunchAppUseCaseImpl(userActionHistoryRepository: UserActionHistoryRepositoryImpl()),
+        addDraftMemoUseCase: AddDraftMemoUseCase = AddDraftMemoUseCaseImpl(accountService: AccountService.shared, memoRepository: MemoRepositoryImpl())
     ) {
         self.accountService = accountService
         self.getAppConfigUseCase = getAppConfigUseCase

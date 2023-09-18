@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Domain
 @testable import fusen
 
 class MockMemoRepository: MemoRepository {
@@ -29,7 +30,7 @@ class MockMemoRepository: MemoRepository {
         fatalError("Not implemented yet")
     }
 
-    func getMemo(by id: fusen.ID<fusen.Memo>, for user: fusen.User) async throws -> fusen.Memo {
+    func getMemo(by id: ID<Memo>, for user: User) async throws -> Memo {
         fatalError("Not implemented yet")
     }
 
@@ -58,7 +59,7 @@ class MockMemoRepository: MemoRepository {
             throw error
         }
         
-        let newMemo = Memo(id: ID<Memo>(value: UUID().uuidString), bookId: bookId, text: text, quote: quote, page: page, imageURLs: [], createdAt: Date(), updatedAt: Date())
+        let newMemo = Memo(id: ID<Memo>(stringLiteral: UUID().uuidString), bookId: bookId, text: text, quote: quote, page: page, imageURLs: [], createdAt: Date(), updatedAt: Date())
         addedMemo = newMemo
         return newMemo.id
     }

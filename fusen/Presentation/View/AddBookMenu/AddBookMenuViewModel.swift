@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/09/17.
 //
 
+import Data
 import Domain
 import Foundation
 

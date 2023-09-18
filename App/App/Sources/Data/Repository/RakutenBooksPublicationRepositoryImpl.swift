@@ -8,15 +8,15 @@
 import Domain
 import Foundation
 
-struct RakutenBooksPublicationRepositoryImpl: PublicationRepository {
+public struct RakutenBooksPublicationRepositoryImpl: PublicationRepository {
     private let session: URLSession
     private let decoder = JSONDecoder()
 
-    init(session: URLSession = .shared) {
+    public init(session: URLSession = .shared) {
         self.session = session
     }
 
-    func findBy(isbn: ISBN) async throws -> Publication {
+    public func findBy(isbn: ISBN) async throws -> Publication {
         let urlString = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?applicationId=\(rakutenApplicationId)&formatVersion=2&isbn=\(isbn.value)"
         let url = URL(string: urlString)!
         log.d("request: \(url.absoluteURL)")
@@ -37,7 +37,7 @@ struct RakutenBooksPublicationRepositoryImpl: PublicationRepository {
         }
     }
     
-    func findBy(title: String) async throws -> [Publication] {
+    public func findBy(title: String) async throws -> [Publication] {
         let urlString = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?applicationId=\(rakutenApplicationId)&formatVersion=2&title=\(title)&hits=30&page=1"
         guard let encodedUrlString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
               let url = URL(string: encodedUrlString) else {

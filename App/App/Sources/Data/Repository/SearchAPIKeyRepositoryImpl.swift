@@ -9,15 +9,15 @@ import Domain
 import FirebaseFunctions
 import Foundation
 
-final class SearchAPIKeyRepositoryImpl: SearchAPIKeyRepository {
+public final class SearchAPIKeyRepositoryImpl: SearchAPIKeyRepository {
     private let dataSource: UserDefaultsDataSource
     private lazy var functions = Functions.functions(region: "asia-northeast1")
 
-    init(dataSource: UserDefaultsDataSource = UserDefaultsDataSourceImpl()) {
+    public init(dataSource: UserDefaultsDataSource = UserDefaultsDataSourceImpl()) {
         self.dataSource = dataSource
     }
     
-    func get(for user: User) async throws -> SearchAPI.Key {
+    public func get(for user: User) async throws -> SearchAPI.Key {
         if let key = dataSource.searchAPIKey {
             return SearchAPI.Key(rawValue: key)
         }
@@ -34,7 +34,7 @@ final class SearchAPIKeyRepositoryImpl: SearchAPIKeyRepository {
         }
     }
 
-    func clear() {
+    public func clear() {
         dataSource.searchAPIKey = nil
     }
 }

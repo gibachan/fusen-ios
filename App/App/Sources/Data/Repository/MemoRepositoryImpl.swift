@@ -10,7 +10,7 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import Foundation
 
-final class MemoRepositoryImpl: MemoRepository {
+public final class MemoRepositoryImpl: MemoRepository {
     private let db = Firestore.firestore()
     private let dataSource: UserDefaultsDataSource
 
@@ -21,19 +21,19 @@ final class MemoRepositoryImpl: MemoRepository {
     private var memosSortedBy: MemoSort = .default
     private var memosCache: [ID<Book>: PagerCache<Memo>] = [:]
     
-    init(dataSource: UserDefaultsDataSource = UserDefaultsDataSourceImpl()) {
+    public init(dataSource: UserDefaultsDataSource = UserDefaultsDataSourceImpl()) {
         self.dataSource = dataSource
     }
 
-    func getDraft() async -> MemoDraft? {
+    public func getDraft() async -> MemoDraft? {
         dataSource.readingBookMemoDraft
     }
     
-    func setDraft(_ draft: MemoDraft?) async {
+    public func setDraft(_ draft: MemoDraft?) async {
         dataSource.readingBookMemoDraft = draft
     }
 
-    func getMemo(by id: ID<Memo>, for user: User) async throws -> Memo {
+    public func getMemo(by id: ID<Memo>, for user: User) async throws -> Memo {
         if let cached = await memoCache.get(by: id) {
             return cached
         }
@@ -53,7 +53,7 @@ final class MemoRepositoryImpl: MemoRepository {
         }
     }
     
-    func getLatestMemos(count: Int, for user: User) async throws -> [Memo] {
+    public func getLatestMemos(count: Int, for user: User) async throws -> [Memo] {
         let query = db.memosCollection(for: user)
             .orderByCreatedAtDesc()
             .limit(to: count)
@@ -75,7 +75,7 @@ final class MemoRepositoryImpl: MemoRepository {
             }
     }
     
-    func getAllMemos(for user: User, forceRefresh: Bool) async throws -> Pager<Memo> {
+    public func getAllMemos(for user: User, forceRefresh: Bool) async throws -> Pager<Memo> {
         let isCacheValid = allMemosCache.currentPager.data.count >= perPage && !forceRefresh
         if isCacheValid {
             return allMemosCache.currentPager
@@ -111,7 +111,7 @@ final class MemoRepositoryImpl: MemoRepository {
         return newPager
     }
     
-    func getAllMemosNext(for user: User) async throws -> Pager<Memo> {
+    public func getAllMemosNext(for user: User) async throws -> Pager<Memo> {
         guard let afterDocument = allMemosCache.lastDocument else {
             fatalError("lastDocumentは必ず存在する")
         }
@@ -149,7 +149,7 @@ final class MemoRepositoryImpl: MemoRepository {
         return newPager
     }
     
-    func getMemos(of bookId: ID<Book>, sortedBy: MemoSort, for user: User, forceRefresh: Bool) async throws -> Pager<Memo> {
+    public func getMemos(of bookId: ID<Book>, sortedBy: MemoSort, for user: User, forceRefresh: Bool) async throws -> Pager<Memo> {
         if let cachedPager = memosCache[bookId]?.currentPager {
             let isCacheValid = cachedPager.data.count >= perPage && !forceRefresh
             if isCacheValid {
@@ -195,7 +195,7 @@ final class MemoRepositoryImpl: MemoRepository {
         return newPager
     }
     
-    func getNextMemos(of bookId: ID<Book>, for user: User) async throws -> Pager<Memo> {
+    public func getNextMemos(of bookId: ID<Book>, for user: User) async throws -> Pager<Memo> {
         guard let cacheOfBook = memosCache[bookId] else {
             fatalError("cacheは必ず存在する")
         }
@@ -244,7 +244,7 @@ final class MemoRepositoryImpl: MemoRepository {
         return newPager
     }
     
-    func addMemo(bookId: ID<Book>, text: String, quote: String, page: Int?, image: ImageData?, for user: User) async throws -> ID<Memo> {
+    public func addMemo(bookId: ID<Book>, text: String, quote: String, page: Int?, image: ImageData?, for user: User) async throws -> ID<Memo> {
         let newMemoDocRef = db.memosCollection(for: user).document()
 
         var imageURL: URL?
@@ -278,7 +278,7 @@ final class MemoRepositoryImpl: MemoRepository {
         }
     }
     
-    func update(memo: Memo, text: String, quote: String, page: Int?, imageURLs: [URL], for user: User) async throws {
+    public func update(memo: Memo, text: String, quote: String, page: Int?, imageURLs: [URL], for user: User) async throws {
         let update = FirestoreUpdateMemo(
             text: text,
             quote: quote,
@@ -297,7 +297,7 @@ final class MemoRepositoryImpl: MemoRepository {
         }
     }
     
-    func delete(memo: Memo, for user: User) async throws {
+    public func delete(memo: Memo, for user: User) async throws {
         let ref = db.memosCollection(for: user)
             .document(memo.id.value)
         do {

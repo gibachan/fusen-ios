@@ -13,6 +13,9 @@ let package = Package(
         .library(
             name: "Domain",
             targets: ["Domain"]),
+        .library(
+            name: "Data",
+            targets: ["Data"]),
     ],
     dependencies: [
         .package(url: "https://github.com/firebase/firebase-ios-sdk.git", exact: "10.15.0"),
@@ -40,6 +43,9 @@ let package = Package(
                 .product(name: "Tagged",
                          package: "swift-tagged"),
             ]),
+        .target(
+            name: "Data",
+            dependencies: ["Domain"]),
         .testTarget(
             name: "AppTests",
             dependencies: ["App"]),

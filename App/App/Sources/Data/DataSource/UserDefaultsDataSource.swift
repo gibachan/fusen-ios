@@ -8,7 +8,7 @@
 import Domain
 import Foundation
 
-protocol UserDefaultsDataSource: AnyObject {
+public protocol UserDefaultsDataSource: AnyObject {
     var launchedAppBefore: Bool { get set }
     var didConfirmReadingBookDescription: Bool { get set }
     var readBookPages: [String: Any] { get }
@@ -23,14 +23,14 @@ protocol UserDefaultsDataSource: AnyObject {
     func setReadPage(for book: Book, page: Int)
 }
 
-final class UserDefaultsDataSourceImpl: UserDefaultsDataSource {
+public final class UserDefaultsDataSourceImpl: UserDefaultsDataSource {
     private let userDefaults: UserDefaults
     
-    init(userDefaults: UserDefaults = .init(suiteName: "group.app.fusen")!) {
+    public init(userDefaults: UserDefaults = .init(suiteName: "group.app.fusen")!) {
         self.userDefaults = userDefaults
     }
     
-    var launchedAppBefore: Bool {
+    public var launchedAppBefore: Bool {
         get {
             userDefaults.bool(forKey: .launchedAppBefore)
         }
@@ -39,7 +39,7 @@ final class UserDefaultsDataSourceImpl: UserDefaultsDataSource {
         }
     }
     
-    var didConfirmReadingBookDescription: Bool {
+    public var didConfirmReadingBookDescription: Bool {
         get {
             userDefaults.bool(forKey: .didConfirmReadingBookDescription)
         }
@@ -48,11 +48,11 @@ final class UserDefaultsDataSourceImpl: UserDefaultsDataSource {
         }
     }
     
-    var readBookPages: [String: Any] {
+    public var readBookPages: [String: Any] {
         userDefaults.dictionary(forKey: .readBook)
     }
     
-    var readingBook: CachedBook? {
+    public var readingBook: CachedBook? {
         get {
             return userDefaults.decodableObject(forKey: .readingBook)
         }
@@ -61,7 +61,7 @@ final class UserDefaultsDataSourceImpl: UserDefaultsDataSource {
         }
     }
     
-    var readingBookMemoDraft: MemoDraft? {
+    public var readingBookMemoDraft: MemoDraft? {
         get {
             return userDefaults.decodableObject(forKey: .readingBookMemoDrafts)
         }
@@ -70,18 +70,18 @@ final class UserDefaultsDataSourceImpl: UserDefaultsDataSource {
         }
     }
     
-    func getReadPage(for book: Book) -> Int? {
+    public func getReadPage(for book: Book) -> Int? {
         let readBook = userDefaults.dictionary(forKey: .readBook)
         return readBook[book.id.value] as? Int
     }
     
-    func setReadPage(for book: Book, page: Int) {
+    public func setReadPage(for book: Book, page: Int) {
         var readBook = userDefaults.dictionary(forKey: .readBook)
         readBook[book.id.value] = page
         userDefaults.set(readBook, forKey: .readBook)
     }
     
-    var reviewedVersion: String? {
+    public var reviewedVersion: String? {
         get {
             userDefaults.string(forKey: .reviewedVersion)
         }
@@ -90,7 +90,7 @@ final class UserDefaultsDataSourceImpl: UserDefaultsDataSource {
         }
     }
     
-    var currentBookSort: BookSort? {
+    public var currentBookSort: BookSort? {
         get {
             guard let value = userDefaults.string(forKey: .bookSort) else { return nil }
             return BookSort(rawValue: value)
@@ -100,7 +100,7 @@ final class UserDefaultsDataSourceImpl: UserDefaultsDataSource {
         }
     }
     
-    var currentMemoSort: MemoSort? {
+    public var currentMemoSort: MemoSort? {
         get {
             guard let value = userDefaults.string(forKey: .memoSort) else { return nil }
             return MemoSort(rawValue: value)
@@ -110,7 +110,7 @@ final class UserDefaultsDataSourceImpl: UserDefaultsDataSource {
         }
     }
 
-    var searchAPIKey: String? {
+    public var searchAPIKey: String? {
         get {
             userDefaults.string(forKey: .searchAPIKey)
         }

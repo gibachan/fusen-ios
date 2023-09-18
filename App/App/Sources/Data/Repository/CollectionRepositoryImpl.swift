@@ -10,10 +10,12 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import Foundation
 
-final class CollectionRepositoryImpl: CollectionRepository {
+public final class CollectionRepositoryImpl: CollectionRepository {
     private let db = Firestore.firestore()
-    
-    func getlCollections(for user: User) async throws -> [Collection] {
+
+    public init() {}
+
+    public func getlCollections(for user: User) async throws -> [Collection] {
         let query = db.collectionCollection(for: user)
             .orderByCreatedAtDesc()
         let snapshot: QuerySnapshot
@@ -33,7 +35,7 @@ final class CollectionRepositoryImpl: CollectionRepository {
             }
     }
     
-    func addCollection(name: String, color: RGB, for user: User) async throws -> ID<Collection> {
+    public func addCollection(name: String, color: RGB, for user: User) async throws -> ID<Collection> {
         typealias AddCollectionContinuation = CheckedContinuation<ID<Collection>, Error>
         return try await withCheckedThrowingContinuation { (continuation: AddCollectionContinuation) in
             let create = FirestoreCreateCollection(
@@ -54,7 +56,7 @@ final class CollectionRepositoryImpl: CollectionRepository {
         }
     }
     
-    func delete(collection: Collection, for user: User) async throws {
+    public func delete(collection: Collection, for user: User) async throws {
         let ref = db.collectionCollection(for: user)
             .document(collection.id.value)
         do {

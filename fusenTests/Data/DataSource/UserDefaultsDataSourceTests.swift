@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/09/15.
 //
 
+import Data
 import Domain
 @testable import fusen
 import XCTest

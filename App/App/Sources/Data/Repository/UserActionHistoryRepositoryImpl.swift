@@ -8,14 +8,14 @@
 import Domain
 import Foundation
 
-final class UserActionHistoryRepositoryImpl: UserActionHistoryRepository {
+public final class UserActionHistoryRepositoryImpl: UserActionHistoryRepository {
     private let dataSource: UserDefaultsDataSource
     
-    init(dataSource: UserDefaultsDataSource = UserDefaultsDataSourceImpl()) {
+    public init(dataSource: UserDefaultsDataSource = UserDefaultsDataSourceImpl()) {
         self.dataSource = dataSource
     }
     
-    func get() -> UserActionHistory {
+    public func get() -> UserActionHistory {
         var readBook: [ID<Book>: Int] = [:]
         dataSource.readBookPages
             .forEach { key, value in
@@ -32,31 +32,31 @@ final class UserActionHistoryRepositoryImpl: UserActionHistoryRepository {
         )
     }
     
-    func update(didConfirmReadingBookDescription: Bool) {
+    public func update(didConfirmReadingBookDescription: Bool) {
         dataSource.didConfirmReadingBookDescription = didConfirmReadingBookDescription
     }
     
-    func update(readBook: Book, page: Int) {
+    public func update(readBook: Book, page: Int) {
         dataSource.setReadPage(for: readBook, page: page)
     }
     
-    func update(reviewedVersion: String) {
+    public func update(reviewedVersion: String) {
         dataSource.reviewedVersion = reviewedVersion
     }
     
-    func update(launchedAppBefore: Bool) {
+    public func update(launchedAppBefore: Bool) {
         dataSource.launchedAppBefore = launchedAppBefore
     }
     
-    func update(currentBookSort: BookSort) {
+    public func update(currentBookSort: BookSort) {
         dataSource.currentBookSort = currentBookSort
     }
     
-    func update(currentMemoSort: MemoSort) {
+    public func update(currentMemoSort: MemoSort) {
         dataSource.currentMemoSort = currentMemoSort
     }
     
-    func clearAll() {
+    public func clearAll() {
         dataSource.didConfirmReadingBookDescription = false
         dataSource.reviewedVersion = ""
         dataSource.currentBookSort = nil

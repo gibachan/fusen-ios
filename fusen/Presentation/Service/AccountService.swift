@@ -7,6 +7,7 @@
 
 import AuthenticationServices
 import CryptoKit
+import Data
 import Domain
 import Firebase
 import FirebaseAnalytics

@@ -10,15 +10,15 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import Foundation
 
-final class UserRepositoryImpl: UserRepository {
+public final class UserRepositoryImpl: UserRepository {
     private let db = Firestore.firestore()
     private let dataSource: UserDefaultsDataSource
     
-    init(dataSource: UserDefaultsDataSource = UserDefaultsDataSourceImpl()) {
+    public init(dataSource: UserDefaultsDataSource = UserDefaultsDataSourceImpl()) {
         self.dataSource = dataSource
     }
     
-    func getInfo(for user: User) async throws -> UserInfo {
+    public func getInfo(for user: User) async throws -> UserInfo {
         let ref = db.userDocument(of: user)
         let snapshot: DocumentSnapshot
         do {
@@ -36,7 +36,7 @@ final class UserRepositoryImpl: UserRepository {
         throw  UserRepositoryError.network
     }
 
-    func update(readingBook book: Book?, for user: User) async throws {
+    public func update(readingBook book: Book?, for user: User) async throws {
         let update = FirestoreUpdateUser(
             readingBookId: book?.id.value ?? ""
         )

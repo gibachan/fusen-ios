@@ -9,7 +9,7 @@ import Domain
 import FirebaseRemoteConfig
 import Foundation
 
-final class AppConfigRepositoryImpl: AppConfigRepository {
+public final class AppConfigRepositoryImpl: AppConfigRepository {
     private static let maintenanceKey = "maintenance"
 
     private static let remoteConfig: RemoteConfig = {
@@ -26,8 +26,10 @@ final class AppConfigRepositoryImpl: AppConfigRepository {
         ])
         return config
     }()
+
+    public init() {}
     
-    func get() async -> AppConfig {
+    public func get() async -> AppConfig {
         do {
             let result = try await Self.remoteConfig.fetch()
             if case .success = result {

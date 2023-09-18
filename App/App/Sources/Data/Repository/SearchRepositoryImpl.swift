@@ -9,8 +9,10 @@ import AlgoliaSearchClient
 import Domain
 import Foundation
 
-final class SearchRepositoryImpl: SearchRepository {
-    func memos(
+public final class SearchRepositoryImpl: SearchRepository {
+    public init() {}
+    
+    public func memos(
         withAPIKey key: SearchAPI.Key,
         for text: String,
         by type: SearchMemoType

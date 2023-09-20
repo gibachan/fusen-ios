@@ -202,7 +202,6 @@
 		A0F97CEB26E0CA61007CACE5 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F97CEA26E0CA61007CACE5 /* WebViewController.swift */; };
 		A0F97CED26E0CA84007CACE5 /* WebPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F97CEC26E0CA84007CACE5 /* WebPageView.swift */; };
 		A0F97CEF26E0CD55007CACE5 /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F97CEE26E0CD55007CACE5 /* URLExtension.swift */; };
-		F7BDF62C75CD8279F9805768 /* Pods_fusenTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92BAA3A355C64643052F4562 /* Pods_fusenTests.framework */; };
 		FAFA9C3195C337A6656292D4 /* Pods_fusen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A120C1BA338A419E1C4AC1E /* Pods_fusen.framework */; };
 /* End PBXBuildFile section */
 
@@ -249,7 +248,6 @@
 		0A120C1BA338A419E1C4AC1E /* Pods_fusen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fusen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C3DED94C319492FE223FE79 /* Pods-fusen-fusenUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen-fusenUITests.release.xcconfig"; path = "Target Support Files/Pods-fusen-fusenUITests/Pods-fusen-fusenUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1DE0D1B8A96CA3FFE09EAAEA /* Pods-fusen.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen.staging.xcconfig"; path = "Target Support Files/Pods-fusen/Pods-fusen.staging.xcconfig"; sourceTree = "<group>"; };
-		5B37FD8BE420D6FBA3462CCB /* Pods-fusenTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusenTests.staging.xcconfig"; path = "Target Support Files/Pods-fusenTests/Pods-fusenTests.staging.xcconfig"; sourceTree = "<group>"; };
 		68C9A2BDADA81FF3A49EEF8A /* Pods-fusen-fusenUITests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen-fusenUITests.staging.xcconfig"; path = "Target Support Files/Pods-fusen-fusenUITests/Pods-fusen-fusenUITests.staging.xcconfig"; sourceTree = "<group>"; };
 		6F5CBB77B19B6F9B80D8238A /* Pods-fusen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen.debug.xcconfig"; path = "Target Support Files/Pods-fusen/Pods-fusen.debug.xcconfig"; sourceTree = "<group>"; };
 		7A003E6C286735D3002B8BAC /* fusenWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = fusenWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -337,8 +335,6 @@
 		7AD1611526C2A6CE00334A63 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		7AD1611726C2A8BC00334A63 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		7ADD9CC126F17A880073A043 /* CollectionEmptyItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionEmptyItemView.swift; sourceTree = "<group>"; };
-		7B88CB3E534BCE0F944FD992 /* Pods-fusenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusenTests.release.xcconfig"; path = "Target Support Files/Pods-fusenTests/Pods-fusenTests.release.xcconfig"; sourceTree = "<group>"; };
-		92BAA3A355C64643052F4562 /* Pods_fusenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fusenTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		983232E518C4EADBE80E78A4 /* Pods-fusen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen.release.xcconfig"; path = "Target Support Files/Pods-fusen/Pods-fusen.release.xcconfig"; sourceTree = "<group>"; };
 		A001E02D26C9477700AC92BA /* BookShelfItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfItem.swift; sourceTree = "<group>"; };
 		A001E03026C9E62400AC92BA /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
@@ -436,7 +432,6 @@
 		A0F97CEC26E0CA84007CACE5 /* WebPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPageView.swift; sourceTree = "<group>"; };
 		A0F97CEE26E0CD55007CACE5 /* URLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
 		B9CE5958189153717B673230 /* Pods-fusen-fusenUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen-fusenUITests.debug.xcconfig"; path = "Target Support Files/Pods-fusen-fusenUITests/Pods-fusen-fusenUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		BA1243C082F110680D93D45F /* Pods-fusenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusenTests.debug.xcconfig"; path = "Target Support Files/Pods-fusenTests/Pods-fusenTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DED65B63C22476AE8B5011AE /* Pods_fusen_fusenUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fusen_fusenUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -485,7 +480,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7BDF62C75CD8279F9805768 /* Pods_fusenTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,7 +491,6 @@
 			children = (
 				0A120C1BA338A419E1C4AC1E /* Pods_fusen.framework */,
 				DED65B63C22476AE8B5011AE /* Pods_fusen_fusenUITests.framework */,
-				92BAA3A355C64643052F4562 /* Pods_fusenTests.framework */,
 				7A003E6D286735D3002B8BAC /* WidgetKit.framework */,
 				7A003E6F286735D3002B8BAC /* SwiftUI.framework */,
 				7A9675F828A9263200445D83 /* UniformTypeIdentifiers.framework */,
@@ -1177,11 +1170,8 @@
 				983232E518C4EADBE80E78A4 /* Pods-fusen.release.xcconfig */,
 				B9CE5958189153717B673230 /* Pods-fusen-fusenUITests.debug.xcconfig */,
 				0C3DED94C319492FE223FE79 /* Pods-fusen-fusenUITests.release.xcconfig */,
-				BA1243C082F110680D93D45F /* Pods-fusenTests.debug.xcconfig */,
-				7B88CB3E534BCE0F944FD992 /* Pods-fusenTests.release.xcconfig */,
 				1DE0D1B8A96CA3FFE09EAAEA /* Pods-fusen.staging.xcconfig */,
 				68C9A2BDADA81FF3A49EEF8A /* Pods-fusen-fusenUITests.staging.xcconfig */,
-				5B37FD8BE420D6FBA3462CCB /* Pods-fusenTests.staging.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1271,7 +1261,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A082002926C1F5D100100357 /* Build configuration list for PBXNativeTarget "fusenTests" */;
 			buildPhases = (
-				2BCE61209A9156808DB11106 /* [CP] Check Pods Manifest.lock */,
 				A082001026C1F5D100100357 /* Sources */,
 				A082001126C1F5D100100357 /* Frameworks */,
 				A082001226C1F5D100100357 /* Resources */,
@@ -1294,7 +1283,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					7A003E6B286735D3002B8BAC = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -1402,28 +1391,6 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-fusen-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2BCE61209A9156808DB11106 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-fusenTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1705,7 +1672,7 @@
 				INFOPLIST_FILE = fusenWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = fusenWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1734,7 +1701,7 @@
 				INFOPLIST_FILE = fusenWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = fusenWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1763,7 +1730,7 @@
 				INFOPLIST_FILE = fusenWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = fusenWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1791,7 +1758,7 @@
 				INFOPLIST_FILE = fusenActionExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "読書メモ";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1819,7 +1786,7 @@
 				INFOPLIST_FILE = fusenActionExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "読書メモ";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1847,7 +1814,7 @@
 				INFOPLIST_FILE = fusenActionExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "読書メモ";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1900,6 +1867,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1949,7 +1917,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1973,7 +1941,6 @@
 		};
 		A07507E126C5E79F0087AE5C /* Staging */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B37FD8BE420D6FBA3462CCB /* Pods-fusenTests.staging.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1981,7 +1948,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MYDHT92MBT;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2034,6 +2001,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -2095,6 +2063,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -2138,7 +2107,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2184,7 +2153,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2206,7 +2175,6 @@
 		};
 		A082002A26C1F5D100100357 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BA1243C082F110680D93D45F /* Pods-fusenTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2214,7 +2182,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MYDHT92MBT;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2232,7 +2200,6 @@
 		};
 		A082002B26C1F5D100100357 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7B88CB3E534BCE0F944FD992 /* Pods-fusenTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2240,7 +2207,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MYDHT92MBT;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -1,5 +1,5 @@
 PODS:
-  - LicensePlist (3.24.9)
+  - LicensePlist (3.24.11)
 
 DEPENDENCIES:
   - LicensePlist
@@ -9,8 +9,8 @@ SPEC REPOS:
     - LicensePlist
 
 SPEC CHECKSUMS:
-  LicensePlist: a16d02dc0aae63fe22c516a775ea6f51459dc3f8
+  LicensePlist: e8b5c7b30a914b92b83ffd78ded5af057621ba64
 
-PODFILE CHECKSUM: e73039d95602ecb52763f680ecc7f23d67531d35
+PODFILE CHECKSUM: 066080391348730b3c544651c8664a36c5ee35a2
 
 COCOAPODS: 1.12.1

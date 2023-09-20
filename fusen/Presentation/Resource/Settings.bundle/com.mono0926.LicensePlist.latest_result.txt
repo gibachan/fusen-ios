@@ -2,7 +2,7 @@ name: LicensePlist, nameSpecified:
 body: MIT License
 
 Copyrig…
-version: 3.24.9
+version: 3.24.11
 
 name: abseil-cpp-binary, nameSpecified: abseil, owner: google, version: 1.2022062300.0, source: https://github.com/google/abseil-cpp-binary
 
@@ -84,4 +84,4 @@ name: Yams, nameSpecified: Yams, owner: jpsim, version: 5.0.6, source: https://g
 
 add-version-numbers: false
 
-LicensePlist Version: 3.24.9
+LicensePlist Version: 3.24.11

@@ -1,0 +1,15 @@
+import Foundation
+
+let rakutenApplicationId = "dummy"
+
+enum Algolia {
+    static var appID: String { "dummy" }
+
+    static var indexNameForMemoByText: String {
+        "dummy"
+    }
+
+    static var indexNameForMemoByQuote: String {
+        "dummy"
+    }
+}

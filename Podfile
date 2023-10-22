@@ -4,9 +4,6 @@ platform :ios, '17.0'
 target 'fusen' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
-  # Pods for fusen
-  pod 'LicensePlist'
 end
 
 post_install do |installer|

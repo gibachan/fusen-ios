@@ -1,0 +1,5 @@
+options:
+  packagePaths:
+    - "fusen.xcworkspace/xcshareddata/swiftpm/Package.resolved"
+  prefix: Acknowledgements
+  singlePage: true

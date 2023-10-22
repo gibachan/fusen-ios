@@ -19,6 +19,15 @@
       }
     },
     {
+      "identity" : "apikit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ishkawa/APIKit.git",
+      "state" : {
+        "revision" : "b839e53b870104798035b279d2a6168b0a2227b1",
+        "version" : "5.4.0"
+      }
+    },
+    {
       "identity" : "appauth-ios",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/openid/AppAuth-iOS.git",
@@ -127,6 +136,15 @@
       }
     },
     {
+      "identity" : "heliumlogger",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Kitura/HeliumLogger.git",
+      "state" : {
+        "revision" : "fc2a71597ae974da5282d751bcc11965964bccce",
+        "version" : "2.0.0"
+      }
+    },
+    {
       "identity" : "interop-ios-for-google-sdks",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/interop-ios-for-google-sdks.git",
@@ -151,6 +169,24 @@
       "state" : {
         "revision" : "0706abcc6b0bd9cedfbb015ba840e4a780b5159b",
         "version" : "1.22.2"
+      }
+    },
+    {
+      "identity" : "licenseplist",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mono0926/LicensePlist.git",
+      "state" : {
+        "revision" : "1b15dc59e3cedbebc5c58d4ed931dc1baf86dcb1",
+        "version" : "3.24.11"
+      }
+    },
+    {
+      "identity" : "loggerapi",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Kitura/LoggerAPI.git",
+      "state" : {
+        "revision" : "4e6b45e850ffa275e8e26a24c6454fd709d5b6ac",
+        "version" : "2.0.0"
       }
     },
     {
@@ -244,6 +280,15 @@
       }
     },
     {
+      "identity" : "swift-html-entities",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Kitura/swift-html-entities.git",
+      "state" : {
+        "revision" : "d8ca73197f59ce260c71bd6d7f6eb8bbdccf508b",
+        "version" : "4.0.1"
+      }
+    },
+    {
       "identity" : "swift-identified-collections",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-identified-collections",
@@ -331,6 +376,15 @@
       "state" : {
         "revision" : "d0470491f56e734731bbf77991944c0dfdee3e0e",
         "version" : "2.6.1"
+      }
+    },
+    {
+      "identity" : "xcodeedit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tomlokhorst/XcodeEdit.git",
+      "state" : {
+        "revision" : "b6b67389a0f1a6fdd9c6457a8ab5b02eaab13c5c",
+        "version" : "2.9.2"
       }
     },
     {

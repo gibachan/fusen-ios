@@ -62,6 +62,7 @@
 		7A79AEEF2AB86F1300E856C9 /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = 7A79AEEE2AB86F1300E856C9 /* Data */; };
 		7A79AEF32AB8706900E856C9 /* AlgoliaSearchClient in Frameworks */ = {isa = PBXBuildFile; productRef = 7A79AEF22AB8706900E856C9 /* AlgoliaSearchClient */; };
 		7A79AEF52AB8707000E856C9 /* AlgoliaSearchClient in Frameworks */ = {isa = PBXBuildFile; productRef = 7A79AEF42AB8707000E856C9 /* AlgoliaSearchClient */; };
+		7A841F662AE4B14E009E53B7 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7A841F652AE4B14E009E53B7 /* Settings.bundle */; };
 		7A9675F928A9263200445D83 /* UniformTypeIdentifiers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9675F828A9263200445D83 /* UniformTypeIdentifiers.framework */; };
 		7A9675FC28A9263200445D83 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A9675FB28A9263200445D83 /* Media.xcassets */; };
 		7A9675FE28A9263200445D83 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9675FD28A9263200445D83 /* ActionViewController.swift */; };
@@ -185,7 +186,6 @@
 		A0ACBC2E26FC0D2600C3D5A7 /* HomeTabViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ACBC2D26FC0D2600C3D5A7 /* HomeTabViewModelTests.swift */; };
 		A0B1FECB26DEEAF600586151 /* MemoQuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B1FECA26DEEAF600586151 /* MemoQuoteView.swift */; };
 		A0B1FED026DF0AD000586151 /* MemoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B1FECF26DF0AD000586151 /* MemoImageView.swift */; };
-		A0B1FEDE26E0452F00586151 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A0B1FEDD26E0452F00586151 /* Settings.bundle */; };
 		A0B9482D26D3A32300C47204 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B9482C26D3A32300C47204 /* ImagePicker.swift */; };
 		A0BA4CB226C4DDF100D99D8C /* ScanBarcodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BA4CB126C4DDF100D99D8C /* ScanBarcodeView.swift */; };
 		A0BA4CB426C4DDFA00D99D8C /* ScanBarcodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BA4CB326C4DDFA00D99D8C /* ScanBarcodeViewModel.swift */; };
@@ -296,6 +296,7 @@
 		7A6303CB27847F140004737B /* BundleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
 		7A69930626D7FC8B006B0697 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		7A69930A26DA75A1006B0697 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		7A841F652AE4B14E009E53B7 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		7A9675F728A9263200445D83 /* fusenActionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = fusenActionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A9675F828A9263200445D83 /* UniformTypeIdentifiers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UniformTypeIdentifiers.framework; path = System/Library/Frameworks/UniformTypeIdentifiers.framework; sourceTree = SDKROOT; };
 		7A9675FB28A9263200445D83 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
@@ -414,7 +415,6 @@
 		A0ACBC2D26FC0D2600C3D5A7 /* HomeTabViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewModelTests.swift; sourceTree = "<group>"; };
 		A0B1FECA26DEEAF600586151 /* MemoQuoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoQuoteView.swift; sourceTree = "<group>"; };
 		A0B1FECF26DF0AD000586151 /* MemoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoImageView.swift; sourceTree = "<group>"; };
-		A0B1FEDD26E0452F00586151 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		A0B9482C26D3A32300C47204 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		A0BA4CB126C4DDF100D99D8C /* ScanBarcodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanBarcodeView.swift; sourceTree = "<group>"; };
 		A0BA4CB326C4DDFA00D99D8C /* ScanBarcodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanBarcodeViewModel.swift; sourceTree = "<group>"; };
@@ -744,13 +744,13 @@
 		7AD1610326C29CE000334A63 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				7A841F652AE4B14E009E53B7 /* Settings.bundle */,
 				A082000D26C1F5D100100357 /* Preview Content */,
 				A07507CD26C5E2F40087AE5C /* GoogleService-Info-development.plist */,
 				A07507CC26C5E2F40087AE5C /* GoogleService-Info-staging.plist */,
 				A0A2B31326EDB495001798D3 /* GoogleService-Info-production.plist */,
 				A082000B26C1F5D100100357 /* Assets.xcassets */,
 				7AD1611326C2A45500334A63 /* Colors.xcassets */,
-				A0B1FEDD26E0452F00586151 /* Settings.bundle */,
 				7A69930626D7FC8B006B0697 /* ErrorMessage.swift */,
 			);
 			path = Resource;
@@ -1231,13 +1231,14 @@
 				A082000026C1F5CF00100357 /* Sources */,
 				A082000126C1F5CF00100357 /* Frameworks */,
 				A082000226C1F5CF00100357 /* Resources */,
-				A0B1FED826E0401000586151 /* LicensePlist */,
 				A0A2B31226EDB3FC001798D3 /* GoogleService-Info.plist */,
 				7A003E7D286735D4002B8BAC /* Embed Foundation Extensions */,
+				A08237672AE4B1F800100357 /* Copy Acknowledgements */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7A841F682AE4B1EA009E53B7 /* PBXTargetDependency */,
 				7A003E7B286735D4002B8BAC /* PBXTargetDependency */,
 				7A96760428A9263200445D83 /* PBXTargetDependency */,
 			);
@@ -1316,6 +1317,7 @@
 				7AAA6A7B2A08D3C100A4B820 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				7AAA6A802A08D40B00A4B820 /* XCRemoteSwiftPackageReference "TOCropViewController" */,
 				7AAA6A832A08D45E00A4B820 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				7A5AC62A2AC05BCD00B2A86A /* XCRemoteSwiftPackageReference "LicensePlist" */,
 			);
 			productRefGroup = A082000526C1F5CF00100357 /* Products */;
 			projectDirPath = "";
@@ -1361,7 +1363,7 @@
 				A07507CE26C5E2F40087AE5C /* GoogleService-Info-staging.plist in Resources */,
 				A0A2B31426EDB495001798D3 /* GoogleService-Info-production.plist in Resources */,
 				A082000C26C1F5D100100357 /* Assets.xcassets in Resources */,
-				A0B1FEDE26E0452F00586151 /* Settings.bundle in Resources */,
+				7A841F662AE4B14E009E53B7 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1397,6 +1399,20 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A08237672AE4B1F800100357 /* Copy Acknowledgements */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Acknowledgements";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"Will copy acknowledgements\"\n\nACKNOWLEDGEMENTS_DIR=${BUILT_PRODUCTS_DIR}/${CONTENTS_FOLDER_PATH}/com.mono0926.LicensePlist.Output\nDESTINATION_PATH=${BUILT_PRODUCTS_DIR}/${CONTENTS_FOLDER_PATH}/Settings.bundle/\n\ncp -r ${ACKNOWLEDGEMENTS_DIR}/* ${DESTINATION_PATH}\nrm -rf ${ACKNOWLEDGEMENTS_DIR}\n";
+		};
 		A0A2B31226EDB3FC001798D3 /* GoogleService-Info.plist */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -1415,25 +1431,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if [[ \"${CONFIGURATION}\" == \"Release\" ]]; then\n  \"cp\" \"-r\" \"${SRCROOT}/fusen/Presentation/Resource/GoogleService-Info-production.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\nfi\n";
-		};
-		A0B1FED826E0401000586151 /* LicensePlist */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = LicensePlist;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ $CONFIGURATION = \"Debug\" ]; then\n    ${PODS_ROOT}/LicensePlist/license-plist --output-path fusen/Presentation/Resource/Settings.bundle --suppress-opening-directory\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1634,6 +1631,10 @@
 			isa = PBXTargetDependency;
 			target = 7A003E6B286735D3002B8BAC /* fusenWidgetExtension */;
 			targetProxy = 7A003E7A286735D4002B8BAC /* PBXContainerItemProxy */;
+		};
+		7A841F682AE4B1EA009E53B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 7A841F672AE4B1EA009E53B7 /* LicensePlistBuildTool */;
 		};
 		7A96760428A9263200445D83 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1906,6 +1907,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"fusen/Presentation/Resource/Preview Content\"";
 				DEVELOPMENT_TEAM = MYDHT92MBT;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = fusen/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "読書メモ";
@@ -2096,6 +2098,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"fusen/Presentation/Resource/Preview Content\"";
 				DEVELOPMENT_TEAM = MYDHT92MBT;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = fusen/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "読書メモ";
@@ -2142,6 +2145,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"fusen/Presentation/Resource/Preview Content\"";
 				DEVELOPMENT_TEAM = MYDHT92MBT;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = fusen/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "読書メモ";
@@ -2287,6 +2291,14 @@
 				version = 0.52.0;
 			};
 		};
+		7A5AC62A2AC05BCD00B2A86A /* XCRemoteSwiftPackageReference "LicensePlist" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mono0926/LicensePlist.git";
+			requirement = {
+				kind = exactVersion;
+				version = 3.24.11;
+			};
+		};
 		7AAA6A782A08D35300A4B820 /* XCRemoteSwiftPackageReference "algoliasearch-client-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/algolia/algoliasearch-client-swift";
@@ -2356,6 +2368,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7AAA6A782A08D35300A4B820 /* XCRemoteSwiftPackageReference "algoliasearch-client-swift" */;
 			productName = AlgoliaSearchClient;
+		};
+		7A841F672AE4B1EA009E53B7 /* LicensePlistBuildTool */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7A5AC62A2AC05BCD00B2A86A /* XCRemoteSwiftPackageReference "LicensePlist" */;
+			productName = "plugin:LicensePlistBuildTool";
 		};
 		7A9C0EC82AB80A7400B92C59 /* Domain */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -2296,7 +2296,7 @@
 			repositoryURL = "https://github.com/mono0926/LicensePlist.git";
 			requirement = {
 				kind = exactVersion;
-				version = 3.24.11;
+				version = 3.25.1;
 			};
 		};
 		7AAA6A782A08D35300A4B820 /* XCRemoteSwiftPackageReference "algoliasearch-client-swift" */ = {
@@ -2304,7 +2304,7 @@
 			repositoryURL = "https://github.com/algolia/algoliasearch-client-swift";
 			requirement = {
 				kind = exactVersion;
-				version = 8.18.0;
+				version = 8.19.0;
 			};
 		};
 		7AAA6A7B2A08D3C100A4B820 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
@@ -2328,7 +2328,7 @@
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
 				kind = exactVersion;
-				version = 7.6.2;
+				version = 7.10.1;
 			};
 		};
 		7AAB1C3E2A06861400BA2429 /* XCRemoteSwiftPackageReference "swift-tagged" */ = {

@@ -1,0 +1,9 @@
+{
+  "labels": ["dependencies"],
+  "baseBranches": ["develop"],
+  "ignorePaths": ["Gemfile", ".ruby-version"],
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ]
+}

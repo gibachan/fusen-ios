@@ -165,12 +165,6 @@ final class SettingTabViewModel: ObservableObject {
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 
-    func onTwitter() {
-        let url = URL(string: "https://twitter.com/fusen__app")!
-        guard UIApplication.shared.canOpenURL(url) else { return }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
-    }
-
     enum State {
         case initial
         case linkingWithApple

@@ -118,14 +118,6 @@ struct SettingTabView: View {
                             .font(.medium)
                             .foregroundColor(.active)
                     }
-
-                    Button {
-                        viewModel.onTwitter()
-                    } label: {
-                        Text("Twitter")
-                            .font(.medium)
-                            .foregroundColor(.active)
-                    }
                     
                     HStack {
                         Text("バージョン :")

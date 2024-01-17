@@ -18,7 +18,7 @@ let package = Package(
             targets: ["Data"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/firebase/firebase-ios-sdk.git", exact: "10.19.1"),
+        .package(url: "https://github.com/firebase/firebase-ios-sdk.git", exact: "10.20.0"),
         .package(url: "https://github.com/realm/SwiftLint", exact: "0.52.4"),
         .package(url: "https://github.com/pointfreeco/swift-tagged", from: "0.6.0"),
     ],

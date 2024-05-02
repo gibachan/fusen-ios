@@ -12,7 +12,7 @@ env:
 jobs:
   test:
     name: Build and Run test
-    runs-on: macos-13
+    runs-on: macos-14
 
     steps:
       - name: Show Xcode version

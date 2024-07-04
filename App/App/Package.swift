@@ -8,9 +8,6 @@ let package = Package(
     platforms: [.iOS(.v16)],
     products: [
         .library(
-            name: "App",
-            targets: ["App"]),
-        .library(
             name: "Domain",
             targets: ["Domain"]),
         .library(
@@ -23,9 +20,6 @@ let package = Package(
         .package(url: "https://github.com/pointfreeco/swift-tagged", from: "0.10.0"),
     ],
     targets: [
-        .target(
-            name: "App",
-            dependencies: []),
         .target(
             name: "Domain",
             dependencies: [
@@ -46,9 +40,6 @@ let package = Package(
         .target(
             name: "Data",
             dependencies: ["Domain"]),
-        .testTarget(
-            name: "AppTests",
-            dependencies: ["App"]),
         .testTarget(
             name: "DomainTests",
             dependencies: ["Domain"]),

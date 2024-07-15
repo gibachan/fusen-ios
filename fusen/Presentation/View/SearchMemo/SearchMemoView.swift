@@ -10,7 +10,7 @@ import Domain
 import SwiftUI
 
 struct SearchMemoView: View {
-    let store: StoreOf<SearchMemo>
+    @Bindable var store: StoreOf<SearchMemo>
 
     @State private var searchText = ""
     @State private var searchType: SearchMemoType = .text
@@ -50,8 +50,10 @@ struct SearchMemoView: View {
             }
             .loading(viewStore.isLoading)
             .alert(
-                store.scope(state: \.alert),
-                dismiss: .alertDismissed
+                $store.scope(
+                    state: \.destination?.alert,
+                    action: \.destination.alert
+                )
             )
             .searchable(text: $searchText)
             .onChange(of: searchText, perform: { newValue in
@@ -78,11 +80,8 @@ private extension SearchMemoView {
 
 struct SearchMemoView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchMemoView(
-            store: Store(
-                initialState: SearchMemo.State(),
-                reducer: SearchMemo()
-            )
-        )
+        SearchMemoView(store: Store(initialState: SearchMemo.State()) {
+            SearchMemo()
+        })
     }
 }

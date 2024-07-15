@@ -55,15 +55,18 @@ struct SearchMemo {
         var isLoading = false
         var searchedMemos: [Memo] = []
         var isEmptyResult = false
-        var alert: AlertState<Action>?
+        
+        @Presents var destination: Destination.State?
     }
 
-    enum Action: Equatable {
+    enum Action: BindableAction {
         case typeSearchText(String)
         case selectType(SearchMemoType)
         case executeSearching
         case searched(TaskResult<[Memo]>)
-        case alertDismissed
+
+        case binding(BindingAction<State>)
+        case destination(PresentationAction<Destination.Action>)
     }
 
     @Dependency(\.searchMemoClient) var searchMemoClient: SearchMemoClient
@@ -97,15 +100,7 @@ struct SearchMemo {
                 state.isLoading = false
                 state.searchedMemos = []
                 state.isEmptyResult = false
-                state.alert = AlertState {
-                    TextState("通信エラー")
-                } actions: {
-                    ButtonState(role: .cancel) {
-                        TextState("閉じる")
-                    }
-                } message: {
-                    TextState("エラーが発生しました。ネットワーク環境を確認してみてください。")
-                }
+                state.destination = .alert(.networkError)
                 return .none
 
             case let .searched(.success(response)):
@@ -114,10 +109,37 @@ struct SearchMemo {
                 state.isEmptyResult = response.isEmpty
                 return .none
 
-            case .alertDismissed:
-                state.alert = nil
+            case .binding:
+                return .none
+
+            case .destination(.presented(.alert(.networkError))):
+                return .none
+            case .destination:
                 return .none
             }
         }
+    }
+}
+
+extension SearchMemo {
+    @Reducer(state: .equatable)
+    enum Destination {
+        case alert(AlertState<Alert>)
+
+        enum Alert: Equatable {
+            case networkError
+        }
+    }
+}
+
+extension AlertState where Action == SearchMemo.Destination.Alert {
+    static let networkError = Self {
+        TextState("通信エラー")
+    } actions: {
+        ButtonState(role: .cancel, action: .networkError) {
+            TextState("閉じる")
+        }
+    } message: {
+        TextState("エラーが発生しました。ネットワーク環境を確認してみてください。")
     }
 }

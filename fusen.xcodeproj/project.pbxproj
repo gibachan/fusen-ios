@@ -88,7 +88,6 @@
 		7AAA6A7F2A08D3C100A4B820 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7AAA6A7E2A08D3C100A4B820 /* GoogleSignInSwift */; };
 		7AAA6A822A08D40B00A4B820 /* CropViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 7AAA6A812A08D40B00A4B820 /* CropViewController */; };
 		7AAA6A852A08D45E00A4B820 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7AAA6A842A08D45E00A4B820 /* Kingfisher */; };
-		7AAB1C402A06861400BA2429 /* Tagged in Frameworks */ = {isa = PBXBuildFile; productRef = 7AAB1C3F2A06861400BA2429 /* Tagged */; };
 		7AB3898228AB7E3A000B5961 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A082000B26C1F5D100100357 /* Assets.xcassets */; };
 		7AB6FFE728AC7E2A00815F33 /* SearchBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6FFE628AC7E2A00815F33 /* SearchBookView.swift */; };
 		7AB6FFE928AC7E3300815F33 /* SearchBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6FFE828AC7E3300815F33 /* SearchBookViewModel.swift */; };
@@ -464,7 +463,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AAA6A7D2A08D3C100A4B820 /* GoogleSignIn in Frameworks */,
-				7AAB1C402A06861400BA2429 /* Tagged in Frameworks */,
 				7A79AEEB2AB86E6700E856C9 /* Data in Frameworks */,
 				7AAA6A7A2A08D35300A4B820 /* AlgoliaSearchClient in Frameworks */,
 				7AAA6A7F2A08D3C100A4B820 /* GoogleSignInSwift in Frameworks */,
@@ -1245,7 +1243,6 @@
 			name = fusen;
 			packageProductDependencies = (
 				7A21CD8529FB413B003E4F7C /* ComposableArchitecture */,
-				7AAB1C3F2A06861400BA2429 /* Tagged */,
 				7AAA6A792A08D35300A4B820 /* AlgoliaSearchClient */,
 				7AAA6A7C2A08D3C100A4B820 /* GoogleSignIn */,
 				7AAA6A7E2A08D3C100A4B820 /* GoogleSignInSwift */,
@@ -1312,7 +1309,6 @@
 			mainGroup = A082FFFB26C1F5CF00100357;
 			packageReferences = (
 				7A21CD8429FB413B003E4F7C /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
-				7AAB1C3E2A06861400BA2429 /* XCRemoteSwiftPackageReference "swift-tagged" */,
 				7AAA6A782A08D35300A4B820 /* XCRemoteSwiftPackageReference "algoliasearch-client-swift" */,
 				7AAA6A7B2A08D3C100A4B820 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				7AAA6A802A08D40B00A4B820 /* XCRemoteSwiftPackageReference "TOCropViewController" */,
@@ -2304,7 +2300,7 @@
 			repositoryURL = "https://github.com/algolia/algoliasearch-client-swift";
 			requirement = {
 				kind = exactVersion;
-				version = 8.19.0;
+				version = 8.20.1;
 			};
 		};
 		7AAA6A7B2A08D3C100A4B820 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
@@ -2312,7 +2308,7 @@
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS.git";
 			requirement = {
 				kind = exactVersion;
-				version = 7.0.0;
+				version = 7.1.0;
 			};
 		};
 		7AAA6A802A08D40B00A4B820 /* XCRemoteSwiftPackageReference "TOCropViewController" */ = {
@@ -2320,7 +2316,7 @@
 			repositoryURL = "https://github.com/TimOliver/TOCropViewController";
 			requirement = {
 				kind = exactVersion;
-				version = 2.6.1;
+				version = 2.7.3;
 			};
 		};
 		7AAA6A832A08D45E00A4B820 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
@@ -2328,15 +2324,7 @@
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
 				kind = exactVersion;
-				version = 7.10.1;
-			};
-		};
-		7AAB1C3E2A06861400BA2429 /* XCRemoteSwiftPackageReference "swift-tagged" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-tagged";
-			requirement = {
-				kind = exactVersion;
-				version = 0.10.0;
+				version = 7.12.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -2410,11 +2398,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7AAA6A832A08D45E00A4B820 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
-		};
-		7AAB1C3F2A06861400BA2429 /* Tagged */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7AAB1C3E2A06861400BA2429 /* XCRemoteSwiftPackageReference "swift-tagged" */;
-			productName = Tagged;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

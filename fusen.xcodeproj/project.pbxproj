@@ -2300,7 +2300,7 @@
 			repositoryURL = "https://github.com/algolia/algoliasearch-client-swift";
 			requirement = {
 				kind = exactVersion;
-				version = 8.19.0;
+				version = 8.20.1;
 			};
 		};
 		7AAA6A7B2A08D3C100A4B820 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
@@ -2308,7 +2308,7 @@
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS.git";
 			requirement = {
 				kind = exactVersion;
-				version = 7.0.0;
+				version = 7.1.0;
 			};
 		};
 		7AAA6A802A08D40B00A4B820 /* XCRemoteSwiftPackageReference "TOCropViewController" */ = {
@@ -2316,7 +2316,7 @@
 			repositoryURL = "https://github.com/TimOliver/TOCropViewController";
 			requirement = {
 				kind = exactVersion;
-				version = 2.6.1;
+				version = 2.7.3;
 			};
 		};
 		7AAA6A832A08D45E00A4B820 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
@@ -2324,7 +2324,7 @@
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
 				kind = exactVersion;
-				version = 7.10.1;
+				version = 7.12.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

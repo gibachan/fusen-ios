@@ -46,7 +46,9 @@ extension SearchMemoType: CustomStringConvertible {
     }
 }
 
-struct SearchMemo: ReducerProtocol {
+@Reducer
+struct SearchMemo {
+    @ObservableState
     struct State: Equatable {
         var searchText = ""
         var searchType = SearchMemoType.text
@@ -64,58 +66,58 @@ struct SearchMemo: ReducerProtocol {
         case alertDismissed
     }
 
-    private enum SearchMemoID {}
-
     @Dependency(\.searchMemoClient) var searchMemoClient: SearchMemoClient
 
-    func reduce(into state: inout State, action: Action) -> ComposableArchitecture.EffectTask<Action> {
-        switch action {
-        case let .typeSearchText(searchText):
-            state.searchText = searchText
-            if searchText.isEmpty {
+    var body: some Reducer<State, Action> {
+        Reduce { state, action in
+            switch action {
+            case let .typeSearchText(searchText):
+                state.searchText = searchText
+                if searchText.isEmpty {
+                    state.searchedMemos = []
+                    state.isEmptyResult = false
+                    return .none
+                } else {
+                    return .none
+                }
+
+            case let .selectType(searchMemoType):
+                state.searchType = searchMemoType
                 state.searchedMemos = []
                 state.isEmptyResult = false
-                return .cancel(id: SearchMemoID.self)
-            } else {
+                return .none
+
+            case .executeSearching:
+                state.isLoading = true
+                return .run { [searchText = state.searchText, searchType = state.searchType] send in
+                    await send(.searched(TaskResult { try await self.searchMemoClient.invoke(searchText, searchType) }))
+                }
+
+            case .searched(.failure):
+                state.isLoading = false
+                state.searchedMemos = []
+                state.isEmptyResult = false
+                state.alert = AlertState {
+                    TextState("通信エラー")
+                } actions: {
+                    ButtonState(role: .cancel) {
+                        TextState("閉じる")
+                    }
+                } message: {
+                    TextState("エラーが発生しました。ネットワーク環境を確認してみてください。")
+                }
+                return .none
+
+            case let .searched(.success(response)):
+                state.isLoading = false
+                state.searchedMemos = response
+                state.isEmptyResult = response.isEmpty
+                return .none
+
+            case .alertDismissed:
+                state.alert = nil
                 return .none
             }
-            
-        case let .selectType(searchMemoType):
-            state.searchType = searchMemoType
-            state.searchedMemos = []
-            state.isEmptyResult = false
-            return .none
-
-        case .executeSearching:
-            state.isLoading = true
-            return .task { [searchText = state.searchText, searchType = state.searchType] in
-                await .searched(TaskResult { try await self.searchMemoClient.invoke(searchText, searchType) })
-            }
-
-        case .searched(.failure):
-            state.isLoading = false
-            state.searchedMemos = []
-            state.isEmptyResult = false
-            state.alert = AlertState {
-              TextState("通信エラー")
-            } actions: {
-              ButtonState(role: .cancel) {
-                TextState("閉じる")
-              }
-            } message: {
-              TextState("エラーが発生しました。ネットワーク環境を確認してみてください。")
-            }
-            return .none
-
-        case let .searched(.success(response)):
-            state.isLoading = false
-            state.searchedMemos = response
-            state.isEmptyResult = response.isEmpty
-            return .none
-
-        case .alertDismissed:
-          state.alert = nil
-          return .none
         }
     }
 }

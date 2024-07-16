@@ -10,12 +10,9 @@ import SwiftUI
 
 struct SearchTabView: View {
     var body: some View {
-        SearchMemoView(
-            store: Store(
-                initialState: SearchMemo.State(),
-                reducer: SearchMemo()
-            )
-        )
+        SearchMemoView(store: Store(initialState: SearchMemo.State()) {
+            SearchMemo()
+        })
         .navigationBarTitle("検索")
     }
 }

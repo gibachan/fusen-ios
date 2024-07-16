@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/19.
 //
 
+import Domain
 import SwiftUI
 
 struct BookListItem: View {

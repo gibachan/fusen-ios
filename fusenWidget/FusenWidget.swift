@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2022/06/25.
 //
 
+import Domain
 import SwiftUI
 import WidgetKit
 
@@ -69,6 +70,7 @@ struct FusenWidgetEntryView: View {
                 }
             }
         }
+        .widgetBackground(Color.white)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
     }
@@ -84,6 +86,7 @@ struct FusenWidget: Widget {
             FusenWidgetEntryView(entry: entry)
         }
         .supportedFamilies([.systemSmall])
+        .contentMarginsDisabled()
         .configurationDisplayName("読書メモ")
         .description("読書中の書籍を表示します")
     }
@@ -91,12 +94,24 @@ struct FusenWidget: Widget {
 
 struct FusenWidget_Previews: PreviewProvider {
     private static let entry = SimpleEntry(date: Date(),
-                                           book: .init(id: .init(value: "1"),
+                                           book: .init(id: .init(stringLiteral: "1"),
                                                        title: "星の王子さま",
                                                        author: "アントアーヌ・ド・サン・テグジュペリ/河野万里子",
                                                        imageURL: URL(string: "https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/2044/9784102122044.jpg?_ex=200x200")!), isPreview: true)
     static var previews: some View {
         FusenWidgetEntryView(entry: entry)
             .previewContext(WidgetPreviewContext(family: .systemSmall))
+    }
+}
+
+private extension View {
+    func widgetBackground(_ backgroundView: some View) -> some View {
+        if #available(iOSApplicationExtension 17.0, *) {
+            return containerBackground(for: .widget) {
+                backgroundView
+            }
+        } else {
+            return background(backgroundView)
+        }
     }
 }

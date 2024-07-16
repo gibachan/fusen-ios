@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/10.
 //
 
+import Domain
 import SwiftUI
 
 extension Color {

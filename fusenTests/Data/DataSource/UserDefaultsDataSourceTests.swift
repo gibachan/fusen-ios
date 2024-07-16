@@ -5,6 +5,8 @@
 //  Created by Tatsuyuki Kobayashi on 2021/09/15.
 //
 
+import Data
+import Domain
 @testable import fusen
 import XCTest
 
@@ -41,9 +43,9 @@ class UserDefaultsDataSourceTests: XCTestCase {
     
     func testReadingBook() {
         XCTAssertNil(dataSource.readingBook)
-        dataSource.readingBook = CachedBook(id: .init(value: "1"), title: "A", author: "B", imageURL: URL(string: "https://example.com")!)
+        dataSource.readingBook = CachedBook(id: .init(stringLiteral: "1"), title: "A", author: "B", imageURL: URL(string: "https://example.com")!)
         let cachedBook = dataSource.readingBook
-        XCTAssertEqual(cachedBook?.id, ID<Book>(value: "1"))
+        XCTAssertEqual(cachedBook?.id, ID<Book>(stringLiteral: "1"))
         XCTAssertEqual(cachedBook?.title, "A")
         XCTAssertEqual(cachedBook?.author, "B")
         XCTAssertEqual(cachedBook?.imageURL, URL(string: "https://example.com"))

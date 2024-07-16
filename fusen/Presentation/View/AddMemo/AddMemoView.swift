@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/17.
 //
 
+import Domain
 import StoreKit
 import SwiftUI
 
@@ -123,6 +124,7 @@ struct AddMemoView: View {
             }
                 .disabled(!viewModel.isSaveEnabled)
         )
+        .loading(viewModel.isLoading)
         .confirmationDialog("画像を添付", isPresented: $isImagePickerSelectionPresented, titleVisibility: .visible) {
             Button {
                 isCameraPickerPresented = true
@@ -158,7 +160,7 @@ struct AddMemoView: View {
                     }
                 case .failure(let error):
                     log.e(error.localizedDescription)
-                    ErrorHUD.show(message: .unexpected)
+                    ErrorSnackbar.show(message: .unexpected)
                 }
             }
         })
@@ -195,23 +197,17 @@ struct AddMemoView: View {
         }
         .onReceive(viewModel.$state) { state in
             switch state {
-            case .initial:
+            case .initial, .loading, .recognizedQuote:
                 break
-            case .loading:
-                LoadingHUD.show()
             case let .succeeded(showAppReview):
-                LoadingHUD.dismiss()
                 if showAppReview {
                     if let windowScene = UIApplication.shared.currentKeyWindow?.windowScene {
                         SKStoreReviewController.requestReview(in: windowScene)
                     }
                 }
                 dismiss()
-            case .recognizedQuote:
-                LoadingHUD.dismiss()
             case .failed:
-                LoadingHUD.dismiss()
-                ErrorHUD.show(message: .addMemo)
+                ErrorSnackbar.show(message: .addMemo)
             }
         }
     }

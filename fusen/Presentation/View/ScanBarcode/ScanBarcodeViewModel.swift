@@ -6,6 +6,8 @@
 //
 
 import AVFoundation
+import Data
+import Domain
 import Foundation
 
 final class ScanBarcodeViewModel: ObservableObject {
@@ -24,8 +26,8 @@ final class ScanBarcodeViewModel: ObservableObject {
     
     init(
         analyticsService: AnalyticsServiceProtocol = AnalyticsService.shared,
-        searchPublicationByBarcodeUseCase: SearchPublicationByBarcodeUseCase = SearchPublicationByBarcodeUseCaseImpl(),
-        addBookByPublicationUseCase: AddBookByPublicationUseCase = AddBookByPublicationUseCaseImpl()
+        searchPublicationByBarcodeUseCase: SearchPublicationByBarcodeUseCase = SearchPublicationByBarcodeUseCaseImpl(analyticsService: AnalyticsService.shared, rakutenBooksPublicationRepository: RakutenBooksPublicationRepositoryImpl(), googleBooksPublicationRepository: GoogleBooksPublicationRepositoryImpl()),
+        addBookByPublicationUseCase: AddBookByPublicationUseCase = AddBookByPublicationUseCaseImpl(accountService: AccountService.shared, bookRepository: BookRepositoryImpl())
     ) {
         self.analyticsService = analyticsService
         self.searchPublicationByBarcodeUseCase = searchPublicationByBarcodeUseCase
@@ -73,7 +75,7 @@ final class ScanBarcodeViewModel: ObservableObject {
             } catch {
                 log.e("Not Found Book for \(isbn): \(error.localizedDescription)")
                 isScanning = false
-                ErrorHUD.show(message: .scanBarcode)
+                ErrorSnackbar.show(message: .scanBarcode)
             }
         }
     }
@@ -100,7 +102,7 @@ final class ScanBarcodeViewModel: ObservableObject {
             }
         } catch {
             log.e(error.localizedDescription)
-            ErrorHUD.show(message: .addBook)
+            ErrorSnackbar.show(message: .addBook)
         }
     }
     

@@ -5,15 +5,16 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/18.
 //
 
+import Domain
 import SwiftUI
 
 struct BookShelfCollectionSection: View {
     @StateObject private var viewModel: BookShelfCollectionSectionModel
-    private let collection: Collection
+    private let collection: Domain.Collection
     @Binding var isNavigated: Bool
     @Binding var navigation: BookShelfNavigation
 
-    init(collection: Collection, isNavigated: Binding<Bool>, navigation: Binding<BookShelfNavigation>) {
+    init(collection: Domain.Collection, isNavigated: Binding<Bool>, navigation: Binding<BookShelfNavigation>) {
         self._viewModel = StateObject(wrappedValue: BookShelfCollectionSectionModel(collection: collection))
         self.collection = collection
         self._isNavigated = isNavigated

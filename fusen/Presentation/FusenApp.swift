@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/10.
 //
 
+import Kingfisher
 import SwiftUI
 import UIKit
 
@@ -14,13 +15,16 @@ struct FusenApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
-                .onAppear { setupAppearance() }
+                .onAppear {
+                    setupAppearance()
+                    setupSDKs()
+                }
         }
     }
 }
 
-extension FusenApp {
-    private func setupAppearance() {
+private extension FusenApp {
+    func setupAppearance() {
         let textAttributes: [NSAttributedString.Key: Any] = [
             NSAttributedString.Key.foregroundColor: UIColor.textPrimary
         ]
@@ -30,5 +34,10 @@ extension FusenApp {
         UINavigationBar.appearance().backgroundColor = .clear
         
         UITabBar.appearance().backgroundColor = .backgroundLightGray
+    }
+
+    func setupSDKs() {
+        ImageCache.default.memoryStorage.config.expiration = .days(1)
+        ImageCache.default.diskStorage.config.expiration = .never
     }
 }

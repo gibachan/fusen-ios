@@ -5,6 +5,8 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/17.
 //
 
+import Data
+import Domain
 import Foundation
 
 final class AddMemoViewModel: NSObject, ObservableObject {
@@ -21,14 +23,23 @@ final class AddMemoViewModel: NSObject, ObservableObject {
     @Published var state: State = .initial
     @Published private var memoImage: ImageData?
     @Published var recognizedQuote = ""
+
+    var isLoading: Bool {
+        switch state {
+        case .loading:
+            return true
+        default:
+            return false
+        }
+    }
     
     init(
         book: Book,
-        getUserActionHistoryUseCase: GetUserActionHistoryUseCase = GetUserActionHistoryUseCaseImpl(),
-        addMemoUseCase: AddMemoUseCase = AddMemoUseCaseImpl(),
-        readBookUseCase: ReadBookUseCase = ReadBookUseCaseImpl(),
-        recognizeTextUseCase: RecognizeTextUseCase = RecognizeTextUseCaseImpl(),
-        reviewAppUseCase: ReviewAppUseCase = ReviewAppUseCaseImpl()
+        getUserActionHistoryUseCase: GetUserActionHistoryUseCase = GetUserActionHistoryUseCaseImpl(userActionHistoryRepository: UserActionHistoryRepositoryImpl()),
+        addMemoUseCase: AddMemoUseCase = AddMemoUseCaseImpl(accountService: AccountService.shared, memoRepository: MemoRepositoryImpl()),
+        readBookUseCase: ReadBookUseCase = ReadBookUseCaseImpl(userActionHistoryRepository: UserActionHistoryRepositoryImpl()),
+        recognizeTextUseCase: RecognizeTextUseCase = RecognizeTextUseCaseImpl(appConfigRepository: AppConfigRepositoryImpl(), visionTextRecognizeService: VisionTextRecognizeService()),
+        reviewAppUseCase: ReviewAppUseCase = ReviewAppUseCaseImpl(userActionHistoryRepository: UserActionHistoryRepositoryImpl())
     ) {
         self.book = book
         self.getUserActionHistoryUseCase = getUserActionHistoryUseCase

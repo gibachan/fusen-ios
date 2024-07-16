@@ -23,7 +23,9 @@ struct BookShelfTabView: View {
                 ForEach(viewModel.collections, id: \.id.value) { collection in
                     BookShelfCollectionSection(collection: collection, isNavigated: $isNavigated, navigation: $navigation)
                 }
-                BookShelfAllSection(isNavigated: $isNavigated, navigation: $navigation)
+                if viewModel.state == .succeeded {
+                    BookShelfAllSection(isNavigated: $isNavigated, navigation: $navigation)
+                }
             }
             .listStyle(PlainListStyle())
             .refreshable {
@@ -33,6 +35,7 @@ struct BookShelfTabView: View {
             toolbarView
         }
         .listStyle(PlainListStyle())
+        .loading(viewModel.state == .loading)
         .navigationBarTitle("本棚")
         .navigation(isActive: $isNavigated, destination: {
             switch navigation {
@@ -66,18 +69,6 @@ struct BookShelfTabView: View {
         }
         .task {
             await viewModel.onAppear()
-        }
-        .onReceive(viewModel.$state) { state in
-            switch state {
-            case .initial:
-                break
-            case .loading:
-                LoadingHUD.show()
-            case .succeeded:
-                LoadingHUD.dismiss()
-            case .failed:
-                LoadingHUD.dismiss()
-            }
         }
         .onReceive(NotificationCenter.default.bookShelfPopToRootPublisher()) { _ in
             isNavigated = false

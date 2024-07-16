@@ -65,21 +65,18 @@ struct DeleteAccountView: View {
         .listStyle(InsetGroupedListStyle())
         .navigationBarTitle("アカウントを削除", displayMode: .inline)
         .navigationBarItems(leading: CancelButton { dismiss() })
+        .loading(viewModel.state == .loading)
         .task {
             await viewModel.onAppear()
         }
         .onReceive(viewModel.$state) { state in
             switch state {
-            case .initial:
-                LoadingHUD.dismiss()
-            case .loading:
-                LoadingHUD.show()
+            case .initial, .loading:
+                break
             case .deleted:
-                LoadingHUD.dismiss()
                 dismiss()
             case .failed:
-                LoadingHUD.dismiss()
-                ErrorHUD.show(message: .deleteAccount)
+                ErrorSnackbar.show(message: .deleteAccount)
             }
         }
         .alert(isPresented: $isDeleteAlertPresented) {

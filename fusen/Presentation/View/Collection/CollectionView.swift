@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/19.
 //
 
+import Domain
 import SwiftUI
 
 struct CollectionView: View {
@@ -15,7 +16,7 @@ struct CollectionView: View {
     @State private var isDeleteAlertPresented = false
     @State private var displayStyle: DisplayStyle = .list
 
-    init(collection: Collection) {
+    init(collection: Domain.Collection) {
         self._viewModel = StateObject(wrappedValue: CollectionViewModel(collection: collection))
     }
     
@@ -113,23 +114,9 @@ struct CollectionView: View {
             })
             Button("キャンセル", role: .cancel, action: {})
         }
+        .loading(viewModel.state == .loading)
         .task {
             await viewModel.onAppear()
-        }
-        .onReceive(viewModel.$state) { state in
-            switch state {
-            case .initial, .loadingNext, .refreshing:
-                break
-            case .loading:
-                LoadingHUD.show()
-            case .succeeded:
-                LoadingHUD.dismiss()
-            case .deleted:
-                LoadingHUD.dismiss()
-                dismiss()
-            case .failed:
-                LoadingHUD.dismiss()
-            }
         }
     }
 }

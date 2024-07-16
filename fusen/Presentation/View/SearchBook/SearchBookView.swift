@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2022/08/17.
 //
 
+import Domain
 import SwiftUI
 
 struct SearchBookView: View {
@@ -13,7 +14,7 @@ struct SearchBookView: View {
     @State private var searchText: String = ""
     @State private var isConfirmAlertPresented = false
     
-    init(in collection: Collection? = nil) {
+    init(in collection: Domain.Collection? = nil) {
         self._viewModel = StateObject(wrappedValue: SearchBookViewModel(collection: collection))
     }
 
@@ -42,6 +43,7 @@ struct SearchBookView: View {
             }
         }
         .navigationBarTitle("書籍をタイトルで検索", displayMode: .inline)
+        .loading(viewModel.state == .loading)
         .searchable(text: $searchText,
                     placement: .navigationBarDrawer(displayMode: .always),
                     prompt: Text("タイトルを入力"))
@@ -64,21 +66,14 @@ struct SearchBookView: View {
         }
         .onReceive(viewModel.$state) { state in
             switch state {
-            case .initial:
+            case .initial, .loading, .loaded:
                 break
-            case .loading:
-                LoadingHUD.show()
-            case .loaded:
-                LoadingHUD.dismiss()
             case .added:
-                LoadingHUD.dismiss()
                 dismiss()
             case .loadFailed:
-                LoadingHUD.dismiss()
-                ErrorHUD.show(message: .network)
+                ErrorSnackbar.show(message: .network)
             case .addFailed:
-                LoadingHUD.dismiss()
-                ErrorHUD.show(message: .addBook)
+                ErrorSnackbar.show(message: .addBook)
             }
         }
     }

@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/18.
 //
 
+import Domain
 import SwiftUI
 
 struct EditMemoView: View {
@@ -107,6 +108,7 @@ struct EditMemoView: View {
             }
                 .disabled(!viewModel.isSaveEnabled)
         )
+        .loading(viewModel.state == .loading)
         .sheet(isPresented: $isMemoImagePresented, onDismiss: {
         }, content: {
             NavigationView {
@@ -133,18 +135,12 @@ struct EditMemoView: View {
         }
         .onReceive(viewModel.$state) { state in
             switch state {
-            case .initial:
+            case .initial, .loading, .failed:
                 break
-            case .loading:
-                LoadingHUD.show()
             case .succeeded:
-                LoadingHUD.dismiss()
                 dismiss()
             case .deleted:
-                LoadingHUD.dismiss()
                 dismiss()
-            case .failed:
-                LoadingHUD.dismiss()
             }
         }
     }

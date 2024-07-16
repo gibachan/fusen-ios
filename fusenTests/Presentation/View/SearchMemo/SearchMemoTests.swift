@@ -6,6 +6,7 @@
 //
 
 import ComposableArchitecture
+import Domain
 @testable import fusen
 import XCTest
 
@@ -16,7 +17,7 @@ class SearchMemoTests: XCTestCase {
             initialState: SearchMemo.State(),
             reducer: SearchMemo()
         ) {
-            $0.searchMemoClient.invoke = { _ in [Memo.sample] }
+            $0.searchMemoClient.invoke = { _, _ in [Memo.sample] }
         }
 
         await store.send(.typeSearchText("S")) {
@@ -40,7 +41,7 @@ class SearchMemoTests: XCTestCase {
             initialState: SearchMemo.State(),
             reducer: SearchMemo()
         ) {
-            $0.searchMemoClient.invoke = { _ in throw SearchMemosUseCaseError.badNetwork }
+            $0.searchMemoClient.invoke = { _, _ in throw SearchMemosUseCaseError.badNetwork }
         }
 
         await store.send(.typeSearchText("S")) {

@@ -6,6 +6,8 @@
 //
 
 import AuthenticationServices
+import Data
+import Domain
 import FirebaseAuth
 import Foundation
 
@@ -21,7 +23,7 @@ final class SettingTabViewModel: ObservableObject {
     
     init(
         accountService: AccountServiceProtocol = AccountService.shared,
-        resetUserActionHistoryUseCase: ResetUserActionHistoryUseCase = ResetUserActionHistoryUseCaseImpl()
+        resetUserActionHistoryUseCase: ResetUserActionHistoryUseCase = ResetUserActionHistoryUseCaseImpl(userActionHistoryRepository: UserActionHistoryRepositoryImpl())
     ) {
         self.accountService = accountService
         self.resetUserActionHistoryUseCase = resetUserActionHistoryUseCase
@@ -159,12 +161,6 @@ final class SettingTabViewModel: ObservableObject {
     
     func onAppReview() {
         let url = URL(string: "https://itunes.apple.com/jp/app/id1585547803?mt=8&action=write-review")!
-        guard UIApplication.shared.canOpenURL(url) else { return }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
-    }
-
-    func onTwitter() {
-        let url = URL(string: "https://twitter.com/fusen__app")!
         guard UIApplication.shared.canOpenURL(url) else { return }
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }

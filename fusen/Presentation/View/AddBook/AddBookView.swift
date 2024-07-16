@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/23.
 //
 
+import Domain
 import SwiftUI
 
 struct AddBookView: View {
@@ -17,9 +18,9 @@ struct AddBookView: View {
     @State private var isCameraPickerPresented = false
     @State private var isPhotoLibraryPresented = false
     @FocusState private var focus: Bool
-    private let collection: Collection?
+    private let collection: Domain.Collection?
     
-    init(in collection: Collection? = nil) {
+    init(in collection: Domain.Collection? = nil) {
         self.collection = collection
     }
     
@@ -92,6 +93,7 @@ struct AddBookView: View {
             }
                 .disabled(!viewModel.isSaveEnabled)
         )
+        .loading(viewModel.state == .loading)
         .confirmationDialog("書籍画像を変更", isPresented: $isThumbnailPickerPresented, titleVisibility: .visible) {
             Button {
                 isCameraPickerPresented = true
@@ -132,16 +134,12 @@ struct AddBookView: View {
         }
         .onReceive(viewModel.$state) { state in
             switch state {
-            case .initial:
+            case .initial, .loading:
                 break
-            case .loading:
-                LoadingHUD.show()
             case .succeeded:
-                LoadingHUD.dismiss()
                 dismiss()
             case .failed:
-                LoadingHUD.dismiss()
-                ErrorHUD.show(message: .addBook)
+                ErrorSnackbar.show(message: .addBook)
             }
         }
     }

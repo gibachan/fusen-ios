@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/12.
 //
 
+import Domain
 import SwiftUI
 
 struct HomeTabView: View {
@@ -40,6 +41,7 @@ struct HomeTabView: View {
                 readingBookFooter(book: readigBook)
             }
         }
+        .loading(viewModel.state == .loading)
         .navigation(isActive: $isNavigated, destination: {
             switch navigation {
             case .none:
@@ -67,18 +69,6 @@ struct HomeTabView: View {
                 if let readingBook = viewModel.readingBook {
                     AddMemoView(book: readingBook)
                 }
-            }
-        }
-        .onReceive(viewModel.$state) { state in
-            switch state {
-            case .initial:
-                break
-            case .loading:
-                LoadingHUD.show()
-            case .loaded, .empty:
-                LoadingHUD.dismiss()
-            case .failed:
-                LoadingHUD.dismiss()
             }
         }
         .onReceive(NotificationCenter.default.tutorialFinishedPublisher()) { _ in

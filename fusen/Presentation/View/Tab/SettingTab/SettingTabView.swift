@@ -12,6 +12,8 @@ struct SettingTabView: View {
     @StateObject private var viewModel = SettingTabViewModel()
     @State private var alertType: AlertType?
     @State private var isDeleteAccountPresented = false
+
+
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
@@ -116,14 +118,6 @@ struct SettingTabView: View {
                             .font(.medium)
                             .foregroundColor(.active)
                     }
-
-                    Button {
-                        viewModel.onTwitter()
-                    } label: {
-                        Text("Twitter")
-                            .font(.medium)
-                            .foregroundColor(.active)
-                    }
                     
                     HStack {
                         Text("バージョン :")
@@ -191,26 +185,20 @@ struct SettingTabView: View {
             .buttonStyle(PlainButtonStyle())
         }
         .navigationBarTitle("設定")
+        .loading(viewModel.state == .linkingWithApple || viewModel.state == .linkingWithGoogle)
         .onAppear {
             viewModel.onApper()
         }
         .onReceive(viewModel.$state) { state in
             switch state {
-            case .initial:
+            case .initial, .linkingWithApple, .linkingWithGoogle, .succeeded:
                 break
-            case .linkingWithApple, .linkingWithGoogle:
-                LoadingHUD.show()
-            case .succeeded:
-                LoadingHUD.dismiss()
             case .failed:
-                LoadingHUD.dismiss()
-                ErrorHUD.show(message: .network)
+                ErrorSnackbar.show(message: .network)
             case .failedlinkingWithApple:
-                LoadingHUD.dismiss()
-                ErrorHUD.show(message: .linkWithAppleId)
+                ErrorSnackbar.show(message: .linkWithAppleId)
             case .failedlinkingWithGoogle:
-                LoadingHUD.dismiss()
-                ErrorHUD.show(message: .linkWithGoogle)
+                ErrorSnackbar.show(message: .linkWithGoogle)
             }
         }
         .alert(item: $alertType, content: { type in

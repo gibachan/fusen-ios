@@ -5,6 +5,8 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/22.
 //
 
+import Data
+import Domain
 import Foundation
 
 final class BookShelfAllSectionModel: ObservableObject {
@@ -15,7 +17,7 @@ final class BookShelfAllSectionModel: ObservableObject {
     @Published var bookColumns: [BookShelfColumn] = []
     
     init(
-        getAllBooksUseCase: GetAllBooksUseCase = GetAllBooksUseCaseImpl(sortedBy: .default)
+        getAllBooksUseCase: GetAllBooksUseCase = GetAllBooksUseCaseImpl(sortedBy: .default, accountService: AccountService.shared, bookRepository: BookRepositoryImpl())
     ) {
         self.getAllBooksUseCase = getAllBooksUseCase
     }

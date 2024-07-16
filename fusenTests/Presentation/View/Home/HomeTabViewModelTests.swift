@@ -6,6 +6,7 @@
 //
 
 import Combine
+import Domain
 import XCTest
 
 @testable import fusen

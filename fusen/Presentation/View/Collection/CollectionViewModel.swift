@@ -5,6 +5,8 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/19.
 //
 
+import Data
+import Domain
 import Foundation
 
 final class CollectionViewModel: ObservableObject {
@@ -20,9 +22,9 @@ final class CollectionViewModel: ObservableObject {
     
     init(
         collection: Collection,
-        getCurrentBookSortUseCase: GetCurrentBookSortUseCase = GetCurrentBookSortUseCaseImpl(),
-        updateCurrentBookSortUseCase: UpdateCurrentBookSortUseCase = UpdateCurrentBookSortUseCaseImpl(),
-        deleteCollectionUseCase: DeleteCollectionUseCase = DeleteCollectionUseCaseImpl()
+        getCurrentBookSortUseCase: GetCurrentBookSortUseCase = GetCurrentBookSortUseCaseImpl(userActionHistoryRepository: UserActionHistoryRepositoryImpl()),
+        updateCurrentBookSortUseCase: UpdateCurrentBookSortUseCase = UpdateCurrentBookSortUseCaseImpl(userActionHistoryRepository: UserActionHistoryRepositoryImpl()),
+        deleteCollectionUseCase: DeleteCollectionUseCase = DeleteCollectionUseCaseImpl(accountService: AccountService.shared, collectionRepository: CollectionRepositoryImpl())
     ) {
         self.getCurrentBookSortUseCase = getCurrentBookSortUseCase
         self.updateCurrentBookSortUseCase = updateCurrentBookSortUseCase
@@ -30,7 +32,7 @@ final class CollectionViewModel: ObservableObject {
         let sortedBy = bookSort
         self.sortedBy = sortedBy
         self.collection = collection
-        self.getBooksByCollectionUseCase = GetBooksByCollectionUseCaseImpl(collection: collection, sortedBy: bookSort)
+        self.getBooksByCollectionUseCase = GetBooksByCollectionUseCaseImpl(collection: collection, sortedBy: bookSort, accountService: AccountService.shared, bookRepository: BookRepositoryImpl())
         self.deleteCollectionUseCase = deleteCollectionUseCase
     }
     
@@ -77,7 +79,7 @@ final class CollectionViewModel: ObservableObject {
     func onSort(_ sortedBy: BookSort) async {
         updateCurrentBookSortUseCase.invoke(bookSort: sortedBy)
         self.sortedBy = sortedBy
-        self.getBooksByCollectionUseCase = GetBooksByCollectionUseCaseImpl(collection: collection, sortedBy: sortedBy)
+        self.getBooksByCollectionUseCase = GetBooksByCollectionUseCaseImpl(collection: collection, sortedBy: sortedBy, accountService: AccountService.shared, bookRepository: BookRepositoryImpl())
         await refresh()
     }
     

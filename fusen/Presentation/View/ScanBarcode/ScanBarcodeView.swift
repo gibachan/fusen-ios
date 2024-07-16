@@ -5,15 +5,16 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/12.
 //
 
+import Domain
 import SwiftUI
 
 struct ScanBarcodeView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel = ScanBarcodeViewModel()
     @State private var isSuggestPresented = false
-    private let collection: Collection?
+    private let collection: Domain.Collection?
     
-    init(in collection: Collection? = nil) {
+    init(in collection: Domain.Collection? = nil) {
         self.collection = collection
     }
     

@@ -5,10 +5,11 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/21.
 //
 
+import Domain
 import SwiftUI
 
 struct CollectionItemView: View {
-    let collection: Collection
+    let collection: Domain.Collection
     let isSelected: Bool
     var body: some View {
         HStack(alignment: .center, spacing: 8) {

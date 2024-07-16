@@ -53,6 +53,7 @@ struct AddCollectionView: View {
             }
                 .disabled(!viewModel.isSaveEnabled)
         )
+        .loading(viewModel.state == .loading)
         .task {
             await viewModel.onAppear()
         }
@@ -63,21 +64,14 @@ struct AddCollectionView: View {
         }
         .onReceive(viewModel.$state) { state in
             switch state {
-            case .initial:
+            case .initial, .loading, .collectionsLoaded:
                 break
-            case .loading:
-                LoadingHUD.show()
-            case .collectionsLoaded:
-                LoadingHUD.dismiss()
             case .collectionAdded:
-                LoadingHUD.dismiss()
                 dismiss()
             case .failed:
-                LoadingHUD.dismiss()
-                ErrorHUD.show(message: .addCollection)
+                ErrorSnackbar.show(message: .addCollection)
             case .collectionCountOver:
-                LoadingHUD.dismiss()
-                ErrorHUD.show(message: .collectionCountOver)
+                ErrorSnackbar.show(message: .collectionCountOver)
             }
         }
     }

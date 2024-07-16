@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/16.
 //
 
+import Domain
 import SwiftUI
 
 struct BookView: View {
@@ -21,7 +22,7 @@ struct BookView: View {
     }
     
     var body: some View {
-        Group {
+        ZStack {
             if case let .loaded(book) = viewModel.state {
                 VStack(alignment: .leading, spacing: 0) {
                     List {
@@ -89,27 +90,24 @@ struct BookView: View {
                         })
                     )
                 }
-            } else {
+            }
+
+            if viewModel.isEmpty {
                 BookEmptyView()
             }
         }
         .navigationBarTitle("書籍", displayMode: .inline)
+        .loading(viewModel.isLoading)
         .task {
             await viewModel.onAppear()
         }
         .onReceive(viewModel.$state) { state in
             switch state {
-            case .initial:
+            case .initial, .loading, .loaded, .failed:
                 break
-            case .loading:
-                LoadingHUD.show()
-            case .loaded:
-                LoadingHUD.dismiss()
             case .deleted:
                 LoadingHUD.dismiss()
                 dismiss()
-            case .failed:
-                LoadingHUD.dismiss()
             }
         }
         .onReceive(NotificationCenter.default.refreshBookShelfAllCollectionPublisher()) { _ in

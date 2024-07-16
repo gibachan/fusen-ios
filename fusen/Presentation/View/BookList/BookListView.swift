@@ -43,6 +43,7 @@ struct BookListView: View {
                 isSortPresented = true
             }
         })
+        .loading(viewModel.state == .loading)
         .sheet(isPresented: $isAddPresented) {
             Task {
                 await viewModel.onRefresh()
@@ -88,18 +89,6 @@ struct BookListView: View {
         }
         .task {
             await viewModel.onAppear()
-        }
-        .onReceive(viewModel.$state) { state in
-            switch state {
-            case .initial, .loadingNext, .refreshing:
-                break
-            case .loading:
-                LoadingHUD.show()
-            case .succeeded:
-                LoadingHUD.dismiss()
-            case .failed:
-                LoadingHUD.dismiss()
-            }
         }
     }
 }

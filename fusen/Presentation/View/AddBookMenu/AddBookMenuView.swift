@@ -5,6 +5,7 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/11.
 //
 
+import Domain
 import SwiftUI
 
 struct AddBookMenuView: View {
@@ -17,7 +18,7 @@ struct AddBookMenuView: View {
     @State private var isManualInputPresented = false
     @State private var selectedCollection = ""
     
-    init(in initialCollection: Collection? = nil) {
+    init(in initialCollection: Domain.Collection? = nil) {
         self._viewModel = StateObject(wrappedValue: AddBookMenuViewModel(initialCollection: initialCollection))
     }
     
@@ -41,29 +42,30 @@ struct AddBookMenuView: View {
                         AddBookMenuItem(type: AddBookMenuType.manual)
                     }
                 }
-                
+
+                // FIXME: unexpected build error occures
                 if viewModel.collections.isNotEmpty {
-                    Section {
-                        Picker(
-                            selection: $selectedCollection,
-                            label: Text("コレクション :")                            .foregroundColor(.textPrimary)
-                        ) {
-                            Text("指定なし")
-                                .tag(noCollectionSelectedTag)
-                                .foregroundColor(.textSecondary)
-                            ForEach(viewModel.collections, id: \.name) { collection in
-                                Text(collection.name)
-                                    .tag(collection.id.value)
-                                    .foregroundColor(.textSecondary)
-                            }
-                        }
-                        .font(.medium)
-                        .onChange(of: selectedCollection) { newValue in
-                            viewModel.onSelectCollection(id: ID<Collection>(value: newValue))
-                        }
-                    } header: {
-                        SectionHeaderText("追加するコレクション")
-                    }
+//                    Section {
+//                        Picker(
+//                            selection: $selectedCollection,
+//                            label: Text("コレクション :")                            .foregroundColor(.textPrimary)
+//                        ) {
+//                            Text("指定なし")
+//                                .tag(noCollectionSelectedTag)
+//                                .foregroundColor(.textSecondary)
+//                            ForEach(viewModel.collections, id: \.name) { collection in
+//                                Text(collection.name)
+//                                    .tag(collection.id.value)
+//                                    .foregroundColor(.textSecondary)
+//                            }
+//                        }
+//                        .font(.medium)
+//                        .onChange(of: selectedCollection) { newValue in
+//                            viewModel.onSelectCollection(id: ID<Domain.Collection>(value: newValue))
+//                        }
+//                    } header: {
+//                        SectionHeaderText("追加するコレクション")
+//                    }
                 }
             }
             .fullScreenCover(isPresented: $isScanBarcodePresented, onDismiss: {

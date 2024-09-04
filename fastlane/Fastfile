@@ -24,4 +24,8 @@ platform :ios do
       xcargs: '-skipPackagePluginValidation'
     )
   end
+
+  lane :certificate do
+    match(type: "development", readonly: true)
+  end
 end

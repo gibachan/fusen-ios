@@ -30,3 +30,13 @@ fusen is an iOS app which makes your reading experience better. You can manage a
 
 You need to place `./App/App/Sources/Data/Resource/APIKey.swift` to provide some API keys.
 Please refer to `./App/App/Sources/Data/Resource/APIKey-dummy.swift`.
+
+## Match
+
+https://github.com/gibachan/apple-certificates
+
+- `% bundle install --path vendor/bundle`
+- `% bundle exec fastlane match init`
+- `% export FASTLANE_PASSWORD=xxxxxxxxxxx`
+- `% bundle exec fastlane match development`
+    - `Passphrase for Match storage: helloworld`

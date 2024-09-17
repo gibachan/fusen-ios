@@ -24,22 +24,22 @@ extension Color {
     static let backgroundGray = Color("backgroundGray")
     static let backgroundLightGray = Color("backgroundLightGray")
     static let backgroundSystemGroup = Color(UIColor.systemGroupedBackground)
-    
+
     // Misc
     static let border = Color("border")
     static let info = Color(UIColor.systemGray)
     static let warning = Color(UIColor.systemYellow)
     static let error = Color(UIColor.systemRed)
     static let placeholder = Color("placeholder")
-    
+
     static let active = Color("active")
     static let inactive = Color(UIColor.systemGray)
     static let alert = Color(UIColor.systemRed)
-    
+
     init(rgb: RGB) {
         self.init(red: CGFloat(rgb.red) / 255, green: CGFloat(rgb.green) / 255, blue: CGFloat(rgb.blue) / 255)
     }
-    
+
     func rgb() -> RGB? {
         let uiColor = UIColor(self)
         var r: CGFloat = 0

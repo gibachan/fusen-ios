@@ -17,16 +17,16 @@ class CameraPreview: UIView {
     private let metadataOutput = AVCaptureMetadataOutput()
     private var previewLayer: AVCaptureVideoPreviewLayer?
     private var label: UILabel?
-    
+
     // 読み取り範囲
     private let detectionX: CGFloat = 0.1
     private let detectionY: CGFloat = 0.4
     private let detectionWidth: CGFloat = 0.8
     private let detectionHeight: CGFloat = 0.2
     private var detectionAreaView: UIView?
-    
+
     weak var delegate: CameraPreviewDelegate?
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         #if targetEnvironment(simulator)
@@ -66,7 +66,7 @@ extension CameraPreview {
             session.addOutput(metadataOutput)
             metadataOutput.metadataObjectTypes = [.ean8, .ean13]
             metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-            
+
             // 読み取り範囲を指定
             metadataOutput.rectOfInterest = CGRect(x: detectionY, y: 1 - detectionX - detectionWidth, width: detectionHeight, height: detectionWidth)
         }
@@ -107,9 +107,9 @@ extension CameraPreview: AVCaptureMetadataOutputObjectsDelegate {
         guard let metadataObject = metadataObjects.first,
               let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject,
               let value = readableObject.stringValue else { return }
-        
+
         log.d("metadataObjects: \(metadataObjects.count) found!! \(value)")
-               
+
         delegate?.cameraPreviewDidDetectBarcode(code: value)
     }
 }

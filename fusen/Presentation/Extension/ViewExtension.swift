@@ -11,19 +11,19 @@ extension View {
     func backgroundColor(_ color: Color) -> some View {
         self.background(color)
     }
-    
+
     func navigation<Destination: View>(
         isActive: Binding<Bool>,
         @ViewBuilder destination: () -> Destination
     ) -> some View {
         background(NavigationLink(isActive: isActive, destination: destination, label: { EmptyView() }))
     }
-    
+
     func debug(_ block: () -> Void) -> some View {
         block()
         return self
     }
-    
+
     func centerHorizontally() -> some View {
         HStack {
             Spacer()

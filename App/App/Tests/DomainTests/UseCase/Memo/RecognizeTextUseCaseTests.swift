@@ -8,7 +8,7 @@
 import Domain
 import XCTest
 
-//class RecognizeTextUseCaseTests: XCTestCase {
+// class RecognizeTextUseCaseTests: XCTestCase {
 //    func testUseVisionTextRecognizeService() async {
 //        let visionTextRecognizeService = MockTextRecognizeService(result: "hoge")
 //        let useCase = RecognizeTextUseCaseImpl(visionTextRecognizeService: visionTextRecognizeService)
@@ -16,15 +16,15 @@ import XCTest
 //        XCTAssertTrue(visionTextRecognizeService.consumed)
 //        XCTAssertEqual(text, "hoge")
 //    }
-//}
+// }
 //
-//private extension ImageData {
+// private extension ImageData {
 //    static var sample: ImageData {
 //        ImageData(type: .book, data: UIImage.actions.jpegData(compressionQuality: 1)!)
 //    }
-//}
+// }
 //
-//private class MockTextRecognizeService: TextRecognizeServiceProtocol {
+// private class MockTextRecognizeService: TextRecognizeServiceProtocol {
 //    private let result: String
 //    var consumed = false
 //    init(result: String) {
@@ -34,4 +34,4 @@ import XCTest
 //        consumed = true
 //        return result
 //    }
-//}
+// }

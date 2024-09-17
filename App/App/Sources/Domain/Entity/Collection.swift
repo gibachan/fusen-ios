@@ -10,7 +10,7 @@ import Foundation
 public struct Collection {
     public let id: ID<Collection>
     public let color: RGB
-    
+
     public var name: String { id.value }
 
     public init(
@@ -30,7 +30,7 @@ extension Collection: Equatable {
 
 public extension Collection {
     static let countLimit = 20
-    
+
     static var sample: Collection {
         Collection(
             id: ID(value: "ミステリー"),

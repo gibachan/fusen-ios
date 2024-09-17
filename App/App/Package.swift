@@ -25,17 +25,13 @@ let package = Package(
             dependencies: [
                 .product(name: "FirebaseAppCheck", package: "firebase-ios-sdk"), // TODO: Remove this dependency
                 .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk"), // TODO: Remove this dependency
-                .product(name: "FirebaseAnalyticsSwift", package: "firebase-ios-sdk"), // TODO: Remove this dependency
                 .product(name: "FirebaseAuth", package: "firebase-ios-sdk"), // TODO: Remove this dependency
                 .product(name: "FirebaseCrashlytics", package: "firebase-ios-sdk"), // TODO: Remove this dependency
                 .product(name: "FirebaseFunctions", package: "firebase-ios-sdk"), // TODO: Remove this
                 .product(name: "FirebaseFirestore", package: "firebase-ios-sdk"), // TODO: Remove this
-                .product(name: "FirebaseFirestoreSwift", package: "firebase-ios-sdk"), // TODO: Remove this
                 .product(name: "FirebaseStorage", package: "firebase-ios-sdk"), // TODO: Remove this
                 .product(name: "FirebaseRemoteConfig", package: "firebase-ios-sdk"), // TODO: Remove this
-                .product(name: "FirebaseRemoteConfigSwift", package: "firebase-ios-sdk"), // TODO: Remove this
-                .product(name: "Tagged",
-                         package: "swift-tagged"),
+                .product(name: "Tagged", package: "swift-tagged"),
             ]),
         .target(
             name: "Data",
@@ -52,7 +48,7 @@ package.targets = package.targets.map { target -> Target in
         if target.plugins == nil {
             target.plugins = []
         }
-        target.plugins?.append(.plugin(name: "SwiftLintPlugin", package: "SwiftLint"))
+        target.plugins?.append(.plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLint"))
     }
 
     return target

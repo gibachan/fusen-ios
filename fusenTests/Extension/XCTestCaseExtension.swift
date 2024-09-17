@@ -16,7 +16,7 @@ extension XCTestCase {
         line: UInt = #line
     ) async {
         var thrownError: Error?
-        
+
         do {
             _ = try await expression()
             XCTFail("expression does not throw error", file: file, line: line)

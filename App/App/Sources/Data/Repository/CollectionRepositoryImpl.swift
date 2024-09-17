@@ -7,16 +7,15 @@
 
 import Domain
 import FirebaseFirestore
-import FirebaseFirestoreSwift
 import Foundation
 
 public final class CollectionRepositoryImpl: CollectionRepository {
-    private let db = Firestore.firestore()
+    private let database = Firestore.firestore()
 
     public init() {}
 
     public func getlCollections(for user: User) async throws -> [Collection] {
-        let query = db.collectionCollection(for: user)
+        let query = database.collectionCollection(for: user)
             .orderByCreatedAtDesc()
         let snapshot: QuerySnapshot
         do {
@@ -34,7 +33,7 @@ public final class CollectionRepositoryImpl: CollectionRepository {
                 return getCollection.toDomain(id: document.documentID)
             }
     }
-    
+
     public func addCollection(name: String, color: RGB, for user: User) async throws -> ID<Collection> {
         typealias AddCollectionContinuation = CheckedContinuation<ID<Collection>, Error>
         return try await withCheckedThrowingContinuation { (continuation: AddCollectionContinuation) in
@@ -42,7 +41,7 @@ public final class CollectionRepositoryImpl: CollectionRepository {
                 color: color.array
             )
             var ref: DocumentReference?
-            ref = db.collectionCollection(for: user)
+            ref = database.collectionCollection(for: user)
                 .document(name)
             ref?.setData(create.data()) { error in
                 if let error = error {
@@ -55,9 +54,9 @@ public final class CollectionRepositoryImpl: CollectionRepository {
             }
         }
     }
-    
+
     public func delete(collection: Collection, for user: User) async throws {
-        let ref = db.collectionCollection(for: user)
+        let ref = database.collectionCollection(for: user)
             .document(collection.id.value)
         do {
             try await ref.delete()

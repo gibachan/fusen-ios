@@ -22,7 +22,7 @@ public final class GetBooksByCollectionUseCaseImpl: GetBooksByCollectionUseCase 
     private let sortedBy: BookSort
     private let accountService: AccountServiceProtocol
     private let bookRepository: BookRepository
-    
+
     public init(
         collection: Collection,
         sortedBy: BookSort,
@@ -34,12 +34,12 @@ public final class GetBooksByCollectionUseCaseImpl: GetBooksByCollectionUseCase 
         self.accountService = accountService
         self.bookRepository = bookRepository
     }
-    
+
     public func invoke(forceRefresh: Bool) async throws -> Pager<Book> {
         guard let user = accountService.currentUser else {
             throw GetBooksByCollectionUseCaseError.notAuthenticated
         }
-       
+
         do {
             let pager = try await bookRepository.getBooks(by: collection, sortedBy: sortedBy, for: user, forceRefresh: forceRefresh)
             return pager
@@ -47,12 +47,12 @@ public final class GetBooksByCollectionUseCaseImpl: GetBooksByCollectionUseCase 
             throw GetBooksByCollectionUseCaseError.badNetwork
         }
     }
-    
+
     public func invokeNext() async throws -> Pager<Book> {
         guard let user = accountService.currentUser else {
             throw GetFavoriteBooksUseCaseError.notAuthenticated
         }
-       
+
         do {
             let pager = try await bookRepository.getBooksNext(by: collection, for: user)
             return pager

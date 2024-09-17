@@ -11,10 +11,10 @@ import WidgetKit
 
 struct FusenWidgetEntryView: View {
     var entry: Provider.Entry
-    
+
     private let bookWidth: CGFloat = 40
     private let bookHeight: CGFloat = 48
-    
+
     private var bookPlaceholder: some View {
         Image("App")
             .resizable()
@@ -36,9 +36,9 @@ struct FusenWidgetEntryView: View {
                         bookPlaceholder
                     }
                 }
-                
+
                 Spacer()
-                
+
                 Text("読書中")
                     .font(.minimal)
                     .foregroundColor(.active)
@@ -79,7 +79,7 @@ struct FusenWidgetEntryView: View {
 @main
 struct FusenWidget: Widget {
     private let kind: String = "fusen-widget"
-    
+
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind,
                             provider: Provider()) { entry in

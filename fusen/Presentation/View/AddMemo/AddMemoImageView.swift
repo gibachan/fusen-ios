@@ -11,7 +11,7 @@ struct AddMemoImageView: View {
     @Environment(\.dismiss) private var dismiss
     let image: UIImage
     let deleteAction: (() -> Void)
-    
+
     var body: some View {
         VStack {
             GestureImageView(image: Image(uiImage: image))

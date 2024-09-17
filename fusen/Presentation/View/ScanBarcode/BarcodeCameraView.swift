@@ -12,9 +12,9 @@ import UIKit
 struct BarcodeCameraView: UIViewRepresentable {
     typealias UIViewType = CameraPreview
     typealias Handler = (String) -> Void
-    
+
     private let handler: Handler
-    
+
     init(_ handler: @escaping Handler) {
         self.handler = handler
     }
@@ -34,7 +34,7 @@ struct BarcodeCameraView: UIViewRepresentable {
         uiView.setContentHuggingPriority(.defaultHigh, for: .vertical)
         uiView.setContentHuggingPriority(.defaultLow, for: .horizontal)
     }
-    
+
     func makeCoordinator() -> Coordinator {
         Coordinator(handler: handler)
     }

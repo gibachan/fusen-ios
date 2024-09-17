@@ -11,16 +11,16 @@ import SwiftUI
 struct BookView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel: BookViewModel
-    
+
     @State private var isDetailCollapsed = false
     @State private var isAddPresented = false
     @State private var isDeleteAlertPresented = false
     @State private var isErrorActive = false
-    
+
     init(bookId: ID<Book>) {
         self._viewModel = StateObject(wrappedValue: BookViewModel(bookId: bookId))
     }
-    
+
     var body: some View {
         ZStack {
             if case let .loaded(book) = viewModel.state {
@@ -43,7 +43,7 @@ struct BookView: View {
                             isDetailCollapsed: $isDetailCollapsed
                         )
                             .listRowSeparator(.hidden)
-                        
+
                         BookMemoSection(book: book)
                     }
                     .listStyle(PlainListStyle())

@@ -43,20 +43,20 @@ class ActionViewController: UIViewController {
         }
     }
     @IBOutlet private var saveButton: UIBarButtonItem!
-    
+
     private var presenter: ActionPresenter!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = ActionPresenterImpl(withView: self)
         presenter.action(withContext: extensionContext)
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         readingBookView.layer.cornerRadius = readingBookView.frame.height / 2
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         memoTextView.becomeFirstResponder()
@@ -71,7 +71,7 @@ private extension ActionViewController {
     @IBAction private func onCancel() {
         presenter.cancel()
     }
-    
+
     @IBAction private func onSave() {
         presenter.save()
     }
@@ -103,7 +103,7 @@ extension ActionViewController: ActionView {
         titleLabel.text = title
         imageView.image = image
     }
-    
+
     func showDescription() {
         descriptionView.isHidden = false
         inputStackView.isHidden = true
@@ -113,7 +113,7 @@ extension ActionViewController: ActionView {
         descriptionView.isHidden = true
         inputStackView.isHidden = false
     }
-    
+
     func setQuote(_ text: String) {
         DispatchQueue.main.async { [weak self] in
             self?.quoteTextView.text = text
@@ -125,7 +125,7 @@ extension ActionViewController: ActionView {
         // This template doesn't do anything, so we just echo the passed in items.
         self.extensionContext!.completeRequest(returningItems: self.extensionContext!.inputItems, completionHandler: nil)
     }
-    
+
     func openApp() {
         openUrl(url: AppEnv.current.memoURLScheme)
     }

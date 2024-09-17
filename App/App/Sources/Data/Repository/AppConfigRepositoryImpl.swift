@@ -22,13 +22,13 @@ public final class AppConfigRepositoryImpl: AppConfigRepository {
         #endif
         config.configSettings = settings
         config.setDefaults([
-            maintenanceKey: false as NSObject,
+            maintenanceKey: false as NSObject
         ])
         return config
     }()
 
     public init() {}
-    
+
     public func get() async -> AppConfig {
         do {
             let result = try await Self.remoteConfig.fetch()

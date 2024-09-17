@@ -13,7 +13,7 @@ class AddCollectionUseCaseTests: XCTestCase {
         let accountService = MockAccountService(isLoggedIn: true)
         let collectionRepository = MockCollectionRepository(getResult: .success(Array(repeating: Collection.sample, count: Collection.countLimit - 1)))
         let useCase = AddCollectionUseCaseImpl(accountService: accountService, collectionRepository: collectionRepository)
-        
+
         do {
             let id = try await useCase.invoke(name: "hoge", color: RGB(red: 0, green: 0, blue: 0))
             XCTAssertEqual(id.value, "123")
@@ -25,7 +25,7 @@ class AddCollectionUseCaseTests: XCTestCase {
         let accountService = MockAccountService(isLoggedIn: true)
         let collectionRepository = MockCollectionRepository(getResult: .success(Array(repeating: Collection.sample, count: Collection.countLimit)))
         let useCase = AddCollectionUseCaseImpl(accountService: accountService, collectionRepository: collectionRepository)
-        
+
         do {
             _ = try await useCase.invoke(name: "hoge", color: RGB(red: 0, green: 0, blue: 0))
             XCTFail("Not Supposed to be reached")
@@ -44,11 +44,11 @@ private class MockCollectionRepository: CollectionRepository {
     typealias GetResult = Result<[Collection], Error>
     typealias AddResult = Result<ID<Collection>, Error>
     typealias DeleteResult = Result<Void, Error>
-    
+
     private let getResult: GetResult
     private let addResult: AddResult
     private let deleteResult: DeleteResult
-    
+
     init(
         getResult: GetResult = .success([]),
         addResult: AddResult = .success(.init(stringLiteral: "123")),
@@ -58,7 +58,7 @@ private class MockCollectionRepository: CollectionRepository {
         self.addResult = addResult
         self.deleteResult = deleteResult
     }
-    
+
     func getlCollections(for user: User) async throws -> [Collection] {
         switch getResult {
         case let .success(collections):
@@ -67,7 +67,7 @@ private class MockCollectionRepository: CollectionRepository {
             throw error
         }
     }
-    
+
     func addCollection(name: String, color: RGB, for user: User) async throws -> ID<Collection> {
         switch addResult {
         case let .success(id):
@@ -76,7 +76,7 @@ private class MockCollectionRepository: CollectionRepository {
             throw error
         }
     }
-    
+
     func delete(collection: Collection, for user: User) async throws {
         switch deleteResult {
         case .success:

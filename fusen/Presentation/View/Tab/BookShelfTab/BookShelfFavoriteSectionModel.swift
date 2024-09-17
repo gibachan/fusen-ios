@@ -12,25 +12,25 @@ import Foundation
 final class BookShelfFavoriteSectionModel: ObservableObject {
     private static let maxDiplayBookCount = 6
     private let getFavoriteBooksUseCase: GetFavoriteBooksUseCase
-    
+
     @Published var state: State = .initial
     @Published var bookColumns: [BookShelfColumn] = []
-    
+
     init(
         getFavoriteBooksUseCase: GetFavoriteBooksUseCase = GetFavoriteBooksUseCaseImpl(            accountService: AccountService.shared, bookRepository: BookRepositoryImpl())
     ) {
         self.getFavoriteBooksUseCase = getFavoriteBooksUseCase
     }
-    
+
     @MainActor
     func onAppear() async {
         guard !state.isInProgress else { return }
-        
+
         state = .loading
         do {
             let pager = try await getFavoriteBooksUseCase.invoke(forceRefresh: true)
             state = .succeeded
-            
+
             var displayBooks = Array(pager.data.prefix(Self.maxDiplayBookCount))
             var resultColumns: [BookShelfColumn] = []
             while !displayBooks.isEmpty {
@@ -45,13 +45,13 @@ final class BookShelfFavoriteSectionModel: ObservableObject {
             state = .failed
         }
     }
-    
+
     enum State {
         case initial
         case loading
         case succeeded
         case failed
-        
+
         var isInProgress: Bool {
             switch self {
             case .initial, .succeeded, .failed:

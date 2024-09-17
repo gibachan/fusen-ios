@@ -13,7 +13,7 @@ public struct MemoDraft: Codable {
     public let text: String
     public let quote: String
     public let page: Int?
-    
+
     enum CodingKeys: String, CodingKey {
         case bookId = "book_id"
         case text

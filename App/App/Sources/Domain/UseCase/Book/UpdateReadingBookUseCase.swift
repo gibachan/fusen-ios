@@ -20,7 +20,7 @@ public protocol UpdateReadingBookUseCase {
 public final class UpdateReadingBookUseCaseImpl: UpdateReadingBookUseCase {
     private let accountService: AccountServiceProtocol
     private let userRepository: UserRepository
-    
+
     public init(
         accountService: AccountServiceProtocol,
         userRepository: UserRepository
@@ -28,12 +28,12 @@ public final class UpdateReadingBookUseCaseImpl: UpdateReadingBookUseCase {
         self.accountService = accountService
         self.userRepository = userRepository
     }
-    
+
     public func invoke(readingBook: Book?) async throws {
         guard let user = accountService.currentUser else {
             throw UpdateReadingBookUseCaseError.notAuthenticated
         }
-        
+
         do {
             try await userRepository.update(readingBook: readingBook, for: user)
             // FIXME: Call widget update via Protodol

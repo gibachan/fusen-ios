@@ -21,7 +21,7 @@ class TutorialViewModelTests: XCTestCase {
                 states.append(state)
             })
             .store(in: &cancellables)
-        
+
         await viewModel.onSkip()
         cancellables.removeAll()
 

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SearchBookItemView: View {
     let publication: Publication
-    
+
     var body: some View {
         HStack {
             BookImageView(url: publication.thumbnailURL)

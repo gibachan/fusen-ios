@@ -10,11 +10,11 @@ import Foundation
 
 public final class UserActionHistoryRepositoryImpl: UserActionHistoryRepository {
     private let dataSource: UserDefaultsDataSource
-    
+
     public init(dataSource: UserDefaultsDataSource = UserDefaultsDataSourceImpl()) {
         self.dataSource = dataSource
     }
-    
+
     public func get() -> UserActionHistory {
         var readBook: [ID<Book>: Int] = [:]
         dataSource.readBookPages
@@ -31,31 +31,31 @@ public final class UserActionHistoryRepositoryImpl: UserActionHistoryRepository 
             currentMemoSort: dataSource.currentMemoSort
         )
     }
-    
+
     public func update(didConfirmReadingBookDescription: Bool) {
         dataSource.didConfirmReadingBookDescription = didConfirmReadingBookDescription
     }
-    
+
     public func update(readBook: Book, page: Int) {
         dataSource.setReadPage(for: readBook, page: page)
     }
-    
+
     public func update(reviewedVersion: String) {
         dataSource.reviewedVersion = reviewedVersion
     }
-    
+
     public func update(launchedAppBefore: Bool) {
         dataSource.launchedAppBefore = launchedAppBefore
     }
-    
+
     public func update(currentBookSort: BookSort) {
         dataSource.currentBookSort = currentBookSort
     }
-    
+
     public func update(currentMemoSort: MemoSort) {
         dataSource.currentMemoSort = currentMemoSort
     }
-    
+
     public func clearAll() {
         dataSource.didConfirmReadingBookDescription = false
         dataSource.reviewedVersion = ""

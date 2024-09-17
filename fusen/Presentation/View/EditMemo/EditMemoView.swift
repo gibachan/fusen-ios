@@ -17,14 +17,14 @@ struct EditMemoView: View {
     @State private var isMemoImagePresented = false
     @State private var isDeleteAlertPresented = false
     @FocusState private var focus: Bool
-    
+
     init(memo: Memo) {
         self._viewModel = StateObject(wrappedValue: EditMemoViewModel(memo: memo))
         self._text = State(wrappedValue: memo.text)
         self._quote = State(wrappedValue: memo.quote)
         self._page = State(wrappedValue: memo.page ?? 0)
     }
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Form {
@@ -48,7 +48,7 @@ struct EditMemoView: View {
                         .onChange(of: quote) { newValue in
                             viewModel.onTextChange(text: text, quote: newValue)
                         }
-                    
+
                     NavigationLink {
                         PageListView(page: $page, initialPage: page)
                     } label: {
@@ -61,7 +61,7 @@ struct EditMemoView: View {
                         }
                     }
                     .frame(minHeight: 40)
-                    
+
                     if let url = viewModel.memoImageURL {
                         HStack(alignment: .top) {
                             Text("添付画像 :")
@@ -84,7 +84,7 @@ struct EditMemoView: View {
                 .listRowBackground(Color.backgroundLightGray)
             }
             .font(.medium)
-            
+
             ControlToolbar(
                 leadingView: {
                     Image.delete

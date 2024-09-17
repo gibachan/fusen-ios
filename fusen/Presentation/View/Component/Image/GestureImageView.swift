@@ -14,7 +14,7 @@ struct GestureImageView: View {
     @State var initialScale: CGFloat = 1.0
 
     let image: Image
-    
+
     var body: some View {
         image
             .resizable()

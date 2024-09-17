@@ -19,7 +19,7 @@ public protocol UpdateBookCollectionUseCase {
 public final class UpdateBookCollectionUseCaseImpl: UpdateBookCollectionUseCase {
     private let accountService: AccountServiceProtocol
     private let bookRepository: BookRepository
-    
+
     public init(
         accountService: AccountServiceProtocol,
         bookRepository: BookRepository
@@ -27,12 +27,12 @@ public final class UpdateBookCollectionUseCaseImpl: UpdateBookCollectionUseCase 
         self.accountService = accountService
         self.bookRepository = bookRepository
     }
-    
+
     public func invoke(book: Book, collection: Collection) async throws {
         guard let user = accountService.currentUser else {
             throw UpdateBookCollectionUseCaseError.notAuthenticated
         }
-        
+
         do {
             try await bookRepository.update(book: book, collection: collection, for: user)
         } catch {

@@ -12,7 +12,7 @@ struct DeleteAccountView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel = DeleteAccountViewModel()
     @State private var isDeleteAlertPresented = false
-    
+
     var body: some View {
         ScrollView {
             VStack(alignment: .center, spacing: 16) {

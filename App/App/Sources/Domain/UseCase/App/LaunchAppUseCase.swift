@@ -13,13 +13,13 @@ public protocol LaunchAppUseCase {
 
 public final class LaunchAppUseCaseImpl: LaunchAppUseCase {
     private let userActionHistoryRepository: UserActionHistoryRepository
-    
+
     public init(
         userActionHistoryRepository: UserActionHistoryRepository
     ) {
         self.userActionHistoryRepository = userActionHistoryRepository
     }
-    
+
     public func invoke() {
         userActionHistoryRepository.update(launchedAppBefore: true)
     }

@@ -10,14 +10,14 @@ import SwiftUI
 
 struct LatestMemoItem: View {
     @StateObject private var viewModel: LatestMemoItemModel
-    
+
     private var memo: Memo { viewModel.memo }
     private var book: Book? { viewModel.book }
-    
+
     init(memo: Memo) {
         self._viewModel = StateObject(wrappedValue: LatestMemoItemModel(memo: memo))
     }
-    
+
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 4) {
@@ -39,7 +39,7 @@ struct LatestMemoItem: View {
                     }
                 }
                 .padding(.bottom, 4)
-                
+
                 if memo.quote.isNotEmpty {
                     QuoteText(text: memo.quote)
                         .lineLimit(2)

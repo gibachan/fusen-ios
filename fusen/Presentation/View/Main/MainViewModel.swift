@@ -12,13 +12,13 @@ import Foundation
 final class MainViewModel: ObservableObject {
     @Published var showTutorial = false
     @Published var isMaintaining = false
-    
+
     private let accountService: AccountServiceProtocol
     private let getAppConfigUseCase: GetAppConfigUseCase
     private let getUserActionHistoryUseCase: GetUserActionHistoryUseCase
     private let launchAppUseCase: LaunchAppUseCase
     private let addDraftMemoUseCase: AddDraftMemoUseCase
-    
+
     init(
         accountService: AccountServiceProtocol = AccountService.shared,
         getAppConfigUseCase: GetAppConfigUseCase = GetAppConfigUseCaseImpl(appConfigRepository: AppConfigRepositoryImpl()),
@@ -32,11 +32,11 @@ final class MainViewModel: ObservableObject {
         self.launchAppUseCase = launchAppUseCase
         self.addDraftMemoUseCase = addDraftMemoUseCase
     }
-    
+
     @MainActor
     func onAppear() async {
         log.d("logged in user=\(accountService.currentUser?.id.value ?? "nil")")
-        
+
         await logoutIfNeed()
         launchAppUseCase.invoke()
 
@@ -46,11 +46,11 @@ final class MainViewModel: ObservableObject {
             showTutorial = !accountService.isLoggedIn
         }
     }
-    
+
     @MainActor
     func onDeepLink(url: URL) async {
         guard url == AppEnv.current.memoURLScheme else { return }
-        
+
         do {
             _ = try await addDraftMemoUseCase.invoke()
             NotificationCenter.default.postNewMemoAddedViaDeepLink()
@@ -58,7 +58,7 @@ final class MainViewModel: ObservableObject {
             log.e(error.localizedDescription)
         }
     }
-    
+
     private func logoutIfNeed() async {
         let history = getUserActionHistoryUseCase.invoke()
         if !history.launchedAppBefore {

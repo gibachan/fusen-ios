@@ -22,12 +22,12 @@ struct HomeTabView: View {
                     latestBooksSectin(books: latestBooks)
                     latestMemosSection(memos: latestMemos)
                 }
-                
+
                 if case .empty = viewModel.state {
                     HomeTabEmptyView()
                         .listRowSeparator(.hidden)
                 }
-                
+
                 Spacer()
                     .frame(height: readingBookFooterHeight)
                     .listRowSeparator(.hidden)
@@ -36,7 +36,7 @@ struct HomeTabView: View {
             .refreshable {
                 await viewModel.onRefresh()
             }
-            
+
             if let readigBook = viewModel.readingBook {
                 readingBookFooter(book: readigBook)
             }
@@ -92,7 +92,7 @@ extension HomeTabView {
         self.navigation = navigation
         self.isNavigated = true
     }
-    
+
     private func latestBooksSectin(books: [Book]) -> some View {
         Section {
             ForEach(books, id: \.id.value) { book in
@@ -115,7 +115,7 @@ extension HomeTabView {
             }
         }
     }
-    
+
     private func latestMemosSection(memos: [Memo]) -> some View {
         Section {
             if memos.isEmpty {
@@ -141,7 +141,7 @@ extension HomeTabView {
             }
         }
     }
-    
+
     private func readingBookFooter(book: Book) -> some View {
         HStack(alignment: .center) {
             Button {

@@ -20,7 +20,7 @@ public final class GetLatestDataUseCaseImpl: GetLatestDataUseCase {
     private let accountService: AccountServiceProtocol
     private let bookRepository: BookRepository
     private let memoRepository: MemoRepository
-    
+
     public init(
         accountService: AccountServiceProtocol,
         bookRepository: BookRepository,
@@ -30,15 +30,15 @@ public final class GetLatestDataUseCaseImpl: GetLatestDataUseCase {
         self.bookRepository = bookRepository
         self.memoRepository = memoRpository
     }
-    
+
     public func invoke(booksCount: Int, memosCount: Int) async throws -> LatestData {
         guard let user = accountService.currentUser else {
             throw GetLatestDataUseCaseError.notAuthenticated
         }
-        
+
         async let books = bookRepository.getLatestBooks(count: booksCount, for: user)
         async let memos = memoRepository.getLatestMemos(count: memosCount, for: user)
-        
+
         do {
             return try await LatestData(
                 books: books,

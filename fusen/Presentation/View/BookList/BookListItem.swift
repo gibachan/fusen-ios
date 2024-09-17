@@ -10,7 +10,7 @@ import SwiftUI
 
 struct BookListItem: View {
     let book: Book
-    
+
     var body: some View {
         HStack {
             BookImageView(url: book.imageURL)

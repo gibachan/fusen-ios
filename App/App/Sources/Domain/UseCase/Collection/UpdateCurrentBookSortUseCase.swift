@@ -13,11 +13,11 @@ public protocol UpdateCurrentBookSortUseCase {
 
 public final class UpdateCurrentBookSortUseCaseImpl: UpdateCurrentBookSortUseCase {
     private let userActionHistoryRepository: UserActionHistoryRepository
-    
+
     public init(userActionHistoryRepository: UserActionHistoryRepository) {
         self.userActionHistoryRepository = userActionHistoryRepository
     }
-    
+
     public func invoke(bookSort: BookSort) {
         return userActionHistoryRepository.update(currentBookSort: bookSort)
     }

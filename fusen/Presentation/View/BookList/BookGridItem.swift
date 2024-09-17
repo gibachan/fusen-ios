@@ -10,7 +10,7 @@ import SwiftUI
 
 struct BookGridItem: View {
     let book: Book
-    
+
     var body: some View {
         BookImageView(url: book.imageURL)
     }

@@ -13,11 +13,11 @@ public protocol GetUserActionHistoryUseCase {
 
 public final class GetUserActionHistoryUseCaseImpl: GetUserActionHistoryUseCase {
     private let userActionHistoryRepository: UserActionHistoryRepository
-    
+
     public init(userActionHistoryRepository: UserActionHistoryRepository) {
         self.userActionHistoryRepository = userActionHistoryRepository
     }
-    
+
     public func invoke() -> UserActionHistory {
         return userActionHistoryRepository.get()
     }

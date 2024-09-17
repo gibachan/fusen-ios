@@ -19,11 +19,11 @@ struct AddBookView: View {
     @State private var isPhotoLibraryPresented = false
     @FocusState private var focus: Bool
     private let collection: Domain.Collection?
-    
+
     init(in collection: Domain.Collection? = nil) {
         self.collection = collection
     }
-    
+
     var body: some View {
         Form {
             Section {
@@ -50,7 +50,7 @@ struct AddBookView: View {
                 SectionHeaderText("書籍画像")
             }
             .listRowBackground(Color.backgroundSystemGroup)
-            
+
             Section {
                 PlaceholderTextEditor(placeholder: "タイトルを入力", text: $title)
                     .font(.medium)
@@ -63,7 +63,7 @@ struct AddBookView: View {
             } header: {
                 SectionHeaderText("タイトル（必須）")
             }
-            
+
             Section {
                 PlaceholderTextEditor(placeholder: "著者を入力", text: $author)
                     .font(.medium)
@@ -75,7 +75,7 @@ struct AddBookView: View {
             } header: {
                 SectionHeaderText("著者")
             }
-            
+
             Spacer()
                 .frame(height: 190)
                 .listRowBackground(Color.backgroundSystemGroup)

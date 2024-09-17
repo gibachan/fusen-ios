@@ -10,7 +10,7 @@ import SwiftUI
 struct MemoListView: View {
     @StateObject private var viewModel = MemoListViewModel()
     @State private var isAddPresented = false
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             List {

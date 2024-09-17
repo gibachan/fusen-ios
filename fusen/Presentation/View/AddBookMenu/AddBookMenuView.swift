@@ -17,11 +17,11 @@ struct AddBookMenuView: View {
     @State private var isSearchPresented = false
     @State private var isManualInputPresented = false
     @State private var selectedCollection = ""
-    
+
     init(in initialCollection: Domain.Collection? = nil) {
         self._viewModel = StateObject(wrappedValue: AddBookMenuViewModel(initialCollection: initialCollection))
     }
-    
+
     var body: some View {
         NavigationView {
             Form {

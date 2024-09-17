@@ -17,7 +17,7 @@ final class SearchBookViewModel: ObservableObject {
 
     @Published var state: State = .initial
     @Published var selectedPublication: Publication?
-    
+
     nonisolated init(collection: Domain.Collection?,
                      searchPublicationsByTitleUseCase: SearchPublicationsByTitleUseCase = SearchPublicationsByTitleUseCaseImpl(rakutenBooksPublicationRepository: RakutenBooksPublicationRepositoryImpl()),
                      addBookByPublicationUseCase: AddBookByPublicationUseCase = AddBookByPublicationUseCaseImpl(accountService: AccountService.shared, bookRepository: BookRepositoryImpl())) {
@@ -25,7 +25,7 @@ final class SearchBookViewModel: ObservableObject {
         self.searchPublicationsByTitleUseCase = searchPublicationsByTitleUseCase
         self.addBookByPublicationUseCase = addBookByPublicationUseCase
     }
-    
+
     func onSearch(title: String) async {
         guard !state.isInProgress else { return }
 
@@ -38,11 +38,11 @@ final class SearchBookViewModel: ObservableObject {
             state = .loadFailed
         }
     }
-    
+
     func onSelect(publication: Publication) {
         selectedPublication = publication
     }
-    
+
     func onAdd() async {
         guard let publication = selectedPublication else { return }
         guard !state.isInProgress else { return }
@@ -59,7 +59,7 @@ final class SearchBookViewModel: ObservableObject {
             state = .addFailed
         }
     }
-    
+
     enum State: Equatable {
         case initial
         case loading
@@ -67,7 +67,7 @@ final class SearchBookViewModel: ObservableObject {
         case added
         case loadFailed
         case addFailed
-        
+
         var isInProgress: Bool {
             switch self {
             case .initial, .loaded, .added, .loadFailed, .addFailed:

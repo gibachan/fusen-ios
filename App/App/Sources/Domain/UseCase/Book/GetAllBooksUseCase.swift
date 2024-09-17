@@ -21,7 +21,7 @@ public final class GetAllBooksUseCaseImpl: GetAllBooksUseCase {
     private let sortedBy: BookSort
     private let accountService: AccountServiceProtocol
     private let bookRepository: BookRepository
-    
+
     public init(sortedBy: BookSort,
                 accountService: AccountServiceProtocol,
                 bookRepository: BookRepository
@@ -30,12 +30,12 @@ public final class GetAllBooksUseCaseImpl: GetAllBooksUseCase {
         self.accountService = accountService
         self.bookRepository = bookRepository
     }
-    
+
     public func invoke(forceRefresh: Bool) async throws -> Pager<Book> {
         guard let user = accountService.currentUser else {
             throw GetAllBooksUseCaseError.notAuthenticated
         }
-       
+
         do {
             let pager = try await bookRepository.getAllBooks(sortedBy: sortedBy, for: user, forceRefresh: forceRefresh)
             return pager
@@ -43,12 +43,12 @@ public final class GetAllBooksUseCaseImpl: GetAllBooksUseCase {
             throw GetAllBooksUseCaseError.badNetwork
         }
     }
-    
+
     public func invokeNext() async throws -> Pager<Book> {
         guard let user = accountService.currentUser else {
             throw GetAllBooksUseCaseError.notAuthenticated
         }
-       
+
         do {
             let pager = try await bookRepository.getAllBooksNext(for: user)
             return pager

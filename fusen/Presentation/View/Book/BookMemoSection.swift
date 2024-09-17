@@ -11,11 +11,11 @@ import SwiftUI
 struct BookMemoSection: View {
     @StateObject private var viewModel: BookMemoSectionModel
     @State private var isSortPresented = false
-    
+
     init(book: Book) {
         self._viewModel = StateObject(wrappedValue: BookMemoSectionModel(bookId: book.id))
     }
-    
+
     var body: some View {
         Section {
             if viewModel.memoPager.data.isEmpty {

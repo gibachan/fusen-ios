@@ -12,17 +12,17 @@ import Foundation
 
 final class TutorialViewModel: ObservableObject {
     @Published var state: State = .initial
-    
+
     private let accountService: AccountServiceProtocol
-    
+
     init(accountService: AccountServiceProtocol = AccountService.shared) {
         self.accountService = accountService
     }
-    
+
     func onSignInWithAppleRequest(_ resutst: ASAuthorizationAppleIDRequest) {
         accountService.prepareLogInWithAppleRequest(request: resutst)
     }
-    
+
     func onSignInWithAppleCompletion(_ completion: Result<ASAuthorization, Error>) {
         switch completion {
         case .success(let authorization):
@@ -54,7 +54,7 @@ final class TutorialViewModel: ObservableObject {
             log.e(error.localizedDescription)
         }
     }
-    
+
     func onSignInWithGoogle(_ result: Result<AuthCredential, GoogleSignInError>) {
         state = .loading
         switch result {
@@ -106,7 +106,7 @@ final class TutorialViewModel: ObservableObject {
             state = .failed
         }
     }
-    
+
     enum State {
         case initial
         case loading

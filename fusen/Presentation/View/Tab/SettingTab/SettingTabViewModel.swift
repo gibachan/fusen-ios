@@ -20,7 +20,7 @@ final class SettingTabViewModel: ObservableObject {
     @Published var version: String = ""
     @Published var isLinkedAppleId = false
     @Published var isLinkedWithGoogle = false
-    
+
     init(
         accountService: AccountServiceProtocol = AccountService.shared,
         resetUserActionHistoryUseCase: ResetUserActionHistoryUseCase = ResetUserActionHistoryUseCaseImpl(userActionHistoryRepository: UserActionHistoryRepositoryImpl())
@@ -28,7 +28,7 @@ final class SettingTabViewModel: ObservableObject {
         self.accountService = accountService
         self.resetUserActionHistoryUseCase = resetUserActionHistoryUseCase
     }
-    
+
     @MainActor
     func onApper() {
         let user = accountService.currentUser
@@ -37,11 +37,11 @@ final class SettingTabViewModel: ObservableObject {
         isLinkedWithGoogle = user?.isLinkedWithGoogle ?? false
         version = Bundle.main.shortVersion
     }
-    
+
     func onSignInWithAppleRequest(_ resutst: ASAuthorizationAppleIDRequest) {
         accountService.prepareLogInWithAppleRequest(request: resutst)
     }
-    
+
     func onSignInWithAppleCompletion(_ completion: Result<ASAuthorization, Error>) {
         self.state = .linkingWithApple
         switch completion {
@@ -77,7 +77,7 @@ final class SettingTabViewModel: ObservableObject {
             state = .succeeded
         }
     }
-    
+
     func onSignInWithGoogle(_ result: Result<AuthCredential, GoogleSignInError>) {
         self.state = .linkingWithGoogle
         switch result {
@@ -116,7 +116,7 @@ final class SettingTabViewModel: ObservableObject {
             }
         }
     }
-    
+
     func onUnlinkWithAppleID() async {
         do {
             try await accountService.unlinkWithApple()
@@ -134,10 +134,10 @@ final class SettingTabViewModel: ObservableObject {
             }
         }
     }
-    
+
     func onUnlinkWithGoogle() async {
         do {
-            try await accountService.unlinkWithGoogle() 
+            try await accountService.unlinkWithGoogle()
             log.d("Successfully unlinked with Google")
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
@@ -152,13 +152,13 @@ final class SettingTabViewModel: ObservableObject {
             }
         }
     }
-    
+
     func onDeleteAccountFinished() {
         if !accountService.isLoggedIn {
             NotificationCenter.default.postLogOut()
         }
     }
-    
+
     func onAppReview() {
         let url = URL(string: "https://itunes.apple.com/jp/app/id1585547803?mt=8&action=write-review")!
         guard UIApplication.shared.canOpenURL(url) else { return }
@@ -174,12 +174,12 @@ final class SettingTabViewModel: ObservableObject {
         case failedlinkingWithApple
         case failedlinkingWithGoogle
     }
-    
+
 #if DEBUG
     func onResetUserActionHstory() async {
         resetUserActionHistoryUseCase.invoke()
     }
-    
+
     func onLogOut() {
         do {
             try accountService.logOut()

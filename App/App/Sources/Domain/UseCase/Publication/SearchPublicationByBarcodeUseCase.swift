@@ -25,7 +25,7 @@ public final class SearchPublicationByBarcodeUseCaseImpl: SearchPublicationByBar
     private let analyticsService: AnalyticsServiceProtocol
     private let rakutenBooksPublicationRepository: PublicationRepository
     private let googleBooksPublicationRepository: PublicationRepository
-    
+
     public init(
         analyticsService: AnalyticsServiceProtocol,
         rakutenBooksPublicationRepository: PublicationRepository,
@@ -35,18 +35,18 @@ public final class SearchPublicationByBarcodeUseCaseImpl: SearchPublicationByBar
         self.rakutenBooksPublicationRepository = rakutenBooksPublicationRepository
         self.googleBooksPublicationRepository = googleBooksPublicationRepository
     }
-    
+
     public func invoke(barcode: String) async throws -> SearchPublicationByBarcodeUseCaseResult {
         guard let isbn = ISBN.from(code: barcode) else {
             throw SearchPublicationByBarcodeUseCaseError.invalidBarcode
         }
-        
+
         do {
             let publication = try await rakutenBooksPublicationRepository.findBy(isbn: isbn)
             return .foundByRakutenBooks(publication: publication)
         } catch {
             analyticsService.log(event: .scanBarcodeByRakutenError(code: barcode))
-            
+
             do {
                 let publication = try await googleBooksPublicationRepository.findBy(isbn: isbn)
                 return .foundByGoogleBooks(publication: publication)

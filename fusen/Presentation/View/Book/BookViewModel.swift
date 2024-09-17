@@ -18,10 +18,10 @@ final class BookViewModel: ObservableObject {
     private let deleteBookUseCase: DeleteBookUseCase
     private let getUserActionHistoryUseCase: GetUserActionHistoryUseCase
     private let confirmReadingBookDescriptionUseCase: ConfirmReadingBookDescriptionUseCase
-    
+
     private var favoriteState: FavoriteState = .initial
     private var readingBookState: ReadingBookState = .initial
-    
+
     @Published var isFavorite = false
     @Published var isReadingBook = false
     @Published var state: State = .initial
@@ -43,7 +43,7 @@ final class BookViewModel: ObservableObject {
             return false
         }
     }
-    
+
     init(
         bookId: ID<Book>,
         getBookByIdUseCase: GetBookByIdUseCase = GetBookByIdUseCaseImpl(accountService: AccountService.shared, bookRepository: BookRepositoryImpl()),
@@ -63,27 +63,27 @@ final class BookViewModel: ObservableObject {
         self.getUserActionHistoryUseCase = getUserActionHistoryUseCase
         self.confirmReadingBookDescriptionUseCase = confirmReadingBookDescriptionUseCase
     }
-    
+
     func onAppear() async {
         await load()
     }
-    
+
     func onRefresh() async {
         await load()
     }
-    
+
     @MainActor
     func onReadingToggle() async {
         guard case let .loaded(book) = state else { return }
         guard !readingBookState.isInProgress else { return }
-        
+
         readingBookState = .loading
         do {
             let readingBook: Book? = isReadingBook ? nil : book
             try await updateReadingBookUseCase.invoke(readingBook: readingBook)
             readingBookState = .loaded
             isReadingBook = readingBook != nil
-            
+
             // Confirt reading book description
             let userActionHistory = getUserActionHistoryUseCase.invoke()
             if !userActionHistory.didConfirmReadingBookDescription {
@@ -96,7 +96,7 @@ final class BookViewModel: ObservableObject {
             NotificationCenter.default.postError(message: .readingBookChange)
         }
     }
-    
+
     @MainActor
     func onFavoriteChange(isFavorite: Bool) async {
         guard case let .loaded(book) = state else { return }
@@ -113,11 +113,11 @@ final class BookViewModel: ObservableObject {
             NotificationCenter.default.postError(message: .favoriteBookChange)
         }
     }
-    
+
     @MainActor
     func onDelete() async {
         guard case let .loaded(book) = state else { return }
-        
+
         state = .loading
         do {
             try await deleteBookUseCase.invoke(book: book)
@@ -128,11 +128,11 @@ final class BookViewModel: ObservableObject {
             NotificationCenter.default.postError(message: .deleteBook)
         }
     }
-    
+
     @MainActor
     private func load() async {
         guard !state.isInProgress else { return }
-        
+
         state = .loading
         do {
             let book = try await getBookByIdUseCase.invoke(id: bookId)
@@ -148,14 +148,14 @@ final class BookViewModel: ObservableObject {
             // NotificationCenter.default.postError(message: .network)
         }
     }
-    
+
     enum State {
         case initial
         case loading
         case loaded(book: Book)
         case deleted
         case failed
-        
+
         var isInProgress: Bool {
             switch self {
             case .initial, .loaded, .failed, .deleted:
@@ -165,13 +165,13 @@ final class BookViewModel: ObservableObject {
             }
         }
     }
-    
+
     enum FavoriteState {
         case initial
         case loading
         case loaded
         case failed
-        
+
         var isInProgress: Bool {
             switch self {
             case .initial, .loaded, .failed:
@@ -181,13 +181,13 @@ final class BookViewModel: ObservableObject {
             }
         }
     }
-    
+
     enum ReadingBookState {
         case initial
         case loading
         case loaded
         case failed
-        
+
         var isInProgress: Bool {
             switch self {
             case .initial, .loaded, .failed:

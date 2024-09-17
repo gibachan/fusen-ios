@@ -36,7 +36,7 @@ extension FirestoreCreateBook {
             collectionId: collection?.id.value ?? ""
         )
     }
-    
+
     func data() -> [String: Any] {
         [
             "title": title,

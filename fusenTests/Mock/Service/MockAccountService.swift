@@ -8,6 +8,7 @@
 import AuthenticationServices
 import Domain
 import Firebase
+import FirebaseAuth
 import Foundation
 @testable import fusen
 
@@ -17,7 +18,7 @@ final class MockAccountService: AccountServiceProtocol {
     var isLoggedIn: Bool
     var isLoggedInAnonymously = false
     var isLoggedInWithApple = false
-    
+
     init(isLoggedIn: Bool) {
         self.isLoggedIn = isLoggedIn
     }
@@ -29,53 +30,53 @@ final class MockAccountService: AccountServiceProtocol {
             return nil
         }
     }
-    
+
     func logInAnonymously() async throws -> User {
         isLoggedInAnonymously = true
         return User.test
     }
-    
+
     func prepareLogInWithAppleRequest(request: ASAuthorizationAppleIDRequest) {
         fatalError("Not implemented yet")
     }
-    
+
     func logInWithApple(authorization: ASAuthorization) async throws -> User {
         isLoggedInWithApple = true
         return User.test
     }
-    
+
     func linkWithApple(authorization: ASAuthorization) async throws -> User {
         User.test
     }
-    
+
     func reAuthenticateWithApple(authorization: ASAuthorization) async throws {
         fatalError("Not implemented yet")
     }
-    
+
     func unlinkWithApple() async throws {
         fatalError("Not implemented yet")
     }
-    
+
     func logInWithGoogle(credential: AuthCredential) async throws -> User {
         fatalError("Not implemented yet")
     }
-    
+
     func linkWithGoogle(credential: AuthCredential) async throws -> User {
         fatalError("Not implemented yet")
     }
-    
+
     func unlinkWithGoogle() async throws {
         fatalError("Not implemented yet")
     }
-    
+
     func reAuthenticateWithGoogle(credential: AuthCredential) async throws {
         fatalError("Not implemented yet")
     }
-    
+
     func delete() async throws {
         fatalError("Not implemented yet")
     }
-    
+
     func logOut() throws {
         isLoggedIn = false
     }

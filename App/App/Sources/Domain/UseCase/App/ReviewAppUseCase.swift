@@ -13,11 +13,11 @@ public protocol ReviewAppUseCase {
 
 public final class ReviewAppUseCaseImpl: ReviewAppUseCase {
     private let userActionHistoryRepository: UserActionHistoryRepository
-    
+
     public init(userActionHistoryRepository: UserActionHistoryRepository) {
         self.userActionHistoryRepository = userActionHistoryRepository
     }
-    
+
     public func invoke(version: String) {
         userActionHistoryRepository.update(reviewedVersion: version)
     }

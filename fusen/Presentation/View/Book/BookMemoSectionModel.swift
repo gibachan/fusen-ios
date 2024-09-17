@@ -14,11 +14,11 @@ final class BookMemoSectionModel: ObservableObject {
     private let getCurrentMemoSortUseCase: GetCurrentMemoSortUseCase
     private let updateCurrentMemoSortUseCase: UpdateCurrentMemoSortUseCase
     private var getMemosUseCase: GetMemosUseCase
-    
+
     @Published var state: State = .initial
     @Published var memoPager: Pager<Memo> = .empty
     @Published var sortedBy: MemoSort
-    
+
     init(
         bookId: ID<Book>
     ) {
@@ -29,20 +29,20 @@ final class BookMemoSectionModel: ObservableObject {
         self.sortedBy = memoSort
         self.getMemosUseCase = GetMemosUseCaseImpl(bookId: bookId, sortedBy: memoSort, accountService: AccountService.shared, memoRepository: MemoRepositoryImpl())
     }
-    
+
     func onAppear() async {
         await load()
     }
-    
+
     func onRefresh() async {
         await load()
     }
-    
+
     @MainActor
     func onItemApper(of memo: Memo) async {
         guard case .loaded = state, !memoPager.finished else { return }
         guard let lastMemo = memoPager.data.last else { return }
-        
+
         if memo.id == lastMemo.id {
             //            state = .loadingNext
             do {
@@ -55,7 +55,7 @@ final class BookMemoSectionModel: ObservableObject {
             }
         }
     }
-    
+
     @MainActor
     func onSort(_ sortedBy: MemoSort) async {
         updateCurrentMemoSortUseCase.invoke(memoSort: sortedBy)
@@ -63,11 +63,11 @@ final class BookMemoSectionModel: ObservableObject {
         self.getMemosUseCase = GetMemosUseCaseImpl(bookId: bookId, sortedBy: sortedBy, accountService: AccountService.shared, memoRepository: MemoRepositoryImpl())
         await load()
     }
-    
+
     @MainActor
     private func load() async {
         guard !state.isInProgress else { return }
-        
+
         state = .loading
         do {
             let memoPager = try await getMemosUseCase.invoke(forceRefresh: false)
@@ -79,14 +79,14 @@ final class BookMemoSectionModel: ObservableObject {
             NotificationCenter.default.postError(message: .getMemo)
         }
     }
-    
+
     enum State {
         case initial
         case loaded(memos: [Memo])
         case loading
         case loadingNext
         case failed
-        
+
         var isInProgress: Bool {
             switch self {
             case .initial, .loaded, .failed:

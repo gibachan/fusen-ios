@@ -13,6 +13,6 @@ public enum UserRepositoryError: Error {
 
 public protocol UserRepository {
     func getInfo(for user: User) async throws -> UserInfo
-    
+
     func update(readingBook book: Book?, for user: User) async throws
 }

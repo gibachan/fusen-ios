@@ -14,12 +14,12 @@ final class CollectionViewModel: ObservableObject {
     private let updateCurrentBookSortUseCase: UpdateCurrentBookSortUseCase
     private var getBooksByCollectionUseCase: GetBooksByCollectionUseCase
     private let deleteCollectionUseCase: DeleteCollectionUseCase
-    
+
     @Published var collection: Collection
     @Published var state: State = .initial
     @Published var pager: Pager<Book> = .empty
     @Published var sortedBy: BookSort
-    
+
     init(
         collection: Collection,
         getCurrentBookSortUseCase: GetCurrentBookSortUseCase = GetCurrentBookSortUseCaseImpl(userActionHistoryRepository: UserActionHistoryRepositoryImpl()),
@@ -35,11 +35,11 @@ final class CollectionViewModel: ObservableObject {
         self.getBooksByCollectionUseCase = GetBooksByCollectionUseCaseImpl(collection: collection, sortedBy: bookSort, accountService: AccountService.shared, bookRepository: BookRepositoryImpl())
         self.deleteCollectionUseCase = deleteCollectionUseCase
     }
-    
+
     @MainActor
     func onAppear() async {
         guard !state.isInProgress else { return }
-        
+
         state = .loading
         do {
             let pager = try await getBooksByCollectionUseCase.invoke(forceRefresh: false)
@@ -52,16 +52,16 @@ final class CollectionViewModel: ObservableObject {
             NotificationCenter.default.postError(message: .network)
         }
     }
-    
+
     func onRefresh() async {
         await refresh()
     }
-    
+
     @MainActor
     func onItemApper(of book: Book) async {
         guard case .succeeded = state, !pager.finished else { return }
         guard let lastBook = pager.data.last else { return }
-        
+
         if book.id == lastBook.id {
             state = .loadingNext
             do {
@@ -75,18 +75,18 @@ final class CollectionViewModel: ObservableObject {
             }
         }
     }
-    
+
     func onSort(_ sortedBy: BookSort) async {
         updateCurrentBookSortUseCase.invoke(bookSort: sortedBy)
         self.sortedBy = sortedBy
         self.getBooksByCollectionUseCase = GetBooksByCollectionUseCaseImpl(collection: collection, sortedBy: sortedBy, accountService: AccountService.shared, bookRepository: BookRepositoryImpl())
         await refresh()
     }
-    
+
     @MainActor
     func onDelete() async {
         guard !state.isInProgress else { return }
-        
+
         state = .loading
         do {
             try await deleteCollectionUseCase.invoke(collection: collection)
@@ -97,11 +97,11 @@ final class CollectionViewModel: ObservableObject {
             NotificationCenter.default.postError(message: .deleteCollection)
         }
     }
-    
+
     @MainActor
     private func refresh() async {
         guard !state.isInProgress else { return }
-        
+
         state = .refreshing
         do {
             let pager = try await getBooksByCollectionUseCase.invoke(forceRefresh: true)
@@ -113,7 +113,7 @@ final class CollectionViewModel: ObservableObject {
             self.state = .failed
         }
     }
-    
+
     enum State {
         case initial
         case loading
@@ -122,7 +122,7 @@ final class CollectionViewModel: ObservableObject {
         case succeeded
         case deleted
         case failed
-        
+
         var isInProgress: Bool {
             switch self {
             case .initial, .succeeded, .deleted, .failed:

@@ -10,14 +10,14 @@ import UIKit
 
 struct WebPageView: UIViewControllerRepresentable {
     typealias UIViewControllerType = WebViewController
-    
+
     let url: URL
-    
+
     func makeUIViewController(context: Context) -> WebViewController {
         let vc = WebViewController(url: url)
         return vc
     }
-    
+
     func updateUIViewController(_ uiViewController: WebViewController, context: Context) {
     }
 }

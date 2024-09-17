@@ -17,7 +17,7 @@ extension FirestoreUpdateUser {
     func data() -> [String: Any] {
         [
             "readingBookId": readingBookId,
-            "updatedAt": updatedAt,
+            "updatedAt": updatedAt
         ]
     }
 }

@@ -19,7 +19,7 @@ public protocol AddBookByManualUseCase {
 public final class AddBookByManualUseCaseImpl: AddBookByManualUseCase {
     private let accountService: AccountServiceProtocol
     private let bookRepository: BookRepository
-    
+
     public init(
         accountService: AccountServiceProtocol,
         bookRepository: BookRepository
@@ -27,18 +27,18 @@ public final class AddBookByManualUseCaseImpl: AddBookByManualUseCase {
         self.accountService = accountService
         self.bookRepository = bookRepository
     }
-    
+
     public func invoke(title: String, author: String, thumbnailImage: ImageData?, collection: Collection?) async throws -> ID<Book> {
         guard let user = accountService.currentUser else {
             throw AddBookByManualUseCaseError.notAuthenticated
         }
-        
+
         let publication = Publication(
             title: title,
             author: author,
             thumbnailURL: nil
         )
-       
+
         do {
             return try await bookRepository.addBook(of: publication, in: collection, image: thumbnailImage, for: user)
         } catch {

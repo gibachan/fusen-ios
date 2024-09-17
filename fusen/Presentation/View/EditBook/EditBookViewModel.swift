@@ -24,22 +24,22 @@ final class EditViewModel: ObservableObject {
         self.book = book
         self.updateBookUseCase = updateBookUseCase
     }
-    
+
     @MainActor
     func onAppear() {
         imageURL = book.imageURL
     }
-    
+
     @MainActor
     func onThumbnailImageChange() {
         isSaveEnabled = true
     }
-    
+
     @MainActor
     func onTextChange(title: String, author: String, description: String) {
         isSaveEnabled = book.title != title || book.author != author || book.description != description
     }
-    
+
     @MainActor
     func onSave(image: ImageData?, title: String, author: String, description: String) async {
         guard !state.isInProgress else { return }
@@ -60,7 +60,7 @@ final class EditViewModel: ObservableObject {
         case loading
         case succeeded
         case failed
-        
+
         var isInProgress: Bool {
             switch self {
             case .initial, .succeeded, .failed:

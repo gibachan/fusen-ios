@@ -36,7 +36,7 @@ public struct RakutenBooksPublicationRepositoryImpl: PublicationRepository {
             throw PublicationRepositoryError.invalidJSON
         }
     }
-    
+
     public func findBy(title: String) async throws -> [Publication] {
         let urlString = "https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?applicationId=\(rakutenApplicationId)&formatVersion=2&title=\(title)&hits=30&page=1"
         guard let encodedUrlString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),

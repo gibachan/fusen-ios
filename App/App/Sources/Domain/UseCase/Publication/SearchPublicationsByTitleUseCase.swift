@@ -17,16 +17,16 @@ public protocol SearchPublicationsByTitleUseCase {
 
 public final class SearchPublicationsByTitleUseCaseImpl: SearchPublicationsByTitleUseCase {
     private let rakutenBooksPublicationRepository: PublicationRepository
-    
+
     public init(rakutenBooksPublicationRepository: PublicationRepository) {
         self.rakutenBooksPublicationRepository = rakutenBooksPublicationRepository
     }
-    
+
     public func invoke(withTitle title: String) async throws -> [Publication] {
         guard title.isNotEmpty else {
             throw SearchPublicationsByTitleUseCaseError.notFound
         }
-        
+
         do {
             let publications = try await rakutenBooksPublicationRepository.findBy(title: title)
             guard publications.isNotEmpty else {

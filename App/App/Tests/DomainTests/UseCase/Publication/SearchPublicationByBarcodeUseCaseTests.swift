@@ -104,7 +104,7 @@ private struct MockPublicationRepository: PublicationRepository {
             throw error
         }
     }
-    
+
     func findBy(title: String) async throws -> [Publication] {
         fatalError("Not implemented yet")
     }

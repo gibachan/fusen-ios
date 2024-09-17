@@ -13,12 +13,12 @@ public protocol ConfirmReadingBookDescriptionUseCase {
 
 public final class ConfirmReadingBookDescriptionUseCaseImpl: ConfirmReadingBookDescriptionUseCase {
     private let userActionHistoryRepository: UserActionHistoryRepository
-    
+
     public init(userActionHistoryRepository: UserActionHistoryRepository
     ) {
         self.userActionHistoryRepository = userActionHistoryRepository
     }
-    
+
     public func invoke() {
         userActionHistoryRepository.update(didConfirmReadingBookDescription: true)
     }

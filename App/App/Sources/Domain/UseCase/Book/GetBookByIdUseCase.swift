@@ -19,7 +19,7 @@ public protocol GetBookByIdUseCase {
 public final class GetBookByIdUseCaseImpl: GetBookByIdUseCase {
     private let accountService: AccountServiceProtocol
     private let bookRepository: BookRepository
-    
+
     public init(
         accountService: AccountServiceProtocol,
         bookRepository: BookRepository
@@ -27,12 +27,12 @@ public final class GetBookByIdUseCaseImpl: GetBookByIdUseCase {
         self.accountService = accountService
         self.bookRepository = bookRepository
     }
-    
+
     public func invoke(id: ID<Book>) async throws -> Book {
         guard let user = accountService.currentUser else {
             throw GetBookByIdUseCaseError.notAuthenticated
         }
-        
+
         do {
             return try await bookRepository.getBook(by: id, for: user)
         } catch {

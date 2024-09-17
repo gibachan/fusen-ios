@@ -23,7 +23,7 @@ public final class RecognizeTextUseCaseImpl: RecognizeTextUseCase {
         self.appConfigRepository = appConfigRepository
         self.visionTextRecognizeService = visionTextRecognizeService
     }
-    
+
     public func invoke(imageData: ImageData) async -> String {
         guard let image = imageData.uiImage else {
 //            log.e("uiImage is missing")

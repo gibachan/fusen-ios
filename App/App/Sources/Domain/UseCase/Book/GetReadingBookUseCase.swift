@@ -20,7 +20,7 @@ public final class GetReadingBookUseCaseImpl: GetReadingBookUseCase {
     private let accountService: AccountServiceProtocol
     private let userRepository: UserRepository
     private let bookRepository: BookRepository
-    
+
     public init(
         accountService: AccountServiceProtocol,
         userRepository: UserRepository,
@@ -30,12 +30,12 @@ public final class GetReadingBookUseCaseImpl: GetReadingBookUseCase {
         self.userRepository = userRepository
         self.bookRepository = bookRepository
     }
-    
+
     public func invoke() async throws -> Book? {
         guard let user = accountService.currentUser else {
             throw GetReadingBookUseCaseError.notAuthenticated
         }
-        
+
         do {
             let userInfo = try await userRepository.getInfo(for: user)
             // TODO: Cache reading book

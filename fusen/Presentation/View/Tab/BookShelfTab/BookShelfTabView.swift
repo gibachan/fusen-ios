@@ -13,7 +13,7 @@ struct BookShelfTabView: View {
     @State private var isAddCollectionPresented = false
     @State private var isNavigated = false
     @State private var navigation: BookShelfNavigation = .none
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             List {
@@ -31,7 +31,7 @@ struct BookShelfTabView: View {
             .refreshable {
                 await viewModel.onRefresh()
             }
-            
+
             toolbarView
         }
         .listStyle(PlainListStyle())

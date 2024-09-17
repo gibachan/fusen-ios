@@ -19,7 +19,7 @@ final class EditMemoViewModel: ObservableObject {
     @Published var state: State = .initial
     @Published var memo: Memo
     @Published var memoImageURL: URL?
-    
+
     init(
         memo: Memo,
         getBookByIdUseCase: GetBookByIdUseCase = GetBookByIdUseCaseImpl(accountService: AccountService.shared, bookRepository: BookRepositoryImpl()),
@@ -46,12 +46,12 @@ final class EditMemoViewModel: ObservableObject {
             log.e(error.localizedDescription)
         }
     }
-    
+
     @MainActor
     func onTextChange(text: String, quote: String) {
         isSaveEnabled = text.isNotEmpty || quote.isNotEmpty
     }
-    
+
     @MainActor
     func onSave(
         text: String,
@@ -59,7 +59,7 @@ final class EditMemoViewModel: ObservableObject {
         page: Int
     ) async {
         guard !state.isInProgress else { return }
-        
+
         state = .loading
         do {
             try await updateMemoUseCase.invoke(memo: memo, text: text, quote: quote, page: page, imageURLs: memo.imageURLs)
@@ -70,11 +70,11 @@ final class EditMemoViewModel: ObservableObject {
             NotificationCenter.default.postError(message: .editMemo)
         }
     }
-    
+
     @MainActor
     func onDelete() async {
         guard !state.isInProgress else { return }
-        
+
         state = .loading
         do {
             try await deleteMemoUseCase.invoke(memo: memo)
@@ -85,14 +85,14 @@ final class EditMemoViewModel: ObservableObject {
             NotificationCenter.default.postError(message: .deleteMemo)
         }
     }
-    
+
     enum State {
         case initial
         case loading
         case succeeded
         case deleted
         case failed
-        
+
         var isInProgress: Bool {
             if case .loading = self {
                 return true

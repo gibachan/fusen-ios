@@ -13,14 +13,14 @@ import XCTest
 
 class HomeTabViewModelTests: XCTestCase {
     private let accountService = MockAccountService(isLoggedIn: true)
-    
+
     func testOnAppear() async {
         let getReadingBookUseCase = MockGetReadingBookUseCase(withResult: Book.sample)
         let getLatestDataUseCase = MockGetLatestDataUseCase(withResult: LatestData(books: [Book.sample], memos: [Memo.sample]))
         let viewModel = HomeTabViewModel(accountService: accountService,
                                          getReadingBookUseCase: getReadingBookUseCase,
                                          getLatestDataUseCase: getLatestDataUseCase)
-        
+
         var states: [HomeTabViewModel.State] = []
         var readingBooks: [Book?] = []
         var cancellables = Set<AnyCancellable>()
@@ -34,10 +34,10 @@ class HomeTabViewModelTests: XCTestCase {
                 readingBooks.append(readingBook)
             })
             .store(in: &cancellables)
-        
+
         await viewModel.onAppear()
         cancellables.removeAll()
-        
+
         XCTAssertEqual(states.count, 3)
         XCTAssertEqual(states[0], .initial)
         XCTAssertEqual(states[1], .loading)
@@ -46,14 +46,14 @@ class HomeTabViewModelTests: XCTestCase {
         XCTAssertNil(readingBooks[0])
         XCTAssertEqual(readingBooks[1], Book.sample)
     }
-    
+
     func testOnRefresh() async {
         let getReadingBookUseCase = MockGetReadingBookUseCase(withResult: Book.sample)
         let getLatestDataUseCase = MockGetLatestDataUseCase(withResult: LatestData(books: [Book.sample], memos: [Memo.sample]))
         let viewModel = HomeTabViewModel(accountService: accountService,
                                          getReadingBookUseCase: getReadingBookUseCase,
                                          getLatestDataUseCase: getLatestDataUseCase)
-        
+
         var states: [HomeTabViewModel.State] = []
         var readingBooks: [Book?] = []
         var cancellables = Set<AnyCancellable>()
@@ -67,10 +67,10 @@ class HomeTabViewModelTests: XCTestCase {
                 readingBooks.append(readingBook)
             })
             .store(in: &cancellables)
-        
+
         await viewModel.onRefresh()
         cancellables.removeAll()
-        
+
         XCTAssertEqual(states.count, 3)
         XCTAssertEqual(states[0], .initial)
         XCTAssertEqual(states[1], .loading)
@@ -84,17 +84,17 @@ class HomeTabViewModelTests: XCTestCase {
 private final class MockGetReadingBookUseCase: GetReadingBookUseCase {
     private let result: Book?
     private let error: GetReadingBookUseCaseError?
-    
+
     init(withResult result: Book?) {
         self.result = result
         self.error = nil
     }
-    
+
     init(withError error: GetReadingBookUseCaseError) {
         self.result = nil
         self.error = error
     }
-    
+
     func invoke() async throws -> Book? {
         if let result = result {
             return result
@@ -107,17 +107,17 @@ private final class MockGetReadingBookUseCase: GetReadingBookUseCase {
 private final class MockGetLatestDataUseCase: GetLatestDataUseCase {
     private let result: LatestData?
     private let error: GetLatestDataUseCaseError?
-    
+
     init(withResult result: LatestData?) {
         self.result = result
         self.error = nil
     }
-    
+
     init(withError error: GetLatestDataUseCaseError) {
         self.result = nil
         self.error = error
     }
-    
+
     func invoke(booksCount: Int, memosCount: Int) async throws -> LatestData {
         if let result = result {
             return result

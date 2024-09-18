@@ -38,6 +38,9 @@ jobs:
       - name: Set up build
         run: |
           make setup
+      - name: Disable macro validation
+        run: |
+          defaults write com.apple.dt.Xcode IDESkipMacroFingerprintValidation -bool YES
       - name: Run test
         run: |
           bundle exec fastlane test

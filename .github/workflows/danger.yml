@@ -1,0 +1,28 @@
+name: Danger
+on:
+  pull_request:
+    paths:
+      - '**/.swiftlint.yml'
+      - '**/*.swift'
+jobs:
+  Danger:
+    runs-on: macos-14
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+      - uses: actions/cache@v4
+        with:
+          path: vendor/bundle
+          key: bundle-ruby-${{ runner.os }}-${{ env.RUBY_VERSION }}-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-        
+      - name: Run Danger
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          bundle install
+          bundle exec danger

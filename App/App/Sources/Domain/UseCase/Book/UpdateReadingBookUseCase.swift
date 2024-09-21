@@ -36,7 +36,7 @@ public final class UpdateReadingBookUseCaseImpl: UpdateReadingBookUseCase {
 
         do {
             try await userRepository.update(readingBook: readingBook, for: user)
-            // FIXME: Call widget update via Protodol
+            // FIXME: Call widget update via Protocol
             WidgetCenter.shared.reloadAllTimelines()
         } catch {
             throw UpdateReadingBookUseCaseError.badNetwork

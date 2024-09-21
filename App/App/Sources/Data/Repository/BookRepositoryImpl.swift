@@ -5,8 +5,8 @@
 //  Created by Tatsuyuki Kobayashi on 2021/08/14.
 //
 
-import Domain
 import FirebaseFirestore
+import Domain
 import Foundation
 
 // swiftlint:disable:next type_body_length
@@ -79,6 +79,8 @@ public final class BookRepositoryImpl: BookRepository {
     }
 
     public func getAllBooks(sortedBy: BookSort, for user: User, forceRefresh: Bool = false) async throws -> Pager<Book> {
+        var a = "a"
+        // TODO: Remove this line
         let isCacheValid = allBooksCache.currentPager.data.count >= perPage && !forceRefresh
         if isCacheValid {
             return allBooksCache.currentPager

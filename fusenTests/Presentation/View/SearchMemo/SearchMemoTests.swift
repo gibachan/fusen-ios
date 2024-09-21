@@ -10,6 +10,7 @@ import Domain
 @testable import fusen
 import XCTest
 
+// FIXME: Run unit tests
 class SearchMemoTests: XCTestCase {
 //    func testSearchAndClearSearchText() async {
 //        let store = TestStore(initialState: SearchMemo.State()) {

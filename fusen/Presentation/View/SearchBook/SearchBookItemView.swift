@@ -20,6 +20,7 @@ struct SearchBookItemView: View {
                     .font(.small)
                     .fontWeight(.bold)
                     .lineLimit(2)
+                    .multilineTextAlignment(.leading)
                     .foregroundColor(.textSecondary)
                 Spacer(minLength: 8)
                 Text(publication.author)

@@ -34,12 +34,14 @@ struct BookMemoItem: View {
                 if memo.quote.isNotEmpty {
                     QuoteText(text: memo.quote)
                         .lineLimit(6)
+                        .multilineTextAlignment(.leading)
                 }
                 if memo.text.isNotEmpty {
                     Text(memo.text)
                         .font(.medium)
                         .foregroundColor(.textPrimary)
                         .lineLimit(6)
+                        .multilineTextAlignment(.leading)
                 }
             }
         }

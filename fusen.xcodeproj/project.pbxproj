@@ -201,7 +201,6 @@
 		A0F97CEB26E0CA61007CACE5 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F97CEA26E0CA61007CACE5 /* WebViewController.swift */; };
 		A0F97CED26E0CA84007CACE5 /* WebPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F97CEC26E0CA84007CACE5 /* WebPageView.swift */; };
 		A0F97CEF26E0CD55007CACE5 /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F97CEE26E0CD55007CACE5 /* URLExtension.swift */; };
-		FAFA9C3195C337A6656292D4 /* Pods_fusen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A120C1BA338A419E1C4AC1E /* Pods_fusen.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -244,11 +243,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0A120C1BA338A419E1C4AC1E /* Pods_fusen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fusen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0C3DED94C319492FE223FE79 /* Pods-fusen-fusenUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen-fusenUITests.release.xcconfig"; path = "Target Support Files/Pods-fusen-fusenUITests/Pods-fusen-fusenUITests.release.xcconfig"; sourceTree = "<group>"; };
-		1DE0D1B8A96CA3FFE09EAAEA /* Pods-fusen.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen.staging.xcconfig"; path = "Target Support Files/Pods-fusen/Pods-fusen.staging.xcconfig"; sourceTree = "<group>"; };
-		68C9A2BDADA81FF3A49EEF8A /* Pods-fusen-fusenUITests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen-fusenUITests.staging.xcconfig"; path = "Target Support Files/Pods-fusen-fusenUITests/Pods-fusen-fusenUITests.staging.xcconfig"; sourceTree = "<group>"; };
-		6F5CBB77B19B6F9B80D8238A /* Pods-fusen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen.debug.xcconfig"; path = "Target Support Files/Pods-fusen/Pods-fusen.debug.xcconfig"; sourceTree = "<group>"; };
 		7A003E6C286735D3002B8BAC /* fusenWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = fusenWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A003E6D286735D3002B8BAC /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		7A003E6F286735D3002B8BAC /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -335,7 +329,6 @@
 		7AD1611526C2A6CE00334A63 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		7AD1611726C2A8BC00334A63 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		7ADD9CC126F17A880073A043 /* CollectionEmptyItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionEmptyItemView.swift; sourceTree = "<group>"; };
-		983232E518C4EADBE80E78A4 /* Pods-fusen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen.release.xcconfig"; path = "Target Support Files/Pods-fusen/Pods-fusen.release.xcconfig"; sourceTree = "<group>"; };
 		A001E02D26C9477700AC92BA /* BookShelfItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfItem.swift; sourceTree = "<group>"; };
 		A001E03026C9E62400AC92BA /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
 		A001E03226C9E62D00AC92BA /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
@@ -430,8 +423,6 @@
 		A0F97CEA26E0CA61007CACE5 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		A0F97CEC26E0CA84007CACE5 /* WebPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPageView.swift; sourceTree = "<group>"; };
 		A0F97CEE26E0CD55007CACE5 /* URLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
-		B9CE5958189153717B673230 /* Pods-fusen-fusenUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusen-fusenUITests.debug.xcconfig"; path = "Target Support Files/Pods-fusen-fusenUITests/Pods-fusen-fusenUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		DED65B63C22476AE8B5011AE /* Pods_fusen_fusenUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fusen_fusenUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -469,7 +460,6 @@
 				7AAA6A852A08D45E00A4B820 /* Kingfisher in Frameworks */,
 				7A21CD8629FB413B003E4F7C /* ComposableArchitecture in Frameworks */,
 				7A9C0EC92AB80A7400B92C59 /* Domain in Frameworks */,
-				FAFA9C3195C337A6656292D4 /* Pods_fusen.framework in Frameworks */,
 				7AAA6A822A08D40B00A4B820 /* CropViewController in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -487,8 +477,6 @@
 		1DC5271D3387DA61FAF6D795 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0A120C1BA338A419E1C4AC1E /* Pods_fusen.framework */,
-				DED65B63C22476AE8B5011AE /* Pods_fusen_fusenUITests.framework */,
 				7A003E6D286735D3002B8BAC /* WidgetKit.framework */,
 				7A003E6F286735D3002B8BAC /* SwiftUI.framework */,
 				7A9675F828A9263200445D83 /* UniformTypeIdentifiers.framework */,
@@ -1063,7 +1051,6 @@
 				7A003E71286735D3002B8BAC /* fusenWidget */,
 				7A9675FA28A9263200445D83 /* fusenActionExtension */,
 				A082000526C1F5CF00100357 /* Products */,
-				E9F15947474F72C9A1C5E49C /* Pods */,
 				1DC5271D3387DA61FAF6D795 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -1161,19 +1148,6 @@
 			path = WebPageView;
 			sourceTree = "<group>";
 		};
-		E9F15947474F72C9A1C5E49C /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				6F5CBB77B19B6F9B80D8238A /* Pods-fusen.debug.xcconfig */,
-				983232E518C4EADBE80E78A4 /* Pods-fusen.release.xcconfig */,
-				B9CE5958189153717B673230 /* Pods-fusen-fusenUITests.debug.xcconfig */,
-				0C3DED94C319492FE223FE79 /* Pods-fusen-fusenUITests.release.xcconfig */,
-				1DE0D1B8A96CA3FFE09EAAEA /* Pods-fusen.staging.xcconfig */,
-				68C9A2BDADA81FF3A49EEF8A /* Pods-fusen-fusenUITests.staging.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1225,7 +1199,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A082002626C1F5D100100357 /* Build configuration list for PBXNativeTarget "fusen" */;
 			buildPhases = (
-				25623AECADE0692A2D911115 /* [CP] Check Pods Manifest.lock */,
 				A082000026C1F5CF00100357 /* Sources */,
 				A082000126C1F5CF00100357 /* Frameworks */,
 				A082000226C1F5CF00100357 /* Resources */,
@@ -1373,28 +1346,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		25623AECADE0692A2D911115 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-fusen-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		A08237672AE4B1F800100357 /* Copy Acknowledgements */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1891,7 +1842,6 @@
 		};
 		A07507E026C5E79F0087AE5C /* Staging */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1DE0D1B8A96CA3FFE09EAAEA /* Pods-fusen.staging.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APP_URL_SCHEME = "fusen-stg";
@@ -1927,7 +1877,7 @@
 					"\"QuartzCore\"",
 					"-ObjC",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D STAGING -D DEBUG";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D STAGING -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = app.fusen.stg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
@@ -2082,7 +2032,6 @@
 		};
 		A082002726C1F5D100100357 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6F5CBB77B19B6F9B80D8238A /* Pods-fusen.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APP_URL_SCHEME = "fusen-dev";
@@ -2118,7 +2067,7 @@
 					"\"QuartzCore\"",
 					"-ObjC",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D DEBUG -D DEVELOPMENT";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG -D DEVELOPMENT";
 				PRODUCT_BUNDLE_IDENTIFIER = app.fusen.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -2129,7 +2078,6 @@
 		};
 		A082002826C1F5D100100357 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 983232E518C4EADBE80E78A4 /* Pods-fusen.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APP_URL_SCHEME = fusen;

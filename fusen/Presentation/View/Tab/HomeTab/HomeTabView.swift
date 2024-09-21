@@ -9,37 +9,30 @@ import Domain
 import SwiftUI
 
 struct HomeTabView: View {
-    private let readingBookFooterHeight: CGFloat = 56
     @StateObject private var viewModel = HomeTabViewModel()
     @State private var isAddPresented = false
     @State private var isNavigated = false
     @State private var navigation: HomeNavigation = .none
 
     var body: some View {
-        ZStack(alignment: .bottomLeading) {
-            List {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 16) {
                 if case let .loaded(latestBooks, latestMemos) = viewModel.state {
+                    if let readigBook = viewModel.readingBook {
+                        readingBookSection(book: readigBook)
+                    }
                     latestBooksSectin(books: latestBooks)
                     latestMemosSection(memos: latestMemos)
                 }
 
                 if case .empty = viewModel.state {
                     HomeTabEmptyView()
-                        .listRowSeparator(.hidden)
                 }
-
-                Spacer()
-                    .frame(height: readingBookFooterHeight)
-                    .listRowSeparator(.hidden)
             }
-            .listStyle(PlainListStyle())
-            .refreshable {
-                await viewModel.onRefresh()
-            }
-
-            if let readigBook = viewModel.readingBook {
-                readingBookFooter(book: readigBook)
-            }
+            .padding(16)
+        }
+        .refreshable {
+            await viewModel.onRefresh()
         }
         .loading(viewModel.state == .loading)
         .navigation(isActive: $isNavigated, destination: {
@@ -142,39 +135,45 @@ extension HomeTabView {
         }
     }
 
-    private func readingBookFooter(book: Book) -> some View {
-        HStack(alignment: .center) {
-            Button {
-                navigate(to: .book(book: book))
-            } label: {
-                HStack {
-                    BookImageView(url: book.imageURL)
-                        .frame(width: 30, height: 40)
-                    VStack(alignment: .leading) {
-                        Text("読書中")
-                            .font(.small)
-                            .foregroundColor(.textSecondary)
-                        Text(book.title)
-                            .font(.small)
-                            .lineLimit(1)
-                            .foregroundColor(.textPrimary)
+    private func readingBookSection(book: Book) -> some View {
+        VStack(alignment: .leading, spacing: 4) {
+            SectionHeaderText("読書中の書籍")
+            HStack(alignment: .center) {
+                Button {
+                    navigate(to: .book(book: book))
+                } label: {
+                    HStack {
+                        BookImageView(url: book.imageURL)
+                            .frame(width: 30, height: 40)
+                        VStack(alignment: .leading) {
+                            Text(book.title)
+                                .font(.small)
+                                .fontWeight(.bold)
+                                .lineLimit(2)
+                                .multilineTextAlignment(.leading)
+                                .foregroundColor(.textSecondary)
+                            Spacer()
+                        }
                     }
                 }
+                Spacer()
+                Image.memo
+                    .resizable()
+                    .foregroundColor(.active)
+                    .frame(width: 24, height: 24)
+                    .onTapGesture {
+                        isAddPresented = true
+                    }
+                    .padding(.trailing, 8)
             }
-            Spacer()
-            Image.memo
-                .resizable()
-                .foregroundColor(.active)
-                .frame(width: 24, height: 24)
-                .onTapGesture {
-                    isAddPresented = true
-                }
+            .padding(8)
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color.border, lineWidth: 0.5)
+                    .shadow(color: .backgroundGray, radius: 1, x: 2, y: 2)
+            )
         }
-        .padding(.vertical, 8)
-        .padding(.horizontal, 16)
-        .frame(height: readingBookFooterHeight)
-        .backgroundColor(.white.opacity(0.94))
-        .shadow(color: .backgroundGray, radius: 3)
+        .padding(.bottom, 20)
     }
 }
 

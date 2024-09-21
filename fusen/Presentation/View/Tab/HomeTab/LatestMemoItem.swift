@@ -43,12 +43,14 @@ struct LatestMemoItem: View {
                 if memo.quote.isNotEmpty {
                     QuoteText(text: memo.quote)
                         .lineLimit(2)
+                        .multilineTextAlignment(.leading)
                 }
                 if memo.text.isNotEmpty {
                     Text(memo.text)
                         .font(.medium)
                         .foregroundColor(.textPrimary)
                         .lineLimit(2)
+                        .multilineTextAlignment(.leading)
                 }
             }
         }

@@ -1,7 +1,6 @@
 .PHONY: setup
 setup:
 	$(MAKE) install-bundler
-	$(MAKE) install-cocoapods
 	$(MAKE) add-missing-files-if-need
 
 .PHONY: install-bundler
@@ -13,10 +12,6 @@ install-bundler:
 update-bundler:
 	bundle config path vendor/bundle
 	bundle update --jobs 4 --retry 3
-
-.PHONY: install-cocoapods
-install-cocoapods:
-	bundle exec pod install
 
 .PHONY: add-missing-files-if-need
 add-missing-files-if-need:
@@ -32,5 +27,4 @@ test:
 .PHONY: clean
 clean:
 	@rm -rf ./vendor/bundle
-	@rm -rf ./Pods
 	@xcodebuild clean -alltargets

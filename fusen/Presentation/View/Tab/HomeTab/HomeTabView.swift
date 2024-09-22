@@ -16,13 +16,14 @@ struct HomeTabView: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
+            VStack(alignment: .leading, spacing: 8) {
                 if case let .loaded(latestBooks, latestMemos) = viewModel.state {
                     if let readigBook = viewModel.readingBook {
                         readingBookSection(book: readigBook)
+                        Spacer().frame(height: 24)
                     }
                     latestBooksSectin(books: latestBooks)
-                    Divider()
+                    Spacer().frame(height: 16)
                     latestMemosSection(memos: latestMemos)
                 }
 
@@ -96,6 +97,7 @@ extension HomeTabView {
                     LatestBookItem(book: book)
                         .padding(.vertical, 4)
                 }
+                Divider()
             }
         } header: {
             HStack {
@@ -122,6 +124,7 @@ extension HomeTabView {
                 } label: {
                     LatestMemoItem(memo: memo)
                 }
+                Divider()
             }
         } header: {
             HStack {
@@ -167,14 +170,17 @@ extension HomeTabView {
                     }
                     .padding(.trailing, 8)
             }
-            .padding(8)
-            .overlay(
+            .padding(12)
+            .overlay {
                 RoundedRectangle(cornerRadius: 8)
                     .stroke(Color.border, lineWidth: 0.5)
+            }
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Color.white)
                     .shadow(color: .backgroundGray, radius: 1, x: 2, y: 2)
             )
         }
-        .padding(.bottom, 20)
     }
 }
 

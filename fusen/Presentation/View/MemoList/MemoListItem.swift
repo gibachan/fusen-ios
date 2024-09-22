@@ -48,12 +48,14 @@ struct MemoListItem: View {
             if memo.quote.isNotEmpty {
                 QuoteText(text: memo.quote)
                     .lineLimit(5)
+                    .multilineTextAlignment(.leading)
             }
             if memo.text.isNotEmpty {
                 Text(memo.text)
                     .font(.medium)
                     .foregroundColor(.textPrimary)
                     .lineLimit(5)
+                    .multilineTextAlignment(.leading)
             }
         }
         .padding(.vertical, 4)

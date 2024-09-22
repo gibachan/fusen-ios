@@ -28,8 +28,6 @@ struct QuoteText_Previews: PreviewProvider {
     static var previews: some View {
         VStack(alignment: .leading) {
             QuoteText(text: "Hello world!\nblah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah ")
-                .font(.medium)
-                .lineLimit(4)
             Text("hoge hoge")
         }
     }

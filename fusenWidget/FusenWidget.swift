@@ -58,6 +58,7 @@ struct FusenWidgetEntryView: View {
                         .foregroundColor(.textSecondary)
                         .multilineTextAlignment(.leading)
                         .lineLimit(2)
+                        .multilineTextAlignment(.leading)
                     Text(book.author)
                         .font(.minimal)
                         .foregroundColor(.textSecondary)

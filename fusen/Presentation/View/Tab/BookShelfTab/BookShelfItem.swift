@@ -20,6 +20,7 @@ struct BookShelfItem: View {
                     .font(.minimal)
                     .fontWeight(.bold)
                     .lineLimit(3)
+                    .multilineTextAlignment(.leading)
                     .foregroundColor(.textSecondary)
                 Spacer(minLength: 8)
                 Text(book.author)

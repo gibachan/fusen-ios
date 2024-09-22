@@ -18,6 +18,7 @@ struct SectionHeaderText: View {
         Text(text)
             .font(.medium)
             .fontWeight(.bold)
+            .foregroundColor(.textSecondary)
     }}
 
 struct SectionHeaderText_Previews: PreviewProvider {

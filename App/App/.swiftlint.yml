@@ -69,5 +69,4 @@ disabled_rules: # rule identifiers turned on by default to exclude from running
   - trailing_comma
   - function_parameter_count
 excluded:
-  - Pods
   - vendor

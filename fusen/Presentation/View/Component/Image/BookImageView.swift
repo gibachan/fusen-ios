@@ -11,7 +11,7 @@ import SwiftUI
 
 struct BookImageView: View {
     let url: URL?
-    
+
     var body: some View {
         KFImage(url)
             .placeholder {

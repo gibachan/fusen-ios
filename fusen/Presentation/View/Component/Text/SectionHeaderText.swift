@@ -9,15 +9,16 @@ import SwiftUI
 
 struct SectionHeaderText: View {
     private let text: String
-    
+
     init(_ text: String) {
         self.text = text
     }
-    
+
     var body: some View {
         Text(text)
             .font(.medium)
             .fontWeight(.bold)
+            .foregroundColor(.textSecondary)
     }}
 
 struct SectionHeaderText_Previews: PreviewProvider {

@@ -14,7 +14,7 @@ final class MemoListViewModel: ObservableObject {
 
     @Published var state: State = .initial
     @Published var pager: Pager<Memo> = .empty
-    
+
     init(
         getAllMemosUseCase: GetAllMemosUseCase = GetAllMemosUseCaseImpl(accountService: AccountService.shared, memoRepository: MemoRepositoryImpl())
     ) {
@@ -24,7 +24,7 @@ final class MemoListViewModel: ObservableObject {
     @MainActor
     func onAppear() async {
         guard !state.isInProgress else { return }
-        
+
         state = .loading
         do {
             let pager = try await getAllMemosUseCase.invoke(forceRefresh: false)
@@ -37,11 +37,11 @@ final class MemoListViewModel: ObservableObject {
             NotificationCenter.default.postError(message: .network)
         }
     }
-    
+
     @MainActor
     func onRefresh() async {
         guard !state.isInProgress else { return }
-        
+
         state = .refreshing
         do {
             let pager = try await getAllMemosUseCase.invoke(forceRefresh: true)
@@ -54,7 +54,7 @@ final class MemoListViewModel: ObservableObject {
             NotificationCenter.default.postError(message: .network)
         }
     }
-    
+
     @MainActor
     func onItemApper(of memo: Memo) async {
         guard case .succeeded = state, !pager.finished else { return }
@@ -74,7 +74,7 @@ final class MemoListViewModel: ObservableObject {
             }
         }
     }
-    
+
     enum State {
         case initial
         case loading
@@ -82,7 +82,7 @@ final class MemoListViewModel: ObservableObject {
         case refreshing
         case succeeded
         case failed
-        
+
         var isInProgress: Bool {
             switch self {
             case .initial, .succeeded, .failed:

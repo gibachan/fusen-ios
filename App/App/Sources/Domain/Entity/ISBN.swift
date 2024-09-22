@@ -17,7 +17,7 @@ public enum ISBN {
         case .iSBN13(value: let value): return value
         }
     }
-    
+
     public static func from(code: String) -> ISBN? {
         switch code.count {
         case 10: return .iSBN10(value: code)

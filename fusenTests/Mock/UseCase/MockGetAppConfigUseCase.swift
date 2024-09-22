@@ -5,8 +5,8 @@
 //  Created by Tatsuyuki Kobayashi on 2021/09/19.
 //
 
-import Foundation
 import Domain
+import Foundation
 @testable import fusen
 
 final class MockGetAppConfigUseCase: GetAppConfigUseCase {

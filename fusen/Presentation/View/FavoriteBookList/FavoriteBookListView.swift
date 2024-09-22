@@ -10,7 +10,7 @@ import SwiftUI
 struct FavoriteBookListView: View {
     @StateObject private var viewModel = FavoriteBookListViewModel()
     @State private var isAddPresented = false
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             List {
@@ -30,7 +30,7 @@ struct FavoriteBookListView: View {
             .refreshable {
                 await viewModel.onRefresh()
             }
-            
+
             TrailingControlToolbar(
                 trailingView: {
                     AddBookIcon()

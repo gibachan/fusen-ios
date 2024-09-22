@@ -13,11 +13,11 @@ public protocol UpdateCurrentMemoSortUseCase {
 
 public final class UpdateCurrentMemoSortUseCaseImpl: UpdateCurrentMemoSortUseCase {
     private let userActionHistoryRepository: UserActionHistoryRepository
-    
+
     public init(userActionHistoryRepository: UserActionHistoryRepository) {
         self.userActionHistoryRepository = userActionHistoryRepository
     }
-    
+
     public func invoke(memoSort: MemoSort) {
         return userActionHistoryRepository.update(currentMemoSort: memoSort)
     }

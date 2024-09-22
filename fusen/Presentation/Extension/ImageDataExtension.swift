@@ -10,7 +10,7 @@ import UIKit
 
 public extension ImageData {
     var uiImage: UIImage? { .init(data: data) }
-    
+
     init?(type: ImageType, uiImage: UIImage) {
         let quality: CGFloat
         switch type {
@@ -18,7 +18,7 @@ public extension ImageData {
         case .memo: quality = 0.8
         case .memoQuote: quality = 0.8
         }
-        
+
         guard let data = uiImage.jpegData(compressionQuality: quality) else {
             return nil
         }

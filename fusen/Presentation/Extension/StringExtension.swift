@@ -9,7 +9,7 @@ import Foundation
 
 extension String {
     static var checkMark: String { "✔️" }
-    
+
     var isNotEmpty: Bool {
         !isEmpty
     }

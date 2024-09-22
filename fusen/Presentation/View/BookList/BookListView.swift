@@ -21,7 +21,7 @@ struct BookListView: View {
             case .grid:
                 gridStyleView
             }
-            
+
             TrailingControlToolbar(
                 trailingView: {
                     AddBookIcon()
@@ -96,7 +96,7 @@ struct BookListView: View {
 private extension BookListView {
     enum DisplayStyle {
         case list, grid
-        
+
         func next() -> DisplayStyle {
             switch self {
             case .list: return .grid
@@ -124,7 +124,7 @@ private extension BookListView {
             await viewModel.onRefresh()
         }
     }
-    
+
     var gridStyleView: some View {
         ScrollView(.vertical) {
             LazyVGrid(columns: Array(repeating: GridItem(.flexible(minimum: 48), spacing: 16), count: 3), alignment: .leading, spacing: 16) {

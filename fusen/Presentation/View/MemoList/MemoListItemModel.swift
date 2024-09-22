@@ -15,7 +15,7 @@ final class MemoListItemModel: ObservableObject {
     private var state: State = .initial
 
     @Published var bookTitle: String = ""
-    
+
     init(
         memo: Memo,
         getBookByIdUseCase: GetBookByIdUseCase = GetBookByIdUseCaseImpl(accountService: AccountService.shared, bookRepository: BookRepositoryImpl())
@@ -23,11 +23,11 @@ final class MemoListItemModel: ObservableObject {
         self.memo = memo
         self.getBookByIdUseCase = getBookByIdUseCase
     }
-    
+
     @MainActor
     func onAppear() async {
         guard !state.isInProgress else { return }
-        
+
         state = .loading
         do {
             let book = try await getBookByIdUseCase.invoke(id: memo.bookId)
@@ -38,13 +38,13 @@ final class MemoListItemModel: ObservableObject {
             state = .failed
         }
     }
-    
+
     enum State {
         case initial
         case loading
         case loaded(book: Book)
         case failed
-        
+
         var isInProgress: Bool {
             switch self {
             case .initial, .loaded, .failed:

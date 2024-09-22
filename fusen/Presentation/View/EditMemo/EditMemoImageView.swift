@@ -10,14 +10,14 @@ import SwiftUI
 
 struct EditMemoImageView: View {
     @Environment(\.dismiss) private var dismiss
-    
+
     @State var offset: CGSize = .zero
     @State var initialOffset: CGSize = .zero
     @State var scale: CGFloat = 1.0
     @State var initialScale: CGFloat = 1.0
-    
+
     let url: URL?
-    
+
     var body: some View {
         ZStack {
             Color.black

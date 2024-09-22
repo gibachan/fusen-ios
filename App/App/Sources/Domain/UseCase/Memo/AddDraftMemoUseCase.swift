@@ -20,14 +20,14 @@ public protocol AddDraftMemoUseCase {
 public final class AddDraftMemoUseCaseImpl: AddDraftMemoUseCase {
     private let accountService: AccountServiceProtocol
     private let memoRepository: MemoRepository
-    
+
     public init(accountService: AccountServiceProtocol,
                 memoRepository: MemoRepository
     ) {
         self.accountService = accountService
         self.memoRepository = memoRepository
     }
-    
+
     public func invoke() async throws -> ID<Memo> {
         guard let user = accountService.currentUser else {
             throw AddDraftMemoUseCaseError.notAuthenticated
@@ -35,7 +35,7 @@ public final class AddDraftMemoUseCaseImpl: AddDraftMemoUseCase {
         guard let draft = await memoRepository.getDraft() else {
             throw AddDraftMemoUseCaseError.draftIsNotFound
         }
-        
+
         do {
             let memoPage: Int?
             if let page = draft.page,

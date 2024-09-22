@@ -10,13 +10,14 @@ import Domain
 @testable import fusen
 import XCTest
 
-@MainActor
 class SearchMemoTests: XCTestCase {
+    @MainActor
     func testSearchAndClearSearchText() async {
         let store = TestStore(
-            initialState: SearchMemo.State(),
-            reducer: SearchMemo()
+            initialState: SearchMemo.State()
         ) {
+            SearchMemo()
+        } withDependencies: {
             $0.searchMemoClient.invoke = { _, _ in [Memo.sample] }
         }
 
@@ -26,7 +27,7 @@ class SearchMemoTests: XCTestCase {
         await store.send(.executeSearching) {
             $0.isLoading = true
         }
-        await store.receive(.searched(.success([Memo.sample]))) {
+        await store.receive(\.searched) {
             $0.isLoading = false
             $0.searchedMemos = [Memo.sample]
         }
@@ -36,11 +37,13 @@ class SearchMemoTests: XCTestCase {
         }
     }
 
+    @MainActor
     func testSearchFailure() async {
         let store = TestStore(
-            initialState: SearchMemo.State(),
-            reducer: SearchMemo()
+            initialState: SearchMemo.State()
         ) {
+            SearchMemo()
+        } withDependencies: {
             $0.searchMemoClient.invoke = { _, _ in throw SearchMemosUseCaseError.badNetwork }
         }
 
@@ -50,17 +53,9 @@ class SearchMemoTests: XCTestCase {
         await store.send(.executeSearching) {
             $0.isLoading = true
         }
-        await store.receive(.searched(.failure(SearchMemosUseCaseError.badNetwork))) {
+        await store.receive(\.searched) {
             $0.isLoading = false
-            $0.alert = AlertState {
-              TextState("通信エラー")
-            } actions: {
-              ButtonState(role: .cancel) {
-                TextState("閉じる")
-              }
-            } message: {
-              TextState("エラーが発生しました。ネットワーク環境を確認してみてください。")
-            }
+            $0.destination = .alert(.networkError)
         }
     }
 }

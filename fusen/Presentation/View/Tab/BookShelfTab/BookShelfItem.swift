@@ -10,7 +10,7 @@ import SwiftUI
 
 struct BookShelfItem: View {
     let book: Book
-    
+
     var body: some View {
         HStack(alignment: .top, spacing: 8) {
             BookImageView(url: book.imageURL)
@@ -20,6 +20,7 @@ struct BookShelfItem: View {
                     .font(.minimal)
                     .fontWeight(.bold)
                     .lineLimit(3)
+                    .multilineTextAlignment(.leading)
                     .foregroundColor(.textSecondary)
                 Spacer(minLength: 8)
                 Text(book.author)

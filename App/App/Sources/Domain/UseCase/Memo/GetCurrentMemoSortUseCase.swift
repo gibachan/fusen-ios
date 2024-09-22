@@ -13,11 +13,11 @@ public protocol GetCurrentMemoSortUseCase {
 
 public final class GetCurrentMemoSortUseCaseImpl: GetCurrentMemoSortUseCase {
     private let userActionHistoryRepository: UserActionHistoryRepository
-    
+
     public init(userActionHistoryRepository: UserActionHistoryRepository) {
         self.userActionHistoryRepository = userActionHistoryRepository
     }
-    
+
     public func invoke() -> MemoSort {
         let userAcitonHistory = userActionHistoryRepository.get()
         return userAcitonHistory.currentMemoSort ?? .default

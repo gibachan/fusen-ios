@@ -13,13 +13,13 @@ public protocol GetAppConfigUseCase {
 
 public final class GetAppConfigUseCaseImpl: GetAppConfigUseCase {
     private let appConfigRepository: AppConfigRepository
-    
+
     public init(
         appConfigRepository: AppConfigRepository
     ) {
         self.appConfigRepository = appConfigRepository
     }
-    
+
     public func invoke() async -> AppConfig {
         await appConfigRepository.get()
     }

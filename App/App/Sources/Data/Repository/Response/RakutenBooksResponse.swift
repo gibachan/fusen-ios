@@ -9,6 +9,7 @@ import Domain
 import Foundation
 
 struct RakutenBooksResponse: Decodable {
+    // swiftlint:disable:next identifier_name
     let Items: [Item]
 }
 

@@ -6,6 +6,7 @@
 //
 
 import Firebase
+import FirebaseAuth
 import GoogleSignIn
 import SwiftUI
 
@@ -19,7 +20,7 @@ enum GoogleSignInError: Error {
 
 struct GoogleSignInButton: View {
     let handler: (Result<AuthCredential, GoogleSignInError>) -> Void
-    
+
     var body: some View {
         Button {
             signIn()
@@ -48,13 +49,13 @@ struct GoogleSignInButton: View {
             )
         }
     }
-    
+
     private func signIn() {
         guard let presentingVC = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.rootViewController else {
             handler(.failure(.missingPresenting))
             return
         }
-        
+
         // FIXME: Set configuration at right place which might be at app launch.
         guard let clientID = FirebaseApp.app()?.options.clientID else {
             handler(.failure(.missingClientId))
@@ -62,7 +63,7 @@ struct GoogleSignInButton: View {
         }
         let config = GIDConfiguration(clientID: clientID)
         GIDSignIn.sharedInstance.configuration = config
-        
+
         GIDSignIn.sharedInstance.signIn(withPresenting: presentingVC, completion: { signInResult, error in
             if let error = error {
                 log.e(error.localizedDescription)
@@ -73,14 +74,14 @@ struct GoogleSignInButton: View {
                 }
                 return
             }
-            
+
             guard let result = signInResult,
                   let idToken = result.user.idToken?.tokenString else {
                 handler(.failure(.missingIdToken))
                 return
             }
             let accessToken = result.user.accessToken.tokenString
-            
+
             let credential = GoogleAuthProvider.credential(
                 withIDToken: idToken,
                 accessToken: accessToken

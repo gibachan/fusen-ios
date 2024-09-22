@@ -21,7 +21,7 @@ extension Query {
     func whereCollection(_ collection: Domain.Collection) -> Query {
         whereField("collectionId", isEqualTo: collection.id.value)
     }
-    
+
     func orderByCreatedAtDesc() -> Query {
         order(by: "createdAt", descending: true)
     }
@@ -33,7 +33,7 @@ extension Query {
     func orderByAuthorAsc() -> Query {
         order(by: "author", descending: false)
     }
-    
+
     func orderByPageAsc() -> Query {
         order(by: "page", descending: false)
     }

@@ -11,7 +11,7 @@ import SwiftUI
 struct TutorialView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel = TutorialViewModel()
-    
+
     var body: some View {
         VStack {
             ScrollView(.vertical, showsIndicators: false) {
@@ -68,7 +68,7 @@ struct TutorialView: View {
                 }
             }
             Spacer()
-            
+
             VStack(spacing: 16) {
                 Button {
                     Task {
@@ -92,7 +92,7 @@ struct TutorialView: View {
                     onCompletion: viewModel.onSignInWithAppleCompletion
                 ).signInWithAppleButtonStyle(.black)
                     .frame(height: 42)
-                
+
                 GoogleSignInButton { result in
                     viewModel.onSignInWithGoogle(result)
                 }

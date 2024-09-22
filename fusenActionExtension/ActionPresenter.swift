@@ -39,13 +39,13 @@ final class ActionPresenterImpl: ActionPresenter {
     private var page: String = ""
 
     private weak var view: ActionView!
-    
+
     init(withView view: ActionView,
          dataSource: UserDefaultsDataSource = UserDefaultsDataSourceImpl()) {
         self.view = view
         self.dataSource = dataSource
     }
-    
+
     func action(withContext context: NSExtensionContext?) {
         // Initialize view
         view.setSaveButtonEnabled(false)
@@ -55,7 +55,7 @@ final class ActionPresenterImpl: ActionPresenter {
         guard let book = dataSource.readingBook else {
             return
         }
-        
+
         // Show book information
         let placeholderImage = UIImage(systemName: "book")!
         view.showBook(title: book.title, image: placeholderImage)
@@ -68,7 +68,7 @@ final class ActionPresenterImpl: ActionPresenter {
                }
            }).resume()
         }
-        
+
         guard let items = context?.inputItems as? [NSExtensionItem] else { return }
         for item in items {
             guard let attachments = item.attachments else { continue }
@@ -83,19 +83,19 @@ final class ActionPresenterImpl: ActionPresenter {
             }
         }
     }
-    
+
     func inputText(_ text: String) {
         self.text = text
     }
-    
+
     func inputQuote(_ text: String) {
         self.quote = text
     }
-    
+
     func inputPage(_ text: String) {
         self.page = text
     }
-    
+
     func save() {
         guard let book = dataSource.readingBook else {
             view.close()
@@ -107,15 +107,15 @@ final class ActionPresenterImpl: ActionPresenter {
                               quote: quote.trimmingCharacters(in: .whitespaces),
                               page: Int(page))
         dataSource.readingBookMemoDraft = draft
-        
+
         view.close()
         view.openApp()
     }
-    
+
     func cancel() {
         view.close()
     }
-    
+
     func openApp() {
         view.openApp()
     }

@@ -19,7 +19,7 @@ struct ControlToolbar<L: View, R: View>: View {
         self.leadingView = leadingView()
         self.trailingView = trailingView()
     }
-    
+
     var body: some View {
         HStack(alignment: .center) {
             leadingView
@@ -41,7 +41,7 @@ struct TrailingControlToolbar<R: View>: View {
     ) {
         self.trailingView = trailingView()
     }
-    
+
     var body: some View {
         ControlToolbar(
             leadingView: { EmptyView() },

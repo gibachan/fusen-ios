@@ -36,7 +36,7 @@ public struct GoogleBooksPublicationRepositoryImpl: PublicationRepository {
             throw PublicationRepositoryError.invalidJSON
         }
     }
-    
+
     public func findBy(title: String) async throws -> [Publication] {
         fatalError("Not implemented yet")
     }

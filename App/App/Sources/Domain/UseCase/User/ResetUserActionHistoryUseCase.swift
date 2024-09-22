@@ -13,11 +13,11 @@ public protocol ResetUserActionHistoryUseCase {
 
 public final class ResetUserActionHistoryUseCaseImpl: ResetUserActionHistoryUseCase {
     private let userActionHistoryRepository: UserActionHistoryRepository
-    
+
     public init(userActionHistoryRepository: UserActionHistoryRepository) {
         self.userActionHistoryRepository = userActionHistoryRepository
     }
-    
+
     public func invoke() {
         userActionHistoryRepository.clearAll()
     }

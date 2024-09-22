@@ -46,25 +46,25 @@ struct AboutAppView_Previews: PreviewProvider {
 private extension AboutAppView {
     struct PageHeader: View {
         private let title: String
-        
+
         init(title: String) {
             self.title = title
         }
-        
+
         var body: some View {
             Text(title)
                 .font(.medium.bold())
                 .foregroundColor(.textPrimary)
         }
     }
-    
+
     struct PageItem: View {
         private let text: String
-        
+
         init(_ text: String) {
             self.text = text
         }
-        
+
         var body: some View {
             HStack(alignment: .top, spacing: 4) {
                 Text("・")
@@ -76,14 +76,14 @@ private extension AboutAppView {
             }
         }
     }
-    
+
     struct PageImage: View {
         private let imageName: String
-        
+
         init(_ imageName: String) {
             self.imageName = imageName
         }
-        
+
         var body: some View {
             Image(imageName)
                 .resizable()
@@ -93,7 +93,7 @@ private extension AboutAppView {
                 .border(Color.border, width: 1)
         }
     }
-    
+
     struct PageViewOne: View {
         var body: some View {
             VStack(alignment: .leading, spacing: 24) {
@@ -154,7 +154,7 @@ private extension AboutAppView {
             .padding(.init(top: 12, leading: 24, bottom: 60, trailing: 24))
         }
     }
-    
+
     struct PageViewFour: View {
         var body: some View {
             VStack(alignment: .leading, spacing: 24) {

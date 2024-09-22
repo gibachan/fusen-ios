@@ -13,11 +13,11 @@ public protocol GetCurrentBookSortUseCase {
 
 public final class GetCurrentBookSortUseCaseImpl: GetCurrentBookSortUseCase {
     private let userActionHistoryRepository: UserActionHistoryRepository
-    
+
     public init(userActionHistoryRepository: UserActionHistoryRepository) {
         self.userActionHistoryRepository = userActionHistoryRepository
     }
-    
+
     public func invoke() -> BookSort {
         let userAcitonHistory = userActionHistoryRepository.get()
         return userAcitonHistory.currentBookSort ?? .default

@@ -13,12 +13,12 @@ final class BookShelfTabViewModel: ObservableObject {
     private let getFavoriteBooksUseCase: GetFavoriteBooksUseCase
     private let getCollectionsUseCase: GetCollectionsUseCase
     private let getBooksCountUseCase: GetBooksCountUseCase
-    
+
     @Published var state: State = .initial
     @Published var isFavoriteVisible = false
     @Published var collections: [Domain.Collection] = []
     @Published var booksCount = ""
-    
+
     init(
         getFavoriteBooksUseCase: GetFavoriteBooksUseCase = GetFavoriteBooksUseCaseImpl(accountService: AccountService.shared, bookRepository: BookRepositoryImpl()),
         getCollectionsUseCase: GetCollectionsUseCase = GetCollectionsUseCaseImpl(accountService: AccountService.shared, collectionRepository: CollectionRepositoryImpl()),
@@ -28,19 +28,19 @@ final class BookShelfTabViewModel: ObservableObject {
         self.getCollectionsUseCase = getCollectionsUseCase
         self.getBooksCountUseCase = getBooksCountUseCase
     }
-    
+
     func onAppear() async {
         await refresh()
     }
-    
+
     func onRefresh() async {
         await refresh()
     }
-    
+
     @MainActor
     private func refresh() async {
         guard !state.isInProgress else { return }
-        
+
         state = .loading
         do {
             let favoriteBooks = try await getFavoriteBooksUseCase.invoke(forceRefresh: true)
@@ -55,7 +55,7 @@ final class BookShelfTabViewModel: ObservableObject {
             state = .failed
         }
     }
-    
+
     // associated valueに変更があってもSwiftUIは検知してくれない
     // (state自体が変更されない限りViewが更新されない）
     enum State {
@@ -63,7 +63,7 @@ final class BookShelfTabViewModel: ObservableObject {
         case loading
         case succeeded
         case failed
-        
+
         var isInProgress: Bool {
             switch self {
             case .initial, .succeeded, .failed:

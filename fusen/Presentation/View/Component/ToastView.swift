@@ -10,7 +10,7 @@ import SwiftUI
 struct ToastView: View {
     let text: String
     let type: ToastType
-    
+
     var body: some View {
         VStack {
             Spacer()
@@ -25,12 +25,12 @@ struct ToastView: View {
         }
         .frame(width: UIScreen.main.bounds.width * 0.94)
     }
-    
+
     enum ToastType {
         case info
         case warning
         case error
-        
+
         var foregroundColor: Color {
             switch self {
             case .info: return .textPrimary
@@ -38,7 +38,7 @@ struct ToastView: View {
             case .error: return .white
             }
         }
-        
+
         var backgroundColor: Color {
             switch self {
             case .info: return .info
@@ -46,7 +46,7 @@ struct ToastView: View {
             case .error: return .error
             }
         }
-        
+
         var image: Image {
             switch self {
             case .info: return .info

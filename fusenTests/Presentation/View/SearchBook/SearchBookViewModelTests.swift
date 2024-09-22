@@ -25,11 +25,11 @@ class SearchBookViewModelTests: XCTestCase {
                 states.append(state)
             })
             .store(in: &cancellables)
-        
+
         await viewModel.onSearch(title: Publication.sample.title)
         await viewModel.onSelect(publication: Publication.sample)
         await viewModel.onAdd()
-        
+
         cancellables.removeAll()
 
         XCTAssertEqual(states, [
@@ -40,7 +40,7 @@ class SearchBookViewModelTests: XCTestCase {
             .added
         ])
     }
-    
+
     func testSearchErrorWhenItSearchesPublicationsByTitle() async {
         let searchPublicationsByTitleUseCase = MockSearchPublicationsByTitleUseCase(failure: .notFound)
         let addBookByPublicationUseCase = MockAddBookByPublicationUseCase(success: .init(stringLiteral: "hoge"))
@@ -54,9 +54,9 @@ class SearchBookViewModelTests: XCTestCase {
                 states.append(state)
             })
             .store(in: &cancellables)
-        
+
         await viewModel.onSearch(title: Publication.sample.title)
-        
+
         cancellables.removeAll()
 
         XCTAssertEqual(states, [

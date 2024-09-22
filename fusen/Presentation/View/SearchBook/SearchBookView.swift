@@ -13,7 +13,7 @@ struct SearchBookView: View {
     @StateObject private var viewModel: SearchBookViewModel
     @State private var searchText: String = ""
     @State private var isConfirmAlertPresented = false
-    
+
     init(in collection: Domain.Collection? = nil) {
         self._viewModel = StateObject(wrappedValue: SearchBookViewModel(collection: collection))
     }

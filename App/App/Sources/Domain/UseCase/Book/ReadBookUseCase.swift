@@ -13,13 +13,13 @@ public protocol ReadBookUseCase {
 
 public final class ReadBookUseCaseImpl: ReadBookUseCase {
     private let userActionHistoryRepository: UserActionHistoryRepository
-    
+
     public init(
         userActionHistoryRepository: UserActionHistoryRepository
     ) {
         self.userActionHistoryRepository = userActionHistoryRepository
     }
-    
+
     public func invoke(book: Book, page: Int) {
         userActionHistoryRepository.update(readBook: book, page: page)
     }

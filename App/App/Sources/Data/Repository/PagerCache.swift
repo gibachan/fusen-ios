@@ -14,7 +14,7 @@ public final class PagerCache<T> {
     private(set) var lastDocument: DocumentSnapshot?
 
     private init() {}
-    
+
     public init(pager: Pager<T>, lastDocument: DocumentSnapshot?) {
         self.currentPager = pager
         self.lastDocument = lastDocument

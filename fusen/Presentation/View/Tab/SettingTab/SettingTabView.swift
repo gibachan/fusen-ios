@@ -13,8 +13,6 @@ struct SettingTabView: View {
     @State private var alertType: AlertType?
     @State private var isDeleteAccountPresented = false
 
-
-    
     var body: some View {
         ZStack(alignment: .bottomLeading) {
             List {
@@ -29,12 +27,12 @@ struct SettingTabView: View {
                             .font(.small)
                             .foregroundColor(.textSecondary)
                     }
-                    
+
                     VStack(alignment: .leading, spacing: 16) {
                         Text("アカウントを連携 :")
                             .font(.medium)
                             .foregroundColor(.textPrimary)
-                        
+
                         VStack(alignment: .center) {
                             if viewModel.isLinkedAppleId {
                                 Text("Apple IDと連携済み")
@@ -71,13 +69,13 @@ struct SettingTabView: View {
                         .frame(maxWidth: .infinity)
 
                         linkAccountDescription()
-                        
+
                         Spacer(minLength: 8)
                     }
                 } header: {
                     SectionHeaderText("アカウント")
                 }
-                
+
                 Section {
                     NavigationLink {
                         AboutAppView()
@@ -88,7 +86,7 @@ struct SettingTabView: View {
                                 .foregroundColor(.textPrimary)
                         }
                     }
-                    
+
                     NavigationLink {
                         WebPageView(url: URL.term)
                             .navigationBarTitle("利用規約", displayMode: .inline)
@@ -99,7 +97,7 @@ struct SettingTabView: View {
                                 .foregroundColor(.textPrimary)
                         }
                     }
-                    
+
                     NavigationLink {
                         WebPageView(url: URL.privacy)
                             .navigationBarTitle("プライバシーポリシー", displayMode: .inline)
@@ -110,7 +108,7 @@ struct SettingTabView: View {
                                 .foregroundColor(.textPrimary)
                         }
                     }
-                    
+
                     Button {
                         viewModel.onAppReview()
                     } label: {
@@ -118,7 +116,7 @@ struct SettingTabView: View {
                             .font(.medium)
                             .foregroundColor(.active)
                     }
-                    
+
                     HStack {
                         Text("バージョン :")
                             .font(.medium)
@@ -129,7 +127,7 @@ struct SettingTabView: View {
                             .foregroundColor(.textSecondary)
                     }
                 }
-                
+
                 Section {
                     Button {
                         isDeleteAccountPresented = true
@@ -149,7 +147,7 @@ struct SettingTabView: View {
                             .centerHorizontally()
                     }
                 }
-                
+
                 Section {
                     HStack {
                         Text("環境 :")
@@ -218,12 +216,12 @@ private extension SettingTabView {
     enum AlertType: String, Identifiable {
         case unlinkWithApple
         case unlinkWithGoogle
-        
+
         var id: String {
             self.rawValue
         }
     }
-    
+
     func alert(of type: AlertType) -> Alert {
         switch type {
         case .unlinkWithApple:

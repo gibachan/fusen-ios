@@ -14,27 +14,27 @@ final class DeleteAccountViewModel: ObservableObject {
     @Published var state: State = .initial
     @Published var isLinkedWithAppleId = false
     @Published var isLinkedWithGoogle = false
-    
+
     private let accountService: AccountServiceProtocol
-    
+
     init(accountService: AccountServiceProtocol = AccountService.shared) {
         self.accountService = accountService
     }
-    
+
     @MainActor
     func onAppear() async {
         guard let user = accountService.currentUser else {
             return
         }
-        
+
         isLinkedWithAppleId = user.isLinkedWithAppleId
         isLinkedWithGoogle = user.isLinkedWithGoogle
     }
-    
+
     func onSignInWithAppleRequest(_ resutst: ASAuthorizationAppleIDRequest) {
         accountService.prepareLogInWithAppleRequest(request: resutst)
     }
-    
+
     func onSignInWithAppleCompletion(_ completion: Result<ASAuthorization, Error>) {
         switch completion {
         case .success(let authorization):
@@ -62,7 +62,7 @@ final class DeleteAccountViewModel: ObservableObject {
             state = .initial
         }
     }
-    
+
     func onSignInWithGoogle(_ result: Result<AuthCredential, GoogleSignInError>) {
         state = .loading
         switch result {
@@ -90,7 +90,7 @@ final class DeleteAccountViewModel: ObservableObject {
             state = .initial
         }
     }
-    
+
     @MainActor
     func onDeleteAccount() async {
         guard !state.isInProgress else { return }
@@ -101,7 +101,7 @@ final class DeleteAccountViewModel: ObservableObject {
             log.e("Should unlink with Apple ID first")
             return
         }
-        
+
         state = .loading
         do {
             try await accountService.delete()
@@ -117,13 +117,13 @@ final class DeleteAccountViewModel: ObservableObject {
             }
         }
     }
-    
+
     enum State {
         case initial
         case loading
         case deleted
         case failed
-        
+
         var isInProgress: Bool {
             if case .loading = self {
                 return true

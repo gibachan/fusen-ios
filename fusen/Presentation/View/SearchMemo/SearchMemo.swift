@@ -55,7 +55,7 @@ struct SearchMemo {
         var isLoading = false
         var searchedMemos: [Memo] = []
         var isEmptyResult = false
-        
+
         @Presents var destination: Destination.State?
     }
 

@@ -20,7 +20,7 @@ public protocol GetAllMemosUseCase {
 public final class GetAllMemosUseCaseImpl: GetAllMemosUseCase {
     private let accountService: AccountServiceProtocol
     private let memoRepository: MemoRepository
-    
+
     public init(
          accountService: AccountServiceProtocol,
          memoRepository: MemoRepository
@@ -28,12 +28,12 @@ public final class GetAllMemosUseCaseImpl: GetAllMemosUseCase {
         self.accountService = accountService
         self.memoRepository = memoRepository
     }
-    
+
     public func invoke(forceRefresh: Bool) async throws -> Pager<Memo> {
         guard let user = accountService.currentUser else {
             throw GetAllMemosUseCaseError.notAuthenticated
         }
-       
+
         do {
             let pager = try await memoRepository.getAllMemos(for: user, forceRefresh: forceRefresh)
             return pager
@@ -41,12 +41,12 @@ public final class GetAllMemosUseCaseImpl: GetAllMemosUseCase {
             throw GetAllMemosUseCaseError.badNetwork
         }
     }
-    
+
     public func invokeNext() async throws -> Pager<Memo> {
         guard let user = accountService.currentUser else {
             throw GetAllMemosUseCaseError.notAuthenticated
         }
-       
+
         do {
             let pager = try await memoRepository.getAllMemosNext(for: user)
             return pager

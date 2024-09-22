@@ -11,7 +11,7 @@ struct BookShelfFavoriteSection: View {
     @StateObject private var viewModel = BookShelfFavoriteSectionModel()
     @Binding var isNavigated: Bool
     @Binding var navigation: BookShelfNavigation
-    
+
     var body: some View {
         Section {
             if viewModel.bookColumns.isEmpty {

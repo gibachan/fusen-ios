@@ -17,7 +17,7 @@ struct ReadingBookDescriptionView: View {
                 Text("書籍を「読書中」に設定すると、ホーム画面から手軽にメモを追加できるようになります。\n\nアプリのウィジェットに書籍が表示されます。")
                     .font(.medium)
                     .foregroundColor(.textPrimary)
-                
+
                 Text("閉じる")
                     .font(.medium)
                     .foregroundColor(.active)

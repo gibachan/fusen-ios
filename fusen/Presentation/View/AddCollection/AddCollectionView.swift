@@ -13,7 +13,7 @@ struct AddCollectionView: View {
     @State private var name = ""
     @State private var color = Color.blue
     @FocusState private var focus: Bool
-    
+
     var body: some View {
         Form {
             Section {

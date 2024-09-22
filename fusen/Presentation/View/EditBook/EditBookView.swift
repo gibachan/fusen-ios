@@ -20,14 +20,14 @@ struct EditBookView: View {
     @State private var isPhotoLibraryPresented = false
 
     @FocusState private var focus: Bool
-    
+
     init(book: Book) {
         self._viewModel = StateObject(wrappedValue: EditViewModel(book: book))
         self._title = State(wrappedValue: book.title)
         self._author = State(wrappedValue: book.author)
         self._description = State(wrappedValue: book.description)
     }
-    
+
     var body: some View {
         Form {
             Section {
@@ -49,7 +49,7 @@ struct EditBookView: View {
                 SectionHeaderText("書籍画像")
             }
             .listRowBackground(Color.backgroundSystemGroup)
-            
+
             Section {
                 PlaceholderTextEditor(placeholder: "タイトルを入力", text: $title)
                     .font(.medium)
@@ -86,7 +86,7 @@ struct EditBookView: View {
             } header: {
                 SectionHeaderText("概要")
             }
-            
+
             Spacer()
                 .frame(height: 160)
                 .listRowBackground(Color.backgroundSystemGroup)

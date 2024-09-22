@@ -16,7 +16,7 @@ struct DeleteButton: View {
             Text("削除")
                 .foregroundColor(.red)
         }
-    }    
+    }
 }
 
 struct DeleteButton_Previews: PreviewProvider {

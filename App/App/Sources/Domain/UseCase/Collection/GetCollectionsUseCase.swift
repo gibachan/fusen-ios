@@ -19,7 +19,7 @@ public protocol GetCollectionsUseCase {
 public final class GetCollectionsUseCaseImpl: GetCollectionsUseCase {
     private let accountService: AccountServiceProtocol
     private let collectionRepository: CollectionRepository
-    
+
     public init(
         accountService: AccountServiceProtocol,
         collectionRepository: CollectionRepository
@@ -27,12 +27,12 @@ public final class GetCollectionsUseCaseImpl: GetCollectionsUseCase {
         self.accountService = accountService
         self.collectionRepository = collectionRepository
     }
-    
+
     public func invoke() async throws -> [Collection] {
         guard let user = accountService.currentUser else {
             throw GetCollectionsUseCaseError.notAuthenticated
         }
-       
+
         do {
             return try await collectionRepository.getlCollections(for: user)
         } catch {

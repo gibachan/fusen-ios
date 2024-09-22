@@ -36,7 +36,7 @@ class MainViewModelTests: XCTestCase {
                 isMaintainings.append(isMaintaining)
             })
             .store(in: &cancellables)
-        
+
         await viewModel.onAppear()
         cancellables.removeAll()
 
@@ -47,7 +47,7 @@ class MainViewModelTests: XCTestCase {
         XCTAssertFalse(isMaintainings[0])
         XCTAssertFalse(isMaintainings[1])
     }
-    
+
     func testAppLaunchWithUserLoggedIn() async {
         let accountService = MockAccountService(isLoggedIn: true)
         let getAppConfigUseCase = MockGetAppConfigUseCase(
@@ -72,7 +72,7 @@ class MainViewModelTests: XCTestCase {
                 isMaintainings.append(isMaintaining)
             })
             .store(in: &cancellables)
-        
+
         await viewModel.onAppear()
         cancellables.removeAll()
 
@@ -83,7 +83,7 @@ class MainViewModelTests: XCTestCase {
         XCTAssertFalse(isMaintainings[0])
         XCTAssertFalse(isMaintainings[1])
     }
-    
+
     func testMaintenanceMode() async {
         let accountService = MockAccountService(isLoggedIn: false)
         let getAppConfigUseCase = MockGetAppConfigUseCase(
@@ -108,7 +108,7 @@ class MainViewModelTests: XCTestCase {
                 isMaintainings.append(isMaintaining)
             })
             .store(in: &cancellables)
-        
+
         await viewModel.onAppear()
         cancellables.removeAll()
 
@@ -118,7 +118,7 @@ class MainViewModelTests: XCTestCase {
         XCTAssertFalse(isMaintainings[0])
         XCTAssertTrue(isMaintainings[1])
     }
-    
+
     func testLogoutWhenAppIsLaunchedAtFirstTime() async {
         let accountService = MockAccountService(isLoggedIn: true)
         let getAppConfigUseCase = MockGetAppConfigUseCase(
@@ -144,14 +144,14 @@ class MainViewModelTests: XCTestCase {
             getUserActionHistoryUseCase: getUserActionHistoryUseCase,
             launchAppUseCase: launchAppUseCase
         )
-        
+
         await viewModel.onAppear()
         cancellables.removeAll()
-        
+
         XCTAssertTrue(launchAppUseCase.invoked)
         XCTAssertFalse(accountService.isLoggedIn)
     }
-    
+
     func testDoNotLogoutWhenAppIsLaunchedAtFirstTime() async {
         let accountService = MockAccountService(isLoggedIn: true)
         let getAppConfigUseCase = MockGetAppConfigUseCase(
@@ -177,10 +177,10 @@ class MainViewModelTests: XCTestCase {
             getUserActionHistoryUseCase: getUserActionHistoryUseCase,
             launchAppUseCase: launchAppUseCase
         )
-        
+
         await viewModel.onAppear()
         cancellables.removeAll()
-        
+
         XCTAssertTrue(launchAppUseCase.invoked)
         XCTAssertTrue(accountService.isLoggedIn)
     }
@@ -188,11 +188,11 @@ class MainViewModelTests: XCTestCase {
 
 private final class MockGetUserActionHistoryUseCase: GetUserActionHistoryUseCase {
     private let history: UserActionHistory
-    
+
     init(_ history: UserActionHistory) {
         self.history = history
     }
-    
+
     func invoke() -> UserActionHistory {
         history
     }

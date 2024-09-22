@@ -11,7 +11,7 @@ final class LoadingHUD {
     static func show() {
         log.d("LoadingHUD.show()")
     }
-    
+
     static func dismiss() {
         log.d("LoadingHUD.dismiss()")
     }

@@ -23,12 +23,12 @@ final class AddBookViewModel: ObservableObject {
         self.analyticsService = analyticsService
         self.addBookByManualUseCase = addBookByManualUseCase
     }
-    
+
     @MainActor
     func onTextChange(title: String, author: String) {
         isSaveEnabled = title.isNotEmpty
     }
-    
+
     @MainActor
     func onSave(title: String, author: String, thumbnailImage: ImageData?, collection: Collection?) async {
         guard !state.isInProgress else { return }
@@ -52,7 +52,7 @@ final class AddBookViewModel: ObservableObject {
         case loading
         case succeeded
         case failed
-        
+
         var isInProgress: Bool {
             switch self {
             case .initial, .succeeded, .failed:

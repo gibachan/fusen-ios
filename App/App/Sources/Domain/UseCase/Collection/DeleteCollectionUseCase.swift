@@ -19,7 +19,7 @@ public protocol DeleteCollectionUseCase {
 public final class DeleteCollectionUseCaseImpl: DeleteCollectionUseCase {
     private let accountService: AccountServiceProtocol
     private let collectionRepository: CollectionRepository
-    
+
     public init(
         accountService: AccountServiceProtocol,
         collectionRepository: CollectionRepository
@@ -27,12 +27,12 @@ public final class DeleteCollectionUseCaseImpl: DeleteCollectionUseCase {
         self.accountService = accountService
         self.collectionRepository = collectionRepository
     }
-    
+
     public func invoke(collection: Collection) async throws {
         guard let user = accountService.currentUser else {
             throw DeleteCollectionUseCaseError.notAuthenticated
         }
-        
+
         do {
             try await collectionRepository.delete(collection: collection, for: user)
         } catch {

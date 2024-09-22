@@ -5,9 +5,9 @@
 //  Created by Tatsuyuki Kobayashi on 2022/06/25.
 //
 
-import Foundation
 import Data
 import Domain
+import Foundation
 @testable import fusen
 
 final class MockUserDefaultsDataSource: UserDefaultsDataSource {
@@ -40,49 +40,49 @@ final class MockUserDefaultsDataSource: UserDefaultsDataSource {
         self._currentMemoSort = currentMemoSort
         self._searchAPIKey = searchAPIKey
     }
-    
+
     var launchedAppBefore: Bool {
         get { _launchedAppBefore }
         set { _launchedAppBefore = newValue }
     }
-    
+
     var didConfirmReadingBookDescription: Bool {
         get { _didConfirmReadingBookDescription }
         set { _didConfirmReadingBookDescription = newValue }
     }
-    
+
     var readBookPages: [String: Any] {
         get { _readBookPages }
         set { _readBookPages = newValue }
     }
-    
+
     var readingBook: CachedBook? {
         get { _readingBook }
         set { _readingBook = newValue }
     }
-    
+
     var readingBookMemoDraft: MemoDraft? {
         get { _readingBookMemoDraft }
         set { _readingBookMemoDraft = newValue }
     }
-    
+
     var reviewedVersion: String? {
         get { _reviewedVersion }
         set { _reviewedVersion = newValue }
     }
-    
+
     var currentMemoSort: MemoSort? {
         get { _currentMemoSort }
         set { _currentMemoSort = newValue }
     }
-    
+
     var currentBookSort: BookSort? {
         get { _currentBookSort }
         set { _currentBookSort = newValue }
     }
-    
+
     func getReadPage(for book: Book) -> Int? { nil }
-    
+
     func setReadPage(for book: Book, page: Int) {}
 
     var searchAPIKey: String? {

@@ -73,7 +73,7 @@ struct MainView: View {
                 .tag(3)
             }
             .zIndex(0)
-            
+
             if isReadingBookDescriptionPresented {
                 ReadingBookDescriptionView()
                     .onTapGesture {
@@ -82,7 +82,7 @@ struct MainView: View {
                         }
                     }
             }
-            
+
             if isToastPresented {
                 ToastView(text: toastText, type: .error)
                     .zIndex(1)

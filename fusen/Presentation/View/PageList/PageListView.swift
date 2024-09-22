@@ -11,7 +11,7 @@ struct PageListView: View {
     @Environment(\.dismiss) private var dismiss
     @Binding var page: Int
     let initialPage: Int
-    
+
     var body: some View {
         ScrollViewReader { proxy in
             List {

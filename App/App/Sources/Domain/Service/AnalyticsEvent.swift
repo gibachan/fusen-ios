@@ -27,7 +27,7 @@ public extension AnalyticsEvent {
             return "scan_barcode_by_google_error"
         }
     }
-    
+
     var parameters: [String: Any] {
         switch self {
         case .addBookByManual:

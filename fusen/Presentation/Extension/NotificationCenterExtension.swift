@@ -32,7 +32,7 @@ extension NotificationCenter {
     func postNewMemoAddedViaDeepLink() {
         post(name: Notification.Name.newMemoAddedViaDeepLink, object: nil)
     }
-    
+
     func homePopToRootPublisher() -> Publisher {
         publisher(for: Notification.Name.homePopToRoot)
     }

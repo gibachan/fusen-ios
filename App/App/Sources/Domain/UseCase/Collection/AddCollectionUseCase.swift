@@ -20,7 +20,7 @@ public protocol AddCollectionUseCase {
 public final class AddCollectionUseCaseImpl: AddCollectionUseCase {
     private let accountService: AccountServiceProtocol
     private let collectionRepository: CollectionRepository
-    
+
     public init(
         accountService: AccountServiceProtocol,
         collectionRepository: CollectionRepository
@@ -28,7 +28,7 @@ public final class AddCollectionUseCaseImpl: AddCollectionUseCase {
         self.accountService = accountService
         self.collectionRepository = collectionRepository
     }
-    
+
     public func invoke(name: String, color: RGB) async throws -> ID<Collection> {
         guard let user = accountService.currentUser else {
             throw AddCollectionUseCaseError.notAuthenticated
@@ -40,7 +40,7 @@ public final class AddCollectionUseCaseImpl: AddCollectionUseCase {
         } catch {
             throw AddCollectionUseCaseError.badNetwork
         }
-        
+
         guard collections.count < Collection.countLimit else {
             throw AddCollectionUseCaseError.countOver
         }

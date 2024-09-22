@@ -22,7 +22,7 @@ public final class GetMemosUseCaseImpl: GetMemosUseCase {
     private let sortedBy: MemoSort
     private let accountService: AccountServiceProtocol
     private let memoRepository: MemoRepository
-    
+
     public init(
         bookId: ID<Book>,
         sortedBy: MemoSort,
@@ -34,12 +34,12 @@ public final class GetMemosUseCaseImpl: GetMemosUseCase {
         self.accountService = accountService
         self.memoRepository = memoRepository
     }
-    
+
     public func invoke(forceRefresh: Bool) async throws -> Pager<Memo> {
         guard let user = accountService.currentUser else {
             throw GetMemosUseCaseError.notAuthenticated
         }
-        
+
         do {
             let pager = try await memoRepository.getMemos(of: bookId, sortedBy: sortedBy, for: user, forceRefresh: forceRefresh)
             return pager
@@ -47,12 +47,12 @@ public final class GetMemosUseCaseImpl: GetMemosUseCase {
             throw GetMemosUseCaseError.badNetwork
         }
     }
-    
+
     public func invokeNext() async throws -> Pager<Memo> {
         guard let user = accountService.currentUser else {
             throw GetMemosUseCaseError.notAuthenticated
         }
-        
+
         do {
             let pager = try await memoRepository.getNextMemos(of: bookId, for: user)
             return pager

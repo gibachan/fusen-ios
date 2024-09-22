@@ -25,11 +25,11 @@ struct AddMemoView: View {
     private let memoImageWidth: CGFloat = 72
     private let memoImageHeight: CGFloat = 96
     private let isImageAvailable = false
-    
+
     init(book: Book) {
         self._viewModel = StateObject(wrappedValue: AddMemoViewModel(book: book))
     }
-    
+
     var body: some View {
         Form {
             Section {
@@ -48,7 +48,7 @@ struct AddMemoView: View {
                     .onChange(of: quote) { newValue in
                         viewModel.onTextChange(text: text, quote: newValue)
                     }
-                
+
                 NavigationLink {
                     PageListView(page: $page, initialPage: viewModel.initialPage)
                 } label: {
@@ -61,7 +61,7 @@ struct AddMemoView: View {
                     }
                 }
                 .frame(minHeight: 40)
-                
+
                 if isImageAvailable {
                     HStack(alignment: .top) {
                         Text("画像を添付 :")

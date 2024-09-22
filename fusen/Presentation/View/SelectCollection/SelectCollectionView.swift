@@ -11,11 +11,11 @@ import SwiftUI
 struct SelectCollectionView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel: SelectCollectionViewModel
-    
+
     init(book: Book) {
         self._viewModel = StateObject(wrappedValue: SelectCollectionViewModel(book: book))
     }
-    
+
     var body: some View {
         List {
             if viewModel.collections.isEmpty {

@@ -7,7 +7,7 @@ on:
     branches: [ develop ]
 
 env:
-  DEVELOPER_DIR: /Applications/Xcode_15.0.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_15.4.app/Contents/Developer
 
 jobs:
   test:
@@ -29,15 +29,12 @@ jobs:
           key: bundle-ruby-${{ runner.os }}-${{ env.RUBY_VERSION }}-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-gems-        
-      - uses: actions/cache@v4
-        with:
-          path: Pods
-          key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-pods-
       - name: Set up build
         run: |
           make setup
+      - name: Disable macro validation
+        run: |
+          defaults write com.apple.dt.Xcode IDESkipMacroFingerprintValidation -bool YES
       - name: Run test
         run: |
           bundle exec fastlane test

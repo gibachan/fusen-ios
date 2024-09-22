@@ -15,7 +15,7 @@ struct BookDetailSection: View {
     private let favoriteChangeAction: (Bool) -> Void
     @State private var isFavorite: Bool
     @Binding private var isDetailCollapsed: Bool
-    
+
     init(
         book: Book,
         isReadingBook: Bool,
@@ -31,7 +31,7 @@ struct BookDetailSection: View {
         self.favoriteChangeAction = favoriteChangeAction
         self._isDetailCollapsed = isDetailCollapsed
     }
-    
+
     var body: some View {
         Section {
             VStack(spacing: 8) {
@@ -43,6 +43,7 @@ struct BookDetailSection: View {
                             .font(.small)
                             .fontWeight(.bold)
                             .lineLimit(2)
+                            .multilineTextAlignment(.leading)
                             .foregroundColor(.textSecondary)
                         Spacer(minLength: 8)
                         Text(book.author)
@@ -65,7 +66,7 @@ struct BookDetailSection: View {
                     isDetailCollapsed.toggle()
                 }
             }
-            
+
             if !isDetailCollapsed {
 //                Toggle(isOn: $isFavorite) {
 //                    Text("お気に入り")
@@ -76,7 +77,7 @@ struct BookDetailSection: View {
 //                    favoriteChangeAction(newValue)
 //                })
 //                .listRowSeparator(.visible)
-                
+
                 NavigationLink(destination: LazyView(SelectCollectionView(book: book))) {
                     Text("コレクション")
                         .font(.medium)

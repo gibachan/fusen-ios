@@ -20,7 +20,7 @@ struct BookShelfCollectionSection: View {
         self._isNavigated = isNavigated
         self._navigation = navigation
     }
-    
+
     var body: some View {
         Section {
             if viewModel.bookColumns.isEmpty {

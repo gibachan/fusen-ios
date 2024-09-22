@@ -19,7 +19,7 @@ struct CollectionView: View {
     init(collection: Domain.Collection) {
         self._viewModel = StateObject(wrappedValue: CollectionViewModel(collection: collection))
     }
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             switch displayStyle {

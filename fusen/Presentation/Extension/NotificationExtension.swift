@@ -36,7 +36,7 @@ extension Notification.Name {
 
 extension Notification {
     static let errorMessageParam = "error_message"
-    
+
     var errorMessage: ErrorMessage? {
         userInfo?[Notification.errorMessageParam] as? ErrorMessage
     }

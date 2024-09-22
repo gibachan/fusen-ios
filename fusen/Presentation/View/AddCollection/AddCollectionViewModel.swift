@@ -12,11 +12,11 @@ import Foundation
 final class AddCollectionViewModel: ObservableObject {
     private let getCollectionsUseCase: GetCollectionsUseCase
     private let addCollectionUseCase: AddCollectionUseCase
-    
+
     @Published var isCollectionCountOver = false
     @Published var isSaveEnabled = false
     @Published var state: State = .initial
-    
+
     init(
         getCollectionsUseCase: GetCollectionsUseCase = GetCollectionsUseCaseImpl(accountService: AccountService.shared, collectionRepository: CollectionRepositoryImpl()),
         addCollectionUseCase: AddCollectionUseCase = AddCollectionUseCaseImpl(accountService: AccountService.shared, collectionRepository: CollectionRepositoryImpl())
@@ -24,11 +24,11 @@ final class AddCollectionViewModel: ObservableObject {
         self.getCollectionsUseCase = getCollectionsUseCase
         self.addCollectionUseCase = addCollectionUseCase
     }
-    
+
     @MainActor
     func onAppear() async {
         guard !state.isInProgress else { return }
-        
+
         state = .loading
         do {
             let collections = try await getCollectionsUseCase.invoke()
@@ -39,19 +39,19 @@ final class AddCollectionViewModel: ObservableObject {
             state = .failed
         }
     }
-    
+
     @MainActor
     func onNameChange(_ name: String) {
         isSaveEnabled = !isCollectionCountOver && !name.isEmpty
     }
-    
+
     @MainActor
     func onSave(
         name: String,
         color: RGB
     ) async {
         guard !state.isInProgress else { return }
-        
+
         state = .loading
         do {
             log.d("Saving \(name) collection with \(color)")
@@ -66,7 +66,7 @@ final class AddCollectionViewModel: ObservableObject {
             state = .failed
         }
     }
-    
+
     enum State {
         case initial
         case loading
@@ -74,7 +74,7 @@ final class AddCollectionViewModel: ObservableObject {
         case collectionAdded
         case failed
         case collectionCountOver
-        
+
         var isInProgress: Bool {
             if case .loading = self {
                 return true

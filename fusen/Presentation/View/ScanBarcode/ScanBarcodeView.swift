@@ -13,11 +13,11 @@ struct ScanBarcodeView: View {
     @StateObject private var viewModel = ScanBarcodeViewModel()
     @State private var isSuggestPresented = false
     private let collection: Domain.Collection?
-    
+
     init(in collection: Domain.Collection? = nil) {
         self.collection = collection
     }
-    
+
     var body: some View {
         ZStack(alignment: .top) {
             BarcodeCameraView { code in
@@ -25,12 +25,12 @@ struct ScanBarcodeView: View {
                     await viewModel.onBarcodeScanned(code: code)
                 }
             }
-            
+
             Text("カメラでバーコードを読み取ってください")
                 .font(.medium)
                 .foregroundColor(.white)
                 .padding(.top, 32)
-            
+
             scannedBook
                 .padding()
         }
@@ -59,7 +59,7 @@ struct ScanBarcodeView: View {
             isSuggestPresented = $0 != nil
         }
     }
-    
+
     private var scannedBook: some View {
         VStack(alignment: .center) {
             Spacer()

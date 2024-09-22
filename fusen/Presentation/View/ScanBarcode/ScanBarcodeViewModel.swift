@@ -23,7 +23,7 @@ final class ScanBarcodeViewModel: ObservableObject {
     @Published var isTorchOn: Bool = false
     @Published var suggestedBook: Publication?
     @Published var scannedBook: Publication?
-    
+
     init(
         analyticsService: AnalyticsServiceProtocol = AnalyticsService.shared,
         searchPublicationByBarcodeUseCase: SearchPublicationByBarcodeUseCase = SearchPublicationByBarcodeUseCaseImpl(analyticsService: AnalyticsService.shared, rakutenBooksPublicationRepository: RakutenBooksPublicationRepositoryImpl(), googleBooksPublicationRepository: GoogleBooksPublicationRepositoryImpl()),
@@ -34,7 +34,7 @@ final class ScanBarcodeViewModel: ObservableObject {
         self.addBookByPublicationUseCase = addBookByPublicationUseCase
         self.isTorchOn = currentTorch()
     }
-    
+
     @MainActor
     func onTorchToggled() {
         guard let backCamera = AVCaptureDevice.default(for: AVMediaType.video),
@@ -54,14 +54,14 @@ final class ScanBarcodeViewModel: ObservableObject {
             return
         }
         guard let isbn = ISBN.from(code: code) else { return }
-        
+
         let now = Date()
         if now.timeIntervalSince(lastScannedTime) >= scanInterval {
             isScanning = true
             lastScannedTime = now
             scanningCode = code
             scannedCode.insert(code)
-            
+
             do {
                 let result = try await searchPublicationByBarcodeUseCase.invoke(barcode: code)
                 switch result {
@@ -79,16 +79,16 @@ final class ScanBarcodeViewModel: ObservableObject {
             }
         }
     }
-    
+
     @MainActor
     func onAcceptSuggestedBook(collection: Collection?) async {
         guard isScanning else { return }
         guard let publication = suggestedBook else { return }
-        
+
         scanningCode = nil
         suggestedBook = nil
         isScanning = false
-    
+
         do {
             let id = try await addBookByPublicationUseCase.invoke(publication: publication, collection: collection)
             log.d("Book is added for id: \(id.value)")
@@ -105,14 +105,14 @@ final class ScanBarcodeViewModel: ObservableObject {
             ErrorSnackbar.show(message: .addBook)
         }
     }
-    
+
     @MainActor
     func onDeclinSuggestedBook() async {
         scanningCode = nil
         suggestedBook = nil
         isScanning = false
     }
-    
+
     private func currentTorch() -> Bool {
         guard let backCamera = AVCaptureDevice.default(for: AVMediaType.video),
             backCamera.hasTorch else { return false }

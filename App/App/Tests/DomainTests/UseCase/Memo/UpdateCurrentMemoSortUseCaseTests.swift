@@ -18,9 +18,9 @@ class UpdateCurrentMemoSortUseCaseTests: XCTestCase {
                                               currentMemoSort: nil)
         let repository = MockUserActionHistoryRepository(userActionHistory: actionHistory)
         let useCase = UpdateCurrentMemoSortUseCaseImpl(userActionHistoryRepository: repository)
-        
+
         useCase.invoke(memoSort: .page)
-        
+
         let result = repository.get()
         XCTAssertEqual(result.currentMemoSort, .page)
     }

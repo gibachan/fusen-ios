@@ -7,19 +7,18 @@
 
 import Domain
 import FirebaseFirestore
-import FirebaseFirestoreSwift
 import Foundation
 
 public final class UserRepositoryImpl: UserRepository {
-    private let db = Firestore.firestore()
+    private let database = Firestore.firestore()
     private let dataSource: UserDefaultsDataSource
-    
+
     public init(dataSource: UserDefaultsDataSource = UserDefaultsDataSourceImpl()) {
         self.dataSource = dataSource
     }
-    
+
     public func getInfo(for user: User) async throws -> UserInfo {
-        let ref = db.userDocument(of: user)
+        let ref = database.userDocument(of: user)
         let snapshot: DocumentSnapshot
         do {
             snapshot = try await ref.getDocument()
@@ -40,7 +39,7 @@ public final class UserRepositoryImpl: UserRepository {
         let update = FirestoreUpdateUser(
             readingBookId: book?.id.value ?? ""
         )
-        let ref = db.userDocument(of: user)
+        let ref = database.userDocument(of: user)
         do {
             try await ref.setData(update.data(), merge: true)
             cacheReadingBook(book: book)
@@ -49,7 +48,7 @@ public final class UserRepositoryImpl: UserRepository {
             throw UserRepositoryError.network
         }
     }
-    
+
     private func cacheReadingBook(book: Book?) {
         if let book = book {
             dataSource.readingBook = CachedBook(id: book.id,

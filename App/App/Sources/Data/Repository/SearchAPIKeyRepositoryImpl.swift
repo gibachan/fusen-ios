@@ -16,7 +16,7 @@ public final class SearchAPIKeyRepositoryImpl: SearchAPIKeyRepository {
     public init(dataSource: UserDefaultsDataSource = UserDefaultsDataSourceImpl()) {
         self.dataSource = dataSource
     }
-    
+
     public func get(for user: User) async throws -> SearchAPI.Key {
         if let key = dataSource.searchAPIKey {
             return SearchAPI.Key(rawValue: key)

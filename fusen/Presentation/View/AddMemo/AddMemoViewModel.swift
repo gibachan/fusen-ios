@@ -16,7 +16,7 @@ final class AddMemoViewModel: NSObject, ObservableObject {
     private let readBookUseCase: ReadBookUseCase
     private let recognizeTextUseCase: RecognizeTextUseCase
     private let reviewAppUseCase: ReviewAppUseCase
-    
+
     @Published var book: Book
     @Published var initialPage: Int = 0
     @Published var isSaveEnabled = false
@@ -32,7 +32,7 @@ final class AddMemoViewModel: NSObject, ObservableObject {
             return false
         }
     }
-    
+
     init(
         book: Book,
         getUserActionHistoryUseCase: GetUserActionHistoryUseCase = GetUserActionHistoryUseCaseImpl(userActionHistoryRepository: UserActionHistoryRepositoryImpl()),
@@ -48,7 +48,7 @@ final class AddMemoViewModel: NSObject, ObservableObject {
         self.recognizeTextUseCase = recognizeTextUseCase
         self.reviewAppUseCase = reviewAppUseCase
     }
-    
+
     @MainActor
     func onAppear() async {
         let userActionHistory = getUserActionHistoryUseCase.invoke()
@@ -56,23 +56,23 @@ final class AddMemoViewModel: NSObject, ObservableObject {
             initialPage = page
         }
     }
-    
+
     @MainActor
     func onTextChange(text: String, quote: String) {
         isSaveEnabled = text.isNotEmpty || quote.isNotEmpty
     }
-    
+
     @MainActor
     func onQuoteImageTaken(imageData: ImageData) async {
         guard !state.isInProgress else { return }
-        
+
         state = .loading
         let text = await recognizeTextUseCase.invoke(imageData: imageData)
         log.d("recognized=\(text)")
         state = .recognizedQuote
         recognizedQuote = text
     }
-    
+
     @MainActor
     func onSave(
         text: String,
@@ -81,13 +81,13 @@ final class AddMemoViewModel: NSObject, ObservableObject {
         image: ImageData?
     ) async {
         guard !state.isInProgress else { return }
-        
+
         state = .loading
         do {
             let id = try await addMemoUseCase.invoke(book: book, text: text, quote: quote, page: page, image: image)
             readBookUseCase.invoke(book: book, page: page)
             log.d("Memo is added for id: \(id.value)")
-            
+
             // Request app review
             var showAppReview = false
             let userActionHistory = getUserActionHistoryUseCase.invoke()
@@ -101,14 +101,14 @@ final class AddMemoViewModel: NSObject, ObservableObject {
             state = .failed
         }
     }
-    
+
     enum State {
         case initial
         case loading
         case succeeded(showAppReview: Bool)
         case recognizedQuote
         case failed
-        
+
         var isInProgress: Bool {
             if case .loading = self {
                 return true

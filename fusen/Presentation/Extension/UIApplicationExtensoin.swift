@@ -15,7 +15,7 @@ extension UIApplication {
             .first?.windows
             .first(where: { $0.isKeyWindow })
     }
-    
+
     var currentRootViewController: UIViewController? {
         currentKeyWindow?.rootViewController
     }

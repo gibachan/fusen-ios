@@ -48,7 +48,11 @@ extension GoogleBooksResponse {
             let thumbnailString = thumbnail.replacingOccurrences(of: "http://", with: "https://")
             thumbnailURL = URL(string: thumbnailString)
         }
-        
-        return Publication(title: item.volumeInfo.title, author: item.volumeInfo.authors.joined(separator: ","), thumbnailURL: thumbnailURL)
+
+        return Publication(
+            title: item.volumeInfo.title,
+            author: item.volumeInfo.authors.joined(separator: ","),
+            thumbnailURL: thumbnailURL
+        )
     }
 }

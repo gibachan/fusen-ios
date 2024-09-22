@@ -18,10 +18,10 @@ class GetCurrentBookSortUseCaseTests: XCTestCase {
                                               currentMemoSort: nil)
         let repository = MockUserActionHistoryRepository(userActionHistory: actionHistory)
         let useCase = GetCurrentBookSortUseCaseImpl(userActionHistoryRepository: repository)
-        
+
         XCTAssertEqual(useCase.invoke(), .default)
     }
-    
+
     func testReturnsSavedSort() {
         let actionHistory = UserActionHistory(launchedAppBefore: false,
                                               didConfirmReadingBookDescription: false,
@@ -31,7 +31,7 @@ class GetCurrentBookSortUseCaseTests: XCTestCase {
                                               currentMemoSort: nil)
         let repository = MockUserActionHistoryRepository(userActionHistory: actionHistory)
         let useCase = GetCurrentBookSortUseCaseImpl(userActionHistoryRepository: repository)
-        
+
         XCTAssertEqual(useCase.invoke(), .title)
     }
 }

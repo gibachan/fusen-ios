@@ -11,7 +11,7 @@ enum AppEnv {
     case development
     case staging
     case production
-    
+
     static var current: AppEnv {
         #if DEVELOPMENT
         return .development
@@ -21,7 +21,7 @@ enum AppEnv {
         return .production
         #endif
     }
-    
+
     var memoURLScheme: URL {
         switch self {
         case .development:

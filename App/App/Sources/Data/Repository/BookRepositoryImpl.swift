@@ -7,23 +7,23 @@
 
 import Domain
 import FirebaseFirestore
-import FirebaseFirestoreSwift
 import Foundation
 
+// swiftlint:disable:next type_body_length
 public final class BookRepositoryImpl: BookRepository {
     private let db = Firestore.firestore()
-    
+
     // Pagination
     private let perPage = 100
     private var allBooksSortedBy: BookSort = .default
     private var allBooksCache: PagerCache<Book> = .empty
     private var favoriteBooksCache: PagerCache<Book> = .empty
-    
+
     private var collectionCache: [ID<Domain.Collection>: PagerCache<Book>] = [:]
     private var collectionSortedBy: [ID<Domain.Collection>: BookSort] = [:]
 
     public init() {}
-    
+
     public func getBook(by id: ID<Book>, for user: User) async throws -> Book {
         if let cached = await bookCache.get(by: id) {
             return cached
@@ -43,12 +43,12 @@ public final class BookRepositoryImpl: BookRepository {
             throw  BookRepositoryError.network
         }
     }
-    
+
     public func getLatestBooks(count: Int, for user: User) async throws -> [Book] {
         let query = db.booksCollection(for: user)
             .orderByCreatedAtDesc()
             .limit(to: count)
-        
+
         let snapshot: QuerySnapshot
         do {
             snapshot = try await query.getDocuments()
@@ -77,16 +77,16 @@ public final class BookRepositoryImpl: BookRepository {
             throw  BookRepositoryError.network
         }
     }
-    
+
     public func getAllBooks(sortedBy: BookSort, for user: User, forceRefresh: Bool = false) async throws -> Pager<Book> {
         let isCacheValid = allBooksCache.currentPager.data.count >= perPage && !forceRefresh
         if isCacheValid {
             return allBooksCache.currentPager
         }
-        
+
         allBooksSortedBy = sortedBy
         clearAllBooksCache()
-        
+
         let booksCollection = db.booksCollection(for: user)
         var query: Query
         switch allBooksSortedBy {
@@ -99,7 +99,7 @@ public final class BookRepositoryImpl: BookRepository {
                 .orderByTitleAsc()
         }
         query = query.limit(to: perPage)
-        
+
         let snapshot: QuerySnapshot
         do {
             snapshot = try await query.getDocuments()
@@ -124,7 +124,7 @@ public final class BookRepositoryImpl: BookRepository {
         allBooksCache = PagerCache(pager: newPager, lastDocument: snapshot.documents.last)
         return newPager
     }
-    
+
     public func getAllBooksNext(for user: User) async throws -> Pager<Book> {
         guard let afterDocument = allBooksCache.lastDocument else {
             fatalError("lastDocumentは必ず存在する")
@@ -133,7 +133,7 @@ public final class BookRepositoryImpl: BookRepository {
             log.d("All books have been already fetched")
             return allBooksCache.currentPager
         }
-        
+
         let booksCollection = db.booksCollection(for: user)
         var query: Query
         switch allBooksSortedBy {
@@ -146,7 +146,7 @@ public final class BookRepositoryImpl: BookRepository {
         }
         query = query.start(afterDocument: afterDocument)
             .limit(to: perPage)
-        
+
         let snapshot: QuerySnapshot
         do {
             snapshot = try await query.getDocuments()
@@ -171,19 +171,19 @@ public final class BookRepositoryImpl: BookRepository {
         allBooksCache = PagerCache(pager: newPager, lastDocument: snapshot.documents.last)
         return newPager
     }
-    
+
     public func getFavoriteBooks(for user: User, forceRefresh: Bool) async throws -> Pager<Book> {
         let isCacheValid = favoriteBooksCache.currentPager.data.count >= perPage && !forceRefresh
         if isCacheValid {
             return favoriteBooksCache.currentPager
         }
-        
+
         clearFavoriteBooksCache()
         let query = db.booksCollection(for: user)
             .whereIsFavorite(true)
             .orderByCreatedAtDesc()
             .limit(to: perPage)
-        
+
         let snapshot: QuerySnapshot
         do {
             snapshot = try await query.getDocuments()
@@ -208,7 +208,7 @@ public final class BookRepositoryImpl: BookRepository {
         favoriteBooksCache = PagerCache(pager: newPager, lastDocument: snapshot.documents.last)
         return newPager
     }
-    
+
     public func getFavoriteBooksNext(for user: User) async throws -> Pager<Book> {
         guard let afterDocument = favoriteBooksCache.lastDocument else {
             fatalError("lastDocumentは必ず存在する")
@@ -217,13 +217,13 @@ public final class BookRepositoryImpl: BookRepository {
             log.d("Favorite books have been already fetched")
             return favoriteBooksCache.currentPager
         }
-        
+
         let query = db.booksCollection(for: user)
             .whereIsFavorite(true)
             .orderByCreatedAtDesc()
             .start(afterDocument: afterDocument)
             .limit(to: perPage)
-        
+
         let snapshot: QuerySnapshot
         do {
             snapshot = try await query.getDocuments()
@@ -248,7 +248,7 @@ public final class BookRepositoryImpl: BookRepository {
         favoriteBooksCache = PagerCache(pager: newPager, lastDocument: snapshot.documents.last)
         return newPager
     }
-    
+
     public func getBooks(by collection: Domain.Collection, sortedBy: BookSort, for user: User, forceRefresh: Bool) async throws -> Pager<Book> {
         if let cachedPager = collectionCache[collection.id]?.currentPager {
             let isCacheValid = cachedPager.data.count >= perPage && !forceRefresh
@@ -256,10 +256,10 @@ public final class BookRepositoryImpl: BookRepository {
                 return cachedPager
             }
         }
-        
+
         collectionSortedBy[collection.id] = sortedBy
         clearCollectionCache(of: collection)
-        
+
         let booksCollection = db.booksCollection(for: user)
         var query = booksCollection.whereCollection(collection)
         switch sortedBy {
@@ -272,7 +272,7 @@ public final class BookRepositoryImpl: BookRepository {
                 .orderByTitleAsc()
         }
         query = query.limit(to: perPage)
-        
+
         let snapshot: QuerySnapshot
         do {
             snapshot = try await query.getDocuments()
@@ -297,7 +297,7 @@ public final class BookRepositoryImpl: BookRepository {
         collectionCache[collection.id] = PagerCache(pager: newPager, lastDocument: snapshot.documents.last)
         return newPager
     }
-    
+
     public func getBooksNext(by collection: Domain.Collection, for user: User) async throws -> Pager<Book> {
         guard let cache = collectionCache[collection.id] else {
             fatalError("cacheは必ず存在する")
@@ -312,7 +312,7 @@ public final class BookRepositoryImpl: BookRepository {
         guard let sortedBy = collectionSortedBy[collection.id] else {
             fatalError("sortedBy must be stored for \(collection.id)")
         }
-        
+
         let booksCollection = db.booksCollection(for: user)
         var query = booksCollection.whereCollection(collection)
         switch sortedBy {
@@ -326,7 +326,7 @@ public final class BookRepositoryImpl: BookRepository {
         }
         query = query.start(afterDocument: afterDocument)
             .limit(to: perPage)
-        
+
         let snapshot: QuerySnapshot
         do {
             snapshot = try await query.getDocuments()
@@ -351,11 +351,11 @@ public final class BookRepositoryImpl: BookRepository {
         collectionCache[collection.id] = PagerCache(pager: newPager, lastDocument: snapshot.documents.last)
         return newPager
     }
-    
+
     public func addBook(of publication: Publication, in collection: Domain.Collection?, image: ImageData?, for user: User) async throws -> ID<Book> {
         let newBookDocRef = db.booksCollection(for: user).document()
         let newBookId = ID<Book>(stringLiteral: newBookDocRef.documentID)
-        
+
         var imageURL: URL?
         if let image = image {
             do {
@@ -365,7 +365,7 @@ public final class BookRepositoryImpl: BookRepository {
                 throw BookRepositoryError.uploadImage
             }
         }
-        
+
         typealias AddBookContinuation = CheckedContinuation<ID<Book>, Error>
         return try await withCheckedThrowingContinuation { (continuation: AddBookContinuation) in
             let create = FirestoreCreateBook.fromDomain(publication: publication, imageURL: imageURL, collection: collection)
@@ -381,7 +381,7 @@ public final class BookRepositoryImpl: BookRepository {
             }
         }
     }
-    
+
     public func update(book: Book, isFavorite: Bool, for user: User ) async throws {
         let update = FirestoreUpdateBook(
             title: book.title,
@@ -404,7 +404,7 @@ public final class BookRepositoryImpl: BookRepository {
             throw BookRepositoryError.network
         }
     }
-    
+
     public func update(book: Book, title: String, author: String, description: String, for user: User) async throws {
         let update = FirestoreUpdateBook(
             title: title,
@@ -427,7 +427,7 @@ public final class BookRepositoryImpl: BookRepository {
             throw BookRepositoryError.network
         }
     }
-    
+
     public func update(book: Book, collection: Domain.Collection, for user: User) async throws {
         let update = FirestoreUpdateBook(
             title: book.title,
@@ -450,7 +450,7 @@ public final class BookRepositoryImpl: BookRepository {
             throw BookRepositoryError.network
         }
     }
-    
+
     public func update(book: Book, image: ImageData, for user: User) async throws {
         let imageURL: URL
         do {
@@ -459,7 +459,7 @@ public final class BookRepositoryImpl: BookRepository {
         } catch {
             throw BookRepositoryError.uploadImage
         }
-        
+
         let update = FirestoreUpdateBook(
             title: book.title,
             author: book.author,
@@ -481,7 +481,7 @@ public final class BookRepositoryImpl: BookRepository {
             throw BookRepositoryError.network
         }
     }
-    
+
     public func delete(book: Book, for user: User) async throws {
         let memosCollectionRef = db.memosCollection(for: user)
         let memosSnapshot = try await memosCollectionRef
@@ -504,7 +504,7 @@ public final class BookRepositoryImpl: BookRepository {
                     let newUserInfo = FirestoreUpdateUser(readingBookId: "")
                     transaction.setData(newUserInfo.data(), forDocument: userRef, merge: true)
                 }
-                
+
                 memoDocuments.forEach { memoDocument in
                     let memoRef = memosCollectionRef.document(memoDocument.documentID)
                     transaction.deleteDocument(memoRef)
@@ -522,15 +522,15 @@ public final class BookRepositoryImpl: BookRepository {
             }
         }
     }
-    
+
     private func clearAllBooksCache() {
         allBooksCache = .empty
     }
-    
+
     private func clearFavoriteBooksCache() {
         favoriteBooksCache = .empty
     }
-    
+
     private func clearCollectionCache(of collection: Domain.Collection) {
         collectionCache[collection.id] = .empty
     }

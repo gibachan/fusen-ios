@@ -22,6 +22,7 @@ struct HomeTabView: View {
                         readingBookSection(book: readigBook)
                     }
                     latestBooksSectin(books: latestBooks)
+                    Divider()
                     latestMemosSection(memos: latestMemos)
                 }
 
